@@ -1,0 +1,169 @@
+<div class="container-fluid mx-auto p-0 vh-100">
+  <div class="row header header-shadow d-flex justify-content-between m-0 p-0">
+    <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2 m-0 align-items-center ">
+
+
+      <img src="assets/img/bars-solid.png" class="btn-canvas-element img-fluid m-4" type="button"
+        data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"
+        style="display: none;">
+
+
+      <div class="offcanvas offcanvas-start side-bar-canvas text-center pt-5" tabindex="-1" id="offcanvasExample"
+        aria-labelledby="offcanvasExampleLabel" style="width: 100px;">
+        <div class="side-bar text-center pt-4 pb-2" style="max-width: 110px;">
+
+          <a>
+            <div class="text-center align-items-center justify-content-center align-items-center icon-sidebar">
+              <img class="px-4" src="assets/img/icon-main.png" data-bs-dismiss="offcanvas" alt="">
+              <div class="icon-font">หน้าแรก</div>
+            </div>
+          </a>
+
+          <a>
+            <div class="text-center align-items-center justify-content-center align-items-center icon-sidebar">
+              <img class="px-4" src="assets/img/icon-work.png" data-bs-dismiss="offcanvas" alt="">
+              <div class="icon-font">เข้างาน</div>
+            </div>
+          </a>
+
+          <a>
+            <div class="text-center align-items-center justify-content-center align-items-center icon-sidebar">
+              <img class="px-4" src="assets/img/icon-list.png" data-bs-dismiss="offcanvas" alt="">
+              <div class="icon-font">รายชื่อ</div>
+            </div>
+          </a>
+
+          <a>
+            <div class="text-center align-items-center justify-content-center align-items-center icon-sidebar">
+              <img class="px-4" src="assets/img/department-icon.png" data-bs-dismiss="offcanvas" alt="">
+              <div class="icon-font">แผนก</div>
+            </div>
+          </a>
+
+          <a>
+            <div class="text-center align-items-center justify-content-center align-items-center icon-sidebar">
+              <img class="px-4" src="assets/img/icon-leave.png" data-bs-dismiss="offcanvas" alt="">
+              <div class="icon-font">การลา</div>
+            </div>
+          </a>
+
+          <a>
+            <div class="text-center align-items-center justify-content-center align-items-center icon-sidebar">
+              <img class="px-4" src="assets/img/ot-time.png" data-bs-dismiss="offcanvas" alt="">
+              <div class="icon-font mt-1">โอที</div>
+            </div>
+          </a>
+
+          <a>
+            <div class="text-center align-items-center justify-content-center align-items-center icon-sidebar">
+              <img class="px-4" src="assets/img/icon-car.png" data-bs-dismiss="offcanvas" alt="">
+              <div class="icon-font">ค่าพาหนะ</div>
+            </div>
+          </a>
+
+          <a>
+            <div class="text-center align-items-center justify-content-center align-items-center icon-sidebar">
+              <img class="px-4" src="assets/img/icon-activity.png" data-bs-dismiss="offcanvas" alt="">
+              <div class="icon-font mt-1">กิจกรรม</div>
+            </div>
+          </a>
+
+        </div>
+      </div>
+
+
+      <img class="m-3 logo-element" src="assets/img/logo.png" style="width: 65px; height: auto;" />
+    </div>
+
+    <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-8 ps-5 pe-0">
+      <div class="row w-100 h-100">
+        <div class="col-4 d-flex align-items-center">
+          <img class="img-profile img-fluid mx-auto d-block " src="assets/img/profile.jpg"
+            style="width: 65px; height: auto" />
+        </div>
+        <div class="col-8 d-flex align-items-center">
+          <div class="text-profile-name ">
+            <div class="profile-text"> {{ud_prefix}} {{ ud_fullname_th}}</div>
+            <div class="profile-text-position">{{position_th}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid ps-0 mt-4">
+    <div class="row main-content-element">
+
+      <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 p-0 sidebar-element" style="max-width: 110px;">
+        <div class="side-bar text-center pt-4 pb-2" style="max-width: 110px;">
+
+          <a>
+            <div class="text-center align-items-center justify-content-center align-items-center icon-sidebar">
+              <img class="px-4" src="assets/img/icon-main.png" alt="">
+              <div class="icon-font">หน้าแรก</div>
+            </div>
+          </a>
+
+          <a>
+            <div class="text-center align-items-center justify-content-center align-items-center icon-sidebar">
+              <img class="px-4" src="assets/img/icon-work.png" alt="">
+              <div class="icon-font">เข้างาน</div>
+            </div>
+          </a>
+
+          <a>
+            <div class="text-center align-items-center justify-content-center align-items-center icon-sidebar">
+              <img class="px-4" src="assets/img/icon-list.png" alt="">
+              <div class="icon-font">รายชื่อ</div>
+            </div>
+          </a>
+
+          <a routerLink="department">
+            <div class="text-center align-items-center justify-content-center align-items-center icon-sidebar">
+              <img class="px-4" src="assets/img/department-icon.png" alt="">
+              <div class="icon-font">แผนก</div>
+            </div>
+          </a>
+
+          <a>
+            <div class="text-center align-items-center justify-content-center align-items-center icon-sidebar">
+              <img class="px-4" src="assets/img/icon-leave.png" alt="">
+              <div class="icon-font">การลา</div>
+            </div>
+          </a>
+
+          <a>
+            <div class="text-center align-items-center justify-content-center align-items-center icon-sidebar">
+              <img class="px-4" src="assets/img/ot-time.png" alt="">
+              <div class="icon-font mt-1">โอที</div>
+            </div>
+          </a>
+
+          <a>
+            <div class="text-center align-items-center justify-content-center align-items-center icon-sidebar">
+              <img class="px-4" src="assets/img/icon-car.png" alt="">
+              <div class="icon-font">ค่าพาหนะ</div>
+            </div>
+          </a>
+
+          <a>
+            <div class="text-center align-items-center justify-content-center align-items-center icon-sidebar">
+              <img class="px-4" src="assets/img/icon-activity.png" alt="">
+              <div class="icon-font mt-1">กิจกรรม</div>
+            </div>
+          </a>
+
+        </div>
+      </div>
+      <div class="col-11 col-xl-11 col-lg-11 ps-4">
+        <div class="container-fluid h-100 p-0">
+          <div class="main-content h-100 p-5">
+            <router-outlet></router-outlet>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
