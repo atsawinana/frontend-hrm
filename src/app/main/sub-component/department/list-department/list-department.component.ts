@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ListDepartmentService } from './list-department.service';
 
 @Component({
   selector: 'app-list-department',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListDepartmentComponent implements OnInit {
 
-  constructor() { }
+  constructor(private DepService: ListDepartmentService) { }
 
   ngOnInit() {
+    this.DepService.getAllDepartment().subscribe({
+      next: (res: any) => {
+
+        console.log('ชื่อ', res.status)
+        res.data.dept_name_en
+
+      },
+      error: (err) => {
+        console.log("api failed !")
+      },
+    });
   }
 
 }
