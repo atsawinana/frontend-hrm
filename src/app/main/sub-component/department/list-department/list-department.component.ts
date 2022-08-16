@@ -8,18 +8,19 @@ import { ListDepartmentService } from './list-department.service';
 })
 export class ListDepartmentComponent implements OnInit {
 
+  data: any
+
   constructor(private DepService: ListDepartmentService) { }
 
   ngOnInit() {
     this.DepService.getAllDepartment().subscribe({
       next: (res: any) => {
-
-        console.log('ชื่อ', res.status)
-        res.data.dept_name_en
-
+        this.data = res.data
+        // console.log("api success !")
+        console.log(this.data)
       },
-      error: (err) => {
-        console.log("api failed !")
+      error: (err: any) => {
+        // console.log("api failed !")
       },
     });
   }
