@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
 
   togglePassword() {
 
-    this.ClearAlertText();
+    
     // toggle the type attribute
     let passwordElem = document.getElementById('passwordtag')
     let typeAttribute = passwordElem!.getAttribute("type") === "password" ? "text" : "password";
@@ -54,6 +54,7 @@ export class LoginComponent implements OnInit {
   }
 
   onClickSubmit() {
+    this.ClearAlertText();
     this.loginService.login({username: this.username.value!, password: this.password.value!,}).subscribe({
         next: (res: any) => {
           console.log('Success, Username and Password are correct');
