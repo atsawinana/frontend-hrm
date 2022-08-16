@@ -32,7 +32,17 @@ export class LoginComponent implements OnInit {
     alert!.style.display = 'block';
   }
 
+  ClearAlertText() {
+    let alertnull = document.getElementById('alertnull');
+    alertnull!.style.display = 'none';
+
+    let alert = document.getElementById('alert');
+    alert!.style.display = 'none';
+  }
+
   togglePassword() {
+
+    this.ClearAlertText();
     // toggle the type attribute
     let passwordElem = document.getElementById('passwordtag')
     let typeAttribute = passwordElem!.getAttribute("type") === "password" ? "text" : "password";
