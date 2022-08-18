@@ -4,33 +4,38 @@
       <h1>รายชื่อแผนก</h1>
     </div>
     <div class="col-4 d-flex align-items-center justify-content-end ">
-      <input type="text">
-      <button type="button" class="btn btn-primary ms-3">Search</button>
+      <input id= "search-bar" (keypress)="numberOnly($event)" [(ngModel)]="searchInput" type="text" pattern="[a-zA-Z]*">
+      <button  type="button" class="btn btn-primary ms-3">เพิ่มแผนก</button>
     </div>
   </div>
 </div>
 
-<table class="table table-striped text-center mt-3">
-  <thead>
-    <tr>
-      <th>ลำดับ</th>
-      <th>รายชื่อแผนก</th>
-      <th>จำนวนคน</th>
-      <th>การดำเนินการ</th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <tr *ngFor="let datas of data">
-      <td>{{datas.dept_id}}</td>
-      <td>{{datas.dept_name_en}}</td>
-      <td>{{datas.number}}</td>
-      <td><button class="btn-primary" routerLink="add-department"> go to add</button>
-        <button class="btn-primary" routerLink="edit-department"> go to edit</button>
-        <button class="btn-primary"> go to delete</button></td>
-    </tr>
-  </tbody>
-</table>
+
+<div class="table-responsive">
+  <table class=" table table-striped text-center mt-3">
+    <thead>
+      <tr>
+        <th>ลำดับ</th>
+        <th>รายชื่อแผนก</th>
+        <th>จำนวนคน</th>
+        <th>การดำเนินการ</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let datas of data | filter:searchInput" >
+        <td>{{datas.dept_id}}</td>
+        <td id="nameDepartment">{{datas.dept_name_en}}</td>
+        <td>{{datas.number}}</td>
+        <td><button class="btn-primary" routerLink="add-department"> go to add</button>
+          <button class="btn-primary" routerLink="edit-department"> go to edit</button>
+          <button class="btn-primary"> go to delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
 
 
 <div class="mt-5">
