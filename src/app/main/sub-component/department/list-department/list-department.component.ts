@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { ListDepartmentService } from './list-department.service';
 
 @Component({
@@ -7,20 +8,15 @@ import { ListDepartmentService } from './list-department.service';
   styleUrls: ['./list-department.component.css'],
 })
 export class ListDepartmentComponent implements OnInit {
+  selected?: any
   data: any 
   searchInput: any
-  depName?: string
-  depNum?: string
-  depMember?: string
+  listPage:any
   constructor(private DepService: ListDepartmentService) {}
-
   ngOnInit() {
     this.DepService.getAllDepartment().subscribe({
       next: (res: any) => {
         this.data  = res.data;
-        this.depNum = this.data.dept_id
-        this.depName = this.data.dept_name_en
-        this.depMember = this.data.number
       },
       error: (err: any) => {},
     });
@@ -30,14 +26,17 @@ export class ListDepartmentComponent implements OnInit {
   numberOnly(event: { which: any; keyCode: any; }): boolean {
     const charCode = (event.which) ? event.which : event.keyCode;
     if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-      console.log('event.which',event.which)
-      console.log('event.keyCode',event.keyCode)
       return true;
     }
-    console.log('event.which',event.which)
-    console.log('event.keyCode',event.keyCode)
     return false;
+  }
 
+  listPerpage()
+  {
+    const list = (<HTMLSelectElement>document.getElementById('listPerPage')).value
+    console.log(list)
+
+    return list
   }
 
 }
