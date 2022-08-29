@@ -1,7 +1,7 @@
 <div>
   <div class="row d-flex justify-content-between">
     <div class="col-3">
-      <h1>รายชื่อแผนก</h1>
+      <div class="list-header">รายชื่อแผนก</div>
     </div>
     <div class="col-4 d-flex align-items-center justify-content-end ">
       <input id= "search-bar" (keypress)="numberOnly($event)" [(ngModel)]="searchInput" type="text" pattern="[a-zA-Z]*">
@@ -13,7 +13,7 @@
 
 
 <div class="table-responsive">
-  <table class=" table table-striped text-center mt-3">
+  <table class="table-responsive table table-striped text-center mt-3 list-table">
     <thead>
       <tr>
         <th>ลำดับ</th>
@@ -23,8 +23,8 @@
       </tr>
     </thead>
 
-    <tbody>
-      <tr *ngFor="let datas of data | filter:searchInput" >
+    <tbody class="list-content">
+      <tr *ngFor="let datas of deprtmentsData | filter:searchInput | paginate: {itemsPerPage: listPerPage, currentPage: onPage} " >
         <td>{{datas.dept_id}}</td>
         <td id="nameDepartment">{{datas.dept_name_en}}</td>
         <td>{{datas.number}}</td>
@@ -42,28 +42,34 @@
   <div class="row d-flex justify-content-between">
     <div class="col-5">
       <div class="row">
-        <div class="col-5">
-          <h4>รายการต่อหน้า</h4>
+        <div class="col-3 px-0 text-end d-flex align-items-center justify-content-end">
+          <div class="list-perPage">รายการต่อหน้า</div>
         </div>
-        <div class="col-3">
-          <select id="listPerPage" class="form-select form-select-sm" aria-label=".form-select-sm example" (change)="listPerpage()">
+        <div class="col-2 ms-2 p-0 select-perPage">
+          <select id="listPerPage" class="select-perPage" aria-label=".form-select-sm example" (change)="listPerpage()">
             <option value="3">3</option>
-            <option value="5">5</option>
-            <option selected value="">10</option>
+            <option selected value="5">5</option>
+            <option value="10">10</option>
           </select>
         </div>
       </div>
 
     </div>
 
-
-
     <div class="col-4 d-flex align-items-center justify-content-end ">
-      <button type="button" class="btn btn-primary ms-3">
-        <</button> <div>
-          page
+    
+    <button type="button" class="next-page" (click)="DecreasePage()"><</button>
+
+    <div class="on-page text-end d-flex align-items-center justify-content-center">
+      {{onPage}}
     </div>
-    <button type="button" class="btn btn-primary ms-3">></button>
+
+    <div id="nextPage" class="next-page text-end d-flex align-items-center justify-content-center" (click)="increasePage()">
+      {{onPageNext}}
+    </div>
+
+    <button type="button" class="next-page" (click)="increasePage()">></button>
+
   </div>
 </div>
 </div>
