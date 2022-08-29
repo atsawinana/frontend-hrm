@@ -1,0 +1,77 @@
+.list-table {
+  border: 1px solid #E5E5EA;
+  border-radius: 8px;
+  font-family: 'Kanit';
+  font-style: normal;
+  font-size: 18px;
+
+}
+
+thead {
+  background: #005FBC;
+  color: #FFFFFF
+}
+
+.list-header {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 47px;
+  color: #000000;
+}
+
+.list-perPage {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px
+}
+
+.select-perPage {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  padding: 7px;
+  background: #FFFFFF;
+  border-radius: 8px;
+  border-color: #A8A8A8;
+}
+
+.list-content {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.next-page {
+  background: #FFFFFF;
+  border: 1px solid #C7C7CC;
+  border-radius: 8px;
+  width: 48px;
+  height: 48px;
+  font-size: 22px;
+  font-family: 'Kanit';
+  margin-right: 10px;
+}
+
+.on-page {
+  background: #005FBC;
+  width: 48px;
+  height: 48px;
+  border: 1px solid #005FBC;
+  border-radius: 8px;
+  font-size: 22px;
+  font-family: 'Kanit';
+  color: #FFFFFF;
+  margin-right: 10px;
+}
+
+#nextPage:hover{
+    background-color: #005FBC;
+    transition: 0.6s ;
+}
