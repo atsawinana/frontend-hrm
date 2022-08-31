@@ -1,3 +1,52 @@
-<h1>
-  edit-component works!
-</h1>
+<div class="container pe-5">
+  <div class="font-header mb-5">
+    แก้ไขแผนก
+  </div>
+  <div class="row mb-4">
+    <div class="sub-text col-4 d-flex justify-content-left">
+      ชื่อแผนก (EN)*
+    </div>
+    <div class="col-8 d-flex justify-content-left">
+      <input type="text" placeholder="กรอกแผนก" class="form-control w-75">
+    </div>
+  </div>
+
+  <div class="row mb-4">
+    <div class="sub-text col-4 d-flex justify-content-left">
+      ชื่อแผนก (TH)
+    </div>
+    <div class="col-8 d-flex justify-content-left">
+      <input type="text" placeholder="กรอกแผนก" class="form-control w-75">
+    </div>
+  </div>
+
+  <div class="row mb-4">
+    <div class="sub-text col-4 d-flex justify-content-left">
+      ชื่อหัวหน้าแผนก*
+    </div>
+    <div class="col-8 d-flex justify-content-left">
+      <input type="text" placeholder="กรอกหัวหน้าแผนก" class="form-control w-75">
+    </div>
+  </div>
+
+  <div class="row mb-4">
+    <div class="sub-text col-4 d-flex justify-content-left" id="add">
+    </div>
+    <div class="col-8 d-flex justify-content-left">
+      <a>
+        <div (click)="addDept()">
+          เพิ่มแผนก
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="row mb-4">
+    <div class="sub-text col-4 d-flex justify-content-left">
+      ตำแหน่ง*
+    </div>
+    <div class="col-8 d-flex justify-content-left">
+      <input type="text" placeholder="กรอกหัวหน้าแผนก" class="form-control w-75">
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+    .font-header {
+        font-family: 'Kanit';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 32px;
+        line-height: 47px;
+        text-align: center;
+        color: #000000;
+    }
+
+    .sub-text {
+        font-family: 'Kanit';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        padding-left: 175px;
+    }
+
+    input::placeholder {
+        font-family: 'Kanit';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        color: #D1D1D6;
+    }
+

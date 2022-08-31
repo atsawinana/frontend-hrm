@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DepartmentModule } from '../department.module';
 
 @Component({
   selector: 'app-edit-component',
@@ -12,4 +13,7 @@ export class EditComponentComponent implements OnInit {
   ngOnInit() {
   }
 
+  addDept() {
+    const add = document.createElement('input')
+  }
 }
