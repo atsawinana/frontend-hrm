@@ -14,7 +14,6 @@
         font-weight: 400;
         font-size: 16px;
         line-height: 24px;
-        padding-left: 175px;
     }
 
     input::placeholder {
@@ -26,3 +25,86 @@
         color: #D1D1D6;
     }
 
+    input {
+        max-height: 38px !important;
+    }
+
+    .text-button {
+        font-family: 'Kanit';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        color: #005FBC;
+        cursor: pointer;
+    }
+
+    .cancel-button {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        padding: 12px 16px;
+        background: #FFFFFF;
+        border: 1px solid #005FBC;
+        border-radius: 8px;
+    }
+
+    .cancel-text {
+        font-family: 'Kanit';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        color: #005FBC;
+    }
+
+    .submit-button {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        padding: 12px 16px;
+        background: linear-gradient(270.74deg, #2E3579 0.35%, #005FBC 99.1%, #005FBC 99.1%);
+        border-radius: 8px;
+        border: 1px solid #005FBC;
+    }
+
+    .submit-text {
+        font-family: 'Kanit';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        color: #FFFFFF;
+
+    }
+
+    i {
+        padding-right: 5px;
+    }
+    @media screen and (max-width: 576px) {
+        div.input-xs{
+            display: flex !important;
+            justify-content: center !important;
+        }
+
+        div.text-xs{
+            display: flex !important;
+            justify-content: left !important;
+            padding-bottom: 5px;
+        }
+
+        input.maxWidth{
+            width: 100% !important;
+        }
+        #add {
+            display: none !important;
+        }
+    }
+    @media screen and (min-width: 1200px) {
+        div.mainContainer{
+            width: 55% !important;
+        }
+    }

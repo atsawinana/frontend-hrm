@@ -1,31 +1,31 @@
-<div class="container pe-5">
+<div class="container p-0 mainContainer">
   <div class="font-header mb-5">
     แก้ไขแผนก
   </div>
   <div class="row mb-4">
-    <div class="sub-text col-4 d-flex justify-content-left">
+    <div class="sub-text col-12 col-sm-4 col-md-4 col-lg-4 text-center text-xs">
       ชื่อแผนก (EN)*
     </div>
-    <div class="col-8 d-flex justify-content-left">
-      <input type="text" placeholder="กรอกแผนก" class="form-control w-75">
+    <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
+      <input type="text" placeholder="กรอกแผนก" class="form-control w-75 maxWidth">
     </div>
   </div>
 
   <div class="row mb-4">
-    <div class="sub-text col-4 d-flex justify-content-left">
+    <div class="sub-text col-12 col-sm-4 col-md-4 col-lg-4 text-center text-xs">
       ชื่อแผนก (TH)
     </div>
-    <div class="col-8 d-flex justify-content-left">
-      <input type="text" placeholder="กรอกแผนก" class="form-control w-75">
+    <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
+      <input type="text" placeholder="กรอกแผนก" class="form-control w-75 maxWidth">
     </div>
   </div>
 
   <div class="row mb-4">
-    <div class="sub-text col-4 d-flex justify-content-left">
+    <div class="sub-text col-12 col-sm-4 col-md-4 col-lg-4 text-center text-xs">
       ชื่อหัวหน้าแผนก*
     </div>
-    <div class="col-8 d-flex justify-content-left">
-      <input type="text" placeholder="กรอกหัวหน้าแผนก" class="form-control w-75">
+    <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
+      <input type="text" placeholder="กรอกหัวหน้าแผนก" class="form-control w-75 maxWidth">
     </div>
   </div>
 
@@ -34,19 +34,43 @@
     </div>
     <div class="col-8 d-flex justify-content-left">
       <a>
-        <div (click)="addDept()">
-          เพิ่มแผนก
+        <div class="text-button" (click)="addDept()">
+          <i class="fa-solid fa-circle-plus"></i>เพิ่มหัวหน้า
         </div>
       </a>
     </div>
   </div>
 
   <div class="row mb-4">
-    <div class="sub-text col-4 d-flex justify-content-left">
+    <div class="sub-text col-12 col-sm-4 col-md-4 col-lg-4 text-center text-xs">
       ตำแหน่ง*
     </div>
-    <div class="col-8 d-flex justify-content-left">
-      <input type="text" placeholder="กรอกหัวหน้าแผนก" class="form-control w-75">
+    <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
+      <input type="text" placeholder="กรอกตำแหน่ง" class="form-control w-75 maxWidth">
     </div>
+  </div>
+
+  <div class="row mb-4">
+    <div class="sub-text col-4 d-flex justify-content-left" id="add">
+    </div>
+    <div class="col-8 d-flex justify-content-left">
+      <a>
+        <div class="text-button mb-4" (click)="addDept()">
+          <i class="fa-solid fa-circle-plus"></i>เพิ่มตำแหน่ง
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="row mb-4 mt-5 d-flex justify-content-center">
+    <div class="col-6 col-sm-3 col-md-3 col-lg-3"><button class="cancel-button d-flex justify-content-center w-100">
+        <div class="cancel-text">ยกเลิก</div>
+      </button>
+    </div>
+    <div class="col-6 col-sm-3 col-md-3 col-lg-3"><button class="submit-button d-flex justify-content-center w-100">
+        <div class="submit-text">ตกลง</div>
+      </button>
+    </div>
+
   </div>
 </div>
