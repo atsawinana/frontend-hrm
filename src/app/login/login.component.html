@@ -20,7 +20,7 @@
                   </div>
                   <div class="col-10 px-0">
                     <input type="email" placeholder="ชื่อผู้ใช้" class="form-control-lg h-100 p-0 w-100"
-                      [formControl]="username" />
+                      [formControl]="username" id="usernametag" (keypress)="checkEnterLogin($event)"/>
                   </div>
                 </div>
                 <!-- username input login end-->
@@ -32,7 +32,7 @@
                   </div>
                   <div class="col-8 px-0">
                     <input type="password" placeholder="รหัสผ่าน" id="passwordtag"
-                      class="form-control-lg h-100 p-0 w-100" [formControl]="password" />
+                      class="form-control-lg h-100 p-0 w-100" [formControl]="password" (keypress)="checkEnterLogin($event)" />
                   </div>
                   <div class="col-2 px-0">
                     <img (click)="togglePassword()" class="toggleShowpassword py-3" id="togglt-password"

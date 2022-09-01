@@ -41,8 +41,6 @@ export class LoginComponent implements OnInit {
   }
 
   togglePassword() {
-
-    
     // toggle the type attribute
     let passwordElem = document.getElementById('passwordtag')
     let typeAttribute = passwordElem!.getAttribute("type") === "password" ? "text" : "password";
@@ -51,6 +49,13 @@ export class LoginComponent implements OnInit {
     let toggle = document.getElementById('togglt-password')
     let srcAttribute = toggle!.getAttribute("src") === "assets/img/eye-solid.png" ? "assets/img/eye-slash-solid.png" : "assets/img/eye-solid.png";
     toggle!.setAttribute("src", srcAttribute);
+  }
+
+  checkEnterLogin(e: any){
+    if(e.keyCode == 13)
+    {
+      this.onClickSubmit()
+    }
   }
 
   onClickSubmit() {
