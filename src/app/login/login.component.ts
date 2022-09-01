@@ -10,6 +10,7 @@ import { LoginService } from './login.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+  
   username = new FormControl('');
   password = new FormControl('');
   isSuccess?: boolean;
@@ -68,7 +69,7 @@ export class LoginComponent implements OnInit {
           this.tokentype = res.data.token_type;
           this.expires = res.data.expires_in;
 
-          this.auth.saveTokenLocal(this.token!);
+          localStorage.setItem('tokenLocal',this.token!)
 
           if (this.token != null) {
             this.router.navigate(['/main']);
@@ -84,7 +85,6 @@ export class LoginComponent implements OnInit {
               this.alertTextRed();
             }
           }
-          // this.token = undefined
         },
       });
   }
