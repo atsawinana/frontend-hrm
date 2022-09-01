@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Route, Router, RouterLink } from '@angular/router';
-import { CoreService } from '../core.service';
+import { AuthService } from '../auth.service';
 import { LoginService } from './login.service';
 
 @Component({
@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   expires?: string;
   isHR: boolean = true;
 
-  constructor(private loginService: LoginService, private router: Router, private core: CoreService) {}
+  constructor(private loginService: LoginService, private router: Router, private auth: AuthService) {}
 
   ngOnInit(): void {}
 
@@ -68,11 +68,7 @@ export class LoginComponent implements OnInit {
           this.tokentype = res.data.token_type;
           this.expires = res.data.expires_in;
 
-          this.core.token = res.data.access_token
-
-          console.log('token :', this.core.token);
-          console.log('token type :', this.tokentype);
-          console.log('token expires:', this.expires);
+          this.auth.saveTokenLocal(this.token!);
 
           if (this.token != null) {
             this.router.navigate(['/main']);
