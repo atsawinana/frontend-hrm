@@ -5,6 +5,7 @@ import { LeaveComponent } from './main/sub-component/leave/leave.component';
 import { MainComponent } from './main/main-component/main.component';
 import { OtComponent } from './main/sub-component/ot/ot.component';
 import { ProfileComponent } from './main/sub-component/profile/profile.component';
+import { AuthGuardGuard } from './auth-guard.guard';
 
 const routes: Routes = [
   {
@@ -24,7 +25,7 @@ const routes: Routes = [
       { path: 'ot', component: OtComponent },
       { path: 'home-main', component: MainComponent },
       { path: 'profile', component: ProfileComponent },
-    ],
+    ],canActivate:[AuthGuardGuard]
   },
 ];
 

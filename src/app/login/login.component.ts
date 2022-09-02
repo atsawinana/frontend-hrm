@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   expires?: string;
   isHR: boolean = true;
 
-  constructor(private loginService: LoginService, private router: Router, private auth: AuthService) {}
+  constructor(private loginService: LoginService, private router: Router, private coreToken: AuthService) {}
 
   ngOnInit(): void {}
 
@@ -69,8 +69,10 @@ export class LoginComponent implements OnInit {
           this.tokentype = res.data.token_type;
           this.expires = res.data.expires_in;
 
-          localStorage.setItem('tokenLocal',this.token!)
 
+          // this.coreToken.token = localStorage.setItem('tokenLocal',this.token!)!
+          
+          localStorage.setItem('tokenLocal',this.token!)
           if (this.token != null) {
             this.router.navigate(['/main']);
           }

@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { MainService } from '../main.service';
 import { AuthService } from 'src/app/auth.service';
 import { core, Token } from '@angular/compiler';
+import { Route, Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -12,7 +13,7 @@ import { core, Token } from '@angular/compiler';
 export class MainComponent implements OnInit {
   constructor(
     private MainService: MainService,
-    private router: ActivatedRoute,
+    private router: Router,
     private coreToken: AuthService
   ) {}
   token?: any;
@@ -22,23 +23,38 @@ export class MainComponent implements OnInit {
   position_th?: string;
   tokenLocal?: string;
   tokenCheck?: boolean;
+  
 
   ngOnInit() {
-    this.refresh();
+    this.refresh()
+    this.coreToken.CheckTokenTimeOut()
+    if(this.coreToken.CheckTokenTimeOut()){
+      this.router.navigate(['']);
+    }
+
+
+
   }
 
   refresh() {
-    this.tokenLocal = localStorage.getItem('tokenLocal')!;
+    this.tokenLocal = localStorage.getItem('tokenLocal')!
     this.MainService.profileRequest({ token: this.tokenLocal! }).subscribe({
       next: (res: any) => {
-        this.ud_fullname_th = res.data.ud_fullname_th;
-        this.ud_prefix = res.data.ud_prefix;
-        this.position_th = res.data.position_th;
-        this.role = res.data.role;
+        this.ud_fullname_th = res.data.ud_fullname_th
+        this.ud_prefix = res.data.ud_prefix
+        this.position_th = res.data.position_th
+        this.role = res.data.role
       },
       error: (err: any) => {
         
       },
     });
   }
+
+  logout()
+  {
+    this.coreToken.Logout()
+  }
+
+
 }
