@@ -21,6 +21,7 @@ const routes: Routes = [
       {
         path: 'department',
         loadChildren: () => import('./main/sub-component/department/department.module').then((m) => m.DepartmentModule),
+        canActivate:[AuthGuardGuard]
       },
       { path: 'ot', component: OtComponent },
       { path: 'home-main', component: MainComponent },

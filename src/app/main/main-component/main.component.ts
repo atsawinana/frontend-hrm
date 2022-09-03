@@ -27,13 +27,9 @@ export class MainComponent implements OnInit {
 
   ngOnInit() {
     this.refresh()
-    this.coreToken.CheckTokenTimeOut()
     if(this.coreToken.CheckTokenTimeOut()){
       this.router.navigate(['']);
     }
-
-
-
   }
 
   refresh() {
