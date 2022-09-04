@@ -10,9 +10,10 @@ import { AuthService } from './auth.service';
 export class AppComponent {
   constructor(private coreToken: AuthService) {
     this.setTimeout();
-    this.userInactive.subscribe(() =>
-      console.log('user has been inactive for 5s')
-    );
+    this.userInactive.subscribe(() => {
+      console.log('user has been inactive for 55s');
+      this.coreToken.userInactivate = true
+    });
   }
   title = 'frontend-code';
 
@@ -22,7 +23,8 @@ export class AppComponent {
   setTimeout() {
     if (localStorage.getItem('tokenLocal') != null) {
       this.userActivity = setTimeout(
-        () => this.userInactive.next(undefined),60000);
+        () => this.userInactive.next(undefined),55000
+      );
     }
   }
 

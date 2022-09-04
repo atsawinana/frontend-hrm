@@ -25,9 +25,9 @@ export class MainComponent implements OnInit {
   tokenCheck?: boolean;
   
 
-  ngOnInit() {
+  async ngOnInit() {
     this.refresh()
-    if(this.coreToken.CheckTokenTimeOut()){
+    if(await this.coreToken.CheckTokenTimeOut()){
       this.router.navigate(['']);
     }
   }
