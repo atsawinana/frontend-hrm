@@ -1,3 +1,42 @@
+input::placeholder {
+  font-family: 'Kanit';
+  font-style: normal;
+  color: #AEAEB2;
+}
+
+input {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-size: 18px;
+  border: none;
+  background-color: transparent;
+  resize: none;
+  outline: none;
+}
+
+
+td {
+  background: rgb(255, 255, 255);
+  border-bottom: 2px solid white;
+  font-family: 'Kanit';
+  font-style: normal;
+  font-size: 16px;
+}
+
+th {
+  background: #005FBC;
+  color: #ffffff;
+  font-family: 'Kanit';
+  font-style: normal;
+  font-size: 18px;
+}
+
+table {
+  border-collapse: collapse;
+  border-radius: 1em;
+  overflow: hidden;
+}
+
 .list-table {
   border: 1px solid #E5E5EA;
   border-radius: 8px;
@@ -5,11 +44,6 @@
   font-style: normal;
   font-size: 18px;
 
-}
-
-thead {
-  background: #005FBC;
-  color: #FFFFFF
 }
 
 .list-header {
@@ -71,7 +105,36 @@ thead {
   margin-right: 10px;
 }
 
-#nextPage:hover{
-    background-color: #005FBC;
-    transition: 0.6s ;
+#nextPage:hover {
+  background-color: #005FBC;
+  color: #ffffff;
+  transition: 0.5s;
 }
+
+.search-bar {
+  background: #FFFFFF;
+  border: 1px solid #C7C7CC;
+  border-radius: 8px;
+}
+
+
+.btn-add-department {
+  background: linear-gradient(270.74deg, #2E3579 0.35%, #005FBC 99.1%, #005FBC 99.1%);
+  border-radius: 8px;
+  font-family: 'Kanit';
+  font-style: normal;
+  border: none;
+}
+
+.activity-table {
+  background: #FFFFFF;
+  border: 1px solid #D1D1D6;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.activity-table:hover{
+  transform: scale(1.1);
+  transition: 0.4s;
+}
+
