@@ -57,9 +57,13 @@ export class ListDepartmentComponent implements OnInit {
   Delete_Department(deptID:string) {
     this.DepService.DeleletDepartment(deptID).subscribe({
       next: (res: any) => {
-        location.reload()
       },
       error: (err: any) => {},
     });
+  }
+
+  reload(){
+    location.reload()
+
   }
 }
