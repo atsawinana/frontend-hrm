@@ -1,5 +1,5 @@
 <div class="container p-0 mainContainer">
-  <div class="font-header mb-5">
+  <div class="font-header mb-5" id="re">
     แก้ไขแผนก
   </div>
   <div class="row mb-4">
@@ -20,12 +20,22 @@
     </div>
   </div>
 
-  <div class="row mb-4">
+  <div class="row">
     <div class="sub-text col-12 col-sm-4 col-md-4 col-lg-4 text-center text-xs">
       ชื่อหัวหน้าแผนก*
     </div>
     <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
-      <input type="text" placeholder="กรอกหัวหน้าแผนก" class="form-control w-75 maxWidth">
+
+      <div class="row OriginalDiv" id="deptOrigin">
+        <div class="col-10"><input type="text" placeholder="กรอกหัวหน้าแผนก" class="form-control maxWidth mb-4 "
+            id="add-boss"></div>
+        <div class="col-2 py-2"><i class="fa-solid fa-circle-xmark delete-dept iconDept" (click)="deleteDept()"></i>
+        </div>
+      </div>
+
+      <div class="row" id="dept">
+      </div>
+
     </div>
   </div>
 
@@ -41,12 +51,12 @@
     </div>
   </div>
 
-  <div class="row mb-4">
+  <div class="row">
     <div class="sub-text col-12 col-sm-4 col-md-4 col-lg-4 text-center text-xs">
       ตำแหน่ง*
     </div>
-    <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
-      <input type="text" placeholder="กรอกตำแหน่ง" class="form-control w-75 maxWidth">
+    <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs" id="pos">
+      <input type="text" placeholder="กรอกตำแหน่ง" class="form-control w-75 maxWidth mb-4" id="add-pos">
     </div>
   </div>
 
@@ -55,7 +65,7 @@
     </div>
     <div class="col-8 d-flex justify-content-left">
       <a>
-        <div class="text-button mb-4" (click)="addDept()">
+        <div class="text-button mb-4" (click)="addPos()">
           <i class="fa-solid fa-circle-plus"></i>เพิ่มตำแหน่ง
         </div>
       </a>
@@ -71,6 +81,7 @@
         <div class="submit-text">ตกลง</div>
       </button>
     </div>
-
   </div>
+
 </div>
+

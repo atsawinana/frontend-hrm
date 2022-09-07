@@ -81,8 +81,25 @@
 
     }
 
+    .showDisplay{
+        display: block !important;
+    }
+
+    .delete-dept {
+        font-size: 20px;
+        color: red;
+        display: none;
+    }
+
+    .delete-pos {
+        font-size: 20px;
+        color: red;
+        display: none;
+    }
+
     i {
         padding-right: 5px;
+        cursor: pointer;
     }
     @media screen and (max-width: 576px) {
         div.input-xs{
