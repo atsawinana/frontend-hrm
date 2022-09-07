@@ -30,12 +30,73 @@
         <td>{{datas.number}}</td>
         <td><button class="btn-primary" routerLink="add-department"> go to add</button>
           <button class="btn-primary" routerLink="edit-department"> go to edit</button>
-          <button class="btn-primary"> go to delete</button></td>
+          <button  data-bs-toggle="modal" href="#exampleModalToggle" role="button"> go to delete</button></td>
       </tr>
     </tbody>
   </table>
 </div>
 
+
+<div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <!-- <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalToggleLabel">คุณต้องการลบแผนกหรือไม่?.</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div> -->
+      <div class="modal-body d-block " style="border-radius: 10px;" >
+        <div class = "d-flex justify-content-center" id = "confirm">
+          <h5 class="modal-title" id="exampleModalToggleLabel">คุณต้องการลบแผนกหรือไม่?.</h5>
+        </div>
+        <div class = "d-flex justify-content-center">
+          <i class="fa-regular fa-calendar-xmark" id ="icon-property" ></i>
+        </div>
+        <div class="row d-flex justify-content-center">
+          <div class="col-6 col-sm-3 col-md-3 col-lg-3 "><button class="cancel-button d-flex justify-content-center w-100 " data-bs-dismiss="modal" aria-label="Close">
+            <div class="cancel-text">ยกเลิก</div>
+          </button>
+          </div>
+          <div class="col-6 col-sm-3 col-md-3 col-lg-3"><button class ="submit-button d-flex justify-content-center w-100" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">
+            <div class="submit-text">ยืนยัน</div>
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="modal-footer">
+        <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">ยกเลิก</button>
+        <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">ยืนยัน</button>
+      </div> -->
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <!-- <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalToggleLabel2">ลบแผนกสำเร็จ</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div> -->
+      <div class="modal-body">
+        <div class = "d-flex justify-content-center">
+          <h5 class="modal-title" id="exampleModalToggleLabel">ลบแผนกสำเร็จ.</h5>
+        </div>
+        <div class = "d-flex justify-content-center">
+          <i class="fa-regular fa-square-check" id ="icon-property" ></i>
+        </div>
+        <div class = "d-flex justify-content-center">
+          <div class="col-6 col-sm-3 col-md-3 col-lg-3">
+          <button class="submit-button d-flex justify-content-center w-100" data-bs-dismiss="modal" aria-label="Close">
+            <div class="submit-text">ตกลง</div>
+          </button>
+        </div>
+      </div>
+      <!-- <div class="modal-footer">
+        <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" aria-label="Close">Back to first</button>
+      </div> -->
+    </div>
+  </div>
+</div>
+<!-- <a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Open first modal</a> -->
 
 
 <div class="mt-5">
@@ -63,7 +124,7 @@
         <</button> <div>
           page
     </div>
-    <button type="button" class="btn btn-primary ms-3">></button>
+    <button type="button" class="btn btn-primary ms-3"></button>
   </div>
 </div>
 </div>
