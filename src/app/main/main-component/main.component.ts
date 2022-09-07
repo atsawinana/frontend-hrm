@@ -80,8 +80,7 @@ export class MainComponent implements OnInit {
   }
 
   @HostListener('click') userclick() {
-    this.coreToken.CheckTokenTimeOut();
-    if (!localStorage.getItem('tokenLocal')) {
+    if (this.coreToken.userInactivate) {
       this.coreToken.Logout();
     }
   }
