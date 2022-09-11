@@ -39,6 +39,7 @@ export class ListDepartmentComponent implements OnInit {
       .value;
     this.listPerPage = Number(list);
   }
+<<<<<<< Updated upstream
 
   increasePage() {
     let DeptNum = this.maxListDept;
@@ -55,3 +56,16 @@ export class ListDepartmentComponent implements OnInit {
     }
   }
 }
+=======
+  DeletePage() {
+    this.DepService.deleteDepartment().subscribe({
+      next: (res: any) => {
+        console.log("1")
+      },
+      error: (err: any) => {
+        
+      },
+    });
+  }
+  }
+>>>>>>> Stashed changes
