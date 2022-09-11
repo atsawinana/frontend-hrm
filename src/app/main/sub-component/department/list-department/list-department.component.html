@@ -1,13 +1,161 @@
-<h1>
-  department works!
-</h1>
-<button class="btn-primary" routerLink="add-department"> go to add</button>
-<button class="btn-primary" routerLink="edit-department"> go to edit</button>
-<button class="btn-primary" > go to delete</button>
-<div class="mb-3">
-  <label for="formGroupExampleInput" class="form-label">Example label</label>
+<div>
+  <div class="row d-flex justify-content-between">
+    <div class="col-3">
+      <div class="list-header">รายชื่อแผนก</div>
+    </div>
+
+    <div class="col-6 d-flex align-items-center justify-content-between">
+      <div class="col-7 h-100">
+        <div class="row h-100 w-100 ms-5 search-bar">
+          <div class="col-2 py-1">
+            <img class="py-2 px-2" src="assets/img/search-bar.png" alt="" />
+          </div>
+          <div class="col-10 p-0">
+            <input
+              class="h-100 w-100"
+              id="search-bar"
+              (keypress)="numberOnly($event)"
+              [(ngModel)]="searchInput"
+              type="text"
+              pattern="[a-zA-Z]*"
+              placeholder="ค้นหา"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="col-4 h-100 d-flex justify-content-center" routerLink="add-department">
+        <button type="button" class="btn btn-primary w-75 btn-add-department">
+          เพิ่มแผนก
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
-<div class="mb-3">
-  <label for="formGroupExampleInput2" class="form-label">Another label</label>
-  <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input placeholder">
+
+<div class="table-responsive">
+  <table
+    class="table-responsive table table-striped text-center mt-3 list-table"
+  >
+    <thead>
+      <tr>
+        <th>ลำดับ</th>
+        <th>รายชื่อแผนก</th>
+        <th>จำนวนคน</th>
+        <th>การดำเนินการ</th>
+      </tr>
+    </thead>
+
+    <tbody class="list-content">
+      <tr
+        *ngFor="
+          let datas of deprtmentsData
+            | filter: searchInput
+            | paginate: { itemsPerPage: listPerPage, currentPage: onPage }
+        "
+      >
+        <td>{{ datas.dept_id }}</td>
+        <td id="nameDepartment">{{ datas.dept_name_en }}</td>
+        <td>{{ datas.number }}</td>
+        <td>
+          <div class="row d-flex justify-content-center">
+            <div class="col-1 px-0 mx-1">
+              <div class="activity-table">
+                <img
+                  class="mx-auto"
+                  src="assets/img/magnifying-plus.png"
+                  alt=""
+                />
+              </div>
+            </div>
+            <div class="col-1 px-0 mx-1">
+              <div class="activity-table">
+                <img
+                  class="mx-auto"
+                  src="assets/img/user-dept.png"
+                  alt=""
+                />
+              </div>
+            </div>
+            <div class="col-1 px-0 mx-1">
+              <div class="activity-table " routerLink="edit-department">
+                <img
+                  class="mx-auto"
+                  src="assets/img/pencil-solid.png"
+                  alt=""
+                />
+              </div>
+            </div>
+            <div class="col-1 px-0 mx-1">
+              <div class="activity-table">
+                <img
+                  class="mx-auto"
+                  src="assets/img/trash-solid.png"
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="mt-5">
+  <div class="row d-flex justify-content-between">
+    <div class="col-5">
+      <div class="row">
+        <div
+          class="col-3 px-0 text-end d-flex align-items-center justify-content-end"
+        >
+          <div class="list-perPage">รายการต่อหน้า</div>
+        </div>
+        <div class="col-2 ms-2 p-0 select-perPage">
+          <select
+            id="listPerPage"
+            class="select-perPage"
+            aria-label=".form-select-sm example"
+            (change)="listPerpage()"
+          >
+            <option value="3">3</option>
+            <option selected value="5">5</option>
+            <option value="10">10</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-4 d-flex align-items-center justify-content-end">
+      <button
+        id="nextPage"
+        type="button"
+        class="next-page"
+        (click)="DecreasePage()"
+      >
+        <
+      </button>
+      <div
+        class="on-page text-end d-flex align-items-center justify-content-center"
+      >
+        {{ onPage }}
+      </div>
+
+      <div
+        id="nextPage"
+        class="next-page text-end d-flex align-items-center justify-content-center"
+        (click)="increasePage()"
+      >
+        {{ onPageNext }}
+      </div>
+
+      <button
+        id="nextPage"
+        type="button"
+        class="next-page"
+        (click)="increasePage()"
+      >
+        >
+      </button>
+    </div>
+  </div>
 </div>
