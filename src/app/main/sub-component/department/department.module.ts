@@ -1,13 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddDepartmentComponent } from './add-department/add-department.component';
 import { ListDepartmentComponent } from './list-department/list-department.component';
 import { DepartmentRoutes } from './department.routing';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { MatSliderModule } from '@angular/material/slider';
 
 @NgModule({
   imports: [
     CommonModule,
-    DepartmentRoutes
+    DepartmentRoutes,
+    FormsModule,
+    Ng2SearchPipeModule,
+    ReactiveFormsModule,
+    NgxPaginationModule,
+    MatSliderModule
   ],
   declarations: [
     AddDepartmentComponent,
