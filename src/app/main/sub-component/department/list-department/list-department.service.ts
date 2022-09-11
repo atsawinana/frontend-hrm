@@ -10,4 +10,8 @@ export class ListDepartmentService {
     return this.httpClient.post('http://127.0.0.1:8000/api/department/getdepartment', {
     });
   }
+  deleteDepartment() {
+    return this.httpClient.post('http://127.0.0.1:8000/api//department/deleteDepartment', {
+    });
+  }
 }
