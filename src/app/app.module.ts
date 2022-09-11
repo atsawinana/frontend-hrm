@@ -6,12 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main-component/main.component';
+import { LoadingComponent } from './login/loading/loading.component';
 
 @NgModule({
   declarations: [			
     AppComponent,
       LoginComponent,
       MainComponent,
+      LoadingComponent
    ],
   imports: [
     BrowserModule,

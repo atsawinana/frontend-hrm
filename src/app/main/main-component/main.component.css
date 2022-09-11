@@ -60,6 +60,57 @@
   color: #E5F0FA;
 }
 
+.dropdown-menu {
+  transition: 0.3s;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+}
+
+.dropdown-list {
+  cursor: pointer;
+}
+
+.dropdown-list:hover {
+  background: #D1D1D6;
+  border-radius: 8px;
+  transition: 0.2s;
+}
+
+.font-dropdown-menu {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #636366;
+}
+
+.inactive-icon {
+  background: none;
+  border-radius: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.inactive-icon:hover {
+  border-radius: 0px 16px 16px 0px;
+  transition: 0.25s ease-in-out;
+  background-color: #FF5444;
+  -webkit-transition: background-color 300ms all;
+  -ms-transition: background-color 300ms all;
+  transition: background-color 300ms all;
+}
+
+.bg-active {
+  border-radius: 0px 16px 16px 0px;
+  transition: 0.15s ease-in-out;
+  background-color: #FF5444;
+  -webkit-transition: background-color 300ms all;
+  -ms-transition: background-color 300ms all;
+  transition: background-color 300ms all;
+}
+
 @media screen and (max-width: 992px) {
   .logo-element {
     display: none;

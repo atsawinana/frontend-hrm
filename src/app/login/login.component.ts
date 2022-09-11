@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms';
 import { Route, Router, RouterLink } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { LoginService } from './login.service';
+import { LoadingService } from './loading.service';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,7 @@ export class LoginComponent implements OnInit {
   expires?: string;
   isHR: boolean = true;
 
-  constructor(private loginService: LoginService, private router: Router, private coreToken: AuthService) {}
+  constructor(private loginService: LoginService, private router: Router, private coreToken: AuthService, private loading: LoadingService) {}
 
   ngOnInit(): void {}
 
@@ -68,7 +69,6 @@ export class LoginComponent implements OnInit {
           this.token = res.data.access_token;
           this.tokentype = res.data.token_type;
           this.expires = res.data.expires_in;
-
 
           // this.coreToken.token = localStorage.setItem('tokenLocal',this.token!)!
           

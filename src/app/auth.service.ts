@@ -50,9 +50,9 @@ export class AuthService {
 
     isLoggedin() {
     this.CheckTokenTimeOut()
-    console.log('user activate!')
+    // console.log('user activate!')
     const token = localStorage.getItem('tokenLocal');
-    console.log('isLoggedin', token != null);
+    // console.log('isLoggedin', token != null);
     return token != null;
   }
 

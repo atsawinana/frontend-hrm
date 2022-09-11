@@ -6,6 +6,8 @@ import { MainComponent } from './main/main-component/main.component';
 import { OtComponent } from './main/sub-component/ot/ot.component';
 import { ProfileComponent } from './main/sub-component/profile/profile.component';
 import { AuthGuardGuard } from './auth-guard.guard';
+import { TimeAttendanceComponent } from './main/sub-component/timeAttendance/timeAttendance.component';
+import { EmployeeComponent } from './main/sub-component/employee/employee.component';
 
 const routes: Routes = [
   {
@@ -20,13 +22,24 @@ const routes: Routes = [
       { path: 'leave', component: LeaveComponent },
       {
         path: 'department',
-        loadChildren: () => import('./main/sub-component/department/department.module').then((m) => m.DepartmentModule),
-        canActivate:[AuthGuardGuard]
+        loadChildren: () =>
+          import('./main/sub-component/department/department.module').then(
+            (m) => m.DepartmentModule
+          ),
+        canActivate: [AuthGuardGuard],
       },
       { path: 'ot', component: OtComponent },
-      { path: 'home-main', component: MainComponent },
       { path: 'profile', component: ProfileComponent },
-    ],canActivate:[AuthGuardGuard]
+      {
+        path: 'timeattendance',
+        component: TimeAttendanceComponent,
+      },
+      {
+        path: 'employee',
+        component: EmployeeComponent,
+      },
+    ],
+    canActivate: [AuthGuardGuard],
   },
 ];
 

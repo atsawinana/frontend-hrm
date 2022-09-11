@@ -1,9 +1,15 @@
 <div class="vh-100" style="background-color: #E8E8E8;">
-  <div class="container py-5 h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100 pb-4">
       <div class="col-10 col-xs-4 col-sm-10 col-md-8 col-lg-6 col-xl-6 col-xxl-5 ">
         <div class="card shadow-2-strong " style="border-radius: 1rem;">
+
           <div class="card-body p-5 text-center">
+
+            <!-- <app-loading></app-loading> -->
+
+            <!-- container -->
+
             <div class="container xs-size">
 
               <img src="assets/img/logo.png" style="width: 112px; height:auto;">
@@ -20,7 +26,7 @@
                   </div>
                   <div class="col-10 px-0">
                     <input type="email" placeholder="ชื่อผู้ใช้" class="form-control-lg h-100 p-0 w-100"
-                      [formControl]="username" id="usernametag" (keypress)="checkEnterLogin($event)"/>
+                      [formControl]="username" id="usernametag" (keypress)="checkEnterLogin($event)" />
                   </div>
                 </div>
                 <!-- username input login end-->
@@ -32,7 +38,8 @@
                   </div>
                   <div class="col-8 px-0">
                     <input type="password" placeholder="รหัสผ่าน" id="passwordtag"
-                      class="form-control-lg h-100 p-0 w-100" [formControl]="password" (keypress)="checkEnterLogin($event)" />
+                      class="form-control-lg h-100 p-0 w-100" [formControl]="password"
+                      (keypress)="checkEnterLogin($event)" />
                   </div>
                   <div class="col-2 px-0">
                     <img (click)="togglePassword()" class="toggleShowpassword py-3" id="togglt-password"
@@ -60,6 +67,9 @@
               <!-- button login end -->
 
             </div>
+
+            <!-- container -->
+
           </div>
         </div>
       </div>

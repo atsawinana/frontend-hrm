@@ -4,6 +4,8 @@ import { LeaveComponent } from './sub-component/leave/leave.component';
 import { MainComponent } from './main-component/main.component';
 import { OtComponent } from './sub-component/ot/ot.component';
 import { ProfileComponent } from './sub-component/profile/profile.component';
+import { TimeAttendanceComponent } from './sub-component/timeAttendance/timeAttendance.component';
+import { EmployeeComponent } from './sub-component/employee/employee.component';
 
 const routes: Routes = [
   {
@@ -23,13 +25,18 @@ const routes: Routes = [
     component: OtComponent,
   },
   {
-    path: 'home-main',
-    component: MainComponent,
-  },
-  {
     path: 'profile',
     component: ProfileComponent,
   },
+  {
+    path: 'timeattendance',
+    component: TimeAttendanceComponent,
+  },
+  {
+    path: 'employee',
+    component: EmployeeComponent,
+  }
+
 ];
 
 export const MainRoutes = RouterModule.forChild(routes);

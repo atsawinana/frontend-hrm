@@ -121,6 +121,10 @@ input {
   background: url(/assets/img/password-icon.png ) no-repeat 10px 12px;
 }
 
+.card-body {
+  min-height: 500px;
+}
+
 @media screen and (max-width: 576px) {
   .card-body {
     height: 760px;
