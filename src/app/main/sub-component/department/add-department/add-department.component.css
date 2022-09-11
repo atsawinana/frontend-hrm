@@ -1,0 +1,120 @@
+input::placeholder {
+    opacity: .5;
+    color: #AEAEB2;
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 20px;
+    /* position: absolute; */
+    /* left: 40px;
+    top: 9px; */
+    color: #AEAEB2;
+}
+
+.add-font {
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 20px;
+    text-align: center;
+}
+
+.font-content {
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.style-input {
+    padding: 12px 16px;
+    width: 554px;
+    height: 44px;
+    left: 619px;
+    top: 223px;
+    background: #FFFFFF;
+    border: 1px solid #C7C7CC;
+    border-radius: 8px;
+}
+
+.cancel-button {
+    padding: 12px 16px;
+    width: 203px;
+    height: 48px;
+    background: #FFFFFF;
+    border: 1px solid #005FBC;
+    border-radius: 8px;
+}
+
+.submit-button {
+    padding: 12px 16px;
+    width: 203px;
+    height: 48px;
+    background: linear-gradient(270.74deg, #2E3579 0.35%, #005FBC 99.1%, #005FBC 99.1%);
+    border-radius: 8px;
+    border: none;
+}
+
+.submit-font {
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.cancel-font {
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    align-items: center;
+    text-align: center;
+    color: #005FBC;
+}
+
+.padding {
+    padding: 100px;
+}
+
+.margin-text {
+    margin-right: 10px;
+}
+
+.margin-button {
+    margin-top: 10px;
+}
+
+.margin-content {
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.text-button {
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #005FBC;
+    cursor: pointer;
+    margin-left: 30px;
+}
+
+.font-modal {
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 24px;
+    text-align: center;
+}
