@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 import { AddDepartmentComponent } from './add-department/add-department.component';
 import { ListDepartmentComponent } from './list-department/list-department.component';
 import { DepartmentRoutes } from './department.routing';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
-    DepartmentRoutes
+    DepartmentRoutes,
+    ReactiveFormsModule
   ],
   declarations: [
     AddDepartmentComponent,
