@@ -88,13 +88,13 @@
     .delete-dept {
         font-size: 20px;
         color: red;
-        display: none;
+        display: block;
     }
 
     .delete-pos {
         font-size: 20px;
         color: red;
-        display: none;
+        display: block;
     }
 
     i {

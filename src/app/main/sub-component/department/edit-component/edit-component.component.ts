@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DepartmentModule } from '../department.module';
+import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-component',
@@ -8,40 +9,62 @@ import { DepartmentModule } from '../department.module';
 })
 export class EditComponentComponent implements OnInit {
 
-  constructor() { }
-
-  countDept:any = 0
-  countBoss:number = 0
-
   ngOnInit() {
   }
 
-  getOnlyElement(){
-    let elem = document.getElementsByClassName("iconDept")[this.countBoss]
-    elem.classList.add('showDisplay');
-    // elem.addEventListener('click',this.deleteDept()!)
-
+  public bossForm: FormGroup;
+  public posForm: FormGroup;
+  constructor(private _fb: FormBuilder) {
+    this.bossForm = this._fb.group({
+      boss: this._fb.array([this.addBossField()])
+    });
+    this.posForm = this._fb.group({
+      pos: this._fb.array([this.addPosField()])
+    });
   }
 
-  addDept() {
-     const add = document.getElementById("deptOrigin")!
-     const clone = add.cloneNode(true)
-     document.getElementById("dept")?.appendChild(clone) 
-     this.countBoss++
-     this.getOnlyElement()
+  //Append Boss Fields Set
+  private addBossField(): FormGroup {
+    return this._fb.group({
+      Name: []
+    });
+  }
+  //Add Boss Fields
+  addBoss(): void {
+    this.bossArray.push(this.addBossField());
   }
 
-   deleteDept(){
-    console.log('delete')
-    let elem1 = document.getElementsByClassName("OriginalDiv")[this.countBoss]
-    elem1.remove()
-    this.countBoss--
+  //Remove Boss Fields
+  removeBoss(index: number): void {
+    this.bossArray.removeAt(index);
+  }
+  //Fields Boss Array
+  get bossArray(): FormArray {
+    return <FormArray>this.bossForm.get('boss');
   }
 
-  addPos() {
-    const add = document.getElementById("add-pos")!
-    const clone = add.cloneNode(true)
-    document.getElementById("pos")?.appendChild(clone) 
-    this.countDept++
- }
+
+
+
+
+
+  //Append Position Fields Set
+  private addPosField(): FormGroup {
+    return this._fb.group({
+      Position: []
+    });
+  }
+  //Add Position Fields
+  addPos(): void {
+    this.posArray.push(this.addPosField());
+  }
+
+  //Remove Position Fields
+  removePos(index: number): void {
+    this.posArray.removeAt(index);
+  }
+  //Fields Position Array
+  get posArray(): FormArray {
+    return <FormArray>this.posForm.get('pos');
+  }
 }

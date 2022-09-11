@@ -7,7 +7,11 @@
       ชื่อแผนก (EN)*
     </div>
     <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
-      <input type="text" placeholder="กรอกแผนก" class="form-control w-75 maxWidth">
+      <div class="row OriginalDiv" id="deptOrigin">
+        <div class="col-10">
+          <input type="text" placeholder="กรอกแผนก" class="form-control w-75 maxWidth">
+        </div>
+      </div>
     </div>
   </div>
 
@@ -16,7 +20,11 @@
       ชื่อแผนก (TH)
     </div>
     <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
-      <input type="text" placeholder="กรอกแผนก" class="form-control w-75 maxWidth">
+      <div class="row OriginalDiv" id="deptOrigin">
+        <div class="col-10">
+          <input type="text" placeholder="กรอกแผนก" class="form-control w-75 maxWidth">
+        </div>
+      </div>
     </div>
   </div>
 
@@ -24,19 +32,20 @@
     <div class="sub-text col-12 col-sm-4 col-md-4 col-lg-4 text-center text-xs">
       ชื่อหัวหน้าแผนก*
     </div>
-    <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
-
-      <div class="row OriginalDiv" id="deptOrigin">
-        <div class="col-10"><input type="text" placeholder="กรอกหัวหน้าแผนก" class="form-control maxWidth mb-4 "
-            id="add-boss"></div>
-        <div class="col-2 py-2"><i class="fa-solid fa-circle-xmark delete-dept iconDept" (click)="deleteDept()"></i>
+    <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs" [formGroup]="bossForm">
+      <div class="row OriginalDiv" id="deptOrigin" *ngFor="let group of bossArray.controls; let i = index;"
+        formArrayName="boss">
+        <div class="col-10" [formGroupName]='i'>
+          <input type="text" placeholder="กรอกหัวหน้าแผนก" class="form-control w-75 maxWidth mb-4 " id="add-boss">
+        </div>
+        <div class="col-2 py-2">
+          <i *ngIf="i>0" class="fa-solid fa-circle-xmark delete-dept iconDept" (click)="removeBoss(i)"></i>
         </div>
       </div>
-
       <div class="row" id="dept">
       </div>
-
     </div>
+
   </div>
 
   <div class="row mb-4">
@@ -44,7 +53,7 @@
     </div>
     <div class="col-8 d-flex justify-content-left">
       <a>
-        <div class="text-button" (click)="addDept()">
+        <div class="text-button" (click)="addBoss()">
           <i class="fa-solid fa-circle-plus"></i>เพิ่มหัวหน้า
         </div>
       </a>
@@ -52,11 +61,23 @@
   </div>
 
   <div class="row">
+
     <div class="sub-text col-12 col-sm-4 col-md-4 col-lg-4 text-center text-xs">
       ตำแหน่ง*
     </div>
-    <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs" id="pos">
-      <input type="text" placeholder="กรอกตำแหน่ง" class="form-control w-75 maxWidth mb-4" id="add-pos">
+    <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs" [formGroup]="posForm">
+
+      <div class="row OriginalDiv" id="deptOrigin" *ngFor="let group of posArray.controls; let j = index;"
+        formArrayName="pos">
+        <div class="col-10" [formGroupName]='j'>
+          <input type="text" placeholder="กรอกตำแหน่ง" class="form-control w-75 maxWidth mb-4 " id="add-pos">
+        </div>
+        <div class="col-2 py-2">
+          <i *ngIf="j>0" class="fa-solid fa-circle-xmark delete-dept iconDept" (click)="removePos(j)"></i>
+        </div>
+      </div>
+      <div class="row" id="pos">
+      </div>
     </div>
   </div>
 
@@ -84,4 +105,3 @@
   </div>
 
 </div>
-
