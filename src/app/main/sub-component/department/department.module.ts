@@ -3,20 +3,17 @@ import { CommonModule } from '@angular/common';
 import { AddDepartmentComponent } from './add-department/add-department.component';
 import { ListDepartmentComponent } from './list-department/list-department.component';
 import { DepartmentRoutes } from './department.routing';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { EditComponentComponent } from './edit-component/edit-component.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    DepartmentRoutes
+    DepartmentRoutes,
+    ReactiveFormsModule
   ],
   declarations: [
     AddDepartmentComponent,
-    ListDepartmentComponent,
-    EditComponentComponent
+    ListDepartmentComponent
   ]
 })
 export class DepartmentModule { }
