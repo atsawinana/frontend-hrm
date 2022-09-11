@@ -7,6 +7,7 @@ import { DepartmentRoutes } from './department.routing';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { MatSliderModule } from '@angular/material/slider';
+import { EditComponentComponent } from './edit-component/edit-component.component';
 
 @NgModule({
   imports: [
@@ -16,11 +17,14 @@ import { MatSliderModule } from '@angular/material/slider';
     Ng2SearchPipeModule,
     ReactiveFormsModule,
     NgxPaginationModule,
-    MatSliderModule
+    MatSliderModule,
+    ReactiveFormsModule,
+    DepartmentRoutes
   ],
   declarations: [
     AddDepartmentComponent,
-    ListDepartmentComponent
+    ListDepartmentComponent,
+    EditComponentComponent
   ]
 })
 export class DepartmentModule { }
