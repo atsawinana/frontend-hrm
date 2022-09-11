@@ -1,3 +1,107 @@
-<h1>
-  edit-component works!
-</h1>
+<div class="container p-0 mainContainer">
+  <div class="font-header mb-5" id="re">
+    แก้ไขแผนก
+  </div>
+  <div class="row mb-4">
+    <div class="sub-text col-12 col-sm-4 col-md-4 col-lg-4 text-center text-xs">
+      ชื่อแผนก (EN)*
+    </div>
+    <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
+      <div class="row OriginalDiv" id="deptOrigin">
+        <div class="col-10">
+          <input type="text" placeholder="กรอกแผนก" class="form-control maxWidth">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4">
+    <div class="sub-text col-12 col-sm-4 col-md-4 col-lg-4 text-center text-xs">
+      ชื่อแผนก (TH)
+    </div>
+    <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
+      <div class="row OriginalDiv" id="deptOrigin">
+        <div class="col-10">
+          <input type="text" placeholder="กรอกแผนก" class="form-control maxWidth">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="sub-text col-12 col-sm-4 col-md-4 col-lg-4 text-center text-xs">
+      ชื่อหัวหน้าแผนก*
+    </div>
+    <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs" [formGroup]="bossForm">
+      <div class="row OriginalDiv" id="deptOrigin" *ngFor="let group of bossArray.controls; let i = index;"
+        formArrayName="boss">
+        <div class="col-10" [formGroupName]='i'>
+          <input type="text" placeholder="กรอกหัวหน้าแผนก" class="form-control maxWidth mb-4 " id="add-boss">
+        </div>
+        <div class="col-2 py-2">
+          <i *ngIf="i>0" class="fa-solid fa-circle-xmark delete-dept iconDept" (click)="removeBoss(i)"></i>
+        </div>
+      </div>
+      <div class="row" id="dept">
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row mb-4">
+    <div class="sub-text col-4 d-flex justify-content-left" id="add">
+    </div>
+    <div class="col-8 d-flex justify-content-left">
+      <a>
+        <div class="text-button" (click)="addBoss()">
+          <i class="fa-solid fa-circle-plus"></i>เพิ่มหัวหน้า
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="sub-text col-12 col-sm-4 col-md-4 col-lg-4 text-center text-xs">
+      ตำแหน่ง*
+    </div>
+    <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs" [formGroup]="posForm">
+
+      <div class="row OriginalDiv" id="deptOrigin" *ngFor="let group of posArray.controls; let j = index;"
+        formArrayName="pos">
+        <div class="col-10" [formGroupName]='j'>
+          <input type="text" placeholder="กรอกตำแหน่ง" class="form-control maxWidth mb-4 " id="add-pos">
+        </div>
+        <div class="col-2 py-2">
+          <i *ngIf="j>0" class="fa-solid fa-circle-xmark delete-dept iconDept" (click)="removePos(j)"></i>
+        </div>
+      </div>
+      <div class="row" id="pos">
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4">
+    <div class="sub-text col-4 d-flex justify-content-left" id="add">
+    </div>
+    <div class="col-8 d-flex justify-content-left">
+      <a>
+        <div class="text-button mb-4" (click)="addPos()">
+          <i class="fa-solid fa-circle-plus"></i>เพิ่มตำแหน่ง
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="row mb-4 mt-5 d-flex justify-content-center">
+    <div class="col-6 col-sm-3 col-md-3 col-lg-3"><button class="cancel-button d-flex justify-content-center w-100">
+        <div class="cancel-text">ยกเลิก</div>
+      </button>
+    </div>
+    <div class="col-6 col-sm-3 col-md-3 col-lg-3"><button class="submit-button d-flex justify-content-center w-100">
+        <div class="submit-text">ตกลง</div>
+      </button>
+    </div>
+  </div>
+
+</div>
