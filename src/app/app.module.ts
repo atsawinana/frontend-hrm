@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main-component/main.component';
-import { LoadingComponent } from './login/loading/loading.component';
+import { IntercrptorService } from './login/loading/intercrptor.service';
+import { LoadingComponent } from './login/loading/loading-template/loading.component';
 
 @NgModule({
   declarations: [			
@@ -22,7 +23,9 @@ import { LoadingComponent } from './login/loading/loading.component';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: IntercrptorService,multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
