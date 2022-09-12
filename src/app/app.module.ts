@@ -8,9 +8,11 @@ import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main-component/main.component';
 import { IntercrptorService } from './login/loading/intercrptor.service';
 import { LoadingComponent } from './login/loading/loading-template/loading.component';
+import { SideBarComponent } from './main/main-component/side-bar/side-bar/side-bar.component';
+
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, MainComponent, LoadingComponent],
+  declarations: [AppComponent, LoginComponent, MainComponent, LoadingComponent,SideBarComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

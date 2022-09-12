@@ -9,74 +9,13 @@
 
 
       <div class="offcanvas offcanvas-start side-bar-canvas text-center pt-5" tabindex="-1" id="offcanvasExample"
-        aria-labelledby="offcanvasExampleLabel" style="width: 100px;">
-        <div class="side-bar text-center pt-4 pb-2" style="max-width: 110px;">
+        aria-labelledby="offcanvasExampleLabel" style="max-width: 90px;">
 
-          <a>
-            <div class="text-center d-flex justify-content-center align-items-center icon-sidebar ps-2"
-              style="flex-direction: column;">
-              <img class="px-4" src="assets/img/icon-main.png" data-bs-dismiss="offcanvas" alt="">
-              <div class="icon-font">หน้าแรก</div>
-            </div>
-          </a>
-
-          <a>
-            <div class="text-center d-flex justify-content-center align-items-center icon-sidebar ps-2"
-              style="flex-direction: column;">
-              <img class="px-4" src="assets/img/icon-work.png" data-bs-dismiss="offcanvas" alt="">
-              <div class="icon-font">เข้างาน</div>
-            </div>
-          </a>
-
-          <a>
-            <div class="text-center d-flex justify-content-center align-items-center icon-sidebar ps-2"
-              style="flex-direction: column;">
-              <img class="px-4" src="assets/img/icon-list.png" data-bs-dismiss="offcanvas" alt="">
-              <div class="icon-font">รายชื่อ</div>
-            </div>
-          </a>
-
-          <a>
-            <div class="text-center d-flex justify-content-center align-items-center icon-sidebar ps-2"
-              style="flex-direction: column;">
-              <img class="px-4" src="assets/img/department-icon.png" data-bs-dismiss="offcanvas" alt="">
-              <div class="icon-font">แผนก</div>
-            </div>
-          </a>
-
-          <a>
-            <div class="text-center d-flex justify-content-center align-items-center icon-sidebar ps-2"
-              style="flex-direction: column;">
-              <img class="px-4" src="assets/img/icon-leave.png" data-bs-dismiss="offcanvas" alt="">
-              <div class="icon-font">การลา</div>
-            </div>
-          </a>
-
-          <a>
-            <div class="text-center d-flex justify-content-center align-items-center icon-sidebar ps-2"
-              style="flex-direction: column;">
-              <img class="px-4" src="assets/img/ot-time.png" data-bs-dismiss="offcanvas" alt="">
-              <div class="icon-font mt-1">โอที</div>
-            </div>
-          </a>
-
-          <a>
-            <div class="text-center d-flex justify-content-center align-items-center icon-sidebar ps-2"
-              style="flex-direction: column;">
-              <img class="px-4" src="assets/img/icon-car.png" data-bs-dismiss="offcanvas" alt="">
-              <div class="icon-font">ค่าพาหนะ</div>
-            </div>
-          </a>
-
-          <a>
-            <div class="text-center d-flex justify-content-center align-items-center icon-sidebar ps-2"
-              style="flex-direction: column;">
-              <img class="px-4" src="assets/img/icon-activity.png" data-bs-dismiss="offcanvas" alt="">
-              <div class="icon-font mt-1">กิจกรรม</div>
-            </div>
-          </a>
-
+        <div class="" style="width: 90%;">
+          <app-side-bar data-bs-dismiss="offcanvas"></app-side-bar>
         </div>
+
+
       </div>
       <img class="m-3 logo-element" src="assets/img/logo.png" style="width: 65px; height: auto;" />
     </div>
@@ -132,55 +71,7 @@
       <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 p-0 sidebar-element" style="max-width: 110px;">
         <div class="side-bar text-center pt-4 pb-2 pe-2" style="max-width: 110px;">
 
-          <div
-            class="profile text-center d-flex justify-content-center align-items-center icon-sidebar ps-2 inactive-icon"
-            style="flex-direction: column; " (click)="URLcheck($event)" routerLink="profile" id="profile">
-            <img class="d-flex justify-content-center" src="assets/img/sidebar/icon-main.png" alt="">
-            <div class="icon-font d-flex justify-content-center">หน้าแรก</div>
-          </div>
-
-          <div class="text-center d-flex justify-content-center align-items-center icon-sidebar ps-2 inactive-icon"
-            style="flex-direction: column;" (click)="URLcheck($event)" routerLink="timeattendance" id="timeattendance">
-            <img class="d-flex justify-content-center" src="assets/img/sidebar/icon-work.png" alt="">
-            <div class="icon-font">เข้างาน</div>
-          </div>
-
-          <div class="text-center d-flex justify-content-center align-items-center icon-sidebar ps-2 inactive-icon"
-            style="flex-direction: column;" (click)="URLcheck($event)" routerLink="employee" id="employee">
-            <img class="d-flex justify-content-center" src="assets/img/sidebar/icon-list.png" alt="">
-            <div class="icon-font">รายชื่อ</div>
-          </div>
-
-          <div class="text-center d-flex justify-content-center align-items-center icon-sidebar ps-2 inactive-icon"
-            style="flex-direction: column;" routerLink="department" id="department" (click)="URLcheck($event)">
-            <img class="d-flex justify-content-center" src="assets/img/sidebar/department-icon.png" alt="">
-            <div class="icon-font">แผนก</div>
-          </div>
-
-          <div class="text-center d-flex justify-content-center align-items-center icon-sidebar ps-2 inactive-icon"
-            style="flex-direction: column;" routerLink="leave" (click)="URLcheck($event)" id="leave">
-            <img class="d-flex justify-content-center" src="assets/img/sidebar/icon-leave.png" alt="">
-            <div class="icon-font">การลา</div>
-          </div>
-
-          <div class="text-center d-flex justify-content-center align-items-center icon-sidebar ps-2 inactive-icon"
-            style="flex-direction: column;" routerLink="ot" (click)="URLcheck($event)" id="ot">
-            <img class="d-flex justify-content-center" src="assets/img/sidebar/ot-time.png" alt="">
-            <div class="icon-font mt-1">โอที</div>
-          </div>
-
-          <div class="text-center d-flex justify-content-center align-items-center icon-sidebar ps-2 inactive-icon"
-            style="flex-direction: column;" routerLink="car" (click)="URLcheck($event)" id="car">
-            <img class="d-flex justify-content-center" src="assets/img/sidebar/icon-car.png" alt="">
-            <div class="icon-font">ค่าพาหนะ</div>
-          </div>
-
-          <div class="text-center d-flex justify-content-center align-items-center icon-sidebar ps-2 inactive-icon"
-            style="flex-direction: column;" routerLink="activity" (click)="URLcheck($event)" id="activity">
-            <img class="d-flex justify-content-center" src="assets/img/sidebar/icon-activity.png" alt="">
-            <div class="icon-font mt-1">กิจกรรม</div>
-          </div>
-
+          <app-side-bar></app-side-bar>
 
         </div>
       </div>
