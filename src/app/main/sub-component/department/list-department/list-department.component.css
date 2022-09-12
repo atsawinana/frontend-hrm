@@ -6,6 +6,12 @@
     color: #D0E8FF;
 }
 
+.icon-fix
+{
+  min-width: 32px;
+  max-width: 32px;
+}
+
 .modal-title{
     
     margin-top: 50px;
