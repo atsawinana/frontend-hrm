@@ -5,9 +5,11 @@ import { LeaveComponent } from './main/sub-component/leave/leave.component';
 import { MainComponent } from './main/main-component/main.component';
 import { OtComponent } from './main/sub-component/ot/ot.component';
 import { ProfileComponent } from './main/sub-component/profile/profile.component';
-import { AuthGuardGuard } from './auth-guard.guard';
 import { TimeAttendanceComponent } from './main/sub-component/timeAttendance/timeAttendance.component';
 import { EmployeeComponent } from './main/sub-component/employee/employee.component';
+import { AuthGuardGuard } from './auth/auth-guard.guard';
+import { TravelExpensesComponent } from './main/sub-component/travelExpenses/travelExpenses.component';
+import { ActivityComponent } from './main/sub-component/activity/activity.component';
 
 const routes: Routes = [
   {
@@ -37,6 +39,14 @@ const routes: Routes = [
       {
         path: 'employee',
         component: EmployeeComponent,
+      },
+      {
+        path: 'car',
+        component: TravelExpensesComponent,
+      },
+      {
+        path: 'activity',
+        component: ActivityComponent,
       },
     ],
     canActivate: [AuthGuardGuard],

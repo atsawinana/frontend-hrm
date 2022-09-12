@@ -1,5 +1,5 @@
 import { Routes, RouterModule } from '@angular/router';
-import { AuthGuardGuard } from 'src/app/auth-guard.guard';
+import { AuthGuardGuard } from 'src/app/auth/auth-guard.guard';
 import { AddDepartmentComponent } from './add-department/add-department.component';
 import { EditComponentComponent } from './edit-component/edit-component.component';
 import { ListDepartmentComponent } from './list-department/list-department.component';

@@ -6,6 +6,8 @@ import { OtComponent } from './sub-component/ot/ot.component';
 import { ProfileComponent } from './sub-component/profile/profile.component';
 import { TimeAttendanceComponent } from './sub-component/timeAttendance/timeAttendance.component';
 import { EmployeeComponent } from './sub-component/employee/employee.component';
+import { TravelExpensesComponent } from './sub-component/travelExpenses/travelExpenses.component';
+import { ActivityComponent } from './sub-component/activity/activity.component';
 
 const routes: Routes = [
   {
@@ -35,7 +37,15 @@ const routes: Routes = [
   {
     path: 'employee',
     component: EmployeeComponent,
-  }
+  },
+  {
+    path: 'car',
+    component: TravelExpensesComponent,
+  },
+  {
+    path: 'activity',
+    component: ActivityComponent,
+  },
 
 ];
 

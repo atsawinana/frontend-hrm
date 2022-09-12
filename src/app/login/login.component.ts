@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Route, Router, RouterLink } from '@angular/router';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../auth/auth.service';
 import { LoadingService } from './loading/loading.service';
 import { LoginService } from './login.service';
 
@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
     passwordElem!.setAttribute("type", typeAttribute);
 
     let toggle = document.getElementById('togglt-password')
-    let srcAttribute = toggle!.getAttribute("src") === "assets/img/eye-solid.png" ? "assets/img/eye-slash-solid.png" : "assets/img/eye-solid.png";
+    let srcAttribute = toggle!.getAttribute("src") === "assets/img/login/eye-solid.png" ? "assets/img/login/eye-slash-solid.png" : "assets/img/login/eye-solid.png";
     toggle!.setAttribute("src", srcAttribute);
   }
 

@@ -10,12 +10,7 @@ import { IntercrptorService } from './login/loading/intercrptor.service';
 import { LoadingComponent } from './login/loading/loading-template/loading.component';
 
 @NgModule({
-  declarations: [			
-    AppComponent,
-      LoginComponent,
-      MainComponent,
-      LoadingComponent
-   ],
+  declarations: [AppComponent, LoginComponent, MainComponent, LoadingComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -24,8 +19,8 @@ import { LoadingComponent } from './login/loading/loading-template/loading.compo
     HttpClientModule,
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: IntercrptorService,multi: true}
+    { provide: HTTP_INTERCEPTORS, useClass: IntercrptorService, multi: true },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

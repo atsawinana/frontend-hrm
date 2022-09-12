@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd } from '@angular/router';
 import { MainService } from '../main.service';
-import { AuthService } from 'src/app/auth.service';
 import { core, Token } from '@angular/compiler';
 import { Route, Router, RouterLink } from '@angular/router';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-main',
@@ -89,6 +89,12 @@ export class MainComponent implements OnInit {
       addClass?.classList.add('bg-active');
     } else if (this.router.url.includes('ot')) {
       const addClass = document.getElementById('ot');
+      addClass?.classList.add('bg-active');
+    }if (this.router.url.includes('car')) {
+      const addClass = document.getElementById('car');
+      addClass?.classList.add('bg-active');
+    }if (this.router.url.includes('activity')) {
+      const addClass = document.getElementById('activity');
       addClass?.classList.add('bg-active');
     }
   }
