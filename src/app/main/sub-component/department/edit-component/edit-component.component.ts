@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DepartmentModule } from '../department.module';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+import { EditComponentService } from './edit-component.service';
 
 @Component({
   selector: 'app-edit-component',
@@ -9,18 +10,21 @@ import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 })
 export class EditComponentComponent implements OnInit {
 
-  ngOnInit() {
-  }
+ 
 
   public bossForm: FormGroup;
   public posForm: FormGroup;
-  constructor(private _fb: FormBuilder) {
+  constructor(private _fb: FormBuilder,private editService : EditComponentService) {
     this.bossForm = this._fb.group({
       boss: this._fb.array([this.addBossField()])
     });
     this.posForm = this._fb.group({
       pos: this._fb.array([this.addPosField()])
     });
+  }
+
+  ngOnInit() {
+    this.editService.editGetData("");
   }
 
   //Append Boss Fields Set
