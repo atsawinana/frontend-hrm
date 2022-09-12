@@ -38,19 +38,5 @@ export class ListDepartmentComponent implements OnInit {
 
     return list
   }
-<<<<<<< Updated upstream
 
 }
-=======
-  DeletePage() {
-    this.DepService.deleteDepartment().subscribe({
-      next: (res: any) => {
-        console.log("1")
-      },
-      error: (err: any) => {
-        
-      },
-    });
-  }
-  }
->>>>>>> Stashed changes
