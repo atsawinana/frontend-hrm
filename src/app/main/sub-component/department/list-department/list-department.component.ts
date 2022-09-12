@@ -54,4 +54,12 @@ export class ListDepartmentComponent implements OnInit {
       this.onPageNext--;
     }
   }
+  Delete_Department(deptID:string) {
+    this.DepService.DeleletDepartment(deptID).subscribe({
+      next: (res: any) => {
+        
+      },
+      error: (err: any) => {},
+    });
+  }
 }
