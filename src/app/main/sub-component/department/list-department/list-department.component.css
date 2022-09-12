@@ -67,19 +67,6 @@
   border: none;
 }
 
-.activity-table {
-  background: #FFFFFF;
-  border: 1px solid #D1D1D6;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.activity-table:hover{
-  transform: scale(1.1);
-  transition: 0.4s;
-}
-
-
 #icon-property {
   margin-top: 50px;
   margin-bottom: 50px;
@@ -298,6 +285,6 @@ table {
 }
 
 .activity-table:hover{
-  transform: scale(1.1);
-  transition: 0.4s;
+  background-color: #D1D1D6;
+  transition: 0.25s;
 }
