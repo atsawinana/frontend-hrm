@@ -7,7 +7,7 @@
       ชื่อแผนก (EN)*
     </div>
     <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
-      <div class="row OriginalDiv" id="deptOrigin">
+      <div class="row OriginalDiv">
         <div class="col-10">
           <input type="text" placeholder="กรอกแผนก" class="form-control maxWidth" id="deptNameEn">
         </div>
@@ -20,7 +20,7 @@
       ชื่อแผนก (TH)
     </div>
     <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
-      <div class="row OriginalDiv" id="deptOrigin">
+      <div class="row OriginalDiv">
         <div class="col-10">
           <input type="text" placeholder="กรอกแผนก" class="form-control maxWidth" id="deptNameTh">
         </div>
@@ -33,7 +33,7 @@
       ชื่อหัวหน้าแผนก*
     </div>
     <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs" [formGroup]="bossForm">
-      <div class="row OriginalDiv" id="deptOrigin" *ngFor="let group of bossArray.controls; let i = index;"
+      <div class="row OriginalDiv" *ngFor="let group of bossArray.controls; let i = index;"
         formArrayName="boss">
         <div class="col-10" [formGroupName]='i'>
           <input type="text" placeholder="กรอกหัวหน้าแผนก" class="form-control maxWidth mb-4 " id="add-boss">
@@ -67,7 +67,7 @@
     </div>
     <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs" [formGroup]="posForm">
 
-      <div class="row OriginalDiv" id="deptOrigin" *ngFor="let group of posArray.controls; let j = index;"
+      <div class="row OriginalDiv" *ngFor="let group of posArray.controls; let j = index;"
         formArrayName="pos">
         <div class="col-10" [formGroupName]='j'>
           <input type="text" placeholder="กรอกตำแหน่ง" class="form-control maxWidth mb-4 add-pos" id="add-pos{{j}}">
