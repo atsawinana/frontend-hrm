@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd } from '@angular/router';
 import { MainService } from '../main.service';
 import { core, Token } from '@angular/compiler';
 import { Route, Router, RouterLink } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
+import { Subject } from 'rxjs/internal/Subject';
 
 @Component({
   selector: 'app-main',
@@ -15,7 +16,13 @@ export class MainComponent implements OnInit {
     private MainService: MainService,
     private router: Router,
     private coreToken: AuthService
-  ) {}
+  ) {
+    this.setTimeout();
+    this.userInactive.subscribe(() => {
+      console.log('user has been inactive (35 sec)');
+      this.coreToken.userInactivate = true;
+    });
+  }
   token?: any;
   ud_fullname_th?: string;
   ud_prefix?: string;
@@ -25,11 +32,6 @@ export class MainComponent implements OnInit {
   tokenCheck?: boolean;
 
   async ngOnInit() {
-    if (this.router.url == '/main') {
-      const addClass = document.getElementById('profile');
-      addClass?.classList.add('bg-active');
-    }
-
     this.refresh();
     if (await this.coreToken.CheckTokenTimeOut()) {
       this.router.navigate(['']);
@@ -53,7 +55,34 @@ export class MainComponent implements OnInit {
     this.coreToken.Logout();
   }
 
+  title = 'frontend-code';
+  userActivity: any;
+  userInactive: Subject<any> = new Subject();
+  timeMin: number = 30; //Change Minute Here
 
+  setTimeout() {
+    if (localStorage.getItem('tokenLocal') != null) {
+      this.userActivity = setTimeout(
+        () => this.userInactive.next(undefined),
+        35000 // 1000 = 1sec
+      );
+    }
+  }
 
- 
+  @HostListener('window:mousemove') refreshUserState() {
+    this.coreToken.CheckTokenTimeOut().then(() => {
+      if (localStorage.getItem('tokenLocal')) {
+        this.coreToken.userInactivate = false;
+      }
+      clearTimeout(this.userActivity);
+      this.setTimeout();
+    });
+  }
+
+  @HostListener('click') userclick() {
+    this.coreToken.CheckTokenTimeOut();
+    if (!localStorage.getItem('tokenLocal')) {
+      this.coreToken.Logout();
+    }
+  }
 }

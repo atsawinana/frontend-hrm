@@ -37,6 +37,7 @@ export class AuthService {
           {
             console.log('token refresh success')
             localStorage.setItem('tokenLocal',res.data.original.access_token)
+            location.reload()
           },
           error(err) {
           },
