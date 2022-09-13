@@ -15,4 +15,10 @@ export class ListDepartmentService {
       dept_id : deptID
     });
   }
+  DetailDepartment(deptID :string) {
+    return this.httpClient.post('http://127.0.0.1:8000/api/department/showDeteilDepartment', {
+      dept_id : deptID
+    });
+  }
+
 }
