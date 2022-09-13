@@ -14,6 +14,7 @@ export class AddDepartmentComponent implements OnInit {
   namedepartment_th = new FormControl('');
   nameleader = new FormControl('');
   naemposition = new FormControl('');
+  isSuccess?: boolean;
 
   constructor(private _fb: FormBuilder,private Add_dp: AdddepartmentService) {
     this.bossForm = this._fb.group({
@@ -29,12 +30,23 @@ export class AddDepartmentComponent implements OnInit {
 
   onSubmit()
   {
+    this.ClearAlertText();
     this.Add_dp.adddepartment(this.namedepartment_en.value!,this.namedepartment_th.value!,this.naemposition.value!,this.nameleader.value!).subscribe({
       next: (res: any) => {
         console.log('Success, input are correct');
+        this.isSuccess = true;
+        
       },
       error: (err) => {
         console.log('Failed, input are incorrect');
+        this.isSuccess = false;
+          if (this.isSuccess == false) {
+            if (this.namedepartment_en.value == '' || this.naemposition.value == '' ,this.namedepartment_en.value || this.nameleader.value == '',this.naemposition.value|| this.nameleader.value) {
+              this.alertTextRedNull();
+            } else {
+              this.alertTextRed();
+            }
+          }
       }
   })
   }
