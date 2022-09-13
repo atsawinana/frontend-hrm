@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { AdddepartmentService } from './adddepartment.service';
 
 @Component({
   selector: 'app-add-department',
@@ -13,44 +14,78 @@ export class AddDepartmentComponent implements OnInit {
   namedepartment_th = new FormControl('');
   nameleader = new FormControl('');
   naemposition = new FormControl('');
-  
-  constructor() { }
+
+  constructor(private _fb: FormBuilder,private Add_dp: AdddepartmentService) {
+    this.bossForm = this._fb.group({
+      boss: this._fb.array([this.addBossField()])
+    });
+    this.posForm = this._fb.group({
+      pos: this._fb.array([this.addPosField()])
+    });
+  }
 
   ngOnInit() {
   }
 
   onSubmit()
   {
-    console.log(this.namedepartment_en.value);
-    console.log(this.namedepartment_th.value);
-    console.log(this.nameleader.value);
-    console.log(this.naemposition.value);
-      if(this.namedepartment_en.value == ''){
-        console.log('1');
+    this.Add_dp.adddepartment(this.namedepartment_en.value!,this.namedepartment_th.value!,this.naemposition.value!,this.nameleader.value!).subscribe({
+      next: (res: any) => {
+        console.log('Success, input are correct');
+      },
+      error: (err) => {
+        console.log('Failed, input are incorrect');
       }
+  })
   }
 
-  addvalue_lead(){
-    var x = document.createElement("INPUT");
-    x.setAttribute("_ngcontent-opi-c54","");
-    x.setAttribute("type", "text");
-    x.setAttribute("class", "form-control-xs h-100 p-12 w-100 style-input");
-    var y = document.createElement("DIV");
 
-    document.getElementById("add_lead")!.appendChild(y);
-    y.appendChild(x);
+  public bossForm: FormGroup;
+  public posForm: FormGroup;
+  
+  
+
+  //Append Boss Fields Set
+  private addBossField(): FormGroup {
+    return this._fb.group({
+      Name: []
+    });
+  }
+  //Add Boss Fields
+  addBoss(): void {
+    this.bossArray.push(this.addBossField());
   }
 
-  addvalue_position(){
-    var element = document.createElement("INPUT");
-    element.setAttribute("type", "text");
-    element.setAttribute("class", "form-control-xs h-100 p-12 w-100 style-input");
-
-    var y = document.createElement("DIV");
-
-    document.getElementById("add_position")!.appendChild(y);
-    y.appendChild(element);
+  //Remove Boss Fields
+  removeBoss(index: number): void {
+    this.bossArray.removeAt(index);
   }
+  //Fields Boss Array
+  get bossArray(): FormArray {
+    return <FormArray>this.bossForm.get('boss');
+  }
+
+
+  //Append Position Fields Set
+  private addPosField(): FormGroup {
+    return this._fb.group({
+      Position: []
+    });
+  }
+  //Add Position Fields
+  addPos(): void {
+    this.posArray.push(this.addPosField());
+  }
+
+  //Remove Position Fields
+  removePos(index: number): void {
+    this.posArray.removeAt(index);
+  }
+  //Fields Position Array
+  get posArray(): FormArray {
+    return <FormArray>this.posForm.get('pos');
+  }
+
 
   alertTextRed() {
     let alert = document.getElementById('alert');
@@ -71,3 +106,5 @@ export class AddDepartmentComponent implements OnInit {
   }
   
 }
+
+
