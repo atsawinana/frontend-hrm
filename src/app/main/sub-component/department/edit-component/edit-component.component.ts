@@ -13,6 +13,7 @@ export class EditComponentComponent implements OnInit {
   public bossForm: FormGroup;
   public posForm: FormGroup;
   dept_id!: string;
+
   constructor(
     private _fb: FormBuilder,
     private router: ActivatedRoute,
@@ -26,31 +27,42 @@ export class EditComponentComponent implements OnInit {
     });
   }
 
-  dept_name_eng!: string;
+  deptInfo!: any;
+  deptMM!: any;
+  deptPosition!: any;
 
-  ngOnInit() {
+
+  ngOnInit(): void {
     this.dept_id = this.router.snapshot.params['dept_id'];
     this.editService.editGetData(this.dept_id).subscribe({
       next: (res: any) => {
-      //   this.dept_name_eng = res.data.departments.dept_id;
 
-      //   if (res.data.department_map_managers.length != 0) {
-      //     console.log(res.data.department_map_managers[0].dmm_id);
-      //     console.log(res.data.department_map_managers[0].dmm_username);
-      //     console.log(res.data.department_map_managers[0].ud_fullname_th);
-      //     console.log(res.data.department_map_managers[0].ud_prefix);
-      //   }
+        this.deptInfo = res.data.departments
+        this.deptMM = res.data.department_map_managers
+        this.deptPosition = res.data.dept_positions
 
-      //   console.log(res.data.departments[0].dept_id);
-      //   console.log(res.data.departments[0].dept_name_en);
-      //   console.log(res.data.departments[0].dept_name_th);
+        // if (Object.keys(this.deptMM).length > 1) {
+        //   for (let i = 0; i < Object.keys(this.deptInfo).length; i++) {
+        //     this.deptMM[i] = 
+        //   }
+        // }
+        // console.log("1", Object.keys(this.deptInfo).length)
+        // console.log("1", this.deptInfo[0].dept_id)
+        // console.log("2", this.deptMM)
+        // console.log("3", this.deptPosition)
 
-      //   console.log(res.data.dept_positions[0].dp_id);
-      //   console.log(res.data.dept_positions[0].dp_name_en);
-      //   console.log(res.data.dept_positions[0].dp_name_th);
+        this.deptName()
+
       },
-      error: (err) => {},
+      error: (err) => { },
     });
+  }
+
+  deptName() {
+    var en = <HTMLInputElement>document.getElementById("deptNameEn");
+    en.value = this.deptInfo[0].dept_name_en;
+    var th = <HTMLInputElement>document.getElementById("deptNameTh");
+    th.value = this.deptInfo[0].dept_name_th;
   }
 
   //Append Boss Fields Set
