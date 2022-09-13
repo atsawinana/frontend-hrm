@@ -12,13 +12,14 @@ input::placeholder {
     color: #AEAEB2;
 }
 
-.add-font {
+.font-head {
     font-family: 'Kanit';
     font-style: normal;
     font-weight: 500;
     font-size: 32px;
-    line-height: 20px;
+    line-height: 47px;
     text-align: center;
+    color: #000000;
 }
 
 .font-content {
@@ -79,10 +80,6 @@ input::placeholder {
     color: #005FBC;
 }
 
-.padding {
-    padding: 100px;
-}
-
 .margin-text {
     margin-right: 10px;
 }
@@ -117,4 +114,28 @@ input::placeholder {
     font-size: 24px;
     line-height: 24px;
     text-align: center;
+}
+
+@media screen and (max-width: 576px) {
+    div.input-xs {
+        display: flex !important;
+        justify-content: center !important;
+    }
+    div.text-xs {
+        display: flex !important;
+        justify-content: left !important;
+        padding-bottom: 5px;
+    }
+    input.maxWidth {
+        width: 100% !important;
+    }
+    #add {
+        display: none !important;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    div.mainContainer {
+        width: 55% !important;
+    }
 }

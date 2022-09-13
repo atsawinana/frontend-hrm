@@ -8,12 +8,14 @@ export class AdddepartmentService {
 
 constructor(private httpClient: HttpClient) { }
 
-adddepartment(input: {namenamedepaetment_en: string, namedepaetment_th: string, nameleader: string, naemposition: string}) {
+adddepartment(namedepartment_en: string, namedepartment_th: string, naemposition: string,nameleader: string) {
   return this.httpClient.post('http://127.0.0.1:8000/api/department/addDepartment', {
-    dept_name_en: input.namenamedepaetment_en,
-    dept_name_th: input.namedepaetment_th,
-    dmm_username: input.nameleader,
-    dp_name: input.naemposition
+    dept_name_en: namedepartment_en,
+    dept_name_th: namedepartment_th,
+    dp_name_en : Array(naemposition),
+    dp_name_th : "a",
+    dept_update_by : "b",
+    dmm_username: Array(nameleader)
   })
 }
 
