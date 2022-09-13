@@ -66,17 +66,18 @@ export class AddDepartmentComponent implements OnInit {
   //Add Boss Fields
   addBoss(): void {
     this.bossArray.push(this.addBossField());
+    console.log("bossArray: ",this.bossArray.length)
   }
 
   //Remove Boss Fields
   removeBoss(index: number): void {
     this.bossArray.removeAt(index);
+    console.log("bossArray: ",this.bossArray.length)
   }
   //Fields Boss Array
   get bossArray(): FormArray {
     return <FormArray>this.bossForm.get('boss');
   }
-
 
   //Append Position Fields Set
   private addPosField(): FormGroup {
@@ -86,12 +87,15 @@ export class AddDepartmentComponent implements OnInit {
   }
   //Add Position Fields
   addPos(): void {
+    const check = document.getElementById('')
     this.posArray.push(this.addPosField());
+    console.log("posArray: ",this.posArray.length)
   }
 
   //Remove Position Fields
   removePos(index: number): void {
     this.posArray.removeAt(index);
+    console.log("posArray: ",this.posArray.length)
   }
   //Fields Position Array
   get posArray(): FormArray {
