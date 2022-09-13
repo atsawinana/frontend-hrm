@@ -70,7 +70,7 @@
       <div class="row OriginalDiv" id="deptOrigin" *ngFor="let group of posArray.controls; let j = index;"
         formArrayName="pos">
         <div class="col-10" [formGroupName]='j'>
-          <input type="text" placeholder="กรอกตำแหน่ง" class="form-control maxWidth mb-4 " id="add-pos">
+          <input type="text" placeholder="กรอกตำแหน่ง" class="form-control maxWidth mb-4 add-pos" id="add-pos{{j}}">
         </div>
         <div class="col-2 py-2">
           <i *ngIf="j>0" class="fa-solid fa-circle-xmark delete-dept iconDept" (click)="removePos(j)"></i>
