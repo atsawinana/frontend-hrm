@@ -46,12 +46,16 @@ export class AddDepartmentComponent implements OnInit {
   }
 
   MapUsernameWithID() {
+    console.log('check mana', this.countDeptMana.length);
     console.log('check len', this.DeptUserID.length);
-    for (let i = 0; i < this.DeptMana.length; i++) {
+
+    for (let i = 0; i < this.countDeptMana.length; i++) {
       for (let j = 0; j < this.DeptUserID.length; j++) {
-        if (this.DeptMana[i] === this.DeptUserID[j].ud_fullname_th) {
+        if (this.DeptMana[i] == this.DeptUserID[j].ud_fullname_th) {
           this.DeptUsername.push(String(this.DeptUserID[j].ud_username));
-          console.log(this.DeptUsername[i]);
+          console.log("map check",this.DeptUsername[i]);
+        }else if(this.DeptMana[i] == ""){
+          this.DeptUsername.pop();
         }
         // console.log('mana i',this.DeptMana[i]);
         // console.log('uid j',this.DeptUserID[j].ud_fullname_th,'id',this.DeptUserID[j].ud_id);
@@ -103,8 +107,8 @@ export class AddDepartmentComponent implements OnInit {
     if (this.DeptMana[this.countDeptMana.length - 1] == null) {
       alert('cannot กรอกให้ครบหน่อย');
     } else {
-      this.countDeptMana?.push(this.countDeptMana.length+1);
-      console.log(this.countDeptMana)
+      this.countDeptMana?.push(this.countDeptMana.length + 1);
+      console.log(this.countDeptMana);
     }
   }
 
@@ -113,7 +117,7 @@ export class AddDepartmentComponent implements OnInit {
     if (this.DeptPosit[this.countDeptPosit.length - 1] == null) {
       alert('cannot กรอกให้ครบหน่อย');
     } else {
-      this.countDeptPosit?.push(this.countDeptPosit.length+1);
+      this.countDeptPosit?.push(this.countDeptPosit.length + 1);
     }
   }
 
@@ -142,20 +146,26 @@ export class AddDepartmentComponent implements OnInit {
     }
 
     for (let i = 0; i < this.countDeptPosit.length; i++) {
-      if (this.DeptPosit[i] == undefined) {
+      console.log("check posit",this.DeptPosit[i])
+      if (this.DeptPosit[i] == undefined || this.DeptPosit[i] == "") {
         this.CheckNullPosit[i] = true;
+      } else {
+        this.CheckNullPosit[i] = false;
       }
     }
 
     for (let i = 0; i < this.countDeptMana.length; i++) {
+      console.log("check mana",this.DeptUsername[i])
       if (this.DeptUsername[i] == undefined) {
         this.CheckNullMana[i] = true;
+      } else {
+        this.CheckNullMana[i] = false;
       }
     }
     console.log('nullen', this.CheckNullDeptNameEN);
     console.log('nullth', this.CheckNullDeptNameTH);
-    console.log('nullposit', this.CheckNullPosit[(this.countDeptPosit).length-1]);
-    console.log('indexposit', (this.countDeptPosit).length-1);
+    console.log('nullposit', this.CheckNullPosit);
     console.log('nulklmana', this.CheckNullMana);
+    console.log("check deptPosit ",this.DeptPosit)
   }
 }

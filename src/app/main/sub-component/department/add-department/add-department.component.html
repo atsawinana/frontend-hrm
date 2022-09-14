@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-12 justify-content-center">
       <div class="row d-flex justify-content-center">
-        <div class="col-12 justify-content-center" (click)="MapUsernameWithID()">
+        <div class="col-12 justify-content-center" (click)="checkNull()">
           <p class="font-head">เพิ่มแผนก</p>
         </div>
         <div class="col-12 justify-content-center">
@@ -109,7 +109,7 @@
             </div>
           </div>
           <div class="col-sm-4 col-5">
-            <div [ngClass]="{fontcontentalert  : CheckNullDeptNameEN}" style="display: none;">กรุณากรอกข้อมูล</div>
+            <div [ngClass]="{fontcontentalert  : CheckNullPosit[(this.countDeptPosit).length-1]}" style="display: none;">กรุณากรอกข้อมูล</div>
           </div>
         </div>
       </div>
