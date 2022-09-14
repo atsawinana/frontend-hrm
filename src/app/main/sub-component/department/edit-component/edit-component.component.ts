@@ -48,17 +48,11 @@ export class EditComponentComponent implements OnInit {
   ngOnInit(): void {
     this.dept_id = this.router.snapshot.params['dept_id'];
 
-    let promise = new Promise<void>((resolve,reject) =>{
-      this.WaitApiData()
-      resolve()
-    })
-    promise.then(() => {
-      console.log(this.dept_name_en);
-      console.log(this.dept_name_th);
-      console.log(this.ObjDeptMana);
-      console.log(this.ObjDeptPosit);
-    })
-   
+    let promise = new Promise<void>((resolve, reject) => {
+      this.WaitApiData();
+      resolve();
+    });
+    promise.then(() => {});
   }
 
   WaitApiData() {
@@ -68,17 +62,52 @@ export class EditComponentComponent implements OnInit {
         this.dept_name_th = res.data.departments.dept_name_th;
         this.ObjDeptMana = res.data.department_map_managers;
         this.ObjDeptPosit = res.data.dept_positions;
+
+        console.log(this.dept_name_en);
+        console.log(this.dept_name_th);
+        // console.log(this.ObjDeptMana);
+        // console.log(this.ObjDeptPosit);
+
+        this.deptName();
+
+        for (let i = 0; i < Object.keys(this.ObjDeptMana).length; i++) {
+          if(i>=1)
+          this.addBoss()
+          console.log(this.ObjDeptMana[i].ud_fullname_en)
+          let nameId = "add-boss"+String(i)
+          const deptmana = <HTMLInputElement>document.getElementById(nameId)
+          deptmana.value = this.ObjDeptMana[i].ud_fullname_en
+        }
+
+        for (let i = 0; i < Object.keys(this.ObjDeptPosit).length; i++) {
+
+            // console.log(this.ObjDeptPosit.length)
+          // console.log(this.ObjDeptPosit[i].dp_name_en)
+          // this.posArray.push(this.addPosField().setValue({}));
+          console.log(this.addPosField)
+          // let nameId = "add-pos"+String(i)
+          // const deptmana = <HTMLInputElement><unknown>document.getElementsByClassName("add-pos")
+
+          // if(i>=1)
+          // this.addposVal(this.ObjDeptPosit[i])
+
+          // console.log(nameId)
+          // console.log("boss array",this.bossArray.at(0))
+          // console.log(deptmana)
+          // deptmana.value = this.ObjDeptPosit[i].dp_name_en
+        }
+
         return;
       },
-      error: (err) => {},
+      error: (err: any) => {},
     });
   }
 
   deptName() {
     var en = <HTMLInputElement>document.getElementById('deptNameEn');
-    en.value = this.deptInfo[0].dept_name_en;
+    en.value = this.dept_name_en;
     var th = <HTMLInputElement>document.getElementById('deptNameTh');
-    th.value = this.deptInfo[0].dept_name_th;
+    th.value = this.dept_name_th;
   }
 
   //Append Boss Fields Set
@@ -111,6 +140,11 @@ export class EditComponentComponent implements OnInit {
   addPos(): void {
     this.posArray.push(this.addPosField());
   }
+
+  // addposVal(value:string)
+  // {
+  //   this.posArray.push(this.addPosField().setValue(value))
+  // }
 
   //Remove Position Fields
   removePos(index: number): void {

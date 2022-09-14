@@ -36,7 +36,7 @@
       <div class="row OriginalDiv" *ngFor="let group of bossArray.controls; let i = index;"
         formArrayName="boss">
         <div class="col-10" [formGroupName]='i'>
-          <input type="text" placeholder="กรอกหัวหน้าแผนก" class="form-control maxWidth mb-4 " id="add-boss">
+          <input type="text" placeholder="กรอกหัวหน้าแผนก" class="form-control maxWidth mb-4 add-boss" id="add-boss{{i}}">
         </div>
         <div class="col-2 py-2">
           <i *ngIf="i>0" class="fa-solid fa-circle-xmark delete-dept iconDept" (click)="removeBoss(i)"></i>
