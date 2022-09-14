@@ -19,7 +19,7 @@ export class ListDepartmentComponent implements OnInit {
   dept_post!: any;
   dept_manager!: any;
   deptIDDelete:any;
-
+  countDept:number[] = []
 
   constructor(private DepService: ListDepartmentService) {}
   ngOnInit() {
@@ -27,6 +27,10 @@ export class ListDepartmentComponent implements OnInit {
       next: (res: any) => {
         this.deprtmentsData = res.data.deprtments;
         this.maxListDept = res.data.max_dept;
+        for (let i = 0; i < this.deprtmentsData.length ; i++) {
+          this.countDept[i] = i+1;
+        }
+        Array(this.deprtmentsData).push({number:this.countDept})
       },
       error: (err: any) => {},
     });
@@ -88,6 +92,7 @@ export class ListDepartmentComponent implements OnInit {
         this.dept_creat = res.data.departments.dept_created_date;
         this.dept_post = res.data.dept_positions;
         this.dept_manager = res.data.department_map_managers;
+  
       },
       error: (err: any) => {},
     });
