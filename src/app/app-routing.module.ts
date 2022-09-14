@@ -10,6 +10,7 @@ import { EmployeeComponent } from './main/sub-component/employee/employee.compon
 import { AuthGuardGuard } from './auth/auth-guard.guard';
 import { TravelExpensesComponent } from './main/sub-component/travelExpenses/travelExpenses.component';
 import { ActivityComponent } from './main/sub-component/activity/activity.component';
+import { RoleGuard } from './auth/role.guard';
 
 const routes: Routes = [
   {
@@ -32,28 +33,16 @@ const routes: Routes = [
           import('./main/sub-component/department/department.module').then(
             (m) => m.DepartmentModule
           ),
-        canActivate: [AuthGuardGuard],
+        // canActivate: [RoleGuard],
       },
       { path: 'ot', component: OtComponent },
       { path: 'profile', component: ProfileComponent },
-      {
-        path: 'timeattendance',
-        component: TimeAttendanceComponent,
-      },
-      {
-        path: 'employee',
-        component: EmployeeComponent,
-      },
-      {
-        path: 'car',
-        component: TravelExpensesComponent,
-      },
-      {
-        path: 'activity',
-        component: ActivityComponent,
-      },
+      { path: 'timeattendance', component: TimeAttendanceComponent },
+      { path: 'employee', component: EmployeeComponent , },
+      { path: 'car', component: TravelExpensesComponent },
+      { path: 'activity',component: ActivityComponent},
     ],
-    canActivate: [AuthGuardGuard],
+    canActivate: [AuthGuardGuard]
   },
 ];
 

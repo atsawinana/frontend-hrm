@@ -81,7 +81,11 @@
   color: #636366;
 }
 
-
+.side-bar-hide {
+  width: 65px;
+  cursor: pointer;
+  display: none !important;
+}
 
 @media screen and (max-width: 992px) {
   .logo-element {

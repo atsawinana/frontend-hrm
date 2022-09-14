@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NavigationEnd, Route, Router, RouterLink } from '@angular/router';
 
 @Component({
@@ -7,86 +7,55 @@ import { NavigationEnd, Route, Router, RouterLink } from '@angular/router';
   styleUrls: ['./side-bar.component.css'],
 })
 export class SideBarComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+  }
+
+  @Input() role = '';
+  roleNormal: boolean = false;
+  roleMana: boolean = false;
+  roleHR: boolean = false;
+  profile: boolean = false;
+  timeattendance: boolean = false;
+  department: boolean = false;
+  leave: boolean = false;
+  ot: boolean = false;
+  car: boolean = false;
+  activity: boolean = false;
+  employee: boolean = false;
 
   ngOnInit() {
-    this.navigateActive();
-
-    if (this.router.url == '/main') {
-      const addClass = document.querySelectorAll('#profile');
-      for (let i = 0; i < addClass.length; i++) {
-        addClass[i].classList.add('bg-active');
-      }
+    if (this.role == '1') {
+      this.roleNormal = true;
+    } else if (this.role == '2') {
+      this.roleMana = true;
+    } else if (this.role == '3') {
+      this.roleHR = true;
     }
 
-    console.log(this.router.url);
+    this.navigateActive();
+    if (this.router.url == '/main') {
+      this.profile = true;
+    }
   }
 
   navigateActive() {
     if (this.router.url.includes('profile')) {
-      const addClass = document.querySelectorAll('#profile');
-      for (let i = 0; i < addClass.length; i++) {
-        addClass[i].classList.add('bg-active');
-      }
+      this.profile = true;
     } else if (this.router.url.includes('timeattendance')) {
-      const addClass = document.querySelectorAll('#timeattendance');
-      for (let i = 0; i < addClass.length; i++) {
-        addClass[i].classList.add('bg-active');
-      }
+      this.timeattendance = true;
     } else if (this.router.url.includes('department')) {
-      const addClass = document.querySelectorAll('#department');
-      for (let i = 0; i < addClass.length; i++) {
-        addClass[i].classList.add('bg-active');
-      }
+      this.department = true;
     } else if (this.router.url.includes('leave')) {
-      const addClass = document.querySelectorAll('#leave');
-      for (let i = 0; i < addClass.length; i++) {
-        addClass[i].classList.add('bg-active');
-      }
+      this.leave = true;
     } else if (this.router.url.includes('ot')) {
-      const addClass = document.querySelectorAll('#ot');
-      for (let i = 0; i < addClass.length; i++) {
-        addClass[i].classList.add('bg-active');
-      }
+      this.ot = true;
     } else if (this.router.url.includes('car')) {
-      const addClass = document.querySelectorAll('#car');
-      for (let i = 0; i < addClass.length; i++) {
-        addClass[i].classList.add('bg-active');
-      }
+      this.car = true;
     } else if (this.router.url.includes('activity')) {
-      const addClass = document.querySelectorAll('#activity');
-      for (let i = 0; i < addClass.length; i++) {
-        addClass[i].classList.add('bg-active');
-      }
+      this.activity = true;
     } else if (this.router.url.includes('employee')) {
-      const addClass = document.querySelectorAll('#employee');
-      for (let i = 0; i < addClass.length; i++) {
-        addClass[i].classList.add('bg-active');
-      }
+      this.employee = true;
     }
-
-    // } else if (this.router.url.includes('timeattendance')) {
-    //   const addClass = document.getElementById('timeattendance');
-    //   addClass?.classList.add('bg-active');
-    // } else if (this.router.url.includes('employee')) {
-    //   const addClass = document.getElementById('employee');
-    //   addClass?.classList.add('bg-active');
-    // } else if (this.router.url.includes('department')) {
-    //   const addClass = document.getElementById('department');
-    //   addClass?.classList.add('bg-active');
-    // } else if (this.router.url.includes('leave')) {
-    //   const addClass = document.getElementById('leave');
-    //   addClass?.classList.add('bg-active');
-    // } else if (this.router.url.includes('ot')) {
-    //   const addClass = document.getElementById('ot');
-    //   addClass?.classList.add('bg-active');
-    // } else if (this.router.url.includes('car')) {
-    //   const addClass = document.getElementById('car');
-    //   addClass?.classList.add('bg-active');
-    // } else if (this.router.url.includes('activity')) {
-    //   const addClass = document.getElementById('activity');
-    //   addClass?.classList.add('bg-active');
-    // }
   }
 
   URLcheck(event: any) {
@@ -96,6 +65,14 @@ export class SideBarComponent implements OnInit {
     });
 
     this.router.events.subscribe((val) => {
+      this.profile = false;
+      this.timeattendance = false;
+      this.department = false;
+      this.leave = false;
+      this.ot = false;
+      this.car = false;
+      this.activity = false;
+      this.employee = false;
       if (val instanceof NavigationEnd) {
         this.navigateActive();
       }

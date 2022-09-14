@@ -1,10 +1,9 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { ActivatedRoute, NavigationEnd } from '@angular/router';
 import { MainService } from '../main.service';
-import { core, Token } from '@angular/compiler';
 import { Route, Router, RouterLink } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
 import { Subject } from 'rxjs/internal/Subject';
+import { LoadingComponent } from 'src/app/login/loading/loading-template/loading.component';
 
 @Component({
   selector: 'app-main',
@@ -15,7 +14,7 @@ export class MainComponent implements OnInit {
   constructor(
     private MainService: MainService,
     private router: Router,
-    private coreToken: AuthService
+    private coreToken: AuthService,
   ) {
     this.setTimeout();
     this.userInactive.subscribe(() => {
@@ -26,13 +25,15 @@ export class MainComponent implements OnInit {
   token!: any;
   ud_fullname_th!: string;
   ud_prefix!: string;
-  role!: string;
+  role: string = "";
   position_th!: string;
   tokenLocal!: string;
   tokenCheck!: boolean;
   photo!:string
+  checkApi:boolean = false;
 
   async ngOnInit() {
+
     this.refresh();
     if (await this.coreToken.CheckTokenTimeOut()) {
       this.router.navigate(['']);
@@ -48,6 +49,9 @@ export class MainComponent implements OnInit {
         this.position_th = res.data.position_th;
         this.role = res.data.role;
         this.photo = res.data.ud_picture
+        this.checkApi = true;
+        this.coreToken.UserRole = this.role
+        
       },
       error: (err: any) => {},
     });

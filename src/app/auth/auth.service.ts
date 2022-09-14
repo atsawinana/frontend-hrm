@@ -8,10 +8,16 @@ import { LocalizedString } from '@angular/compiler';
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private router: Router, private httpClient: HttpClient) {}
-
+  
   userInactivate:boolean = false
+  UserRole:string = ""
+  roleNormal: boolean = false;
+  roleMana: boolean = false;
+  roleHR: boolean = false;
 
+  constructor(private router: Router, private httpClient: HttpClient,) {
+ 
+  }
   reFreshToken() {
     return this.httpClient.post('http://127.0.0.1:8000/api/auth/refresh', {
       token: localStorage.getItem('tokenLocal'),
