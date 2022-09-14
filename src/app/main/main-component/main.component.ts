@@ -23,13 +23,14 @@ export class MainComponent implements OnInit {
       this.coreToken.userInactivate = true;
     });
   }
-  token?: any;
-  ud_fullname_th?: string;
-  ud_prefix?: string;
-  role?: string;
-  position_th?: string;
-  tokenLocal?: string;
-  tokenCheck?: boolean;
+  token!: any;
+  ud_fullname_th!: string;
+  ud_prefix!: string;
+  role!: string;
+  position_th!: string;
+  tokenLocal!: string;
+  tokenCheck!: boolean;
+  photo!:string
 
   async ngOnInit() {
     this.refresh();
@@ -46,6 +47,7 @@ export class MainComponent implements OnInit {
         this.ud_prefix = res.data.ud_prefix;
         this.position_th = res.data.position_th;
         this.role = res.data.role;
+        this.photo = res.data.ud_picture
       },
       error: (err: any) => {},
     });

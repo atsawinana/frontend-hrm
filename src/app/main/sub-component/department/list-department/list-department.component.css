@@ -64,6 +64,12 @@
 
 }
 
+select#listPerPage
+{
+  border: 1px solid #005FBC;
+  width: 65px !important;
+}
+
 .modal-ti{
   margin-top: 5px;
   font-family: 'Kanit';
@@ -173,7 +179,7 @@ table {
   line-height: 24px;
 }
 
-.next-page {
+.buttonPage {
   background: #FFFFFF;
   border: 1px solid #C7C7CC;
   border-radius: 8px;
@@ -196,7 +202,7 @@ table {
   margin-right: 10px;
 }
 
-#nextPage:hover {
+.buttonPage:hover {
   background-color: #005FBC;
   color: #ffffff;
   transition: 0.5s;
