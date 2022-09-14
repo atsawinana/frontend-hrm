@@ -81,19 +81,20 @@ export class EditComponentComponent implements OnInit {
 
         for (let i = 0; i < Object.keys(this.ObjDeptPosit).length; i++) {
 
+          if(i>=1)
+          this.addPos()
             // console.log(this.ObjDeptPosit.length)
           // console.log(this.ObjDeptPosit[i].dp_name_en)
           // this.posArray.push(this.addPosField().setValue({}));
-          console.log(this.addPosField)
           // let nameId = "add-pos"+String(i)
-          // const deptmana = <HTMLInputElement><unknown>document.getElementsByClassName("add-pos")
+          const deptmana = <HTMLInputElement><unknown>document.getElementsByClassName("add-pos")[i]
+          console.log(deptmana)
 
           // if(i>=1)
           // this.addposVal(this.ObjDeptPosit[i])
 
           // console.log(nameId)
           // console.log("boss array",this.bossArray.at(0))
-          // console.log(deptmana)
           // deptmana.value = this.ObjDeptPosit[i].dp_name_en
         }
 
