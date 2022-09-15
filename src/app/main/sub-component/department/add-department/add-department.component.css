@@ -116,13 +116,28 @@ input::placeholder {
     text-align: center;
 }
 
-.font-repeat {
+.alertnull {
+    text-align: left;
+    color: #EF0303;
     font-family: 'Kanit';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    color: crimson;
+    font-size: 14px;
+    padding-left: 5px;
+    padding-top: 5px;
+    margin: 0px;
+    padding-bottom: 5px;
+    display: none;
+}
+
+.alert {
+    text-align: left;
+    color: #EF0303;
+    font-family: 'Kanit';
+    font-size: 14px;
+    padding-left: 5px;
+    padding-top: 5px;
+    margin: 0px;
+    padding-bottom: 5px;
+    display: none;
 }
 
 @media screen and (max-width: 576px) {

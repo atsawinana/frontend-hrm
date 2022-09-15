@@ -13,31 +13,30 @@
                 <div class="col-12 justify-content-center"><br>
 
                     <div class="row font-content p-2 justify-content-center">
-                        <div class="col-lg-2 col-md-12 col-sm-12 col-12 d-inline-flex p-2 text-center text-xs">ชื่อแผนก (EN)*</div>
-                        <div class="col-lg-6 col-md-12 col-sm-12 col-12 input-xs">
-                            <div class="row OriginalDiv" id="deptOrigin">
+                        <div class="col-lg-2 col-md-12 col-sm-12 col-12 d-inline-flex p-2">ชื่อแผนก (EN)*</div>
+                        <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+                            <div class="row OriginalDiv">
                                 <div class="col-lg-11 col-md-11 col-sm-11 col-10">
                                     <input type="text" placeholder="กรอกแผนก" class="form-control maxWidth" [formControl]="namedepartment_en" /></div>
                                 <div class="col-1"></div>
                             </div>
                         </div>
-                    </div>
+                        <div class="row">
+                            <div class="col-lg-8 col-md-8 col-sm-7 col-5 d-flex justify-content-left"> </div>
+                            <div class="col-sm-4 col-5">
+                                <div class="alertnull margin-button" id="alertnull_dp">กรุณากรอกข้อมูล</div>
+                            </div>
 
-                    <div class="row alertnull">
-                        <div class="col-lg-4 d-flex justify-content-left"></div>
-
-                        <div class="col-lg-3 "></div>
-                        <div class="col-lg-4 d-inline-flex margin-button">
-                            <div class="alertnull p-0 font-repeat mb-2 ms-3 " id="alertnull">กรุณากรอกข้อมูล</div>
                         </div>
                     </div>
+
                 </div>
 
                 <div class="row font-content p-2 justify-content-center">
                     <div class="col-lg-2 col-md-12 col-sm-12 col-12 d-inline-flex p-2">ชื่อแผนก (TH) </div>
                     <div class="col-lg-6 col-md-12 col-sm-12 col-12">
-                        <div class="row OriginalDiv" id="deptOrigin">
-                            <div class="col-lg-11 col-md-11 col-sm-11 col-10">
+                        <div class="row OriginalDiv">
+                            <div class="col-lg-11 col-md-11 col-sm-11 col-10 ">
                                 <input type="text" placeholder="กรอกแผนก" class="form-control maxWidth" [formControl]="namedepartment_th" /></div>
                             <div class="col-1"></div>
                         </div>
@@ -48,7 +47,7 @@
                 <div class="row font-content p-2 justify-content-center">
                     <div class="col-lg-2 col-md-12 col-sm-12 col-12 d-inline-flex p-2 ">ชื่อหัวหน้าแผนก* </div>
                     <div class="col-lg-6 col-md-12 col-sm-12 col-12" [formGroup]="bossForm">
-                        <div class="row OriginalDiv" id="deptOrigin" *ngFor="let group of bossArray.controls; let i = index;" formArrayName="boss">
+                        <div class="row OriginalDiv" *ngFor="let group of bossArray.controls; let i = index;" formArrayName="boss">
                             <div class="col-lg-11 col-md-11 col-sm-11 col-10 my-1" [formGroupName]='i'>
                                 <input type="text" placeholder="กรอกชื่อหัวหน้าแผนก" class="form-control maxWidth" [formControl]="nameleader" />
                             </div>
@@ -59,57 +58,55 @@
                     </div>
                     <div class="row" id="dept">
                     </div>
+
                 </div>
 
                 <div class="row ">
-                    <div class="col-lg-4 col-sm-4 d-flex justify-content-left" id="add"> </div>
-                    <div class="col-lg-4 col-md-8 col-sm-4 d-flex justify-content-left">
-                        <div class="text-button ms-2 margin-button" (click)="addBoss()">
+                    <div class="col-lg-4 d-flex justify-content-left"> </div>
+                    <div class="col-lg-4 col-md-8 col-sm-7 col-5 justify-content-start">
+                        <div class="text-button ms-2" (click)="addBoss()">
                             <i class="fa-solid fa-circle-plus margin-text"></i> เพิ่มหัวหน้า
                         </div>
                     </div>
-
-                    <div class="col-lg-3 col-md-3 col-sm-4 mt-2 d-flex justify-content-right">
-                        <div class="alertnull p-0 font-repeat " id="alertnull">กรุณากรอกข้อมูล</div>
-                    </div>
-
-
-                </div>
-
-
-            </div>
-
-
-            <!-- input position -->
-            <div class="row font-content p-2 justify-content-center">
-                <div class="col-lg-2 col-md-12 col-sm-12 col-12 d-inline-flex p-2">ตำแหน่ง* </div>
-                <div class="col-lg-6 col-md-12 col-sm-12 col-12" [formGroup]="posForm">
-                    <div class="row OriginalDiv" id="deptOrigin" *ngFor="let group of posArray.controls; let j = index;" formArrayName="pos">
-                        <div class="col-lg-11 col-md-11 col-sm-11 col-10 my-1" [formGroupName]='j'>
-                            <input type="text" placeholder="กรอกตำแหน่ง" class="form-control maxWidth" [formControl]="naemposition" />
-                        </div>
-                        <div class="col-1 my-2">
-                            <img *ngIf="j>0" class="mt-1 d-flex justify-content-center" alt="Alternative text" width="24px" height="24px" src="assets/img/circle-xmark-solid.svg" (click)="removePos(j)">
-                        </div>
-                    </div>
-                    <div class="row" id="pos">
+                    <div class="col-sm-4 col-5">
+                        <div class="alertnull" id="alertnull_lead">กรุณากรอกข้อมูล </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- add input position -->
-            <div class="row ">
-                <div class="col-lg-4 d-flex justify-content-left"></div>
-                <div class="col-lg-7 col-md-5 d-flex justify-content-left">
-                    <div class="text-button ms-2 margin-button" (click)="addPos()">
-                        <i class="fa-solid fa-circle-plus margin-text"></i>เพิ่มตำแหน่ง
+
+                <!-- input position -->
+                <div class="row font-content p-2 justify-content-center">
+                    <div class="col-lg-2 col-md-12 col-sm-12 col-12 d-inline-flex p-2">ตำแหน่ง* </div>
+                    <div class="col-lg-6 col-md-12 col-sm-12 col-12" [formGroup]="posForm">
+                        <div class="row OriginalDiv" id="addpo" *ngFor="let group of posArray.controls; let j = index;" formArrayName="pos">
+                            <div class="col-lg-11 col-md-11 col-sm-11 col-10 my-1" [formGroupName]='j'>
+                                <input type="text" placeholder="กรอกตำแหน่ง" class="form-control maxWidth" [formControl]="naemposition" />
+                            </div>
+                            <div class="col-1 my-2">
+                                <img *ngIf="j>0" class="mt-1 d-flex justify-content-center" alt="Alternative text" width="24px" height="24px" src="assets/img/circle-xmark-solid.svg" (click)="removePos(j)">
+                            </div>
+                        </div>
+                        <div class="row" id="pos"> </div>
+                    </div>
+                </div>
+
+                <!-- add input position -->
+                <div class="row ">
+                    <div class="col-lg-4 d-flex justify-content-left"></div>
+                    <div class="col-lg-4 col-md-8 col-sm-7 col-5 d-flex justify-content-start">
+                        <div class="text-button ms-2" (click)="addPos()">
+                            <i class="fa-solid fa-circle-plus margin-text"></i>เพิ่มตำแหน่ง
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-5">
+                        <div class="alertnull" id="alertnull_pos">กรุณากรอกข้อมูล </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
+</div>
 <!-- button cancel -->
 <div class="row mb-4 mt-5 d-flex justify-content-center">
     <div class="col-5 col-sm-5 col-md-5 col-lg-3">
@@ -121,8 +118,8 @@
     <!-- button submit -->
     <div class="col-5 col-sm-5 col-md-5 col-lg-3">
         <button class="submit-button d-flex justify-content-center w-100" type="submit">
-            <div class=" submit-font" (click)="onSubmit()">ตกลง</div>
-          </button>
+                <div class=" submit-font" (click)="onSubmit()">ตกลง</div>   
+        </button>
     </div>
 
     <!--data-bs-toggle="modal" href="#Modal-submit"-->
@@ -163,7 +160,7 @@
             <div class="modal-content">
                 <div class="modal-body d-block " style="border-radius: 10px;">
                     <div class="row d-flex justify-content-center mt-4">
-                        <div class="modal-title font-modal" id="modalcancal">เพิ่มแผนกสำเร็จ</div>
+                        <div class="modal-title font-modal" id="submit-sucsess">เพิ่มแผนกสำเร็จ</div>
                     </div>
                     <div class="d-flex justify-content-center">
                         <img class="my-5 d-flex justify-content-center" alt="Alternative text" width="96px" height="96px" src="assets/img/circle-check-solid.svg">
@@ -187,8 +184,8 @@
             <div class="modal-content">
                 <div class="modal-body d-block " style="border-radius: 10px;">
 
-                    <div class="row  justify-content-center mt-4" id="confirm">
-                        <div class="font-modal" id="modalcancal">คุณต้องการยกเลิกการเพิ่มแผนกหรือไม่ ?</div>
+                    <div class="row  justify-content-center mt-4" id="cancel-confirm">
+                        <div class="font-modal">คุณต้องการยกเลิกการเพิ่มแผนกหรือไม่ ?</div>
                     </div>
 
                     <div class="d-flex justify-content-center">
@@ -218,7 +215,7 @@
             <div class="modal-content">
                 <div class="modal-body d-block " style="border-radius: 10px;">
                     <div class="row d-flex justify-content-center mt-4">
-                        <div class="modal-title font-modal" id="modalcancal">ยกเลิกการเพิ่มเเผนกสำเร็จ</div>
+                        <div class="modal-title font-modal" id="cancal-success">ยกเลิกการเพิ่มเเผนกสำเร็จ</div>
                     </div>
                     <div class="d-flex justify-content-center">
                         <img class="my-5 d-flex justify-content-center" alt="Alternative text" width="96px" height="96px" src="assets/img/circle-check-solid.svg">

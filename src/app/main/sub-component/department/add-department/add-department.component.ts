@@ -28,23 +28,64 @@ export class AddDepartmentComponent implements OnInit {
   ngOnInit() {
   }
 
+  alertTextRedNull_namedp() {
+    let alert = document.getElementById('alertnull_dp');
+    alert!.style.display = 'block';
+  }
+
+  alertTextRedNull_namepos() {
+    let alert = document.getElementById('alertnull_pos');
+    alert!.style.display = 'block';
+  }
+
+  alertTextRedNull_namelead() {
+    let alert = document.getElementById('alertnull_lead');
+    alert!.style.display = 'block';
+  }
+
+  ClearAlertText_pos() {
+    let alertnull = document.getElementById('alertnull_pos');
+    alertnull!.style.display = 'none';
+  }
+
+  ClearAlertText_dp() {
+    let alertnull = document.getElementById('alertnull_dp');
+    alertnull!.style.display = 'none';
+  }
+
+  ClearAlertText_lead() {
+    let alertnull = document.getElementById('alertnull_lead');
+    alertnull!.style.display = 'none';
+  }
+
   onSubmit()
   {
-    this.ClearAlertText();
+    this.ClearAlertText_dp();
+    this.ClearAlertText_lead();
+    this.ClearAlertText_pos();
+
     this.Add_dp.adddepartment(this.namedepartment_en.value!,this.namedepartment_th.value!,this.naemposition.value!,this.nameleader.value!).subscribe({
       next: (res: any) => {
         console.log('Success, input are correct');
         this.isSuccess = true;
-        
       },
       error: (err) => {
-        console.log('Failed, input are incorrect');
+        console.log('Failed, input is null');
         this.isSuccess = false;
           if (this.isSuccess == false) {
-            if (this.namedepartment_en.value == '' || this.naemposition.value == '' ,this.namedepartment_en.value || this.nameleader.value == '',this.naemposition.value|| this.nameleader.value) {
-              this.alertTextRedNull();
-            } else {
-              this.alertTextRed();
+            if (this.namedepartment_en.value == '') {
+              console.log('not input');
+              this.alertTextRedNull_namedp();
+            }
+
+            if (this.naemposition.value == '') {
+              console.log('not input');
+              this.alertTextRedNull_namepos();
+            }
+
+            if (this.nameleader.value == '') {
+              console.log('not input');
+              this.alertTextRedNull_namelead();
             }
           }
       }
@@ -102,25 +143,6 @@ export class AddDepartmentComponent implements OnInit {
     return <FormArray>this.posForm.get('pos');
   }
 
-
-  alertTextRed() {
-    let alert = document.getElementById('alert');
-    alert!.style.display = 'block';
-  }
-
-  alertTextRedNull() {
-    let alert = document.getElementById('alertnull');
-    alert!.style.display = 'block';
-  }
-
-  ClearAlertText() {
-    let alertnull = document.getElementById('alertnull');
-    alertnull!.style.display = 'none';
-
-    let alert = document.getElementById('alert');
-    alert!.style.display = 'none';
-  }
-  
 }
 
 
