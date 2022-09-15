@@ -18,10 +18,11 @@ export class MainComponent implements OnInit {
   ) {
     this.setTimeout();
     this.userInactive.subscribe(() => {
-      console.log('user has been inactive (35 sec)');
+      console.log('user has been inactive (1 hour)');
       this.coreToken.userInactivate = true;
     });
   }
+  
   token!: any;
   ud_fullname_th!: string;
   ud_prefix!: string;
@@ -71,7 +72,7 @@ export class MainComponent implements OnInit {
     if (localStorage.getItem('tokenLocal') != null) {
       this.userActivity = setTimeout(
         () => this.userInactive.next(undefined),
-        35000 // 1000 = 1sec
+        1800000 // 1000 = 1sec
       );
     }
   }

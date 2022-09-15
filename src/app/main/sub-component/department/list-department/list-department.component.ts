@@ -18,6 +18,8 @@ export class ListDepartmentComponent implements OnInit {
   dept_creat!: string;
   dept_post!: any;
   dept_manager!: any;
+  deptIDDelete:any;
+
 
   constructor(private DepService: ListDepartmentService) {}
   ngOnInit() {
@@ -68,12 +70,16 @@ export class ListDepartmentComponent implements OnInit {
       this.onPageNext--;
     }
   }
-  Delete_Department(deptID: string) {
-    this.DepService.DeleletDepartment(deptID).subscribe({
+  Delete_Department() {
+    this.DepService.DeleletDepartment(this.deptIDDelete).subscribe({
       next: (res: any) => {},
       error: (err: any) => {},
     });
   }
+
+  SetDeptID(deptID: string){
+    this.deptIDDelete = deptID
+  } 
 
   DetailDept(event: any) {
     this.DepService.DetailDepartment(event).subscribe({
