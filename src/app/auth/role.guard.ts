@@ -16,27 +16,36 @@ import { AuthService } from './auth.service';
 export class RoleGuard implements CanActivate {
   constructor(
     private coreToken: AuthService,
-    private router: ActivatedRoute,
-    private state: RouterStateSnapshot
+    private router: Router,
   ) {}
-  canActivate() {
-    // alert(this.coreToken.UserRole);
-    // if (this.state.url.includes('employee')) {
-    //   if (this.coreToken.UserRole == '2' || this.coreToken.UserRole == '3') {
-    //     return true;
-    //   } else {
-    //     return false;
-    //   }
-    // }
+  roleNormal: Boolean = false
+  roleMana: Boolean = false
+  roleHR: Boolean = false
 
-    // if (this.state.url.includes('department')) {
-    //   if ('3' == '3') {
-    //     return true;
-    //   } else {
-    //     return false;
-    //   }
-    // }
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    const role = localStorage.getItem("roleUser")
 
-    return true;
+    if (role == '1') {
+      this.roleNormal = true;
+    } else if (role == '2') {
+      this.roleMana = true;
+    } else if (role == '3') {
+      this.roleHR = true;
+    }
+
+    // alert(this.roleNormal)
+    // alert(this.roleMana)
+    // alert(this.roleHR)
+    // alert(state.url)
+
+    if (state.url.includes('employee') && (this.roleMana || this.roleHR)) {
+      return true;
+    }else if(state.url.includes('department') && this.roleHR)
+    {
+      return true;
+    }
+    this.router.navigate(['/main']);
+    alert("you dont have permission")
+    return false;
   }
 }

@@ -26,19 +26,18 @@ const routes: Routes = [
     component: MainComponent,
     children: [
       { path: '', component: ProfileComponent },
-      { path: 'leave', component: LeaveComponent },
+      { path: 'leave', component: LeaveComponent},
       {
         path: 'department',
         loadChildren: () =>
           import('./main/sub-component/department/department.module').then(
             (m) => m.DepartmentModule
-          ),
-        // canActivate: [RoleGuard],
+          ),canActivate: [RoleGuard]
       },
-      { path: 'ot', component: OtComponent },
+      { path: 'ot', component: OtComponent  },
       { path: 'profile', component: ProfileComponent },
       { path: 'timeattendance', component: TimeAttendanceComponent },
-      { path: 'employee', component: EmployeeComponent , },
+      { path: 'employee', component: EmployeeComponent ,canActivate: [RoleGuard] },
       { path: 'car', component: TravelExpensesComponent },
       { path: 'activity',component: ActivityComponent},
     ],
@@ -49,5 +48,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
+  providers: [AuthGuardGuard,RoleGuard]
 })
 export class AppRoutingModule {}

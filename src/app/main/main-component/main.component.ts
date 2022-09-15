@@ -50,6 +50,7 @@ export class MainComponent implements OnInit {
         this.role = res.data.role;
         this.photo = res.data.ud_picture
         this.checkApi = true;
+        localStorage.setItem('roleUser',this.role)
         this.coreToken.UserRole = this.role
         
       },
