@@ -30,12 +30,12 @@ export class AddDepartmentComponent implements OnInit {
     // this.ClearAlertText_dp();
     // this.ClearAlertText_lead();
     // this.ClearAlertText_pos();
-    alert('before')
-    console.log(this.naemposition)
-    console.log(this.nameleader)
+    console.log('before')
+    console.log(this.DeptPosit)
+    console.log(this.DeptMana)
     console.log(this.namedepartment_en.value)
     console.log(this.namedepartment_th.value)
-    alert('after')
+    console.log('after')
 
     this.Add_dp.adddepartment(
       this.namedepartment_en.value!,
