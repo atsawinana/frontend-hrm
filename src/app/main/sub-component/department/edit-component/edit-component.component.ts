@@ -23,35 +23,36 @@ export class EditComponentComponent implements OnInit {
     private editService: EditComponentService
   ) {}
 
-  deptInfo!: any;
-  deptMM!: any;
-  deptPosition!: any;
-  nameArray!: Array<any>;
-  ArrayPosnumberIndex: number = 0;
-  deptPosArray = new Array<string>();
-
   ObjDept: any;
   ObjDeptMana: any;
   ObjDeptPosit: any;
 
   ngOnInit(): void {
     this.dept_id = this.router.snapshot.params['dept_id'];
-    this.WaitApiData()
+    this.WaitApiData();
   }
 
-  WaitApiData() {
+  async WaitApiData() {
     this.editService.editGetData(this.dept_id).subscribe({
       next: (res: any) => {
-        // this.ObjDept = res.data.departments
-        // this.ObjDeptPosit = res.data.dept_positions
-        // this.ObjDeptMana = res.data.department_map_managers
-        // console.log(this.ObjDept)
-        // console.log(this.ObjDeptPosit)
-        // console.log(this.ObjDeptMana)
+        this.ObjDept = res.data.departments;
+        this.ObjDeptPosit = res.data.dept_positions;
+        this.ObjDeptMana = res.data.department_map_managers;
+        console.log(this.ObjDept);
+        console.log(this.ObjDeptPosit);
+        console.log(this.ObjDeptMana);
       },
-      error: (err: any) => {
-
-      },
+      error: (err: any) => {},
     });
   }
+
+
+  deleteDeptMana(index:number){
+    this.ObjDeptMana.splice(index,1)
+  }
+
+  deleteDeptPosit(index:number){
+    this.ObjDeptPosit.splice(index,1)
+  }
 }
+

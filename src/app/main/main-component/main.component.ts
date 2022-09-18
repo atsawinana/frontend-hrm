@@ -79,17 +79,17 @@ export class MainComponent implements OnInit {
 
   @HostListener('window:mousemove') refreshUserState() {
     this.coreToken.CheckTokenTimeOut().then(() => {
-      // if (localStorage.getItem('tokenLocal')) {
-      //   this.coreToken.userInactivate = false;
-      // }
+      if (localStorage.getItem('tokenLocal')) {
+        this.coreToken.userInactivate = false;
+      }
       clearTimeout(this.userActivity);
       this.setTimeout();
     });
   }
 
-  // @HostListener('click') userclick() {
-  //   if (this.coreToken.userInactivate) {
-  //     this.coreToken.Logout();
-  //   }
-  // }
+  @HostListener('click') userclick() {
+    if (this.coreToken.userInactivate) {
+      this.coreToken.Logout();
+    }
+  }
 }
