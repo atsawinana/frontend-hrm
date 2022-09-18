@@ -14,19 +14,13 @@
             <div class="col-lg-6 col-md-12 col-sm-12 col-12">
               <div class="row OriginalDiv">
                 <div class="col-lg-11 col-md-11 col-sm-11 col-10">
-                  <input
-                    type="text"
-                    placeholder="กรอกแผนก"
-                    class="form-control maxWidth"
-                  />
+                  <input type="text" placeholder="กรอกแผนก" class="form-control maxWidth" />
                 </div>
                 <div class="col-1"></div>
               </div>
             </div>
             <div class="row">
-              <div
-                class="col-lg-8 col-md-8 col-sm-7 col-5 d-flex justify-content-left"
-              ></div>
+              <div class="col-lg-8 col-md-8 col-sm-7 col-5 d-flex justify-content-left"></div>
               <div class="col-sm-4 col-5">
                 <div class="alertnull margin-button" id="alertnull_dp">
                   กรุณากรอกข้อมูล
@@ -43,11 +37,7 @@
           <div class="col-lg-6 col-md-12 col-sm-12 col-12">
             <div class="row OriginalDiv">
               <div class="col-lg-11 col-md-11 col-sm-11 col-10">
-                <input
-                  type="text"
-                  placeholder="กรอกแผนก"
-                  class="form-control maxWidth"
-                />
+                <input type="text" placeholder="กรอกแผนก" class="form-control maxWidth" />
               </div>
               <div class="col-1"></div>
             </div>
@@ -59,24 +49,15 @@
           <div class="col-lg-2 col-md-12 col-sm-12 col-12 d-inline-flex p-2">
             ชื่อหัวหน้าแผนก*
           </div>
-          <div class="col-lg-6 col-md-12 col-sm-12 col-12" >
-            <div class="row OriginalDiv mb-2" *ngFor="let row of OpString ; let i = index">
+          <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+            <div class="row OriginalDiv mb-2" *ngFor="let row of countDeptMana ; let i = index">
               <div class="col-lg-11 col-md-11 col-sm-11 col-10 my-1">
-                <input
-                  type="text"
-                  placeholder="กรอกชื่อหัวหน้าแผนก"
-                  class="form-control maxWidth"
-                  [ngModel]="DeptMana[i]"
-                />
+                <input type="text" placeholder="กรอกชื่อหัวหน้าแผนก" class="form-control maxWidth"
+                  [(ngModel)]="DeptMana[i]" />
               </div>
-              <div class="col-1 my-2">
-                <img
-                  class="mt-1 d-flex justify-content-center"
-                  alt="Alternative text"
-                  width="24px"
-                  height="24px"
-                  src="assets/img/circle-xmark-solid.svg"
-                />
+              <div class="col-1 my-2" style="cursor: pointer;" (click)="deleteDept(i)">
+                <img class="mt-1 d-flex justify-content-center" alt="Alternative text" width="24px" height="24px"
+                  src="assets/img/circle-xmark-solid.svg" />
               </div>
             </div>
           </div>
@@ -100,22 +81,13 @@
             ตำแหน่ง*
           </div>
           <div class="col-lg-6 col-md-12 col-sm-12 col-12">
-            <div class="row OriginalDiv" id="addpo">
+            <div class="row OriginalDiv" id="addpo" *ngFor="let row of countDeptPosit ; let j = index">
               <div class="col-lg-11 col-md-11 col-sm-11 col-10 my-1">
-                <input
-                  type="text"
-                  placeholder="กรอกตำแหน่ง"
-                  class="form-control maxWidth"
-                />
+                <input type="text" placeholder="กรอกตำแหน่ง" class="form-control maxWidth" [(ngModel)]="DeptPosit[j]" />
               </div>
-              <div class="col-1 my-2">
-                <img
-                  class="mt-1 d-flex justify-content-center"
-                  alt="Alternative text"
-                  width="24px"
-                  height="24px"
-                  src="assets/img/circle-xmark-solid.svg"
-                />
+              <div class="col-1 my-2" style="cursor: pointer;" (click)="deleteInputDept(j)">
+                <img class="mt-1 d-flex justify-content-center" alt="Alternative text" width="24px" height="24px"
+                  src="assets/img/circle-xmark-solid.svg" />
               </div>
             </div>
             <div class="row" id="pos"></div>
@@ -125,10 +97,8 @@
         <!-- add input position -->
         <div class="row">
           <div class="col-lg-4 d-flex justify-content-left"></div>
-          <div
-            class="col-lg-4 col-md-8 col-sm-7 col-5 d-flex justify-content-start"
-          >
-            <div class="text-button ms-2">
+          <div class="col-lg-4 col-md-8 col-sm-7 col-5 d-flex justify-content-start">
+            <div class="text-button ms-2" (click)="addInputDeptPosit()">
               <i class="fa-solid fa-circle-plus margin-text"></i>เพิ่มตำแหน่ง
             </div>
           </div>
@@ -143,37 +113,23 @@
 <!-- button cancel -->
 <div class="row mb-4 mt-5 d-flex justify-content-center">
   <div class="col-5 col-sm-5 col-md-5 col-lg-3">
-    <button
-      class="cancel-button d-flex justify-content-center w-100"
-      type="reset"
-      data-bs-toggle="modal"
-      href="#Modal-cancel"
-    >
+    <button class="cancel-button d-flex justify-content-center w-100" type="reset" data-bs-toggle="modal"
+      href="#Modal-cancel">
       <div class="cancel-font">ยกเลิก</div>
     </button>
   </div>
 
   <!-- button submit -->
   <div class="col-5 col-sm-5 col-md-5 col-lg-3">
-    <button
-      class="submit-button d-flex justify-content-center w-100"
-      type="submit"
-      data-bs-toggle="modal"
-      href="#Modal-submit"
-    >
-      <div class="submit-font" (click)="onSubmit()">ตกลง</div>
+    <button class="submit-button d-flex justify-content-center w-100" type="submit" data-bs-toggle="modal"
+      href="#Modal-submit">
+      <div class="submit-font">ตกลง</div>
     </button>
   </div>
 
   <!--data-bs-toggle="modal" href="#Modal-submit"-->
   <!-- modal add department -->
-  <div
-    class="modal fade"
-    id="Modal-submit"
-    aria-hidden="true"
-    aria-labelledby="modalsubmit"
-    tabindex="-1"
-  >
+  <div class="modal fade" id="Modal-submit" aria-hidden="true" aria-labelledby="modalsubmit" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-body d-block" style="border-radius: 10px">
@@ -182,32 +138,21 @@
           </div>
 
           <div class="d-flex justify-content-center">
-            <img
-              class="my-5 d-flex justify-content-center"
-              alt="Alternative text"
-              width="96px"
-              height="96px"
-              src="assets/img/users-solid.svg"
-            />
+            <img class="my-5 d-flex justify-content-center" alt="Alternative text" width="96px" height="96px"
+              src="assets/img/users-solid.svg" />
           </div>
 
           <div class="row d-flex justify-content-center mb-3">
             <div class="col-5 col-sm-5 col-md-5 col-lg-5">
-              <button
-                class="cancel-button cancel-font d-flex justify-content-center w-100"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              >
+              <button class="cancel-button cancel-font d-flex justify-content-center w-100" data-bs-dismiss="modal"
+                aria-label="Close">
                 <div class="cancel-text">ยกเลิก</div>
               </button>
             </div>
             <div class="col-5 col-sm-5 col-md-5 col-lg-5">
-              <button
-                class="submit-button submit-font d-flex justify-content-center w-100"
-                data-bs-target="#submit"
-                data-bs-toggle="modal"
-              >
-                <div class="submit-text">ตกลง</div>
+              <button class="submit-button submit-font d-flex justify-content-center w-100" data-bs-target="#submit"
+                data-bs-toggle="modal">
+                <div class="submit-text" (click)="onSubmit()">ตกลง</div>
               </button>
             </div>
           </div>
@@ -216,13 +161,7 @@
     </div>
   </div>
 
-  <div
-    class="modal fade"
-    id="submit"
-    aria-hidden="true"
-    aria-labelledby="modalsubmit2"
-    tabindex="-1"
-  >
+  <div class="modal fade" id="submit" aria-hidden="true" aria-labelledby="modalsubmit2" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-body d-block" style="border-radius: 10px">
@@ -232,22 +171,13 @@
             </div>
           </div>
           <div class="d-flex justify-content-center">
-            <img
-              class="my-5 d-flex justify-content-center"
-              alt="Alternative text"
-              width="96px"
-              height="96px"
-              src="assets/img/circle-check-solid.svg"
-            />
+            <img class="my-5 d-flex justify-content-center" alt="Alternative text" width="96px" height="96px"
+              src="assets/img/circle-check-solid.svg" />
           </div>
           <div class="d-flex justify-content-center">
             <div class="col-5 col-sm-5 col-md-5 col-lg-5 mb-4">
-              <button
-                class="submit-button d-flex justify-content-center w-100"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-                routerLink="../"
-              >
+              <button class="submit-button d-flex justify-content-center w-100" data-bs-dismiss="modal"
+                aria-label="Close" routerLink="../">
                 <div class="submit-text submit-font">ตกลง</div>
               </button>
             </div>
@@ -259,13 +189,7 @@
   <!-- --------------------------- -->
 
   <!-- modal cancel department -->
-  <div
-    class="modal fade"
-    id="Modal-cancel"
-    aria-hidden="true"
-    aria-labelledby="modalcancel"
-    tabindex="-1"
-  >
+  <div class="modal fade" id="Modal-cancel" aria-hidden="true" aria-labelledby="modalcancel" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-body d-block" style="border-radius: 10px">
@@ -274,32 +198,21 @@
           </div>
 
           <div class="d-flex justify-content-center">
-            <img
-              class="my-5 d-flex justify-content-center"
-              alt="Alternative text"
-              width="96px"
-              height="96px"
-              src="assets/img/cancel.svg"
-            />
+            <img class="my-5 d-flex justify-content-center" alt="Alternative text" width="96px" height="96px"
+              src="assets/img/cancel.svg" />
           </div>
 
           <div class="row d-flex justify-content-center mb-3">
             <div class="col-5 col-sm-5 col-md-5 col-lg-5">
-              <button
-                class="cancel-button cancel-font d-flex justify-content-center w-100"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              >
+              <button class="cancel-button cancel-font d-flex justify-content-center w-100" data-bs-dismiss="modal"
+                aria-label="Close">
                 <div class="cancel-text">ยกเลิก</div>
               </button>
             </div>
 
             <div class="col-5 col-sm-5 col-md-5 col-lg-5">
-              <button
-                class="submit-button submit-font d-flex justify-content-center w-100"
-                data-bs-target="#cancel"
-                data-bs-toggle="modal"
-              >
+              <button class="submit-button submit-font d-flex justify-content-center w-100" data-bs-target="#cancel"
+                data-bs-toggle="modal">
                 <div class="submit-text">ตกลง</div>
               </button>
             </div>
@@ -309,13 +222,7 @@
     </div>
   </div>
 
-  <div
-    class="modal fade"
-    id="cancel"
-    aria-hidden="true"
-    aria-labelledby="modalcancel2"
-    tabindex="-1"
-  >
+  <div class="modal fade" id="cancel" aria-hidden="true" aria-labelledby="modalcancel2" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-body d-block" style="border-radius: 10px">
@@ -325,22 +232,13 @@
             </div>
           </div>
           <div class="d-flex justify-content-center">
-            <img
-              class="my-5 d-flex justify-content-center"
-              alt="Alternative text"
-              width="96px"
-              height="96px"
-              src="assets/img/circle-check-solid.svg"
-            />
+            <img class="my-5 d-flex justify-content-center" alt="Alternative text" width="96px" height="96px"
+              src="assets/img/circle-check-solid.svg" />
           </div>
           <div class="d-flex justify-content-center">
             <div class="col-5 col-sm-5 col-md-5 col-lg-5 mb-4">
-              <button
-                class="submit-button d-flex justify-content-center w-100"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-                routerLink="../"
-              >
+              <button class="submit-button d-flex justify-content-center w-100" data-bs-dismiss="modal"
+                aria-label="Close" routerLink="../">
                 <div class="submit-text submit-font">ตกลง</div>
               </button>
             </div>
