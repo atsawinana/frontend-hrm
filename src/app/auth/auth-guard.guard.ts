@@ -17,7 +17,10 @@ export class AuthGuardGuard implements CanActivate {
   canActivate() {
     if (!this.coreToken.isLoggedin()) {
       this.router.navigate(['']);
+      return false;
     }
+    // }else if(this.coreToken.){
+    // }
     return true;
   }
 }

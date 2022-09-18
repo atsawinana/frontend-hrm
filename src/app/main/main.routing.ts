@@ -8,6 +8,7 @@ import { TimeAttendanceComponent } from './sub-component/timeAttendance/timeAtte
 import { EmployeeComponent } from './sub-component/employee/employee.component';
 import { TravelExpensesComponent } from './sub-component/travelExpenses/travelExpenses.component';
 import { ActivityComponent } from './sub-component/activity/activity.component';
+import { RoleGuard } from '../auth/role.guard';
 
 const routes: Routes = [
   {
@@ -24,7 +25,7 @@ const routes: Routes = [
   },
   {
     path: 'ot',
-    component: OtComponent,
+    component: OtComponent
   },
   {
     path: 'profile',

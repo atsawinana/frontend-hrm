@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, NavigationEnd } from '@angular/router';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { MainService } from '../main.service';
-import { core, Token } from '@angular/compiler';
 import { Route, Router, RouterLink } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
+import { Subject } from 'rxjs/internal/Subject';
+import { LoadingComponent } from 'src/app/login/loading/loading-template/loading.component';
 
 @Component({
   selector: 'app-main',
@@ -14,23 +14,26 @@ export class MainComponent implements OnInit {
   constructor(
     private MainService: MainService,
     private router: Router,
-    private coreToken: AuthService
-  ) {}
-  token?: any;
-  ud_fullname_th?: string;
-  ud_prefix?: string;
-  role?: string;
-  position_th?: string;
-  tokenLocal?: string;
-  tokenCheck?: boolean;
+    private coreToken: AuthService,
+  ) {
+    this.setTimeout();
+    this.userInactive.subscribe(() => {
+      console.log('user has been inactive (1 hour)');
+      this.coreToken.userInactivate = true;
+    });
+  }
+  
+  token!: any;
+  ud_fullname_th!: string;
+  ud_prefix!: string;
+  role: string = "";
+  position_th!: string;
+  tokenLocal!: string;
+  tokenCheck!: boolean;
+  photo!:string
+  checkApi:boolean = false;
 
   async ngOnInit() {
-    if (this.router.url == '/main') {
-      const addClass = document.getElementById('profile');
-      addClass?.classList.add('bg-active');
-    }
-
-    this.navigateActive()
 
     this.refresh();
     if (await this.coreToken.CheckTokenTimeOut()) {
@@ -46,6 +49,11 @@ export class MainComponent implements OnInit {
         this.ud_prefix = res.data.ud_prefix;
         this.position_th = res.data.position_th;
         this.role = res.data.role;
+        this.photo = res.data.ud_picture
+        this.checkApi = true;
+        localStorage.setItem('roleUser',this.role)
+        this.coreToken.UserRole = this.role
+        
       },
       error: (err: any) => {},
     });
@@ -55,47 +63,33 @@ export class MainComponent implements OnInit {
     this.coreToken.Logout();
   }
 
-  URLcheck(event: any) {
-    const clearClass = Array.from(document.getElementsByClassName('bg-active'));
-    clearClass.forEach((element) => {
-      element.classList.remove('bg-active');
-    });
+  title = 'frontend-code';
+  userActivity: any;
+  userInactive: Subject<any> = new Subject();
+  timeMin: number = 30; //Change Minute Here
 
-    // const idElement = event.srcElement.attributes.class
-    // console.log(idElement)
+  setTimeout() {
+    if (localStorage.getItem('tokenLocal') != null) {
+      this.userActivity = setTimeout(
+        () => this.userInactive.next(undefined),
+        1800000 // 1000 = 1sec
+      );
+    }
+  }
 
-    this.router.events.subscribe((val) => {
-      if (val instanceof NavigationEnd) {
-        this.navigateActive()
+  @HostListener('window:mousemove') refreshUserState() {
+    this.coreToken.CheckTokenTimeOut().then(() => {
+      if (localStorage.getItem('tokenLocal')) {
+        this.coreToken.userInactivate = false;
       }
+      clearTimeout(this.userActivity);
+      this.setTimeout();
     });
   }
 
-  navigateActive() {
-    if (this.router.url.includes('profile')) {
-      const addClass = document.getElementById('profile');
-      addClass?.classList.add('bg-active');
-    } else if (this.router.url.includes('timeattendance')) {
-      const addClass = document.getElementById('timeattendance');
-      addClass?.classList.add('bg-active');
-    } else if (this.router.url.includes('employee')) {
-      const addClass = document.getElementById('employee');
-      addClass?.classList.add('bg-active');
-    } else if (this.router.url.includes('department')) {
-      const addClass = document.getElementById('department');
-      addClass?.classList.add('bg-active');
-    } else if (this.router.url.includes('leave')) {
-      const addClass = document.getElementById('leave');
-      addClass?.classList.add('bg-active');
-    } else if (this.router.url.includes('ot')) {
-      const addClass = document.getElementById('ot');
-      addClass?.classList.add('bg-active');
-    }if (this.router.url.includes('car')) {
-      const addClass = document.getElementById('car');
-      addClass?.classList.add('bg-active');
-    }if (this.router.url.includes('activity')) {
-      const addClass = document.getElementById('activity');
-      addClass?.classList.add('bg-active');
+  @HostListener('click') userclick() {
+    if (this.coreToken.userInactivate) {
+      this.coreToken.Logout();
     }
   }
 }

@@ -6,6 +6,12 @@
     color: #D0E8FF;
 }
 
+.icon-fix
+{
+  min-width: 32px;
+  max-width: 32px;
+}
+
 .modal-title{
     
     margin-top: 50px;
@@ -58,8 +64,13 @@
 
 }
 
+select#listPerPage
+{
+  border: 1px solid #005FBC;
+  width: 65px !important;
+}
+
 .modal-ti{
-  
   margin-top: 5px;
   font-family: 'Kanit';
   font-style: normal;
@@ -168,7 +179,7 @@ table {
   line-height: 24px;
 }
 
-.next-page {
+.buttonPage {
   background: #FFFFFF;
   border: 1px solid #C7C7CC;
   border-radius: 8px;
@@ -191,7 +202,7 @@ table {
   margin-right: 10px;
 }
 
-#nextPage:hover {
+.buttonPage:hover {
   background-color: #005FBC;
   color: #ffffff;
   transition: 0.5s;
@@ -222,4 +233,15 @@ table {
 .activity-table:hover{
   background-color: #D1D1D6;
   transition: 0.25s;
+}
+#modal_detail {
+  margin-top: 5px;
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 50px;
+  margin-left: 50px;
+  text-align: center;
+  color: #1C1C1E;
 }

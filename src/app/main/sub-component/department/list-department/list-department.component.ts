@@ -12,8 +12,14 @@ export class ListDepartmentComponent implements OnInit {
   searchInput: any;
   listPerPage: number = 5;
   onPage: number = 1;
-  onPageNext: number = this.onPage+1;
+  onPageNext: number = this.onPage + 1;
   maxListDept?: any;
+  dept_name!: string;
+  dept_creat!: string;
+  dept_post!: any;
+  dept_manager!: any;
+  deptIDDelete:any;
+
 
   constructor(private DepService: ListDepartmentService) {}
   ngOnInit() {
@@ -35,9 +41,10 @@ export class ListDepartmentComponent implements OnInit {
   }
 
   listPerpage() {
-    const list = (<HTMLSelectElement>document.getElementById('listPerPage'))
-      .value;
+    const list = (<HTMLSelectElement>document.getElementById('listPerPage')).value;
     this.listPerPage = Number(list);
+    this.onPage = 1;
+    this.onPageNext = this.onPage + 1
   }
 
   increasePage() {
@@ -46,12 +53,47 @@ export class ListDepartmentComponent implements OnInit {
     if (this.onPage < maxPage) {
       this.onPage++;
       this.onPageNext++;
+    } else {
+      const list = <HTMLSelectElement>(
+        document.getElementsByClassName('buttonPage')
+      );
+
+      for (var i = 0; i < list.length; i++) {
+        list[i].classList.remove('buttonPage:hover');
+      }
     }
   }
+
   DecreasePage() {
     if (this.onPage > 1) {
       this.onPage--;
       this.onPageNext--;
     }
+  }
+  Delete_Department() {
+    this.DepService.DeleletDepartment(this.deptIDDelete).subscribe({
+      next: (res: any) => {},
+      error: (err: any) => {},
+    });
+  }
+
+  SetDeptID(deptID: string){
+    this.deptIDDelete = deptID
+  } 
+
+  DetailDept(event: any) {
+    this.DepService.DetailDepartment(event).subscribe({
+      next: (res: any) => {
+        this.dept_name = res.data.departments.dept_name_th;
+        this.dept_creat = res.data.departments.dept_created_date;
+        this.dept_post = res.data.dept_positions;
+        this.dept_manager = res.data.department_map_managers;
+      },
+      error: (err: any) => {},
+    });
+  }
+
+  reload() {
+    location.reload();
   }
 }

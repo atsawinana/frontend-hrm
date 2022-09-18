@@ -1,0 +1,47 @@
+<div *ngIf="roleNormal || roleMana || roleHR" [ngClass]="{'bg-active' : profile}" class="profile text-center d-flex justify-content-center align-items-center icon-sidebar ps-2 inactive-icon py-1 my-1 profile"
+  style="flex-direction: column; " (click)="URLcheck($event)" routerLink="profile" id="profile">
+  <img class="d-flex justify-content-center" src="assets/img/sidebar/icon-main.png" alt="">
+  <div class="icon-font d-flex justify-content-center">หน้าแรก</div>
+</div>
+
+<div *ngIf="roleNormal || roleMana || roleHR" [ngClass]="{'bg-active' : timeattendance}" class="text-center d-flex justify-content-center align-items-center icon-sidebar ps-2 inactive-icon py-1 my-1 timeattendance" 
+  style="flex-direction: column;" (click)="URLcheck($event)" routerLink="timeattendance" id="timeattendance">
+  <img class="d-flex justify-content-center" src="assets/img/sidebar/icon-work.png" alt="">
+  <div class="icon-font">เข้างาน</div>
+</div>
+
+<div *ngIf="roleMana || roleHR" [ngClass]="{'bg-active' : employee}" class="text-center d-flex justify-content-center align-items-center icon-sidebar ps-2 inactive-icon py-1 my-1 employee"
+  style="flex-direction: column;" (click)="URLcheck($event)" routerLink="employee" id="employee">
+  <img class="d-flex justify-content-center" src="assets/img/sidebar/icon-list.png" alt="">
+  <div class="icon-font">รายชื่อ</div>
+</div>
+
+<div *ngIf="roleHR" [ngClass]="{'bg-active' : department}" class="text-center d-flex justify-content-center align-items-center icon-sidebar ps-2 inactive-icon py-1 my-1 department"
+  style="flex-direction: column;" routerLink="department" id="department" (click)="URLcheck($event)">
+  <img class="d-flex justify-content-center" src="assets/img/sidebar/department-icon.png" alt="">
+  <div class="icon-font">แผนก</div>
+</div>
+
+<div *ngIf="roleNormal || roleMana || roleHR" [ngClass]="{'bg-active' : leave}"  class="text-center d-flex justify-content-center align-items-center icon-sidebar ps-2 inactive-icon py-1 my-1 leave"
+  style="flex-direction: column;" routerLink="leave" (click)="URLcheck($event)" id="leave">
+  <img class="d-flex justify-content-center" src="assets/img/sidebar/icon-leave.png" alt="">
+  <div class="icon-font">การลา</div>
+</div>
+
+<div *ngIf="roleNormal || roleMana || roleHR" [ngClass]="{'bg-active' : ot}" class="text-center d-flex justify-content-center align-items-center icon-sidebar ps-2 inactive-icon py-1 my-1 ot"
+  style="flex-direction: column;" routerLink="ot" (click)="URLcheck($event)" id="ot">
+  <img class="d-flex justify-content-center" src="assets/img/sidebar/ot-time.png" alt="">
+  <div class="icon-font mt-1">โอที</div>
+</div>
+
+<div *ngIf="roleNormal || roleMana || roleHR" [ngClass]="{'bg-active' : car}" class="text-center d-flex justify-content-center align-items-center icon-sidebar ps-2 inactive-icon py-1 my-1 car"
+  style="flex-direction: column;" routerLink="car" (click)="URLcheck($event)" id="car">
+  <img class="d-flex justify-content-center" src="assets/img/sidebar/icon-car.png" alt="">
+  <div class="icon-font">ค่าพาหนะ</div>
+</div>
+
+<div *ngIf="roleNormal || roleMana || roleHR" [ngClass]="{'bg-active' : activity}" class="text-center d-flex justify-content-center align-items-center icon-sidebar ps-2 inactive-icon py-1 my-1  activity "
+  style="flex-direction: column;" routerLink="activity" (click)="URLcheck($event)" id="activity">
+  <img class="d-flex justify-content-center" src="assets/img/sidebar/icon-activity.png" alt="">
+  <div class="icon-font mt-1">กิจกรรม</div>
+</div>

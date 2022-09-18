@@ -53,12 +53,7 @@
   height: 80px;
 }
 
-.icon-font {
-  font-family: 'Kanit';
-  font-style: normal;
-  font-size: 12px;
-  color: #E5F0FA;
-}
+
 
 .dropdown-menu {
   transition: 0.3s;
@@ -86,29 +81,10 @@
   color: #636366;
 }
 
-.inactive-icon {
-  background: none;
-  border-radius: none;
+.side-bar-hide {
+  width: 65px;
   cursor: pointer;
-  background-color: transparent;
-}
-
-.inactive-icon:hover {
-  border-radius: 0px 16px 16px 0px;
-  transition: 0.25s ease-in-out;
-  background-color: #FF5444;
-  -webkit-transition: background-color 300ms all;
-  -ms-transition: background-color 300ms all;
-  transition: background-color 300ms all;
-}
-
-.bg-active {
-  border-radius: 0px 16px 16px 0px;
-  transition: 0.15s ease-in-out;
-  background-color: #FF5444;
-  -webkit-transition: background-color 300ms all;
-  -ms-transition: background-color 300ms all;
-  transition: background-color 300ms all;
+  display: none !important;
 }
 
 @media screen and (max-width: 992px) {
