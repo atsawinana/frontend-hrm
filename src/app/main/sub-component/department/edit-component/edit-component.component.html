@@ -33,10 +33,15 @@
       ชื่อหัวหน้าแผนก*
     </div>
     <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs" >
-      <div class="row OriginalDiv" *ngFor="let row of ObjDeptMana ; let i = index">
+      <div class="row OriginalDiv" *ngFor="let row of countDeptMana ; let i = index">
         <div class="col-10" >
-          <input type="text" placeholder="กรอกหัวหน้าแผนก" class="form-control maxWidth mb-4 add-boss" [(ngModel)]="ObjDeptMana[i].ud_fullname_th">
+          <input list="uid" type="text" placeholder="กรอกหัวหน้าแผนก" class="form-control maxWidth mb-4 add-boss" [(ngModel)]="ObjDeptMana[i].ud_fullname_th">
         </div>
+
+        <datalist id="uid">
+          <option *ngFor="let uid of DeptUserID" [value]="uid.ud_fullname_th"></option>
+        </datalist>
+
         <div class="col-2 py-2">
           <i class="fa-solid fa-circle-xmark delete-dept iconDept" (click)="deleteDeptMana(i)"></i>
         </div>
@@ -51,7 +56,7 @@
     </div>
     <div class="col-8 d-flex justify-content-left">
       <a>
-        <div class="text-button">
+        <div class="text-button" (click)="addInputDept()">
           <i class="fa-solid fa-circle-plus"></i>เพิ่มหัวหน้า
         </div>
       </a>
@@ -63,7 +68,7 @@
       ตำแหน่ง*
     </div>
     <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
-      <div class="row OriginalDiv" *ngFor="let row of ObjDeptPosit ; let i = index">
+      <div class="row OriginalDiv" *ngFor="let row of countDeptPosit ; let i = index">
         <div class="col-10">
           <input type="text" placeholder="กรอกตำแหน่ง" class="form-control maxWidth mb-4 add-pos" [(ngModel)]="ObjDeptPosit[i].dp_name_en
           ">
@@ -82,7 +87,7 @@
     </div>
     <div class="col-8 d-flex justify-content-left">
       <a>
-        <div class="text-button mb-4">
+        <div class="text-button mb-4" (click)="addInputDeptPosit()">
           <i class="fa-solid fa-circle-plus"></i>เพิ่มตำแหน่ง
         </div>
       </a>
