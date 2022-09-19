@@ -26,7 +26,7 @@ export class EditComponentComponent implements OnInit {
   countDeptMana: number[] = [];
   countDeptPosit: number[] = [];
   htmlWaitLoad: boolean = false;
-  DeptUsername:string[] = [];
+  DeptUsername: string[] = [];
 
   ngOnInit(): void {
     this.Maindept.getAllUser().subscribe({
@@ -69,7 +69,7 @@ export class EditComponentComponent implements OnInit {
     let aryNamePosition = new Array<string>();
     let aryUserManager = new Array<string>();
 
-    this.MapUsernameWithID()
+    this.MapUsernameWithID();
 
     for (let i = 0; i < Object.keys(this.ObjDeptPosit).length; i++) {
       aryNamePosition[i] = this.ObjDeptPosit[i].dp_name_en;
@@ -98,18 +98,18 @@ export class EditComponentComponent implements OnInit {
 
   deleteDeptMana(index: number) {
     this.ObjDeptMana.splice(index, 1);
-    // this.countDeptMana--;
+    this.countDeptMana.splice(index, 1);
+
   }
 
   deleteDeptPosit(index: number) {
     this.ObjDeptPosit.splice(index, 1);
-    // this.countDeptPosit--;
+    this.countDeptPosit.splice(index, 1);
+
   }
 
-  check(){
-
+  check() {
     // let aryNamePosition = new Array<string>();
-
     // for (let i = 0; i < Object.keys(this.ObjDeptPosit).length; i++) {
     //   aryNamePosition[i] = this.ObjDeptPosit[i].dp_name_en;
     // }
@@ -123,10 +123,12 @@ export class EditComponentComponent implements OnInit {
     console.log('check len', this.DeptUserID.length);
     for (let i = 0; i < Object.keys(this.ObjDeptMana).length; i++) {
       for (let j = 0; j < this.DeptUserID.length; j++) {
-        if(this.ObjDeptMana[i].ud_fullname_th === this.DeptUserID[j].ud_fullname_th)
-        {
-          this.DeptUsername.push(String(this.DeptUserID[j].ud_username))
-          console.log(this.DeptUsername[i])
+        if (
+          this.ObjDeptMana[i].ud_fullname_th ===
+          this.DeptUserID[j].ud_fullname_th
+        ) {
+          this.DeptUsername.push(String(this.DeptUserID[j].ud_username));
+          console.log(this.DeptUsername[i]);
         }
       }
     }
@@ -140,8 +142,8 @@ export class EditComponentComponent implements OnInit {
       this.countDeptMana?.push(
         this.countDeptMana[this.countDeptMana.length - 1] + 1
       );
+      this.ObjDeptMana.push({});
     }
-    this.ObjDeptMana.push({});
   }
 
   addInputDeptPosit() {
@@ -152,7 +154,7 @@ export class EditComponentComponent implements OnInit {
       this.countDeptPosit?.push(
         this.countDeptPosit[this.countDeptPosit.length - 1] + 1
       );
+      this.ObjDeptPosit.push({});
     }
-    this.ObjDeptPosit.push({});
   }
 }
