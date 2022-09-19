@@ -23,7 +23,7 @@ export class AppComponent {
   setTimeout() {
     if (localStorage.getItem('tokenLocal') != null) {
       this.userActivity = setTimeout(
-        () => this.userInactive.next(undefined),55000
+        () => this.userInactive.next(undefined),1800000
       );
     }
   }

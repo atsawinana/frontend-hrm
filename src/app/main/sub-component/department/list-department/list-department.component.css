@@ -1,70 +1,69 @@
-
 #icon-property {
-    margin-top: 50px;
-    margin-bottom: 50px;
-    font-size:100px;
-    color: #D0E8FF;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  font-size: 100px;
+  color: #D0E8FF;
 }
 
-.icon-fix
-{
+.icon-fix {
   min-width: 32px;
   max-width: 32px;
 }
 
-.modal-title{
-    
-    margin-top: 50px;
-    font-family: 'Kanit';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 35px;
-    text-align: center;
-    color: #1C1C1E;
+.modal-title {
+
+  margin-top: 50px;
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 35px;
+  text-align: center;
+  color: #1C1C1E;
 }
+
 .cancel-button {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 10px 15px;
-    background: #FFFFFF;
-    border: 1px solid #005FBC;
-    border-radius: 8px;
-    margin-bottom: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 10px 15px;
+  background: #FFFFFF;
+  border: 1px solid #005FBC;
+  border-radius: 8px;
+  margin-bottom: 50px;
 }
 
 .cancel-text {
-    font-family: 'Kanit';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    color: #005FBC;
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #005FBC;
 }
 
 .submit-button {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 10px 15px ;
-    background: linear-gradient(270.74deg, #2E3579 0.35%, #005FBC 99.1%, #005FBC 99.1%);
-    border-radius: 8px;
-    border: 1px solid #005FBC;
-    margin-bottom: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 10px 15px;
+  background: linear-gradient(270.74deg, #2E3579 0.35%, #005FBC 99.1%, #005FBC 99.1%);
+  border-radius: 8px;
+  border: 1px solid #005FBC;
+  margin-bottom: 50px;
 }
 
 .submit-text {
-    font-family: 'Kanit';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    color: #FFFFFF;
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #FFFFFF;
 
 }
 
-.modal-ti{
+.modal-ti {
   margin-top: 5px;
   font-family: 'Kanit';
   font-style: normal;
@@ -78,14 +77,17 @@
 .modal-header {
   font-family: 'Kanit';
 }
+
 .modal-body {
   font-family: 'Kanit';
   font-size: 16px;
 }
+
 .modal-footer {
   margin-bottom: 15px;
 }
-#button_close{
+
+#button_close {
   color: red;
 }
 
@@ -224,10 +226,11 @@ table {
   cursor: pointer;
 }
 
-.activity-table:hover{
+.activity-table:hover {
   background-color: #D1D1D6;
   transition: 0.25s;
 }
+
 #modal_detail {
   margin-top: 5px;
   font-family: 'Kanit';
@@ -238,4 +241,8 @@ table {
   margin-left: 50px;
   text-align: center;
   color: #1C1C1E;
+}
+
+.modal-padding {
+  height:35px !important;
 }
