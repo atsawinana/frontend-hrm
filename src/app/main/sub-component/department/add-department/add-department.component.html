@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-12 justify-content-center">
       <div class="row d-flex justify-content-center">
-        <div class="col-12 justify-content-center">
+        <div class="col-12 justify-content-center" (click)="MapUsernameWithID()">
           <p class="font-head">เพิ่มแผนก</p>
         </div>
         <div class="col-12 justify-content-center">
@@ -52,8 +52,11 @@
           <div class="col-lg-6 col-md-12 col-sm-12 col-12">
             <div class="row OriginalDiv mb-2" *ngFor="let row of countDeptMana ; let i = index">
               <div class="col-lg-11 col-md-11 col-sm-11 col-10 my-1">
-                <input type="text" placeholder="กรอกชื่อหัวหน้าแผนก" class="form-control maxWidth"
+                <input (keypress)="false" type="text" list="uid" placeholder="กรอกชื่อหัวหน้าแผนก" class="form-control maxWidth"
                   [(ngModel)]="DeptMana[i]" />
+                  <datalist id="uid">
+                    <option *ngFor="let uid of DeptUserID" [value]="uid.ud_fullname_th"></option>
+                  </datalist>
               </div>
               <div class="col-1 my-2" style="cursor: pointer;" (click)="deleteDept(i)">
                 <img class="mt-1 d-flex justify-content-center" alt="Alternative text" width="24px" height="24px"
@@ -151,8 +154,8 @@
             </div>
             <div class="col-5 col-sm-5 col-md-5 col-lg-5">
               <button class="submit-button submit-font d-flex justify-content-center w-100" data-bs-target="#submit"
-                data-bs-toggle="modal">
-                <div class="submit-text" (click)="onSubmit()">ตกลง</div>
+                data-bs-toggle="modal" (click)="onSubmit()">
+                <div class="submit-text" >ตกลง</div>
               </button>
             </div>
           </div>
