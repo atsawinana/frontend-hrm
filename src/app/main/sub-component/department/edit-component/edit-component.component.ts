@@ -1,9 +1,4 @@
-import {
-  Component,
-  ComponentFactoryResolver,
-  OnInit,
-  resolveForwardRef,
-} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DepartmentModule } from '../department.module';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { ActivatedRoute, Route, Router, RouterLink } from '@angular/router';
@@ -19,19 +14,19 @@ export class EditComponentComponent implements OnInit {
   dept_id!: string;
 
   constructor(
-    private _fb: FormBuilder,
     private router: ActivatedRoute,
     private editService: EditComponentService,
     private Maindept: DepartmentService
   ) {}
 
-  ObjDept: any;
-  ObjDeptMana: any;
-  ObjDeptPosit: any;
+  ObjDept: any = {};
+  ObjDeptMana: any = {};
+  ObjDeptPosit: any = {};
   DeptUserID: any[] = [];
-
   countDeptMana: number[] = [];
   countDeptPosit: number[] = [];
+  htmlWaitLoad: boolean = false;
+  DeptUsername:string[] = [];
 
   ngOnInit(): void {
     this.Maindept.getAllUser().subscribe({
@@ -52,18 +47,17 @@ export class EditComponentComponent implements OnInit {
         this.ObjDept = res.data.departments;
         this.ObjDeptPosit = res.data.dept_positions;
         this.ObjDeptMana = res.data.department_map_managers;
+        this.htmlWaitLoad = true;
         console.log(this.ObjDept);
         console.log(this.ObjDeptPosit);
         console.log(this.ObjDeptMana);
 
-
         for (let i = 0; i < Object.keys(this.ObjDeptMana).length; i++) {
-          this.countDeptMana[i] = i+1;
+          this.countDeptMana[i] = i + 1;
         }
         for (let i = 0; i < Object.keys(this.ObjDeptPosit).length; i++) {
-          this.countDeptPosit[i] = i+1;
+          this.countDeptPosit[i] = i + 1;
         }
-
       },
       error: (err: any) => {},
     });
@@ -74,6 +68,8 @@ export class EditComponentComponent implements OnInit {
     let nameDeptTH = this.ObjDept.dept_name_th;
     let aryNamePosition = new Array<string>();
     let aryUserManager = new Array<string>();
+
+    this.MapUsernameWithID()
 
     for (let i = 0; i < Object.keys(this.ObjDeptPosit).length; i++) {
       aryNamePosition[i] = this.ObjDeptPosit[i].dp_name_en;
@@ -88,7 +84,7 @@ export class EditComponentComponent implements OnInit {
         this.dept_id,
         nameDeptEN,
         aryNamePosition,
-        aryUserManager,
+        this.DeptUsername,
         'fix',
         nameDeptTH
       )
@@ -110,6 +106,32 @@ export class EditComponentComponent implements OnInit {
     // this.countDeptPosit--;
   }
 
+  check(){
+
+    // let aryNamePosition = new Array<string>();
+
+    // for (let i = 0; i < Object.keys(this.ObjDeptPosit).length; i++) {
+    //   aryNamePosition[i] = this.ObjDeptPosit[i].dp_name_en;
+    // }
+    // console.log(aryNamePosition)
+    // this.MapUsernameWithID()
+    // console.log(this.ObjDeptMana)
+    // console.log(this.ObjDeptPosit)
+  }
+
+  MapUsernameWithID() {
+    console.log('check len', this.DeptUserID.length);
+    for (let i = 0; i < Object.keys(this.ObjDeptMana).length; i++) {
+      for (let j = 0; j < this.DeptUserID.length; j++) {
+        if(this.ObjDeptMana[i].ud_fullname_th === this.DeptUserID[j].ud_fullname_th)
+        {
+          this.DeptUsername.push(String(this.DeptUserID[j].ud_username))
+          console.log(this.DeptUsername[i])
+        }
+      }
+    }
+  }
+
   addInputDept() {
     // console.log(this.DeptMana);
     if (this.ObjDeptMana[this.countDeptMana.length - 1] == null) {
@@ -119,6 +141,7 @@ export class EditComponentComponent implements OnInit {
         this.countDeptMana[this.countDeptMana.length - 1] + 1
       );
     }
+    this.ObjDeptMana.push({});
   }
 
   addInputDeptPosit() {
@@ -130,6 +153,6 @@ export class EditComponentComponent implements OnInit {
         this.countDeptPosit[this.countDeptPosit.length - 1] + 1
       );
     }
+    this.ObjDeptPosit.push({});
   }
 }
-

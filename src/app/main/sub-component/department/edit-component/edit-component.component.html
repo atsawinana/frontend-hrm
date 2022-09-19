@@ -1,5 +1,5 @@
-<div class="container p-0 mainContainer">
-  <div class="font-header mb-5" id="re">
+<div class="container p-0 mainContainer" *ngIf="htmlWaitLoad">
+  <div class="font-header mb-5" id="re" (click)="check()">
     แก้ไขแผนก
   </div>
   <div class="row mb-4">
@@ -9,7 +9,7 @@
     <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
       <div class="row OriginalDiv">
         <div class="col-10">
-          <input type="text" placeholder="กรอกแผนก" class="form-control maxWidth" id="deptNameEn" [(ngModel)]="ObjDept.dept_name_en">
+          <input ng-cloak type="text" placeholder="กรอกแผนก" class="form-control maxWidth" id="deptNameEn" [(ngModel)]="ObjDept.dept_name_en">
         </div>
       </div>
     </div>
@@ -22,7 +22,7 @@
     <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
       <div class="row OriginalDiv">
         <div class="col-10">
-          <input type="text" placeholder="กรอกแผนก" class="form-control maxWidth" id="deptNameTh" [(ngModel)]="ObjDept.dept_name_th">
+          <input ng-cloak type="text" placeholder="กรอกแผนก" class="form-control maxWidth" id="deptNameTh" [(ngModel)]="ObjDept.dept_name_th">
         </div>
       </div>
     </div>
@@ -35,7 +35,7 @@
     <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs" >
       <div class="row OriginalDiv" *ngFor="let row of countDeptMana ; let i = index">
         <div class="col-10" >
-          <input list="uid" type="text" placeholder="กรอกหัวหน้าแผนก" class="form-control maxWidth mb-4 add-boss" [(ngModel)]="ObjDeptMana[i].ud_fullname_th">
+          <input ng-cloak list="uid" type="text" placeholder="กรอกหัวหน้าแผนก" class="form-control maxWidth mb-4 add-boss" [(ngModel)]="ObjDeptMana[i].ud_fullname_th">
         </div>
 
         <datalist id="uid">
@@ -70,7 +70,7 @@
     <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
       <div class="row OriginalDiv" *ngFor="let row of countDeptPosit ; let i = index">
         <div class="col-10">
-          <input type="text" placeholder="กรอกตำแหน่ง" class="form-control maxWidth mb-4 add-pos" [(ngModel)]="ObjDeptPosit[i].dp_name_en
+          <input  type="text" placeholder="กรอกตำแหน่ง" class="form-control maxWidth mb-4 add-pos" [(ngModel)]="ObjDeptPosit[i].dp_name_en
           ">
         </div>
         <div class="col-2 py-2">
@@ -129,7 +129,7 @@
             </div>
             <div class="col-5 col-sm-5 col-md-5 col-lg-5">
               <button class="submit-button submit-font d-flex justify-content-center w-100" data-bs-target="#submit"
-                data-bs-toggle="modal">
+                data-bs-toggle="modal" (click)="EditData()">
                 <div class="submit-text">ตกลง</div>
               </button>
             </div>
