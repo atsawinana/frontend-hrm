@@ -69,15 +69,6 @@ export class EditComponentComponent implements OnInit {
     });
   }
 
-<<<<<<< Updated upstream
-
-  deleteDeptMana(index:number){
-    this.ObjDeptMana.splice(index,1)
-  }
-
-  deleteDeptPosit(index:number){
-    this.ObjDeptPosit.splice(index,1)
-=======
   EditData() {
     let nameDeptEN = this.ObjDept.dept_name_en;
     let nameDeptTH = this.ObjDept.dept_name_th;
@@ -139,7 +130,6 @@ export class EditComponentComponent implements OnInit {
         this.countDeptPosit[this.countDeptPosit.length - 1] + 1
       );
     }
->>>>>>> Stashed changes
   }
 }
 
