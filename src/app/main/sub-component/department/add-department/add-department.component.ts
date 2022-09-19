@@ -62,9 +62,14 @@ export class AddDepartmentComponent implements OnInit {
 
   onSubmit() {
     this.MapUsernameWithID();
+    console.log(this.namedepartment_en.value)
+    console.log(this.namedepartment_th.value)
+    console.log(this.DeptPosit)
+    console.log(this.DeptUsername)
+
     this.Add_dp.adddepartment(
       this.namedepartment_en.value!,
-      this.namedepartment_th.value!,
+      "เทสภาษาไทย",
       this.DeptPosit!,
       this.DeptUsername!
     ).subscribe({

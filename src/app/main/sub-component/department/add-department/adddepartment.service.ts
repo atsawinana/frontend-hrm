@@ -13,15 +13,13 @@ export class AdddepartmentService {
     naemposition: string[],
     nameleader: string[]
   ) {
-    console.log(naemposition);
-    console.log(nameleader);
     return this.httpClient.post(
       'http://127.0.0.1:8000/api/department/addDepartment',
       {
         dept_name_en: namedepartment_en,
-        dept_name_th: namedepartment_th,
+        dept_name_th: "test",
         dp_name_en: naemposition,
-        dp_name_th: 'เทสภาษาไทย',
+        dp_name_th: 'testststst',
         dept_update_by: 'FixID',
         dmm_username: nameleader,
       }
