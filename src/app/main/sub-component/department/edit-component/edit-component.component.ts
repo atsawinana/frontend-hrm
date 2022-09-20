@@ -48,8 +48,9 @@ export class EditComponentComponent implements OnInit {
         this.ObjDeptPosit = res.data.dept_positions;
         this.ObjDeptMana = res.data.department_map_managers;
         this.htmlWaitLoad = true;
-
-        console.log("res from api",this.ObjDeptMana);
+        console.log(this.ObjDept);
+        console.log(this.ObjDeptPosit);
+        console.log(this.ObjDeptMana);
 
         for (let i = 0; i < Object.keys(this.ObjDeptMana).length; i++) {
           this.countDeptMana[i] = i + 1;
@@ -78,9 +79,6 @@ export class EditComponentComponent implements OnInit {
       aryUserManager[i] = this.ObjDeptMana[i].dmm_username;
     }
 
-    console.log(this.DeptUsername)
-    console.log(aryNamePosition)
-
     this.editService
       .editData(
         this.dept_id,
@@ -101,13 +99,12 @@ export class EditComponentComponent implements OnInit {
   deleteDeptMana(index: number) {
     this.ObjDeptMana.splice(index, 1);
     this.countDeptMana.splice(index, 1);
-    console.log(this.ObjDeptMana)
+
   }
 
   deleteDeptPosit(index: number) {
     this.ObjDeptPosit.splice(index, 1);
     this.countDeptPosit.splice(index, 1);
-    console.log(this.ObjDeptPosit)
 
   }
 
@@ -118,7 +115,7 @@ export class EditComponentComponent implements OnInit {
     // }
     // console.log(aryNamePosition)
     // this.MapUsernameWithID()
-    console.log(this.ObjDeptMana)
+    // console.log(this.ObjDeptMana)
     // console.log(this.ObjDeptPosit)
   }
 
