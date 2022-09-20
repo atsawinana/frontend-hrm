@@ -41,15 +41,16 @@
           let datas of deprtmentsData
             | filter: searchInput
             | paginate: { itemsPerPage: listPerPage, currentPage: onPage }
-        ">
-        <td>{{ datas.dept_id }}</td>
+            let i = index">
+        <td>{{datas.number}}</td>
         <td id="nameDepartment">{{ datas.dept_name_en }}</td>
-        <td>{{ datas.number }}</td>
+        <td>{{ datas.member }}</td>
         <td>
           <div class="row d-flex justify-content-center">
             <div class="col-1 px-0 mx-1">
               <div class="activity-table icon-fix" data-bs-toggle="modal" href="#exampleModalToggle_de" role="button"
                 (click)="DetailDept(datas.dept_id)">
+                
                 <img class="mx-auto pb-1" src="assets/img/department/magnifying-glass-plus-solid.svg" alt=""
                   style="width: 18px; height: 100%px" />
               </div>
@@ -67,7 +68,7 @@
               </div>
             </div>
             <div class="col-1 px-0 mx-1">
-              <div class="activity-table icon-fix" data-bs-toggle="modal" href="#exampleModalToggle" role="button">
+              <div class="activity-table icon-fix" (click)="SetDeptID(datas.dept_id)" data-bs-toggle="modal" href="#exampleModalToggle" role="button">
                 <img class="mx-auto pb-1" src="assets/img/department/trash-solid-1.svg" alt=""
                   style="width: 18px; height: 100%px" />
               </div>
@@ -78,10 +79,6 @@
             tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content">
-                <!-- <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalToggleLabel">คุณต้องการลบแผนกหรือไม่?.</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div> -->
                 <div class="modal-body d-block" style="border-radius: 10px">
                   <div class="d-flex justify-content-center" id="confirm">
                     <h5 class="modal-title" id="exampleModalToggleLabel">
@@ -101,16 +98,12 @@
                     <div class="col-6 col-sm-3 col-md-3 col-lg-3">
                       <button class="submit-button d-flex justify-content-center w-100"
                         data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"
-                        (click)="Delete_Department(datas.dept_id )">
+                        (click)="Delete_Department()">
                         <div class="submit-text">ยืนยัน</div>
                       </button>
                     </div>
                   </div>
                 </div>
-                <!-- <div class="modal-footer">
-        <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">ยกเลิก</button>
-        <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">ยืนยัน</button>
-      </div> -->
               </div>
             </div>
           </div>
@@ -118,10 +111,6 @@
             tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content">
-                <!-- <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalToggleLabel2">ลบแผนกสำเร็จ</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div> -->
                 <div class="modal-body">
                   <div class="d-flex justify-content-center">
                     <h5 class="modal-title" id="exampleModalToggleLabel">
@@ -145,6 +134,7 @@
           </div>
         </td>
       </tr>
+
     </tbody>
   </table>
 </div>
@@ -157,7 +147,12 @@
           <div class="list-perPage">รายการต่อหน้า</div>
         </div>
         <div class="col-2 ms-2 p-0 select-perPage">
-          <select id="listPerPage" class="select-perPage" aria-label=".form-select-sm example" (change)="listPerpage()">
+          <!-- <select id="listPerPage" class=""  (change)="listPerpage()">
+            <option value="3">3</option>
+            <option selected value="5">5</option>
+            <option value="10">10</option>
+          </select> --> 
+          <select id="listPerPage" class="form-select" aria-label="Default select example" (change)="listPerpage()">
             <option value="3">3</option>
             <option selected value="5">5</option>
             <option value="10">10</option>
@@ -167,80 +162,50 @@
     </div>
 
     <div class="col-4 d-flex align-items-center justify-content-end">
-      <button id="nextPage" type="button" class="next-page" (click)="DecreasePage()">
-        < </button>
-          <div class="on-page text-end d-flex align-items-center justify-content-center">
-            {{ onPage }}
-          </div>
 
-          <div id="nextPage" class="next-page text-end d-flex align-items-center justify-content-center"
-            (click)="increasePage()">
-            {{ onPageNext }}
-          </div>
+      <button id="PageButton" type="button" class="buttonPage previous" (click)="DecreasePage()"> < </button>
+      <div class="on-page text-end d-flex align-items-center justify-content-center onPage">
+          {{ onPage }}
+      </div>
 
-          <button id="nextPage" type="button" class="next-page" (click)="increasePage()">
-            >
-          </button>
-    </div>
+      <div id="PageButton" class="buttonPage text-end d-flex align-items-center justify-content-center nextPage"
+      (click)="increasePage()">
+      {{ onPageNext }}
+      </div>
+
+    <button id="PageButton" type="button" class="buttonPage nextPage" (click)="increasePage()">
+      >
+    </button>
   </div>
 </div>
+</div>
+
 <!-- modal detail -->
-<div class="container">
-  <div class="modal" id="exampleModalToggle_de" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-body">
-          <div class="modal-header">
-            <h5 class="modal-ti">{{dept_name}}</h5>
-            <button type="button" class="btn-close" id="button_close" data-bs-dismiss="modal"
-              aria-label="Close"></button>
+<div class="modal fade" id="exampleModalToggle_de" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="modal-header">
+          <h5 class="modal-ti">{{dept_name}}</h5>
+          <button type="button" class="btn-close" id="button_close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div id="modal_detail">
+          <div class="col d-flex justify-content-center">ชื่อแผนก (TH) :
+            <div class="col">{{dept_name}}</div>
           </div>
-          <div id="modal_detail">
-
-            <div class="row mb-3">
-              <div class="col-5 d-flex justify-content-left">ชื่อแผนก (TH) :</div>
-              <div class="col-7">
-                <div class="row">
-                  <div class="col-12 d-flex justify-content-left">
-                    <div> {{dept_name}} </div>
-                  </div>
-                </div>
-              </div>
+          <div class="col d-flex justify-content-center">วันที่สร้าง :
+            <div class="col">{{dept_creat}}</div>
+          </div>
+          <div class="col d-flex justify-content-center">ตำเเหน่ง :
+            <div class="col d-flex justify-content-center" *ngFor="let dataPos of dept_post">
+              <div> {{dataPos.dp_name_en }}</div>
+              <br>
             </div>
-
-            <div class="row mb-3">
-              <div class="col-5 d-flex justify-content-left">วันที่สร้าง :</div>
-              <div class="col-7">
-                <div class="row">
-                  <div class="col-12 d-flex justify-content-left">
-                    <div> {{dept_creat}} </div>
-                  </div>
-                </div>
-              </div>
+          </div>
+          <div class="col d-flex justify-content-center">หัวหน้าแผนก :
+            <div class="col d-flex justify-content-center" *ngFor="let dataMana of dept_manager">
+              <div>{{ dataMana.ud_prefix }} {{dataMana.ud_fullname_th}}</div>
             </div>
-
-            <div class="row mb-3">
-              <div class="col-5 d-flex justify-content-left">ตำแหน่ง :</div>
-              <div class="col-7">
-                <div class="row">
-                  <div class="col-12 d-flex justify-content-left modal-padding" *ngFor="let dataPos of dept_post;">
-                    <div> {{dataPos.dp_name_en }} </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row mb-3">
-              <div class="col-5 d-flex justify-content-left">หัวหน้าแผนก :</div>
-              <div class="col-7">
-                <div class="row">
-                  <div class="col-12 d-flex justify-content-left modal-padding" *ngFor="let dataMana of dept_manager">
-                    <div> {{ dataMana.ud_prefix }} {{dataMana.ud_fullname_th}} </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
           </div>
         </div>
       </div>
@@ -248,12 +213,3 @@
   </div>
 </div>
 <!-- modal deleted -->
-<div class="container">
-  <div class="row">
-    <div class="col">
-      1 of 2
-    </div>
-    <div class="col">
-      2 of 2
-    </div>
-  </div>
