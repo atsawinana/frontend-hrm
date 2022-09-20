@@ -49,7 +49,7 @@ export class EditComponentComponent implements OnInit {
         this.ObjDeptMana = res.data.department_map_managers;
         this.htmlWaitLoad = true;
 
-        console.log("res from api",this.ObjDeptMana);
+        console.log('res from api', this.ObjDeptMana);
 
         for (let i = 0; i < Object.keys(this.ObjDeptMana).length; i++) {
           this.countDeptMana[i] = i + 1;
@@ -78,9 +78,6 @@ export class EditComponentComponent implements OnInit {
       aryUserManager[i] = this.ObjDeptMana[i].dmm_username;
     }
 
-    console.log(this.DeptUsername)
-    console.log(aryNamePosition)
-
     this.editService
       .editData(
         this.dept_id,
@@ -93,6 +90,8 @@ export class EditComponentComponent implements OnInit {
       .subscribe({
         next: (res: any) => {
           console.log('success edit');
+          const myModal = document.getElementById('submitEditDone');
+          myModal!.focus();
         },
         error: (err: any) => {},
       });
@@ -101,14 +100,13 @@ export class EditComponentComponent implements OnInit {
   deleteDeptMana(index: number) {
     this.ObjDeptMana.splice(index, 1);
     this.countDeptMana.splice(index, 1);
-    console.log(this.ObjDeptMana)
+    console.log(this.ObjDeptMana);
   }
 
   deleteDeptPosit(index: number) {
     this.ObjDeptPosit.splice(index, 1);
     this.countDeptPosit.splice(index, 1);
-    console.log(this.ObjDeptPosit)
-
+    console.log(this.ObjDeptPosit);
   }
 
   check() {
@@ -118,7 +116,7 @@ export class EditComponentComponent implements OnInit {
     // }
     // console.log(aryNamePosition)
     // this.MapUsernameWithID()
-    console.log(this.ObjDeptMana)
+    // console.log(this.ObjDeptMana);
     // console.log(this.ObjDeptPosit)
   }
 
@@ -139,25 +137,33 @@ export class EditComponentComponent implements OnInit {
 
   addInputDept() {
     // console.log(this.DeptMana);
-    if (this.ObjDeptMana[this.countDeptMana.length - 1] == null) {
+    console.log(this.countDeptMana.length);
+    if (this.countDeptMana.length == 0) {
+      this.countDeptMana?.push(
+        this.countDeptMana[this.countDeptMana.length - 1] + 1
+      );
+    } else if (this.ObjDeptMana[this.countDeptMana.length - 1] == null) {
       alert('cannot กรอกให้ครบหน่อย');
     } else {
       this.countDeptMana?.push(
         this.countDeptMana[this.countDeptMana.length - 1] + 1
       );
-      this.ObjDeptMana.push({});
     }
   }
 
   addInputDeptPosit() {
     // console.log(this.DeptPosit[this.countDeptPosit.length - 1]);
-    if (this.ObjDeptPosit[this.countDeptPosit.length - 1] == null) {
+    console.log(this.countDeptPosit.length);
+    if (this.countDeptPosit.length == 0) {
+      this.countDeptPosit?.push(
+        this.countDeptPosit[this.countDeptPosit.length - 1] + 1
+      );
+    } else if (this.ObjDeptPosit[this.countDeptPosit.length - 1] == null) {
       alert('cannot กรอกให้ครบหน่อย');
     } else {
       this.countDeptPosit?.push(
         this.countDeptPosit[this.countDeptPosit.length - 1] + 1
       );
-      this.ObjDeptPosit.push({});
     }
   }
 }
