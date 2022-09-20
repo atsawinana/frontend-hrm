@@ -70,6 +70,7 @@ export class AddDepartmentComponent implements OnInit {
   }
 
   onSubmit() {
+    this.cancelModal()
     console.log(this.namedepartment_en.value);
     console.log(this.namedepartment_th.value);
     console.log(this.DeptPosit);
