@@ -9,7 +9,7 @@
     <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
       <div class="row OriginalDiv">
         <div class="col-10">
-          <input ng-cloak type="text" placeholder="กรอกแผนก" class="form-control maxWidth" id="deptNameEn"
+          <input [ngClass]="{alert : CheckNullDeptNameEN}" ng-cloak type="text" placeholder="กรอกแผนก" class="form-control maxWidth" id="deptNameEn"
             [(ngModel)]="ObjDept.dept_name_en">
         </div>
       </div>
@@ -23,7 +23,7 @@
     <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
       <div class="row OriginalDiv">
         <div class="col-10">
-          <input ng-cloak type="text" placeholder="กรอกแผนก" class="form-control maxWidth" id="deptNameTh"
+          <input [ngClass]="{alert : CheckNullDeptNameTH}" ng-cloak type="text" placeholder="กรอกแผนก" class="form-control maxWidth" id="deptNameTh"
             [(ngModel)]="ObjDept.dept_name_th">
         </div>
       </div>
@@ -37,7 +37,7 @@
     <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
       <div class="row OriginalDiv" *ngFor="let row of countDeptMana ; let i = index">
         <div class="col-10">
-          <input ng-cloak list="uid" type="text" placeholder="กรอกหัวหน้าแผนก"
+          <input [ngClass]="{alert : CheckNullMana[i]}" ng-cloak list="uid" type="text" placeholder="กรอกหัวหน้าแผนก"
             class="form-control maxWidth mb-4 add-boss" [(ngModel)]="ObjDeptMana[i].ud_fullname_th">
         </div>
 
@@ -74,7 +74,7 @@
     <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
       <div class="row OriginalDiv" *ngFor="let row of countDeptPosit ; let i = index">
         <div class="col-10">
-          <input type="text" placeholder="กรอกตำแหน่ง" class="form-control maxWidth mb-4 add-pos" [(ngModel)]="ObjDeptPosit[i].dp_name_en
+          <input [ngClass]="{alert : CheckNullPosit[i]}" type="text" placeholder="กรอกตำแหน่ง" class="form-control maxWidth mb-4 add-pos" [(ngModel)]="ObjDeptPosit[i].dp_name_en
           ">
         </div>
         <div *ngIf="countDeptPosit.length > 1" class="col-2 py-2">

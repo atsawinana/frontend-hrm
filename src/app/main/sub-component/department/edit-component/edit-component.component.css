@@ -132,6 +132,11 @@ input {
   margin-top: 280px;
 }
 
+.alert{
+  height: 44px;
+  border: 1px solid #EF0303;
+}
+
 i {
   padding-right: 5px;
   cursor: pointer;
