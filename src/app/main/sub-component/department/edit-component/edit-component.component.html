@@ -43,7 +43,7 @@
         </datalist>
 
         <div class="col-2 py-2">
-          <i class="fa-solid fa-circle-xmark delete-dept iconDept" (click)="deleteDeptMana(i)" *ngIf="countDeptMana.length > 1"></i>
+          <i class="fa-solid fa-circle-xmark delete-dept iconDept" (click)="deleteDeptMana(i)" *ngIf="(this.ObjDeptMana).length > 1"></i>
         </div>
       </div>
       <div class="row" id="dept">
@@ -74,7 +74,7 @@
           ">
         </div>
         <div class="col-2 py-2">
-          <i class="fa-solid fa-circle-xmark delete-dept iconDept" (click)="deleteDeptPosit(i)" *ngIf="countDeptPosit.length > 1"></i>
+          <i class="fa-solid fa-circle-xmark delete-dept iconDept" (click)="deleteDeptPosit(i)" *ngIf="(this.ObjDeptPosit).length > 1"></i>
         </div>
       </div>
       <div class="row" id="pos">
