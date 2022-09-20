@@ -9,12 +9,24 @@
     <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
       <div class="row OriginalDiv">
         <div class="col-10">
-          <input [ngClass]="{alert : CheckNullDeptNameEN}" ng-cloak type="text" placeholder="กรอกแผนก" class="form-control maxWidth" id="deptNameEn"
-            [(ngModel)]="ObjDept.dept_name_en">
+          <input [ngClass]="{alert : CheckNullDeptNameEN}" ng-cloak type="text" placeholder="กรอกแผนก"
+            class="form-control maxWidth" id="deptNameEn" [(ngModel)]="ObjDept.dept_name_en">
         </div>
+
+        <div class="row">
+          <div class="col-lg-7 col-md-8 col-sm-7 col-5 d-flex justify-content-left"></div>
+          <div class="col-sm-5 col-5">
+            <div>
+              กรุณากรอกข้อมูล
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
+
+
 
   <div class="row mb-4">
     <div class="sub-text col-12 col-sm-4 col-md-4 col-lg-4 text-center text-xs">
@@ -23,8 +35,8 @@
     <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
       <div class="row OriginalDiv">
         <div class="col-10">
-          <input [ngClass]="{alert : CheckNullDeptNameTH}" ng-cloak type="text" placeholder="กรอกแผนก" class="form-control maxWidth" id="deptNameTh"
-            [(ngModel)]="ObjDept.dept_name_th">
+          <input [ngClass]="{alert : CheckNullDeptNameTH}" ng-cloak type="text" placeholder="กรอกแผนก"
+            class="form-control maxWidth" id="deptNameTh" [(ngModel)]="ObjDept.dept_name_th">
         </div>
       </div>
     </div>
@@ -49,10 +61,20 @@
           <i class="fa-solid fa-circle-xmark delete-dept iconDept" (click)="deleteDeptMana(i)"></i>
         </div>
 
+        <div class="row">
+          <div class="col-lg-7 col-md-8 col-sm-7 col-5 d-flex justify-content-left"></div>
+          <div class="col-sm-5 col-5">
+            <div>
+              กรุณากรอกข้อมูล
+            </div>
+          </div>
+        </div>
+
       </div>
       <div class="row" id="dept">
       </div>
     </div>
+
   </div>
 
   <div class="row mb-4">
@@ -74,12 +96,23 @@
     <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
       <div class="row OriginalDiv" *ngFor="let row of countDeptPosit ; let i = index">
         <div class="col-10">
-          <input [ngClass]="{alert : CheckNullPosit[i]}" type="text" placeholder="กรอกตำแหน่ง" class="form-control maxWidth mb-4 add-pos" [(ngModel)]="ObjDeptPosit[i].dp_name_en
+          <input [ngClass]="{alert : CheckNullPosit[i]}" type="text" placeholder="กรอกตำแหน่ง"
+            class="form-control maxWidth mb-4 add-pos" [(ngModel)]="ObjDeptPosit[i].dp_name_en
           ">
         </div>
         <div *ngIf="countDeptPosit.length > 1" class="col-2 py-2">
           <i class="fa-solid fa-circle-xmark delete-dept iconDept" (click)="deleteDeptPosit(i)"></i>
         </div>
+
+        <div class="row">
+          <div class="col-lg-7 col-md-8 col-sm-7 col-5 d-flex justify-content-left"></div>
+          <div class="col-sm-5 col-5">
+            <div>
+              กรุณากรอกข้อมูล
+            </div>
+          </div>
+        </div>
+
       </div>
       <div class="row" id="pos">
       </div>
@@ -104,8 +137,9 @@
         <div class="cancel-text">ยกเลิก</div>
       </button>
     </div>
-    <div (click)="checkNull()" class="col-6 col-sm-3 col-md-3 col-lg-3"><button class="submit-button d-flex justify-content-center w-100"
-        type="submit" data-bs-toggle="modal" href="#Modal-submit">
+    <div (click)="checkNull()" class="col-6 col-sm-3 col-md-3 col-lg-3"><button
+        class="submit-button d-flex justify-content-center w-100" type="submit" data-bs-toggle="modal"
+        href="#Modal-submit">
         <div class="submit-text">ตกลง</div>
       </button>
     </div>
@@ -125,8 +159,8 @@
 
       <div class="row d-flex justify-content-center mb-3">
         <div class="col-5 col-sm-5 col-md-5 col-lg-5">
-          <button (click)="cencelNullCheck()" class="cancel-button cancel-font d-flex justify-content-center w-100 " data-bs-dismiss="modal"
-            aria-label="Close">
+          <button (click)="cencelNullCheck()" class="cancel-button cancel-font d-flex justify-content-center w-100 "
+            data-bs-dismiss="modal" aria-label="Close">
             <div class="cancel-text">ยกเลิก</div>
           </button>
         </div>
