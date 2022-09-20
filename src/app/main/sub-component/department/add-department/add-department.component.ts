@@ -115,7 +115,7 @@ export class AddDepartmentComponent implements OnInit {
   addInputDeptPosit() {
     // console.log(this.DeptPosit[this.countDeptPosit.length - 1]);
     if (this.DeptPosit[this.countDeptPosit.length - 1] == null) {
-      alert('cannot กรอกให้ครบหน่อย');
+      alert("can't add Input กรุณากรอกข้อมูลให้ครบ");
     } else {
       this.countDeptPosit?.push(this.countDeptPosit.length + 1);
     }
