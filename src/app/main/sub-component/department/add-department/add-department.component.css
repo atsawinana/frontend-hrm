@@ -155,7 +155,11 @@ input::placeholder {
   padding: 20px;
   border: 1px solid #888;
   border-radius: 8px;
-  width: 45%; /* Could be more or less, depending on screen size */
+}
+
+.modal-size {
+  width: 550px;
+  margin-top: 280px;
 }
 
 @media screen and (max-width: 576px) {
