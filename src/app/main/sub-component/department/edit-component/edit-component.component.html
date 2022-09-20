@@ -1,5 +1,5 @@
-<div class="container p-0 mainContainer">
-  <div class="font-header mb-5" id="re">
+<div class="container p-0 mainContainer" *ngIf="htmlWaitLoad">
+  <div class="font-header mb-5" id="re" (click)="check()">
     แก้ไขแผนก
   </div>
   <div class="row mb-4">
@@ -7,9 +7,9 @@
       ชื่อแผนก (EN)*
     </div>
     <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
-      <div class="row OriginalDiv" id="deptOrigin">
+      <div class="row OriginalDiv">
         <div class="col-10">
-          <input type="text" placeholder="กรอกแผนก" class="form-control maxWidth">
+          <input ng-cloak type="text" placeholder="กรอกแผนก" class="form-control maxWidth" id="deptNameEn" [(ngModel)]="ObjDept.dept_name_en">
         </div>
       </div>
     </div>
@@ -20,9 +20,9 @@
       ชื่อแผนก (TH)
     </div>
     <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
-      <div class="row OriginalDiv" id="deptOrigin">
+      <div class="row OriginalDiv">
         <div class="col-10">
-          <input type="text" placeholder="กรอกแผนก" class="form-control maxWidth">
+          <input ng-cloak type="text" placeholder="กรอกแผนก" class="form-control maxWidth" id="deptNameTh" [(ngModel)]="ObjDept.dept_name_th">
         </div>
       </div>
     </div>
@@ -32,20 +32,23 @@
     <div class="sub-text col-12 col-sm-4 col-md-4 col-lg-4 text-center text-xs">
       ชื่อหัวหน้าแผนก*
     </div>
-    <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs" [formGroup]="bossForm">
-      <div class="row OriginalDiv" id="deptOrigin" *ngFor="let group of bossArray.controls; let i = index;"
-        formArrayName="boss">
-        <div class="col-10" [formGroupName]='i'>
-          <input type="text" placeholder="กรอกหัวหน้าแผนก" class="form-control maxWidth mb-4 " id="add-boss">
+    <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs" >
+      <div class="row OriginalDiv" *ngFor="let row of countDeptMana ; let i = index">
+        <div class="col-10" >
+          <input ng-cloak list="uid" type="text" placeholder="กรอกหัวหน้าแผนก" class="form-control maxWidth mb-4 add-boss" [(ngModel)]="ObjDeptMana[i].ud_fullname_th">
         </div>
+
+        <datalist id="uid">
+          <option *ngFor="let uid of DeptUserID" [value]="uid.ud_fullname_th"></option>
+        </datalist>
+
         <div class="col-2 py-2">
-          <i *ngIf="i>0" class="fa-solid fa-circle-xmark delete-dept iconDept" (click)="removeBoss(i)"></i>
+          <i class="fa-solid fa-circle-xmark delete-dept iconDept" (click)="deleteDeptMana(i)" *ngIf="(this.ObjDeptMana).length > 1"></i>
         </div>
       </div>
       <div class="row" id="dept">
       </div>
     </div>
-
   </div>
 
   <div class="row mb-4">
@@ -53,7 +56,7 @@
     </div>
     <div class="col-8 d-flex justify-content-left">
       <a>
-        <div class="text-button" (click)="addBoss()">
+        <div class="text-button" (click)="addInputDept()">
           <i class="fa-solid fa-circle-plus"></i>เพิ่มหัวหน้า
         </div>
       </a>
@@ -61,19 +64,17 @@
   </div>
 
   <div class="row">
-
     <div class="sub-text col-12 col-sm-4 col-md-4 col-lg-4 text-center text-xs">
       ตำแหน่ง*
     </div>
-    <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs" [formGroup]="posForm">
-
-      <div class="row OriginalDiv" id="deptOrigin" *ngFor="let group of posArray.controls; let j = index;"
-        formArrayName="pos">
-        <div class="col-10" [formGroupName]='j'>
-          <input type="text" placeholder="กรอกตำแหน่ง" class="form-control maxWidth mb-4 " id="add-pos">
+    <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
+      <div class="row OriginalDiv" *ngFor="let row of countDeptPosit ; let i = index ;">
+        <div class="col-10">
+          <input  type="text" placeholder="กรอกตำแหน่ง" class="form-control maxWidth mb-4 add-pos" [(ngModel)]="ObjDeptPosit[i].dp_name_en
+          ">
         </div>
         <div class="col-2 py-2">
-          <i *ngIf="j>0" class="fa-solid fa-circle-xmark delete-dept iconDept" (click)="removePos(j)"></i>
+          <i class="fa-solid fa-circle-xmark delete-dept iconDept" (click)="deleteDeptPosit(i)" *ngIf="(this.ObjDeptPosit).length > 1"></i>
         </div>
       </div>
       <div class="row" id="pos">
@@ -86,7 +87,7 @@
     </div>
     <div class="col-8 d-flex justify-content-left">
       <a>
-        <div class="text-button mb-4" (click)="addPos()">
+        <div class="text-button mb-4" (click)="addInputDeptPosit()">
           <i class="fa-solid fa-circle-plus"></i>เพิ่มตำแหน่ง
         </div>
       </a>
@@ -94,14 +95,132 @@
   </div>
 
   <div class="row mb-4 mt-5 d-flex justify-content-center">
-    <div class="col-6 col-sm-3 col-md-3 col-lg-3"><button class="cancel-button d-flex justify-content-center w-100">
+    <div class="col-6 col-sm-3 col-md-3 col-lg-3"><button class="cancel-button d-flex justify-content-center w-100" type="" data-bs-toggle="modal" href="#Modal-cancel">
         <div class="cancel-text">ยกเลิก</div>
       </button>
     </div>
-    <div class="col-6 col-sm-3 col-md-3 col-lg-3"><button class="submit-button d-flex justify-content-center w-100">
+    <div class="col-6 col-sm-3 col-md-3 col-lg-3"><button class="submit-button d-flex justify-content-center w-100" type="submit" data-bs-toggle="modal" href="#Modal-submit">
         <div class="submit-text">ตกลง</div>
       </button>
     </div>
   </div>
+
+  <!-- modal add department -->
+  <div class="modal fade" id="Modal-submit" aria-hidden="true" aria-labelledby="modalsubmit" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content ">
+        <div class="modal-body d-block " style="border-radius: 10px;">
+
+          <div class="row d-flex justify-content-center mt-4" id="confirm">
+            <div class="font-modal">คุณต้องการแก้ไขแผนกหรือไม่ ?</div>
+          </div>
+
+          <div class="d-flex justify-content-center">
+            <img class="my-5 d-flex justify-content-center" alt="Alternative text" width="96px" height="96px"
+              src="assets/img/department/edit-modal-icon.svg">
+          </div>
+
+          <div class="row d-flex justify-content-center mb-3">
+            <div class="col-5 col-sm-5 col-md-5 col-lg-5">
+              <button class="cancel-button cancel-font d-flex justify-content-center w-100 " data-bs-dismiss="modal"
+                aria-label="Close">
+                <div class="cancel-text">ยกเลิก</div>
+              </button>
+            </div>
+            <div class="col-5 col-sm-5 col-md-5 col-lg-5">
+              <button class="submit-button submit-font d-flex justify-content-center w-100" data-bs-target="#submit"
+                data-bs-toggle="modal" (click)="EditData()">
+                <div class="submit-text">ตกลง</div>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="submit" aria-hidden="true" aria-labelledby="modalsubmit2" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body d-block " style="border-radius: 10px;">
+          <div class="row d-flex justify-content-center mt-4">
+            <div class="modal-title font-modal" id="modalcancal">แก้ไขแผนกสำเร็จ</div>
+          </div>
+          <div class="d-flex justify-content-center">
+            <img class="my-5 d-flex justify-content-center" alt="Alternative text" width="96px" height="96px"
+              src="assets/img/circle-check-solid.svg">
+          </div>
+          <div class="d-flex justify-content-center">
+            <div class="col-5 col-sm-5 col-md-5 col-lg-5 mb-4">
+              <button class="submit-button d-flex justify-content-center w-100" data-bs-dismiss="modal" aria-label="Close" routerLink="../">
+                <div class="submit-text submit-font">ตกลง</div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- --------------------------- -->
+
+  <!-- modal cancel department -->
+  <div class="modal fade" id="Modal-cancel" aria-hidden="true" aria-labelledby="modalcancel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body d-block " style="border-radius: 10px;">
+
+          <div class="row  justify-content-center mt-4" id="confirm">
+            <div class="font-modal" id="modalcancal">คุณต้องการยกเลิกการแก้ไขแผนกหรือไม่ ?</div>
+          </div>
+
+          <div class="d-flex justify-content-center">
+            <img class="my-5 d-flex justify-content-center" alt="Alternative text" width="96px" height="96px"
+              src="assets/img/cancel.svg">
+          </div>
+
+          <div class="row d-flex justify-content-center mb-3">
+            <div class="col-5 col-sm-5 col-md-5 col-lg-5">
+              <button class="cancel-button cancel-font d-flex justify-content-center w-100 " data-bs-dismiss="modal"
+                aria-label="Close">
+                <div class="cancel-text">ยกเลิก</div>
+              </button>
+            </div>
+
+            <div class="col-5 col-sm-5 col-md-5 col-lg-5">
+              <button class="submit-button submit-font d-flex justify-content-center w-100" data-bs-target="#cancel"
+                data-bs-toggle="modal">
+                <div class="submit-text">ตกลง</div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="cancel" aria-hidden="true" aria-labelledby="modalcancel2" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body d-block " style="border-radius: 10px;">
+          <div class="row d-flex justify-content-center mt-4">
+            <div class="modal-title font-modal" id="modalcancal">ยกเลิกการแก้ไขเเผนกสำเร็จ</div>
+          </div>
+          <div class="d-flex justify-content-center">
+            <img class="my-5 d-flex justify-content-center" alt="Alternative text" width="96px" height="96px"
+              src="assets/img/circle-check-solid.svg">
+          </div>
+          <div class="d-flex justify-content-center">
+            <div class="col-5 col-sm-5 col-md-5 col-lg-5 mb-4">
+              <button class="submit-button d-flex justify-content-center w-100" data-bs-dismiss="modal" aria-label="Close" routerLink="../">
+                <div class="submit-text submit-font">ตกลง</div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- --------------------------- -->
 
 </div>

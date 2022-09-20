@@ -1,4 +1,4 @@
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, ActivatedRoute } from '@angular/router';
 import { AuthGuardGuard } from 'src/app/auth/auth-guard.guard';
 import { AddDepartmentComponent } from './add-department/add-department.component';
 import { EditComponentComponent } from './edit-component/edit-component.component';
@@ -16,7 +16,7 @@ const routes: Routes = [
     canActivate: [AuthGuardGuard],
   },
   {
-    path: 'edit-department',
+    path: 'edit-department/:dept_id',
     component: EditComponentComponent,
     canActivate: [AuthGuardGuard],
   },

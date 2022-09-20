@@ -1,165 +1,168 @@
 input::placeholder {
-    opacity: .5;
-    color: #AEAEB2;
-    font-family: 'Kanit';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 20px;
-    /* position: absolute; */
-    /* left: 40px;
+  opacity: .5;
+  color: #AEAEB2;
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 20px;
+  /* position: absolute; */
+  /* left: 40px;
     top: 9px; */
-    color: #AEAEB2;
+  color: #AEAEB2;
 }
 
 .font-head {
-    font-family: 'Kanit';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 32px;
-    line-height: 47px;
-    text-align: center;
-    color: #000000;
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 47px;
+  text-align: center;
+  color: #000000;
 }
 
 .font-content {
-    font-family: 'Kanit';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
 }
 
 .style-input {
-    padding: 12px 16px;
-    width: 554px;
-    height: 44px;
-    left: 619px;
-    top: 223px;
-    background: #FFFFFF;
-    border: 1px solid #C7C7CC;
-    border-radius: 8px;
+  padding: 12px 16px;
+  width: 554px;
+  height: 44px;
+  left: 619px;
+  top: 223px;
+  background: #FFFFFF;
+  border: 1px solid #C7C7CC;
+  border-radius: 8px;
 }
 
 .cancel-button {
-    padding: 12px 16px;
-    width: 203px;
-    height: 48px;
-    background: #FFFFFF;
-    border: 1px solid #005FBC;
-    border-radius: 8px;
+  padding: 12px 16px;
+  width: 203px;
+  height: 48px;
+  background: #FFFFFF;
+  border: 1px solid #005FBC;
+  border-radius: 8px;
 }
 
 .submit-button {
-    padding: 12px 16px;
-    width: 203px;
-    height: 48px;
-    background: linear-gradient(270.74deg, #2E3579 0.35%, #005FBC 99.1%, #005FBC 99.1%);
-    border-radius: 8px;
-    border: none;
+  padding: 12px 16px;
+  width: 203px;
+  height: 48px;
+  background: linear-gradient(270.74deg, #2E3579 0.35%, #005FBC 99.1%, #005FBC 99.1%);
+  border-radius: 8px;
+  border: none;
 }
 
 .submit-font {
-    font-family: 'Kanit';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    text-align: center;
-    color: #FFFFFF;
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  color: #FFFFFF;
 }
 
 .cancel-font {
-    font-family: 'Kanit';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    align-items: center;
-    text-align: center;
-    color: #005FBC;
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  align-items: center;
+  text-align: center;
+  color: #005FBC;
 }
 
 .margin-text {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 .margin-button {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .margin-content {
-    margin-left: 100px;
-    margin-right: 100px;
+  margin-left: 100px;
+  margin-right: 100px;
 }
 
 .text-button {
-    font-family: 'Kanit';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 24px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    color: #005FBC;
-    cursor: pointer;
-    margin-left: 30px;
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #005FBC;
+  cursor: pointer;
+  margin-left: 30px;
 }
 
 .font-modal {
-    font-family: 'Kanit';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 24px;
-    text-align: center;
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 24px;
+  text-align: center;
 }
 
 .alertnull {
-    text-align: left;
-    color: #EF0303;
-    font-family: 'Kanit';
-    font-size: 14px;
-    padding-left: 5px;
-    padding-top: 5px;
-    margin: 0px;
-    padding-bottom: 5px;
-    display: none;
+  text-align: left;
+  color: #EF0303;
+  font-family: 'Kanit';
+  font-size: 14px;
+  padding-left: 5px;
+  padding-top: 5px;
+  margin: 0px;
+  padding-bottom: 5px;
+  display: none;
 }
 
 .alert {
-    text-align: left;
-    color: #EF0303;
-    font-family: 'Kanit';
-    font-size: 14px;
-    padding-left: 5px;
-    padding-top: 5px;
-    margin: 0px;
-    padding-bottom: 5px;
-    display: none;
+  text-align: left;
+  color: #EF0303;
+  font-family: 'Kanit';
+  font-size: 14px;
+  padding-left: 5px;
+  padding-top: 5px;
+  margin: 0px;
+  padding-bottom: 5px;
+  display: none;
 }
 
 @media screen and (max-width: 576px) {
-    div.input-xs {
-        display: flex !important;
-        justify-content: center !important;
-    }
-    div.text-xs {
-        display: flex !important;
-        justify-content: left !important;
-        padding-bottom: 5px;
-    }
-    input.maxWidth {
-        width: 100% !important;
-    }
-    #add {
-        display: none !important;
-    }
+  div.input-xs {
+    display: flex !important;
+    justify-content: center !important;
+  }
+
+  div.text-xs {
+    display: flex !important;
+    justify-content: left !important;
+    padding-bottom: 5px;
+  }
+
+  input.maxWidth {
+    width: 100% !important;
+  }
+
+  #add {
+    display: none !important;
+  }
 }
 
 @media screen and (min-width: 1200px) {
-    div.mainContainer {
-        width: 55% !important;
-    }
+  div.mainContainer {
+    width: 55% !important;
+  }
 }

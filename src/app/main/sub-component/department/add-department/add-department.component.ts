@@ -1,31 +1,131 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormControl } from '@angular/forms';
+import { DepartmentService } from '../department.service';
 import { AdddepartmentService } from './adddepartment.service';
 
 @Component({
   selector: 'app-add-department',
   templateUrl: './add-department.component.html',
-  styleUrls: ['./add-department.component.css']
+  styleUrls: ['./add-department.component.css'],
 })
 export class AddDepartmentComponent implements OnInit {
   name = 'Dynamic Add Fields';
-  values = [];
   namedepartment_en = new FormControl('');
   namedepartment_th = new FormControl('');
   nameleader = new FormControl('');
   naemposition = new FormControl('');
   isSuccess?: boolean;
+  countDeptMana!: number[];
+  countDeptPosit!: number[];
+  DeptMana: string[] = [];
+  DeptPosit: string[] = [];
+  DeptUsername:string[] = [];
+  DeptUserID: any[] = [];
 
-  constructor(private _fb: FormBuilder,private Add_dp: AdddepartmentService) {
-    this.bossForm = this._fb.group({
-      boss: this._fb.array([this.addBossField()])
+  constructor(
+    private Add_dp: AdddepartmentService,
+    private Maindept: DepartmentService
+  ) {}
+
+  ngOnInit() {
+    this.Maindept.getAllUser().subscribe({
+      next: (res: any) => {
+        this.DeptUserID = res.data.users;
+      },
+      error: (err) => {
+        console.log('Failed, input is null');
+      },
     });
-    this.posForm = this._fb.group({
-      pos: this._fb.array([this.addPosField()])
+
+    this.countDeptMana = [1];
+    this.countDeptPosit = [1];
+  }
+
+  MapUsernameWithID() {
+    console.log('check len', this.DeptUserID.length);
+    for (let i = 0; i < this.DeptMana.length; i++) {
+      for (let j = 0; j < this.DeptUserID.length; j++) {
+        
+        if(this.DeptMana[i] === this.DeptUserID[j].ud_fullname_th)
+        {
+          this.DeptUsername.push(String(this.DeptUserID[j].ud_username))
+          console.log(this.DeptUsername[i])
+        }
+        // console.log('mana i',this.DeptMana[i]);
+        // console.log('uid j',this.DeptUserID[j].ud_fullname_th,'id',this.DeptUserID[j].ud_id);
+      }
+      // if (this.DeptMana[i] == this.DeptUserID[i].ud_fullname_th) {
+      //   console.log(this.DeptUserID[i].ud_id);
+      // }
+    }
+  }
+
+  onSubmit() {
+    this.MapUsernameWithID();
+    console.log(this.namedepartment_en.value)
+    console.log(this.namedepartment_th.value)
+    console.log(this.DeptPosit)
+    console.log(this.DeptUsername)
+
+    this.Add_dp.adddepartment(
+      this.namedepartment_en.value!,
+      "เทสภาษาไทย",
+      this.DeptPosit!,
+      this.DeptUsername!
+    ).subscribe({
+      next: (res: any) => {
+        console.log('Success, input are correct');
+        this.isSuccess = true;
+      },
+      error: (err) => {
+        console.log('Failed, input is null');
+        this.isSuccess = false;
+        //   }
+
+        //   if (this.naemposition.value == '') {
+        //     console.log('not input');
+        //     this.alertTextRedNull_namepos();
+        //   }
+
+        //   if (this.nameleader.value == '') {
+        //     console.log('not input');
+        //     this.alertTextRedNull_namelead();
+        //   }
+        // }
+      },
     });
   }
 
-  ngOnInit() {
+  addInputDept() {
+    // console.log(this.DeptMana);
+    if (this.DeptMana[this.countDeptMana.length - 1] == null) {
+      alert('cannot กรอกให้ครบหน่อย');
+    } else {
+      this.countDeptMana?.push(
+        this.countDeptMana[this.countDeptMana.length - 1] + 1
+      );
+    }
+  }
+
+  addInputDeptPosit() {
+    // console.log(this.DeptPosit[this.countDeptPosit.length - 1]);
+    if (this.DeptPosit[this.countDeptPosit.length - 1] == null) {
+      alert('cannot กรอกให้ครบหน่อย');
+    } else {
+      this.countDeptPosit?.push(
+        this.countDeptPosit[this.countDeptPosit.length - 1] + 1
+      );
+    }
+  }
+
+  deleteDept(index: number) {
+    this.countDeptMana.splice(index, 1);
+    this.DeptMana.splice(index, 1);
+  }
+
+  deleteInputDept(index: number) {
+    this.countDeptPosit.splice(index, 1);
+    this.DeptPosit.splice(index, 1);
   }
 
   alertTextRedNull_namedp() {
@@ -57,92 +157,4 @@ export class AddDepartmentComponent implements OnInit {
     let alertnull = document.getElementById('alertnull_lead');
     alertnull!.style.display = 'none';
   }
-
-  onSubmit()
-  {
-    this.ClearAlertText_dp();
-    this.ClearAlertText_lead();
-    this.ClearAlertText_pos();
-
-    this.Add_dp.adddepartment(this.namedepartment_en.value!,this.namedepartment_th.value!,this.naemposition.value!,this.nameleader.value!).subscribe({
-      next: (res: any) => {
-        console.log('Success, input are correct');
-        this.isSuccess = true;
-      },
-      error: (err) => {
-        console.log('Failed, input is null');
-        this.isSuccess = false;
-          if (this.isSuccess == false) {
-            if (this.namedepartment_en.value == '') {
-              console.log('not input');
-              this.alertTextRedNull_namedp();
-            }
-
-            if (this.naemposition.value == '') {
-              console.log('not input');
-              this.alertTextRedNull_namepos();
-            }
-
-            if (this.nameleader.value == '') {
-              console.log('not input');
-              this.alertTextRedNull_namelead();
-            }
-          }
-      }
-  })
-  }
-
-
-  public bossForm: FormGroup;
-  public posForm: FormGroup;
-  
-  
-
-  //Append Boss Fields Set
-  private addBossField(): FormGroup {
-    return this._fb.group({
-      Name: []
-    });
-  }
-  //Add Boss Fields
-  addBoss(): void {
-    this.bossArray.push(this.addBossField());
-    console.log("bossArray: ",this.bossArray.length)
-  }
-
-  //Remove Boss Fields
-  removeBoss(index: number): void {
-    this.bossArray.removeAt(index);
-    console.log("bossArray: ",this.bossArray.length)
-  }
-  //Fields Boss Array
-  get bossArray(): FormArray {
-    return <FormArray>this.bossForm.get('boss');
-  }
-
-  //Append Position Fields Set
-  private addPosField(): FormGroup {
-    return this._fb.group({
-      Position: []
-    });
-  }
-  //Add Position Fields
-  addPos(): void {
-    const check = document.getElementById('')
-    this.posArray.push(this.addPosField());
-    console.log("posArray: ",this.posArray.length)
-  }
-
-  //Remove Position Fields
-  removePos(index: number): void {
-    this.posArray.removeAt(index);
-    console.log("posArray: ",this.posArray.length)
-  }
-  //Fields Position Array
-  get posArray(): FormArray {
-    return <FormArray>this.posForm.get('pos');
-  }
-
 }
-
-

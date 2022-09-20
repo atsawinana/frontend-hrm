@@ -8,6 +8,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { MatSliderModule } from '@angular/material/slider';
 import { EditComponentComponent } from './edit-component/edit-component.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { EditComponentComponent } from './edit-component/edit-component.componen
     FormsModule,
     Ng2SearchPipeModule,
     ReactiveFormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    HttpClientModule,
   ],
   declarations: [
     AddDepartmentComponent,
