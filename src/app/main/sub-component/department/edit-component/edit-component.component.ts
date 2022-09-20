@@ -135,14 +135,13 @@ export class EditComponentComponent implements OnInit {
   }
 
   addInputDept() {
-    // console.log(this.DeptMana);
-    if (this.ObjDeptMana[this.countDeptMana.length - 1] == null) {
+    if (this.ObjDeptMana[this.countDeptMana.length - 1] == null || this.ObjDeptMana[this.countDeptMana.length - 1].check >= this.countDeptMana.length) {
       alert('cannot กรอกให้ครบหน่อย');
     } else {
       this.countDeptMana?.push(
         this.countDeptMana[this.countDeptMana.length - 1] + 1
       );
-      this.ObjDeptMana.push({});
+      // this.ObjDeptMana.push({});
     }
   }
 
@@ -154,7 +153,7 @@ export class EditComponentComponent implements OnInit {
       this.countDeptPosit?.push(
         this.countDeptPosit[this.countDeptPosit.length - 1] + 1
       );
-      this.ObjDeptPosit.push({});
+      // this.ObjDeptPosit.push({});
     }
   }
 }
