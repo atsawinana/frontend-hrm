@@ -99,13 +99,11 @@ export class EditComponentComponent implements OnInit {
   deleteDeptMana(index: number) {
     this.ObjDeptMana.splice(index, 1);
     this.countDeptMana.splice(index, 1);
-
   }
 
   deleteDeptPosit(index: number) {
     this.ObjDeptPosit.splice(index, 1);
     this.countDeptPosit.splice(index, 1);
-
   }
 
   check() {
@@ -135,7 +133,11 @@ export class EditComponentComponent implements OnInit {
   }
 
   addInputDept() {
-    if (this.ObjDeptMana[this.countDeptMana.length - 1] == null || this.ObjDeptMana[this.countDeptMana.length - 1].check >= this.countDeptMana.length) {
+    if (
+      this.ObjDeptMana[this.countDeptMana.length - 1] == null ||
+      this.ObjDeptMana[this.countDeptMana.length - 1].check >=
+        this.countDeptMana.length
+    ) {
       alert('cannot กรอกให้ครบหน่อย');
     } else {
       this.countDeptMana?.push(
