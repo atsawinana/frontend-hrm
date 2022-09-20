@@ -245,3 +245,7 @@ table {
   text-align: center;
   color: #1C1C1E;
 }
+
+.modal-padding {
+  height:35px !important;
+}
