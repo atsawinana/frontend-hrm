@@ -25,6 +25,7 @@ export class AddDepartmentComponent implements OnInit {
   CheckNullPosit: boolean[] = [];
   CheckNullDeptNameEN!: boolean;
   CheckNullDeptNameTH!: boolean;
+  CheckModal:boolean = false
 
   constructor(
     private Add_dp: AdddepartmentService,
@@ -53,8 +54,8 @@ export class AddDepartmentComponent implements OnInit {
       for (let j = 0; j < this.DeptUserID.length; j++) {
         if (this.DeptMana[i] == this.DeptUserID[j].ud_fullname_th) {
           this.DeptUsername.push(String(this.DeptUserID[j].ud_username));
-          console.log("map check",this.DeptUsername[i]);
-        }else if(this.DeptMana[i] == ""){
+          console.log('map check', this.DeptUsername[i]);
+        } else if (this.DeptMana[i] == '') {
           this.DeptUsername.pop();
         }
         // console.log('mana i',this.DeptMana[i]);
@@ -105,7 +106,7 @@ export class AddDepartmentComponent implements OnInit {
   addInputDept() {
     // console.log(this.DeptMana);
     if (this.DeptMana[this.countDeptMana.length - 1] == null) {
-      alert('cannot กรอกให้ครบหน่อย');
+      alert('กรุณากรอกข้อมูลให้ครบถ้วน');
     } else {
       this.countDeptMana?.push(this.countDeptMana.length + 1);
       console.log(this.countDeptMana);
@@ -115,7 +116,7 @@ export class AddDepartmentComponent implements OnInit {
   addInputDeptPosit() {
     // console.log(this.DeptPosit[this.countDeptPosit.length - 1]);
     if (this.DeptPosit[this.countDeptPosit.length - 1] == null) {
-      alert('cannot กรอกให้ครบหน่อย');
+      alert('กรุณากรอกข้อมูลให้ครบถ้วน');
     } else {
       this.countDeptPosit?.push(this.countDeptPosit.length + 1);
     }
@@ -131,7 +132,7 @@ export class AddDepartmentComponent implements OnInit {
     this.DeptPosit.splice(index, 1);
   }
 
-  checkNull() {
+  checkNull(): any {
     this.CheckNullMana = [];
     this.CheckNullPosit = [];
     this.CheckNullDeptNameEN = false;
@@ -146,8 +147,8 @@ export class AddDepartmentComponent implements OnInit {
     }
 
     for (let i = 0; i < this.countDeptPosit.length; i++) {
-      console.log("check posit",this.DeptPosit[i])
-      if (this.DeptPosit[i] == undefined || this.DeptPosit[i] == "") {
+      // console.log("check posit",this.DeptPosit[i])
+      if (this.DeptPosit[i] == undefined || this.DeptPosit[i] == '') {
         this.CheckNullPosit[i] = true;
       } else {
         this.CheckNullPosit[i] = false;
@@ -155,17 +156,35 @@ export class AddDepartmentComponent implements OnInit {
     }
 
     for (let i = 0; i < this.countDeptMana.length; i++) {
-      console.log("check mana",this.DeptUsername[i])
+      // console.log("check mana",this.DeptUsername[i])
       if (this.DeptUsername[i] == undefined) {
         this.CheckNullMana[i] = true;
       } else {
         this.CheckNullMana[i] = false;
       }
     }
-    console.log('nullen', this.CheckNullDeptNameEN);
-    console.log('nullth', this.CheckNullDeptNameTH);
-    console.log('nullposit', this.CheckNullPosit);
-    console.log('nulklmana', this.CheckNullMana);
-    console.log("check deptPosit ",this.DeptPosit)
+
+    if (this.CheckNullDeptNameEN == false) {
+      for (let i = 0; i < this.countDeptPosit.length; i++) {
+        if (this.DeptPosit[i] == undefined || this.DeptPosit[i] == '') {
+          return false;
+        } else {
+          for (let i = 0; i < this.countDeptMana.length; i++) {
+            if (this.DeptUsername[i] == undefined) {
+              return false;
+            } else {
+              this.CheckModal = true
+              // $('#Modal-submit').modal('show');
+            }
+          }
+        }
+      }
+    }
+
+    // console.log('nullen', this.CheckNullDeptNameEN);
+    // console.log('nullth', this.CheckNullDeptNameTH);
+    // console.log('nullposit', this.CheckNullPosit);
+    // console.log('nulklmana', this.CheckNullMana);
+    // console.log('check deptPosit ', this.DeptPosit);
   }
 }
