@@ -71,6 +71,8 @@ export class AddDepartmentComponent implements OnInit {
 
   onSubmit() {
     this.cancelModal()
+    this.MapUsernameWithID();
+
     console.log(this.namedepartment_en.value);
     console.log(this.namedepartment_th.value);
     console.log(this.DeptPosit);
@@ -130,7 +132,6 @@ export class AddDepartmentComponent implements OnInit {
     this.CheckallMana = false;
     this.CheckallPosit = false;
 
-    this.MapUsernameWithID();
     if (this.namedepartment_en.value == '') {
       this.CheckNullDeptNameEN = true;
     }
@@ -150,7 +151,7 @@ export class AddDepartmentComponent implements OnInit {
 
     for (let i = 0; i < this.countDeptMana.length; i++) {
       console.log('check mana', this.DeptMana[i]);
-      if (this.DeptMana[i] == undefined || Object.keys(this.DeptUsername[i]).length === 0) {
+      if (this.DeptMana[i] == undefined || Object.keys(this.DeptMana[i]).length === 0) {
         this.CheckNullMana[i] = true;
         this.CheckallMana = true;
       } else {
