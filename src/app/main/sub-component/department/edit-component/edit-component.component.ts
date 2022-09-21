@@ -131,11 +131,11 @@ export class EditComponentComponent implements OnInit {
 
     console.log('1', this.ObjDeptPosit);
     console.log('2', this.ObjDeptMana);
-    console.log(this.ObjDeptPosit.length);
+    // console.log(this.ObjDeptPosit.length);
     console.log(Object.keys(this.ObjDeptPosit[0]).length === 0);
 
     for (let i = 0; i < this.ObjDeptPosit.length; i++) {
-      if (Object.keys(this.ObjDeptPosit[i]).length === 0) {
+      if (Object.keys(this.ObjDeptPosit[i]).length === 0 || this.ObjDeptPosit[i].dp_name_en == "") {
         this.CheckNullPosit[i] = true;
         this.CheckallPosit = true;
       } else {
@@ -144,7 +144,7 @@ export class EditComponentComponent implements OnInit {
     }
 
     for (let i = 0; i < this.ObjDeptMana.length; i++) {
-      if (Object.keys(this.ObjDeptMana[i]).length === 0) {
+      if (Object.keys(this.ObjDeptMana[i]).length === 0 || this.ObjDeptMana[i].ud_fullname_th == "") {
         this.CheckNullMana[i] = true;
         this.CheckallMana = true;
       } else {

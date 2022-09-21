@@ -15,6 +15,23 @@
   font-size: 16px;
 }
 
+.alerttext{
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  color: red;
+}
+
+.alerttextBlock{
+  display: block;
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  color: red;
+}
+
 input::placeholder {
   font-family: 'Kanit';
   font-style: normal;

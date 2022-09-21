@@ -16,7 +16,7 @@
         <div class="row">
           <div class="col-lg-7 col-md-8 col-sm-7 col-5 d-flex justify-content-left"></div>
           <div class="col-sm-5 col-5">
-            <div>
+            <div *ngIf="CheckNullDeptNameEN"  class="alerttext">
               กรุณากรอกข้อมูล
             </div>
           </div>
@@ -64,7 +64,7 @@
         <div class="row">
           <div class="col-lg-7 col-md-8 col-sm-7 col-5 d-flex justify-content-left"></div>
           <div class="col-sm-5 col-5">
-            <div>
+            <div *ngIf="CheckNullMana[i]" class="alerttext">
               กรุณากรอกข้อมูล
             </div>
           </div>
@@ -107,7 +107,7 @@
         <div class="row">
           <div class="col-lg-7 col-md-8 col-sm-7 col-5 d-flex justify-content-left"></div>
           <div class="col-sm-5 col-5">
-            <div>
+            <div *ngIf="CheckNullPosit[i]" class="alerttext">
               กรุณากรอกข้อมูล
             </div>
           </div>
