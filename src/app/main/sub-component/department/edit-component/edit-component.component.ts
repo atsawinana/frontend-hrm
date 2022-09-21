@@ -27,6 +27,14 @@ export class EditComponentComponent implements OnInit {
   countDeptPosit: number[] = [];
   htmlWaitLoad: boolean = false;
   DeptUsername: string[] = [];
+  nullCheck: boolean = false;
+
+  CheckNullMana: boolean[] = [];
+  CheckNullPosit: boolean[] = [];
+  CheckNullDeptNameEN = false;
+  CheckNullDeptNameTH = false;
+  CheckallMana = false;
+  CheckallPosit = false;
 
   ngOnInit(): void {
     this.Maindept.getAllUser().subscribe({
@@ -48,8 +56,9 @@ export class EditComponentComponent implements OnInit {
         this.ObjDeptPosit = res.data.dept_positions;
         this.ObjDeptMana = res.data.department_map_managers;
         this.htmlWaitLoad = true;
-
-        console.log("res from api",this.ObjDeptMana);
+        console.log(this.ObjDept);
+        console.log(this.ObjDeptPosit);
+        console.log(this.ObjDeptMana);
 
         for (let i = 0; i < Object.keys(this.ObjDeptMana).length; i++) {
           this.countDeptMana[i] = i + 1;
@@ -63,12 +72,11 @@ export class EditComponentComponent implements OnInit {
   }
 
   EditData() {
+    this.cencelNullCheck()
     let nameDeptEN = this.ObjDept.dept_name_en;
     let nameDeptTH = this.ObjDept.dept_name_th;
     let aryNamePosition = new Array<string>();
     let aryUserManager = new Array<string>();
-
-    this.MapUsernameWithID();
 
     for (let i = 0; i < Object.keys(this.ObjDeptPosit).length; i++) {
       aryNamePosition[i] = this.ObjDeptPosit[i].dp_name_en;
@@ -77,9 +85,6 @@ export class EditComponentComponent implements OnInit {
     for (let i = 0; i < Object.keys(this.ObjDeptMana).length; i++) {
       aryUserManager[i] = this.ObjDeptMana[i].dmm_username;
     }
-
-    console.log(this.DeptUsername)
-    console.log(aryNamePosition)
 
     this.editService
       .editData(
@@ -101,25 +106,69 @@ export class EditComponentComponent implements OnInit {
   deleteDeptMana(index: number) {
     this.ObjDeptMana.splice(index, 1);
     this.countDeptMana.splice(index, 1);
-    console.log(this.ObjDeptMana)
   }
 
   deleteDeptPosit(index: number) {
     this.ObjDeptPosit.splice(index, 1);
     this.countDeptPosit.splice(index, 1);
-    console.log(this.ObjDeptPosit)
-
   }
 
-  check() {
-    // let aryNamePosition = new Array<string>();
-    // for (let i = 0; i < Object.keys(this.ObjDeptPosit).length; i++) {
-    //   aryNamePosition[i] = this.ObjDeptPosit[i].dp_name_en;
-    // }
-    // console.log(aryNamePosition)
-    // this.MapUsernameWithID()
-    console.log(this.ObjDeptMana)
-    // console.log(this.ObjDeptPosit)
+  checkNull() {
+    this.CheckNullMana = [];
+    this.CheckNullPosit = [];
+    this.CheckNullDeptNameEN = false;
+    this.CheckNullDeptNameTH = false;
+    this.CheckallMana = false;
+    this.CheckallPosit = false;
+
+    this.MapUsernameWithID();
+    if (this.ObjDept.dept_name_en == '') {
+      this.CheckNullDeptNameEN = true;
+    }
+    if (this.ObjDept.dept_name_th == '') {
+      this.CheckNullDeptNameTH = true;
+    }
+
+    console.log('1', this.ObjDeptPosit);
+    console.log('2', this.ObjDeptMana);
+    // console.log(this.ObjDeptPosit.length);
+    console.log(Object.keys(this.ObjDeptPosit[0]).length === 0);
+
+    for (let i = 0; i < this.ObjDeptPosit.length; i++) {
+      if (Object.keys(this.ObjDeptPosit[i]).length === 0 || this.ObjDeptPosit[i].dp_name_en == "") {
+        this.CheckNullPosit[i] = true;
+        this.CheckallPosit = true;
+      } else {
+        this.CheckNullPosit[i] = false;
+      }
+    }
+
+    for (let i = 0; i < this.ObjDeptMana.length; i++) {
+      if (Object.keys(this.ObjDeptMana[i]).length === 0 || this.ObjDeptMana[i].ud_fullname_th == "") {
+        this.CheckNullMana[i] = true;
+        this.CheckallMana = true;
+      } else {
+        this.CheckNullMana[i] = false;
+      }
+    }
+
+    if (this.CheckNullDeptNameEN == false) {
+      if (this.CheckallMana == false) {
+        if (this.CheckallPosit == false) {
+          this.nullCheck = true;
+        }
+      }
+    }
+
+    console.log('nullen', this.CheckNullDeptNameEN);
+    console.log('nullth', this.CheckNullDeptNameTH);
+    console.log('nullposit', this.CheckNullPosit);
+    console.log('nulklmana', this.CheckNullMana);
+    console.log('check deptPosit ', this.nullCheck);
+  }
+
+  cencelNullCheck() {
+    this.nullCheck = false;
   }
 
   MapUsernameWithID() {
@@ -138,8 +187,9 @@ export class EditComponentComponent implements OnInit {
   }
 
   addInputDept() {
-    // console.log(this.DeptMana);
-    if (this.ObjDeptMana[this.countDeptMana.length - 1] == null) {
+    if (
+      Object.keys(this.ObjDeptMana[this.countDeptMana.length - 1]).length === 0
+    ) {
       alert('cannot กรอกให้ครบหน่อย');
     } else {
       this.countDeptMana?.push(
@@ -151,7 +201,10 @@ export class EditComponentComponent implements OnInit {
 
   addInputDeptPosit() {
     // console.log(this.DeptPosit[this.countDeptPosit.length - 1]);
-    if (this.ObjDeptPosit[this.countDeptPosit.length - 1] == null) {
+    if (
+      Object.keys(this.ObjDeptPosit[this.countDeptPosit.length - 1]).length ===
+      0
+    ) {
       alert('cannot กรอกให้ครบหน่อย');
     } else {
       this.countDeptPosit?.push(

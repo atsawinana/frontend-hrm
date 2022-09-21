@@ -1,136 +1,186 @@
-    .font-header {
-        font-family: 'Kanit';
-        font-style: normal;
-        font-weight: 500;
-        font-size: 32px;
-        line-height: 47px;
-        text-align: center;
-        color: #000000;
-    }
+.font-header {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 47px;
+  text-align: center;
+  color: #000000;
+}
 
-    .sub-text {
-        font-family: 'Kanit';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 24px;
-    }
+.sub-text {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+}
 
-    input::placeholder {
-        font-family: 'Kanit';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 20px;
-        color: #D1D1D6;
-    }
+.alerttext{
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  color: red;
+}
 
-    input {
-        max-height: 38px !important;
-    }
+.alerttextBlock{
+  display: block;
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  color: red;
+}
 
-    .text-button {
-        font-family: 'Kanit';
-        font-style: normal;
-        font-weight: 500;
-        font-size: 16px;
-        line-height: 24px;
-        display: flex;
-        align-items: center;
-        text-align: center;
-        color: #005FBC;
-        cursor: pointer;
-    }
+input::placeholder {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #D1D1D6;
+}
 
-    .cancel-button {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        padding: 12px 16px;
-        background: #FFFFFF;
-        border: 1px solid #005FBC;
-        border-radius: 8px;
-    }
+input {
+  max-height: 38px !important;
+}
 
-    .cancel-text {
-        font-family: 'Kanit';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 24px;
-        color: #005FBC;
-    }
+.text-button {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #005FBC;
+  cursor: pointer;
+}
 
-    .submit-button {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        padding: 12px 16px;
-        background: linear-gradient(270.74deg, #2E3579 0.35%, #005FBC 99.1%, #005FBC 99.1%);
-        border-radius: 8px;
-        border: 1px solid #005FBC;
-    }
+.cancel-button {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 12px 16px;
+  background: #FFFFFF;
+  border: 1px solid #005FBC;
+  border-radius: 8px;
+}
 
-    .submit-text {
-        font-family: 'Kanit';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 24px;
-        color: #FFFFFF;
+.cancel-text {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #005FBC;
+}
 
-    }
+.submit-button {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 12px 16px;
+  background: linear-gradient(270.74deg, #2E3579 0.35%, #005FBC 99.1%, #005FBC 99.1%);
+  border-radius: 8px;
+  border: 1px solid #005FBC;
+}
 
-    .showDisplay{
-        display: block !important;
-    }
+.submit-text {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #FFFFFF;
 
-    .delete-dept {
-        font-size: 20px;
-        color: red;
-        display: block;
-    }
+}
 
-    .delete-pos {
-        font-size: 20px;
-        color: red;
-        display: block;
-    }
+.showDisplay {
+  display: block !important;
+}
 
-    .font-modal {
-        font-family: 'Kanit';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 24px;
-        line-height: 24px;
-        text-align: center;
-    }
+.delete-dept {
+  font-size: 20px;
+  color: red;
+  display: block;
+}
 
-    i {
-        padding-right: 5px;
-        cursor: pointer;
-    }
-    @media screen and (max-width: 576px) {
-        div.input-xs{
-            display: flex !important;
-            justify-content: center !important;
-        }
+.delete-pos {
+  font-size: 20px;
+  color: red;
+  display: block;
+}
 
-        div.text-xs{
-            display: flex !important;
-            justify-content: left !important;
-            padding-bottom: 5px;
-        }
+.font-modal {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 24px;
+  text-align: center;
+}
 
-        input.maxWidth{
-            width: 100% !important;
-        }
-        #add {
-            display: none !important;
-        }
-    }
-    @media screen and (min-width: 1200px) {
-        div.mainContainer{
-            width: 55% !important;
-        }
-    }
+.modal123 {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 8px;
+}
+
+.modal-size {
+  width: 550px;
+  margin-top: 280px;
+}
+
+.alert{
+  height: 44px;
+  border: 1px solid #EF0303;
+}
+
+i {
+  padding-right: 5px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 576px) {
+  div.input-xs {
+    display: flex !important;
+    justify-content: center !important;
+  }
+
+  div.text-xs {
+    display: flex !important;
+    justify-content: left !important;
+    padding-bottom: 5px;
+  }
+
+  input.maxWidth {
+    width: 100% !important;
+  }
+
+  #add {
+    display: none !important;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  div.mainContainer {
+    width: 55% !important;
+  }
+}
