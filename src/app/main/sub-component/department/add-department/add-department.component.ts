@@ -19,8 +19,15 @@ export class AddDepartmentComponent implements OnInit {
   countDeptPosit!: number[];
   DeptMana: string[] = [];
   DeptPosit: string[] = [];
-  DeptUsername:string[] = [];
+  DeptUsername: string[] = [];
   DeptUserID: any[] = [];
+  CheckNullMana: boolean[] = [];
+  CheckNullPosit: boolean[] = [];
+  CheckNullDeptNameEN!: boolean;
+  CheckNullDeptNameTH!: boolean;
+  ModalCheck: boolean = false;
+  CheckallMana: boolean = false;
+  CheckallPosit: boolean = false;
 
   constructor(
     private Add_dp: AdddepartmentService,
@@ -42,14 +49,16 @@ export class AddDepartmentComponent implements OnInit {
   }
 
   MapUsernameWithID() {
+    console.log('check mana', this.countDeptMana.length);
     console.log('check len', this.DeptUserID.length);
-    for (let i = 0; i < this.DeptMana.length; i++) {
+
+    for (let i = 0; i < this.countDeptMana.length; i++) {
       for (let j = 0; j < this.DeptUserID.length; j++) {
-        
-        if(this.DeptMana[i] === this.DeptUserID[j].ud_fullname_th)
-        {
-          this.DeptUsername.push(String(this.DeptUserID[j].ud_username))
-          console.log(this.DeptUsername[i])
+        if (this.DeptMana[i] == this.DeptUserID[j].ud_fullname_th) {
+          this.DeptUsername.push(String(this.DeptUserID[j].ud_username));
+          console.log('map check', this.DeptUsername[i]);
+        } else if (this.DeptMana[i] == '') {
+          this.DeptUsername.pop();
         }
         // console.log('mana i',this.DeptMana[i]);
         // console.log('uid j',this.DeptUserID[j].ud_fullname_th,'id',this.DeptUserID[j].ud_id);
@@ -61,15 +70,15 @@ export class AddDepartmentComponent implements OnInit {
   }
 
   onSubmit() {
-    this.MapUsernameWithID();
-    console.log(this.namedepartment_en.value)
-    console.log(this.namedepartment_th.value)
-    console.log(this.DeptPosit)
-    console.log(this.DeptUsername)
+    this.cancelModal()
+    console.log(this.namedepartment_en.value);
+    console.log(this.namedepartment_th.value);
+    console.log(this.DeptPosit);
+    console.log(this.DeptUsername);
 
     this.Add_dp.adddepartment(
       this.namedepartment_en.value!,
-      "เทสภาษาไทย",
+      this.namedepartment_th.value!,
       this.DeptPosit!,
       this.DeptUsername!
     ).subscribe({
@@ -80,18 +89,6 @@ export class AddDepartmentComponent implements OnInit {
       error: (err) => {
         console.log('Failed, input is null');
         this.isSuccess = false;
-        //   }
-
-        //   if (this.naemposition.value == '') {
-        //     console.log('not input');
-        //     this.alertTextRedNull_namepos();
-        //   }
-
-        //   if (this.nameleader.value == '') {
-        //     console.log('not input');
-        //     this.alertTextRedNull_namelead();
-        //   }
-        // }
       },
     });
   }
@@ -101,9 +98,8 @@ export class AddDepartmentComponent implements OnInit {
     if (this.DeptMana[this.countDeptMana.length - 1] == null) {
       alert('cannot กรอกให้ครบหน่อย');
     } else {
-      this.countDeptMana?.push(
-        this.countDeptMana[this.countDeptMana.length - 1] + 1
-      );
+      this.countDeptMana?.push(this.countDeptMana.length + 1);
+      console.log(this.countDeptMana);
     }
   }
 
@@ -112,9 +108,7 @@ export class AddDepartmentComponent implements OnInit {
     if (this.DeptPosit[this.countDeptPosit.length - 1] == null) {
       alert('cannot กรอกให้ครบหน่อย');
     } else {
-      this.countDeptPosit?.push(
-        this.countDeptPosit[this.countDeptPosit.length - 1] + 1
-      );
+      this.countDeptPosit?.push(this.countDeptPosit.length + 1);
     }
   }
 
@@ -128,33 +122,63 @@ export class AddDepartmentComponent implements OnInit {
     this.DeptPosit.splice(index, 1);
   }
 
-  alertTextRedNull_namedp() {
-    let alert = document.getElementById('alertnull_dp');
-    alert!.style.display = 'block';
+  checkNull() {
+    this.CheckNullMana = [];
+    this.CheckNullPosit = [];
+    this.CheckNullDeptNameEN = false;
+    this.CheckNullDeptNameTH = false;
+
+    this.CheckallMana = false;
+    this.CheckallPosit = false;
+
+    this.MapUsernameWithID();
+    if (this.namedepartment_en.value == '') {
+      this.CheckNullDeptNameEN = true;
+    }
+    if (this.namedepartment_th.value == '') {
+      this.CheckNullDeptNameTH = true;
+    }
+
+    for (let i = 0; i < this.countDeptPosit.length; i++) {
+      console.log('check posit', this.DeptPosit[i]);
+      if (this.DeptPosit[i] == undefined || this.DeptPosit[i] == '') {
+        this.CheckNullPosit[i] = true;
+        this.CheckallPosit = true;
+      } else {
+        this.CheckNullPosit[i] = false;
+      }
+    }
+
+    for (let i = 0; i < this.countDeptMana.length; i++) {
+      console.log('check mana', this.DeptUsername[i]);
+      if (this.DeptUsername[i] == undefined) {
+        this.CheckNullMana[i] = true;
+        this.CheckallMana = true;
+      } else {
+        this.CheckNullMana[i] = false;
+      }
+    }
+
+    console.log(this.CheckNullDeptNameEN);
+    console.log(this.CheckallMana);
+    console.log(this.CheckallPosit);
+
+    if (this.CheckNullDeptNameEN == false) {
+      if (this.CheckallMana == false) {
+        if (this.CheckallPosit == false) {
+          this.ModalCheck = true;
+        }
+      }
+    }
+
+    console.log('nullen', this.CheckNullDeptNameEN);
+    console.log('nullth', this.CheckNullDeptNameTH);
+    console.log('nullposit', this.CheckNullPosit);
+    console.log('nulklmana', this.CheckNullMana);
+    console.log('check deptPosit ', this.DeptPosit);
   }
 
-  alertTextRedNull_namepos() {
-    let alert = document.getElementById('alertnull_pos');
-    alert!.style.display = 'block';
-  }
-
-  alertTextRedNull_namelead() {
-    let alert = document.getElementById('alertnull_lead');
-    alert!.style.display = 'block';
-  }
-
-  ClearAlertText_pos() {
-    let alertnull = document.getElementById('alertnull_pos');
-    alertnull!.style.display = 'none';
-  }
-
-  ClearAlertText_dp() {
-    let alertnull = document.getElementById('alertnull_dp');
-    alertnull!.style.display = 'none';
-  }
-
-  ClearAlertText_lead() {
-    let alertnull = document.getElementById('alertnull_lead');
-    alertnull!.style.display = 'none';
+  cancelModal() {
+    this.ModalCheck = false;
   }
 }
