@@ -123,11 +123,10 @@ export class AddDepartmentComponent implements OnInit {
   }
 
   checkNull() {
-    this.CheckNullMana = [];
-    this.CheckNullPosit = [];
+    this.CheckNullMana = [false];
+    this.CheckNullPosit = [false];
     this.CheckNullDeptNameEN = false;
     this.CheckNullDeptNameTH = false;
-
     this.CheckallMana = false;
     this.CheckallPosit = false;
 
@@ -150,15 +149,15 @@ export class AddDepartmentComponent implements OnInit {
     }
 
     for (let i = 0; i < this.countDeptMana.length; i++) {
-      console.log('check mana', this.DeptUsername[i]);
-      if (this.DeptUsername[i] == undefined) {
+      console.log('check mana', this.DeptMana[i]);
+      if (this.DeptMana[i] == undefined || Object.keys(this.DeptUsername[i]).length === 0) {
         this.CheckNullMana[i] = true;
         this.CheckallMana = true;
       } else {
         this.CheckNullMana[i] = false;
       }
     }
-
+    console.log("asd",this.DeptUsername);
     console.log(this.CheckNullDeptNameEN);
     console.log(this.CheckallMana);
     console.log(this.CheckallPosit);

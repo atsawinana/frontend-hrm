@@ -75,6 +75,8 @@ export class SideBarComponent implements OnInit {
       this.employee = false;
       if (val instanceof NavigationEnd) {
         this.navigateActive();
+      }else{
+        this.navigateActive();
       }
     });
   }

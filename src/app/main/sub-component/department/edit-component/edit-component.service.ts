@@ -9,7 +9,7 @@ export class EditComponentService {
   constructor(private httpClient: HttpClient) {}
 
   editGetData(deptID:string) {
-    return this.httpClient.post('http://127.0.0.1:8000/api/department/showEditDepartment',
+    return this.httpClient.post(`${environment.apiURL}/department/showEditDepartment`,
     {dept_id : deptID});
   }
   editData(deptID:string,deptnameen:string,dpnameen:string[],dmmusername:string[],deptupdateby:string,deptnameth:string){
