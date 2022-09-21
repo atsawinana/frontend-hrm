@@ -30,7 +30,7 @@
     <thead>
       <tr>
         <th>ลำดับ</th>
-        <th>รายชื่อแผนก</th>
+        <th class="text-start ps-5">รายชื่อแผนก</th>
         <th>จำนวนคน</th>
         <th>การดำเนินการ</th>
       </tr>
@@ -43,7 +43,7 @@
             | paginate: { itemsPerPage: listPerPage, currentPage: onPage }
             let i = index">
         <td>{{datas.number}}</td>
-        <td id="nameDepartment">{{ datas.dept_name_en }}</td>
+        <td id="nameDepartment" class="text-start ps-5">{{ datas.dept_name_en }}</td>
         <td>{{ datas.member }}</td>
         <td>
           <div class="row d-flex justify-content-center">
