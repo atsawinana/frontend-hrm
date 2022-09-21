@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +15,7 @@ export class AdddepartmentService {
     nameleader: string[]
   ) {
     return this.httpClient.post(
-      'http://127.0.0.1:8000/api/department/addDepartment',
+      `${environment.apiURL}/department/addDepartment`,
       {
         dept_name_en: namedepartment_en,
         dept_name_th: namedepartment_th,

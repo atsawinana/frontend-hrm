@@ -4,6 +4,7 @@ import { Route, Router, RouterLink } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import { LoadingService } from './loading/loading.service';
 import { LoginService } from './login.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +23,9 @@ export class LoginComponent implements OnInit {
 
   constructor(private loginService: LoginService, private router: Router, private coreToken: AuthService, public loading: LoadingService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(environment.apiURL)
+  }
 
   alertTextRed() {
     let alert = document.getElementById('alert');

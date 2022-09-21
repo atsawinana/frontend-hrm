@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +10,7 @@ export class DepartmentService {
 
   getAllUser() {
     return this.httpClient.post(
-      'http://127.0.0.1:8000/api/department/getAllUser',
+      `${environment.apiURL}/department/getAllUser`,
       {}
     );
   }

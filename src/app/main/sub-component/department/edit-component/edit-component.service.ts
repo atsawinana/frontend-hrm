@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +13,7 @@ export class EditComponentService {
     {dept_id : deptID});
   }
   editData(deptID:string,deptnameen:string,dpnameen:string[],dmmusername:string[],deptupdateby:string,deptnameth:string){
-    return this.httpClient.post('http://127.0.0.1:8000/api/department/editDepartment',{
+    return this.httpClient.post(`${environment.apiURL}/department/editDepartment`,{
       dept_id : deptID,
       dept_name_en : deptnameen,
       dp_name_en : dpnameen,

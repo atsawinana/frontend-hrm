@@ -3,6 +3,7 @@ import { BehaviorSubject, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { NavigationEnd, Route, Router, RouterLink } from '@angular/router';
 import { LocalizedString } from '@angular/compiler';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -19,7 +20,7 @@ export class AuthService {
  
   }
   reFreshToken() {
-    return this.httpClient.post('http://127.0.0.1:8000/api/auth/refresh', {
+    return this.httpClient.post(`${environment.apiURL}/auth/refresh`, {
       token: localStorage.getItem('tokenLocal'),
     });
   }
