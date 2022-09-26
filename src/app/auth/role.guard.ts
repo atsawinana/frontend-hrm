@@ -33,11 +33,6 @@ export class RoleGuard implements CanActivate {
       this.roleHR = true;
     }
 
-    // alert(this.roleNormal)
-    // alert(this.roleMana)
-    // alert(this.roleHR)
-    // alert(state.url)
-
     if (state.url.includes('employee') && (this.roleMana || this.roleHR)) {
       return true;
     }else if(state.url.includes('department') && this.roleHR)

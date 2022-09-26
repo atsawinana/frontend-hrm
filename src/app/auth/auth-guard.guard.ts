@@ -15,12 +15,10 @@ import { AuthService } from './auth.service';
 export class AuthGuardGuard implements CanActivate {
   constructor(private router: Router, private coreToken: AuthService) {}
   canActivate() {
-    if (!this.coreToken.isLoggedin()) {
+    if (!localStorage.getItem('tokenLocal')) {
       this.router.navigate(['']);
       return false;
     }
-    // }else if(this.coreToken.){
-    // }
     return true;
   }
 }

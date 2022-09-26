@@ -39,21 +39,21 @@ export class SideBarComponent implements OnInit {
   }
 
   navigateActive() {
-    if (this.router.url.includes('profile')) {
+    if (this.router.url.includes('main/profile')) {
       this.profile = true;
-    } else if (this.router.url.includes('timeattendance')) {
+    } else if (this.router.url.includes('main/timeattendance')) {
       this.timeattendance = true;
-    } else if (this.router.url.includes('department')) {
+    } else if (this.router.url.includes('main/department')) {
       this.department = true;
-    } else if (this.router.url.includes('leave')) {
+    } else if (this.router.url.includes('main/leave')) {
       this.leave = true;
-    } else if (this.router.url.includes('ot')) {
+    } else if (this.router.url.includes('main/ot')) {
       this.ot = true;
-    } else if (this.router.url.includes('car')) {
+    } else if (this.router.url.includes('main/car')) {
       this.car = true;
-    } else if (this.router.url.includes('activity')) {
+    } else if (this.router.url.includes('main/activity')) {
       this.activity = true;
-    } else if (this.router.url.includes('employee')) {
+    } else if (this.router.url.includes('main/employee')) {
       this.employee = true;
     }
   }

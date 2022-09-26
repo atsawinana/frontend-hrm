@@ -6,11 +6,11 @@ import { MainComponent } from './main/main-component/main.component';
 import { OtComponent } from './main/sub-component/ot/ot.component';
 import { ProfileComponent } from './main/sub-component/profile/profile.component';
 import { TimeAttendanceComponent } from './main/sub-component/timeAttendance/timeAttendance.component';
-import { EmployeeComponent } from './main/sub-component/employee/employee.component';
 import { AuthGuardGuard } from './auth/auth-guard.guard';
 import { TravelExpensesComponent } from './main/sub-component/travelExpenses/travelExpenses.component';
 import { ActivityComponent } from './main/sub-component/activity/activity.component';
 import { RoleGuard } from './auth/role.guard';
+import { ListEmployeeComponent } from './main/sub-component/employee/list-employee/list-employee.component';
 
 const routes: Routes = [
   {
@@ -25,21 +25,19 @@ const routes: Routes = [
     path: 'main',
     component: MainComponent,
     children: [
-      { path: '', component: ProfileComponent },
-      { path: 'leave', component: LeaveComponent},
       {
-        path: 'department',
-        loadChildren: () =>
-          import('./main/sub-component/department/department.module').then(
-            (m) => m.DepartmentModule
-          ),canActivate: [RoleGuard]
+        path: '', component: ProfileComponent, canActivate: [AuthGuardGuard]
       },
-      { path: 'ot', component: OtComponent  },
-      { path: 'profile', component: ProfileComponent },
-      { path: 'timeattendance', component: TimeAttendanceComponent },
-      { path: 'employee', component: EmployeeComponent ,canActivate: [RoleGuard] },
-      { path: 'car', component: TravelExpensesComponent },
-      { path: 'activity',component: ActivityComponent},
+      { path: 'leave', component: LeaveComponent, canActivate: [AuthGuardGuard] },
+      {
+        path: 'department', loadChildren: () => import('./main/sub-component/department/department.module').then((m) => m.DepartmentModule), canActivate: [RoleGuard, AuthGuardGuard]
+      },
+      { path: 'ot', component: OtComponent, canActivate: [AuthGuardGuard] },
+      { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardGuard] },
+      { path: 'timeattendance', component: TimeAttendanceComponent, canActivate: [AuthGuardGuard] },
+      { path: 'employee', loadChildren: () => import('./main/sub-component/employee/employee.module').then((m) => m.EmployeeModule), canActivate: [RoleGuard, AuthGuardGuard] },
+      { path: 'car', component: TravelExpensesComponent, canActivate: [AuthGuardGuard] },
+      { path: 'activity', component: ActivityComponent, canActivate: [AuthGuardGuard] },
     ],
     canActivate: [AuthGuardGuard]
   },
@@ -48,6 +46,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers: [AuthGuardGuard,RoleGuard]
+  providers: [AuthGuardGuard, RoleGuard]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

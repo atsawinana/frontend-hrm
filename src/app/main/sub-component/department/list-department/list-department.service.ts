@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
@@ -6,19 +6,47 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class ListDepartmentService {
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) { }
+
+
+
   getAllDepartment() {
-    return this.httpClient.post(`${environment.apiURL}/department/getAllDepartment`, {
+
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer' + localStorage.getItem('tokenLocal'),
+    });
+
+    return this.httpClient.get(`${environment.apiURL}/department/getAllDepartment`, {
+      headers
     });
   }
-  DeleletDepartment(deptID :string) {
-    return this.httpClient.post(`${environment.apiURL}/department/deleteDepartment`, {
-      dept_id : deptID
+
+  //ยังไม่ได้แก้
+  DeleletDepartment(deptID: string) {
+
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer' + localStorage.getItem('tokenLocal'),
+    });
+
+    return this.httpClient.delete(`${environment.apiURL}/department/deleteDepartment`, {
+      headers,
+      params: {
+        dept_id: deptID
+      }
     });
   }
-  DetailDepartment(deptID :string) {
-    return this.httpClient.post(`${environment.apiURL}/department/showDeteilDepartment`, {
-      dept_id : deptID
+
+  DetailDepartment(deptID: string) {
+
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer' + localStorage.getItem('tokenLocal'),
+    });
+
+    return this.httpClient.get(`${environment.apiURL}/department/showDeteilDepartment`, {
+      headers,
+      params: {
+        'dept_id': deptID
+      }
     });
   }
 

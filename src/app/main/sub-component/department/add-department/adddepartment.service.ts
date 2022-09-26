@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -14,6 +14,10 @@ export class AdddepartmentService {
     naemposition: string[],
     nameleader: string[]
   ) {
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+    });
+
     return this.httpClient.post(
       `${environment.apiURL}/department/addDepartment`,
       {
@@ -22,9 +26,8 @@ export class AdddepartmentService {
         dp_name_en: naemposition,
         dept_update_by: 'FixID',
         dmm_username: nameleader,
-      }
+      },
+      { headers }
     );
   }
-
-  
 }

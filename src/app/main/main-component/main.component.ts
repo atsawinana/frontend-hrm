@@ -18,11 +18,11 @@ export class MainComponent implements OnInit {
   ) {
     this.setTimeout();
     this.userInactive.subscribe(() => {
-      console.log('user has been inactive (1 hour)');
-      this.coreToken.userInactivate = true;
+      console.log('user has been inactive (30 hour)');
+      this.coreToken.Logout()
     });
   }
-  
+
   token!: any;
   ud_fullname_th!: string;
   ud_prefix!: string;
@@ -30,18 +30,14 @@ export class MainComponent implements OnInit {
   position_th!: string;
   tokenLocal!: string;
   tokenCheck!: boolean;
-  photo!:string
-  checkApi:boolean = false;
+  photo!: string
+  checkApi: boolean = false;
 
-  async ngOnInit() {
-
-    this.refresh();
-    if (await this.coreToken.CheckTokenTimeOut()) {
-      this.router.navigate(['']);
-    }
+  ngOnInit() {
+    this.getProfile();
   }
 
-  refresh() {
+  getProfile() {
     this.tokenLocal = localStorage.getItem('tokenLocal')!;
     this.MainService.profileRequest({ token: this.tokenLocal! }).subscribe({
       next: (res: any) => {
@@ -51,45 +47,45 @@ export class MainComponent implements OnInit {
         this.role = res.data.role;
         this.photo = res.data.ud_picture
         this.checkApi = true;
-        localStorage.setItem('roleUser',this.role)
+        localStorage.setItem('roleUser', this.role)
         this.coreToken.UserRole = this.role
-        
+
       },
-      error: (err: any) => {},
+      error: (err: any) => { 
+        if(err.status === 401){
+
+        }
+      },
     });
   }
 
   logout() {
-    this.coreToken.Logout();
+    this.coreToken.Logout().subscribe({
+      next: (res: any) => {
+      },
+      error: (err: any) => {
+      },
+    });
   }
 
-  title = 'frontend-code';
   userActivity: any;
   userInactive: Subject<any> = new Subject();
   timeMin: number = 30; //Change Minute Here
 
   setTimeout() {
-    if (localStorage.getItem('tokenLocal') != null) {
-      this.userActivity = setTimeout(
-        () => this.userInactive.next(undefined),
-        1800000 // 1000 = 1sec
-      );
-    }
+    this.userActivity = setTimeout(
+      () => this.userInactive.next(undefined),
+      this.timeMin * 60000 // 1000 = 1sec
+    );
   }
 
-  @HostListener('window:mousemove') refreshUserState() {
-    this.coreToken.CheckTokenTimeOut().then(() => {
-      if (localStorage.getItem('tokenLocal')) {
-        this.coreToken.userInactivate = false;
-      }
+  @HostListener('window:mousemove') refreshUserStateMouse() {
       clearTimeout(this.userActivity);
       this.setTimeout();
-    });
   }
 
-  @HostListener('click') userclick() {
-    if (this.coreToken.userInactivate) {
-      this.coreToken.Logout();
-    }
-  }
+  @HostListener('window:keydown') refreshUserStateKeyborad() {
+    clearTimeout(this.userActivity);
+    this.setTimeout();
+}
 }

@@ -5,6 +5,7 @@ import { AuthService } from '../auth/auth.service';
 import { LoadingService } from './loading/loading.service';
 import { LoginService } from './login.service';
 import { environment } from 'src/environments/environment';
+import { retry } from 'rxjs';
 
 @Component({
   selector: 'app-login',
