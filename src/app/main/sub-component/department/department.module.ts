@@ -9,6 +9,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { MatSliderModule } from '@angular/material/slider';
 import { EditComponentComponent } from './edit-component/edit-component.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LoadingDepartmentComponent } from './loading-department/loading-department.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [
     AddDepartmentComponent,
     ListDepartmentComponent,
-    EditComponentComponent
+    EditComponentComponent,
+    LoadingDepartmentComponent
   ]
 })
 export class DepartmentModule { }

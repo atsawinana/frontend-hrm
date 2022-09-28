@@ -28,6 +28,7 @@ export class AddDepartmentComponent implements OnInit {
   ModalCheck: boolean = false;
   CheckallMana: boolean = false;
   CheckallPosit: boolean = false;
+  checkLoadAPI:boolean = false;
 
   constructor(
     private Add_dp: AdddepartmentService,
@@ -46,6 +47,7 @@ export class AddDepartmentComponent implements OnInit {
 
     this.countDeptMana = [1];
     this.countDeptPosit = [1];
+    this.checkLoadAPI = true
   }
 
   MapUsernameWithID() {

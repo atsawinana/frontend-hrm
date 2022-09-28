@@ -1,3 +1,5 @@
+<app-loading-department *ngIf="checkLoadAPI == false" class="d-flex justify-content-center h-100 align-items-center"></app-loading-department>
+
 <div class="container p-0 mainContainer" *ngIf="htmlWaitLoad">
   <div class="font-header mb-5" id="re">
     แก้ไขแผนก
@@ -101,7 +103,7 @@
           ">
         </div>
         <div *ngIf="countDeptPosit.length > 1" class="col-2 py-2">
-          <i class="fa-solid fa-circle-xmark delete-dept iconDept" (click)="deleteDeptPosit(i)"></i>
+          <i [ngClass]="{notDelelte : checkDeltePosit(i)}" class="fa-solid fa-circle-xmark delete-dept iconDept" (click)="deleteDeptPosit(i)"></i>
         </div>
 
         <div class="row">
@@ -226,7 +228,7 @@
 
             <div class="col-5 col-sm-5 col-md-5 col-lg-5">
               <button class="submit-button submit-font d-flex justify-content-center w-100" data-bs-target="#cancel"
-                data-bs-toggle="modal">
+                data-bs-toggle="modal" >
                 <div class="submit-text">ตกลง</div>
               </button>
             </div>
@@ -250,7 +252,7 @@
           <div class="d-flex justify-content-center">
             <div class="col-5 col-sm-5 col-md-5 col-lg-5 mb-4">
               <button class="submit-button d-flex justify-content-center w-100" data-bs-dismiss="modal"
-                aria-label="Close" routerLink="../">
+                aria-label="Close" routerLink="../../">
                 <div class="submit-text submit-font">ตกลง</div>
               </button>
             </div>

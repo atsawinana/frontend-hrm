@@ -19,7 +19,8 @@ export class ListDepartmentComponent implements OnInit {
   dept_post!: any;
   dept_manager!: any;
   deptIDDelete:any;
-  countDept:number[] = []
+  checkLoadAPI:boolean = false;
+  countDept:number[] = [];
 
   constructor(private DepService: ListDepartmentService) {}
   ngOnInit() {
@@ -31,6 +32,7 @@ export class ListDepartmentComponent implements OnInit {
           this.countDept[i] = i+1;
         }
         Array(this.deprtmentsData).push({number:this.countDept})
+        this.checkLoadAPI = true;
       },
       error: (err: any) => {},
     });

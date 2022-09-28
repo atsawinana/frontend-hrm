@@ -158,6 +158,11 @@ i {
   cursor: pointer;
 }
 
+.notDelelte{
+  color: #888 !important;
+  cursor: not-allowed !important;
+}
+
 @media screen and (max-width: 576px) {
   div.input-xs {
     display: flex !important;

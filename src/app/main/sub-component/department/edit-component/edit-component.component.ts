@@ -17,7 +17,7 @@ export class EditComponentComponent implements OnInit {
     private router: ActivatedRoute,
     private editService: EditComponentService,
     private Maindept: DepartmentService
-  ) {}
+  ) { }
 
   ObjDept: any = {};
   ObjDeptMana: any = {};
@@ -29,6 +29,8 @@ export class EditComponentComponent implements OnInit {
   DeptUsername: string[] = [];
   nullCheck: boolean = false;
 
+
+  checkLoadAPI:boolean = false
   CheckNullMana: boolean[] = [];
   CheckNullPosit: boolean[] = [];
   CheckNullDeptNameEN = false;
@@ -66,8 +68,9 @@ export class EditComponentComponent implements OnInit {
         for (let i = 0; i < Object.keys(this.ObjDeptPosit).length; i++) {
           this.countDeptPosit[i] = i + 1;
         }
+        this.checkLoadAPI = true
       },
-      error: (err: any) => {},
+      error: (err: any) => { },
     });
   }
 
@@ -99,7 +102,7 @@ export class EditComponentComponent implements OnInit {
         next: (res: any) => {
           console.log('success edit');
         },
-        error: (err: any) => {},
+        error: (err: any) => { },
       });
   }
 
@@ -109,8 +112,18 @@ export class EditComponentComponent implements OnInit {
   }
 
   deleteDeptPosit(index: number) {
-    this.ObjDeptPosit.splice(index, 1);
-    this.countDeptPosit.splice(index, 1);
+    if (!this.ObjDeptPosit[index].can_delete) {
+      this.ObjDeptPosit.splice(index, 1);
+      this.countDeptPosit.splice(index, 1);
+    }
+  }
+
+  checkDeltePosit(index: number) : boolean{
+    if (this.ObjDeptPosit[index].can_delete) {
+      return false
+    }else{
+      return true
+    }
   }
 
   checkNull() {
