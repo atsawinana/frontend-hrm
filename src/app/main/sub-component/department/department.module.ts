@@ -6,7 +6,7 @@ import { ListDepartmentComponent } from './list-department/list-department.compo
 import { DepartmentRoutes } from './department.routing';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { MatSliderModule } from '@angular/material/slider';
+import { ModalModule } from 'ngx-bootstrap/modal'
 import { EditComponentComponent } from './edit-component/edit-component.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoadingDepartmentComponent } from './loading-department/loading-department.component';
@@ -20,12 +20,13 @@ import { LoadingDepartmentComponent } from './loading-department/loading-departm
     ReactiveFormsModule,
     NgxPaginationModule,
     HttpClientModule,
+    ModalModule.forRoot()
   ],
   declarations: [
     AddDepartmentComponent,
     ListDepartmentComponent,
     EditComponentComponent,
     LoadingDepartmentComponent
-  ]
+  ],
 })
 export class DepartmentModule { }

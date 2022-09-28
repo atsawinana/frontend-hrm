@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/auth/auth.service';
 import { ListDepartmentService } from './list-department.service';
 
 @Component({
@@ -22,9 +23,14 @@ export class ListDepartmentComponent implements OnInit {
     checkLoadAPI: boolean = false;
     countDept: number[] = [];
     ModalCheck: boolean = false;
+    deptID_Detail: string = ""
 
-    constructor(private DepService: ListDepartmentService) { }
+    constructor(private DepService: ListDepartmentService, private coreToken: AuthService) { }
     ngOnInit() {
+        this.getAllDepartment()
+    }
+
+    getAllDepartment() {
         this.DepService.getAllDepartment().subscribe({
             next: (res: any) => {
                 this.deprtmentsData = res.data.deprtments;
@@ -35,7 +41,18 @@ export class ListDepartmentComponent implements OnInit {
                 Array(this.deprtmentsData).push({ number: this.countDept })
                 this.checkLoadAPI = true;
             },
-            error: (err: any) => { },
+            error: (err: any) => {
+                if (err.status === 401) {
+                    this.coreToken.reFreshToken().subscribe({
+                        next: (res: any) => {
+                            this.getAllDepartment();
+                        },
+                        error: (res: any) => {
+                            this.coreToken.Logout()
+                        }
+                    })
+                }
+            },
         });
     }
 
@@ -78,9 +95,25 @@ export class ListDepartmentComponent implements OnInit {
         }
     }
     Delete_Department() {
+        this.cancelModal()
         this.DepService.DeleletDepartment(this.deptIDDelete).subscribe({
-            next: (res: any) => { },
-            error: (err: any) => { },
+            next: (res: any) => {
+                location.reload();
+            },
+            error: (err: any) => {
+                if (err.status === 401) {
+                    this.coreToken.reFreshToken().subscribe({
+                        next: (res: any) => {
+                            this.Delete_Department();
+                        },
+                        error: (res: any) => {
+                            this.coreToken.Logout()
+                        }
+                    })
+                } else {
+                    location.reload();
+                }
+            },
         });
     }
 
@@ -121,7 +154,8 @@ export class ListDepartmentComponent implements OnInit {
     }
 
     DetailDept(event: any) {
-        this.DepService.DetailDepartment(event).subscribe({
+        this.deptID_Detail = event
+        this.DepService.DetailDepartment(this.deptID_Detail).subscribe({
             next: (res: any) => {
                 this.dept_name = res.data.departments.dept_name_th;
                 this.dept_creat = res.data.departments.dept_created_date;
@@ -129,7 +163,18 @@ export class ListDepartmentComponent implements OnInit {
                 this.dept_manager = res.data.department_map_managers;
 
             },
-            error: (err: any) => { },
+            error: (err: any) => {
+                if (err.status === 401) {
+                    this.coreToken.reFreshToken().subscribe({
+                        next: (res: any) => {
+                            this.DetailDept(this.deptID_Detail);
+                        },
+                        error: (res: any) => {
+                            this.coreToken.Logout()
+                        }
+                    })
+                }
+            },
         });
     }
 

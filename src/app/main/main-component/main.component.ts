@@ -6,86 +6,92 @@ import { Subject } from 'rxjs/internal/Subject';
 import { LoadingComponent } from 'src/app/login/loading/loading-template/loading.component';
 
 @Component({
-  selector: 'app-main',
-  templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css'],
+    selector: 'app-main',
+    templateUrl: './main.component.html',
+    styleUrls: ['./main.component.css'],
 })
 export class MainComponent implements OnInit {
-  constructor(
-    private MainService: MainService,
-    private router: Router,
-    private coreToken: AuthService,
-  ) {
-    this.setTimeout();
-    this.userInactive.subscribe(() => {
-      console.log('user has been inactive (30 hour)');
-      this.coreToken.Logout()
-    });
-  }
+    constructor(
+        private MainService: MainService,
+        private router: Router,
+        private coreToken: AuthService,
+    ) {
+        this.setTimeout();
+        this.userInactive.subscribe(() => {
+            console.log('user has been inactive (30 hour)');
+            this.coreToken.Logout()
+        });
+    }
 
-  token!: any;
-  ud_fullname_th!: string;
-  ud_prefix!: string;
-  role: string = "";
-  position_th!: string;
-  tokenLocal!: string;
-  tokenCheck!: boolean;
-  photo!: string
-  checkApi: boolean = false;
+    token!: any;
+    ud_fullname_th!: string;
+    ud_prefix!: string;
+    role: string = "";
+    position_th!: string;
+    tokenLocal!: string;
+    tokenCheck!: boolean;
+    photo!: string
+    checkApi: boolean = false;
 
-  ngOnInit() {
-    this.getProfile();
-  }
+    ngOnInit() {
+        this.getProfile();
+    }
 
-  getProfile() {
-    this.tokenLocal = localStorage.getItem('tokenLocal')!;
-    this.MainService.profileRequest({ token: this.tokenLocal! }).subscribe({
-      next: (res: any) => {
-        this.ud_fullname_th = res.data.ud_fullname_th;
-        this.ud_prefix = res.data.ud_prefix;
-        this.position_th = res.data.position_th;
-        this.role = res.data.role;
-        this.photo = res.data.ud_picture
-        this.checkApi = true;
-        localStorage.setItem('roleUser', this.role)
-        this.coreToken.UserRole = this.role
+    getProfile() {
+        this.tokenLocal = localStorage.getItem('tokenLocal')!;
+        this.MainService.profileRequest({ token: this.tokenLocal! }).subscribe({
+            next: (res: any) => {
+                this.ud_fullname_th = res.data.ud_fullname_th;
+                this.ud_prefix = res.data.ud_prefix;
+                this.position_th = res.data.position_th;
+                this.role = res.data.role;
+                this.photo = res.data.ud_picture
+                this.checkApi = true;
+                localStorage.setItem('roleUser', this.role)
+                this.coreToken.UserRole = this.role
+            },
+            error: (err: any) => {
+                if (err.status === 401) {
+                    this.coreToken.reFreshToken().subscribe({
+                        next: (res: any) => {
+                            this.getProfile()
+                        },
+                        error: (res: any) => {
+                            this.coreToken.Logout()
+                        }
+                    })
+                }
+            },
+        });
+    }
 
-      },
-      error: (err: any) => { 
-        if(err.status === 401){
+    logout() {
+        this.coreToken.Logout().subscribe({
+            next: (res: any) => {
+            },
+            error: (err: any) => {
+            },
+        });
+    }
 
-        }
-      },
-    });
-  }
+    userActivity: any;
+    userInactive: Subject<any> = new Subject();
+    timeMin: number = 30; //Change Minute Here
 
-  logout() {
-    this.coreToken.Logout().subscribe({
-      next: (res: any) => {
-      },
-      error: (err: any) => {
-      },
-    });
-  }
+    setTimeout() {
+        this.userActivity = setTimeout(
+            () => this.userInactive.next(undefined),
+            this.timeMin * 60000 // 1000 = 1sec
+        );
+    }
 
-  userActivity: any;
-  userInactive: Subject<any> = new Subject();
-  timeMin: number = 30; //Change Minute Here
+    @HostListener('window:mousemove') refreshUserStateMouse() {
+        clearTimeout(this.userActivity);
+        this.setTimeout();
+    }
 
-  setTimeout() {
-    this.userActivity = setTimeout(
-      () => this.userInactive.next(undefined),
-      this.timeMin * 60000 // 1000 = 1sec
-    );
-  }
-
-  @HostListener('window:mousemove') refreshUserStateMouse() {
-      clearTimeout(this.userActivity);
-      this.setTimeout();
-  }
-
-  @HostListener('window:keydown') refreshUserStateKeyborad() {
-    clearTimeout(this.userActivity);
-    this.setTimeout();
-}
+    @HostListener('window:keydown') refreshUserStateKeyborad() {
+        clearTimeout(this.userActivity);
+        this.setTimeout();
+    }
 }

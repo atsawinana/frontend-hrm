@@ -30,7 +30,7 @@ export class AuthService {
   }
 
   reFreshToken() {
-
+    console.log("refresh !")
     const headers = new HttpHeaders({
       Authorization: 'Bearer' + localStorage.getItem('tokenLocal')
     });
