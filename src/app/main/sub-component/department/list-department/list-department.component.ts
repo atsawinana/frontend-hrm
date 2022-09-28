@@ -84,7 +84,16 @@ export class ListDepartmentComponent implements OnInit {
         });
     }
 
-    checkDel(index: number): boolean {
+    checkDel(deptID: string): boolean {
+
+        let index = 0
+        for (let i = 0; i < Object.keys(this.deprtmentsData).length; i++) {
+            if (this.deprtmentsData[i].dept_id === deptID) {
+                index = i
+                break;
+            }
+        }
+
         if (this.deprtmentsData[index].can_delete) {
             return false
         } else {
@@ -96,7 +105,14 @@ export class ListDepartmentComponent implements OnInit {
         this.ModalCheck = false
     }
 
-    SetDeptID(deptID: string, index: number) {
+    SetDeptID(deptID: string) {
+        let index = 0
+        for (let i = 0; i < Object.keys(this.deprtmentsData).length; i++) {
+            if (this.deprtmentsData[i].dept_id === deptID) {
+                index = i
+                break;
+            }
+        }
 
         if (this.deprtmentsData[index].can_delete) {
             this.deptIDDelete = deptID

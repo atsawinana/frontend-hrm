@@ -75,11 +75,11 @@
                   </div>
                 </div>
                 <div class="col-1 px-0 mx-1">
-                  <div class="activity-table icon-fix" (click)="SetDeptID(datas.dept_id,i)" data-bs-toggle="modal"
+                  <div class="activity-table icon-fix" (click)="SetDeptID(datas.dept_id)" data-bs-toggle="modal"
                      role="button">
                     <!-- <img class="mx-auto pb-1 notDelelte" src="assets/img/department/trash-solid-1.svg" alt=""
                     style="width: 18px; height: 100%px" /> -->
-                    <i [ngClass]="{notDelelte : checkDel(i)}" class="fa-solid fa-trash mx-auto pb-1"
+                    <i [ngClass]="{notDelelte : checkDel(datas.dept_id)}" class="fa-solid fa-trash mx-auto pb-1 deleteDepartment"
                       style="width: 18px; height: 100%px"></i>
                   </div>
                 </div>

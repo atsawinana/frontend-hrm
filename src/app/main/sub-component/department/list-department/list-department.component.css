@@ -33,13 +33,14 @@
   margin-bottom: 50px;
 }
 
+
 .notDelelte {
   color: #888 !important;
   cursor: not-allowed !important;
 }
 
 .deleteDepartment {
-  color: red !important;
+  color: red ;
 }
 
 .modal123 {
