@@ -46,7 +46,7 @@ export class EditComponentComponent implements OnInit {
             next: (res: any) => {
                 this.DeptUserID = res.data.users;
                 this.UserSelected = JSON.parse(JSON.stringify(this.DeptUserID))
-                console.log(this.UserSelected)
+                // console.log(this.UserSelected)
             },
             error: (err) => {
                 // console.log('Failed, input is null');
@@ -201,7 +201,7 @@ export class EditComponentComponent implements OnInit {
         // console.log('nullth', this.CheckNullDeptNameTH);
         // console.log('nullposit', this.CheckNullPosit);
         // console.log('nulklmana', this.CheckNullMana);
-        // console.log('check deptPosit ', this.nullCheck);
+        console.log('1234', this.ObjDeptMana);
     }
 
     cencelNullCheck() {
