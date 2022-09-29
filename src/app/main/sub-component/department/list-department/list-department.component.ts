@@ -10,7 +10,8 @@ import { ListDepartmentService } from './list-department.service';
 export class ListDepartmentComponent implements OnInit {
     selected?: any;
     deprtmentsData: any;
-    searchInput: any;
+    deptTable: any;
+    searchInput: string = "";
     listPerPage: number = 5;
     onPage: number = 1;
     onPageNext: number = this.onPage + 1;
@@ -33,11 +34,23 @@ export class ListDepartmentComponent implements OnInit {
     getAllDepartment() {
         this.DepService.getAllDepartment().subscribe({
             next: (res: any) => {
+
                 this.deprtmentsData = res.data.deprtments;
+                this.deptTable = JSON.parse(JSON.stringify(this.deprtmentsData))
+
+                for (let i = 0; i < this.deptTable.length; i++) {
+                   delete this.deptTable[i].dept_created_date
+                   delete this.deptTable[i].can_delete
+                }
+
+                // console.log("deptTable1", this.deptTable)
+                // console.log("deprtmentsData3", this.deprtmentsData)
+
                 this.maxListDept = res.data.max_dept;
                 for (let i = 0; i < this.deprtmentsData.length; i++) {
                     this.countDept[i] = i + 1;
                 }
+
                 Array(this.deprtmentsData).push({ number: this.countDept })
                 this.checkLoadAPI = true;
             },
@@ -139,6 +152,7 @@ export class ListDepartmentComponent implements OnInit {
     }
 
     SetDeptID(deptID: string) {
+
         let index = 0
         for (let i = 0; i < Object.keys(this.deprtmentsData).length; i++) {
             if (this.deprtmentsData[i].dept_id === deptID) {

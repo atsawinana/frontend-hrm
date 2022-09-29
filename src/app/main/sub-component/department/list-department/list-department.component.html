@@ -45,8 +45,8 @@
 
         <tbody class="list-content">
           <tr *ngFor="
-          let datas of deprtmentsData
-            | filter: searchInput
+          let datas of deptTable
+            | filter : searchInput
             | paginate: { itemsPerPage: listPerPage, currentPage: onPage }
             let i = index">
             <td>{{datas.number}}</td>
@@ -75,8 +75,7 @@
                   </div>
                 </div>
                 <div class="col-1 px-0 mx-1">
-                  <div class="activity-table icon-fix" (click)="SetDeptID(datas.dept_id)" data-bs-toggle="modal"
-                     role="button">
+                  <div class="activity-table icon-fix" (click)="SetDeptID(datas.dept_id)">
                     <!-- <img class="mx-auto pb-1 notDelelte" src="assets/img/department/trash-solid-1.svg" alt=""
                     style="width: 18px; height: 100%px" /> -->
                     <i [ngClass]="{notDelelte : checkDel(datas.dept_id)}" class="fa-solid fa-trash mx-auto pb-1 deleteDepartment"
@@ -85,9 +84,8 @@
                 </div>
               </div>
 
-
               <div *ngIf="ModalCheck" class="modal123">
-                <div class="modal-content modal-size">
+                <div class="modal-size">
                   <div class="row d-flex justify-content-center mt-4" id="confirm">
                     <div class="font-modal">คุณต้องลบแผนกหรือไม่ ?</div>
                   </div>

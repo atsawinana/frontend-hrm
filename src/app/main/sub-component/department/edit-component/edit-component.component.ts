@@ -37,11 +37,16 @@ export class EditComponentComponent implements OnInit {
     CheckNullDeptNameTH = false;
     CheckallMana = false;
     CheckallPosit = false;
+    checkMapfalse: boolean = false;
+    UserSelected: any[] = [];
+    fruits = ["apple", "orange", "banana", "grapes"];
 
     ngOnInit(): void {
         this.Maindept.getAllUser().subscribe({
             next: (res: any) => {
                 this.DeptUserID = res.data.users;
+                this.UserSelected = JSON.parse(JSON.stringify(this.DeptUserID))
+                console.log(this.UserSelected)
             },
             error: (err) => {
                 // console.log('Failed, input is null');
@@ -58,10 +63,6 @@ export class EditComponentComponent implements OnInit {
                 this.ObjDeptPosit = res.data.dept_positions;
                 this.ObjDeptMana = res.data.department_map_managers;
                 this.htmlWaitLoad = true;
-                // console.log(this.ObjDept);
-                // console.log(this.ObjDeptPosit);
-                // console.log(this.ObjDeptMana);
-
                 for (let i = 0; i < Object.keys(this.ObjDeptMana).length; i++) {
                     this.countDeptMana[i] = i + 1;
                 }
@@ -86,6 +87,8 @@ export class EditComponentComponent implements OnInit {
     }
 
     EditData() {
+        this.MapUsernameWithID();
+
         this.cencelNullCheck()
         let nameDeptEN = this.ObjDept.dept_name_en;
         let nameDeptTH = this.ObjDept.dept_name_th;
@@ -156,7 +159,6 @@ export class EditComponentComponent implements OnInit {
         this.CheckallMana = false;
         this.CheckallPosit = false;
 
-        this.MapUsernameWithID();
         if (this.ObjDept.dept_name_en == '') {
             this.CheckNullDeptNameEN = true;
         }
@@ -215,17 +217,23 @@ export class EditComponentComponent implements OnInit {
                     this.DeptUserID[j].ud_fullname_th
                 ) {
                     this.DeptUsername.push(String(this.DeptUserID[j].ud_username));
-                    // console.log(this.DeptUsername[i]);
+                } else if (this.ObjDeptMana[i] == "") {
+                    this.ObjDeptMana[i].pop();
                 }
             }
         }
     }
 
+    addSelect(event: any) {
+        console.log(event)
+    }
+
     addInputDept() {
+        console.log(this.ObjDeptMana)
         if (
             Object.keys(this.ObjDeptMana[this.countDeptMana.length - 1]).length === 0
         ) {
-            alert('cannot กรอกให้ครบหน่อย');
+            alert('กรุณากรอกข้อมูลให้ครบถ้วน');
         } else {
             this.countDeptMana?.push(
                 this.countDeptMana[this.countDeptMana.length - 1] + 1
@@ -240,7 +248,7 @@ export class EditComponentComponent implements OnInit {
             Object.keys(this.ObjDeptPosit[this.countDeptPosit.length - 1]).length ===
             0
         ) {
-            alert('cannot กรอกให้ครบหน่อย');
+            alert('กรุณากรอกข้อมูลให้ครบถ้วน');
         } else {
             this.countDeptPosit?.push(
                 this.countDeptPosit[this.countDeptPosit.length - 1] + 1
@@ -248,4 +256,5 @@ export class EditComponentComponent implements OnInit {
             this.ObjDeptPosit.push({});
         }
     }
+
 }

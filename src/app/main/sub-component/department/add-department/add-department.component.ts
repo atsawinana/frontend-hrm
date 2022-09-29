@@ -54,7 +54,7 @@ export class AddDepartmentComponent implements OnInit {
             for (let j = 0; j < this.DeptUserID.length; j++) {
                 if (this.DeptMana[i] == this.DeptUserID[j].ud_fullname_th) {
                     this.DeptUsername.push(String(this.DeptUserID[j].ud_username));
-                    console.log('map check', this.DeptUsername[i]);
+                    // console.log('map check', this.DeptUsername[i]);
                 } else if (this.DeptMana[i] == '') {
                     this.DeptUsername.pop();
                 }

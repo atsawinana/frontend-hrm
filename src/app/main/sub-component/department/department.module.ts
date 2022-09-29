@@ -10,6 +10,7 @@ import { ModalModule } from 'ngx-bootstrap/modal'
 import { EditComponentComponent } from './edit-component/edit-component.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoadingDepartmentComponent } from './loading-department/loading-department.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { LoadingDepartmentComponent } from './loading-department/loading-departm
     Ng2SearchPipeModule,
     ReactiveFormsModule,
     NgxPaginationModule,
-    HttpClientModule,
+    HttpClientModule,   
+    NgSelectModule,
     ModalModule.forRoot()
   ],
   declarations: [

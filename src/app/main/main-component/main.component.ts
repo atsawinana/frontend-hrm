@@ -18,7 +18,7 @@ export class MainComponent implements OnInit {
     ) {
         this.setTimeout();
         this.userInactive.subscribe(() => {
-            console.log('user has been inactive (30 hour)');
+            console.log('user has been inactive (30 mins)');
             this.coreToken.Logout()
         });
     }
