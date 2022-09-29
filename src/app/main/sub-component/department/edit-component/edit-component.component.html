@@ -10,7 +10,7 @@
       ชื่อแผนก (EN)*
     </div>
     <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
-      <div class="row OriginalDiv">
+      <div class="row OriginalDiv font-content">
         <div class="col-10">
           <input [ngClass]="{alert : CheckNullDeptNameEN}" ng-cloak type="text" placeholder="กรอกแผนก"
             class="form-control maxWidth" id="deptNameEn" [(ngModel)]="ObjDept.dept_name_en">
@@ -36,7 +36,7 @@
       ชื่อแผนก (TH)
     </div>
     <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
-      <div class="row OriginalDiv">
+      <div class="row OriginalDiv font-content">
         <div class="col-10">
           <input [ngClass]="{alert : CheckNullDeptNameTH}" ng-cloak type="text" placeholder="กรอกแผนก"
             class="form-control maxWidth " id="deptNameTh" [(ngModel)]="ObjDept.dept_name_th">
@@ -50,12 +50,13 @@
       ชื่อหัวหน้าแผนก*
     </div>
     <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
-      <div class="row OriginalDiv" *ngFor="let row of countDeptMana ; let i = index">
+      <div class="row OriginalDiv font-content" *ngFor="let row of countDeptMana ; let i = index">
         <div class="col-10">
 
-            <ng-select [(ngModel)]="ObjDeptMana[i].ud_fullname_th" [clearable]="false" class="ng-selectManager maxWidth mb-4 add-boss">
-                <ng-option *ngFor="let uid of DeptUserID" [value]="uid.ud_fullname_th" >{{uid.ud_fullname_th}}</ng-option>
-             </ng-select>
+          <ng-select [(ngModel)]="ObjDeptMana[i].ud_fullname_th" [clearable]="false"
+            class="custom maxWidth mb-4 add-boss">
+            <ng-option *ngFor="let uid of DeptUserID" [value]="uid.ud_fullname_th">{{uid.ud_fullname_th}}</ng-option>
+          </ng-select>
 
 
           <!-- <select id="listPerPage" class="form-select maxWidth mb-4 add-boss" aria-label="Default select example"
@@ -70,7 +71,14 @@
           <i class="fa-solid fa-circle-xmark delete-dept iconDept" (click)="deleteDeptMana(i)"></i>
         </div>
 
-       
+        <div class="row">
+          <div class="col-lg-7 col-md-8 col-sm-7 col-5 d-flex justify-content-left"></div>
+          <div class="col-sm-5 col-5">
+            <div *ngIf="CheckNullMana[i]" class="alerttext">
+              กรุณากรอกข้อมูล
+            </div>
+          </div>
+        </div>
 
       </div>
       <div class="row" id="dept">
@@ -96,7 +104,7 @@
       ตำแหน่ง*
     </div>
     <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
-      <div class="row OriginalDiv" *ngFor="let row of countDeptPosit ; let i = index">
+      <div class="row OriginalDiv font-content" *ngFor="let row of countDeptPosit ; let i = index">
         <div class="col-10">
           <input [ngClass]="{alert : CheckNullPosit[i]}" type="text" placeholder="กรอกตำแหน่ง"
             class="form-control maxWidth mb-4 add-pos" [(ngModel)]="ObjDeptPosit[i].dp_name_en

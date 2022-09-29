@@ -1,4 +1,5 @@
-<app-loading-department *ngIf="checkLoadAPI == false" class="d-flex justify-content-center h-100 align-items-center"></app-loading-department>
+<app-loading-department *ngIf="checkLoadAPI == false" class="d-flex justify-content-center h-100 align-items-center">
+</app-loading-department>
 
 <div class="container justify-content-center">
   <div class="row">
@@ -55,12 +56,21 @@
           </div>
           <div class="col-lg-6 col-md-12 col-sm-12 col-12">
             <div class="row OriginalDiv mb-2" *ngFor="let row of countDeptMana ; let i = index">
-              <div class="col-lg-11 col-md-11 col-sm-11 col-10 my-1">
-                <input [ngClass]="{alert : CheckNullMana[i]}" (keypress)="false" type="text" list="uid"
+              <div class="col-lg-11 col-md-11 col-sm-11 col-10">
+
+
+                <ng-select placeholder="เลือกชื่อหัวหน้าแผนก" [clearable]="false"
+                  [(ngModel)]="DeptMana[i]" class="custom maxWidth mb-4 add-boss">
+                  <ng-option *ngFor="let uid of DeptUserID" [value]="uid.ud_fullname_th">{{uid.ud_fullname_th}}
+                  </ng-option>
+                </ng-select>
+
+
+                <!-- <input [ngClass]="{alert : CheckNullMana[i]}" (keypress)="false" type="text" list="uid"
                   placeholder="กรอกชื่อหัวหน้าแผนก" class="form-control maxWidth" [(ngModel)]="DeptMana[i]" />
                 <datalist id="uid">
                   <option *ngFor="let uid of DeptUserID" [value]="uid.ud_fullname_th"></option>
-                </datalist>
+                </datalist> -->
               </div>
               <div *ngIf="(this.countDeptMana).length > 1" class="col-1 my-2" style="cursor: pointer;"
                 (click)="deleteDept(i)">
@@ -153,7 +163,7 @@
 
       <div class="row d-flex justify-content-center mb-3">
         <div class="col-5 col-sm-5 col-md-5 col-lg-5">
-          <button (click)="cancelModal()" class="cancel-button cancel-font d-flex justify-content-center w-100" >
+          <button (click)="cancelModal()" class="cancel-button cancel-font d-flex justify-content-center w-100">
             <div class="cancel-text">ยกเลิก</div>
           </button>
         </div>

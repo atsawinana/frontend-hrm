@@ -210,4 +210,8 @@ export class AddDepartmentComponent implements OnInit {
     cancelModal() {
         this.ModalCheck = false;
     }
+
+    checkAlertmana(event:boolean){
+        console.log(event)
+    }
 }
