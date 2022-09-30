@@ -53,10 +53,10 @@
       <div class="row OriginalDiv font-content" *ngFor="let row of countDeptMana ; let i = index">
         <div class="col-10">
 
-          <ng-select [(ngModel)]="ObjDeptMana[i].ud_fullname_th" [clearable]="false"
-            class="custom maxWidth mb-4 add-boss">
-            <ng-option *ngFor="let uid of DeptUserID" [value]="uid.ud_fullname_th">{{uid.ud_fullname_th}}</ng-option>
-          </ng-select>
+            <ng-select [ngClass]="{customnull : CheckNullMana[i]}" [(ngModel)]="ObjDeptMana[i].ud_fullname_th" [clearable]="false"
+              class="custom maxWidth mb-4 add-boss " required>
+              <ng-option *ngFor="let uid of DeptUserID" [value]="uid.ud_fullname_th">{{uid.ud_fullname_th}}</ng-option>
+            </ng-select>
 
 
           <!-- <select id="listPerPage" class="form-select maxWidth mb-4 add-boss" aria-label="Default select example"

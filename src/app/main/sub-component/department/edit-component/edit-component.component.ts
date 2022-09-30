@@ -1,26 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DepartmentModule } from '../department.module';
-import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+import { Form ,FormBuilder, FormGroup, FormArray, Validators, FormControl } from '@angular/forms';
 import { ActivatedRoute, Route, Router, RouterLink } from '@angular/router';
 import { EditComponentService } from './edit-component.service';
 import { DepartmentService } from '../department.service';
 import { AuthService } from 'src/app/auth/auth.service';
+import { NgSelectComponent } from '@ng-select/ng-select';
 
 @Component({
     selector: 'app-edit-component',
     templateUrl: './edit-component.component.html',
     styleUrls: ['./edit-component.component.css'],
+    
 })
+
 export class EditComponentComponent implements OnInit {
-    dept_id!: string;
+    @ViewChild(NgSelectComponent) ngSelect!: NgSelectComponent;
 
     constructor(
         private router: ActivatedRoute,
         private editService: EditComponentService,
         private Maindept: DepartmentService,
         private coreToken: AuthService
-    ) { }
-
+    ) {}
+    form!: FormGroup;
+    dept_id!: string;
     ObjDept: any = {};
     ObjDeptMana: any = {};
     ObjDeptPosit: any = {};
@@ -39,7 +43,6 @@ export class EditComponentComponent implements OnInit {
     CheckallPosit = false;
     checkMapfalse: boolean = false;
     UserSelected: any[] = [];
-    fruits = ["apple", "orange", "banana", "grapes"];
 
     ngOnInit(): void {
         this.Maindept.getAllUser().subscribe({
