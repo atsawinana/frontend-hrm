@@ -59,8 +59,8 @@
               <div class="col-lg-11 col-md-11 col-sm-11 col-10">
 
 
-                <ng-select [ngClass]="{customnull : CheckNullMana[i]}" placeholder="เลือกชื่อหัวหน้าแผนก" [clearable]="false"
-                  [(ngModel)]="DeptMana[i]" class="custom maxWidth mb-4 add-boss">
+                <ng-select [ngClass]="{customnull : CheckNullMana[i]}" placeholder="เลือกชื่อหัวหน้าแผนก"
+                  [clearable]="false" [(ngModel)]="DeptMana[i]" class="custom maxWidth mb-4 add-boss">
                   <ng-option *ngFor="let uid of DeptUserID" [value]="uid.ud_fullname_th">{{uid.ud_fullname_th}}
                   </ng-option>
                 </ng-select>
