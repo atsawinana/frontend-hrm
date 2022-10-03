@@ -25,6 +25,7 @@ export class ListDepartmentComponent implements OnInit {
     countDept: number[] = [];
     ModalCheck: boolean = false;
     deptID_Detail: string = ""
+    maxPage!:any
 
     constructor(private DepService: ListDepartmentService, private coreToken: AuthService) { }
     ngOnInit() {
@@ -52,6 +53,7 @@ export class ListDepartmentComponent implements OnInit {
                 }
 
                 Array(this.deprtmentsData).push({ number: this.countDept })
+                this.maxPage = Math.ceil(Number(this.maxListDept) / Number(this.listPerPage));
                 this.checkLoadAPI = true;
             },
             error: (err: any) => {
@@ -80,14 +82,14 @@ export class ListDepartmentComponent implements OnInit {
     listPerpage() {
         const list = (<HTMLSelectElement>document.getElementById('listPerPage')).value;
         this.listPerPage = Number(list);
+        this.maxPage = Math.ceil(Number(this.maxListDept) / Number(this.listPerPage));
         this.onPage = 1;
         this.onPageNext = this.onPage + 1
     }
 
     increasePage() {
-        let DeptNum = this.maxListDept;
-        let maxPage = Math.ceil(Number(DeptNum) / Number(this.listPerPage));
-        if (this.onPage < maxPage) {
+        this.maxPage = Math.ceil(Number(this.maxListDept) / Number(this.listPerPage));
+        if (this.onPage < this.maxPage) {
             this.onPage++;
             this.onPageNext++;
         } else {
