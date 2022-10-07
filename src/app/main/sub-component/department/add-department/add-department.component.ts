@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/auth/auth.service';
 import { DepartmentService } from '../department.service';
 import { AdddepartmentService } from './adddepartment.service';
@@ -30,6 +30,8 @@ export class AddDepartmentComponent implements OnInit {
     CheckallMana: boolean = false;
     CheckallPosit: boolean = false;
     checkLoadAPI: boolean = false;
+    UserSelected: any[] = [];
+
 
     constructor(
         private Add_dp: AdddepartmentService,
@@ -51,9 +53,9 @@ export class AddDepartmentComponent implements OnInit {
         // console.log('check len', this.DeptUserID.length);
 
         for (let i = 0; i < this.countDeptMana.length; i++) {
-            for (let j = 0; j < this.DeptUserID.length; j++) {
-                if (this.DeptMana[i] == this.DeptUserID[j].ud_fullname_th) {
-                    this.DeptUsername.push(String(this.DeptUserID[j].ud_username));
+            for (let j = 0; j < this.UserSelected.length; j++) {
+                if (this.DeptMana[i] == this.UserSelected[j].ud_fullname_th) {
+                    this.DeptUsername.push(String(this.UserSelected[j].ud_username));
                     // console.log('map check', this.DeptUsername[i]);
                 } else if (this.DeptMana[i] == '') {
                     this.DeptUsername.pop();
@@ -107,6 +109,7 @@ export class AddDepartmentComponent implements OnInit {
         this.Maindept.getAllUser().subscribe({
             next: (res: any) => {
                 this.DeptUserID = res.data.users;
+                this.UserSelected = JSON.parse(JSON.stringify(this.DeptUserID))
             },
             error: (err) => {
                 // console.log('Failed, input is null');
@@ -124,26 +127,51 @@ export class AddDepartmentComponent implements OnInit {
         });
     }
 
+    userSelected() {
+        console.log(this.DeptMana)
+        for (let i = 0; i < Object.keys(this.DeptMana).length; i++) {
+            for (let j = 0; j < this.DeptUserID.length; j++) {
+                if (this.DeptMana[i] === this.DeptUserID[j].ud_fullname_th) {
+                    this.DeptUserID.splice(j, 1);
+                }
+            }
+        }
+    }
+
     addInputDept() {
         // console.log(this.DeptMana);
-        if (this.DeptMana[this.countDeptMana.length - 1] == null) {
-            alert('กรุณากรอกข้อมูลให้ครบถ้วน');
-        } else {
+        if (Object.keys(this.DeptMana).length == 0) {
             this.countDeptMana?.push(this.countDeptMana.length + 1);
-            // console.log(this.countDeptMana);
-        }
+        } else
+
+            if (this.DeptMana[this.countDeptMana.length - 1] == null) {
+                alert('กรุณากรอกข้อมูลให้ครบถ้วน');
+            } else {
+                this.countDeptMana?.push(this.countDeptMana.length + 1);
+                // console.log(this.countDeptMana);
+            }
     }
 
     addInputDeptPosit() {
         // console.log(this.DeptPosit[this.countDeptPosit.length - 1]);
-        if (this.DeptPosit[this.countDeptPosit.length - 1] == null) {
-            alert('กรุณากรอกข้อมูลให้ครบถ้วน');
-        } else {
+        if (Object.keys(this.DeptPosit).length == 0) {
             this.countDeptPosit?.push(this.countDeptPosit.length + 1);
-        }
+        } else
+
+            if (this.DeptPosit[this.countDeptPosit.length - 1] == null) {
+                alert('กรุณากรอกข้อมูลให้ครบถ้วน');
+            } else {
+                this.countDeptPosit?.push(this.countDeptPosit.length + 1);
+            }
     }
 
     deleteDept(index: number) {
+
+        let person = { ud_fullname_th: String(this.DeptMana[index]) };
+        // console.log(this.ObjDeptMana[index].ud_fullname_th)
+        // console.log(this.DeptUserID)
+        this.DeptUserID.push(person);
+
         this.countDeptMana.splice(index, 1);
         this.DeptMana.splice(index, 1);
     }
@@ -161,16 +189,20 @@ export class AddDepartmentComponent implements OnInit {
         this.CheckallMana = false;
         this.CheckallPosit = false;
 
-        if (this.namedepartment_en.value == '') {
+
+
+        if (this.namedepartment_en.value?.trim() == '' && this.namedepartment_en.value != null) {
             this.CheckNullDeptNameEN = true;
         }
-        if (this.namedepartment_th.value == '') {
+        if (this.namedepartment_th.value?.trim() == '' && this.namedepartment_th.value != null) {
             this.CheckNullDeptNameTH = true;
         }
 
+        // if (this.namedepartment_th.value. == ''){}
+
         for (let i = 0; i < this.countDeptPosit.length; i++) {
             // console.log('check posit', this.DeptPosit[i]);
-            if (this.DeptPosit[i] == undefined || this.DeptPosit[i] == '') {
+            if (this.DeptPosit[i] == undefined || this.DeptPosit[i].trim() == '') {
                 this.CheckNullPosit[i] = true;
                 this.CheckallPosit = true;
             } else {
@@ -211,7 +243,7 @@ export class AddDepartmentComponent implements OnInit {
         this.ModalCheck = false;
     }
 
-    checkAlertmana(event:boolean){
+    checkAlertmana(event: boolean) {
         console.log(event)
     }
 }

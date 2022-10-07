@@ -28,8 +28,7 @@ export class ListDepartmentService {
       'Authorization': 'Bearer' + localStorage.getItem('tokenLocal'),
     });
 
-    return this.httpClient.delete(`${environment.apiURL}/department/deleteDepartment`, {
-      headers,
+    return this.httpClient.delete(`${environment.apiURL}/department/deleteDepartment`, {headers,
       params: {
         dept_id: deptID
       }

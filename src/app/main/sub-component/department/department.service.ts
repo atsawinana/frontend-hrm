@@ -14,9 +14,6 @@ export class DepartmentService {
       'Authorization': 'Bearer' + localStorage.getItem('tokenLocal'),
     });
 
-    return this.httpClient.get(
-      `${environment.apiURL}/department/getAllUser`,
-      {headers}
-    );
+    return this.httpClient.get(`${environment.apiURL}/department/getAllUser`,{headers});
   }
 }

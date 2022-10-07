@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DepartmentModule } from '../department.module';
-import { Form ,FormBuilder, FormGroup, FormArray, Validators, FormControl } from '@angular/forms';
+import { Form, FormBuilder, FormGroup, FormArray, Validators, FormControl } from '@angular/forms';
 import { ActivatedRoute, Route, Router, RouterLink } from '@angular/router';
 import { EditComponentService } from './edit-component.service';
 import { DepartmentService } from '../department.service';
@@ -11,7 +11,7 @@ import { NgSelectComponent } from '@ng-select/ng-select';
     selector: 'app-edit-component',
     templateUrl: './edit-component.component.html',
     styleUrls: ['./edit-component.component.css'],
-    
+
 })
 
 export class EditComponentComponent implements OnInit {
@@ -22,7 +22,7 @@ export class EditComponentComponent implements OnInit {
         private editService: EditComponentService,
         private Maindept: DepartmentService,
         private coreToken: AuthService
-    ) {}
+    ) { }
     form!: FormGroup;
     dept_id!: string;
     ObjDept: any = {};
@@ -31,7 +31,6 @@ export class EditComponentComponent implements OnInit {
     DeptUserID: any[] = [];
     countDeptMana: number[] = [];
     countDeptPosit: number[] = [];
-    htmlWaitLoad: boolean = false;
     DeptUsername: string[] = [];
     nullCheck: boolean = false;
     checkLoadAPI: boolean = false
@@ -45,16 +44,6 @@ export class EditComponentComponent implements OnInit {
     UserSelected: any[] = [];
 
     ngOnInit(): void {
-        this.Maindept.getAllUser().subscribe({
-            next: (res: any) => {
-                this.DeptUserID = res.data.users;
-                this.UserSelected = JSON.parse(JSON.stringify(this.DeptUserID))
-                // console.log(this.UserSelected)
-            },
-            error: (err) => {
-                // console.log('Failed, input is null');
-            },
-        });
         this.dept_id = this.router.snapshot.params['dept_id'];
         this.WaitApiData();
     }
@@ -65,14 +54,34 @@ export class EditComponentComponent implements OnInit {
                 this.ObjDept = res.data.departments;
                 this.ObjDeptPosit = res.data.dept_positions;
                 this.ObjDeptMana = res.data.department_map_managers;
-                this.htmlWaitLoad = true;
                 for (let i = 0; i < Object.keys(this.ObjDeptMana).length; i++) {
                     this.countDeptMana[i] = i + 1;
                 }
                 for (let i = 0; i < Object.keys(this.ObjDeptPosit).length; i++) {
                     this.countDeptPosit[i] = i + 1;
                 }
-                this.checkLoadAPI = true
+
+                this.Maindept.getAllUser().subscribe({
+                    next: (res: any) => {
+                        this.DeptUserID = res.data.users;
+                        this.UserSelected = JSON.parse(JSON.stringify(this.DeptUserID))
+
+                        //check user name for select
+                        for (let i = 0; i < Object.keys(this.ObjDeptMana).length; i++) {
+                            for (let j = 0; j < this.DeptUserID.length; j++) {
+                                if (this.ObjDeptMana[i].ud_fullname_th === this.DeptUserID[j].ud_fullname_th) {
+                                    this.DeptUserID.splice(j, 1);
+                                }
+                            }
+                        }
+
+                        this.checkLoadAPI = true
+                    },
+                    error: (err) => {
+                        // console.log('Failed, input is null');
+                    },
+                });
+
             },
             error: (err: any) => {
                 if (err.status === 401) {
@@ -87,6 +96,16 @@ export class EditComponentComponent implements OnInit {
                 }
             },
         });
+    }
+
+    userSelected() {
+        for (let i = 0; i < Object.keys(this.ObjDeptMana).length; i++) {
+            for (let j = 0; j < this.DeptUserID.length; j++) {
+                if (this.ObjDeptMana[i].ud_fullname_th === this.DeptUserID[j].ud_fullname_th) {
+                    this.DeptUserID.splice(j, 1);
+                }
+            }
+        }
     }
 
     EditData() {
@@ -120,6 +139,7 @@ export class EditComponentComponent implements OnInit {
                     // console.log('success edit');
                 },
                 error: (err: any) => {
+                    console.log(err.status)
                     if (err.status === 401) {
                         this.coreToken.reFreshToken().subscribe({
                             next: (res: any) => {
@@ -135,8 +155,15 @@ export class EditComponentComponent implements OnInit {
     }
 
     deleteDeptMana(index: number) {
-        this.ObjDeptMana.splice(index, 1);
+
+        let person = { ud_fullname_th: String(this.ObjDeptMana[index].ud_fullname_th) };
+        // console.log(this.ObjDeptMana[index].ud_fullname_th)
+        // console.log(this.DeptUserID)
+        this.DeptUserID.push(person);
+
+        this.ObjDeptMana.splice(index, 1)
         this.countDeptMana.splice(index, 1);
+
     }
 
     deleteDeptPosit(index: number) {
@@ -162,20 +189,15 @@ export class EditComponentComponent implements OnInit {
         this.CheckallMana = false;
         this.CheckallPosit = false;
 
-        if (this.ObjDept.dept_name_en == '') {
+        if (this.ObjDept.dept_name_en.trim() == '') {
             this.CheckNullDeptNameEN = true;
         }
         if (this.ObjDept.dept_name_th == '') {
             this.CheckNullDeptNameTH = true;
         }
 
-        // console.log('1', this.ObjDeptPosit);
-        // console.log('2', this.ObjDeptMana);
-        // console.log(this.ObjDeptPosit.length);
-        // console.log(Object.keys(this.ObjDeptPosit[0]).length === 0);
-
         for (let i = 0; i < this.ObjDeptPosit.length; i++) {
-            if (Object.keys(this.ObjDeptPosit[i]).length === 0 || this.ObjDeptPosit[i].dp_name_en == "") {
+            if (Object.keys(this.ObjDeptPosit[i]).length === 0 || this.ObjDeptPosit[i].dp_name_en.trim() == "") {
                 this.CheckNullPosit[i] = true;
                 this.CheckallPosit = true;
             } else {
@@ -184,7 +206,7 @@ export class EditComponentComponent implements OnInit {
         }
 
         for (let i = 0; i < this.ObjDeptMana.length; i++) {
-            if (Object.keys(this.ObjDeptMana[i]).length === 0 || this.ObjDeptMana[i].ud_fullname_th == "") {
+            if (Object.keys(this.ObjDeptMana[i]).length === 0 || this.ObjDeptMana[i].ud_fullname_th.trim() == "") {
                 this.CheckNullMana[i] = true;
                 this.CheckallMana = true;
             } else {
@@ -213,13 +235,15 @@ export class EditComponentComponent implements OnInit {
 
     MapUsernameWithID() {
         // console.log('check len', this.DeptUserID.length);
+        console.log('1', this.ObjDeptMana);
+        console.log('2', this.UserSelected);
         for (let i = 0; i < Object.keys(this.ObjDeptMana).length; i++) {
-            for (let j = 0; j < this.DeptUserID.length; j++) {
+            for (let j = 0; j < this.UserSelected.length; j++) {
                 if (
-                    this.ObjDeptMana[i].ud_fullname_th ===
-                    this.DeptUserID[j].ud_fullname_th
+                    this.ObjDeptMana[i].ud_fullname_th ==
+                    this.UserSelected[j].ud_fullname_th
                 ) {
-                    this.DeptUsername.push(String(this.DeptUserID[j].ud_username));
+                    this.DeptUsername.push(String(this.UserSelected[j].ud_username));
                 } else if (this.ObjDeptMana[i] == "") {
                     this.ObjDeptMana[i].pop();
                 }
@@ -233,31 +257,45 @@ export class EditComponentComponent implements OnInit {
 
     addInputDept() {
         console.log(this.ObjDeptMana)
-        if (
-            Object.keys(this.ObjDeptMana[this.countDeptMana.length - 1]).length === 0
-        ) {
-            alert('กรุณากรอกข้อมูลให้ครบถ้วน');
-        } else {
+        if (Object.keys(this.ObjDeptMana).length == 0) {
             this.countDeptMana?.push(
                 this.countDeptMana[this.countDeptMana.length - 1] + 1
             );
             this.ObjDeptMana.push({});
-        }
+        } else
+            if (
+                Object.keys(this.ObjDeptMana[this.countDeptMana.length - 1]).length === 0
+            ) {
+                alert('กรุณากรอกข้อมูลให้ครบถ้วน');
+            } else {
+                this.countDeptMana?.push(
+                    this.countDeptMana[this.countDeptMana.length - 1] + 1
+                );
+                this.ObjDeptMana.push({});
+            }
     }
 
     addInputDeptPosit() {
         // console.log(this.DeptPosit[this.countDeptPosit.length - 1]);
-        if (
-            Object.keys(this.ObjDeptPosit[this.countDeptPosit.length - 1]).length ===
-            0
-        ) {
-            alert('กรุณากรอกข้อมูลให้ครบถ้วน');
-        } else {
+
+        if (Object.keys(this.ObjDeptPosit).length == 0) {
             this.countDeptPosit?.push(
                 this.countDeptPosit[this.countDeptPosit.length - 1] + 1
             );
             this.ObjDeptPosit.push({});
-        }
+        } else
+
+            if (
+                Object.keys(this.ObjDeptPosit[this.countDeptPosit.length - 1]).length ===
+                0
+            ) {
+                alert('กรุณากรอกข้อมูลให้ครบถ้วน');
+            } else {
+                this.countDeptPosit?.push(
+                    this.countDeptPosit[this.countDeptPosit.length - 1] + 1
+                );
+                this.ObjDeptPosit.push({});
+            }
     }
 
 }

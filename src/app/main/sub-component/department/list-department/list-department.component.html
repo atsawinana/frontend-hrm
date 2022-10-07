@@ -19,7 +19,7 @@
               </div>
               <div class="col-10 p-0">
                 <input class="h-100 w-100" id="search-bar" (keypress)="numberOnly($event)" [(ngModel)]="searchInput"
-                  type="text" pattern="[a-zA-Z]*" placeholder="ค้นหา" />
+                  type="text" pattern="[a-zA-Z]*" placeholder="ค้นหา" (keydown)="test()" />
               </div>
             </div>
           </div>

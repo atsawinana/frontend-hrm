@@ -44,9 +44,6 @@ export class ListDepartmentComponent implements OnInit {
                    delete this.deptTable[i].can_delete
                 }
 
-                // console.log("deptTable1", this.deptTable)
-                // console.log("deprtmentsData3", this.deprtmentsData)
-
                 this.maxListDept = res.data.max_dept;
                 for (let i = 0; i < this.deprtmentsData.length; i++) {
                     this.countDept[i] = i + 1;
@@ -196,5 +193,9 @@ export class ListDepartmentComponent implements OnInit {
 
     reload() {
         location.reload();
+    }
+
+    test(){
+        console.log("qwe")
     }
 }

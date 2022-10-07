@@ -22,7 +22,7 @@ export class AuthService {
     const headers = new HttpHeaders({
       Authorization: 'Bearer' + localStorage.getItem('tokenLocal')
     });
-    localStorage.clear();
+    // localStorage.clear();
 
     return this.httpClient.delete(`${environment.apiURL}/auth/logout`, {
       headers

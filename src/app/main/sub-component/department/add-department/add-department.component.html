@@ -55,12 +55,12 @@
             ชื่อหัวหน้าแผนก*
           </div>
           <div class="col-lg-6 col-md-12 col-sm-12 col-12">
-            <div class="row OriginalDiv mb-2" *ngFor="let row of countDeptMana ; let i = index">
+            <div class="row OriginalDiv" *ngFor="let row of countDeptMana ; let i = index">
               <div class="col-lg-11 col-md-11 col-sm-11 col-10">
 
 
                 <ng-select [ngClass]="{customnull : CheckNullMana[i]}" placeholder="เลือกชื่อหัวหน้าแผนก"
-                  [clearable]="false" [(ngModel)]="DeptMana[i]" class="custom maxWidth mb-4 add-boss">
+                  [clearable]="false" [(ngModel)]="DeptMana[i]" (change)="userSelected()" class="custom maxWidth mb-4 add-boss">
                   <ng-option *ngFor="let uid of DeptUserID" [value]="uid.ud_fullname_th">{{uid.ud_fullname_th}}
                   </ng-option>
                 </ng-select>

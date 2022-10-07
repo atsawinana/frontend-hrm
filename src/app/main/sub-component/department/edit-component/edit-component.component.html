@@ -1,7 +1,7 @@
 <app-loading-department *ngIf="checkLoadAPI == false" class="d-flex justify-content-center h-100 align-items-center">
 </app-loading-department>
 
-<div class="container p-0 mainContainer" *ngIf="htmlWaitLoad">
+<div class="container p-0 mainContainer" *ngIf="!(checkLoadAPI == false)">
   <div class="font-header mb-5" id="re">
     แก้ไขแผนก
   </div>
@@ -54,19 +54,11 @@
         <div class="col-10">
 
             <ng-select [ngClass]="{customnull : CheckNullMana[i]}" [(ngModel)]="ObjDeptMana[i].ud_fullname_th" [clearable]="false"
-              class="custom maxWidth mb-4 add-boss " required>
+              class="custom maxWidth mb-4 add-boss" (change)="userSelected()" required>
               <ng-option *ngFor="let uid of DeptUserID" [value]="uid.ud_fullname_th">{{uid.ud_fullname_th}}</ng-option>
             </ng-select>
 
-
-          <!-- <select id="listPerPage" class="form-select maxWidth mb-4 add-boss" aria-label="Default select example"
-          [(ngModel)]="ObjDeptMana[i].ud_fullname_th">
-          <option *ngFor="let uid of DeptUserID" [value]="uid.ud_fullname_th" [selected]="ObjDeptMana[i].ud_fullname_th === uid.ud_fullname_th">{{uid.ud_fullname_th}}</option>
-        </select> -->
         </div>
-
-
-
         <div *ngIf="countDeptMana.length > 1" class="col-2 py-2">
           <i class="fa-solid fa-circle-xmark delete-dept iconDept" (click)="deleteDeptMana(i)"></i>
         </div>
