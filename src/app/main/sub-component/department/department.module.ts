@@ -11,24 +11,26 @@ import { EditComponentComponent } from './edit-component/edit-component.componen
 import { HttpClientModule } from '@angular/common/http';
 import { LoadingDepartmentComponent } from './loading-department/loading-department.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { SearchFilterPipe } from './list-department/search-filter.pipe';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    DepartmentRoutes,
-    FormsModule,
-    Ng2SearchPipeModule,
-    ReactiveFormsModule,
-    NgxPaginationModule,
-    HttpClientModule,   
-    NgSelectModule,
-    ModalModule.forRoot()
-  ],
-  declarations: [
-    AddDepartmentComponent,
-    ListDepartmentComponent,
-    EditComponentComponent,
-    LoadingDepartmentComponent
-  ],
+    imports: [
+        CommonModule,
+        DepartmentRoutes,
+        FormsModule,
+        Ng2SearchPipeModule,
+        ReactiveFormsModule,
+        NgxPaginationModule,
+        HttpClientModule,
+        NgSelectModule,
+        ModalModule.forRoot()
+    ],
+    declarations: [
+        AddDepartmentComponent,
+        ListDepartmentComponent,
+        EditComponentComponent,
+        LoadingDepartmentComponent,
+        SearchFilterPipe
+    ],
 })
 export class DepartmentModule { }

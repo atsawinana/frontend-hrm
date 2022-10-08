@@ -12,7 +12,13 @@ import { SideBarComponent } from './main/main-component/side-bar/side-bar/side-b
 
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, MainComponent, LoadingComponent,SideBarComponent],
+  declarations: [
+    AppComponent, 
+    LoginComponent, 
+    MainComponent, 
+    LoadingComponent,
+    SideBarComponent,
+],
   imports: [
     BrowserModule,
     AppRoutingModule,

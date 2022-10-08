@@ -8,6 +8,9 @@ import { ListDepartmentService } from './list-department.service';
     styleUrls: ['./list-department.component.css'],
 })
 export class ListDepartmentComponent implements OnInit {
+    
+    public searchFilter: any = '';
+
     selected?: any;
     deprtmentsData: any;
     deptTable: any;
@@ -26,6 +29,9 @@ export class ListDepartmentComponent implements OnInit {
     ModalCheck: boolean = false;
     deptID_Detail: string = ""
     maxPage!:any
+
+
+    count123123:number = 0
 
     constructor(private DepService: ListDepartmentService, private coreToken: AuthService) { }
     ngOnInit() {
@@ -85,14 +91,16 @@ export class ListDepartmentComponent implements OnInit {
     }
 
     increasePage() {
+
+        const countrow = document.querySelectorAll('#rowContent')!
+        console.log(countrow)
+
         this.maxPage = Math.ceil(Number(this.maxListDept) / Number(this.listPerPage));
         if (this.onPage < this.maxPage) {
             this.onPage++;
             this.onPageNext++;
         } else {
-            const list = <HTMLSelectElement>(
-                document.getElementsByClassName('buttonPage')
-            );
+            const list = <HTMLSelectElement>(document.getElementsByClassName('buttonPage'));
 
             for (var i = 0; i < list.length; i++) {
                 list[i].classList.remove('buttonPage:hover');
@@ -106,6 +114,7 @@ export class ListDepartmentComponent implements OnInit {
             this.onPageNext--;
         }
     }
+
     Delete_Department() {
         this.cancelModal()
         this.DepService.DeleletDepartment(this.deptIDDelete).subscribe({
