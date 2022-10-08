@@ -47,8 +47,7 @@
 
           <tr id="rowContent" *ngFor="
           let datas of deptTable
-            | searchFilter: searchInput
-            | paginate: { itemsPerPage: listPerPage, currentPage: onPage}">
+            | searchFilter: searchInput">
 
             <td>{{datas.number}}</td>
             <td id="nameDepartment" class="text-start ps-5">{{ datas.dept_name_en }}</td>
@@ -201,7 +200,7 @@
           </div>
         </div>
 
-        <pagination-controls (pageChange)="onPage = $event"></pagination-controls>
+        <!-- <pagination-controls (pageChange)="onPage = $event"></pagination-controls> -->
 
         <!--         
         <pagination-controls id="some_id" 

@@ -12,23 +12,23 @@ import { SideBarComponent } from './main/main-component/side-bar/side-bar/side-b
 
 
 @NgModule({
-  declarations: [
-    AppComponent, 
-    LoginComponent, 
-    MainComponent, 
-    LoadingComponent,
-    SideBarComponent,
-],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-  ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: IntercrptorService, multi: true },
-  ],
-  bootstrap: [AppComponent],
+    declarations: [
+        AppComponent,
+        LoginComponent,
+        MainComponent,
+        LoadingComponent,
+        SideBarComponent,
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+    ],
+    providers: [
+        { provide: HTTP_INTERCEPTORS, useClass: IntercrptorService, multi: true },
+    ],
+    bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
