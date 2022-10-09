@@ -40,7 +40,7 @@
 }
 
 .deleteDepartment {
-  color: red ;
+  color: red;
 }
 
 .modal123 {
@@ -53,6 +53,24 @@
   overflow: hidden;
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.1);
+}
+
+.ngx-pagination li {
+  padding: .1875rem .625rem;
+  color: #e30000 !important;
+  cursor: default;
+}
+
+.ngx-pagination .disabled {
+    padding: .1875rem .625rem;
+    color: #bd0000;
+    cursor: default;
+}
+
+.ngx-pagination .current {
+  padding: .1875rem .625rem;
+  color: #e30000 !important;
+  cursor: default;
 }
 
 .modal-content {

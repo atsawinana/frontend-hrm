@@ -30,9 +30,6 @@ export class ListDepartmentComponent implements OnInit {
     deptID_Detail: string = ""
     maxPage!:any
 
-
-    count123123:number = 0
-
     constructor(private DepService: ListDepartmentService, private coreToken: AuthService) { }
     ngOnInit() {
         this.getAllDepartment()

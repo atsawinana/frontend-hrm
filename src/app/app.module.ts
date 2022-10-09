@@ -9,7 +9,7 @@ import { MainComponent } from './main/main-component/main.component';
 import { IntercrptorService } from './login/loading/intercrptor.service';
 import { LoadingComponent } from './login/loading/loading-template/loading.component';
 import { SideBarComponent } from './main/main-component/side-bar/side-bar/side-bar.component';
-
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 
 @NgModule({
     declarations: [
@@ -25,6 +25,7 @@ import { SideBarComponent } from './main/main-component/side-bar/side-bar/side-b
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
+        PaginationModule
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: IntercrptorService, multi: true },
