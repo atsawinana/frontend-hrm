@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import $ from 'jquery'
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +18,7 @@ export class AdddepartmentService {
       'http://127.0.0.1:8000/api/department/addDepartment',
       {
         dept_name_en: namedepartment_en,
-        dept_name_th: namedepartment_th,
+        dept_name_th: "",
         dp_name_en: naemposition,
         dept_update_by: 'FixID',
         dmm_username: nameleader,

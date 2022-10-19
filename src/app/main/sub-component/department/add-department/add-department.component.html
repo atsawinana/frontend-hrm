@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-12 justify-content-center">
       <div class="row d-flex justify-content-center">
-        <div class="col-12 justify-content-center" (click)="checkNull()">
+        <div class="col-12 justify-content-center">
           <p class="font-head">เพิ่มแผนก</p>
         </div>
         <div class="col-12 justify-content-center">
@@ -14,7 +14,8 @@
             <div class="col-lg-6 col-md-12 col-sm-12 col-12">
               <div class="row OriginalDiv">
                 <div class="col-lg-11 col-md-11 col-sm-11 col-10">
-                  <input [ngClass]="{alert : CheckNullDeptNameEN}" type="text" placeholder="กรอกแผนก" class="form-control maxWidth" [formControl]="namedepartment_en" />
+                  <input [ngClass]="{alert : CheckNullDeptNameEN}" type="text" placeholder="กรอกแผนก"
+                    class="form-control maxWidth" [formControl]="namedepartment_en" />
                 </div>
                 <div class="col-1"></div>
               </div>
@@ -22,7 +23,7 @@
             <div class="row">
               <div class="col-lg-8 col-md-8 col-sm-7 col-5 d-flex justify-content-left"></div>
               <div class="col-sm-4 col-5">
-                <div [ngClass]="{fontcontentalert  : CheckNullDeptNameEN}" style="display: none;" >
+                <div [ngClass]="{fontcontentalert  : CheckNullDeptNameEN}" style="display: none;">
                   กรุณากรอกข้อมูล
                 </div>
               </div>
@@ -53,8 +54,8 @@
           <div class="col-lg-6 col-md-12 col-sm-12 col-12">
             <div class="row OriginalDiv mb-2" *ngFor="let row of countDeptMana ; let i = index">
               <div class="col-lg-11 col-md-11 col-sm-11 col-10 my-1">
-                <input [ngClass]="{alert : CheckNullMana[i]}" (keypress)="false" type="text" list="uid" placeholder="กรอกชื่อหัวหน้าแผนก"
-                  class="form-control maxWidth" [(ngModel)]="DeptMana[i]" />
+                <input [ngClass]="{alert : CheckNullMana[i]}" (keypress)="false" type="text" list="uid"
+                  placeholder="กรอกชื่อหัวหน้าแผนก" class="form-control maxWidth" [(ngModel)]="DeptMana[i]" />
                 <datalist id="uid">
                   <option *ngFor="let uid of DeptUserID" [value]="uid.ud_fullname_th"></option>
                 </datalist>
@@ -76,7 +77,8 @@
             </div>
           </div>
           <div class="col-sm-4 col-5">
-            <div [ngClass]="{fontcontentalert  : CheckNullMana[(this.countDeptMana).length-1]}" style="display: none;">กรุณากรอกข้อมูล</div>
+            <div [ngClass]="{fontcontentalert  : CheckNullMana[(this.countDeptMana).length-1]}" style="display: none;">
+              กรุณากรอกข้อมูล</div>
           </div>
         </div>
 
@@ -88,7 +90,8 @@
           <div class="col-lg-6 col-md-12 col-sm-12 col-12">
             <div class="row OriginalDiv" id="addpo" *ngFor="let row of countDeptPosit ; let j = index">
               <div class="col-lg-11 col-md-11 col-sm-11 col-10 my-1">
-                <input [ngClass]="{alert : CheckNullPosit[j]}" type="text" placeholder="กรอกตำแหน่ง" class="form-control maxWidth" [(ngModel)]="DeptPosit[j]" />
+                <input [ngClass]="{alert : CheckNullPosit[j]}" type="text" placeholder="กรอกตำแหน่ง"
+                  class="form-control maxWidth" [(ngModel)]="DeptPosit[j]" />
               </div>
               <div *ngIf="(this.countDeptPosit).length > 1" class="col-1 my-2" style="cursor: pointer;"
                 (click)="deleteInputDept(j)">
@@ -109,7 +112,8 @@
             </div>
           </div>
           <div class="col-sm-4 col-5">
-            <div [ngClass]="{fontcontentalert  : CheckNullPosit[(this.countDeptPosit).length-1]}" style="display: none;">กรุณากรอกข้อมูล</div>
+            <div [ngClass]="{fontcontentalert  : CheckNullPosit[(this.countDeptPosit).length-1]}"
+              style="display: none;">กรุณากรอกข้อมูล</div>
           </div>
         </div>
       </div>
@@ -127,15 +131,15 @@
 
   <!-- button submit -->
   <div class="col-5 col-sm-5 col-md-5 col-lg-3">
-    <button (click)="checkNull()" class="submit-button d-flex justify-content-center w-100" type="submit" data-bs-toggle="modal"
-      href="#Modal-submit">
+    <button class="submit-button d-flex justify-content-center w-100" type="submit" data-bs-toggle="modal" >
       <div class="submit-font">ตกลง</div>
     </button>
   </div>
 
   <!--data-bs-toggle="modal" href="#Modal-submit"-->
   <!-- modal add department -->
-  <div class="modal fade" id="Modal-submit" aria-hidden="true" aria-labelledby="modalsubmit" tabindex="-1">
+  <div class="modal fade asd" id="Modal-submit" aria-hidden="true" aria-labelledby="modalsubmit"
+    tabindex="-1" >
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-body d-block" style="border-radius: 10px">
