@@ -111,49 +111,7 @@ export class EditComponentComponent implements OnInit {
     }
 
     EditData() {
-        this.MapUsernameWithID();
-
-        this.cencelNullCheck()
-        let nameDeptEN = this.ObjDept.dept_name_en;
-        let nameDeptTH = this.ObjDept.dept_name_th;
-        let aryNamePosition = new Array<string>();
-        let aryUserManager = new Array<string>();
-
-        for (let i = 0; i < Object.keys(this.ObjDeptPosit).length; i++) {
-            aryNamePosition[i] = this.ObjDeptPosit[i].dp_name_en;
-        }
-
-        for (let i = 0; i < Object.keys(this.ObjDeptMana).length; i++) {
-            aryUserManager[i] = this.ObjDeptMana[i].dmm_username;
-        }
-
-        this.editService
-            .editData(
-                this.dept_id,
-                nameDeptEN,
-                aryNamePosition,
-                this.DeptUsername,
-                'fix',
-                nameDeptTH
-            )
-            .subscribe({
-                next: (res: any) => {
-                    // console.log('success edit');
-                },
-                error: (err: any) => {
-                    console.log(err.status)
-                    if (err.status === 401) {
-                        this.coreToken.reFreshToken().subscribe({
-                            next: (res: any) => {
-                                this.EditData();
-                            },
-                            error: (res: any) => {
-                                this.coreToken.Logout()
-                            }
-                        })
-                    }
-                },
-            });
+       
     }
 
     deleteDeptMana(index: number) {
@@ -220,13 +178,14 @@ export class EditComponentComponent implements OnInit {
             if (this.CheckallMana == false) {
                 if (this.CheckallPosit == false) {
                     Swal.fire({
-                        title: 'คุณต้องการแก้ไขแผนกใช่หรือไม่',
+                        title: '<strong style = "font-family:Kanit"> คุณต้องการแก้ไขแผนกใช่หรือไม่ </strong>',
                         icon: 'warning',
                         showCancelButton: true,
-                        confirmButtonColor: '#005FBC',
                         cancelButtonColor: '#d33',
-                        confirmButtonText: 'ตกลง',
-                        cancelButtonText: 'ยกเลิก'
+                        cancelButtonText: '<div style = "font-family:Kanit"> ยกเลิก </div>',
+                        confirmButtonText: '<div style = "font-family:Kanit"> ตกลง </div>',
+                        confirmButtonColor: '#005FBC',
+                        reverseButtons: true
                     }).then((result)=>{
                         if (result.isConfirmed) {
                             this.MapUsernameWithID();
@@ -257,10 +216,12 @@ export class EditComponentComponent implements OnInit {
             .subscribe({
                 next: (res: any) => {
                     Swal.fire({
-                        title: 'แก้ไขแผนกสำเร็จ!',
-                        text: 'คุณได้แก้ไขข้อมูลแผนกนี้เรียบร้อยแล้ว.',
+                        title: '<strong style = "font-family:Kanit"> แก้ไขแผนกสำเร็จ </strong>',
+                        html: '<div style = "font-family:Kanit"> คุณได้แก้ไขข้อมูลแผนกนี้เรียบร้อยแล้ว </div>',
                         icon: 'success',
-                        confirmButtonColor: '#005FBC'
+                        confirmButtonColor: '#005FBC',
+                        confirmButtonText: '<div style = "font-family:Kanit"> ตกลง </div>'
+
                     }).then((e)=>{
                         this.route.navigate(["../main/department"])
                     })
@@ -362,13 +323,14 @@ export class EditComponentComponent implements OnInit {
     }
     checkCancel(){
         Swal.fire({
-            title: 'คุณต้องการยกเลิกการแก้ไขแผนกใช่หรือไม่',
+            title: '<strong style = "font-family:Kanit"> คุณต้องการยกเลิกการแก้ไขแผนกใช่หรือไม่ </strong>',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#005FBC',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'ตกลง',
-            cancelButtonText: 'ยกเลิก',
+            confirmButtonText: '<div style = "font-family:Kanit"> ตกลง </div>',
+            cancelButtonText: '<div style = "font-family:Kanit"> ยกเลิก </div>',
+            reverseButtons: true
           }).then((result)=>{
             if (result.isConfirmed) {
                 this.route.navigate(['../main/department']);
