@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/auth/auth.service';
 import { ListDepartmentService } from './list-department.service';
+import Swal from 'sweetalert2';
 
 @Component({
     selector: 'app-list-department',
@@ -8,7 +9,7 @@ import { ListDepartmentService } from './list-department.service';
     styleUrls: ['./list-department.component.css'],
 })
 export class ListDepartmentComponent implements OnInit {
-    
+
     public searchFilter: any = '';
 
     selected?: any;
@@ -28,7 +29,7 @@ export class ListDepartmentComponent implements OnInit {
     countDept: number[] = [];
     ModalCheck: boolean = false;
     deptID_Detail: string = ""
-    maxPage!:any
+    maxPage!: any
 
     constructor(private DepService: ListDepartmentService, private coreToken: AuthService) { }
     ngOnInit() {
@@ -43,8 +44,8 @@ export class ListDepartmentComponent implements OnInit {
                 this.deptTable = JSON.parse(JSON.stringify(this.deprtmentsData))
 
                 for (let i = 0; i < this.deptTable.length; i++) {
-                   delete this.deptTable[i].dept_created_date
-                   delete this.deptTable[i].can_delete
+                    delete this.deptTable[i].dept_created_date
+                    delete this.deptTable[i].can_delete
                 }
 
                 this.maxListDept = res.data.max_dept;
@@ -114,25 +115,7 @@ export class ListDepartmentComponent implements OnInit {
 
     Delete_Department() {
         this.cancelModal()
-        this.DepService.DeleletDepartment(this.deptIDDelete).subscribe({
-            next: (res: any) => {
-                location.reload();
-            },
-            error: (err: any) => {
-                if (err.status === 401) {
-                    this.coreToken.reFreshToken().subscribe({
-                        next: (res: any) => {
-                            this.Delete_Department();
-                        },
-                        error: (res: any) => {
-                            this.coreToken.Logout()
-                        }
-                    })
-                } else {
-                    location.reload();
-                }
-            },
-        });
+
     }
 
     checkDel(deptID: string): boolean {
@@ -168,7 +151,51 @@ export class ListDepartmentComponent implements OnInit {
 
         if (this.deprtmentsData[index].can_delete) {
             this.deptIDDelete = deptID
-            this.ModalCheck = true
+
+            Swal.fire({
+                title: 'ต้องการลบหนังสือใช่หรือไม่',
+                text: "หนังสือเรื่อง ",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#28A745',
+                iconColor: '#d33',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.DepService.DeleletDepartment(this.deptIDDelete).subscribe({
+                        next: (res: any) => {
+                            Swal.fire({
+                                title: 'Deleted!',
+                                text: 'Your file has been deleted.',
+                                icon: 'success',
+                                iconColor: '#28A745',
+                                confirmButtonColor: '#28A745'
+                            }).then((e)=>{
+                                location.reload()
+                            })
+                        },
+                        error: (err: any) => {
+                            if (err.status === 401) {
+                                this.coreToken.reFreshToken().subscribe({
+                                    next: (res: any) => {
+                                        this.Delete_Department();
+                                    },
+                                    error: (res: any) => {
+                                        this.coreToken.Logout()
+                                    }
+                                })
+                            } else {
+                                location.reload();
+                            }
+                        },
+                    });
+
+                    // this.Delete_Department()
+
+                }
+            })
+
         }
     }
 
@@ -201,7 +228,7 @@ export class ListDepartmentComponent implements OnInit {
         location.reload();
     }
 
-    test(){
+    test() {
         console.log("qwe")
     }
 }
