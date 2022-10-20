@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/auth/auth.service';
 import { ListDepartmentService } from './list-department.service';
 import Swal from 'sweetalert2';
+import { style } from '@angular/animations';
 
 @Component({
     selector: 'app-list-department',
@@ -153,22 +154,24 @@ export class ListDepartmentComponent implements OnInit {
             this.deptIDDelete = deptID
 
             Swal.fire({
-                title: 'คุณต้องการลบแผนกใช่หรือไม่',
+                title: '<strong style = "font-family:Kanit"> คุณต้องการลบแผนกใช่หรือไม่ </strong>',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#005FBC',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'ตกลง',
-                cancelButtonText: 'ยกเลิก'
+                confirmButtonText: '<div style = "font-family:Kanit"> ตกลง </div>',
+                cancelButtonText: '<div style = "font-family:Kanit"> ยกเลิก </div>',
+                reverseButtons: true
             }).then((result) => {
                 if (result.isConfirmed) {
                     this.DepService.DeleletDepartment(this.deptIDDelete).subscribe({
                         next: (res: any) => {
                             Swal.fire({
-                                title: 'ลบแผนกสำเร็จ!',
-                                text: 'คุณได้ลบแผนกนี้ออกเรียบร้อยแล้ว.',
+                                title: '<strong style = "font-family:Kanit"> ลบแผนกสำเร็จ </strong>',
+                                html: '<div style = "font-family:Kanit"> คุณได้ลบแผนกนี้ออกเรียบร้อยแล้ว </div>',
                                 icon: 'success',
-                                confirmButtonColor: '#005FBC'
+                                confirmButtonColor: '#005FBC',
+                                confirmButtonText: '<div style = "font-family:Kanit"> ตกลง </div>'
                             }).then((e)=>{
                                 location.reload()
                             })

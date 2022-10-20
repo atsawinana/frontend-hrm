@@ -144,13 +144,14 @@ export class AddDepartmentComponent implements OnInit {
   }
   checkCancel(){
     Swal.fire({
-        title: 'คุณต้องการยกเลิกการเพิ่มแผนกใช่หรือไม่',
+        title: '<strong style = "font-family:Kanit"> คุณต้องการยกเลิกการเพิ่มแผนกใช่หรือไม่ </strong>',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#005FBC',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'ตกลง',
-        cancelButtonText: 'ยกเลิก',
+        confirmButtonText: '<div style = "font-family:Kanit"> ตกลง </div>',
+        cancelButtonText: '<div style = "font-family:Kanit"> ยกเลิก </div>',
+        reverseButtons: true
       }).then((result)=>{
         if (result.isConfirmed) {
             this.route.navigate(['../main/department']);
@@ -211,13 +212,14 @@ export class AddDepartmentComponent implements OnInit {
       if (this.CheckallMana == false) {
         if (this.CheckallPosit == false) {
           Swal.fire({
-            title: 'คุณต้องการเพิ่มแผนกใช่หรือไม่',
+            title: '<strong style = "font-family:Kanit"> คุณต้องการเพิ่มแผนกใช่หรือไม่ </strong>',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#005FBC',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'ตกลง',
-            cancelButtonText: 'ยกเลิก',
+            confirmButtonText: '<div style = "font-family:Kanit"> ตกลง </div>',
+            cancelButtonText: '<div style = "font-family:Kanit"> ยกเลิก </div>',
+            reverseButtons: true
           }).then((result) => {
             if (result.isConfirmed) {
               this.cancelModal();
@@ -236,10 +238,11 @@ export class AddDepartmentComponent implements OnInit {
               ).subscribe({
                 next: (res: any) => {
                   Swal.fire({
-                    title: 'เพิ่มแผนกสำเร็จ!',
-                    text: 'คุณได้เพิ่มแผนกนี้เรียบร้อยแล้ว.',
+                    title: '<strong style = "font-family:Kanit"> เพิ่มแผนกสำเร็จ </strong>',
+                    html: ' <div style = "font-family:Kanit"> คุณได้เพิ่มแผนกนี้เรียบร้อยแล้ว </div>',
                     icon: 'success',
                     confirmButtonColor: '#005FBC',
+                    confirmButtonText:'<div style = "font-family:Kanit"> ตกลง </div>'
                   }).then((e) => {
                     this.route.navigate(['../main/department']);
                   });
