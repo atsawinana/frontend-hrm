@@ -153,24 +153,22 @@ export class ListDepartmentComponent implements OnInit {
             this.deptIDDelete = deptID
 
             Swal.fire({
-                title: 'ต้องการลบหนังสือใช่หรือไม่',
-                text: "หนังสือเรื่อง ",
+                title: 'คุณต้องการลบแผนกใช่หรือไม่',
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonColor: '#28A745',
-                iconColor: '#d33',
+                confirmButtonColor: '#005FBC',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!',
+                confirmButtonText: 'ตกลง',
+                cancelButtonText: 'ยกเลิก'
             }).then((result) => {
                 if (result.isConfirmed) {
                     this.DepService.DeleletDepartment(this.deptIDDelete).subscribe({
                         next: (res: any) => {
                             Swal.fire({
-                                title: 'Deleted!',
-                                text: 'Your file has been deleted.',
+                                title: 'ลบแผนกสำเร็จ!',
+                                text: 'คุณได้ลบแผนกนี้ออกเรียบร้อยแล้ว.',
                                 icon: 'success',
-                                iconColor: '#28A745',
-                                confirmButtonColor: '#28A745'
+                                confirmButtonColor: '#005FBC'
                             }).then((e)=>{
                                 location.reload()
                             })

@@ -135,7 +135,7 @@
   </div>
 
   <div class="row mb-4 mt-5 d-flex justify-content-center">
-    <div class="col-6 col-sm-3 col-md-3 col-lg-3"><button class="cancel-button d-flex justify-content-center w-100"
+    <div (click)="checkCancel()" class="col-6 col-sm-3 col-md-3 col-lg-3"><button class="cancel-button d-flex justify-content-center w-100"
         type="" data-bs-toggle="modal" href="#Modal-cancel">
         <div class="cancel-text">ยกเลิก</div>
       </button>
@@ -148,119 +148,11 @@
   </div>
 
   <!-- modal add department -->
-  <div *ngIf="nullCheck" class="modal123">
-    <div class="modal-content modal-size">
-      <div class=" row d-flex justify-content-center mt-4" id="confirm">
-        <div class="font-modal ">คุณต้องการแก้ไขแผนกหรือไม่ ?</div>
-      </div>
-
-      <div class="d-flex justify-content-center">
-        <img class="my-5 d-flex justify-content-center" alt="Alternative text" width="96px" height="96px"
-          src="assets/img/department/edit-modal-icon.svg">
-      </div>
-
-      <div class="row d-flex justify-content-center mb-3">
-        <div class="col-5 col-sm-5 col-md-5 col-lg-5">
-          <button (click)="cencelNullCheck()" class="cancel-button cancel-font d-flex justify-content-center w-100 "
-            data-bs-dismiss="modal" aria-label="Close" data-bs-target="#Modal-cancel">
-            <div class="cancel-text">ยกเลิก</div>
-          </button>
-        </div>
-        <div class="col-5 col-sm-5 col-md-5 col-lg-5">
-          <button class="submit-button submit-font d-flex justify-content-center w-100" data-bs-target="#submitDone"
-            data-bs-toggle="modal" (click)="EditData()">
-            <div class="submit-text">ตกลง</div>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
-  <div class="modal" id="submitDone" aria-hidden="true" aria-labelledby="modalsubmit2" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-body d-block " style="border-radius: 10px;">
-          <div class="row d-flex justify-content-center mt-4">
-            <div class="modal-title font-modal" id="modalcancal">แก้ไขแผนกสำเร็จ</div>
-          </div>
-          <div class="d-flex justify-content-center">
-            <img class="my-5 d-flex justify-content-center" alt="Alternative text" width="96px" height="96px"
-              src="assets/img/circle-check-solid.svg">
-          </div>
-          <div class="d-flex justify-content-center">
-            <div class="col-5 col-sm-5 col-md-5 col-lg-5 mb-4">
-              <button class="submit-button d-flex justify-content-center w-100" data-bs-dismiss="modal"
-                aria-label="Close" routerLink="../../">
-                <div class="submit-text submit-font">ตกลง</div>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  
   <!-- --------------------------- -->
 
   <!-- modal cancel department -->
-  <div class="modal" id="Modal-cancel" aria-hidden="true" aria-labelledby="modalcancel" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-body d-block " style="border-radius: 10px;">
-
-          <div class="row  justify-content-center mt-4" id="confirm">
-            <div class="font-modal" id="modalcancal">คุณต้องการยกเลิกการแก้ไขแผนกหรือไม่ ?</div>
-          </div>
-
-          <div class="d-flex justify-content-center">
-            <img class="my-5 d-flex justify-content-center" alt="Alternative text" width="96px" height="96px"
-              src="assets/img/cancel.svg">
-          </div>
-
-          <div class="row d-flex justify-content-center mb-3">
-            <div class="col-5 col-sm-5 col-md-5 col-lg-5">
-              <button class="cancel-button cancel-font d-flex justify-content-center w-100 " data-bs-dismiss="modal"
-                aria-label="Close">
-                <div class="cancel-text">ยกเลิก</div>
-              </button>
-            </div>
-
-            <div class="col-5 col-sm-5 col-md-5 col-lg-5">
-              <button class="submit-button submit-font d-flex justify-content-center w-100" data-bs-target="#cancel"
-                data-bs-toggle="modal">
-                <div class="submit-text">ตกลง</div>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal" id="cancel" aria-hidden="true" aria-labelledby="modalcancel2" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-body d-block " style="border-radius: 10px;">
-          <div class="row d-flex justify-content-center mt-4">
-            <div class="modal-title font-modal" id="modalcancal">ยกเลิกการแก้ไขเเผนกสำเร็จ</div>
-          </div>
-          <div class="d-flex justify-content-center">
-            <img class="my-5 d-flex justify-content-center" alt="Alternative text" width="96px" height="96px"
-              src="assets/img/circle-check-solid.svg">
-          </div>
-          <div class="d-flex justify-content-center">
-            <div class="col-5 col-sm-5 col-md-5 col-lg-5 mb-4">
-              <button class="submit-button d-flex justify-content-center w-100" data-bs-dismiss="modal"
-                aria-label="Close" routerLink="../../">
-                <div class="submit-text submit-font">ตกลง</div>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  
   <!-- --------------------------- -->
 
 </div>
