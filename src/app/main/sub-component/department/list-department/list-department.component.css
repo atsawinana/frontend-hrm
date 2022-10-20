@@ -76,7 +76,7 @@
 .modal-content {
   background-color: #fefefe;
   margin: 15% auto;
-  padding: 20px;
+  padding: 10px;
   border: 1px solid #888;
   border-radius: 8px;
 }
@@ -308,7 +308,7 @@ table {
   font-size: 18px;
   line-height: 50px;
   margin-left: 50px;
-  text-align: center;
+  text-align: left;
   color: #1C1C1E;
 }
 
