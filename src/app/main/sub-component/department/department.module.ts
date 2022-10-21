@@ -12,6 +12,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { SearchFilterPipe } from './list-department/search-filter.pipe';
 import {NgxPaginationModule} from 'ngx-pagination';
 
+
 @NgModule({
     imports: [
         CommonModule,
@@ -21,7 +22,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
         ReactiveFormsModule,
         HttpClientModule,
         NgSelectModule,
-        NgxPaginationModule
+        NgxPaginationModule,
     ],
     declarations: [
         AddDepartmentComponent,

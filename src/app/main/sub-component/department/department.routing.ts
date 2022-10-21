@@ -12,6 +12,11 @@ const routes: Routes = [
     canActivate: [AuthGuardGuard, RoleGuard],
   },
   {
+    path: 'list',
+    component: ListDepartmentComponent,
+    canActivate: [AuthGuardGuard, RoleGuard],
+  },
+  {
     path: 'add-department',
     component: AddDepartmentComponent,
     canActivate: [AuthGuardGuard, RoleGuard],

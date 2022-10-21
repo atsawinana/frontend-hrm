@@ -22,6 +22,7 @@
   color: #1C1C1E;
 }
 
+
 .cancel-button {
   display: flex;
   flex-direction: row;
@@ -62,9 +63,9 @@
 }
 
 .ngx-pagination .disabled {
-    padding: .1875rem .625rem;
-    color: #bd0000;
-    cursor: default;
+  padding: .1875rem .625rem;
+  color: #bd0000;
+  cursor: default;
 }
 
 .ngx-pagination .current {
@@ -279,6 +280,13 @@ table {
   border-radius: 8px;
 }
 
+.ng-select.custom::ng-deep.ng-select-container {
+  align-items: center;
+  min-height: 0px;
+  border-radius: 0.375rem;
+  height: 38px;
+  border-color: #ced4da;
+}
 
 .btn-add-department {
   background: linear-gradient(270.74deg, #2E3579 0.35%, #005FBC 99.1%, #005FBC 99.1%);
