@@ -10,13 +10,17 @@ import { LeaveHistoryPersonComponent } from './data-person/person-employee/leave
 import { OtHistoryPersonComponent } from './data-person/person-employee/ot-history-person/ot-history-person.component';
 import { WorkHistoryPersonComponent } from './data-person/person-employee/work-history-person/work-history-person.component';
 import { FormsModule } from '@angular/forms';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
     EmployeeRoutes,
-    FormsModule
+    FormsModule,
+    NgSelectModule,
+    BsDatepickerModule.forRoot(),
   ],
   declarations: [
     ListEmployeeComponent,
