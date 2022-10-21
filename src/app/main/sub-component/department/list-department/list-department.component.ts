@@ -3,6 +3,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 import { ListDepartmentService } from './list-department.service';
 import Swal from 'sweetalert2';
 import { style } from '@angular/animations';
+import { PaginationInstance } from 'ngx-pagination';
 
 @Component({
     selector: 'app-list-department',
@@ -36,6 +37,13 @@ export class ListDepartmentComponent implements OnInit {
     ngOnInit() {
         this.getAllDepartment()
     }
+
+    public config: PaginationInstance = {
+        id: 'custom',
+        itemsPerPage: this.listPerPage,
+        currentPage: 1
+    }
+
 
     getAllDepartment() {
         this.DepService.getAllDepartment().subscribe({
@@ -82,8 +90,7 @@ export class ListDepartmentComponent implements OnInit {
     }
 
     listPerpage() {
-        const list = (<HTMLSelectElement>document.getElementById('listPerPage')).value;
-        this.listPerPage = Number(list);
+        this.config.itemsPerPage = this.listPerPage
         this.maxPage = Math.ceil(Number(this.maxListDept) / Number(this.listPerPage));
         this.onPage = 1;
         this.onPageNext = this.onPage + 1
@@ -172,7 +179,7 @@ export class ListDepartmentComponent implements OnInit {
                                 icon: 'success',
                                 confirmButtonColor: '#005FBC',
                                 confirmButtonText: '<div style = "font-family:Kanit"> ตกลง </div>'
-                            }).then((e)=>{
+                            }).then((e) => {
                                 location.reload()
                             })
                         },
