@@ -59,4 +59,15 @@
     border-radius: 0.375rem;
     height: 38px;
     border-color: #ced4da;
+    font-family: 'Kanit';
+    font-size: 16px;
+}
+input::placeholder {
+    opacity: .5;
+    color: #212529;
+    font-family: 'Kanit';
+    font-style: bold;
+    font-weight: 400;
+    font-size: 16px;
+    
 }
