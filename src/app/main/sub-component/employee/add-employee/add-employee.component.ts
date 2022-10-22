@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { BsLocaleService } from 'ngx-bootstrap/datepicker';
+import { defineLocale, thBeLocale} from 'ngx-bootstrap/chronos';
 
 @Component({
   selector: 'app-add-employee',
@@ -7,10 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddEmployeeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private localeService: BsLocaleService) { }
+
+  locale = 'th';
+  today!: Date;
 
   ngOnInit() {
-    
+    this.today = new Date();
+    defineLocale('th', thBeLocale);
+    this.localeService.use(this.locale);
   }
 
 }

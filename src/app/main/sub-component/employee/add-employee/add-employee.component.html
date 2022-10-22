@@ -29,7 +29,7 @@
       <div class="row font-content d-flex justify-content-center">
         <div class="col-10">
           <input [ngClass]="{ }" ng-cloak type="text" placeholder="กรอกรหัสบัตรประชาชน"
-            class="form-control w-75 maxWidth" id="">
+            class="form-control w-75 maxWidth" id="intTextBox">
         </div>
 
         <div class="row">
@@ -56,9 +56,9 @@
     <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
       <div class="row font-content d-flex justify-content-center">
         <div class="col-10">
-          <ng-select [searchable]="false" placeholder="เลือกคำนำหน้าชื่อ" [clearable]="false"
-            class="custom maxWidth w-75 add-boss">
-            <ng-option></ng-option>
+          <ng-select [searchable]="false" placeholder="เลือกคำนำหน้าชื่อ" [clearable]="false" class="custom w-75">
+            <ng-option>ชาย</ng-option>
+            <ng-option>หญิง</ng-option>
           </ng-select>
         </div>
 
@@ -165,9 +165,10 @@
     </div>
     <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
       <div class="row font-content d-flex justify-content-center">
+
         <div class="col-10">
-          <input type="text" placeholder="เลือกวันเดือนปีเกิด" class="form-control w-75" bsDatepicker 
-              [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD/MM/YYYY'}">
+          <input type="text" placeholder="เลือกวันเดือนปีเกิด" class="form-control w-75" bsDatepicker [maxDate]="today"
+            [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD/MM/YYYY', containerClass: 'theme-dark-blue'}">
         </div>
 
         <div class="row">
@@ -183,5 +184,145 @@
     </div>
   </div>
   <!-- วันเดือนปีเกิด* end -->
+
+  <!-- เบอร์โทรศัพท์* -->
+  <div class="row mb-4">
+    <div
+      class="sub-text col-12 col-sm-4 col-md-4 col-lg-4 text-center text-xs d-flex justify-content-end align-items-center">
+      เบอร์โทรศัพท์*
+    </div>
+    <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
+      <div class="row font-content d-flex justify-content-center">
+        <div class="col-10">
+          <input [ngClass]="{ }" ng-cloak type="text" placeholder="กรอกเบอร์โทรศัพท์" class="form-control w-75 maxWidth"
+            id="">
+        </div>
+
+        <div class="row">
+          <div class="col-lg-7 col-md-8 col-sm-7 col-5 d-flex justify-content-left"></div>
+          <div class="col-sm-5 col-5">
+            <div *ngIf="" class="alerttext">
+              กรุณากรอกเบอร์โทรศัพท์
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- เบอร์โทรศัพท์* end -->
+
+  <!-- อีเมล -->
+  <div class="row mb-4">
+    <div
+      class="sub-text col-12 col-sm-4 col-md-4 col-lg-4 text-center text-xs d-flex justify-content-end align-items-center">
+      อีเมล
+    </div>
+    <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
+      <div class="row font-content d-flex justify-content-center">
+        <div class="col-10">
+          <input [ngClass]="{ }" ng-cloak type="email" placeholder="กรอกอีเมล" class="form-control w-75 maxWidth" id="">
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- อีเมล end -->
+
+  <!-- บริษัท* -->
+  <div class="row mb-4">
+    <div
+      class="sub-text col-12 col-sm-4 col-md-4 col-lg-4 text-center text-xs d-flex justify-content-end align-items-center">
+      บริษัท*
+    </div>
+    <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
+      <div class="row font-content d-flex justify-content-center">
+        <div class="col-10">
+          <input [ngClass]="{ }" ng-cloak type="text" placeholder="กรอกบริษัท" class="form-control w-75 maxWidth" id="">
+        </div>
+
+        <div class="row">
+          <div class="col-lg-7 col-md-8 col-sm-7 col-5 d-flex justify-content-left"></div>
+          <div class="col-sm-5 col-5">
+            <div *ngIf="" class="alerttext">
+              กรุณากรอกบริษัท
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- บริษัท* end -->
+
+  <!-- แผนก* -->
+  <div class="row mb-4">
+    <div
+      class="sub-text col-12 col-sm-4 col-md-4 col-lg-4 text-center text-xs d-flex justify-content-end align-items-center">
+      แผนก*
+    </div>
+    <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
+      <div class="row font-content d-flex justify-content-center">
+        <div class="col-10">
+          <ng-select [searchable]="false" placeholder="เลือกแผนก" [clearable]="false" class="custom w-75">
+            <ng-option>Executive</ng-option>
+            <ng-option>Developer</ng-option>
+            <ng-option>Designer</ng-option>
+          </ng-select>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-7 col-md-8 col-sm-7 col-5 d-flex justify-content-left"></div>
+          <div class="col-sm-5 col-5">
+            <div *ngIf="" class="alerttext">
+              กรุณาเลือกแผนก
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- แผนก* end -->
+
+  <!-- ตำแหน่ง -->
+  <div class="row mb-4">
+    <div
+      class="sub-text col-12 col-sm-4 col-md-4 col-lg-4 text-center text-xs d-flex justify-content-end align-items-center">
+      ตำแหน่ง
+    </div>
+    <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
+      <div class="row font-content d-flex justify-content-center">
+        <div class="col-10">
+          <ng-select [searchable]="true" placeholder="เลือกตำแหน่ง" [clearable]="false" class="custom w-75">
+            <ng-option>Chief executive officer</ng-option>
+            <ng-option>Chief technology officer</ng-option>
+            <ng-option>UX/UI Designer</ng-option>
+            <ng-option>Graphic Designer</ng-option>
+            <ng-option>Front-End Developer</ng-option>
+            <ng-option>Back-End Developer</ng-option>
+          </ng-select>
+        </div>
+
+        <div *ngIf="" class="col-2 py-2">
+          <i class="fa-solid fa-circle-xmark delete-dept iconDept"></i>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4">
+    <div class="sub-text col-4 d-flex justify-content-left" id="">
+    </div>
+    <div class="col-8 d-flex justify-content-left">
+      <a>
+        <div class="text-button">
+          <i class="fa-solid fa-circle-plus" style="margin-right: 5px;"></i>เพิ่มแผนก
+        </div>
+      </a>
+    </div>
+  </div>
+  <!-- แผนก* end -->
 
 </div>
