@@ -59,15 +59,6 @@ input {
   color: red;
 }
 
-input::placeholder {
-  font-family: 'Kanit';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
-  color: #D1D1D6;
-}
-
 input {
   max-height: 38px !important;
 }

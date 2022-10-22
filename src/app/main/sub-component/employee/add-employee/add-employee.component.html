@@ -1,5 +1,187 @@
-<p>
-  add-employee works!
-</p>
+<button class="back-button d-flex justify-content-center" routerLink="../">
+  <i class="fa-solid fa-angle-left back-icon"></i>
+</button>
+<div class="container p-0">
+  <div class=" font-header mb-5">
+    เพิ่มข้อมูลพนักงาน
+  </div>
+
+  <!-- profile image -->
+  <div class="row">
+    <div class="col d-flex justify-content-center">
+      <div style="position: relative;">
+        <img class="profile-img d-flex justify-content-center" src="assets\img\Atsawin.jpg" alt="not found" />
+        <button class="upload-img">
+          <i class="fa-solid fa-camera upload-icon"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- profile image end -->
+
+  <!-- รหัสบัตรประชาชน -->
+  <div class="row mb-4">
+    <div
+      class="sub-text col-12 col-sm-4 col-md-4 col-lg-4 text-center text-xs d-flex justify-content-end align-items-center">
+      รหัสบัตรประชาชน*
+    </div>
+    <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
+      <div class="row font-content d-flex justify-content-center">
+        <div class="col-10">
+          <input [ngClass]="{ }" ng-cloak type="text" placeholder="กรอกรหัสบัตรประชาชน"
+            class="form-control w-75 maxWidth" id="">
+        </div>
+
+        <div class="row">
+          <div class="col-lg-7 col-md-8 col-sm-7 col-5 d-flex justify-content-left"></div>
+          <div class="col-sm-5 col-5">
+            <div *ngIf="" class="alerttext">
+              กรุณากรอกรหัสบัตรประชาชน
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- รหัสบัตรประชาชน end -->
 
 
+  <!-- คำนำหน้าชื่อ -->
+  <div class="row mb-4">
+    <div
+      class="sub-text col-12 col-sm-4 col-md-4 col-lg-4 text-center text-xs d-flex justify-content-end align-items-center">
+      คำนำหน้าชื่อ*
+    </div>
+    <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
+      <div class="row font-content d-flex justify-content-center">
+        <div class="col-10">
+          <ng-select [searchable]="false" placeholder="เลือกคำนำหน้าชื่อ" [clearable]="false"
+            class="custom maxWidth w-75 add-boss">
+            <ng-option></ng-option>
+          </ng-select>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-7 col-md-8 col-sm-7 col-5 d-flex justify-content-left"></div>
+          <div class="col-sm-5 col-5">
+            <div *ngIf="" class="alerttext">
+              กรุณาเลือกคำนำหน้าชื่อ
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- คำนำหน้าชื่อ end -->
+
+  <!-- ชื่อ-นามสกุล (TH)* -->
+  <div class="row mb-4">
+    <div
+      class="sub-text col-12 col-sm-4 col-md-4 col-lg-4 text-center text-xs d-flex justify-content-end align-items-center">
+      ชื่อ-นามสกุล (TH)*
+    </div>
+    <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
+      <div class="row font-content d-flex justify-content-center">
+        <div class="col-10">
+          <input [ngClass]="{ }" ng-cloak type="text" placeholder="กรอกชื่อ-นามสกุลภาษาไทย"
+            class="form-control w-75 maxWidth" id="">
+        </div>
+
+        <div class="row">
+          <div class="col-lg-7 col-md-8 col-sm-7 col-5 d-flex justify-content-left"></div>
+          <div class="col-sm-5 col-5">
+            <div *ngIf="" class="alerttext">
+              กรุณากรอกชื่อ-นามสกุลภาษาไทย
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- ชื่อ-นามสกุล (TH)* end -->
+
+  <!-- ชื่อ-นามสกุล (EN)* -->
+  <div class="row mb-4">
+    <div
+      class="sub-text col-12 col-sm-4 col-md-4 col-lg-4 text-center text-xs d-flex justify-content-end align-items-center">
+      ชื่อ-นามสกุล (EN)*
+    </div>
+    <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
+      <div class="row font-content d-flex justify-content-center">
+        <div class="col-10">
+          <input [ngClass]="{ }" ng-cloak type="text" placeholder="กรอกชื่อ-นามสกุลภาษาอังกฤษ"
+            class="form-control w-75 maxWidth" id="">
+        </div>
+
+        <div class="row">
+          <div class="col-lg-7 col-md-8 col-sm-7 col-5 d-flex justify-content-left"></div>
+          <div class="col-sm-5 col-5">
+            <div *ngIf="" class="alerttext">
+              กรุณากรอกชื่อ-นามสกุลภาษาอังกฤษ
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- ชื่อ-นามสกุล (EN)* end -->
+
+  <!-- ชื่อเล่น* -->
+  <div class="row mb-4">
+    <div
+      class="sub-text col-12 col-sm-4 col-md-4 col-lg-4 text-center text-xs d-flex justify-content-end align-items-center">
+      ชื่อเล่น*
+    </div>
+    <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
+      <div class="row font-content d-flex justify-content-center">
+        <div class="col-10">
+          <input [ngClass]="{ }" ng-cloak type="text" placeholder="กรอกชื่อเล่น" class="form-control w-75 maxWidth"
+            id="">
+        </div>
+
+        <div class="row">
+          <div class="col-lg-7 col-md-8 col-sm-7 col-5 d-flex justify-content-left"></div>
+          <div class="col-sm-5 col-5">
+            <div *ngIf="" class="alerttext">
+              กรุณากรอกชื่อเล่น
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- ชื่อเล่น* end -->
+
+  <!-- วันเดือนปีเกิด* -->
+  <div class="row mb-4">
+    <div
+      class="sub-text col-12 col-sm-4 col-md-4 col-lg-4 text-center text-xs d-flex justify-content-end align-items-center">
+      วันเดือนปีเกิด*
+    </div>
+    <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
+      <div class="row font-content d-flex justify-content-center">
+        <div class="col-10">
+          <input type="text" placeholder="เลือกวันเดือนปีเกิด" class="form-control w-75" bsDatepicker 
+              [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD/MM/YYYY'}">
+        </div>
+
+        <div class="row">
+          <div class="col-lg-7 col-md-8 col-sm-7 col-5 d-flex justify-content-left"></div>
+          <div class="col-sm-5 col-5">
+            <div *ngIf="" class="alerttext">
+              กรุณาเลือกวันเดือนปีเกิด
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- วันเดือนปีเกิด* end -->
+
+</div>

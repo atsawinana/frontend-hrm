@@ -9,6 +9,7 @@ import { MainComponent } from './main/main-component/main.component';
 import { IntercrptorService } from './login/loading/intercrptor.service';
 import { LoadingComponent } from './login/loading/loading-template/loading.component';
 import { SideBarComponent } from './main/main-component/side-bar/side-bar/side-bar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 
 @NgModule({
@@ -21,6 +22,7 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
     ],
     imports: [
         BrowserModule,
+        BrowserAnimationsModule,
         AppRoutingModule,
         FormsModule,
         ReactiveFormsModule,

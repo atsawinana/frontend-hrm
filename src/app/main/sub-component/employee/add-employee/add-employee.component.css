@@ -1,0 +1,77 @@
+.back-button {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(90deg, #E69755 0.1%, #FF5444 100.01%);
+    border-radius: 8px;
+    border: none;
+}
+
+.back-icon {
+    font-size: 28px;
+    color: white;
+    margin-top: 1px;
+}
+
+.font-header {
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    text-align: center;
+    color: #000000;
+}
+
+.profile-img {
+    width: 202px;
+    height: 202px;
+    border-radius: 50%;
+    background-color: #E69755;
+}
+
+.upload-img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: #FFFFFF;
+    border: 1px solid #005FBC;
+    position: relative;
+    top: -50px;
+    right: -140px;
+}
+
+.upload-icon {
+    font-size: 28px;
+    color: #005FBC;
+}
+
+.font-content {
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.alerttext {
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: red;
+}
+
+.sub-text {
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+input::placeholder {
+    opacity: .5;
+    color: #212529;
+    font-family: 'Kanit';
+    font-style: bold;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+  }
