@@ -168,7 +168,8 @@
 
         <div class="col-10">
           <input type="text" placeholder="เลือกวันเดือนปีเกิด" class="form-control w-75" bsDatepicker [maxDate]="today"
-            [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD/MM/YYYY', containerClass: 'theme-dark-blue'}">
+            (keypress)="false"
+            [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD/MM/YYYY', containerClass: 'theme-dark-blue', showWeekNumbers: false}">
         </div>
 
         <div class="row">
@@ -318,11 +319,160 @@
     <div class="col-8 d-flex justify-content-left">
       <a>
         <div class="text-button">
-          <i class="fa-solid fa-circle-plus" style="margin-right: 5px;"></i>เพิ่มแผนก
+          <i class="fa-solid fa-circle-plus" style="margin-right: 5px;"></i>เพิ่มตำแหน่ง
         </div>
       </a>
     </div>
   </div>
-  <!-- แผนก* end -->
+  <!-- ตำแหน่ง end -->
+
+  <!-- ประเภทพนักงาน* -->
+  <div class="row mb-4">
+    <div
+      class="sub-text col-12 col-sm-4 col-md-4 col-lg-4 text-center text-xs d-flex justify-content-end align-items-center">
+      ประเภทพนักงาน*
+    </div>
+    <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
+      <div class="row font-content d-flex justify-content-center">
+        <div class="col-10">
+          <ng-select [searchable]="false" placeholder="เลือกประเภทพนักงาน" [clearable]="false" class="custom w-75">
+            <ng-option>ประจำ</ng-option>
+            <ng-option>สัญญาจ้าง</ng-option>
+          </ng-select>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-7 col-md-8 col-sm-7 col-5 d-flex justify-content-left"></div>
+          <div class="col-sm-5 col-5">
+            <div *ngIf="" class="alerttext">
+              กรุณาเลือกประเภทพนักงาน
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- ประเภทพนักงาน* end -->
+
+  <!-- รหัสพนักงาน* -->
+  <div class="row mb-4">
+    <div
+      class="sub-text col-12 col-sm-4 col-md-4 col-lg-4 text-center text-xs d-flex justify-content-end align-items-center">
+      รหัสพนักงาน*
+    </div>
+    <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
+      <div class="row font-content d-flex justify-content-center">
+        <div class="col-10">
+          <input [ngClass]="{ }" ng-cloak type="text" placeholder="กรอกรหัสพนักงาน" class="form-control w-75 maxWidth"
+            id="">
+        </div>
+
+        <div class="row">
+          <div class="col-lg-7 col-md-8 col-sm-7 col-5 d-flex justify-content-left"></div>
+          <div class="col-sm-5 col-5">
+            <div *ngIf="" class="alerttext">
+              กรุณากรอกรหัสพนักงาน
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- รหัสพนักงาน* end -->
+
+  <!-- วันที่เริ่มงาน* -->
+  <div class="row mb-4">
+    <div
+      class="sub-text col-12 col-sm-4 col-md-4 col-lg-4 text-center text-xs d-flex justify-content-end align-items-center">
+      วันที่เริ่มงาน*
+    </div>
+    <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
+      <div class="row font-content d-flex justify-content-center">
+
+        <div class="col-10">
+          <input type="text" placeholder="เลือกวันที่เริ่มงาน" class="form-control w-75" bsDatepicker [maxDate]="today"
+            (keypress)="false"
+            [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD/MM/YYYY', containerClass: 'theme-dark-blue', showWeekNumbers: false}">
+        </div>
+
+        <div class="row">
+          <div class="col-lg-7 col-md-8 col-sm-7 col-5 d-flex justify-content-left"></div>
+          <div class="col-sm-5 col-5">
+            <div *ngIf="" class="alerttext">
+              กรุณาเลือกวันที่เริ่มงาน
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- วันที่เริ่มงาน* end -->
+
+  <!-- ชื่อผู้ใช้ระบบ* -->
+  <div class="row mb-4 mt-5">
+    <div
+      class="sub-text col-12 col-sm-4 col-md-4 col-lg-4 text-center text-xs d-flex justify-content-end align-items-center">
+      ชื่อผู้ใช้ระบบ*
+    </div>
+    <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
+      <div class="row font-content d-flex justify-content-center">
+
+        <div class="col-10">
+          <input type="text" class="form-control w-75 maxWidth" id="" disabled>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- ชื่อผู้ใช้ระบบ* end -->
+
+  <!-- รหัสผ่าน* -->
+  <div class="row mb-4">
+    <div
+      class="sub-text col-12 col-sm-4 col-md-4 col-lg-4 text-center text-xs d-flex justify-content-end align-items-center">
+      รหัสผ่าน*
+    </div>
+    <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
+      <div class="row font-content d-flex justify-content-center">
+        <div class="col-10">
+          <input [ngClass]="{ }" ng-cloak type="text" placeholder="กรอกรหัสผ่านพนักงาน*"
+            class="form-control w-75 maxWidth" id="">
+        </div>
+
+        <div class="row">
+          <div class="col-lg-7 col-md-8 col-sm-7 col-5 d-flex justify-content-left"></div>
+          <div class="col-sm-5 col-5">
+            <div *ngIf="" class="alerttext">
+              กรุณากรอกรหัสผ่านพนักงาน*
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- รหัสผ่าน* end -->
+
+  <!-- ปุ่มสุ่มรหัสผ่าน* -->
+  <div class="row">
+    <div
+      class="sub-text col-12 col-sm-4 col-md-4 col-lg-4 text-center text-xs d-flex justify-content-end align-items-center">
+    </div>
+    <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
+      <div class="row font-content d-flex justify-content-center">
+        <div class="col-10">
+          <div class="d-flex justify-content-left">
+            <button class="random-button random-text d-flex justify-content-center">
+              สุ่มรหัสผ่าน
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ปุ่มสุ่มรหัสผ่าน* end -->
 
 </div>
