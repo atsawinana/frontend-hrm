@@ -1,19 +1,22 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import Swal from 'sweetalert2';
 
 @Injectable({
-  providedIn: 'root',
+    providedIn: 'root',
 })
 export class DepartmentService {
-  constructor(private httpClient: HttpClient) {}
+    constructor(private httpClient: HttpClient) { }
 
-  getAllUser() {
+    getAllUser() {
 
-    const headers = new HttpHeaders({
-      'Authorization': 'Bearer' + localStorage.getItem('tokenLocal'),
-    });
+        const headers = new HttpHeaders({
+            'Authorization': 'Bearer' + localStorage.getItem('tokenLocal'),
+        });
 
-    return this.httpClient.get(`${environment.apiURL}/department/getAllUser`,{headers});
-  }
+        return this.httpClient.get(`${environment.apiURL}/department/getAllUser`, { headers });
+    }
+
+ 
 }
