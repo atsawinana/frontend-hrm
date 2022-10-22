@@ -123,7 +123,6 @@ export class ListDepartmentComponent implements OnInit {
 
     Delete_Department() {
         this.cancelModal()
-
     }
 
     checkDel(deptID: string): boolean {
@@ -187,7 +186,7 @@ export class ListDepartmentComponent implements OnInit {
                             if (err.status === 401) {
                                 this.coreToken.reFreshToken().subscribe({
                                     next: (res: any) => {
-                                        this.Delete_Department();
+                                        this.SetDeptID(this.deptIDDelete);
                                     },
                                     error: (res: any) => {
                                         this.coreToken.Logout()
