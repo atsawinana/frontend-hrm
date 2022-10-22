@@ -7,7 +7,7 @@
     <div>
       <div class="row d-flex justify-content-between">
         <div class="col-3">
-          <div class="list-header">รายชื่อแผนก</div>
+          <div class="list-header" >รายชื่อแผนก</div>
         </div>
 
         <div class="col-6 d-flex align-items-center justify-content-between">
@@ -19,7 +19,7 @@
               </div>
               <div class="col-10 p-0">
                 <input class="h-100 w-100" id="search-bar" (keypress)="numberOnly($event)" [(ngModel)]="searchInput"
-                  type="text" pattern="[a-zA-Z]*" placeholder="ค้นหา" (keydown)="test()" />
+                  type="text" pattern="[a-zA-Z]*" placeholder="ค้นหา" />
               </div>
             </div>
           </div>
@@ -48,7 +48,7 @@
           <tr id="rowContent" *ngFor="
           let datas of deptTable
             | searchFilter: searchInput
-            | paginate: { itemsPerPage: listPerPage, currentPage: onPage }">
+            | paginate: config ">
 
             <td>{{datas.number}}</td>
             <td id="nameDepartment" class="text-start ps-5">{{ datas.dept_name_en }}</td>
@@ -116,7 +116,7 @@
                 </div>
               </div> -->
 
-              
+
           </tr>
 
         </tbody>
@@ -131,17 +131,24 @@
             <div class="col-3 px-0 text-end d-flex align-items-center justify-content-end">
               <div class="list-perPage">รายการต่อหน้า</div>
             </div>
-            <div class="col-2 ms-2 p-0 select-perPage">
+            <div class="col-2 ms-2 p-0 select-perPage d-flex align-items-center my-auto">
               <!-- <select id="listPerPage" class=""  (change)="listPerpage()">
             <option value="3">3</option>
             <option selected value="5">5</option>
             <option value="10">10</option>
           </select> -->
-              <select id="listPerPage" class="form-select" aria-label="Default select example" (change)="listPerpage()">
+
+              <ng-select style="width: 60px;" [(ngModel)]="listPerPage" [clearable]="false" class="custom maxWidth add-boss" (change)="listPerpage()" required>
+                <ng-option [value]="3">3</ng-option>
+                <ng-option [value]="5">5</ng-option>
+                <ng-option [value]="10">10</ng-option>
+              </ng-select>
+
+              <!-- <select id="listPerPage" class="form-select" aria-label="Default select example" (change)="listPerpage()">
                 <option value="3">3</option>
                 <option selected value="5">5</option>
                 <option value="10">10</option>
-              </select>
+              </select> -->
             </div>
           </div>
         </div>
@@ -153,12 +160,44 @@
           previousLabel="Previous" nextLabel="Next" screenReaderPaginationLabel="Pagination"
           screenReaderPageLabel="page" screenReaderCurrentLabel="You're on page">
         </pagination-controls> -->
-        <div class=".ngx-pagination disabled"></div>
         <div class="col-4 d-flex align-items-center justify-content-end previuspage">
 
+          <pagination-template class="vw-100 " #p="paginationApi" id={{config.id}}
+            (pageChange)="config.currentPage = $event">
 
-            <pagination-controls (pageChange)="onPage = $event"></pagination-controls>
-<!-- 
+            <div class="custom-pagination d-flex flex-row justify-content-end mb-5">
+              <!-- <div class="pagination-previous me-3" [class.disabled]="p.isFirstPage()">
+                <a *ngIf="!p.isFirstPage()" (click)="p.previous()">< </a>
+              </div>  -->
+              <button [disabled]="p.isFirstPage()" style="width: 48px;"
+                class=" buttonPage text-end d-flex align-items-center justify-content-center nextPage me-3"
+                [class.disabled]="p.isFirstPage()" (click)="p.previous()">
+                <i class="fa-solid fa-chevron-left"></i></button>
+              <div *ngFor="let page of p.pages" [class.current]="p.getCurrent() === page.value">
+                <div id="PageButton"
+                  class="buttonPage text-end d-flex align-items-center justify-content-center nextPage me-1"
+                  (click)="p.setCurrent(page.value)" *ngIf="p.getCurrent() !== page.value">
+                  <span>{{ page.label }}</span>
+                </div>
+                <div class="on-page text-end d-flex align-items-center justify-content-center onPage me-1"
+                  *ngIf="p.getCurrent() === page.value">
+                  <span>{{ page.label }}</span>
+                </div>
+              </div>
+
+              <button style="width: 48px;"
+                class="buttonPage text-end d-flex align-items-center justify-content-center nextPage ms-3 me-3"
+                [disabled]="p.isLastPage()" (click)="p.next()"><i class="fa-solid fa-chevron-right"></i></button>
+              <!-- 
+              <button class="pagination-previous me-3 buttonPage previous" [class.disabled]="p.isFirstPage()" id="PageButton" type="button"  ><a >< </a>< </button>
+              <div class="on-page text-end d-flex align-items-center justify-content-center onPage"></div>
+              <div id="PageButton" class="buttonPage text-end d-flex align-items-center justify-content-center nextPage"></div>
+              <button id="PageButton" type="button" class="buttonPage nextPage" *ngIf="!p.isLastPage()" (click)="p.next()">></button> -->
+
+            </div>
+
+          </pagination-template>
+          <!-- 
           <button id="PageButton" type="button" class="buttonPage previous" (click)="DecreasePage()">
             < </button> <div class="on-page text-end d-flex align-items-center justify-content-center onPage">
               {{ onPage }}
@@ -174,55 +213,55 @@
           >
         </button> -->
 
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- modal detail -->
-  <div class="container">
-    <div class="modal" id="exampleModalToggle_de" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-body">
-            <div class="modal-header">
-              <h5 class="modal-ti">{{dept_name}}</h5>
-              <button type="button" class="btn-close" id="button_close" data-bs-dismiss="modal"
-                aria-label="Close"></button>
-            </div>
-            <div id="modal_detail">
+    <!-- modal detail -->
+    <div class="container">
+      <div class="modal" id="exampleModalToggle_de" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-body">
+              <div class="modal-header">
+                <h5 class="modal-ti">{{dept_name}}</h5>
+                <button type="button" class="btn-close" id="button_close" data-bs-dismiss="modal"
+                  aria-label="Close"></button>
+              </div>
+              <div id="modal_detail">
 
-              <div class="row mb-3">
-                <div class="col-5 d-flex justify-content-left">ชื่อแผนก (TH) :</div>
-                <div class="col-7">
-                  <div class="row">
-                    <div class="col-12 d-flex justify-content-left">
-                      <div> {{dept_name}} </div>
+                <div class="row mb-3">
+                  <div class="col-5 d-flex justify-content-left">ชื่อแผนก (TH) :</div>
+                  <div class="col-7">
+                    <div class="row">
+                      <div class="col-12 d-flex justify-content-left">
+                        <div> {{dept_name}} </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
 
-              <div class="row mb-3">
-                <div class="col-5 d-flex justify-content-left">วันที่สร้าง :</div>
-                <div class="col-7">
-                  <div class="row">
-                    <div class="col-12 d-flex justify-content-left">
-                      <div> {{dept_creat}} </div>
+                <div class="row mb-3">
+                  <div class="col-5 d-flex justify-content-left">วันที่สร้าง :</div>
+                  <div class="col-7">
+                    <div class="row">
+                      <div class="col-12 d-flex justify-content-left">
+                        <div> {{dept_creat}} </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
 
-              <div class="row mb-3">
-                <div class="col-5 d-flex justify-content-left">ตำแหน่ง :</div>
-                <div class="col-7">
-                  <div class="row">
-                    <div class="col-12 d-flex justify-content-left modal-padding" *ngFor="let dataPos of dept_post;">
-                      <div> {{dataPos.dp_name_en }} </div>
+                <div class="row mb-3">
+                  <div class="col-5 d-flex justify-content-left">ตำแหน่ง :</div>
+                  <div class="col-7">
+                    <div class="row">
+                      <div class="col-12 d-flex justify-content-left modal-padding" *ngFor="let dataPos of dept_post;">
+                        <div> {{dataPos.dp_name_en }} </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
 
               <div class="row mb-3">
                 <div class="col-5 d-flex justify-content-left">หัวหน้าแผนก :</div>
@@ -233,12 +272,11 @@
                     </div>
                   </div>
                 </div>
-              </div>
 
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <!-- modal deleted -->
+    <!-- modal deleted -->
