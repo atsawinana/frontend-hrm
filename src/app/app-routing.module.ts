@@ -28,7 +28,7 @@ const routes: Routes = [
       {
         path: '', component: ProfileComponent, canActivate: [AuthGuardGuard]
       },
-      { path: 'leave', component: LeaveComponent, canActivate: [AuthGuardGuard] },
+      { path: 'leave', loadChildren: () => import('./main/sub-component/leave/leave.module').then((m)=> m.LeaveModule), canActivate: [AuthGuardGuard] },
       {
         path: 'department', loadChildren: () => import('./main/sub-component/department/department.module').then((m) => m.DepartmentModule), canActivate: [RoleGuard, AuthGuardGuard]
       },
