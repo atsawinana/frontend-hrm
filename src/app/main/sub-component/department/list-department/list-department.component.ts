@@ -186,7 +186,7 @@ export class ListDepartmentComponent implements OnInit {
                             })
                         },
                         error: (err: any) => {
-                            if (err.status === 419) {
+                            if (err.status === 404) {
                                 Swal.fire({
                                     icon: 'warning',
                                     title: 'เซสชั่นหมดอายุ',
@@ -217,7 +217,7 @@ export class ListDepartmentComponent implements OnInit {
 
             },
             error: (err: any) => {
-                if (err.status === 419) {
+                if (err.status === 404) {
                     Swal.fire({
                         icon: 'warning',
                         title: 'เซสชั่นหมดอายุ',
