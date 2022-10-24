@@ -93,6 +93,7 @@ export class ListDepartmentComponent implements OnInit {
 
     listPerpage() {
         this.config.itemsPerPage = this.listPerPage
+        this.config.currentPage = 1
         this.maxPage = Math.ceil(Number(this.maxListDept) / Number(this.listPerPage));
         this.onPage = 1;
         this.onPageNext = this.onPage + 1
