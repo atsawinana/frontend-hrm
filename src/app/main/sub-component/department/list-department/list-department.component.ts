@@ -103,7 +103,7 @@ export class ListDepartmentComponent implements OnInit {
     increasePage() {
 
         const countrow = document.querySelectorAll('#rowContent')!
-        console.log(countrow)
+        // console.log(countrow)
 
         this.maxPage = Math.ceil(Number(this.maxListDept) / Number(this.listPerPage));
         if (this.onPage < this.maxPage) {

@@ -229,7 +229,7 @@ export class EditComponentComponent implements OnInit {
                                         })
                                     },
                                     error: (err: any) => {
-                                        console.log(err.status)
+                                        // console.log(err.status)
                                         if (err.status === 419) {
                                             Swal.fire({
                                                 icon: 'warning',
@@ -253,7 +253,7 @@ export class EditComponentComponent implements OnInit {
         // console.log('nullth', this.CheckNullDeptNameTH);
         // console.log('nullposit', this.CheckNullPosit);
         // console.log('nulklmana', this.CheckNullMana);
-        console.log('1234', this.ObjDeptMana);
+        // console.log('1234', this.ObjDeptMana);
     }
 
     cencelNullCheck() {
@@ -262,8 +262,8 @@ export class EditComponentComponent implements OnInit {
 
     MapUsernameWithID() {
         // console.log('check len', this.DeptUserID.length);
-        console.log('1', this.ObjDeptMana);
-        console.log('2', this.UserSelected);
+        // console.log('1', this.ObjDeptMana);
+        // console.log('2', this.UserSelected);
         for (let i = 0; i < Object.keys(this.ObjDeptMana).length; i++) {
             for (let j = 0; j < this.UserSelected.length; j++) {
                 if (
@@ -279,11 +279,11 @@ export class EditComponentComponent implements OnInit {
     }
 
     addSelect(event: any) {
-        console.log(event)
+        // console.log(event)
     }
 
     addInputDept() {
-        console.log(this.ObjDeptMana)
+        // console.log(this.ObjDeptMana)
         if (Object.keys(this.ObjDeptMana).length == 0) {
             this.countDeptMana?.push(
                 this.countDeptMana[this.countDeptMana.length - 1] + 1

@@ -98,7 +98,7 @@ export class AddDepartmentComponent implements OnInit {
     }
 
     userSelected() {
-        console.log(this.DeptMana);
+        // console.log(this.DeptMana);
         for (let i = 0; i < Object.keys(this.DeptMana).length; i++) {
             for (let j = 0; j < this.DeptUserID.length; j++) {
                 if (this.DeptMana[i] === this.DeptUserID[j].ud_fullname_th) {
@@ -298,6 +298,6 @@ export class AddDepartmentComponent implements OnInit {
     }
 
     checkAlertmana(event: boolean) {
-        console.log(event);
+        // console.log(event);
     }
 }
