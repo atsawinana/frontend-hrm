@@ -111,7 +111,13 @@ export class AddDepartmentComponent implements OnInit {
     addInputDept() {
         // console.log(this.DeptMana);
         if (this.DeptMana[this.countDeptMana.length - 1] == null) {
-            alert('กรุณากรอกข้อมูลให้ครบถ้วน');
+            Swal.fire({
+                icon: 'warning',
+                title: '<strong style = "font-family:Kanit"> กรุณากรอกข้อมูลให้ครบถ้วน </strong>',
+                showConfirmButton: false,
+                backdrop: false,
+                timer: 1000
+            })
         } else {
             this.countDeptMana?.push(this.countDeptMana.length + 1);
             // console.log(this.countDeptMana);
@@ -121,7 +127,13 @@ export class AddDepartmentComponent implements OnInit {
     addInputDeptPosit() {
         // console.log(this.DeptPosit[this.countDeptPosit.length - 1]);
         if (this.DeptPosit[this.countDeptPosit.length - 1] == null) {
-            alert('กรุณากรอกข้อมูลให้ครบถ้วน');
+            Swal.fire({
+                icon: 'warning',
+                title: '<strong style = "font-family:Kanit"> กรุณากรอกข้อมูลให้ครบถ้วน </strong>',
+                showConfirmButton: false,
+                backdrop: false,
+                timer: 1000
+            })
         } else {
             this.countDeptPosit?.push(this.countDeptPosit.length + 1);
         }

@@ -295,7 +295,7 @@ export class EditComponentComponent implements OnInit {
             ) {
                 Swal.fire({
                     icon: 'warning',
-                    title: 'กรุณากรอกข้อมูลให้ครบถ้วน',
+                    title: '<strong style = "font-family:Kanit"> กรุณากรอกข้อมูลให้ครบถ้วน </strong>',
                     showConfirmButton: false,
                     backdrop: false,
                     timer: 1000
@@ -324,7 +324,7 @@ export class EditComponentComponent implements OnInit {
             ) {
                 Swal.fire({
                     icon: 'warning',
-                    title: 'กรุณากรอกข้อมูลให้ครบถ้วน',
+                    title: '<strong style = "font-family:Kanit"> กรุณากรอกข้อมูลให้ครบถ้วน </strong>',
                     showConfirmButton: false,
                     backdrop: false,
                     timer: 1000
