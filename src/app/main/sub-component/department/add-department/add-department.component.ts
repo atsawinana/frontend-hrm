@@ -115,8 +115,13 @@ export class AddDepartmentComponent implements OnInit {
                 icon: 'warning',
                 title: '<strong style = "font-family:Kanit"> กรุณากรอกข้อมูลให้ครบถ้วน </strong>',
                 showConfirmButton: false,
-                backdrop: false,
-                timer: 1000
+                backdrop: true,
+                timer: 1000,
+                allowOutsideClick: true
+            }).then((m)=>{
+                if(m.dismiss){
+                    Swal.close()
+                }
             })
         } else {
             this.countDeptMana?.push(this.countDeptMana.length + 1);
@@ -131,8 +136,9 @@ export class AddDepartmentComponent implements OnInit {
                 icon: 'warning',
                 title: '<strong style = "font-family:Kanit"> กรุณากรอกข้อมูลให้ครบถ้วน </strong>',
                 showConfirmButton: false,
-                backdrop: false,
-                timer: 1000
+                backdrop: true,
+                timer: 1000,
+                allowOutsideClick: true
             })
         } else {
             this.countDeptPosit?.push(this.countDeptPosit.length + 1);

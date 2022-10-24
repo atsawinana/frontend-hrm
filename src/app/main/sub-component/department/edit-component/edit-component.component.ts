@@ -297,8 +297,9 @@ export class EditComponentComponent implements OnInit {
                     icon: 'warning',
                     title: '<strong style = "font-family:Kanit"> กรุณากรอกข้อมูลให้ครบถ้วน </strong>',
                     showConfirmButton: false,
-                    backdrop: false,
-                    timer: 1000
+                    backdrop: true,
+                    timer: 1000,
+                    allowOutsideClick: true
                 })
             } else {
                 this.countDeptMana?.push(
@@ -326,8 +327,9 @@ export class EditComponentComponent implements OnInit {
                     icon: 'warning',
                     title: '<strong style = "font-family:Kanit"> กรุณากรอกข้อมูลให้ครบถ้วน </strong>',
                     showConfirmButton: false,
-                    backdrop: false,
-                    timer: 1000
+                    backdrop: true,
+                    timer: 1000,
+                    allowOutsideClick: true
                 })
             } else {
                 this.countDeptPosit?.push(
