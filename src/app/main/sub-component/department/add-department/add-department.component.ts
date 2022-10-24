@@ -90,7 +90,7 @@ export class AddDepartmentComponent implements OnInit {
                     }).then((e) => {
                         this.route.navigate(['']);
                     })
-                }else{
+                } else {
                     this.main.Error()
                 }
             },
@@ -110,9 +110,7 @@ export class AddDepartmentComponent implements OnInit {
 
     addInputDept() {
         // console.log(this.DeptMana);
-        if (Object.keys(this.DeptMana).length == 0) {
-            this.countDeptMana?.push(this.countDeptMana.length + 1);
-        } else if (this.DeptMana[this.countDeptMana.length - 1] == null) {
+        if (this.DeptMana[this.countDeptMana.length - 1] == null) {
             alert('กรุณากรอกข้อมูลให้ครบถ้วน');
         } else {
             this.countDeptMana?.push(this.countDeptMana.length + 1);
@@ -122,9 +120,7 @@ export class AddDepartmentComponent implements OnInit {
 
     addInputDeptPosit() {
         // console.log(this.DeptPosit[this.countDeptPosit.length - 1]);
-        if (Object.keys(this.DeptPosit).length == 0) {
-            this.countDeptPosit?.push(this.countDeptPosit.length + 1);
-        } else if (this.DeptPosit[this.countDeptPosit.length - 1] == null) {
+        if (this.DeptPosit[this.countDeptPosit.length - 1] == null) {
             alert('กรุณากรอกข้อมูลให้ครบถ้วน');
         } else {
             this.countDeptPosit?.push(this.countDeptPosit.length + 1);
@@ -261,7 +257,7 @@ export class AddDepartmentComponent implements OnInit {
                                         }).then((e) => {
                                             this.route.navigate(['']);
                                         })
-                                    }else{
+                                    } else {
                                         this.main.Error()
                                     }
                                 },
