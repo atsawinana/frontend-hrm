@@ -4,6 +4,9 @@ import { ListDepartmentService } from './list-department.service';
 import Swal from 'sweetalert2';
 import { style } from '@angular/animations';
 import { PaginationInstance } from 'ngx-pagination';
+import { Router } from '@angular/router';
+import { DepartmentService } from '../department.service';
+import { MainService } from 'src/app/main/main.service';
 
 @Component({
     selector: 'app-list-department',
@@ -23,6 +26,7 @@ export class ListDepartmentComponent implements OnInit {
     onPageNext: number = this.onPage + 1;
     maxListDept?: any;
     dept_name!: string;
+    dept_nameEN!: string;
     dept_creat!: string;
     dept_post!: any;
     dept_manager!: any;
@@ -33,7 +37,7 @@ export class ListDepartmentComponent implements OnInit {
     deptID_Detail: string = ""
     maxPage!: any
 
-    constructor(private DepService: ListDepartmentService, private coreToken: AuthService) { }
+    constructor(private main: MainService,private DepService: ListDepartmentService, private coreToken: AuthService, private router: Router) { }
     ngOnInit() {
         this.getAllDepartment()
     }
@@ -67,14 +71,13 @@ export class ListDepartmentComponent implements OnInit {
                 this.checkLoadAPI = true;
             },
             error: (err: any) => {
-                if (err.status === 401) {
-                    this.coreToken.reFreshToken().subscribe({
-                        next: (res: any) => {
-                            this.getAllDepartment();
-                        },
-                        error: (res: any) => {
-                            this.coreToken.Logout()
-                        }
+                if (err.status === 419) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'เซสชั่นหมดอายุ',
+                        text: 'กรุณา Login ใหม่ เพื่อใช้งาน',
+                    }).then((e) => {
+                        this.router.navigate(['']);
                     })
                 }
             },
@@ -91,6 +94,7 @@ export class ListDepartmentComponent implements OnInit {
 
     listPerpage() {
         this.config.itemsPerPage = this.listPerPage
+        this.config.currentPage = 1
         this.maxPage = Math.ceil(Number(this.maxListDept) / Number(this.listPerPage));
         this.onPage = 1;
         this.onPageNext = this.onPage + 1
@@ -99,7 +103,7 @@ export class ListDepartmentComponent implements OnInit {
     increasePage() {
 
         const countrow = document.querySelectorAll('#rowContent')!
-        console.log(countrow)
+        // console.log(countrow)
 
         this.maxPage = Math.ceil(Number(this.maxListDept) / Number(this.listPerPage));
         if (this.onPage < this.maxPage) {
@@ -184,17 +188,14 @@ export class ListDepartmentComponent implements OnInit {
                             })
                         },
                         error: (err: any) => {
-                            if (err.status === 401) {
-                                this.coreToken.reFreshToken().subscribe({
-                                    next: (res: any) => {
-                                        this.Delete_Department();
-                                    },
-                                    error: (res: any) => {
-                                        this.coreToken.Logout()
-                                    }
+                            if (err.status === 404) {
+                                Swal.fire({
+                                    icon: 'warning',
+                                    title: 'เซสชั่นหมดอายุ',
+                                    text: 'กรุณา Login ใหม่ เพื่อใช้งาน',
+                                }).then((e) => {
+                                    this.router.navigate(['']);
                                 })
-                            } else {
-                                location.reload();
                             }
                         },
                     });
@@ -211,6 +212,7 @@ export class ListDepartmentComponent implements OnInit {
         this.deptID_Detail = event
         this.DepService.DetailDepartment(this.deptID_Detail).subscribe({
             next: (res: any) => {
+                this.dept_nameEN = res.data.departments.dept_name_en;
                 this.dept_name = res.data.departments.dept_name_th;
                 this.dept_creat = res.data.departments.dept_created_date;
                 this.dept_post = res.data.dept_positions;
@@ -218,16 +220,20 @@ export class ListDepartmentComponent implements OnInit {
 
             },
             error: (err: any) => {
-                if (err.status === 401) {
-                    this.coreToken.reFreshToken().subscribe({
-                        next: (res: any) => {
-                            this.DetailDept(this.deptID_Detail);
-                        },
-                        error: (res: any) => {
-                            this.coreToken.Logout()
-                        }
+                if (err.status === 404) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'เซสชั่นหมดอายุ',
+                        text: 'กรุณา Login ใหม่ เพื่อใช้งาน',
+                    }).then((e) => {
+                        this.router.navigate(['']);
                     })
                 }
+                else{
+                    this.main.Error()
+                }
+
+
             },
         });
     }
@@ -236,7 +242,4 @@ export class ListDepartmentComponent implements OnInit {
         location.reload();
     }
 
-    test() {
-        console.log("qwe")
-    }
 }

@@ -22,14 +22,8 @@
                 </div>
                 <div class="col-1"></div>
               </div>
-            </div>
-            <div class="row">
-              <div class="col-lg-8 col-md-8 col-sm-7 col-5 d-flex justify-content-left"></div>
-              <div class="col-sm-4 col-5">
-                <div [ngClass]="{fontcontentalert  : CheckNullDeptNameEN}" style="display: none;">
-                  กรุณากรอกข้อมูล
-                </div>
-              </div>
+              <div [ngClass]="{fontcontentalert  : CheckNullDeptNameEN}"
+                style="display: none; padding-right: 50px;">กรุณากรอกข้อมูล</div>
             </div>
           </div>
         </div>
@@ -57,26 +51,21 @@
           <div class="col-lg-6 col-md-12 col-sm-12 col-12">
             <div class="row OriginalDiv" *ngFor="let row of countDeptMana ; let i = index">
               <div class="col-lg-11 col-md-11 col-sm-11 col-10">
-
-
                 <ng-select [ngClass]="{customnull : CheckNullMana[i]}" placeholder="เลือกชื่อหัวหน้าแผนก"
                   [clearable]="false" [(ngModel)]="DeptMana[i]" (change)="userSelected()"
-                  class="custom maxWidth mb-4 add-boss">
+                  class="custom maxWidth mb-3 add-boss">
                   <ng-option *ngFor="let uid of DeptUserID" [value]="uid.ud_fullname_th">{{uid.ud_fullname_th}}
                   </ng-option>
                 </ng-select>
-
-
-                <!-- <input [ngClass]="{alert : CheckNullMana[i]}" (keypress)="false" type="text" list="uid"
-                  placeholder="กรอกชื่อหัวหน้าแผนก" class="form-control maxWidth" [(ngModel)]="DeptMana[i]" />
-                <datalist id="uid">
-                  <option *ngFor="let uid of DeptUserID" [value]="uid.ud_fullname_th"></option>
-                </datalist> -->
               </div>
               <div *ngIf="(this.countDeptMana).length > 1" class="col-1 my-2" style="cursor: pointer;"
                 (click)="deleteDept(i)">
                 <img class="mt-1 d-flex justify-content-center" alt="Alternative text" width="24px" height="24px"
                   src="assets/img/circle-xmark-solid.svg" />
+              </div>
+              <div class="row" id="pos">
+                <div [ngClass]="{fontcontentalert  : CheckNullMana[i]}"
+                  style="display: none;">กรุณากรอกข้อมูล</div>
               </div>
             </div>
           </div>
@@ -89,10 +78,6 @@
               <i class="fa-solid fa-circle-plus margin-text"></i> เพิ่มหัวหน้า
             </div>
           </div>
-          <div class="col-sm-4 col-5">
-            <div [ngClass]="{fontcontentalert  : CheckNullMana[(this.countDeptMana).length-1]}" style="display: none;">
-              กรุณากรอกข้อมูล</div>
-          </div>
         </div>
 
         <!-- input position -->
@@ -104,15 +89,18 @@
             <div class="row OriginalDiv" id="addpo" *ngFor="let row of countDeptPosit ; let j = index">
               <div class="col-lg-11 col-md-11 col-sm-11 col-10 my-1">
                 <input [ngClass]="{alert : CheckNullPosit[j]}" type="text" placeholder="กรอกตำแหน่ง"
-                  class="form-control maxWidth" [(ngModel)]="DeptPosit[j]" />
+                  class="form-control maxWidth mb-2" [(ngModel)]="DeptPosit[j]" />
               </div>
               <div *ngIf="(this.countDeptPosit).length > 1" class="col-1 my-2" style="cursor: pointer;"
                 (click)="deleteInputDept(j)">
                 <img class="mt-1 d-flex justify-content-center" alt="Alternative text" width="24px" height="24px"
                   src="assets/img/circle-xmark-solid.svg" />
               </div>
+              <div class="row" id="pos">
+                <div [ngClass]="{fontcontentalert  : CheckNullPosit[j]}"
+                  style="display: none;">กรุณากรอกข้อมูล</div>
+              </div>
             </div>
-            <div class="row" id="pos"></div>
           </div>
         </div>
 
@@ -124,10 +112,6 @@
               <i class="fa-solid fa-circle-plus margin-text"></i>เพิ่มตำแหน่ง
             </div>
           </div>
-          <div class="col-sm-4 col-5">
-            <div [ngClass]="{fontcontentalert  : CheckNullPosit[(this.countDeptPosit).length-1]}"
-              style="display: none;">กรุณากรอกข้อมูล</div>
-          </div>
         </div>
       </div>
     </div>
@@ -137,7 +121,7 @@
 <div class="row mb-4 mt-5 d-flex justify-content-center">
   <div class="col-5 col-sm-5 col-md-5 col-lg-3">
     <button (click)="checkCancel()" class="cancel-button d-flex justify-content-center w-100" type="reset"
-      data-bs-toggle="modal" href="#Modal-cancel">
+      href="#Modal-cancel">
       <div class="cancel-font">ยกเลิก</div>
     </button>
   </div>

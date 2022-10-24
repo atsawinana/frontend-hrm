@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   constructor(private loginService: LoginService, private router: Router, private coreToken: AuthService, public loading: LoadingService) {}
 
   ngOnInit(): void {
-    console.log(environment.apiURL)
+    // console.log(environment.apiURL)
   }
 
   alertTextRed() {

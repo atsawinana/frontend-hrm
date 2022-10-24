@@ -7,7 +7,7 @@
     <div>
       <div class="row d-flex justify-content-between">
         <div class="col-3">
-          <div class="list-header">รายชื่อแผนก</div>
+          <div class="list-header" >รายชื่อแผนก</div>
         </div>
 
         <div class="col-6 d-flex align-items-center justify-content-between">
@@ -19,7 +19,7 @@
               </div>
               <div class="col-10 p-0">
                 <input class="h-100 w-100" id="search-bar" (keypress)="numberOnly($event)" [(ngModel)]="searchInput"
-                  type="text" pattern="[a-zA-Z]*" placeholder="ค้นหา" (keydown)="test()" />
+                  type="text" pattern="[a-zA-Z]*" placeholder="ค้นหา" />
               </div>
             </div>
           </div>
@@ -37,8 +37,8 @@
         <thead>
           <tr>
             <th style="width: 10%;">ลำดับ</th>
-            <th class="text-start ps-5" style="width: 45%;">รายชื่อแผนก</th>
-            <th style="width: 15%;">จำนวนคน</th>
+            <th class="text-start ps-5" style="width: 50%;">รายชื่อแผนก</th>
+            <th style="width: 10%;">จำนวนคน</th>
             <th style="width: 30%;">การดำเนินการ</th>
           </tr>
         </thead>
@@ -188,31 +188,9 @@
               <button style="width: 48px;"
                 class="buttonPage text-end d-flex align-items-center justify-content-center nextPage ms-3 me-3"
                 [disabled]="p.isLastPage()" (click)="p.next()"><i class="fa-solid fa-chevron-right"></i></button>
-              <!-- 
-              <button class="pagination-previous me-3 buttonPage previous" [class.disabled]="p.isFirstPage()" id="PageButton" type="button"  ><a >< </a>< </button>
-              <div class="on-page text-end d-flex align-items-center justify-content-center onPage"></div>
-              <div id="PageButton" class="buttonPage text-end d-flex align-items-center justify-content-center nextPage"></div>
-              <button id="PageButton" type="button" class="buttonPage nextPage" *ngIf="!p.isLastPage()" (click)="p.next()">></button> -->
-
             </div>
 
           </pagination-template>
-          <!-- 
-          <button id="PageButton" type="button" class="buttonPage previous" (click)="DecreasePage()">
-            < </button> <div class="on-page text-end d-flex align-items-center justify-content-center onPage">
-              {{ onPage }}
-        </div>
-
-        <div *ngIf="!(onPage == maxPage)" id="PageButton"
-          class="buttonPage text-end d-flex align-items-center justify-content-center nextPage"
-          (click)="increasePage()">
-          {{ onPageNext }}
-        </div>
-
-        <button id="PageButton" type="button" class="buttonPage nextPage" (click)="increasePage()">
-          >
-        </button> -->
-
         </div>
       </div>
     </div>
@@ -224,7 +202,7 @@
           <div class="modal-content">
             <div class="modal-body">
               <div class="modal-header">
-                <h5 class="modal-ti">{{dept_name}}</h5>
+                <h5 class="modal-ti">{{dept_nameEN}}</h5>
                 <button type="button" class="btn-close" id="button_close" data-bs-dismiss="modal"
                   aria-label="Close"></button>
               </div>
@@ -263,14 +241,12 @@
                   </div>
                 </div>
 
-                <div class="row mb-3">
-                  <div class="col-5 d-flex justify-content-left">หัวหน้าแผนก :</div>
-                  <div class="col-7">
-                    <div class="row">
-                      <div class="col-12 d-flex justify-content-left modal-padding"
-                        *ngFor="let dataMana of dept_manager">
-                        <div> {{ dataMana.ud_prefix }} {{dataMana.ud_fullname_th}} </div>
-                      </div>
+              <div class="row mb-3">
+                <div class="col-5 d-flex justify-content-left">หัวหน้าแผนก :</div>
+                <div class="col-7">
+                  <div class="row">
+                    <div class="col-12 d-flex justify-content-left modal-padding" *ngFor="let dataMana of dept_manager">
+                      <div> {{dataMana.ud_prefix}} {{dataMana.ud_fullname_th}} </div>
                     </div>
                   </div>
                 </div>
