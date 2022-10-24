@@ -53,7 +53,7 @@
               <div class="col-lg-11 col-md-11 col-sm-11 col-10">
                 <ng-select [ngClass]="{customnull : CheckNullMana[i]}" placeholder="เลือกชื่อหัวหน้าแผนก"
                   [clearable]="false" [(ngModel)]="DeptMana[i]" (change)="userSelected()"
-                  class="custom maxWidth mb-4 add-boss">
+                  class="custom maxWidth mb-3 add-boss">
                   <ng-option *ngFor="let uid of DeptUserID" [value]="uid.ud_fullname_th">{{uid.ud_fullname_th}}
                   </ng-option>
                 </ng-select>
@@ -89,7 +89,7 @@
             <div class="row OriginalDiv" id="addpo" *ngFor="let row of countDeptPosit ; let j = index">
               <div class="col-lg-11 col-md-11 col-sm-11 col-10 my-1">
                 <input [ngClass]="{alert : CheckNullPosit[j]}" type="text" placeholder="กรอกตำแหน่ง"
-                  class="form-control maxWidth" [(ngModel)]="DeptPosit[j]" />
+                  class="form-control maxWidth mb-2" [(ngModel)]="DeptPosit[j]" />
               </div>
               <div *ngIf="(this.countDeptPosit).length > 1" class="col-1 my-2" style="cursor: pointer;"
                 (click)="deleteInputDept(j)">
