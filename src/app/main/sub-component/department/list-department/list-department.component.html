@@ -188,31 +188,9 @@
               <button style="width: 48px;"
                 class="buttonPage text-end d-flex align-items-center justify-content-center nextPage ms-3 me-3"
                 [disabled]="p.isLastPage()" (click)="p.next()"><i class="fa-solid fa-chevron-right"></i></button>
-              <!-- 
-              <button class="pagination-previous me-3 buttonPage previous" [class.disabled]="p.isFirstPage()" id="PageButton" type="button"  ><a >< </a>< </button>
-              <div class="on-page text-end d-flex align-items-center justify-content-center onPage"></div>
-              <div id="PageButton" class="buttonPage text-end d-flex align-items-center justify-content-center nextPage"></div>
-              <button id="PageButton" type="button" class="buttonPage nextPage" *ngIf="!p.isLastPage()" (click)="p.next()">></button> -->
-
             </div>
 
           </pagination-template>
-          <!-- 
-          <button id="PageButton" type="button" class="buttonPage previous" (click)="DecreasePage()">
-            < </button> <div class="on-page text-end d-flex align-items-center justify-content-center onPage">
-              {{ onPage }}
-        </div>
-
-        <div *ngIf="!(onPage == maxPage)" id="PageButton"
-          class="buttonPage text-end d-flex align-items-center justify-content-center nextPage"
-          (click)="increasePage()">
-          {{ onPageNext }}
-        </div>
-
-        <button id="PageButton" type="button" class="buttonPage nextPage" (click)="increasePage()">
-          >
-        </button> -->
-
         </div>
       </div>
     </div>
@@ -224,7 +202,7 @@
           <div class="modal-content">
             <div class="modal-body">
               <div class="modal-header">
-                <h5 class="modal-ti">{{dept_name}}</h5>
+                <h5 class="modal-ti">{{dept_nameEN}}</h5>
                 <button type="button" class="btn-close" id="button_close" data-bs-dismiss="modal"
                   aria-label="Close"></button>
               </div>

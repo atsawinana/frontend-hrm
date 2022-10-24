@@ -26,6 +26,7 @@ export class ListDepartmentComponent implements OnInit {
     onPageNext: number = this.onPage + 1;
     maxListDept?: any;
     dept_name!: string;
+    dept_nameEN!: string;
     dept_creat!: string;
     dept_post!: any;
     dept_manager!: any;
@@ -211,6 +212,7 @@ export class ListDepartmentComponent implements OnInit {
         this.deptID_Detail = event
         this.DepService.DetailDepartment(this.deptID_Detail).subscribe({
             next: (res: any) => {
+                this.dept_nameEN = res.data.departments.dept_name_en;
                 this.dept_name = res.data.departments.dept_name_th;
                 this.dept_creat = res.data.departments.dept_created_date;
                 this.dept_post = res.data.dept_positions;
