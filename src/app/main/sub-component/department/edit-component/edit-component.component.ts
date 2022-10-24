@@ -293,7 +293,13 @@ export class EditComponentComponent implements OnInit {
             if (
                 Object.keys(this.ObjDeptMana[this.countDeptMana.length - 1]).length === 0
             ) {
-                alert('กรุณากรอกข้อมูลให้ครบถ้วน');
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'กรุณากรอกข้อมูลให้ครบถ้วน',
+                    showConfirmButton: false,
+                    backdrop: false,
+                    timer: 1000
+                })
             } else {
                 this.countDeptMana?.push(
                     this.countDeptMana[this.countDeptMana.length - 1] + 1
@@ -316,7 +322,13 @@ export class EditComponentComponent implements OnInit {
                 Object.keys(this.ObjDeptPosit[this.countDeptPosit.length - 1]).length ===
                 0
             ) {
-                alert('กรุณากรอกข้อมูลให้ครบถ้วน');
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'กรุณากรอกข้อมูลให้ครบถ้วน',
+                    showConfirmButton: false,
+                    backdrop: false,
+                    timer: 1000
+                })
             } else {
                 this.countDeptPosit?.push(
                     this.countDeptPosit[this.countDeptPosit.length - 1] + 1
