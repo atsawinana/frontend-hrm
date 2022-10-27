@@ -15,6 +15,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { EmployeeOverbuttonComponent } from './employee-overbutton/employee-overbutton.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { LoadingEmployeeComponent } from './loading-employee/loading-employee.component';
 
 @NgModule({
   imports: [
@@ -35,7 +36,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     LeaveHistoryPersonComponent,
     OtHistoryPersonComponent,
     WorkHistoryPersonComponent,
-    EmployeeOverbuttonComponent
+    EmployeeOverbuttonComponent,
+    LoadingEmployeeComponent
   ]
 })
 export class EmployeeModule { }

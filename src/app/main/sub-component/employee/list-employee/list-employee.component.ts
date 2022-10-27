@@ -19,6 +19,7 @@ export class ListEmployeeComponent implements OnInit {
     listPerPage: number = 10
     searchInput: string = ''
     elemtable: any
+    LoadingAPI:boolean = false
 
     public config: PaginationInstance = {
         id: 'custom',
@@ -39,6 +40,7 @@ export class ListEmployeeComponent implements OnInit {
                     delete this.Objemptable[i].id
                     delete this.Objemptable[i].page
                 }
+                this.LoadingAPI = true
             },
             error: (err: any) => {
 
