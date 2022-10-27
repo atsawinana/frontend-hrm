@@ -53,7 +53,7 @@
 
     <tbody class="list-content">
 
-      <tr id="" *ngFor="let emp of Objemptable | paginate: config | filter : searchInput">
+      <tr routerLink="data-person" routerLinkActive="router-link-active"  id="" *ngFor="let emp of Objemptable | paginate: config  | filter : searchInput" >
         <td>{{emp.number}}</td>
         <td class="text-start">{{emp.user_card_number}}</td>
         <td class="text-start">{{emp.ud_fullname_th}}</td>
@@ -100,7 +100,6 @@
 
       <pagination-template class="vw-100 " #p="paginationApi" id={{config.id}}
         (pageChange)="config.currentPage = $event">
-
         <div class="custom-pagination d-flex flex-row justify-content-end mb-5">
           <button [disabled]="p.isFirstPage()" style="width: 48px;"
             class=" buttonPage text-end d-flex align-items-center justify-content-center nextPage me-3"

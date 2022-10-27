@@ -13,6 +13,8 @@ import { FormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { EmployeeOverbuttonComponent } from './employee-overbutton/employee-overbutton.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   imports: [
@@ -22,6 +24,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     FormsModule,
     NgSelectModule,
     NgxPaginationModule,
+    Ng2SearchPipeModule,
     BsDatepickerModule.forRoot(),
   ],
   declarations: [
@@ -31,7 +34,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     DetailDataPersonComponent,
     LeaveHistoryPersonComponent,
     OtHistoryPersonComponent,
-    WorkHistoryPersonComponent
+    WorkHistoryPersonComponent,
+    EmployeeOverbuttonComponent
   ]
 })
 export class EmployeeModule { }
