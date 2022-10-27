@@ -39,8 +39,8 @@
     font-family: 'Kanit';
     font-style: normal;
     font-weight: bold;
-    font-size: 16px;
-    line-height: 36px;
+    font-size: 18px;
+    line-height: 47px;
     color: #000000;
 }
   .font-detail {
@@ -54,4 +54,6 @@
   .line {
     border-top: 6px solid #005FBC;
   }
-  
+  .ped {
+    margin-top: 50px;
+  }
