@@ -7,6 +7,7 @@ import { DepartmentService } from '../department.service';
 import { AuthService } from 'src/app/auth/auth.service';
 import { NgSelectComponent } from '@ng-select/ng-select';
 import Swal from 'sweetalert2';
+import { MainService } from 'src/app/main/main.service';
 
 @Component({
     selector: 'app-edit-component',
@@ -22,8 +23,8 @@ export class EditComponentComponent implements OnInit {
         private router: ActivatedRoute,
         private editService: EditComponentService,
         private Maindept: DepartmentService,
-        private coreToken: AuthService,
-        private route: Router
+        private route: Router,
+        private main: MainService
     ) { }
     form!: FormGroup;
     dept_id!: string;
@@ -86,15 +87,16 @@ export class EditComponentComponent implements OnInit {
 
             },
             error: (err: any) => {
-                if (err.status === 401) {
-                    this.coreToken.reFreshToken().subscribe({
-                        next: (res: any) => {
-                            this.WaitApiData();
-                        },
-                        error: (res: any) => {
-                            this.coreToken.Logout()
-                        }
+                if (err.status === 419) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'เซสชั่นหมดอายุ',
+                        text: 'กรุณา Login ใหม่ เพื่อใช้งาน',
+                    }).then((e) => {
+                        this.route.navigate(['']);
                     })
+                } else {
+                    this.main.Error()
                 }
             },
         });
@@ -111,7 +113,7 @@ export class EditComponentComponent implements OnInit {
     }
 
     EditData() {
-       
+
     }
 
     deleteDeptMana(index: number) {
@@ -186,60 +188,61 @@ export class EditComponentComponent implements OnInit {
                         confirmButtonText: '<div style = "font-family:Kanit"> ตกลง </div>',
                         confirmButtonColor: '#005FBC',
                         reverseButtons: true
-                    }).then((result)=>{
+                    }).then((result) => {
                         if (result.isConfirmed) {
                             this.MapUsernameWithID();
 
-        this.cencelNullCheck()
-        let nameDeptEN = this.ObjDept.dept_name_en;
-        let nameDeptTH = this.ObjDept.dept_name_th;
-        let aryNamePosition = new Array<string>();
-        let aryUserManager = new Array<string>();
+                            this.cencelNullCheck()
+                            let nameDeptEN = this.ObjDept.dept_name_en;
+                            let nameDeptTH = this.ObjDept.dept_name_th;
+                            let aryNamePosition = new Array<string>();
+                            let aryUserManager = new Array<string>();
 
-        for (let i = 0; i < Object.keys(this.ObjDeptPosit).length; i++) {
-            aryNamePosition[i] = this.ObjDeptPosit[i].dp_name_en;
-        }
-
-        for (let i = 0; i < Object.keys(this.ObjDeptMana).length; i++) {
-            aryUserManager[i] = this.ObjDeptMana[i].dmm_username;
-        }
-
-        this.editService
-            .editData(
-                this.dept_id,
-                nameDeptEN,
-                aryNamePosition,
-                this.DeptUsername,
-                'fix',
-                nameDeptTH
-            )
-            .subscribe({
-                next: (res: any) => {
-                    Swal.fire({
-                        title: '<strong style = "font-family:Kanit"> แก้ไขแผนกสำเร็จ </strong>',
-                        html: '<div style = "font-family:Kanit"> คุณได้แก้ไขข้อมูลแผนกนี้เรียบร้อยแล้ว </div>',
-                        icon: 'success',
-                        confirmButtonColor: '#005FBC',
-                        confirmButtonText: '<div style = "font-family:Kanit"> ตกลง </div>'
-
-                    }).then((e)=>{
-                        this.route.navigate(["../main/department"])
-                    })
-                },
-                error: (err: any) => {
-                    console.log(err.status)
-                    if (err.status === 401) {
-                        this.coreToken.reFreshToken().subscribe({
-                            next: (res: any) => {
-                                this.EditData();
-                            },
-                            error: (res: any) => {
-                                this.coreToken.Logout()
+                            for (let i = 0; i < Object.keys(this.ObjDeptPosit).length; i++) {
+                                aryNamePosition[i] = this.ObjDeptPosit[i].dp_name_en;
                             }
-                        })
-                    }
-                },
-            });
+
+                            for (let i = 0; i < Object.keys(this.ObjDeptMana).length; i++) {
+                                aryUserManager[i] = this.ObjDeptMana[i].dmm_username;
+                            }
+
+                            this.editService
+                                .editData(
+                                    this.dept_id,
+                                    nameDeptEN,
+                                    aryNamePosition,
+                                    this.DeptUsername,
+                                    'fix',
+                                    nameDeptTH
+                                )
+                                .subscribe({
+                                    next: (res: any) => {
+                                        Swal.fire({
+                                            title: '<strong style = "font-family:Kanit"> แก้ไขแผนกสำเร็จ </strong>',
+                                            html: '<div style = "font-family:Kanit"> คุณได้แก้ไขข้อมูลแผนกนี้เรียบร้อยแล้ว </div>',
+                                            icon: 'success',
+                                            confirmButtonColor: '#005FBC',
+                                            confirmButtonText: '<div style = "font-family:Kanit"> ตกลง </div>'
+
+                                        }).then((e) => {
+                                            this.route.navigate(["../main/department"])
+                                        })
+                                    },
+                                    error: (err: any) => {
+                                        console.log(err.status)
+                                        if (err.status === 419) {
+                                            Swal.fire({
+                                                icon: 'warning',
+                                                title: 'เซสชั่นหมดอายุ',
+                                                text: 'กรุณา Login ใหม่ เพื่อใช้งาน',
+                                            }).then((e) => {
+                                                this.route.navigate(['']);
+                                            })
+                                        } else {
+                                            this.main.Error()
+                                        }
+                                    },
+                                });
                         }
                     })
                 }
@@ -321,7 +324,7 @@ export class EditComponentComponent implements OnInit {
                 this.ObjDeptPosit.push({});
             }
     }
-    checkCancel(){
+    checkCancel() {
         Swal.fire({
             title: '<strong style = "font-family:Kanit"> คุณต้องการยกเลิกการแก้ไขแผนกใช่หรือไม่ </strong>',
             icon: 'warning',
@@ -331,11 +334,11 @@ export class EditComponentComponent implements OnInit {
             confirmButtonText: '<div style = "font-family:Kanit"> ตกลง </div>',
             cancelButtonText: '<div style = "font-family:Kanit"> ยกเลิก </div>',
             reverseButtons: true
-          }).then((result)=>{
+        }).then((result) => {
             if (result.isConfirmed) {
                 this.route.navigate(['../main/department']);
             }
-          })
-      }
+        })
+    }
 
 }

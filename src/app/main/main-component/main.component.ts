@@ -4,6 +4,7 @@ import { Route, Router, RouterLink } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
 import { Subject } from 'rxjs/internal/Subject';
 import { LoadingComponent } from 'src/app/login/loading/loading-template/loading.component';
+import Swal from 'sweetalert2';
 
 @Component({
     selector: 'app-main',
@@ -15,6 +16,7 @@ export class MainComponent implements OnInit {
         private MainService: MainService,
         private router: Router,
         private coreToken: AuthService,
+        private main: MainService
     ) {
         this.setTimeout();
         this.userInactive.subscribe(() => {
@@ -51,15 +53,16 @@ export class MainComponent implements OnInit {
                 this.coreToken.UserRole = this.role
             },
             error: (err: any) => {
-                if (err.status === 401) {
-                    this.coreToken.reFreshToken().subscribe({
-                        next: (res: any) => {
-                            this.getProfile()
-                        },
-                        error: (res: any) => {
-                            this.coreToken.Logout()
-                        }
+                if (err.status === 419) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'เซสชั่นหมดอายุ',
+                        text: 'กรุณา Login ใหม่ เพื่อใช้งาน',
+                    }).then((e) => {
+                        this.router.navigate(['']);
                     })
+                } else {
+                    this.main.Error()
                 }
             },
         });
