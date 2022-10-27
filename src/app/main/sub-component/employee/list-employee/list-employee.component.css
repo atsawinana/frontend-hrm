@@ -8,6 +8,9 @@
 .icon-fix {
     min-width: 32px;
     max-width: 32px;
+    min-height: 28px;
+    color: #005FBC;
+    align-items: center;
 }
 
 .modal-title {
@@ -349,10 +352,8 @@ table {
     font-weight: 400;
     font-size: 16px;
     background: #FFFFFF;
-    border: 1px solid #C7C7CC;
-    border-bottom: none;
-    border-top: none;
-    border-right: none;
+    border: none;
+    border-left: 1px solid #C7C7CC;
     border-radius: 0px 10px 10px 0px;
     cursor: pointer;
 }
