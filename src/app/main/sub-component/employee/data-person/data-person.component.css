@@ -1,0 +1,57 @@
+.img-profile {
+    border-radius: 50%;
+  }
+
+.cicle{
+    height: 80px;
+    width: 80px;
+    background-color: #000;
+    border-radius: 50%;
+    display: inline-block;
+}
+.font-header {
+    font-family: 'Kanit';
+    display: inline;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 47px;
+    color: #000000;
+  }
+  .font-menu {
+    font-family: 'Kanit';
+    display: inline;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 47px;
+    color: #000000;
+  }
+  .font-detailPossition {
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 47px;
+    color: #005FBC;
+  }
+  .font-title {
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 36px;
+    color: #000000;
+}
+  .font-detail {
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 47px;
+    color: #000000;
+  }
+  .line {
+    border-top: 6px solid #005FBC;
+  }
+  
