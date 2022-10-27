@@ -3,11 +3,6 @@
   text-align: center;
 }
 
-.div-test {
-  width: 100%;
-  height: 200px;
-}
-
 .img-profile {
   border-radius: 50%;
 }
@@ -18,10 +13,56 @@
   font-size: 16px;
 }
 
-.modal-size {
-  width: 550px;
-  height: 345px;
-  margin-top: 280px;
+.profileBG {
+  background: #FFFFFF;
+  box-shadow: 0px 4px 30px -16px rgba(138, 159, 171, 0.35);
+  border-radius: 20px;
+  padding: 32px;
+}
+
+.cycle {
+  background-color: #005FBC;
+  width: 16px !important;
+  height: 16px !important;
+  border-radius: 50%;
+}
+
+.fontIcon {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 35px;
+  color: #005FBC;
+}
+
+.fontOT {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: #000000;
+
+}
+
+.leavefont {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: #000000;
+
+}
+
+.graphfont {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 35px;
+  color: #000000;
 }
 
 .cancel-button {
@@ -42,4 +83,47 @@
   border-radius: 8px;
   border: none;
   color: #ffffff;
+}
+
+.editprofile {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  align-items: center;
+  text-decoration-line: underline;
+  color: #FF5444;
+}
+
+.changPass {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  color: #FF5444;
+}
+
+.fontprofileMan {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 35px;
+  display: flex;
+  align-items: center;
+  color: #000000;
+}
+
+.fontcontract {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: #005FBC;
+
 }
