@@ -1,0 +1,359 @@
+#icon-property {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-size: 100px;
+    color: #D0E8FF;
+}
+
+.icon-fix {
+    min-width: 32px;
+    max-width: 32px;
+    min-height: 28px;
+    color: #005FBC;
+    align-items: center;
+}
+
+.modal-title {
+
+    margin-top: 50px;
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 35px;
+    text-align: center;
+    color: #1C1C1E;
+}
+
+
+.cancel-button {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 10px 15px;
+    background: #FFFFFF;
+    border: 1px solid #005FBC;
+    border-radius: 8px;
+    margin-bottom: 50px;
+}
+
+
+.notDelelte {
+    color: #888 !important;
+    cursor: not-allowed !important;
+}
+
+.deleteDepartment {
+    color: red;
+}
+
+.modal123 {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.ngx-pagination li {
+    padding: .1875rem .625rem;
+    color: #e30000 !important;
+    cursor: default;
+}
+
+.ngx-pagination .disabled {
+    padding: .1875rem .625rem;
+    color: #bd0000;
+    cursor: default;
+}
+
+.ngx-pagination .current {
+    padding: .1875rem .625rem;
+    color: #e30000 !important;
+    cursor: default;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 10px;
+    border: 1px solid #888;
+    border-radius: 8px;
+}
+
+
+.font-modal {
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 24px;
+    text-align: center;
+}
+
+.modal-size {
+    width: 550px;
+    height: 345px;
+    margin-top: 280px;
+}
+
+.cancel-text {
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #005FBC;
+}
+
+.submit-button {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 10px 15px;
+    background: linear-gradient(270.74deg, #2E3579 0.35%, #005FBC 99.1%, #005FBC 99.1%);
+    border-radius: 8px;
+    border: 1px solid #005FBC;
+    margin-bottom: 50px;
+}
+
+.submit-text {
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #FFFFFF;
+
+}
+
+select#listPerPage {
+    border: 1px solid #005FBC;
+    width: 65px !important;
+}
+
+.modal-ti {
+    margin-top: 5px;
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 35px;
+    text-align: center;
+    color: #1C1C1E;
+}
+
+.modal-header {
+    font-family: 'Kanit';
+}
+
+.modal-body {
+    font-family: 'Kanit';
+    font-size: 16px;
+}
+
+.modal-footer {
+    margin-bottom: 15px;
+}
+
+#button_close {
+    color: red;
+}
+
+input::placeholder {
+    font-family: 'Kanit';
+    font-style: normal;
+    color: #AEAEB2;
+}
+
+input {
+    font-family: 'Kanit';
+    font-style: normal;
+    font-size: 18px;
+    border: none;
+    background-color: transparent;
+    resize: none;
+    outline: none;
+}
+
+
+td {
+    background: rgb(255, 255, 255);
+    border-bottom: 2px solid white;
+    font-family: 'Kanit';
+    font-style: normal;
+    font-size: 16px;
+}
+
+th {
+    background: #005FBC;
+    color: #ffffff;
+    font-family: 'Kanit';
+    font-style: normal;
+    font-size: 18px;
+}
+
+table {
+    border-collapse: collapse;
+    border-radius: 1em;
+    overflow: hidden;
+}
+
+.list-table {
+    border: 1px solid #E5E5EA;
+    border-radius: 8px;
+    font-family: 'Kanit';
+    font-style: normal;
+    font-size: 18px;
+
+}
+
+.list-header {
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    color: #000000;
+}
+
+.list-perPage {
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px
+}
+
+.select-perPage {
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    padding: 7px;
+    background: #FFFFFF;
+    border-radius: 8px;
+    border-color: #A8A8A8;
+}
+
+.list-content {
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.buttonPage {
+    background: #FFFFFF;
+    border: 1px solid #C7C7CC;
+    border-radius: 8px;
+    width: 48px;
+    height: 48px;
+    font-size: 22px;
+    font-family: 'Kanit';
+    margin-right: 10px;
+}
+
+.on-page {
+    background: #005FBC;
+    width: 48px;
+    height: 48px;
+    border: 1px solid #005FBC;
+    border-radius: 8px;
+    font-size: 22px;
+    font-family: 'Kanit';
+    color: #FFFFFF;
+    margin-right: 10px;
+}
+
+.buttonPage:hover {
+    background-color: #005FBC;
+    color: #ffffff;
+    transition: 0.5s;
+}
+
+.search-bar {
+    background: #FFFFFF;
+    border: 1px solid #C7C7CC;
+    border-radius: 8px;
+
+}
+
+.ng-select.custom::ng-deep.ng-select-container {
+    align-items: center;
+    min-height: 0px;
+    border-radius: 0.375rem;
+    height: 38px;
+    border-color: #ced4da;
+}
+
+.btn-add-employee {
+    background: linear-gradient(270.74deg, #2E3579 0.35%, #005FBC 99.1%, #005FBC 99.1%);
+    border-radius: 8px;
+    font-family: 'Kanit';
+    font-style: normal;
+    border: none;
+}
+
+.btn-export-excel {
+    background: #239411;
+    border-radius: 8px;
+    font-family: 'Kanit';
+    font-style: normal;
+    border: none;
+}
+
+.btn-margin {
+    margin-left: 30px;
+}
+
+.activity-table {
+    background: #FFFFFF;
+    border: 1px solid #D1D1D6;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.activity-table:hover {
+    background-color: #D1D1D6;
+    transition: 0.25s;
+}
+
+#modal_detail {
+    margin-top: 5px;
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 50px;
+    margin-left: 50px;
+    text-align: left;
+    color: #1C1C1E;
+}
+
+.modal-padding {
+    height: 35px !important;
+}
+
+.filter-icon {
+    margin-left: 10px;
+    font-size: 22px;
+    color: #005FBC;
+    ;
+}
+
+.filter-font {
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    background: #FFFFFF;
+    border: none;
+    border-left: 1px solid #C7C7CC;
+    border-radius: 0px 10px 10px 0px;
+    cursor: pointer;
+}

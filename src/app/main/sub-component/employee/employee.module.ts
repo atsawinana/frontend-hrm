@@ -12,6 +12,9 @@ import { WorkHistoryPersonComponent } from './data-person/person-employee/work-h
 import { FormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { EmployeeOverbuttonComponent } from './employee-overbutton/employee-overbutton.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   imports: [
@@ -20,6 +23,8 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     EmployeeRoutes,
     FormsModule,
     NgSelectModule,
+    NgxPaginationModule,
+    Ng2SearchPipeModule,
     BsDatepickerModule.forRoot(),
   ],
   declarations: [
@@ -29,7 +34,8 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     DetailDataPersonComponent,
     LeaveHistoryPersonComponent,
     OtHistoryPersonComponent,
-    WorkHistoryPersonComponent
+    WorkHistoryPersonComponent,
+    EmployeeOverbuttonComponent
   ]
 })
 export class EmployeeModule { }
