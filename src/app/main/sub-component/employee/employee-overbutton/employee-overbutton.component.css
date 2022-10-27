@@ -1,0 +1,10 @@
+.position-outframe {
+    position: relative;
+    bottom: 78px;
+    z-index: 1;
+  }
+  
+  .button-height {
+    height: 35px !important;
+  }
+  
