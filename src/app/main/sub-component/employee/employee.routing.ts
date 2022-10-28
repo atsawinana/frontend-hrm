@@ -3,6 +3,7 @@ import { AuthGuardGuard } from 'src/app/auth/auth-guard.guard';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { DataPersonComponent } from './data-person/data-person.component';
 import { DetailDataPersonComponent } from './data-person/person-employee/detail-data-person/detail-data-person.component';
+import { EditDetailPersonComponent } from './data-person/person-employee/edit-detail-person/edit-detail-person.component';
 import { LeaveHistoryPersonComponent } from './data-person/person-employee/leave-history-person/leave-history-person.component';
 import { OtHistoryPersonComponent } from './data-person/person-employee/ot-history-person/ot-history-person.component';
 import { WorkHistoryPersonComponent } from './data-person/person-employee/work-history-person/work-history-person.component';
@@ -37,6 +38,10 @@ const routes: Routes = [
       {
         path: 'work-history',
         component: WorkHistoryPersonComponent, canActivate: [AuthGuardGuard]
+      },
+      {
+        path: 'edit-detail',
+        component: EditDetailPersonComponent, canActivate: [AuthGuardGuard]
       },
     ],
     canActivate: [AuthGuardGuard]

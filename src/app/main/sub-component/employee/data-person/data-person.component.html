@@ -1,7 +1,8 @@
 <div class="container-fluid h-100">
+  <div class="row">
     <div class="row">
-      <div class="row">
-        <div class="font-header ms-2 col">ข้อมูลพนักงาน</div>
+      <div class="font-header ms-2 col">ข้อมูลพนักงาน</div>
+      <div class="col-3"><button routerLink="edit-detail">แก้ไข</button></div>
     </div>
     <div class="row">
       <div class="cicle ms-5 col-1"></div>
@@ -10,24 +11,24 @@
         <div class="font-detailPossition">ผู้บริหาร</div>
         <div class="font-title">ชื่อเล่น: </div>
         <div class="font-title">เบอร์โทร: </div>
-        <div class="font-title">อีเมล:  </div>
-    </div>
-    <div class="col-2">
-      <br><br>
-      <div class="font-detailPossition">(พนักงานประจำ)</div>
-      <div class="font-detail">กัน</div>
-      <div class="font-detail">08x-xxxxxxx</div>
-      <div class="font-detail">ex_______@gmail.com</div>
-  </div>
+        <div class="font-title">อีเมล: </div>
+      </div>
+      <div class="col-2">
+        <br><br>
+        <div class="font-detailPossition">(พนักงานประจำ)</div>
+        <div class="font-detail">กัน</div>
+        <div class="font-detail">08x-xxxxxxx</div>
+        <div class="font-detail">ex_______@gmail.com</div>
+      </div>
     </div>
   </div>
 
-    <div class="row mt-3">
-      <div class="col-2 font-menu" routerLink="detail">ข้อมูลพนักงาน</div>
-      <div class="col-2 font-menu" routerLink="work-history">เข้างาน</div>
-      <div class="col-2 font-menu" routerLink="leave-history">ลางาน</div>
-      <div class="col-2 font-menu" routerLink="ot-history">โอที</div>
-    </div>
+  <div class="row mt-3">
+    <div class="col-2 font-menu" routerLink="detail">ข้อมูลพนักงาน</div>
+    <div class="col-2 font-menu" routerLink="work-history">เข้างาน</div>
+    <div class="col-2 font-menu" routerLink="leave-history">ลางาน</div>
+    <div class="col-2 font-menu" routerLink="ot-history">โอที</div>
+  </div>
   <hr class="line">
   <router-outlet></router-outlet>
 </div>

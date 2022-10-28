@@ -17,6 +17,8 @@ import { EmployeeOverbuttonComponent } from './employee-overbutton/employee-over
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { LoadingEmployeeComponent } from './loading-employee/loading-employee.component';
 import { EndContractComponent } from './end-contract/end-contract.component';
+import { EditDetailComponent } from '../leave/leave-history/detail/edit-detail/edit-detail.component';
+import { EditDetailPersonComponent } from './data-person/person-employee/edit-detail-person/edit-detail-person.component';
 
 @NgModule({
   imports: [
@@ -39,7 +41,8 @@ import { EndContractComponent } from './end-contract/end-contract.component';
     WorkHistoryPersonComponent,
     EmployeeOverbuttonComponent,
     LoadingEmployeeComponent,
-    EndContractComponent
+    EndContractComponent,
+    EditDetailPersonComponent
   ]
 })
 export class EmployeeModule { }
