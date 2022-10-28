@@ -16,6 +16,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { EmployeeOverbuttonComponent } from './employee-overbutton/employee-overbutton.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { LoadingEmployeeComponent } from './loading-employee/loading-employee.component';
+import { EndContractComponent } from './end-contract/end-contract.component';
 
 @NgModule({
   imports: [
@@ -37,7 +38,8 @@ import { LoadingEmployeeComponent } from './loading-employee/loading-employee.co
     OtHistoryPersonComponent,
     WorkHistoryPersonComponent,
     EmployeeOverbuttonComponent,
-    LoadingEmployeeComponent
+    LoadingEmployeeComponent,
+    EndContractComponent
   ]
 })
 export class EmployeeModule { }

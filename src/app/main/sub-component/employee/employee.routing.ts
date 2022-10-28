@@ -6,11 +6,14 @@ import { DetailDataPersonComponent } from './data-person/person-employee/detail-
 import { LeaveHistoryPersonComponent } from './data-person/person-employee/leave-history-person/leave-history-person.component';
 import { OtHistoryPersonComponent } from './data-person/person-employee/ot-history-person/ot-history-person.component';
 import { WorkHistoryPersonComponent } from './data-person/person-employee/work-history-person/work-history-person.component';
+import { EndContractComponent } from './end-contract/end-contract.component';
 import { ListEmployeeComponent } from './list-employee/list-employee.component';
 
 const routes: Routes = [
   { path: '', component: ListEmployeeComponent, canActivate: [AuthGuardGuard] },
   { path: 'add-employee', component: AddEmployeeComponent, canActivate: [AuthGuardGuard] },
+  { path: 'list-employee', component: ListEmployeeComponent, canActivate: [AuthGuardGuard] },
+  { path: 'end-contract-employee', component: EndContractComponent, canActivate: [AuthGuardGuard] },
   {
     path: 'data-person',
     component: DataPersonComponent,
