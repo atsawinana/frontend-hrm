@@ -1,359 +1,455 @@
 #icon-property {
-    margin-top: 50px;
-    margin-bottom: 50px;
-    font-size: 100px;
-    color: #D0E8FF;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  font-size: 100px;
+  color: #D0E8FF;
 }
 
 .icon-fix {
-    min-width: 32px;
-    max-width: 32px;
-    min-height: 28px;
-    color: #005FBC;
-    align-items: center;
+  min-width: 32px;
+  max-width: 32px;
+  min-height: 28px;
+  color: #005FBC;
+  align-items: center;
 }
 
 .modal-title {
 
-    margin-top: 50px;
-    font-family: 'Kanit';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 35px;
-    text-align: center;
-    color: #1C1C1E;
+  margin-top: 50px;
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 35px;
+  text-align: center;
+  color: #1C1C1E;
 }
 
 
 .cancel-button {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 10px 15px;
-    background: #FFFFFF;
-    border: 1px solid #005FBC;
-    border-radius: 8px;
-    margin-bottom: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 10px 15px;
+  background: #FFFFFF;
+  border: 1px solid #005FBC;
+  border-radius: 8px;
 }
 
 
 .notDelelte {
-    color: #888 !important;
-    cursor: not-allowed !important;
+  color: #888 !important;
+  cursor: not-allowed !important;
 }
 
 .deleteDepartment {
-    color: red;
+  color: red;
 }
 
 .modal123 {
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.1);
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .ngx-pagination li {
-    padding: .1875rem .625rem;
-    color: #e30000 !important;
-    cursor: default;
+  padding: .1875rem .625rem;
+  color: #e30000 !important;
+  cursor: default;
 }
 
 .ngx-pagination .disabled {
-    padding: .1875rem .625rem;
-    color: #bd0000;
-    cursor: default;
+  padding: .1875rem .625rem;
+  color: #bd0000;
+  cursor: default;
 }
 
 .ngx-pagination .current {
-    padding: .1875rem .625rem;
-    color: #e30000 !important;
-    cursor: default;
+  padding: .1875rem .625rem;
+  color: #e30000 !important;
+  cursor: default;
 }
 
 .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 10px;
-    border: 1px solid #888;
-    border-radius: 8px;
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 10px;
+  border: 1px solid #888;
+  border-radius: 8px;
 }
 
 
 .font-modal {
-    font-family: 'Kanit';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 24px;
-    text-align: center;
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 24px;
+  text-align: center;
 }
 
 .modal-size {
-    width: 550px;
-    height: 345px;
-    margin-top: 280px;
+  width: 550px;
+  height: 345px;
+  margin-top: 280px;
 }
 
 .cancel-text {
-    font-family: 'Kanit';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    color: #005FBC;
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #005FBC;
 }
 
 .submit-button {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 10px 15px;
-    background: linear-gradient(270.74deg, #2E3579 0.35%, #005FBC 99.1%, #005FBC 99.1%);
-    border-radius: 8px;
-    border: 1px solid #005FBC;
-    margin-bottom: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 10px 15px;
+  background: linear-gradient(270.74deg, #2E3579 0.35%, #005FBC 99.1%, #005FBC 99.1%);
+  border-radius: 8px;
+  border: 1px solid #005FBC;
 }
 
 .submit-text {
-    font-family: 'Kanit';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    color: #FFFFFF;
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #FFFFFF;
 
 }
 
 select#listPerPage {
-    border: 1px solid #005FBC;
-    width: 65px !important;
+  border: 1px solid #005FBC;
+  width: 65px !important;
 }
 
 .modal-ti {
-    margin-top: 5px;
-    font-family: 'Kanit';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 35px;
-    text-align: center;
-    color: #1C1C1E;
+  margin-top: 5px;
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 35px;
+  text-align: center;
+  color: #1C1C1E;
 }
 
 .modal-header {
-    font-family: 'Kanit';
+  font-family: 'Kanit';
 }
 
 .modal-body {
-    font-family: 'Kanit';
-    font-size: 16px;
+  font-family: 'Kanit';
+  font-size: 16px;
 }
 
 .modal-footer {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 #button_close {
-    color: red;
+  color: red;
 }
 
 input::placeholder {
-    font-family: 'Kanit';
-    font-style: normal;
-    color: #AEAEB2;
+  font-family: 'Kanit';
+  font-style: normal;
+  color: #AEAEB2;
 }
 
 input {
-    font-family: 'Kanit';
-    font-style: normal;
-    font-size: 18px;
-    border: none;
-    background-color: transparent;
-    resize: none;
-    outline: none;
+  font-family: 'Kanit';
+  font-style: normal;
+  font-size: 18px;
+  border: none;
+  background-color: transparent;
+  resize: none;
+  outline: none;
 }
 
 
 td {
-    background: rgb(255, 255, 255);
-    border-bottom: 2px solid white;
-    font-family: 'Kanit';
-    font-style: normal;
-    font-size: 16px;
+  background: rgb(255, 255, 255);
+  border-bottom: 2px solid white;
+  font-family: 'Kanit';
+  font-style: normal;
+  font-size: 16px;
 }
 
 th {
-    background: #005FBC;
-    color: #ffffff;
-    font-family: 'Kanit';
-    font-style: normal;
-    font-size: 18px;
+  background: #005FBC;
+  color: #ffffff;
+  font-family: 'Kanit';
+  font-style: normal;
+  font-size: 18px;
 }
 
 table {
-    border-collapse: collapse;
-    border-radius: 1em;
-    overflow: hidden;
+  border-collapse: collapse;
+  border-radius: 1em;
+  overflow: hidden;
 }
 
 .list-table {
-    border: 1px solid #E5E5EA;
-    border-radius: 8px;
-    font-family: 'Kanit';
-    font-style: normal;
-    font-size: 18px;
+  border: 1px solid #E5E5EA;
+  border-radius: 8px;
+  font-family: 'Kanit';
+  font-style: normal;
+  font-size: 18px;
 
 }
 
 .list-header {
-    font-family: 'Kanit';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 24px;
-    color: #000000;
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  color: #000000;
 }
 
 .list-perPage {
-    font-family: 'Kanit';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px
 }
 
 .select-perPage {
-    font-family: 'Kanit';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    padding: 7px;
-    background: #FFFFFF;
-    border-radius: 8px;
-    border-color: #A8A8A8;
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  padding: 7px;
+  background: #FFFFFF;
+  border-radius: 8px;
+  border-color: #A8A8A8;
 }
 
 .list-content {
-    font-family: 'Kanit';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
 }
 
 .buttonPage {
-    background: #FFFFFF;
-    border: 1px solid #C7C7CC;
-    border-radius: 8px;
-    width: 48px;
-    height: 48px;
-    font-size: 22px;
-    font-family: 'Kanit';
-    margin-right: 10px;
+  background: #FFFFFF;
+  border: 1px solid #C7C7CC;
+  border-radius: 8px;
+  width: 48px;
+  height: 48px;
+  font-size: 22px;
+  font-family: 'Kanit';
+  margin-right: 10px;
 }
 
 .on-page {
-    background: #005FBC;
-    width: 48px;
-    height: 48px;
-    border: 1px solid #005FBC;
-    border-radius: 8px;
-    font-size: 22px;
-    font-family: 'Kanit';
-    color: #FFFFFF;
-    margin-right: 10px;
+  background: #005FBC;
+  width: 48px;
+  height: 48px;
+  border: 1px solid #005FBC;
+  border-radius: 8px;
+  font-size: 22px;
+  font-family: 'Kanit';
+  color: #FFFFFF;
+  margin-right: 10px;
 }
 
 .buttonPage:hover {
-    background-color: #005FBC;
-    color: #ffffff;
-    transition: 0.5s;
+  background-color: #005FBC;
+  color: #ffffff;
+  transition: 0.5s;
 }
 
 .search-bar {
-    background: #FFFFFF;
-    border: 1px solid #C7C7CC;
-    border-radius: 8px;
+  background: #FFFFFF;
+  border: 1px solid #C7C7CC;
+  border-radius: 8px;
 
 }
 
 .ng-select.custom::ng-deep.ng-select-container {
-    align-items: center;
-    min-height: 0px;
-    border-radius: 0.375rem;
-    height: 38px;
-    border-color: #ced4da;
+  align-items: center;
+  min-height: 0px;
+  border-radius: 0.375rem;
+  height: 38px;
+  border-color: #ced4da;
 }
 
 .btn-add-employee {
-    background: linear-gradient(270.74deg, #2E3579 0.35%, #005FBC 99.1%, #005FBC 99.1%);
-    border-radius: 8px;
-    font-family: 'Kanit';
-    font-style: normal;
-    border: none;
+  background: linear-gradient(270.74deg, #2E3579 0.35%, #005FBC 99.1%, #005FBC 99.1%);
+  border-radius: 8px;
+  font-family: 'Kanit';
+  font-style: normal;
+  border: none;
 }
 
 .btn-export-excel {
-    background: #239411;
-    border-radius: 8px;
-    font-family: 'Kanit';
-    font-style: normal;
-    border: none;
+  background: #239411;
+  border-radius: 8px;
+  font-family: 'Kanit';
+  font-style: normal;
+  border: none;
 }
 
 .btn-margin {
-    margin-left: 30px;
+  margin-left: 30px;
 }
 
 .activity-table {
-    background: #FFFFFF;
-    border: 1px solid #D1D1D6;
-    border-radius: 8px;
-    cursor: pointer;
+  background: #FFFFFF;
+  border: 1px solid #D1D1D6;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
 .activity-table:hover {
-    background-color: #D1D1D6;
-    transition: 0.25s;
+  background-color: #D1D1D6;
+  transition: 0.25s;
 }
 
 #modal_detail {
-    margin-top: 5px;
-    font-family: 'Kanit';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 50px;
-    margin-left: 50px;
-    text-align: left;
-    color: #1C1C1E;
+  margin-top: 5px;
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 50px;
+  margin-left: 50px;
+  text-align: left;
+  color: #1C1C1E;
 }
 
 .modal-padding {
-    height: 35px !important;
+  height: 35px !important;
 }
 
 .filter-icon {
-    margin-left: 10px;
-    font-size: 22px;
-    color: #005FBC;
-    ;
+  margin-left: 10px;
+  font-size: 22px;
+  color: #005FBC;
+  ;
 }
 
 .filter-font {
-    font-family: 'Kanit';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    background: #FFFFFF;
-    border: none;
-    border-left: 1px solid #C7C7CC;
-    border-radius: 0px 10px 10px 0px;
-    cursor: pointer;
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  background: #FFFFFF;
+  border: none;
+  border-left: 1px solid #C7C7CC;
+  border-radius: 0px 10px 10px 0px;
+  cursor: pointer;
+}
+
+.filter-box {
+  width: 674px;
+  min-height: 160px;
+  background: #FFFFFF;
+  border: 1px solid #005FBC;
+  border-radius: 10px;
+  position: absolute;
+  margin-top: 10px;
+  margin-left: 5px;
+}
+
+.filter-outframe {
+  height: 0px !important;
+}
+
+.filter-text {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  color: #000000;
+  padding-left: 16px;
+  padding-top: 32px;
+}
+
+/* The container */
+.box {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  /* margin-bottom: 12px; */
+  cursor: pointer;
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  color: #000000;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.box input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 22px;
+  width: 22px;
+  background-color: rgb(177, 177, 177);
+  border-radius: 5px;
+}
+
+/* On mouse-over, add a grey background color
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+} */
+
+/* When the checkbox is checked, add a background */
+.box input:checked~.checkmark {
+  background-color: #FF5444;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.box input:checked~.checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.box .checkmark:after {
+  left: 8px;
+  top: 4px;
+  width: 7px;
+  height: 12px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
 }

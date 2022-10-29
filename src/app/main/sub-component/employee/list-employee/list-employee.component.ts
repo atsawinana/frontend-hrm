@@ -17,7 +17,7 @@ export class ListEmployeeComponent implements OnInit {
     Objemptable: any
     listPerPage: number = 10
     searchInput: string = ''
-    elemtable:any
+    elemtable: any
 
     public config: PaginationInstance = {
         id: 'custom',
@@ -50,10 +50,19 @@ export class ListEmployeeComponent implements OnInit {
         this.config.currentPage = 1
     }
 
-    exportExcel(){
+    exportExcel() {
         // const ws:XLSX:WorkSheet = XLSX.utils.table_to_sheet(this.elemtable)
         let elem = document.getElementById('tableemp')
-        XLSX.writeFile((XLSX.utils.table_to_book(elem)),"text.xlsx",)
+        XLSX.writeFile((XLSX.utils.table_to_book(elem)), "text.xlsx",)
         // XLSX.writeFile((XLSX.utils.table_to_book(elem)),"text.xlsx",)
+    }
+
+    showFilterBox() {
+        var x = document.getElementById("filterBox");
+        if (x?.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x!.style.display = "none";
+        }
     }
 }
