@@ -1,12 +1,16 @@
-<p>
-  noti-list works!
-</p>
-<!-- { path: 'all-notification', component: NotiListComponent },
-{ path: 'work-notification', component: WorkNotiComponent },
-{ path: 'leave-notification', component: LeaveNotiComponent },
-{ path: 'ot-notification', component: OtNotiComponent } -->
-<button class="btn btn-primary" routerLink="../notification">ทั้งหมด</button>
-<button class="btn btn-primary" routerLink="work-notification">อนุมัติทำงาน</button>
-<button class="btn btn-primary" routerLink="leave-notification">อนุมัติลา</button>
-<button class="btn btn-primary" routerLink="ot-notification">อนุมัติโอที</button>
+<div class="font-header mb-4">
+  การแจ้งเตือน
+</div>
+
+<div class="row headline d-flex justify-content-start">
+  <div class="col text-center noti-type" routerLink="../notification">ทั้งหมด</div>
+  <div class="col text-center noti-type" routerLink="work-notification">อนุมัติทำงาน</div>
+  <div class="col text-center noti-type active-box" routerLink="leave-notification">อนุมัติลา</div>
+  <div class="col text-center noti-type" routerLink="ot-notification">อนุมัติโอที</div>
+</div>
+
+<div class="row d-flex justify-content-end mt-2 mb-2">
+  <div class="col-2 clean-history d-flex justify-content-center">ล้างประวัติการแจ้งเตือน</div>
+</div>
+
 <router-outlet></router-outlet>
