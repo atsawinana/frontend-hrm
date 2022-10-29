@@ -4,6 +4,9 @@ import { ListDepartmentService } from './list-department.service';
 import Swal from 'sweetalert2';
 import { style } from '@angular/animations';
 import { PaginationInstance } from 'ngx-pagination';
+import { Router } from '@angular/router';
+import { DepartmentService } from '../department.service';
+import { MainService } from 'src/app/main/main.service';
 
 @Component({
     selector: 'app-list-department',
@@ -33,7 +36,7 @@ export class ListDepartmentComponent implements OnInit {
     deptID_Detail: string = ""
     maxPage!: any
 
-    constructor(private DepService: ListDepartmentService, private coreToken: AuthService) { }
+    constructor(private main: MainService,private DepService: ListDepartmentService, private coreToken: AuthService, private router: Router) { }
     ngOnInit() {
         this.getAllDepartment()
     }
@@ -67,14 +70,13 @@ export class ListDepartmentComponent implements OnInit {
                 this.checkLoadAPI = true;
             },
             error: (err: any) => {
-                if (err.status === 401) {
-                    this.coreToken.reFreshToken().subscribe({
-                        next: (res: any) => {
-                            this.getAllDepartment();
-                        },
-                        error: (res: any) => {
-                            this.coreToken.Logout()
-                        }
+                if (err.status === 419) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'เซสชั่นหมดอายุ',
+                        text: 'กรุณา Login ใหม่ เพื่อใช้งาน',
+                    }).then((e) => {
+                        this.router.navigate(['']);
                     })
                 }
             },
@@ -184,17 +186,14 @@ export class ListDepartmentComponent implements OnInit {
                             })
                         },
                         error: (err: any) => {
-                            if (err.status === 401) {
-                                this.coreToken.reFreshToken().subscribe({
-                                    next: (res: any) => {
-                                        this.Delete_Department();
-                                    },
-                                    error: (res: any) => {
-                                        this.coreToken.Logout()
-                                    }
+                            if (err.status === 404) {
+                                Swal.fire({
+                                    icon: 'warning',
+                                    title: 'เซสชั่นหมดอายุ',
+                                    text: 'กรุณา Login ใหม่ เพื่อใช้งาน',
+                                }).then((e) => {
+                                    this.router.navigate(['']);
                                 })
-                            } else {
-                                location.reload();
                             }
                         },
                     });
@@ -218,16 +217,20 @@ export class ListDepartmentComponent implements OnInit {
 
             },
             error: (err: any) => {
-                if (err.status === 401) {
-                    this.coreToken.reFreshToken().subscribe({
-                        next: (res: any) => {
-                            this.DetailDept(this.deptID_Detail);
-                        },
-                        error: (res: any) => {
-                            this.coreToken.Logout()
-                        }
+                if (err.status === 404) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'เซสชั่นหมดอายุ',
+                        text: 'กรุณา Login ใหม่ เพื่อใช้งาน',
+                    }).then((e) => {
+                        this.router.navigate(['']);
                     })
                 }
+                else{
+                    this.main.Error()
+                }
+
+
             },
         });
     }
@@ -236,7 +239,4 @@ export class ListDepartmentComponent implements OnInit {
         location.reload();
     }
 
-    test() {
-        console.log("qwe")
-    }
 }

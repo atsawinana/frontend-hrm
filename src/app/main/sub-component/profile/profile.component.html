@@ -1,95 +1,151 @@
 <div class="container-fluid h-100">
-  <div class="row">
-    <div class="col-8 h-100 border border-success">
-      <div class="row ">
-        <div class="col-6 border border-warning">
+  <div class="row d-flex justify-content-between">
+    <div class="col-8 h-100 ">
+      <div *ngIf="roleHR" class="row profileBG" style="height: 200px;">
+        <div class="col-6 ">
           <div class="div-test">กราฟ1</div>
         </div>
-        <div class="col-6 border border-warning">
+        <div class="col-6 ">
           <div class="div-test">กราฟ2</div>
         </div>
       </div>
+      <hr>
+      <div class="row profileBG">
+        <div class="col-12 px-0">
+          <div class="row">
+            <div class="row d-flex justify-content-between mt-3">
+              <div class="col-2 d-flex justify-content-center fontIcon"><i
+                  class="fa-solid fa-image-portrait me-2 my-auto" style="font-size: 25px; color: #005FBC;"></i>โปรไฟล์
+              </div>
+              <div class="col-2 d-flex justify-content-center editprofile">
+                <p style="cursor: pointer;">แก้ไขข้อมูล</p>
+              </div>
+            </div>
+            <div class="col-4 d-flex justify-content-end px-0">
+              <img class="m-3 logo-element img-profile" src="assets/img/Atsawin.jpg"
+                style="width: 150px; height: auto;" /></div>
+            <div class="col-8 d-flex align-items-center px-5 ">
+              <div class="d-flex flex-column fontStyle" style="width: 100% !important;">
+                <div class="row d-flex mb-4 ">
+                  <div class="col ps-4 fontprofileMan">ชื่อ: {{ObjdataUser.ud_prefix_name}}
+                    {{ObjdataUser.ud_firstname_th}} <p class="d-flex align-items-center ms-3 my-0 fontcontract">
+                      ({{ObjdataUser.user_contract_name}})</p>
+                  </div>
+                  <!-- <div class="col-5 px-0 d-flex align-items-center fontcontract">({{ObjdataUser.user_contract_name}})</div> -->
+                </div>
+                <div class="row mb-4 ps-4 fontprofileMan">นามสกุล: {{ObjdataUser.ud_lastname_th}}</div>
+                <div class="row ps-4 fontprofileMan">เบอร์โทรศัพท์: {{ObjdataUser.ud_phone}} </div>
+              </div>
+            </div>
+          </div>
 
-      <div class="row">
-        <div class="col-12 border border-warning">
-          <div class="div-test">โปรไฟล์
-            <div class="bg-warning" style="width: 100px; height:100px" routerLink="resetpass">
-              reset password
+          <div class="row px-0 fontStyle m-4 ">
+            <div class="col-5" style="padding-left: 140px;">
+              <div class="mb-2"><strong>แผนก</strong> :</div>
+              <div class="mb-2"><strong>ตำแหน่ง</strong> :</div>
+              <div class="mb-2"><strong>บริษัท</strong> :</div>
+              <div class="mb-2"><strong>วันที่เริ่มทำงาน</strong> :</div>
+              <div class="mb-2"><strong>อายุงาน</strong> :</div>
+
+              <div class="mt-4 changPass">
+                <p style="cursor: pointer;"><i class="fa-solid fa-lock me-2"></i>เปลี่ยนรหัสผ่าน</p>
+              </div>
+
+            </div>
+            <div class="col">
+              <div class="mb-2">{{ObjdataUser.ud_phone}}</div>
+              <div class="mb-2">{{ObjdataUser.user_position}}</div>
+              <div class="mb-2">{{ObjdataUser.user_company}}</div>
+              <div class="mb-2">{{ObjdataUser.user_start_date}}</div>
+              <div class="mb-2">{{ObjdataUser.user_exprience}}</div>
             </div>
           </div>
         </div>
       </div>
-
-      <div class="row">
-        <div class="col-12 border border-warning">
-          <div class="div-test">วันลาคงเหลือ</div>
+      <hr>
+      <div class="row profileBG">
+        <div class="col-12 mb-4">
+          <div class="div-test fontIcon"><i class="fa-solid fa-calendar-minus me-2 "
+              style="font-size: 20px; color: #005FBC;"></i>วันลาคงเหลือ</div>
         </div>
+        <div class="row leavefont ">
+          <div class="col ">
+            <div class="row mb-2 ">
+              <div class="col ps-5 ms-5"><p ><i class="fa-solid fa-circle" style="font-size: 16px; color:#FD9229"></i>  ลากิจ</p></div>
+              <div class="col-2 d-flex justify-content-center">{{ObjdataUser.user_leave_day}}</div>
+            </div>
+            <div class="row mb-2 ">
+              <div class="col ps-5 ms-5"><p ><i class="fa-solid fa-circle" style="font-size: 16px; color:#63C8CE"></i>  ลาป่วย</p></div>
+              <div class="col-2 d-flex justify-content-center">{{ObjdataUser.user_sick_day}}</div>
+            </div>
+            <div class="row mb-2 ">
+              <div class="col ps-5 ms-5"><p ><i class="fa-solid fa-circle" style="font-size: 16px; color:#C83039"></i>  ลาพักร้อน</p></div>
+              <div class="col-2 d-flex justify-content-center">{{ObjdataUser.user_take_annual_day}}</div>
+            </div>
+            <div class="row mb-2 ">
+              <div class="col ps-5 ms-5"><p ><i class="fa-solid fa-circle" style="font-size: 16px; color:#13466A"></i>  ลาบวช</p></div>
+              <div class="col-2 d-flex justify-content-center">{{ObjdataUser.user_ordination_day}}</div>
+            </div>
+            <!-- <div class="row mb-2 d-flex justify-content-end">ลาป่วย {{ObjdataUser.user_sick_day}}</div>
+            <div class="row mb-2 d-flex justify-content-end">ลาพักร้อน {{ObjdataUser.user_take_annual_day}}</div>
+            <div class="row mb-2 d-flex justify-content-end">ลาบวช {{ObjdataUser.user_ordination_day}}</div> -->
+          </div>
+          <div class="col">
+            <div class="row mb-2 " *ngIf="ObjdataUser.ud_gender_id == 1">
+              <div class="col ps-5 ms-5"><p ><i class="fa-solid fa-circle" style="font-size: 16px; color:#8CC34D"></i>   ลาเพื่อรับราชการทหาร</p></div>
+              <div class="col-2 d-flex justify-content-center">{{ObjdataUser.user_military_service_day}}</div>
+            </div>
+            <div class="row mb-2" *ngIf="!(ObjdataUser.ud_gender_id == 1)">
+              <div class="col ps-5 ms-5"><p ><i class="fa-solid fa-circle" style="font-size: 16px; color:#8CC34D"></i>  ลาคลอด</p></div>
+              <div class="col-2 d-flex justify-content-center">{{ObjdataUser.user_maternity_day}}</div>
+            </div>
+            <div class="row mb-2 ">
+              <div class="col ps-5 ms-5"><p ><i class="fa-solid fa-circle" style="font-size: 16px; color:white"></i>  ลาเพื่อทำหมัน</p></div>
+              <div class="col-2 d-flex justify-content-center">{{ObjdataUser.user_sterilization_day}}</div>
+            </div>
+            <div class="row mb-2 ">
+              <div class="col ps-5 ms-5"><p ><i class="fa-solid fa-circle" style="font-size: 16px; color:white"></i>  ลาโดยไม่รับเงิน</p></div>
+              <div class="col-2 d-flex justify-content-center">{{ObjdataUser.user_without_pay_day}}</div>
+            </div>
+            <div class="row mb-2 ">
+              <div class="col ps-5 ms-5"><p ><i class="fa-solid fa-circle" style="font-size: 16px; color:white"></i>  ลาใช้สิทธิทดแทน</p></div>
+              <div class="col-2 d-flex justify-content-center">{{ObjdataUser.user_resign_day}}</div>
+            </div>
+            <!-- <div class="row mb-2 d-flex justify-content-end" *ngIf="ObjdataUser.ud_gender_id == 1">ลาเพื่อรับราชการทหาร
+              {{ObjdataUser.user_military_service_day}}</div>
+            <div class="row mb-2 d-flex justify-content-end" *ngIf="!(ObjdataUser.ud_gender_id == 1)">ลาคลอด
+              {{ObjdataUser.user_maternity_day}}</div>
+            <div class="row mb-2 d-flex justify-content-end">ลาเพื่อทำหมัน {{ObjdataUser.user_sterilization_day}}</div>
+            <div class="row mb-2 d-flex justify-content-end">ลาโดยไม่รับเงิน {{ObjdataUser.user_without_pay_day}}</div>
+            <div class="row mb-2 d-flex justify-content-end">ลาใช้สิทธิทดแทน {{ObjdataUser.user_resign_day}}</div> -->
+          </div>
+        </div>
+
+        <div class="row d-flex justify-content-center graphfont">กราฟแสดงวันลาคงเหลือ</div>
+        <canvas id="lineChart"></canvas>
       </div>
     </div>
 
+    <div class="col-4 p-0 h-100 ">
+      <div class="profileBG ms-auto" style="width: 90%;">
+        <div class="div-test fontIcon mb-4 "><i class="fa-regular fa-clock me-2 my-auto"></i>การทำโอที
+        </div>
+        <div class="row px-3 mb-2">
+          <div class="col fontOT">ชื่องาน OT
+          </div>
+          <div class="col-1">
+            <i class="fa-solid fa-circle-check" style="color: #239411; font-size: 20px;"></i>
+          </div>
+        </div>
+        <div class="row px-3 mb-2">
+          <div class="col fontOT">ชื่องาน OT
+          </div>
+          <div class="col-1">
+            <i class="fa-solid fa-circle-xmark" style="color: #EF0303; font-size: 20px;"></i>
+          </div>
+        </div>
+      </div>
 
-
-    <div class="col-4 p-0 h-100 border border-primary ">
-      <div class="div-test" style="height: 300px;">ประวัติ ot </div>
     </div>
   </div>
 </div>
-
-
-
-
-<div *ngIf="false" class="modal123">
-  <div class="modal-content modal-size">
-    <div class="row d-flex justify-content-center mt-4" id="confirm">
-      <div class="font-modal">คุณต้องการเพิ่มแผนกหรือไม่ ?</div>
-    </div>
-
-    <div class="d-flex justify-content-center">
-      <img class="my-5 d-flex justify-content-center" alt="Alternative text" width="96px" height="96px"
-        src="assets/img/users-solid.svg" />
-    </div>
-
-    <div class="row d-flex justify-content-center mb-3">
-      <div class="col-5 col-sm-5 col-md-5 col-lg-5">
-        <button class="cancel-button cancel-font d-flex justify-content-center w-100">
-          <div class="cancel-text">ยกเลิก</div>
-        </button>
-      </div>
-      <div class="col-5 col-sm-5 col-md-5 col-lg-5">
-        <button class="submit-button submit-font d-flex justify-content-center w-100" data-bs-target="#submit"
-          data-bs-toggle="modal">
-          <div class="submit-text">ตกลง</div>
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<div *ngIf="false" class="modal123">
-    <div class="modal-content modal-size">
-      <div class="row d-flex justify-content-center mt-4" id="confirm">
-        <div class="font-modal">คุณต้องการafsdasdfasdfasdfเพิ่มแผนกหรือไม่ ?</div>
-      </div>
-  
-      <div class="d-flex justify-content-center">
-        <img class="my-5 d-flex justify-content-center" alt="Alternative text" width="96px" height="96px"
-          src="assets/img/users-solid.svg" />
-      </div>
-  
-      <div class="row d-flex justify-content-center mb-3">
-        <div class="col-5 col-sm-5 col-md-5 col-lg-5">
-          <button class="cancel-button cancel-font d-flex justify-content-center w-100">
-            <div class="cancel-text">ยกเลิก</div>
-          </button>
-        </div>
-        <div class="col-5 col-sm-5 col-md-5 col-lg-5">
-          <button class="submit-button submit-font d-flex justify-content-center w-100" data-bs-target="#submit"
-            data-bs-toggle="modal">
-            <div class="submit-text">ตกลง</div>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-  

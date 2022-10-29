@@ -26,6 +26,7 @@
     "@ng-select/ng-select": "^9.0.2",
     "@popperjs/core": "^2.11.6",
     "bootstrap": "^5.2.0",
+    "chart.js": "^3.9.1",
     "filter": "^0.1.1",
     "for": "^0.1.0",
     "ng2-search-filter": "^0.5.1",
@@ -35,6 +36,7 @@
     "rxjs": "~7.5.0",
     "sweetalert2": "^11.6.0",
     "tslib": "^2.3.0",
+    "xlsx": "^0.18.5",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
