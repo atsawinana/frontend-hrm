@@ -38,6 +38,7 @@ const routes: Routes = [
       { path: 'employee', loadChildren: () => import('./main/sub-component/employee/employee.module').then((m) => m.EmployeeModule), canActivate: [RoleGuard, AuthGuardGuard] },
       { path: 'car', component: TravelExpensesComponent, canActivate: [AuthGuardGuard] },
       { path: 'activity', component: ActivityComponent, canActivate: [AuthGuardGuard] },
+      { path: 'notification', loadChildren: () => import('./main/sub-component/notification/noti.module').then((m)=> m.NotiModule) },
     ],
     canActivate: [AuthGuardGuard]
   },
