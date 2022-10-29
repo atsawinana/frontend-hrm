@@ -10,11 +10,15 @@ import { DetailComponent } from './leave-history/detail/detail.component';
 import { EditDetailComponent } from './leave-history/detail/edit-detail/edit-detail.component';
 import { OverbuttonComponent } from './overbutton/overbutton.component';
 import { UnapprovedComponent } from './leave-info/unapproved/unapproved.component';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 @NgModule({
     imports: [
         CommonModule,
-        LeaveRoutes
+        LeaveRoutes,    
+        NgSelectModule,
+        BsDatepickerModule.forRoot(),
     ],
     declarations: [
         LeaveComponent,
