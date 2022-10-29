@@ -1,15 +1,95 @@
 <div class="container-fluid h-100">
   <div class="row d-flex justify-content-between">
     <div class="col-8 h-100 ">
-      <div *ngIf="roleHR" class="row profileBG" style="height: 200px;">
+      <div *ngIf="roleHR" class="row profileBG">
         <div class="col-6 ">
-          <div class="div-test">กราฟ1</div>
+          <div>
+
+            <div class="d-flex justify-content-center">
+              <div style="display: block; width: 200px !important;">
+                <canvas baseChart [data]="doughnutChartData" [type]="doughnutChartType"></canvas>
+              </div>
+            </div>
+            <div class="row ">
+              <div class="col text-center">
+                <div class="row text-center">
+                  <i class="col-3 my-auto fa-solid fa-circle pt-1" style="color: #005FBC;"></i>
+                  <p class="col-9 my-auto fontgraph text-start">ลากิจ</p>
+                </div>
+              </div>
+              <div class="col text-center fontgraph">{{this.ObjTestCircle1.l1}} คน</div>
+            </div>
+            <div class="row ">
+              <!-- #EF0303; -->
+              <div class="col text-center">
+                <div class="row text-center">
+                  <i class="col-3 my-auto fa-solid fa-circle pt-1" style="color: #EF0303;"></i>
+                  <p class="col-9 mb-auto fontgraph text-start">ลาป่วย</p>
+                </div>
+              </div>
+              <div class="col text-center fontgraph">{{this.ObjTestCircle1.l2}} คน</div>
+            </div>
+            <div class="row ">
+              <!-- #EB760B;" -->
+              <div class="col text-center">
+                <div class="row text-center">
+                  <i class="col-3 my-auto fa-solid fa-circle pt-1" style="color: #EB760B;"></i>
+                  <p class="col-9 my-auto fontgraph text-start">ลาพักร้อน</p>
+                </div>
+              </div>
+              <div class="col text-center fontgraph">{{this.ObjTestCircle1.l3}} คน</div>
+            </div>
+          </div>
         </div>
         <div class="col-6 ">
-          <div class="div-test">กราฟ2</div>
+          <div>
+            <div class="d-flex justify-content-center">
+              <div style="display: block; width: 200px !important;">
+                <canvas baseChart [data]="doughnutChartData2" [type]="doughnutChartType"></canvas>
+              </div>
+            </div>
+            <div class="row ">
+              <div class="col text-center">
+                <div class="row text-center">
+                  <i class="col-3 my-auto fa-solid fa-circle pt-1" style="color: #005FBC;"></i>
+                  <p class="col-9 my-auto fontgraph text-start">Developer</p>
+                </div>
+              </div>
+              <div class="col text-center fontgraph">{{this.ObjTestCircle2.l1}} ชั่วโมง</div>
+            </div>
+            <div class="row ">
+              <!-- #EF0303; -->
+              <div class="col text-center">
+                <div class="row text-center">
+                  <i class="col-3 my-auto fa-solid fa-circle pt-1" style="color: #EF0303;"></i>
+                  <p class="col-9 mb-auto fontgraph text-start">Designer </p>
+                </div>
+              </div>
+              <div class="col text-center fontgraph">{{this.ObjTestCircle2.l2}} ชั่วโมง</div>
+            </div>
+            <div class="row ">
+              <!-- #EB760B;" -->
+              <div class="col text-center">
+                <div class="row text-center">
+                  <i class="col-3 my-auto fa-solid fa-circle pt-1" style="color: #EB760B;"></i>
+                  <p class="col-9 my-auto fontgraph text-start">Marketing</p>
+                </div>
+              </div>
+              <div class="col text-center fontgraph">{{this.ObjTestCircle2.l3}} ชั่วโมง</div>
+            </div>
+            <div class="row ">
+                <!-- #EB760B;" -->
+                <div class="col text-center">
+                  <div class="row text-center">
+                    <i class="col-3 my-auto fa-solid fa-circle pt-1" style="color: #239411;"></i>
+                    <p class="col-9 my-auto fontgraph text-start">Temporary</p>
+                  </div>
+                </div>
+                <div class="col text-center fontgraph">{{this.ObjTestCircle2.l4}} ชั่วโมง</div>
+              </div>
+          </div>
         </div>
       </div>
-      <hr>
       <div class="row profileBG">
         <div class="col-12 px-0">
           <div class="row">
@@ -48,7 +128,8 @@
               <div class="mb-2"><strong>อายุงาน</strong> :</div>
 
               <div class="mt-4 changPass">
-                <p style="cursor: pointer;"><i class="fa-solid fa-lock me-2"></i>เปลี่ยนรหัสผ่าน</p>
+                <p style="cursor: pointer;" routerLink="resetpass"><i class="fa-solid fa-lock me-2"></i>เปลี่ยนรหัสผ่าน
+                </p>
               </div>
 
             </div>
@@ -62,7 +143,6 @@
           </div>
         </div>
       </div>
-      <hr>
       <div class="row profileBG">
         <div class="col-12 mb-4">
           <div class="div-test fontIcon"><i class="fa-solid fa-calendar-minus me-2 "
@@ -71,19 +151,27 @@
         <div class="row leavefont ">
           <div class="col ">
             <div class="row mb-2 ">
-              <div class="col ps-5 ms-5"><p ><i class="fa-solid fa-circle" style="font-size: 16px; color:#FD9229"></i>  ลากิจ</p></div>
+              <div class="col ps-5 ms-5">
+                <p><i class="fa-solid fa-circle" style="font-size: 16px; color:#FD9229"></i> ลากิจ</p>
+              </div>
               <div class="col-2 d-flex justify-content-center">{{ObjdataUser.user_leave_day}}</div>
             </div>
             <div class="row mb-2 ">
-              <div class="col ps-5 ms-5"><p ><i class="fa-solid fa-circle" style="font-size: 16px; color:#63C8CE"></i>  ลาป่วย</p></div>
+              <div class="col ps-5 ms-5">
+                <p><i class="fa-solid fa-circle" style="font-size: 16px; color:#63C8CE"></i> ลาป่วย</p>
+              </div>
               <div class="col-2 d-flex justify-content-center">{{ObjdataUser.user_sick_day}}</div>
             </div>
             <div class="row mb-2 ">
-              <div class="col ps-5 ms-5"><p ><i class="fa-solid fa-circle" style="font-size: 16px; color:#C83039"></i>  ลาพักร้อน</p></div>
+              <div class="col ps-5 ms-5">
+                <p><i class="fa-solid fa-circle" style="font-size: 16px; color:#C83039"></i> ลาพักร้อน</p>
+              </div>
               <div class="col-2 d-flex justify-content-center">{{ObjdataUser.user_take_annual_day}}</div>
             </div>
             <div class="row mb-2 ">
-              <div class="col ps-5 ms-5"><p ><i class="fa-solid fa-circle" style="font-size: 16px; color:#13466A"></i>  ลาบวช</p></div>
+              <div class="col ps-5 ms-5">
+                <p><i class="fa-solid fa-circle" style="font-size: 16px; color:#13466A"></i> ลาบวช</p>
+              </div>
               <div class="col-2 d-flex justify-content-center">{{ObjdataUser.user_ordination_day}}</div>
             </div>
             <!-- <div class="row mb-2 d-flex justify-content-end">ลาป่วย {{ObjdataUser.user_sick_day}}</div>
@@ -92,23 +180,33 @@
           </div>
           <div class="col">
             <div class="row mb-2 " *ngIf="ObjdataUser.ud_gender_id == 1">
-              <div class="col ps-5 ms-5"><p ><i class="fa-solid fa-circle" style="font-size: 16px; color:#8CC34D"></i>   ลาเพื่อรับราชการทหาร</p></div>
+              <div class="col ps-5 ms-5">
+                <p><i class="fa-solid fa-circle" style="font-size: 16px; color:#8CC34D"></i> ลาเพื่อรับราชการทหาร</p>
+              </div>
               <div class="col-2 d-flex justify-content-center">{{ObjdataUser.user_military_service_day}}</div>
             </div>
             <div class="row mb-2" *ngIf="!(ObjdataUser.ud_gender_id == 1)">
-              <div class="col ps-5 ms-5"><p ><i class="fa-solid fa-circle" style="font-size: 16px; color:#8CC34D"></i>  ลาคลอด</p></div>
+              <div class="col ps-5 ms-5">
+                <p><i class="fa-solid fa-circle" style="font-size: 16px; color:#8CC34D"></i> ลาคลอด</p>
+              </div>
               <div class="col-2 d-flex justify-content-center">{{ObjdataUser.user_maternity_day}}</div>
             </div>
             <div class="row mb-2 ">
-              <div class="col ps-5 ms-5"><p ><i class="fa-solid fa-circle" style="font-size: 16px; color:white"></i>  ลาเพื่อทำหมัน</p></div>
+              <div class="col ps-5 ms-5">
+                <p><i class="fa-solid fa-circle" style="font-size: 16px; color:white"></i> ลาเพื่อทำหมัน</p>
+              </div>
               <div class="col-2 d-flex justify-content-center">{{ObjdataUser.user_sterilization_day}}</div>
             </div>
             <div class="row mb-2 ">
-              <div class="col ps-5 ms-5"><p ><i class="fa-solid fa-circle" style="font-size: 16px; color:white"></i>  ลาโดยไม่รับเงิน</p></div>
+              <div class="col ps-5 ms-5">
+                <p><i class="fa-solid fa-circle" style="font-size: 16px; color:white"></i> ลาโดยไม่รับเงิน</p>
+              </div>
               <div class="col-2 d-flex justify-content-center">{{ObjdataUser.user_without_pay_day}}</div>
             </div>
             <div class="row mb-2 ">
-              <div class="col ps-5 ms-5"><p ><i class="fa-solid fa-circle" style="font-size: 16px; color:white"></i>  ลาใช้สิทธิทดแทน</p></div>
+              <div class="col ps-5 ms-5">
+                <p><i class="fa-solid fa-circle" style="font-size: 16px; color:white"></i> ลาใช้สิทธิทดแทน</p>
+              </div>
               <div class="col-2 d-flex justify-content-center">{{ObjdataUser.user_resign_day}}</div>
             </div>
             <!-- <div class="row mb-2 d-flex justify-content-end" *ngIf="ObjdataUser.ud_gender_id == 1">ลาเพื่อรับราชการทหาร
@@ -122,7 +220,14 @@
         </div>
 
         <div class="row d-flex justify-content-center graphfont">กราฟแสดงวันลาคงเหลือ</div>
-        <canvas id="lineChart"></canvas>
+        <div>
+          <div>
+            <div style="display: block">
+              <canvas id="mychart" baseChart [data]="ChartData" [type]="ChartType"></canvas>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 
