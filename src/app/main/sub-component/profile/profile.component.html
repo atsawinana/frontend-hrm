@@ -78,15 +78,15 @@
               <div class="col text-center fontgraph">{{this.ObjTestCircle2.l3}} ชั่วโมง</div>
             </div>
             <div class="row ">
-                <!-- #EB760B;" -->
-                <div class="col text-center">
-                  <div class="row text-center">
-                    <i class="col-3 my-auto fa-solid fa-circle pt-1" style="color: #239411;"></i>
-                    <p class="col-9 my-auto fontgraph text-start">Temporary</p>
-                  </div>
+              <!-- #EB760B;" -->
+              <div class="col text-center">
+                <div class="row text-center">
+                  <i class="col-3 my-auto fa-solid fa-circle pt-1" style="color: #239411;"></i>
+                  <p class="col-9 my-auto fontgraph text-start">Temporary</p>
                 </div>
-                <div class="col text-center fontgraph">{{this.ObjTestCircle2.l4}} ชั่วโมง</div>
               </div>
+              <div class="col text-center fontgraph">{{this.ObjTestCircle2.l4}} ชั่วโมง</div>
+            </div>
           </div>
         </div>
       </div>
@@ -102,8 +102,12 @@
               </div>
             </div>
             <div class="col-4 d-flex justify-content-end px-0">
-              <img class="m-3 logo-element img-profile img-fluid img-thumbnail" src="assets/img/Atsawin.jpg"
-                style="width: 150px; height: auto;" /></div>
+              <!-- `${environment.apiURL}/employee/showProfile` -->
+              <img class="img-profile ms-auto d-block d-flex justify-content-end  img-thumbnail"
+                src="{{baseURL}}{{ObjdataUser.ud_picture}}" style="width: 63%; height: auto" />
+              <!-- <img class="m-3 logo-element img-profile img-fluid img-thumbnail"
+                src="{{baseURL}}/files/image/Atsawin.jpg" style="width: 150px; height: auto;" /> -->
+            </div>
             <div class="col-8 d-flex align-items-center px-5 ">
               <div class="d-flex flex-column fontStyle" style="width: 100% !important;">
                 <div class="row d-flex mb-4 ">
@@ -223,8 +227,10 @@
         <div>
           <div>
             <div style="display: block">
-              <canvas *ngIf="ObjdataUser.ud_prefix_id == 1" id="mychart1" baseChart [data]="ChartData" [type]="ChartType"></canvas>
-              <canvas *ngIf="ObjdataUser.ud_prefix_id == 2 || ObjdataUser.ud_prefix_id == 3" id="mychart2" baseChart [data]="ChartData2" [type]="ChartType2"></canvas>
+              <canvas *ngIf="ObjdataUser.ud_prefix_id == 1" id="mychart1" baseChart [data]="ChartData"
+                [type]="ChartType"></canvas>
+              <canvas *ngIf="ObjdataUser.ud_prefix_id == 2 || ObjdataUser.ud_prefix_id == 3" id="mychart2" baseChart
+                [data]="ChartData2" [type]="ChartType2"></canvas>
             </div>
           </div>
         </div>
