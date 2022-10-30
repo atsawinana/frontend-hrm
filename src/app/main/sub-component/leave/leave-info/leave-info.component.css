@@ -1,0 +1,99 @@
+table {
+    border-collapse: collapse;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.list-table {
+    background-color: #005FBC;
+    font-family: 'Kanit';
+    font-style: normal;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+.list-header {
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 47px;
+    color: #000000;
+    border-radius: 8px;
+}
+
+.list-content {
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.btn-addform {
+    background: linear-gradient(270.74deg, #2E3579 0.35%, #005FBC 99.1%, #005FBC 99.1%);
+    Width: 203px;
+    Height: 48px;
+    border-radius: 8px;
+    font-family: 'Kanit';
+    font-style: normal;
+    border: none;
+    color: #FFFFFF;
+    margin-left: 10px;
+}
+
+.btn-history {
+    background: linear-gradient(270.74deg, #FF5444 0%, #E69755 100%);
+    Width: 203px;
+    Height: 48px;
+    border-radius: 8px;
+    font-family: 'Kanit';
+    font-style: normal;
+    border: none;
+    color: #FFFFFF;
+}
+
+.text-btn {
+    margin-bottom: 5px;
+}
+
+.icon {
+    color: #ffffff;
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.icon-info {
+    color: #005FBC;
+    font-size: 24px;
+}
+
+.regtangle {
+    color: #ffffff;
+    Width: 277px;
+    Height: 162px;
+}
+
+.space-table {
+    padding-left: 45px;
+}
+
+.space-icon {
+    padding-left: 25px;
+}
+
+.dropdown-menu {
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    width: 277px;
+}
+
+.table-header {
+    border-top-left-radius: 15px;
+}
+
+.line {
+    color: #005FBC;
+    margin: none;
+}
