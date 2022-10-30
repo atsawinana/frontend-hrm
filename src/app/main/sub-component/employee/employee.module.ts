@@ -9,9 +9,11 @@ import { DetailDataPersonComponent } from './data-person/person-employee/detail-
 import { LeaveHistoryPersonComponent } from './data-person/person-employee/leave-history-person/leave-history-person.component';
 import { OtHistoryPersonComponent } from './data-person/person-employee/ot-history-person/ot-history-person.component';
 import { WorkHistoryPersonComponent } from './data-person/person-employee/work-history-person/work-history-person.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { LoadingEmpComponent } from './loading-emp/loading-emp.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   imports: [
@@ -20,7 +22,9 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     EmployeeRoutes,
     FormsModule,
     NgSelectModule,
+    ReactiveFormsModule,
     BsDatepickerModule.forRoot(),
+    DatePipe,
   ],
   declarations: [
     ListEmployeeComponent,
@@ -29,7 +33,9 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     DetailDataPersonComponent,
     LeaveHistoryPersonComponent,
     OtHistoryPersonComponent,
-    WorkHistoryPersonComponent
-  ]
+    WorkHistoryPersonComponent,
+    LoadingEmpComponent,
+  ],
+  providers: [DatePipe],
 })
-export class EmployeeModule { }
+export class EmployeeModule {}
