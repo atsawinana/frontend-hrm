@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { PaginationInstance } from 'ngx-pagination';
 import { ListDepartmentService } from '../../department/list-department/list-department.service';
@@ -19,7 +18,6 @@ export class ListEmployeeComponent implements OnInit {
     listPerPage: number = 10
     searchInput: string = ''
     elemtable: any
-    LoadingAPI:boolean = false
 
     public config: PaginationInstance = {
         id: 'custom',
@@ -40,7 +38,6 @@ export class ListEmployeeComponent implements OnInit {
                     delete this.Objemptable[i].id
                     delete this.Objemptable[i].page
                 }
-                this.LoadingAPI = true
             },
             error: (err: any) => {
 
@@ -58,5 +55,14 @@ export class ListEmployeeComponent implements OnInit {
         let elem = document.getElementById('tableemp')
         XLSX.writeFile((XLSX.utils.table_to_book(elem)), "text.xlsx",)
         // XLSX.writeFile((XLSX.utils.table_to_book(elem)),"text.xlsx",)
+    }
+
+    showFilterBox() {
+        var x = document.getElementById("filterBox");
+        if (x?.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x!.style.display = "none";
+        }
     }
 }
