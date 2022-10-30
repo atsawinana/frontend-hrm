@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { BsLocaleService } from 'ngx-bootstrap/datepicker';
+import { defineLocale, thBeLocale } from 'ngx-bootstrap/chronos';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-history',
@@ -7,14 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HistoryComponent implements OnInit {
 
-  constructor() { }
+  constructor(private localeService: BsLocaleService) { }
 
     role:boolean = false
+
+    locale = 'th';
+    today!: Date;
     
   ngOnInit() {
     if(localStorage.getItem('roleUser') == "2" || localStorage.getItem('roleUser') == "3"){
         this.role = true
     }
+
+    this.today = new Date();
+        defineLocale('th', thBeLocale);
+        this.localeService.use(this.locale);
   }
 
 }
