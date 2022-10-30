@@ -1,0 +1,459 @@
+<div class="row">
+  <div class="col ">
+    <div class="font-header mb-4">ข้อมูลส่วนตัว</div>
+    <div class="row mb-4">
+      <div class="col-12 col-sm-5 col-md-5 col-lg-5 font-title">
+        นาย :
+      </div>
+      <div class="col-12 col-sm-6 col-md-6col-lg-6 font-detail ">
+        <ng-select [searchable]="false" placeholder="เลือกตัวเลือก" [clearable]="false"
+          class="custom d-flex justify-content-center">
+          <ng-option>นาย</ng-option>
+          <ng-option>นาง</ng-option>
+          <ng-option>นางสาว</ng-option>
+        </ng-select>
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-12 col-sm-5 col-md-5 col-lg-5 font-title">
+        ชื่อ นามสกุล :
+      </div>
+      <div class="col-12 col-sm-6 col-md-6col-lg-6 font-detail ">
+        <input textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="ประกัน ภักดี">
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-12 col-sm-5 col-md-5 col-lg-5  font-title">
+        Name and Last name :
+      </div>
+      <div class="col-12 col-sm-6 col-md-6col-lg-6 font-detail">
+        <input textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Prakan Pakdee">
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-12 col-sm-5 col-md-5 col-lg-5 font-title">
+        ชื่อเล่น :
+      </div>
+      <div class="col-12 col-sm-6 col-md-6col-lg-6 font-detail ">
+        <input textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="กัน">
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-12 col-sm-5 col-md-5 col-lg-5 font-title">
+        วันเดือนปีเกิด :
+      </div>
+      <div class="col-12 col-sm-6 col-md-6col-lg-6 font-detail">
+        <input type="text" placeholder="เลือกวันที่" class="form-control " bsDatepicker
+          [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD/MM/YYYY', containerClass: 'theme-dark-blue',showWeekNumbers: false}"
+          [minDate]="today" (keypress)="false">
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-12 col-sm-5 col-md-5 col-lg-5 font-title">
+        รหัสบัตรประชาชน :
+      </div>
+      <div class="col-12 col-sm-6 col-md-6col-lg-6 font-detail">
+        <input textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="10xxxxxxxxxx">
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-12 col-sm-5 col-md-5 col-lg-5 font-title">
+        เบอร์โทรศัพท์ :
+      </div>
+      <div class="col-12 col-sm-6 col-md-6col-lg-6 font-detail">
+        <input textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="08x-xxxxxx">
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-12 col-sm-5 col-md-5 col-lg-5 font-title">
+        อีเมล :
+      </div>
+      <div class="col-12 col-sm-6 col-md-6col-lg-6 font-detail">
+        <input textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+          placeholder="ex_______@gamil.com">
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="font-header mb-4">ข้อมูลในบริษัท</div>
+    <div class="row mb-4">
+      <div class="col-12 col-sm-4 col-md-4 col-lg-4 font-title">
+        ชื่อบริษัท :
+      </div>
+      <div class="col-12 col-sm-6 col-md-6col-lg-6 font-detail">
+        <input textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Exvention">
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-12 col-sm-4 col-md-4 col-lg-4 font-title">
+        แผนก :
+      </div>
+      <div class="col-12 col-sm-6 col-md-6col-lg-6 font-detail">
+        <ng-select [searchable]="false" placeholder="เลือกตัวเลือก" [clearable]="false"
+          class="custom d-flex justify-content-center">
+          <ng-option>Executive</ng-option>
+        </ng-select>
+      </div>
+    </div>
+    <div class="col">
+      <div class="row mb-4">
+        <div class="col-12 col-sm-4 col-md-4 col-lg-4 font-title">
+          ตำแหน่ง :
+        </div>
+        <div class="col-12 col-sm-6 col-md-6col-lg-6 font-detail">
+          <ng-select [searchable]="false" placeholder="เลือกตัวเลือก" [clearable]="false"
+            class="custom d-flex justify-content-center">
+            <ng-option>ผู้บริหาร</ng-option>
+            <ng-option>chief executive officer</ng-option>
+          </ng-select>
+        </div>
+      </div>
+      <div class="row mb-4">
+        <div class="col-12 col-sm-4 col-md-4 col-lg-4 font-title">
+        </div>
+        <div class="col-12 col-sm-6 col-md-6col-lg-6 font-detail">
+            <a>
+              <div class="text-button">
+                <i class="fa-solid fa-circle-plus"></i>เพิ่มตำแหน่ง
+              </div>
+            </a>
+        </div>
+      </div>
+      
+    </div>
+    <div class="row mb-4">
+      <div class="col-12 col-sm-4 col-md-4 col-lg-4 font-title">
+        ประเภทพนักงาน :
+      </div>
+      <div class="col-12 col-sm-6 col-md-6col-lg-6 font-detail">
+        <ng-select [searchable]="false" placeholder="เลือกตัวเลือก" [clearable]="false"
+          class="custom d-flex justify-content-center">
+          <ng-option>พนักงานประจำ</ng-option>
+        </ng-select>
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-12 col-sm-4 col-md-4 col-lg-4 font-title">
+        รหัสพนักงาน :
+      </div>
+      <div class="col-12 col-sm-6 col-md-6col-lg-6 font-detail">
+        1xxxxxx0
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-12 col-sm-4 col-md-4 col-lg-4 font-title">
+        วันที่เริ่มงาน :
+      </div>
+      <div class="col-12 col-sm-6 col-md-6col-lg-6 font-detail">
+        <input type="text" placeholder="เลือกวันที่" class="form-control " bsDatepicker
+          [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD/MM/YYYY', containerClass: 'theme-dark-blue',showWeekNumbers: false}"
+          [minDate]="today" (keypress)="false">
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-12 col-sm-4 col-md-4 col-lg-4 font-title">
+        อายุงาน :
+      </div>
+      <div class="col-12 col-sm-8 col-md-8 col-lg-8 font-detail">
+        5 ปี 5 เดือน 1 วัน
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-12 col-sm-4 col-md-4 col-lg-4 font-title">
+        วันที่ทำงานวันสุดท้าย :
+      </div>
+      <div class="col-12 col-sm-6 col-md-6col-lg-6 font-detail">
+        <input type="text" placeholder="เลือกวันที่" class="form-control " bsDatepicker
+          [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD/MM/YYYY', containerClass: 'theme-dark-blue',showWeekNumbers: false}"
+          [minDate]="today" (keypress)="false">
+      </div>
+      <div class="col-12 col-sm-2 col-md-2 col-lg-2 font-title">
+        <div class="col-1">
+          <i class="fa-solid fa-circle-info icon-info" id="demo" type="button" data-bs-toggle="dropdown"
+            aria-expanded="false"></i>
+          <ul class="dropdown-menu py-0">
+            <div class="p-1 ">
+              <div class="d-inline d-flex justify-content-between px-3 py-1">
+                <div class="row">
+                  <div class="col">ข้อเเนะนำ</div>
+                  <hr class="line">
+                  <div class="col">
+                    <p>
+                      ควรเป็นวันสุดท้ายตามที่แจ้งลาออกเอาไปบวกด้วย 1 วัน
+                      สถานะนี้มีผลให้พนักงานไม่ถูกแสดงรายชื่อในการจ่ายเงินเดือน
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="font-header mb-4">สิทธิ</div>
+    <div class="row mb-4">
+      <div class="col-12 col-sm-4 col-md-4 col-lg-4 font-title">
+        วันลาคงเหลือ :
+      </div>
+    </div>
+    <div class="row mb-4 font-detail detail">
+      <div class="col-12 col-sm-4 col-md-4 col-lg-4 ">
+        ลากิจ
+      </div>
+      <div class="col-12 col-sm-4 col-md-4 col-lg-4 ">
+        <input textarea class="form-control form-input" id="exampleFormControlTextarea1" rows="3" placeholder="6">
+      </div>
+      <div class="col-12 col-sm-4 col-md-4 col-lg-4">
+        วัน
+      </div>
+    </div>
+    <div class="row mb-4 font-detail detail">
+      <div class="col-12 col-sm-4 col-md-4 col-lg-4">
+        ลาป่วย
+      </div>
+      <div class="col-12 col-sm-4 col-md-4 col-lg-4">
+        <input textarea class="form-control form-input" id="exampleFormControlTextarea1" rows="3" placeholder="30">
+      </div>
+      <div class="col-12 col-sm-4 col-md-4 col-lg-4">
+        วัน
+      </div>
+    </div>
+    <div class="row mb-4 font-detail detail">
+      <div class="col-12 col-sm-4 col-md-4 col-lg-4">
+        ลาพักร้อน
+      </div>
+      <div class="col-12 col-sm-4 col-md-4 col-lg-4">
+        <input textarea class="form-control form-input" id="exampleFormControlTextarea1" rows="3" placeholder="12">
+      </div>
+      <div class="col-12 col-sm-4 col-md-4 col-lg-4">
+        วัน
+      </div>
+    </div>
+    <div class="row mb-4 font-detail detail">
+      <div class="col-12 col-sm-4 col-md-4 col-lg-4">
+        ลาบวช
+      </div>
+      <div class="col-12 col-sm-4 col-md-4 col-lg-4">
+        <input textarea class="form-control form-input" id="exampleFormControlTextarea1" rows="3" placeholder="7">
+      </div>
+      <div class="col-12 col-sm-4 col-md-4 col-lg-4 ">
+        วัน
+      </div>
+    </div>
+    <div class="row mb-4 font-detail detail">
+      <div class="col-12 col-sm-4 col-md-4 col-lg-4">
+        ลาเพื่อรับราชการทหาร
+      </div>
+      <div class="col-12 col-sm-4 col-md-4 col-lg-4">
+        <input textarea class="form-control form-input" id="exampleFormControlTextarea1" rows="3" placeholder="30">
+      </div>
+      <div class="col-12 col-sm-4 col-md-4 col-lg-4">
+        วัน
+      </div>
+    </div>
+    <div class="row mb-4 font-detail detail">
+      <div class="col-12 col-sm-4 col-md-4 col-lg-4">
+        ลาเพื่อทำหมัน
+      </div>
+      <div class="col-12 col-sm-4 col-md-4 col-lg-4">
+        <input textarea class="form-control form-input" id="exampleFormControlTextarea1" rows="3" placeholder="-">
+      </div>
+      <div class="col-12 col-sm-4 col-md-4 col-lg-4">
+        วัน
+      </div>
+    </div>
+    <div class="row mb-4 font-detail detail">
+      <div class="col-12 col-sm-4 col-md-4 col-lg-4">
+        ลาโดยไม่รับเงิน
+      </div>
+      <div class="col-12 col-sm-4 col-md-4 col-lg-4">
+        <input textarea class="form-control form-input" id="exampleFormControlTextarea1" rows="3" placeholder="-">
+      </div>
+      <div class="col-12 col-sm-4 col-md-4 col-lg-4">
+        วัน
+      </div>
+    </div>
+    <div class="row mb-4 font-detail detail">
+      <div class="col-12 col-sm-4 col-md-4 col-lg-4">
+        ลาใช้สิทธิทดแทน
+      </div>
+      <div class="col-12 col-sm-4 col-md-4 col-lg-4">
+        <input textarea class="form-control form-input" id="exampleFormControlTextarea1" rows="3" placeholder="-">
+      </div>
+      <div class="col-12 col-sm-4 col-md-4 col-lg-4">
+        วัน
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="row">
+    <div class="col-4 font-header">ข้อมูลส่วนตัว</div>
+    <div class="col-4 font-header">ข้อมูลในบริษัท</div>
+    <div class="col-4 font-header">สิทธิ</div>
+    <div class="row">
+      <div class="col-2">
+        <br>
+        <div class="font-title">คำนำหน้า: </div>
+        <div class="font-title">ชื่อ-นามสกุล: </div>
+        <div class="font-title">Name and Last name : </div>
+        <div class="font-title">ชื่อเล่น : </div>
+        <div class="font-title">วันเดือนปีเกิด : </div>
+        <div class="font-title">รหัสบัตรประชาชน :</div>
+        <div class="font-title">เบอร์โทรศัพท์ : </div>
+        <div class="font-title">อีเมล :</div>
+      </div>
+      <div class="col-2">
+        <br>
+        <div class="font-detail ">
+          <ng-select [searchable]="false" placeholder="เลือกตัวเลือก" [clearable]="false"
+            class="custom d-flex justify-content-center">
+            <ng-option>นาย</ng-option>
+            <ng-option>นาง</ng-option>
+            <ng-option>นางสาว</ng-option>
+          </ng-select>
+        </div>
+        <div class="font-detail">
+          <input textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="ประกัน ภักดี">
+        </div>
+        <div class="font-detail">
+          <input textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Prakan Pakdee">          
+        </div>
+        <div class="font-detail">
+          <input textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="กัน">
+        </div>
+        <div class="font-detail">
+          <input type="text" placeholder="เลือกวันที่" class="form-control " 
+          bsDatepicker [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD/MM/YYYY', containerClass: 'theme-dark-blue',showWeekNumbers: false}"[minDate]="today"(keypress)="false">
+        </div>
+        <div class="font-detail">1
+          <input textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="10xxxxxxxxxx">
+        </div>
+        <div class="font-detail">
+          <input textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="08x-xxxxxx">
+        </div>
+        <div class="font-detail">
+          <input textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="ex_______@gamil.com">
+        </div>
+      </div>
+      <div class="col-2">
+        <br>
+        <div class="font-title">บริษัท: </div>
+        <div class="font-title">แผนก : </div>
+        <div class="font-title">ตำแหน่ง :</div>
+        <div class="font-title">ประเภทพนักงาน :</div>
+        <div class="font-title">รหัสพนักงาน :</div>
+        <div class="font-title">วันที่เริ่มงาน :</div>
+        <div class="font-title">อายุงาน :</div>
+        <div class="font-title">วันที่ทำงานวันสุดท้าย :</div>
+      </div>
+      <div class="col-2">
+        <br>
+        <div class="font-detail">Exvention</div>
+        <div class="font-detail">
+          <ng-select [searchable]="false" placeholder="เลือกตัวเลือก" [clearable]="false"
+            class="custom d-flex justify-content-center">
+            <ng-option>Executive</ng-option>
+          </ng-select>
+        </div>
+        <div class="font-detail">
+          <ng-select [searchable]="false" placeholder="เลือกตัวเลือก" [clearable]="false"
+            class="custom d-flex justify-content-center">
+            <ng-option>ผู้บริหาร</ng-option>
+          </ng-select>
+          
+        </div>
+        
+        <div class="col-8 d-flex justify-content-left">
+          <a>
+            <div class="text-button mb-4" >
+              <i class="fa-solid fa-circle-plus"></i>เพิ่มตำแหน่ง
+            </div>
+          </a>
+        </div>
+        <div class="font-detail">
+          <ng-select [searchable]="false" placeholder="เลือกตัวเลือก" [clearable]="false"
+            class="custom d-flex justify-content-center">
+            <ng-option>พนักงานประจำ</ng-option>
+          </ng-select>
+        </div>
+        <div class="font-detail">1xxxxxx0</div>
+        <div class="font-detail">
+          <input type="text" placeholder="เลือกวันที่" class="form-control " 
+          bsDatepicker [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD/MM/YYYY', containerClass: 'theme-dark-blue',showWeekNumbers: false}"[minDate]="today"(keypress)="false">
+        </div>
+        <div class="font-detail">5 ปี 5 เดือน 1 วัน</div>
+        <div class="font-detail">
+          <input type="text" placeholder="เลือกวันที่" class="form-control " 
+          bsDatepicker [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD/MM/YYYY', containerClass: 'theme-dark-blue',showWeekNumbers: false}"[minDate]="today"(keypress)="false">
+        </div>
+      </div>
+      <div class="col-2">
+        <br>
+        <div class="font-title">วันลาคงเหลือ :</div>
+        <div class="font-detail">ลากิจ</div>
+        <div class="font-detail">ลาป่วย</div>
+        <div class="font-detail">ลาพักร้อน</div>
+        <div class="font-detail">ลาบวช</div>
+        <div class="font-detail">ลาเพื่อรับราชการทหาร</div>
+        <div class="font-detail">ลาเพื่อทำหมัน</div>
+        <div class="font-detail">ลาโดยไม่รับเงิน</div>
+        <div class="font-detail">ลาใช้สิทธิทดแทน</div>
+      </div>
+      <div class="col" >
+        <br><br><br>
+        <div class="font-detail">
+          <input textarea class="form-control form-input" id="exampleFormControlTextarea1" rows="3" placeholder="6">
+        </div>
+        <div class="font-detail">
+          <input textarea class="form-control form-input" id="exampleFormControlTextarea1" rows="3" placeholder="30">
+        </div>
+        <div class="font-detail">
+          <input textarea class="form-control form-input" id="exampleFormControlTextarea1" rows="3" placeholder="12">
+        </div>
+        <div class="font-detail">
+          <input textarea class="form-control form-input" id="exampleFormControlTextarea1" rows="3" placeholder="7">
+        </div>
+        <div class="font-detail">
+          <input textarea class="form-control form-input" id="exampleFormControlTextarea1" rows="3" placeholder="60">
+        </div>
+        <div class="font-detail">
+          <input textarea class="form-control form-input" id="exampleFormControlTextarea1" rows="3" placeholder="-">
+        </div>
+        <div class="font-detail">
+          <input textarea class="form-control form-input" id="exampleFormControlTextarea1" rows="3" placeholder="-">
+        </div>
+        <div class="font-detail">
+          <input textarea class="form-control form-input" id="exampleFormControlTextarea1" rows="3" placeholder="-">
+        </div>
+      </div>
+      <div class="col">
+        <br><br><br>
+        <div class="font-detail">วัน</div>
+        <div class="font-detail">วัน</div>
+        <div class="font-detail">วัน</div>
+        <div class="font-detail">วัน</div>
+        <div class="font-detail">วัน</div>
+        <div class="font-detail">วัน</div>
+        <div class="font-detail">วัน</div>
+        <div class="font-detail">วัน</div>
+      </div>
+
+    </div>
+
+
+  </div> -->
+  <div class="row mb-4 mt-5 d-flex justify-content-center">
+    <div class="col-6 col-sm-3 col-md-3 col-lg-3"><button class="cancel-button d-flex justify-content-center w-100"
+        type="" data-bs-toggle="modal" routerLink="../">
+        <div class="cancel-text">ยกเลิก</div>
+      </button>
+    </div>
+    <div class="col-6 col-sm-3 col-md-3 col-lg-3"><button class="submit-button d-flex justify-content-center w-100"
+        type="submit">
+        <div class="submit-text">บันทึก</div>
+      </button>
+    </div>
+  </div>
+</div>

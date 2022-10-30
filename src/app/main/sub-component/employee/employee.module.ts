@@ -19,6 +19,8 @@ import { LoadingEmployeeComponent } from './loading-employee/loading-employee.co
 import { EndContractComponent } from './end-contract/end-contract.component';
 import { LoadingEmpComponent } from './loading-emp/loading-emp.component';
 import { DatePipe } from '@angular/common';
+import { EditDetailComponent } from '../leave/leave-history/detail/edit-detail/edit-detail.component';
+import { EditDetailPersonComponent } from './data-person/person-employee/edit-detail-person/edit-detail-person.component';
 
 @NgModule({
   imports: [
