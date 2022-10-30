@@ -103,7 +103,7 @@
 
     <tbody class="list-content">
 
-      <tr id="" *ngFor="let emp of Objemptable | paginate: config | filter : searchInput">
+      <tr id="" *ngFor="let emp of Objemptable | paginate: config | filter : searchInput" routerLink="data-person">
         <td>{{emp.number}}</td>
         <td class="text-start">{{emp.user_card_number}}</td>
         <td class="text-start">{{emp.ud_fullname_th}}</td>

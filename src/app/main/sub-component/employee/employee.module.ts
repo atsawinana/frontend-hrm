@@ -47,7 +47,9 @@ import { EditDetailPersonComponent } from './data-person/person-employee/edit-de
     LoadingEmployeeComponent,
     EndContractComponent,
     LoadingEmpComponent,
+    EditDetailPersonComponent
   ],
   providers: [DatePipe],
+    
 })
 export class EmployeeModule {}
