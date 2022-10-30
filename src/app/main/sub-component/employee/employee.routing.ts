@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'list-employee', component: ListEmployeeComponent, canActivate: [AuthGuardGuard] },
   { path: 'end-contract-employee', component: EndContractComponent, canActivate: [AuthGuardGuard] },
   {
-    path: 'data-person',
+    path: 'data-person/:id',
     component: DataPersonComponent,
     children: [
       {

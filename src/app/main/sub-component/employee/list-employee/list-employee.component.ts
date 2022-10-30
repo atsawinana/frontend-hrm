@@ -35,7 +35,6 @@ export class ListEmployeeComponent implements OnInit {
                 for (let i = 0; i < this.Objemptable.length; i++) {
                     delete this.Objemptable[i].user_username
                     delete this.Objemptable[i].ud_fullname_en
-                    delete this.Objemptable[i].id
                     delete this.Objemptable[i].page
                 }
             },
