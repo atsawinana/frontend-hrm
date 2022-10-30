@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" *ngIf="APISuccess">
   <div class="col ">
     <div class="font-header mb-4">ข้อมูลส่วนตัว</div>
     <div class="row mb-4">
@@ -6,7 +6,7 @@
         ชื่อ นามสกุล :
       </div>
       <div class="col-12 col-sm-7 col-md-7 col-lg-7 font-detail ">
-        นาย ประกัน ภักดี
+        {{ObjDataemp.ud_prefix_name}} {{ObjDataemp.ud_fullname_th}}
       </div>
     </div>
     <div class="row mb-4">
@@ -14,7 +14,7 @@
         Name and Last name :
       </div>
       <div class="col-12 col-sm-7 col-md-7 col-lg-7 font-detail">
-        Prakan Pakdee
+        {{ObjDataemp.ud_fullname_en}}
       </div>
     </div>
     <div class="row mb-4">
@@ -38,7 +38,7 @@
         รหัสบัตรประชาชน :
       </div>
       <div class="col-12 col-sm-7 col-md-7 col-lg-7 font-detail">
-        110xxxxxxxxxx
+        {{ObjDataemp.ud_id_card}}
       </div>
     </div>
     <div class="row mb-4">
@@ -46,7 +46,7 @@
         เบอร์โทรศัพท์ :
       </div>
       <div class="col-12 col-sm-7 col-md-7 col-lg-7 font-detail">
-        08x-xxxxxxx
+        {{ObjDataemp.ud_phone}}
       </div>
     </div>
     <div class="row mb-4">
@@ -65,7 +65,7 @@
         ชื่อบริษัท :
       </div>
       <div class="col-12 col-sm-8 col-md-8 col-lg-8 font-detail">
-        Exvention
+        {{ObjDataemp.user_company}}
       </div>
     </div>
     <div class="row mb-4">
@@ -81,15 +81,15 @@
         ตำแหน่ง :
       </div>
       <div class="col-12 col-sm-8 col-md-8 col-lg-8 font-detail">
-        chief executive officer
+        {{ObjDataemp.department_map_managers}}
       </div>
     </div>
     <div class="row mb-4">
       <div class="col-12 col-sm-4 col-md-4 col-lg-4 font-title">
-        ประเภทพนักงาน :
+        ประเภทพนักงาน:
       </div>
       <div class="col-12 col-sm-8 col-md-8 col-lg-8 font-detail">
-        พนักงานประจำ
+        {{ObjDataemp.user_contract_name}}
       </div>
     </div>
     <div class="row mb-4">
@@ -97,7 +97,7 @@
         รหัสพนักงาน :
       </div>
       <div class="col-12 col-sm-8 col-md-8 col-lg-8 font-detail">
-        1xxxxxx0
+        {{ObjDataemp.user_card_number}}
       </div>
     </div>
     <div class="row mb-4">
@@ -105,15 +105,7 @@
         วันที่เริ่มงาน :
       </div>
       <div class="col-12 col-sm-8 col-md-8 col-lg-8 font-detail">
-        1/1/25xx
-      </div>
-    </div>
-    <div class="row mb-4">
-      <div class="col-12 col-sm-4 col-md-4 col-lg-4 font-title">
-        หัวหน้างาน :
-      </div>
-      <div class="col-12 col-sm-8 col-md-8 col-lg-8 font-detail">
-        -
+        {{ObjDataemp.user_start_date}}
       </div>
     </div>
     <div class="row mb-4">
@@ -121,7 +113,7 @@
         อายุงาน :
       </div>
       <div class="col-12 col-sm-8 col-md-8 col-lg-8 font-detail">
-        5 ปี 5 เดือน 1 วัน
+        {{ObjDataemp.user_exprience}}
       </div>
     </div>
   </div>
@@ -137,7 +129,7 @@
         ลากิจ
       </div>
       <div class="col-12 col-sm-4 col-md-4 col-lg-4 ">
-        6
+        {{ObjDataemp.user_leave_day}}
       </div>
       <div class="col-12 col-sm-4 col-md-4 col-lg-4">
         วัน
@@ -148,7 +140,7 @@
         ลาป่วย
       </div>
       <div class="col-12 col-sm-4 col-md-4 col-lg-4">
-        30
+        {{ObjDataemp.user_sick_day}}
       </div>
       <div class="col-12 col-sm-4 col-md-4 col-lg-4">
         วัน
@@ -159,7 +151,7 @@
         ลาพักร้อน
       </div>
       <div class="col-12 col-sm-4 col-md-4 col-lg-4">
-        12
+        {{ObjDataemp.user_take_annual_day}}
       </div>
       <div class="col-12 col-sm-4 col-md-4 col-lg-4">
         วัน
@@ -170,7 +162,7 @@
         ลาบวช
       </div>
       <div class="col-12 col-sm-4 col-md-4 col-lg-4">
-        7
+        {{ObjDataemp.user_ordination_day}}
       </div>
       <div class="col-12 col-sm-4 col-md-4 col-lg-4 ">
         วัน
@@ -181,7 +173,7 @@
         ลาเพื่อรับราชการทหาร
       </div>
       <div class="col-12 col-sm-4 col-md-4 col-lg-4">
-        30
+        {{ObjDataemp.user_military_service_day}}
       </div>
       <div class="col-12 col-sm-4 col-md-4 col-lg-4">
         วัน
@@ -192,7 +184,7 @@
         ลาเพื่อทำหมัน
       </div>
       <div class="col-12 col-sm-4 col-md-4 col-lg-4">
-        -
+        {{ObjDataemp.user_sterilization_day}}
       </div>
       <div class="col-12 col-sm-4 col-md-4 col-lg-4">
         วัน
@@ -203,23 +195,34 @@
         ลาโดยไม่รับเงิน
       </div>
       <div class="col-12 col-sm-4 col-md-4 col-lg-4">
-        -
+        {{ObjDataemp.user_without_pay_day}}
       </div>
       <div class="col-12 col-sm-4 col-md-4 col-lg-4">
         วัน
       </div>
     </div>
     <div class="row mb-4 font-detail">
+        <div class="col-12 col-sm-4 col-md-4 col-lg-4">
+          ลาคลอด
+        </div>
+        <div class="col-12 col-sm-4 col-md-4 col-lg-4">
+          {{ObjDataemp.user_maternity_day}}
+        </div>
+        <div class="col-12 col-sm-4 col-md-4 col-lg-4">
+          วัน
+        </div>
+      </div>
+    <div class="row mb-4 font-detail">
       <div class="col-12 col-sm-4 col-md-4 col-lg-4">
         ลาใช้สิทธิทดแทน
       </div>
       <div class="col-12 col-sm-4 col-md-4 col-lg-4">
-        -
+        {{ObjDataemp.user_resign_day}}
       </div>
       <div class="col-12 col-sm-4 col-md-4 col-lg-4">
         วัน
       </div>
     </div>
   </div>
-  
+
 </div>
