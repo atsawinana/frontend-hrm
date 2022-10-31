@@ -9,6 +9,7 @@ import {
 } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import { ProfileService } from './profile.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-profile',
@@ -20,48 +21,80 @@ export class ProfileComponent implements OnInit {
   roleHR: boolean = false;
   lineChart: any = [];
   ObjdataUser: any = {};
-
-  ObjTestCircle1 = {l1:4,l2:12,l3:7}
-  ObjTestCircle2 = {l1:13,l2:2,l3:3,l4:5}
-
-
-  public ChartLabels: string[] = [''];
+  ApiSuccess: boolean = false;
+  testleaveday: any;
+  ObjTestCircle1 = { l1: 4, l2: 12, l3: 7 };
+  ObjTestCircle2 = { l1: 13, l2: 2, l3: 3, l4: 5 };
+  baseURL = environment.apiURL;
+  //  กราฟผู้ชาย
   public ChartData: ChartData<'bar'> = {
-    labels: this.ChartLabels,
     datasets: [
       {
         label: 'ลากิจ',
-        data: [6],
+        data: [this.ObjdataUser.user_leave_day],
         backgroundColor: '#FD9229',
         barPercentage: 0.5,
       },
       {
         label: 'ลาป่วย',
-        data: [30],
+        data: [this.ObjdataUser.user_sick_day],
         backgroundColor: '#63C8CE',
         barPercentage: 0.5,
       },
       {
         label: 'ลาพักร้อน',
-        data: [12],
+        data: [this.ObjdataUser.user_take_annual_day],
         backgroundColor: '#C83039',
         barPercentage: 0.5,
       },
       {
         label: 'ลาบวช',
-        data: [7],
+        data: [this.ObjdataUser.user_ordination_day],
         backgroundColor: '#13466A',
         barPercentage: 0.5,
       },
       {
         label: 'ลาเพื่อรับราชการทหาร',
-        data: [60],
+        data: [this.ObjdataUser.user_military_service_day],
         backgroundColor: '#8CC34D',
         barPercentage: 0.5,
       },
     ],
   };
   public ChartType: ChartType = 'bar';
+
+  //  กราฟผู้หญิง
+  public ChartLabels2: string[] = [''];
+  public ChartData2: ChartData<'bar'> = {
+    labels: this.ChartLabels2,
+    datasets: [
+      {
+        label: 'ลากิจ',
+        data: [this.ObjdataUser.user_leave_day],
+        backgroundColor: '#FD9229',
+        barPercentage: 0.5,
+      },
+      {
+        label: 'ลาป่วย',
+        data: [this.ObjdataUser.user_sick_day],
+        backgroundColor: '#63C8CE',
+        barPercentage: 0.5,
+      },
+      {
+        label: 'ลาพักร้อน',
+        data: [this.ObjdataUser.user_take_annual_day],
+        backgroundColor: '#C83039',
+        barPercentage: 0.5,
+      },
+      {
+        label: 'ลาคลอด',
+        data: [this.ObjdataUser.user_maternity_day],
+        backgroundColor: '#13466A',
+        barPercentage: 0.5,
+      },
+    ],
+  };
+  public ChartType2: ChartType = 'bar';
 
   // events
   public chartClicked({
@@ -88,7 +121,11 @@ export class ProfileComponent implements OnInit {
   public doughnutChartData: ChartData<'doughnut'> = {
     datasets: [
       {
-        data: [this.ObjTestCircle1.l1, this.ObjTestCircle1.l2, this.ObjTestCircle1.l3],
+        data: [
+          this.ObjTestCircle1.l1,
+          this.ObjTestCircle1.l2,
+          this.ObjTestCircle1.l3,
+        ],
         backgroundColor: ['#005FBC', '#EF0303', '#EB760B'],
       },
     ],
@@ -110,7 +147,12 @@ export class ProfileComponent implements OnInit {
   public doughnutChartData2: ChartData<'doughnut'> = {
     datasets: [
       {
-        data: [this.ObjTestCircle2.l1, this.ObjTestCircle2.l2, this.ObjTestCircle2.l3, this.ObjTestCircle2.l4],
+        data: [
+          this.ObjTestCircle2.l1,
+          this.ObjTestCircle2.l2,
+          this.ObjTestCircle2.l3,
+          this.ObjTestCircle2.l4,
+        ],
         backgroundColor: ['#005FBC', '#EF0303', '#EB760B', '#239411'],
       },
     ],
@@ -120,42 +162,14 @@ export class ProfileComponent implements OnInit {
     if (localStorage.getItem('roleUser') == '3') {
       this.roleHR = true;
     }
-
     this.profileService.getProfile().subscribe({
       next: (res: any) => {
         this.ObjdataUser = res.data;
-        // console.log(this.ObjdataUser)
+        this.testleaveday = this.ObjdataUser.user_maternity_day;
+        this.ApiSuccess = true;
+        console.log(this.ObjdataUser);
       },
       error: (err: any) => {},
     });
-
-    this.createChart();
-  }
-
-  createChart() {
-    // this.lineChart = new Chart("MyChart", {
-    //     type: 'bar', //this denotes tha type of chart
-    //     data: {// values on X-Axis
-    //         labels: ['2022-05-10', '2022-05-11', '2022-05-12', '2022-05-13',
-    //             '2022-05-14', '2022-05-15', '2022-05-16', '2022-05-17',],
-    //         datasets: [
-    //             {
-    //                 label: "Sales",
-    //                 data: ['467', '576', '572', '79', '92',
-    //                     '574', '573', '576'],
-    //                 backgroundColor: 'blue'
-    //             },
-    //             {
-    //                 label: "Profit",
-    //                 data: ['542', '542', '536', '327', '17',
-    //                     '0.00', '538', '541'],
-    //                 backgroundColor: 'limegreen'
-    //             }
-    //         ]
-    //     },
-    //     options: {
-    //         aspectRatio: 2.5
-    //     }
-    // });
   }
 }
