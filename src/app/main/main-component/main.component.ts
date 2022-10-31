@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 import { Subject } from 'rxjs/internal/Subject';
 import { LoadingComponent } from 'src/app/login/loading/loading-template/loading.component';
 import Swal from 'sweetalert2';
+import { environment } from 'src/environments/environment';
 
 @Component({
     selector: 'app-main',
@@ -24,7 +25,7 @@ export class MainComponent implements OnInit {
             this.coreToken.Logout()
         });
     }
-
+    baseURL = environment.apiURL;
     token!: any;
     ud_fullname_th!: string;
     ud_prefix!: string;

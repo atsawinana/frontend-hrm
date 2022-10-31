@@ -27,35 +27,37 @@ export class ProfileComponent implements OnInit {
   ObjTestCircle2 = { l1: 13, l2: 2, l3: 3, l4: 5 };
   baseURL = environment.apiURL;
   //  กราฟผู้ชาย
+  public ChartLabels: string[] = [''];
   public ChartData: ChartData<'bar'> = {
+    labels: this.ChartLabels,
     datasets: [
       {
         label: 'ลากิจ',
-        data: [this.ObjdataUser.user_leave_day],
+        data: [6],
         backgroundColor: '#FD9229',
         barPercentage: 0.5,
       },
       {
         label: 'ลาป่วย',
-        data: [this.ObjdataUser.user_sick_day],
+        data: [30],
         backgroundColor: '#63C8CE',
         barPercentage: 0.5,
       },
       {
         label: 'ลาพักร้อน',
-        data: [this.ObjdataUser.user_take_annual_day],
+        data: [12],
         backgroundColor: '#C83039',
         barPercentage: 0.5,
       },
       {
         label: 'ลาบวช',
-        data: [this.ObjdataUser.user_ordination_day],
+        data: [7],
         backgroundColor: '#13466A',
         barPercentage: 0.5,
       },
       {
         label: 'ลาเพื่อรับราชการทหาร',
-        data: [this.ObjdataUser.user_military_service_day],
+        data: [60],
         backgroundColor: '#8CC34D',
         barPercentage: 0.5,
       },
@@ -70,25 +72,25 @@ export class ProfileComponent implements OnInit {
     datasets: [
       {
         label: 'ลากิจ',
-        data: [this.ObjdataUser.user_leave_day],
+        data: [6],
         backgroundColor: '#FD9229',
         barPercentage: 0.5,
       },
       {
         label: 'ลาป่วย',
-        data: [this.ObjdataUser.user_sick_day],
+        data: [30],
         backgroundColor: '#63C8CE',
         barPercentage: 0.5,
       },
       {
         label: 'ลาพักร้อน',
-        data: [this.ObjdataUser.user_take_annual_day],
+        data: [12],
         backgroundColor: '#C83039',
         barPercentage: 0.5,
       },
       {
         label: 'ลาคลอด',
-        data: [this.ObjdataUser.user_maternity_day],
+        data: [90],
         backgroundColor: '#13466A',
         barPercentage: 0.5,
       },
@@ -117,46 +119,11 @@ export class ProfileComponent implements OnInit {
     console.log(event, active);
   }
 
-  public doughnutChartLabels: string[] = ['ลากิจ', 'ลาป่วย', 'ลาพักร้อน'];
-  public doughnutChartData: ChartData<'doughnut'> = {
-    datasets: [
-      {
-        data: [
-          this.ObjTestCircle1.l1,
-          this.ObjTestCircle1.l2,
-          this.ObjTestCircle1.l3,
-        ],
-        backgroundColor: ['#005FBC', '#EF0303', '#EB760B'],
-      },
-    ],
-  };
-  public doughnutChartType: ChartType = 'doughnut';
-
   //   {
   //     label: 'ลากิจ',
   //     data: [6,3],
   //     backgroundColor: ['#FD9229','#63C8CE']
   //   },
-
-  public doughnutChartLabels2: string[] = [
-    'Developer',
-    'Designer',
-    'Marketing',
-    'Temporary',
-  ];
-  public doughnutChartData2: ChartData<'doughnut'> = {
-    datasets: [
-      {
-        data: [
-          this.ObjTestCircle2.l1,
-          this.ObjTestCircle2.l2,
-          this.ObjTestCircle2.l3,
-          this.ObjTestCircle2.l4,
-        ],
-        backgroundColor: ['#005FBC', '#EF0303', '#EB760B', '#239411'],
-      },
-    ],
-  };
 
   ngOnInit() {
     if (localStorage.getItem('roleUser') == '3') {

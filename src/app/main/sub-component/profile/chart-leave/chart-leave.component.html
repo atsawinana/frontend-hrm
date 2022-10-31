@@ -1,3 +1,36 @@
-<p>
-  chart-leave works!
-</p>
+  <div>
+    <div class="d-flex justify-content-center">
+      <div style="display: block; width: 200px !important;">
+        <canvas baseChart [data]="doughnutChartData" [type]="doughnutChartType"></canvas>
+      </div>
+    </div>
+    <div class="row ">
+      <div class="col text-center">
+        <div class="row text-center">
+          <i class="col-3 my-auto fa-solid fa-circle pt-1" style="color: #005FBC;"></i>
+          <p class="col-9 my-auto fontgraph text-start">ลากิจ</p>
+        </div>
+      </div>
+      <div class="col text-end fontgraph">{{this.ObjTestCircle1.l1}} คน</div>
+    </div>
+    <div class="row ">
+      <!-- #EF0303; -->
+      <div class="col text-center">
+        <div class="row text-center">
+          <i class="col-3 my-auto fa-solid fa-circle pt-1" style="color: #EF0303;"></i>
+          <p class="col-9 mb-auto fontgraph text-start">ลาป่วย</p>
+        </div>
+      </div>
+      <div class="col text-end fontgraph">{{this.ObjTestCircle1.l2}} คน</div>
+    </div>
+    <div class="row ">
+      <!-- #EB760B;" -->
+      <div class="col text-center">
+        <div class="row text-center">
+          <i class="col-3 my-auto fa-solid fa-circle pt-1" style="color: #EB760B;"></i>
+          <p class="col-9 my-auto fontgraph text-start">ลาพักร้อน</p>
+        </div>
+      </div>
+      <div class="col text-end fontgraph">{{this.ObjTestCircle1.l3}} คน</div>
+    </div>
+  </div>

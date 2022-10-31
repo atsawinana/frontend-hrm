@@ -4,13 +4,16 @@ import { ProfileComponent } from './profile.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ProfileRoutes } from './profile.routing';
 import { NgChartsModule } from 'ng2-charts';
+import { ChartOtComponent } from './chart-ot/chart-ot.component';
+import { ChartLeaveComponent } from './chart-leave/chart-leave.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    ProfileRoutes,
-    NgChartsModule
+  imports: [CommonModule, ProfileRoutes, NgChartsModule],
+  declarations: [
+    ProfileComponent,
+    ResetPasswordComponent,
+    ChartOtComponent,
+    ChartLeaveComponent,
   ],
-  declarations: [ProfileComponent,ResetPasswordComponent]
 })
-export class ProfileModule { }
+export class ProfileModule {}
