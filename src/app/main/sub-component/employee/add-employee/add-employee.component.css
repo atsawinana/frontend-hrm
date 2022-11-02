@@ -12,6 +12,10 @@
   margin-top: 1px;
 }
 
+.heightonLast{
+  height: 30px;
+}
+
 .font-header {
   font-family: 'Kanit';
   font-style: normal;

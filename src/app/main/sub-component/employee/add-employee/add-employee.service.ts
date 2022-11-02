@@ -6,9 +6,9 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class AddEmployeeService {
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) { }
 
-  getLeaveDay(perFix: string) {
+  getLeaveDay(perFix: string, Startdate: string) {
     const headers = new HttpHeaders({
       Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
     });
@@ -17,12 +17,37 @@ export class AddEmployeeService {
       headers,
       params: {
         ud_prefix_id: perFix,
+        user_created_at: Startdate
       },
     });
   }
 
+  ShowPosition(deptid: string,) {
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+    });
+
+    return this.httpClient.get(`${environment.apiURL}/employee/showPositionByDeptId`, {
+      headers,
+      params: {
+        dept_id: deptid
+      },
+    });
+  }
+
+  getAllDepartment() {
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer' + localStorage.getItem('tokenLocal'),
+    });
+
+    return this.httpClient.get(`${environment.apiURL}/department/getAllDepartment`, {
+      headers
+    });
+  }
+
+
   Addemp(
-    prefix: string ,
+    prefix: string,
     nameth: string,
     nameen: string,
     nickname: string,
@@ -64,7 +89,7 @@ export class AddEmployeeService {
         ud_phone: phone,
         user_company: company,
         dept_id: deptid,
-        dp_name_en: ["1","3","2"],
+        dp_name_en: ["1", "3", "2"],
         user_contract_type: contract,
         user_username: "12345afasf",
         user_password: password,

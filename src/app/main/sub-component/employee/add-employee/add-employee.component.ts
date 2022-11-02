@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AddEmployeeService } from './add-employee.service';
 import { DatePipe } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-employee',
@@ -15,12 +16,13 @@ export class AddEmployeeComponent implements OnInit {
   constructor(
     private localeService: BsLocaleService,
     private addEmpService: AddEmployeeService,
-    public datepipe: DatePipe
-  ) {}
+    public datepipe: DatePipe,
+    private router: Router
+  ) { }
 
   emp = new FormGroup({
     idcard: new FormControl('', Validators.required),
-    prefix: new FormControl('', Validators.required),
+    prefix: new FormControl(null, Validators.required),
     nameth: new FormControl('', Validators.required),
     nameen: new FormControl('', Validators.required),
     nickname: new FormControl('', Validators.required),
@@ -28,8 +30,8 @@ export class AddEmployeeComponent implements OnInit {
     phonenumber: new FormControl('', Validators.required),
     email: new FormControl('', Validators.required),
     company: new FormControl('', Validators.required),
-    department: new FormControl('', Validators.required),
-    typecontract: new FormControl('', Validators.required),
+    department: new FormControl(null, Validators.required),
+    typecontract: new FormControl(null, Validators.required),
     empid: new FormControl('', Validators.required),
     startdate: new FormControl('', Validators.required),
     usernameid: new FormControl('', Validators.required),
@@ -50,6 +52,8 @@ export class AddEmployeeComponent implements OnInit {
   position: any[] = [];
   countposit: any[] = [];
   summited: boolean = false;
+  deprtmentsData: any
+  positionDept: any
 
   ngOnInit() {
     this.today = new Date();
@@ -57,6 +61,7 @@ export class AddEmployeeComponent implements OnInit {
     this.localeService.use(this.locale);
     console.log(this.position.length);
     this.countposit = [1];
+    this.getDepartment()
   }
 
   addInputDeptPosit() {
@@ -72,12 +77,66 @@ export class AddEmployeeComponent implements OnInit {
   Usernameset() {
     console.log(this.emp.controls.nameen.value?.includes(' '));
     if (this.emp.controls.nameen.value?.includes(' ')) {
-      let a = this.emp.controls.nameen.value.substring(
-        this.emp.controls.nameen.value.indexOf(' '),
-        3
-      );
-      this.emp.controls.usernameid.setValue(a);
+      let usernameSet1 = String(this.emp.controls.nameen.value)
+      let usernameSet2 = String(this.emp.controls.nameen.value)
+      usernameSet1 = usernameSet1.substring(0, usernameSet1.indexOf(' '))
+      // usernameSet2  = usernameSet2.substring(usernameSet2.indexOf(' ')+1,4)
+      console.log("usernameSet1", usernameSet1)
+      console.log("usernameSet2", usernameSet2)
+      console.log("indexOf", usernameSet2.indexOf(" "))
+      usernameSet2 = usernameSet2.substring(usernameSet2.indexOf(" ") + 1, usernameSet2.indexOf(" ") + 4)
+      let fullUsername = usernameSet1 + "." + usernameSet2
+      console.log(fullUsername)
+      this.emp.controls.usernameid.setValue(fullUsername)
     }
+  }
+
+  changeTest() {
+    console.log("123123123")
+  }
+
+  deleteInputDept(index: number) {
+    this.countposit.splice(index, 1);
+  }
+
+  getDepartment() {
+    this.addEmpService.getAllDepartment().subscribe({
+      next: (res: any) => {
+        this.deprtmentsData = res.data.deprtments;
+        console.log(this.deprtmentsData)
+      },
+      error: (err: any) => {
+        if (err.status === 419) {
+          Swal.fire({
+            icon: 'warning',
+            title: 'เซสชั่นหมดอายุ',
+            text: 'กรุณา Login ใหม่ เพื่อใช้งาน',
+          }).then((e) => {
+            this.router.navigate(['']);
+          })
+        }
+      },
+    });
+  }
+
+  getPosition(value: any) {
+    this.addEmpService.ShowPosition(value).subscribe({
+      next: (res: any) => {
+        this.positionDept = res.data.dept_potitions
+        console.log(res.data.dept_potitions)
+      },
+      error: (err: any) => {
+        if (err.status === 419) {
+          Swal.fire({
+            icon: 'warning',
+            title: 'เซสชั่นหมดอายุ',
+            text: 'กรุณา Login ใหม่ เพื่อใช้งาน',
+          }).then((e) => {
+            this.router.navigate(['']);
+          })
+        }
+      },
+    });
   }
 
   randomPassword() {
@@ -153,7 +212,7 @@ export class AddEmployeeComponent implements OnInit {
             next: (res: any) => {
               console.log('success');
             },
-            error: (err: any) => {},
+            error: (err: any) => { },
           });
 
         //   Swal.fire({
@@ -167,7 +226,10 @@ export class AddEmployeeComponent implements OnInit {
     });
   }
 
-  changValueLeave(value: any) {
+  changValueLeave(prefixID: any, startDate: any) {
+
+    let birthstart = this.datepipe.transform(startDate, 'yyyy/MM/dd');
+
     this.emp.controls.leave.setValue('');
     this.emp.controls.leavesick.setValue('');
     this.emp.controls.leaveordination.setValue('');
@@ -175,7 +237,7 @@ export class AddEmployeeComponent implements OnInit {
     this.emp.controls.leaveVacation.setValue('');
     this.emp.controls.leavematernity.setValue('');
     this.APISuccess = true;
-    this.addEmpService.getLeaveDay(value).subscribe({
+    this.addEmpService.getLeaveDay(prefixID, birthstart!).subscribe({
       next: (res: any) => {
         this.Objleave = res.data;
         if (this.Objleave.ud_gender_id == 1) {
@@ -192,9 +254,9 @@ export class AddEmployeeComponent implements OnInit {
         }
         this.APISuccess = false;
       },
-      error: (err: any) => {},
+      error: (err: any) => { },
     });
   }
 
-  modal() {}
+  modal() { }
 }

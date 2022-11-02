@@ -54,7 +54,7 @@
         <div class="row font-content d-flex justify-content-center">
           <div class="col-10">
             <ng-select [ngClass]="{customnull : emp.controls.prefix.errors && summited}" [ngClass]="{customnull : emp.controls.nickname.errors && summited}" [searchable]="false" placeholder="เลือกคำนำหน้าชื่อ" [clearable]="false" class="custom w-75"
-              formControlName="prefix" (change)="changValueLeave($event)">
+              formControlName="prefix" (change)="changValueLeave($event,null)">
               <ng-option value="1">ชาย</ng-option>
               <ng-option value="2">หญิง</ng-option>
             </ng-select>
@@ -111,7 +111,7 @@
         <div class="row font-content d-flex justify-content-center">
           <div class="col-10">
             <input [ngClass]="{isinvalid : emp.controls.nameen.errors && summited}" ng-cloak type="text" placeholder="กรอกชื่อ-นามสกุลภาษาอังกฤษ"
-              class="form-control w-75 maxWidth" id="" formControlName="nameen" (keydown)="Usernameset()">
+              class="form-control w-75 maxWidth" id="" formControlName="nameen" (keypress)="Usernameset()">
           </div>
 
           <div class="row">
@@ -267,10 +267,8 @@
         <div class="row font-content d-flex justify-content-center">
           <div class="col-10">
             <ng-select [ngClass]="{customnull : emp.controls.department.errors && summited}" [searchable]="false" placeholder="เลือกแผนก" [clearable]="false" class="custom w-75"
-              formControlName="department">
-              <ng-option value="1">Executive</ng-option>
-              <ng-option value="2">Developer</ng-option>
-              <ng-option value="3">Designer</ng-option>
+              formControlName="department" (change)="getPosition($event)">
+              <ng-option  *ngFor="let department of deprtmentsData" [value]="department.dept_id">{{department.dept_name_en}}</ng-option>
             </ng-select>
           </div>
 
@@ -289,33 +287,28 @@
     <!-- แผนก* end -->
 
     <!-- ตำแหน่ง -->
-    <div class="row mb-4" >
+    <div class="row" >
       <div
         class="sub-text col-12 col-sm-4 col-md-4 col-lg-4 text-center text-xs d-flex justify-content-end align-items-center" >
         ตำแหน่ง
       </div>
       <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs" >
-        <div class="row font-content d-flex justify-content-center" >
-          <div class="col-10" *ngFor="let row of countposit ; let j = index">
-            <ng-select [(ngModel)]="position[j]" [ngModelOptions]="{standalone: true}" [ngClass]="{customnull : emp.controls.nickname.errors && summited}" [searchable]="true" placeholder="เลือกตำแหน่ง" [clearable]="false" class="custom w-75">
-              <ng-option value="Chief executive officer">Chief executive officer</ng-option>
-              <ng-option value="Chief technology officer">Chief technology officer</ng-option>
-              <ng-option value="UX/UI Designer">UX/UI Designer</ng-option>
-              <ng-option value="Graphic Designer">Graphic Designer</ng-option>
-              <ng-option value="Front-End Developer">Front-End Developer</ng-option>
-              <ng-option value="Back-End Developer">Back-End Developer</ng-option>
+        <div class="row font-content d-flex justify-content-center" *ngFor="let row of countposit ; let j = index"  >
+          <div class="col-10" >
+            <ng-select [(ngModel)]="position[j]" [ngModelOptions]="{standalone: true}" [ngClass]="{customnull : emp.controls.nickname.errors && summited}" [searchable]="true" placeholder="เลือกตำแหน่ง" [clearable]="false" class="custom w-75 mb-4">
+              <ng-option *ngFor="let posit of positionDept" [value]="posit.position">{{posit.position}}</ng-option>
             </ng-select>
           </div>
 
-          <div *ngIf="" class="col-2 py-2">
-            <i class="fa-solid fa-circle-xmark delete-dept iconDept"></i>
+          <div *ngIf="j > 0" class="col-2 py-2">
+            <i class="fa-solid fa-circle-xmark delete-dept iconDept" (click)="deleteInputDept(j)"></i>
           </div>
 
         </div>
       </div>
     </div>
 
-    <div class="row mb-4">
+    <div class="row mb-4" style="margin-top: -15px;">
       <div class="sub-text col-4 d-flex justify-content-left" id="">
       </div>
       <div class="col-8 d-flex justify-content-left">
@@ -396,7 +389,7 @@
 
           <div class="col-10">
             <input [ngClass]="{isinvalid : emp.controls.startdate.errors && summited}" type="text" placeholder="เลือกวันที่เริ่มงาน" class="form-control w-75" bsDatepicker
-              [maxDate]="today" (keypress)="false"
+              [maxDate]="today" (keypress)="false" (bsValueChange)="changValueLeave(this.emp.controls.prefix.value,$event)"
               [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD/MM/YYYY', containerClass: 'theme-dark-blue', showWeekNumbers: false}"
               formControlName="startdate">
           </div>
@@ -425,7 +418,7 @@
         <div class="row font-content d-flex justify-content-center">
 
           <div class="col-10">
-            <input type="text" class="form-control w-75 maxWidth" formControlName="usernameid" (keypress)="false">
+            <input  type="text" class="form-control w-75 maxWidth"  placeholder="ชื่อผู้ใช้ระบบ" formControlName="usernameid" (keypress)="false" >
           </div>
 
         </div>
