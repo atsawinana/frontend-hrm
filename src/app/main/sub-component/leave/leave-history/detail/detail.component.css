@@ -1,0 +1,132 @@
+.list-header {
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 47px;
+    color: #000000;
+    border-radius: 8px;
+}
+
+.btn-backpage {
+    background: linear-gradient(270.74deg, #FF5444 0%, #E69755 100%);
+    border-radius: 8px;
+    border: none;
+    color: #FFFFFF;
+    margin-right: 10px;
+    width: 32px;
+    height: 32px;
+    margin-top: 7px;
+}
+
+.icon {
+    color: #ffffff;
+    font-size: 24px;
+}
+
+.icon-check {
+    color: #005FBC;
+    font-size: 48px;
+}
+
+.icon-nonecheck {
+    color: #8E8E93;
+    font-size: 48px;
+}
+
+.icon-disapproved {
+    color: #E69755;
+    font-size: 48px;
+}
+
+.space-head {
+    margin-top: 20px;
+}
+
+.font-topic {
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 47px;
+    color: #000000;
+    margin-left: 15px;
+}
+
+.line-step1 {
+    border-left: 3px solid #b0b0b0;
+    height: 330px;
+    margin-left: 23px;
+    margin-top: 15px;
+}
+
+.line-step2 {
+    border-left: 3px solid #b0b0b0;
+    height: 130px;
+    margin-left: 23px;
+    margin-top: 15px;
+}
+
+.font-content {
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 47px;
+    color: #000000;
+    margin-top: 5px;
+}
+
+.status-approved {
+    color: #239411;
+}
+
+.status-disapproved {
+    color: #EF0303;
+}
+
+.status-pending-approval {
+    color: #EB760B;
+}
+
+.cancel-button {
+    padding: 12px 16px;
+    width: 203px;
+    height: 48px;
+    background: #FFFFFF;
+    border: 1px solid #005FBC;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.cancel-font {
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    align-items: center;
+    text-align: center;
+    color: #005FBC;
+}
+
+.edit-button {
+    padding: 12px 16px;
+    width: 203px;
+    height: 48px;
+    background: linear-gradient(270.74deg, #FF5444 0%, #E69755 100%);
+    border-radius: 8px;
+    margin-top: 10px;
+    border: none;
+}
+
+.edit-font {
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+}

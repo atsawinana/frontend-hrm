@@ -61,6 +61,14 @@ table {
     color: #ffffff;
     font-size: 24px;
     margin-right: 10px;
+    margin-top: 1px;
+}
+
+.icon-request {
+    color: #ffffff;
+    font-size: 24px;
+    margin-right: 10px;
+    margin-top: 5px;
 }
 
 .icon-info {
@@ -96,4 +104,12 @@ table {
 .line {
     color: #005FBC;
     margin: none;
+}
+
+.text-margin {
+    margin-top: 5px;
+}
+
+.text-margin-btn {
+    margin-top: 1px;
 }

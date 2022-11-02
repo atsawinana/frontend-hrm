@@ -1,8 +1,186 @@
 <app-overbutton></app-overbutton>
 
-<p>
-  detail works! {{id}}
-</p>
+<div class="col">
+    <div class="col list-header d-flex p-2">
+        <button type="button" class="btn btn-primary btn-backpage" routerLink="info">    
+  <i class="fa-solid fa-chevron-left icon d-flex justify-content-center"></i>
+  </button>รายละเอียดคำร้องเข้าทำงาน
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-3"></div>
+    <div class="col space-head">
+        <div class="row">
+            <div class="col-1">
+                <i class="fa-solid fa-circle-check icon-check"></i>
+            </div>
+            <div class="col font-topic">
+                ยื่นคำร้อง
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-3"></div>
+    <div class="col-1">
+        <div class="line-step1"></div>
+    </div>
+    <div class="col font-content">
+        <div class="row">
+            <div class="col-3">
+                <b>ประเภทการลา :</b>
+            </div>
+            <div class="col">
+                ลากิจ
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <b>วันที่ยื่นลา :</b>
+            </div>
+            <div class="col">
+                15/10/2564
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <b>วันที่ต้องการลา :</b>
+            </div>
+            <div class="col">
+                21/11/2564
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <b>ช่วงเวลาในการลา :</b>
+            </div>
+            <div class="col">
+                ลาทั้งวัน
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <b>รวมวันลาทั้งหมด :</b>
+            </div>
+            <div class="col">
+                0 วัน 8 ชั่วโมง
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <b>เหตุผลการลา :</b>
+            </div>
+            <div class="col">
+                ลาเธอได้สักที ลาก่อนให้เธอโชคดี
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-3">
+                <button (click)="Modalinput()" class="cancel-button d-flex justify-content-center w-100" type="reset" href="#Modal-cancel">
+               <div class="cancel-font">ยกเลิก</div>
+             </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-3"></div>
+    <div class="col space-head">
+        <div class="row">
+            <div class="col-1">
+                <i class="fa-solid fa-circle-check icon-nonecheck"></i>
+            </div>
+            <div class="col font-topic">
+                อนุมัติโดยหัวหน้าแผนก :
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-3"></div>
+    <div class="col-1">
+        <div class="line-step2"></div>
+    </div>
+    <div class="col font-content">
+        <div class="row">
+            <div class="col-3">
+                <b>อนุมัติวันที่ : </b>
+            </div>
+            <div class="col">
+                21/10/2564
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <b>สถานะ :</b>
+            </div>
+            <div class="col status-approved">
+                อนุมัติ
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <b>เหตุผล :</b>
+            </div>
+            <div class="col">
+                -
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-3"></div>
+    <div class="col space-head">
+        <div class="row">
+            <div class="col-1">
+                <i class="fa-solid fa-circle-xmark icon-disapproved"></i>
+            </div>
+            <div class="col font-topic">
+                อนุมัติโดยเจ้าหน้าที่ฝ่ายบุคคล :
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-4"></div>
+    <div class="col font-content">
+        <div class="row">
+            <div class="col-3">
+                <b>อนุมัติวันที่ : </b>
+            </div>
+            <div class="col">
+                21/10/2564
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <b>สถานะ :</b>
+            </div>
+            <div class="col status-disapproved">
+                ไม่อนุมัติ
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <b>เหตุผล :</b>
+            </div>
+            <div class="col">
+                -
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<button class="edit-button"><div class="edit-font">แก้ไข</div></button>
+
 <button class="btn btn-primary me-5" routerLink="../../edit-detail/{{id}}">แก้ไขข้อมูลที่ {{id}}</button>
 
 <button class="btn btn-primary me-5" (click)="Modalinput()">ยกเลิกลา</button>
