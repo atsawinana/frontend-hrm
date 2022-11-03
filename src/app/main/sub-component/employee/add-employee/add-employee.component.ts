@@ -29,7 +29,7 @@ export class AddEmployeeComponent implements OnInit {
     birthdate: new FormControl('', Validators.required),
     phonenumber: new FormControl('', Validators.required),
     email: new FormControl('', Validators.required),
-    company: new FormControl('', Validators.required),
+    company: new FormControl('Exvention', Validators.required),
     department: new FormControl(null, Validators.required),
     typecontract: new FormControl(null, Validators.required),
     empid: new FormControl('', Validators.required),
@@ -72,6 +72,15 @@ export class AddEmployeeComponent implements OnInit {
     } else {
       this.countposit?.push(this.countposit.length + 1);
     }
+  }
+
+  numberOnly(event: any): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      return false;
+    }
+    return true;
+
   }
 
   Usernameset() {

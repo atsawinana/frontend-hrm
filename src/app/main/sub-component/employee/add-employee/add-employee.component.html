@@ -25,8 +25,8 @@
       <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
         <div class="row font-content d-flex justify-content-center">
           <div class="col-10">
-            <input [ngClass]="{isinvalid : emp.controls.idcard.errors && summited}" ng-cloak type="text" placeholder="กรอกรหัสบัตรประชาชน"
-              class="form-control w-75 maxWidth" id="intTextBox" formControlName="idcard">
+            <input (keypress)="numberOnly($event)" [ngClass]="{isinvalid : emp.controls.idcard.errors && summited}" ng-cloak type="text" placeholder="กรอกรหัสบัตรประชาชน"
+              class="form-control w-75 maxWidth" id="intTextBox" formControlName="idcard" maxlength="13">
           </div>
 
           <div class="row">
@@ -170,7 +170,6 @@
               [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD/MM/YYYY', containerClass: 'theme-dark-blue', showWeekNumbers: false}"
               formControlName="birthdate">
           </div>
-          {{emp.controls.birthdate.value}}
           <div class="row">
             <div class="col-lg-7 col-md-8 col-sm-7 col-5 d-flex justify-content-left"></div>
             <div class="col-sm-5 col-5">
@@ -221,8 +220,27 @@
       <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
         <div class="row font-content d-flex justify-content-center">
           <div class="col-10">
-            <input [ngClass]="{isinvalid : emp.controls.email.errors && summited}" ng-cloak type="email" placeholder="กรอกอีเมล" class="form-control w-75 maxWidth"
-              id="" formControlName="email">
+            <input [ngClass]="{isinvalid : emp.controls.email.errors && summited}" type="email" placeholder="กรอกอีเมล" class="form-control w-75 maxWidth"
+              id="" formControlName="email" email="true">
+          </div>
+
+          <div class="row">
+            <div class="col-lg-7 col-md-8 col-sm-7 col-5 d-flex justify-content-left"></div>
+            <div class="col-sm-5 col-5">
+              <div *ngIf="emp.controls.company.invalid && summited" class="alerttext">
+                กรุณากรอกอีเมล
+              </div>
+            </div>
+          </div>
+          {{this.emp.controls.email.value}}
+          
+          <div class="row">
+            <div class="col-lg-7 col-md-8 col-sm-7 col-5 d-flex justify-content-left"></div>
+            <div class="col-sm-5 col-5">
+              <div *ngIf="emp.controls.company.errors && emp.controls.company.valid &&  summited " class="alerttext">
+                กรุณากรอกอีเมลให้ถูกต้อง
+              </div>
+            </div>
           </div>
 
         </div>

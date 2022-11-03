@@ -14,7 +14,7 @@ export class EndContractService {
       'Authorization': 'Bearer' + localStorage.getItem('tokenLocal'),
     });
 
-    return this.httpClient.get(`${environment.apiURL}/employee/showEmployeeDepartment`, { headers });
+    return this.httpClient.get(`${environment.apiURL}/employee/showEmployeesResigned`, { headers });
   }
 
 }
