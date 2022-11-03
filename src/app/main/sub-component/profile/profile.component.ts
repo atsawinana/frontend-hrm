@@ -192,14 +192,14 @@ export class ProfileComponent implements OnInit {
 
     const formData = new FormData()
     // this.picname = file.name
-    formData.append("name", file)
-    console.log("file", file)
-    console.log('test form', formData)
+    formData.append("file", file)
+    // console.log("file", file)
+    // console.log('test form', formData)
     // console.log("test param ", this.picfile)
 
-    this.profileService.uploadImgprofile(file).subscribe({
+    this.profileService.uploadImgprofile(formData).subscribe({
       next: (res: any) => {
-        location.reload()
+        // location.reload()
       },
       error: (err: any) => {
 
