@@ -26,6 +26,7 @@ export class ChartOtComponent implements OnInit {
     'Temporary',
   ];
   public doughnutChartData2: ChartData<'doughnut'> = {
+    labels: this.doughnutChartLabels2,
     datasets: [
       {
         data: [

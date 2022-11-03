@@ -46,14 +46,14 @@ export class AddEmployeeComponent implements OnInit {
 
   locale = 'th';
   today!: Date;
-  posit: any;
   Objleave: any;
   APISuccess: boolean = false;
-  position: any[] = [];
-  countposit: any[] = [];
   summited: boolean = false;
   deprtmentsData: any
-  positionDept: any
+
+  position: any[] = [];
+  countposit: any[] = [];
+  positionDept: any;
 
   ngOnInit() {
     this.today = new Date();
