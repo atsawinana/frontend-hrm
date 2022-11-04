@@ -1,24 +1,40 @@
-<div class="container-fluid h-100">
+<div class="container-fluid h-100" *ngIf="APISuccess">
   <div class="row">
-    <div class="row">
+    <div class="row mb-4"><div class="back-button my-auto" routerLink="../../"><i class="fa-solid fa-angle-left back-icon"></i></div>
       <div class="font-header ms-2 col">ข้อมูลพนักงาน</div>
-      <div class="col-3"><button routerLink="edit-detail">แก้ไข</button></div>
-    </div>
-    <div class="row">
-      <div class="cicle ms-5 col-1"></div>
-      <div class="col-2 ms-5">
-        <div class="font-header col-4">ประกัน ภักดี</div>
-        <div class="font-detailPossition">ผู้บริหาร</div>
-        <div class="font-title">ชื่อเล่น: </div>
-        <div class="font-title">เบอร์โทร: </div>
-        <div class="font-title">อีเมล: </div>
+      <div class="col-5">
+        <div class="row d-flex justify-content-end">
+          <div class="buttonEdit me-3" routerLink="edit-detail"><i class="fa-solid fa-pencil me-3"></i> แก้ไข</div>
+          <div class="buttonreset" routerLink="edit-detail"><i class="fa-solid fa-key me-3"></i>เปลี่ยนรหัสผ่าน</div>
+        </div>
+
       </div>
-      <div class="col-2">
-        <br><br>
-        <div class="font-detailPossition">(พนักงานประจำ)</div>
-        <div class="font-detail">กัน</div>
-        <div class="font-detail">08x-xxxxxxx</div>
-        <div class="font-detail">ex_______@gmail.com</div>
+    </div>
+    <div class="row" style="height: auto;">
+      <div class="col image_container ">
+        <img class="img-thumbnail img-profile" src="{{baseURL}}{{ObjDataemp.ud_picture}}">
+      </div>
+      <div class="col-9 text-center ps-5 ">
+        <div class="row mb-2 font-header text-start">
+          <div class="col-4">{{ObjDataemp.ud_fullname_th}} </div>
+          <div class="col"></div>
+        </div>
+        <div class="row mb-2 font-detailPossition text-start">
+          <div class="col-4">{{ObjDataemp.department_map_managers}} </div>
+          <div class="col">{{ObjDataemp.user_contract_name}} </div>
+        </div>
+        <div class="row mb-2 font-title text-start">
+          <div class="col-4">ชื่อเล่น : </div>
+          <div class="col">{{ObjDataemp.ud_fullname_en}}</div>
+        </div>
+        <div class="row mb-2 font-title text-start">
+          <div class="col-4">เบอร์โทรศัพท์ : </div>
+          <div class="col">{{ObjDataemp.ud_phone}}</div>
+        </div>
+        <div class="row mb-2 font-title text-start">
+          <div class="col-4">อีเมล : </div>
+          <div class="col">{{ObjDataemp.ud_email}}</div>
+        </div>
       </div>
     </div>
   </div>

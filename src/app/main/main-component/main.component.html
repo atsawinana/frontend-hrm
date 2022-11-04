@@ -18,8 +18,7 @@
     <div class="col-xxl-5 col-xl-6 col-lg-7 col-md-9 col-sm-10 col-10 p-0">
       <div class="me-2 h-100 d-flex justify-content-end">
         <div class="col-2 d-flex justify-content-end align-items-center">
-          <img class="img-profile ms-auto d-block d-flex justify-content-end " src="assets/img/{{photo}}.jpg"
-            style="width: 65px; height: auto" />
+          <img class="img-profile d-block d-flex justify-content-end " src="{{baseURL}}{{photo}}"/>
         </div>
         <div
           class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-5 col-6 p-0 d-flex justify-content-center align-items-center">
@@ -37,7 +36,7 @@
                 <li class="dropdown-list py-1">
                   <div class="d-inline d-flex justify-content-between px-4 py-1">
                     <img class="pe-1" src="assets/img/header/bell-solid.svg" alt="" style="height: auto; width:25px">
-                    <div class="font-dropdown-menu pe-2">แจ้งเตือน</div>
+                    <div class="font-dropdown-menu pe-2" routerLink="notification">แจ้งเตือน</div>
                   </div>
                 </li>
                 <li class="dropdown-list py-1 ">

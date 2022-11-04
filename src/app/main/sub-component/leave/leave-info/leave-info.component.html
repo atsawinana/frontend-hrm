@@ -1,7 +1,284 @@
+<div>
+    <div class="row d-flex justify-content-between">
+        <div class="col-lg-5 col-xl-4 col-md-7">
+            <div class="list-header">รายละเอียดสิทธิการลา</div>
+        </div>
 
-<p>
-  leave-info works!
-</p>
-<button class="btn btn-primary me-5" routerLink="history">ประวัติ</button>
-<button class="btn btn-primary me-5" routerLink="request">สร้างฟอร์ม</button>
-<button class="btn btn-primary me-5" routerLink="unapproved">ยังไม่อนุมัติ</button>
+        <!--button history-->
+        <div class="col-lg-5 h-100 d-flex justify-content-center">
+
+            <button type="button" class="btn btn-primary w-75 btn-history" routerLink="history">
+              <div class="row">
+                <div class="col-1 space-icon"><i class="fa-solid fa-clock-rotate-left icon"></i></div>
+                <div class="col">ประวัติการลาการลา</div>
+              </div> 
+            </button>
+
+            <!--button addform-->
+
+            <button type="button" class="btn btn-primary w-75 btn-addform " routerLink="request">
+                    <div class="row">
+                      <div class="col-1 space-icon"><i class="fa-solid fa-circle-plus icon"></i></div>
+                      <div class="col">สร้างฟอร์มการลา</div>
+                    </div>
+                </button>
+
+        </div>
+    </div>
+
+
+    <div class="table-responsive">
+        <table class="table-responsive table table-striped mt-3">
+
+            <!--table header-->
+            <thead class="ps-5 list-table">
+                <tr>
+                    <th scope="col">ประเภทการลา</th>
+                    <th scope="col">สิทธิการลา/วัน/ปี</th>
+                    <th scope="col">วัน/ชั่วโมงที่ใช้ไป</th>
+                    <th scope="col">วัน/ชั่วโมงที่เหลือ</th>
+                </tr>
+            </thead>
+            <!---->
+
+            <tbody class="list-content">
+                <!--row 1 colum ประเภทการลา-->
+                <tr>
+                    <td>ลากิจ</td>
+
+                    <!--colum สิทธิการลา/วัน/ปี	-->
+                    <div>
+                        <td class="space-table">
+                            <div class="row">
+                                <div class="col-1">6</div>
+                                <div class="col-1"><i class="fa-solid fa-circle-info icon-info" id="demo" type="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                                    <ul class="dropdown-menu py-0">
+                                        <div class="p-1 ">
+                                            <div class="d-inline d-flex justify-content-between px-3 py-1">
+                                                <div class="row">
+                                                    <div class="col">ข้อเเนะนำ</div>
+                                                    <hr class="line">
+                                                    <div class="col">
+                                                        <p>การลากิจใช้ในกรณีมีธุระจำเป็น หรือติดต่อหน่วยงานราชการเท่านั้น ไม่อนุญาตให้พนักงานลากิจในแต่ละครั้ง ติดต่อกันเกิน 2 วันทำงาน</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ul>
+                                </div>
+                            </div>
+                        </td>
+                    </div>
+
+                    <!--colum วัน/ชั่วโมงที่ใช้ไป-->
+                    <td class="space-table">0:0</td>
+
+                    <!--colum วัน/ชั่วโมงที่เหลือ-->
+                    <td class="space-table">6:0</td>
+
+                </tr>
+                <!---->
+
+                <!--row 2 colum ประเภทการลา-->
+                <tr>
+                    <td scope="row">ลาป่วย</td>
+
+                    <!--colum สิทธิการลา/วัน/ปี	-->
+                    <div>
+                        <td class="space-table">
+                            <div class="row">
+                                <div class="col-1">30</div>
+                                <div class="col-1"><i class="fa-solid fa-circle-info icon-info" id="demo" type="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                                    <ul class="dropdown-menu py-0">
+                                        <div class="p-1 ">
+                                            <div class="d-inline d-flex justify-content-between px-3 py-1">
+                                                <div class="row">
+                                                    <div class="col">ข้อเเนะนำ</div>
+                                                    <hr class="line">
+                                                    <div class="col">
+                                                        <p> หากพนักงานลาป่วยมากกว่า 3 วัน จะต้องมีหนังสือรับรองจากแพทย์แผนปัจจุบันชั้นหนึ่งมาแสดง</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ul>
+                                </div>
+                            </div>
+                        </td>
+                    </div>
+
+                    <!--colum วัน/ชั่วโมงที่ใช้ไป-->
+                    <td class="space-table">0:0</td>
+
+                    <!--colum วัน/ชั่วโมงที่เหลือ-->
+                    <td class="space-table">6:0</td>
+
+                </tr>
+                <!---->
+
+                <!--row 3 colum ประเภทการลา-->
+                <tr>
+                    <td>ลาพักร้อน</td>
+                    <div>
+                        <td class="space-table">
+                            <div class="row">
+                                <div class="col-1">12</div>
+                                <div class="col-1"><i class="fa-solid fa-circle-info icon-info" id="demo" type="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                                    <ul class="dropdown-menu py-0">
+                                        <div class="p-1 ">
+                                            <div class="d-inline d-flex justify-content-between px-3 py-1">
+                                                <div class="row">
+                                                    <div class="col">ข้อเเนะนำ</div>
+                                                    <hr class="line">
+                                                    <div class="col">
+                                                        <p> การลาพักร้อนจะมีสิทธิตามอายุงาน ดังนี้</p>
+                                                        <p>อายุงาน 1 ปี จำนวน 6 วัน</p>
+                                                        <p>อายุงาน 2 ปี จำนวน 8 วัน</p>
+                                                        <p>อายุงาน 3 ปี จำนวน 10 วัน</p>
+                                                        <p>อายุงาน 4 ปีขึ้นไป จำนวน 12 วัน</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ul>
+                                </div>
+                            </div>
+                        </td>
+                    </div>
+                    <td class="space-table">0:0</td>
+                    <td class="space-table">6:0</td>
+                </tr>
+                <!---->
+
+                <!--row 4 colum ประเภทการลา-->
+                <tr>
+                    <td>ลาบวช</td>
+                    <div>
+                        <td class="space-table">
+                            <div class="row">
+                                <div class="col-1">7</div>
+                                <div class="col-1"><i class="fa-solid fa-circle-info icon-info" id="demo" type="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                                    <ul class="dropdown-menu py-0">
+                                        <div class="p-1 ">
+                                            <div class="d-inline d-flex justify-content-between px-3 py-1">
+                                                <div class="row">
+                                                    <div class="col">ข้อเเนะนำ</div>
+                                                    <hr class="line">
+                                                    <div class="col">
+                                                        <p>พนักงานมีสิทธิลาเพื่ออุปสมบทได้ 7 วัน โดยได้รับค่าจ้างตามระยะเวลาที่ลา และสามารถลาได้ 1 ครั้งตลอดอายุการเป็นพนักงาน</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ul>
+                                </div>
+                            </div>
+                        </td>
+                    </div>
+
+                    <td class="space-table">0:0</td>
+                    <td class="space-table">6:0</td>
+                </tr>
+                <!---->
+
+                <!--row 5 colum ประเภทการลา-->
+                <tr>
+                    <td>ลาคลอด</td>
+                    <div>
+                        <td class="space-table">
+                            <div class="row">
+                                <div class="col-1">98</div>
+                                <div class="col-1"><i class="fa-solid fa-circle-info icon-info" id="demo" type="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                                    <ul class="dropdown-menu py-0">
+                                        <div class="p-1 ">
+                                            <div class="d-inline d-flex justify-content-between px-3 py-1">
+                                                <div class="row">
+                                                    <div class="col">ข้อเเนะนำ</div>
+                                                    <hr class="line">
+                                                    <div class="col">
+                                                        <p> สิทธิในการลาคลอดจะครอบคลุมถึง การฝากครรภ์ เเละการตรวจครรภ์ </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ul>
+                                </div>
+                            </div>
+                        </td>
+                    </div>
+
+                    <td class="space-table">0:0</td>
+                    <td class="space-table">6:0</td>
+                </tr>
+                <!---->
+
+                <!--row 6 colum ประเภทการลา-->
+                <tr>
+                    <td>ลาเพื่อทำหมัน</td>
+                    <div>
+                        <td class="space-table">
+                            <div class="row">
+                                <div class="col-1">-</div>
+                                <div class="col-1"><i class="fa-solid fa-circle-info icon-info" id="demo" type="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                                    <ul class="dropdown-menu py-0">
+                                        <div class="p-1 ">
+                                            <div class="d-inline d-flex justify-content-between px-3 py-1">
+                                                <div class="row">
+                                                    <div class="col">ข้อเเนะนำ</div>
+                                                    <hr class="line">
+                                                    <div class="col">
+                                                        <p> หากพนักงานจะลาทำหมันจะต้องมีหนังสือรับรองจากแพทย์แผนปัจจุบันชั้นหนึ่งมาแสดง</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ul>
+                                </div>
+                            </div>
+                        </td>
+                    </div>
+
+                    <td class="space-table">0:0</td>
+                    <td class="space-table">6:0</td>
+                </tr>
+                <!---->
+
+
+                <!--row 7 colum ประเภทการลา-->
+                <tr>
+                    <td>ลาเพื่อรับราชการทหาร</td>
+                    <div>
+                        <td class="space-table">60 </td>
+                    </div>
+
+                    <td class="space-table">0:0</td>
+                    <td class="space-table">6:0</td>
+                </tr>
+                <!---->
+
+                <!--row 8 colum ประเภทการลา-->
+                <tr>
+                    <td>ลาโดยไม่รับเงิน (Without pay)</td>
+                    <div>
+                        <td class="space-table">-</td>
+                    </div>
+
+                    <td class="space-table">0:0</td>
+                    <td class="space-table">6:0</td>
+                </tr>
+                <!---->
+
+                <!--row 9 colum ประเภทการลา-->
+                <tr>
+                    <td>ลาใช้สิทธิทดแทน (ออกงาน)</td>
+                    <div>
+                        <td class="space-table">-</td>
+                    </div>
+
+                    <td class="space-table">0:0</td>
+                    <td class="space-table">6:0</td>
+                </tr>
+                <!---->
+            </tbody>
+        </table>
+    </div>

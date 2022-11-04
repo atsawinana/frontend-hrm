@@ -3,8 +3,56 @@
   text-align: center;
 }
 
+.hide {
+  display: none;
+  width: 0px !important;
+}
+
+.file_upload {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  padding: 5px;
+  background: #FFFFFF;
+  border: 1px solid #005FBC;
+  position: relative;
+  left: -60px;
+  top: 140px;
+  cursor: pointer;
+}
+
+.editPhonenumber {
+  background: #FFFFFF;
+  border: 1px solid #005FBC;
+  border-radius: 10px;
+}
+
+.btn-submit {
+  background: #005FBC;
+  border-radius: 10px;
+  border: 0px;
+  font-family: 'Kanit';
+  font-style: normal;
+  font-size: 14px;
+  color: #FFFFFF;
+
+}
+
+.btn-cancel {
+  background: #FFFFFF;
+  border: 1px solid #005FBC;
+  border-radius: 10px;
+  font-family: 'Kanit';
+  font-style: normal;
+  font-size: 14px;
+  color: #005FBC;
+}
+
 .img-profile {
   border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
 }
 
 .fontStyle {
@@ -13,11 +61,35 @@
   font-size: 16px;
 }
 
+.fontgraph {
+  font-family: 'Kanit';
+  font-size: 16px;
+  color: #000000;
+}
+
+.OtfontApproved {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+
+}
+
+.upload-icon {
+  position: relative;
+  font-size: 28px;
+  color: #005FBC;
+}
+
 .profileBG {
   background: #FFFFFF;
   box-shadow: 0px 4px 30px -16px rgba(138, 159, 171, 0.35);
   border-radius: 20px;
   padding: 32px;
+  border: 1px solid #D1D1D6;
+  margin-bottom: 16px;
+
 }
 
 .cycle {
@@ -126,4 +198,15 @@
   line-height: 24px;
   color: #005FBC;
 
+}
+
+@media screen and (max-width: 1435px) {
+  #leaveDay {
+    padding-left: 0px !important;
+    margin-left: 0px !important;
+  }
+
+  #Dataperson {
+    padding-left: 30px !important;
+  }
 }
