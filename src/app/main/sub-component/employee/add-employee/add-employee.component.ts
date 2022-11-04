@@ -21,27 +21,27 @@ export class AddEmployeeComponent implements OnInit {
   ) { }
 
   emp = new FormGroup({
-    idcard: new FormControl('', Validators.required),
-    prefix: new FormControl(null, Validators.required),
-    nameth: new FormControl('', Validators.required),
-    nameen: new FormControl('', Validators.required),
-    nickname: new FormControl('', Validators.required),
-    birthdate: new FormControl('', Validators.required),
-    phonenumber: new FormControl('', Validators.required),
-    email: new FormControl('', Validators.required),
-    company: new FormControl('Exvention', Validators.required),
-    department: new FormControl(null, Validators.required),
-    typecontract: new FormControl(null, Validators.required),
-    empid: new FormControl('', Validators.required),
-    startdate: new FormControl('', Validators.required),
-    usernameid: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.required),
-    leavesick: new FormControl('', Validators.required),
-    leave: new FormControl('', Validators.required),
-    leaveVacation: new FormControl('', Validators.required),
-    leaveordination: new FormControl(''),
-    leavemilitary: new FormControl(''),
-    leavematernity: new FormControl(''),
+    idcard: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
+    prefix: new FormControl(null, [Validators.required]),
+    nameth: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
+    nameen: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
+    nickname: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
+    birthdate: new FormControl('', [Validators.required,]),
+    phonenumber: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
+    email: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
+    company: new FormControl('Exvention', [Validators.required, this.noWhitespaceValidator]),
+    department: new FormControl(null, [Validators.required]),
+    typecontract: new FormControl(null, [Validators.required, this.noWhitespaceValidator]),
+    empid: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
+    startdate: new FormControl('', [Validators.required]),
+    usernameid: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
+    password: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
+    leavesick: new FormControl('', [Validators.required]),
+    leave: new FormControl('', [Validators.required]),
+    leaveVacation: new FormControl('', [Validators.required]),
+    leaveordination: new FormControl('', [Validators.required]),
+    leavemilitary: new FormControl('', [Validators.required]),
+    leavematernity: new FormControl('', [Validators.required]),
   });
 
   locale = 'th';
@@ -55,6 +55,12 @@ export class AddEmployeeComponent implements OnInit {
   countposit: any[] = [];
   positionDept: any;
 
+  public noWhitespaceValidator(control: FormControl) {
+    const isWhitespace = (control.value || '').trim().length === 0;
+    const isValid = !isWhitespace;
+    return isValid ? null : { 'whitespace': true };
+  }
+
   ngOnInit() {
     this.today = new Date();
     defineLocale('th', thBeLocale);
@@ -63,6 +69,8 @@ export class AddEmployeeComponent implements OnInit {
     this.countposit = [1];
     this.getDepartment()
   }
+
+
 
   addInputDeptPosit() {
     console.log(this.position);
@@ -162,7 +170,7 @@ export class AddEmployeeComponent implements OnInit {
 
   Submit() {
     this.summited = true;
-    console.log('value invalid', this.emp.controls.nickname.invalid);
+    console.log('value invalid', this.emp);
 
     if (this.emp.invalid) {
       return;
@@ -172,7 +180,7 @@ export class AddEmployeeComponent implements OnInit {
       this.emp.controls.birthdate.value,
       'yyyy/MM/dd'
     );
-    let birthstart = this.datepipe.transform(
+    let datestart = this.datepipe.transform(
       this.emp.controls.startdate.value,
       'yyyy/MM/dd'
     );
@@ -205,17 +213,17 @@ export class AddEmployeeComponent implements OnInit {
             this.emp.controls.typecontract.value!,
             this.emp.controls.usernameid.value!,
             this.emp.controls.password.value!,
-            birthstart!,
+            datestart!,
             // วันลา
             this.emp.controls.leave.value!,
             this.emp.controls.leavesick.value!,
             this.emp.controls.leaveVacation.value!,
             this.emp.controls.leaveordination.value!,
             this.emp.controls.leavematernity.value!,
-            this.emp.controls.prefix.value!,
+            null,
             this.emp.controls.leavemilitary.value!,
-            this.emp.controls.prefix.value!,
-            this.emp.controls.prefix.value!
+            null,
+            null
           )
           .subscribe({
             next: (res: any) => {

@@ -25,8 +25,9 @@
       <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
         <div class="row font-content d-flex justify-content-center">
           <div class="col-10">
-            <input (keypress)="numberOnly($event)" [ngClass]="{isinvalid : emp.controls.idcard.errors && summited}" ng-cloak type="text" placeholder="กรอกรหัสบัตรประชาชน"
-              class="form-control w-75 maxWidth" id="intTextBox" formControlName="idcard" maxlength="13">
+            <input (keypress)="numberOnly($event)" [ngClass]="{isinvalid : emp.controls.idcard.errors && summited}"
+              ng-cloak type="text" placeholder="กรอกรหัสบัตรประชาชน" class="form-control w-75 maxWidth" id="intTextBox"
+              formControlName="idcard" maxlength="13">
           </div>
 
           <div class="row">
@@ -53,8 +54,10 @@
       <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
         <div class="row font-content d-flex justify-content-center">
           <div class="col-10">
-            <ng-select [ngClass]="{customnull : emp.controls.prefix.errors && summited}" [ngClass]="{customnull : emp.controls.nickname.errors && summited}" [searchable]="false" placeholder="เลือกคำนำหน้าชื่อ" [clearable]="false" class="custom w-75"
-              formControlName="prefix" (change)="changValueLeave($event,null)">
+            <ng-select [ngClass]="{customnull : emp.controls.prefix.errors && summited}"
+              [ngClass]="{customnull : emp.controls.nickname.errors && summited}" [searchable]="false"
+              placeholder="เลือกคำนำหน้าชื่อ" [clearable]="false" class="custom w-75" formControlName="prefix"
+              (change)="changValueLeave($event,null)">
               <ng-option value="1">ชาย</ng-option>
               <ng-option value="2">หญิง</ng-option>
             </ng-select>
@@ -83,8 +86,8 @@
       <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
         <div class="row font-content d-flex justify-content-center">
           <div class="col-10">
-            <input [ngClass]="{isinvalid : emp.controls.nameth.errors && summited}" ng-cloak type="text" placeholder="กรอกชื่อ-นามสกุลภาษาไทย"
-              class="form-control w-75 maxWidth" id="" formControlName="nameth">
+            <input [ngClass]="{isinvalid : emp.controls.nameth.errors && summited}" ng-cloak type="text"
+              placeholder="กรอกชื่อ-นามสกุลภาษาไทย" class="form-control w-75 maxWidth" id="" formControlName="nameth">
           </div>
 
           <div class="row">
@@ -110,8 +113,9 @@
       <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
         <div class="row font-content d-flex justify-content-center">
           <div class="col-10">
-            <input [ngClass]="{isinvalid : emp.controls.nameen.errors && summited}" ng-cloak type="text" placeholder="กรอกชื่อ-นามสกุลภาษาอังกฤษ"
-              class="form-control w-75 maxWidth" id="" formControlName="nameen" (keypress)="Usernameset()">
+            <input [ngClass]="{isinvalid : emp.controls.nameen.errors && summited}" ng-cloak type="text"
+              placeholder="กรอกชื่อ-นามสกุลภาษาอังกฤษ" class="form-control w-75 maxWidth" id="" formControlName="nameen"
+              (keypress)="Usernameset()">
           </div>
 
           <div class="row">
@@ -137,8 +141,8 @@
       <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
         <div class="row font-content d-flex justify-content-center">
           <div class="col-10">
-            <input [ngClass]="{isinvalid : emp.controls.nickname.errors && summited}" ng-cloak type="text" placeholder="กรอกชื่อเล่น"
-              class="form-control w-75 maxWidth" id="" formControlName="nickname" required>
+            <input [ngClass]="{isinvalid : emp.controls.nickname.errors && summited}" ng-cloak type="text"
+              placeholder="กรอกชื่อเล่น" class="form-control w-75 maxWidth" id="" formControlName="nickname" required>
           </div>
 
           <div class="row">
@@ -165,8 +169,9 @@
         <div class="row font-content d-flex justify-content-center">
 
           <div class="col-10">
-            <input [ngClass]="{isinvalid : emp.controls.birthdate.errors && summited}" type="text" placeholder="เลือกวันเดือนปีเกิด" class="form-control w-75" bsDatepicker
-              [maxDate]="today" (keypress)="false"
+            <input [ngClass]="{isinvalid : emp.controls.birthdate.errors && summited}" type="text"
+              placeholder="เลือกวันเดือนปีเกิด" class="form-control w-75" bsDatepicker [maxDate]="today"
+              (keypress)="false"
               [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD/MM/YYYY', containerClass: 'theme-dark-blue', showWeekNumbers: false}"
               formControlName="birthdate">
           </div>
@@ -193,8 +198,9 @@
       <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
         <div class="row font-content d-flex justify-content-center">
           <div class="col-10">
-            <input [ngClass]="{isinvalid : emp.controls.phonenumber.errors && summited}" ng-cloak type="text" placeholder="กรอกเบอร์โทรศัพท์"
-              class="form-control w-75 maxWidth" id="" formControlName="phonenumber">
+            <input [ngClass]="{isinvalid : emp.controls.phonenumber.errors && summited}" ng-cloak type="text"
+              placeholder="กรอกเบอร์โทรศัพท์" class="form-control w-75 maxWidth" id="" formControlName="phonenumber"
+              maxlength="10">
           </div>
 
           <div class="row">
@@ -220,28 +226,27 @@
       <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
         <div class="row font-content d-flex justify-content-center">
           <div class="col-10">
-            <input [ngClass]="{isinvalid : emp.controls.email.errors && summited}" type="email" placeholder="กรอกอีเมล" class="form-control w-75 maxWidth"
-              id="" formControlName="email" email="true">
+            <input [ngClass]="{isinvalid : emp.controls.email.errors && summited}" type="email" placeholder="กรอกอีเมล"
+              class="form-control w-75 maxWidth" id="" formControlName="email" email="true">
           </div>
 
           <div class="row">
             <div class="col-lg-7 col-md-8 col-sm-7 col-5 d-flex justify-content-left"></div>
             <div class="col-sm-5 col-5">
-              <div *ngIf="emp.controls.company.invalid && summited" class="alerttext">
+              <div *ngIf="emp.controls.email.invalid  && summited" class="alerttext">
                 กรุณากรอกอีเมล
               </div>
             </div>
           </div>
-          {{this.emp.controls.email.value}}
-          
-          <div class="row">
+
+          <!-- <div class="row">
             <div class="col-lg-7 col-md-8 col-sm-7 col-5 d-flex justify-content-left"></div>
             <div class="col-sm-5 col-5">
-              <div *ngIf="emp.controls.company.errors && emp.controls.company.valid &&  summited " class="alerttext">
+              <div *ngIf="emp.controls.email.errors && emp.controls.email.valid &&  summited " class="alerttext">
                 กรุณากรอกอีเมลให้ถูกต้อง
               </div>
             </div>
-          </div>
+          </div> -->
 
         </div>
       </div>
@@ -257,8 +262,8 @@
       <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
         <div class="row font-content d-flex justify-content-center">
           <div class="col-10">
-            <input [ngClass]="{isinvalid : emp.controls.company.errors && summited}" ng-cloak type="text" placeholder="กรอกบริษัท" class="form-control w-75 maxWidth"
-              id="" formControlName="company">
+            <input [ngClass]="{isinvalid : emp.controls.company.errors && summited}" ng-cloak type="text"
+              placeholder="กรอกบริษัท" class="form-control w-75 maxWidth" id="" formControlName="company">
           </div>
 
           <div class="row">
@@ -284,9 +289,11 @@
       <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
         <div class="row font-content d-flex justify-content-center">
           <div class="col-10">
-            <ng-select [ngClass]="{customnull : emp.controls.department.errors && summited}" [searchable]="false" placeholder="เลือกแผนก" [clearable]="false" class="custom w-75"
-              formControlName="department" (change)="getPosition($event)">
-              <ng-option  *ngFor="let department of deprtmentsData" [value]="department.dept_id">{{department.dept_name_en}}</ng-option>
+            <ng-select [ngClass]="{customnull : emp.controls.department.errors && summited}" [searchable]="false"
+              placeholder="เลือกแผนก" [clearable]="false" class="custom w-75" formControlName="department"
+              (change)="getPosition($event)">
+              <ng-option *ngFor="let department of deprtmentsData" [value]="department.dept_id">
+                {{department.dept_name_en}}</ng-option>
             </ng-select>
           </div>
 
@@ -305,15 +312,17 @@
     <!-- แผนก* end -->
 
     <!-- ตำแหน่ง -->
-    <div class="row" >
+    <div class="row">
       <div
-        class="sub-text col-12 col-sm-4 col-md-4 col-lg-4 text-center text-xs d-flex justify-content-end align-items-center" >
+        class="sub-text col-12 col-sm-4 col-md-4 col-lg-4 text-center text-xs d-flex justify-content-end align-items-center">
         ตำแหน่ง
       </div>
-      <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs" >
-        <div class="row font-content d-flex justify-content-center" *ngFor="let row of countposit ; let j = index"  >
-          <div class="col-10" >
-            <ng-select [(ngModel)]="position[j]" [ngModelOptions]="{standalone: true}" [ngClass]="{customnull : emp.controls.nickname.errors && summited}" [searchable]="true" placeholder="เลือกตำแหน่ง" [clearable]="false" class="custom w-75 mb-4">
+      <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
+        <div class="row font-content d-flex justify-content-center" *ngFor="let row of countposit ; let j = index">
+          <div class="col-10">
+            <ng-select [(ngModel)]="position[j]" [ngModelOptions]="{standalone: true}"
+              [ngClass]="{customnull :( position[j] == null) && summited}" [searchable]="true"
+              placeholder="เลือกตำแหน่ง" [clearable]="false" class="custom w-75 mb-4">
               <ng-option *ngFor="let posit of positionDept" [value]="posit.position">{{posit.position}}</ng-option>
             </ng-select>
           </div>
@@ -348,8 +357,8 @@
       <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
         <div class="row font-content d-flex justify-content-center">
           <div class="col-10">
-            <ng-select [ngClass]="{customnull : emp.controls.typecontract.errors && summited}" [searchable]="false" placeholder="เลือกประเภทพนักงาน" [clearable]="false" class="custom w-75"
-              formControlName="typecontract">
+            <ng-select [ngClass]="{customnull : emp.controls.typecontract.errors && summited}" [searchable]="false"
+              placeholder="เลือกประเภทพนักงาน" [clearable]="false" class="custom w-75" formControlName="typecontract">
               <ng-option value="1">ประจำ</ng-option>
               <ng-option value="2">สัญญาจ้าง</ng-option>
             </ng-select>
@@ -378,8 +387,8 @@
       <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
         <div class="row font-content d-flex justify-content-center">
           <div class="col-10">
-            <input [ngClass]="{isinvalid : emp.controls.empid.errors && summited}" ng-cloak type="text" placeholder="กรอกรหัสพนักงาน" class="form-control w-75 maxWidth"
-              id="" formControlName="empid">
+            <input [ngClass]="{isinvalid : emp.controls.empid.errors && summited}" ng-cloak type="text"
+              placeholder="กรอกรหัสพนักงาน" class="form-control w-75 maxWidth" id="" formControlName="empid">
           </div>
 
           <div class="row">
@@ -406,8 +415,9 @@
         <div class="row font-content d-flex justify-content-center">
 
           <div class="col-10">
-            <input [ngClass]="{isinvalid : emp.controls.startdate.errors && summited}" type="text" placeholder="เลือกวันที่เริ่มงาน" class="form-control w-75" bsDatepicker
-              [maxDate]="today" (keypress)="false" (bsValueChange)="changValueLeave(this.emp.controls.prefix.value,$event)"
+            <input [ngClass]="{isinvalid : emp.controls.startdate.errors && summited}" type="text"
+              placeholder="เลือกวันที่เริ่มงาน" class="form-control w-75" bsDatepicker [maxDate]="today"
+              (keypress)="false" (bsValueChange)="changValueLeave(this.emp.controls.prefix.value,$event)"
               [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD/MM/YYYY', containerClass: 'theme-dark-blue', showWeekNumbers: false}"
               formControlName="startdate">
           </div>
@@ -436,7 +446,8 @@
         <div class="row font-content d-flex justify-content-center">
 
           <div class="col-10">
-            <input  type="text" class="form-control w-75 maxWidth"  placeholder="ชื่อผู้ใช้ระบบ" formControlName="usernameid" (keypress)="false" >
+            <input type="text" class="form-control w-75 maxWidth" placeholder="ชื่อผู้ใช้ระบบ"
+              formControlName="usernameid" (keypress)="false">
           </div>
 
         </div>
@@ -453,8 +464,8 @@
       <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
         <div class="row font-content d-flex justify-content-center">
           <div class="col-10">
-            <input [ngClass]="{isinvalid : emp.controls.password.errors && summited}" ng-cloak type="text" placeholder="กรอกรหัสผ่านพนักงาน*"
-              class="form-control w-75 maxWidth" id="" formControlName="password">
+            <input [ngClass]="{isinvalid : emp.controls.password.errors && summited}" ng-cloak type="text"
+              placeholder="กรอกรหัสผ่านพนักงาน*" class="form-control w-75 maxWidth" id="" formControlName="password">
           </div>
 
           <div class="row">
@@ -478,8 +489,9 @@
       <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs">
         <div class="row font-content d-flex justify-content-center">
           <div class="col-10">
-            <div class="d-flex justify-content-left" >
-              <div class="random-button random-text d-flex justify-content-center" (click)="randomPassword()" style="cursor: pointer;">
+            <div class="d-flex justify-content-left">
+              <div class="random-button random-text d-flex justify-content-center" (click)="randomPassword()"
+                style="cursor: pointer;">
                 สุ่มรหัสผ่าน
               </div>
             </div>

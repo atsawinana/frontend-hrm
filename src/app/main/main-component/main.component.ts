@@ -21,8 +21,13 @@ export class MainComponent implements OnInit {
     ) {
         this.setTimeout();
         this.userInactive.subscribe(() => {
-            console.log('user has been inactive (30 mins)');
-            this.coreToken.Logout()
+            Swal.fire({
+                icon: 'warning',
+                title: 'เซสชั่นหมดอายุ',
+                text: 'กรุณา Login ใหม่ เพื่อใช้งาน',
+            }).then((e) => {
+                this.coreToken.Logout()
+            })
         });
     }
     baseURL = environment.apiURL;
