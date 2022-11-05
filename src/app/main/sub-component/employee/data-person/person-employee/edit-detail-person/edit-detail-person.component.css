@@ -15,6 +15,11 @@
   align-items: center;
   display: flex;
 }
+
+.lastItemSelect{
+  margin-bottom: 0px !important;
+}
+
 .font-detail {
   font-family: "Kanit";
   font-style: normal;
