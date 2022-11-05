@@ -16,7 +16,7 @@
   background: #FFFFFF;
   border: 1px solid #005FBC;
   position: relative;
-  left: -60px;
+  left: -70px;
   top: 140px;
   cursor: pointer;
 }
@@ -59,6 +59,10 @@
   font-family: 'Kanit';
   font-style: normal;
   font-size: 16px;
+}
+
+.positionEdit{
+  margin-left: 73px !important;
 }
 
 .fontgraph {

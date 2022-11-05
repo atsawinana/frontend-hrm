@@ -6,6 +6,7 @@ import {
   ChartData,
   ChartEvent,
   ChartType,
+  Legend,
 } from 'chart.js';
 
 @Component({
@@ -14,7 +15,7 @@ import {
   styleUrls: ['./chart-ot.component.css'],
 })
 export class ChartOtComponent implements OnInit {
-  constructor() {}
+  constructor() { }
 
   ObjTestCircle1 = { l1: 4, l2: 12, l3: 7 };
   ObjTestCircle2 = { l1: 13, l2: 2, l3: 3, l4: 5 };
@@ -39,7 +40,16 @@ export class ChartOtComponent implements OnInit {
       },
     ],
   };
+
+  public doughnutChartOption2: ChartConfiguration['options'] = {
+    plugins: {
+      legend: {
+        display: false,
+      },
+    }
+  };
+  
   public doughnutChartType2: ChartType = 'doughnut';
 
-  ngOnInit() {}
+  ngOnInit() { }
 }
