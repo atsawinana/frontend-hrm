@@ -36,6 +36,7 @@ export class AddEmployeeComponent implements OnInit {
     startdate: new FormControl('', [Validators.required]),
     usernameid: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
     password: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
+
     leavesick: new FormControl('', [Validators.required]),
     leave: new FormControl('', [Validators.required]),
     leaveVacation: new FormControl('', [Validators.required]),
@@ -113,10 +114,16 @@ export class AddEmployeeComponent implements OnInit {
   }
 
   deleteInputDept(index: number) {
+
+    let person = { position: String(this.position[index]) };
+    this.positionDept.push(person)
+
+    this.position.splice(index, 1);
     this.countposit.splice(index, 1);
   }
 
   getDepartment() {
+
     this.addEmpService.getAllDepartment().subscribe({
       next: (res: any) => {
         this.deprtmentsData = res.data.deprtments;
@@ -136,7 +143,22 @@ export class AddEmployeeComponent implements OnInit {
     });
   }
 
+  PositionChang() {
+
+    for (let i = 0; i < this.position.length; i++) {
+      for (let j = 0; j < this.positionDept.length; j++) {
+        if (this.position[i] == this.positionDept[j].position) {
+          this.positionDept.splice(j, 1)
+        }
+      }
+    }
+  }
+
   getPosition(value: any) {
+
+    this.position = []
+    this.countposit = [1]
+
     this.addEmpService.ShowPosition(value).subscribe({
       next: (res: any) => {
         this.positionDept = res.data.dept_potitions
@@ -257,18 +279,12 @@ export class AddEmployeeComponent implements OnInit {
     this.addEmpService.getLeaveDay(prefixID, birthstart!).subscribe({
       next: (res: any) => {
         this.Objleave = res.data;
-        if (this.Objleave.ud_gender_id == 1) {
-          this.emp.controls.leave.setValue('6');
-          this.emp.controls.leavesick.setValue('30');
-          this.emp.controls.leaveordination.setValue('7');
-          this.emp.controls.leavemilitary.setValue('60');
-          this.emp.controls.leaveVacation.setValue('6');
-        } else {
-          this.emp.controls.leave.setValue('6');
-          this.emp.controls.leavesick.setValue('30');
-          this.emp.controls.leaveVacation.setValue('6');
-          this.emp.controls.leavematernity.setValue('98');
-        }
+        this.emp.controls.leave.setValue(this.Objleave.user_leave);
+        this.emp.controls.leavesick.setValue(this.Objleave.user_sick);
+        this.emp.controls.leaveordination.setValue(this.Objleave.user_ordination);
+        this.emp.controls.leavemilitary.setValue(this.Objleave.user_military_service);
+        this.emp.controls.leaveVacation.setValue(this.Objleave.user_take_annual);
+        this.emp.controls.leavematernity.setValue(this.Objleave.user_maternity);
         this.APISuccess = false;
       },
       error: (err: any) => { },

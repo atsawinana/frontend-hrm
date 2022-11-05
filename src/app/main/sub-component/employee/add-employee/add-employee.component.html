@@ -57,7 +57,7 @@
             <ng-select [ngClass]="{customnull : emp.controls.prefix.errors && summited}"
               [ngClass]="{customnull : emp.controls.nickname.errors && summited}" [searchable]="false"
               placeholder="เลือกคำนำหน้าชื่อ" [clearable]="false" class="custom w-75" formControlName="prefix"
-              (change)="changValueLeave($event,null)">
+              (change)="changValueLeave($event,this.emp.controls.startdate.value)">
               <ng-option value="1">ชาย</ng-option>
               <ng-option value="2">หญิง</ng-option>
             </ng-select>
@@ -322,7 +322,7 @@
           <div class="col-10">
             <ng-select [(ngModel)]="position[j]" [ngModelOptions]="{standalone: true}"
               [ngClass]="{customnull :( position[j] == null) && summited}" [searchable]="true"
-              placeholder="เลือกตำแหน่ง" [clearable]="false" class="custom w-75 mb-4">
+              placeholder="เลือกตำแหน่ง" [clearable]="false" class="custom w-75 mb-4" (change)="PositionChang()">
               <ng-option *ngFor="let posit of positionDept" [value]="posit.position">{{posit.position}}</ng-option>
             </ng-select>
           </div>
