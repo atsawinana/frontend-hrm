@@ -29,6 +29,7 @@ export class ProfileComponent implements OnInit {
   baseURL = environment.apiURL;
   whenEdit: boolean = false
   phonenumber: any
+  confirmPath: string = ""
 
   // events
   public chartClicked({
@@ -104,7 +105,7 @@ export class ProfileComponent implements OnInit {
     }
     this.profileService.editNumber(this.phonenumber).subscribe({
       next: (res: any) => {
-        this.profileService.confirmPicture().subscribe({
+        this.profileService.confirmPicture(this.confirmPath).subscribe({
           next: (res: any) => {
             location.reload()
           },
@@ -138,9 +139,10 @@ export class ProfileComponent implements OnInit {
     let objPic
     this.profileService.uploadImgprofile(formData).subscribe({
       next: (res: any) => {
-        objPic = res.data
+        objPic = res
+        this.confirmPath = objPic.data
         console.log(objPic)
-        this.ObjdataUser.ud_picture = objPic
+        this.ObjdataUser.ud_picture = objPic.data
         // location.reload()
       },
       error: (err: any) => {
