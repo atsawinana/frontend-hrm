@@ -14,6 +14,31 @@ export class ListEmployeeService {
             'Authorization': 'Bearer' + localStorage.getItem('tokenLocal'),
         });
 
-        return this.httpClient.get(`${ environment.apiURL }/employee/showEmployeeDepartment`, { headers });
+        return this.httpClient.get(`${environment.apiURL}/employee/showEmployeeDepartment`, { headers });
     }
+
+    getAllDepartment() {
+
+        const headers = new HttpHeaders({
+            'Authorization': 'Bearer' + localStorage.getItem('tokenLocal'),
+        });
+
+        return this.httpClient.get(`${environment.apiURL}/department/getAllDepartment`, {
+            headers
+        });
+    }
+
+
+    getEmployeefromDeptID(dept_id: string) {
+
+        const headers = new HttpHeaders({
+          'Authorization': 'Bearer' + localStorage.getItem('tokenLocal'),
+        });
+    
+        return this.httpClient.get(`${environment.apiURL}/employee/showEmployeeDepartment`, {headers,
+          params: {
+            sort_by: dept_id
+          }
+        });
+      }
 }

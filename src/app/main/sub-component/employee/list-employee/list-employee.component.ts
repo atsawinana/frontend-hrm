@@ -18,6 +18,8 @@ export class ListEmployeeComponent implements OnInit {
     listPerPage: number = 10
     searchInput: string = ''
     elemtable: any
+    ObjDepartment: any
+    DeptIDemp: string = ""
 
     public config: PaginationInstance = {
         id: 'custom',
@@ -42,7 +44,32 @@ export class ListEmployeeComponent implements OnInit {
 
             }
         })
+
+        this.empService.getAllDepartment().subscribe({
+            next: (res: any) => {
+                this.ObjDepartment = res.data.deprtments
+                console.log(this.ObjDepartment)
+            },
+            error: (err: any) => {
+            }
+        })
     }
+
+    setValueDepartment(value: string) {
+        this.DeptIDemp += value+','
+        console.log(this.DeptIDemp)
+    }
+
+    loadempFromDepartment() {
+        this.empService.getEmployeefromDeptID(this.DeptIDemp).subscribe({
+            next: (res: any) => {
+                console.log(res.data.employee)
+                console.log(this.Objemptable)
+            },
+            error: (err: any) => {}
+        })
+    }
+
 
     listPerpage() {
         this.config.itemsPerPage = this.listPerPage

@@ -3,7 +3,7 @@
 <div>
   <div class="row d-flex justify-content-between">
     <div class="col-3">
-      <div class="list-header">รายชื่อพนักงาน</div>
+      <div class="list-header" (click)="loadempFromDepartment()">รายชื่อพนักงาน</div>
     </div>
 
     <div class="col-9 d-flex align-items-center justify-content-end">
@@ -30,37 +30,27 @@
               <div class="row filter-text">
                 <div class="col"> หมวดหมู่</div>
 
-                <label class="col">
-                  <div class="box w-75">Designer
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                  </div>
-                </label>
+                <div class="row mt-3">
 
-                <label class="col">
-                  <div class="box">Developer
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                  </div>
-                </label>
+                  <label class="col-6 mb-3" *ngFor="let posit of ObjDepartment">
+                    <div class="box ">{{posit.dept_name_en}}
+                      <input type="checkbox" [value]="posit.dept_id" (change)="setValueDepartment(posit.dept_id)">
+                      <span class="checkmark"></span>
+                    </div>
+                  </label>
 
-                <label class="col">
-                  <div class="box">Marketing
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                  </div>
-                </label>
+                </div>
+
 
               </div>
               <hr>
               <div class="row d-flex justify-content-end">
                 <div class="col-6 col-sm-3 col-md-3 col-lg-3"><button
-                    class="cancel-button d-flex justify-content-center w-100" type=""
-                    (click)="showFilterBox()">
+                    class="cancel-button d-flex justify-content-center w-100" type="" (click)="showFilterBox()">
                     <div class="cancel-text">ยกเลิก</div>
                   </button>
                 </div>
-                <div class="col-6 col-sm-3 col-md-3 col-lg-3"><button
+                <div class="col-6 col-sm-3 col-md-3 col-lg-3"><button 
                     class="submit-button d-flex justify-content-center w-100" type="submit">
                     <div class="submit-text">ตกลง</div>
                   </button>
@@ -102,7 +92,8 @@
     </thead>
 
     <tbody class="list-content">
-      <tr id="" *ngFor="let emp of Objemptable | paginate: config | filter : searchInput" routerLink="data-person/{{emp.id}}">
+      <tr id="" *ngFor="let emp of Objemptable | paginate: config | filter : searchInput"
+        routerLink="data-person/{{emp.id}}">
         <td>{{emp.number}}</td>
         <td class="text-start">{{emp.user_card_number}}</td>
         <td class="text-start">{{emp.ud_fullname_th}}</td>
