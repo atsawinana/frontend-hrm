@@ -122,7 +122,7 @@
         </div>
         <div class="col-12 col-sm-6 col-md-6col-lg-6 font-detail">
           <input formControlName="ud_id_card" textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-            [ngClass]="{isinvalid : emp.controls.ud_id_card.errors && submitted}" placeholder="10xxxxxxxxxx">
+            [ngClass]="{isinvalid : emp.controls.ud_id_card.errors && submitted}" placeholder="10xxxxxxxxxx" maxlength="13" minlength="13">
         </div>
 
         <!-- alert รหัสบัตรประชาชน -->
@@ -143,7 +143,7 @@
         </div>
         <div class="col-12 col-sm-6 col-md-6col-lg-6 font-detail">
           <input formControlName="ud_phone" textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-            [ngClass]="{isinvalid : emp.controls.ud_phone.errors && submitted}" placeholder="08x-xxxxxx">
+            [ngClass]="{isinvalid : emp.controls.ud_phone.errors && submitted}" placeholder="08x-xxxxxx" maxlength="10" minlength="10">
         </div>
 
         <!-- alert เบอร์โทรศัพท์ -->
@@ -164,7 +164,7 @@
         </div>
         <div class="col-12 col-sm-6 col-md-6col-lg-6 font-detail">
           <input formControlName="ud_email" textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-            [ngClass]="{isinvalid : emp.controls.ud_email.errors && submitted}" placeholder="ex_______@gamil.com">
+            [ngClass]="{isinvalid : emp.controls.ud_email.errors && submitted}" placeholder="ex_______@gamil.com" email="true">
         </div>
 
         <!-- alert อีเมล -->
