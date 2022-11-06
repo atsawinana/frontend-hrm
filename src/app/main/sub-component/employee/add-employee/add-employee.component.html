@@ -10,8 +10,11 @@
     <div class="row">
         <div class="col d-flex justify-content-center">
             <div style="position: relative;">
-                <img class="profile-img d-flex justify-content-center" src="assets\img\Atsawin.jpg" alt="not found" />
-                <input class="upload-img" type="file"><i class="fa-solid fa-camera upload-icon"></i>
+                <img class="img-profile mx-auto d-block d-flex justify-content-end img-thumbnail positionEdit"
+                    src="{{ baseURL }}{{pathPic}}" />
+                <label for="getFile1" class="file_upload text-center col-0"><i
+                        class="fa-solid fa-camera upload-icon upload-icon mt-1"></i></label>
+                <input (change)="editPicture($event)" type="file" id="getFile1" class="hide" accept="image/*" />
             </div>
         </div>
     </div>
@@ -30,7 +33,7 @@
                             <input (keypress)="numberOnly($event)"
                                 [ngClass]="{isinvalid : emp.controls.idcard.errors && summited}" ng-cloak type="text"
                                 placeholder="กรอกรหัสบัตรประชาชน" class="form-control w-75 maxWidth" id="intTextBox"
-                                formControlName="idcard" maxlength="13">
+                                formControlName="idcard" maxlength="13" minlength="13">
                         </div>
                     </div>
                 </div>
@@ -208,7 +211,7 @@
                         <div class="col-10">
                             <input [ngClass]="{isinvalid : emp.controls.phonenumber.errors && summited}" ng-cloak
                                 type="text" placeholder="กรอกเบอร์โทรศัพท์" class="form-control w-75 maxWidth" id=""
-                                formControlName="phonenumber" maxlength="10">
+                                formControlName="phonenumber" maxlength="10" (keypress)="numberOnly($event)">
                         </div>
                     </div>
                 </div>
@@ -326,7 +329,8 @@
 
 
                 <div class="col-8 col-sm-8 col-md-8 col-lg-8 input-xs">
-                    <div class="row font-content d-flex justify-content-center" *ngFor="let row of countposit ; let j = index">
+                    <div class="row font-content d-flex justify-content-center"
+                        *ngFor="let row of countposit ; let j = index">
                         <div class="col-10">
                             <div class="row">
                                 <div class="col-9">
@@ -412,7 +416,7 @@
                         <div class="col-10">
                             <input [ngClass]="{isinvalid : emp.controls.empid.errors && summited}" ng-cloak type="text"
                                 placeholder="กรอกรหัสพนักงาน" class="form-control w-75 maxWidth" id=""
-                                formControlName="empid">
+                                formControlName="empid" maxlength="8" minlength="8" (keypress)="numberOnly($event)">
                         </div>
 
 

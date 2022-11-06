@@ -6,6 +6,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AddEmployeeService } from './add-employee.service';
 import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-add-employee',
@@ -55,6 +56,9 @@ export class AddEmployeeComponent implements OnInit {
   position: any[] = [];
   countposit: any[] = [];
   positionDept: any;
+  baseURL = environment.apiURL;
+  pathPic: string = "/files/image/default.jpg"
+  confirmPath: string = ""
 
   public noWhitespaceValidator(control: FormControl) {
     const isWhitespace = (control.value || '').trim().length === 0;
@@ -190,6 +194,7 @@ export class AddEmployeeComponent implements OnInit {
     this.emp.controls.password.setValue(password);
   }
 
+
   Submit() {
     this.summited = true;
     console.log('value invalid', this.emp);
@@ -200,11 +205,11 @@ export class AddEmployeeComponent implements OnInit {
 
     let birthdate = this.datepipe.transform(
       this.emp.controls.birthdate.value,
-      'yyyy/MM/dd'
+      'yyyy-MM-dd'
     );
     let datestart = this.datepipe.transform(
       this.emp.controls.startdate.value,
-      'yyyy/MM/dd'
+      'yyyy-MM-dd'
     );
 
     Swal.fire({
@@ -245,7 +250,8 @@ export class AddEmployeeComponent implements OnInit {
             null,
             this.emp.controls.leavemilitary.value!,
             null,
-            null
+            null,
+            this.confirmPath
           )
           .subscribe({
             next: (res: any) => {
@@ -293,5 +299,28 @@ export class AddEmployeeComponent implements OnInit {
     });
   }
 
-  modal() { }
+  editPicture(event: any) {
+    const file: File = event.target.files[0];
+
+    const formData = new FormData()
+    // this.picname = file.name
+    formData.append("file", file)
+    // console.log("file", file)
+    // console.log('test form', formData)
+    // console.log("test param ", this.picfile)
+    let objPic
+    this.addEmpService.uploadImgprofile(formData).subscribe({
+      next: (res: any) => {
+        objPic = res
+        this.confirmPath = objPic.data
+        this.pathPic = objPic.data
+        console.log(objPic)
+        // location.reload()
+      },
+      error: (err: any) => {
+
+      }
+    })
+  }
+
 }
