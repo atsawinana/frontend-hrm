@@ -7,7 +7,8 @@
           คำนำหน้า :
         </div>
         <div class="col-12 col-sm-6 col-md-6col-lg-6 font-detail ">
-          <ng-select [searchable]="false" placeholder="เลือกตัวเลือก" [clearable]="false" [ngClass]="{customnull : false}"
+          <ng-select [searchable]="false" placeholder="เลือกตัวเลือก" [clearable]="false"
+            [ngClass]="{customnull : emp.controls.ud_prefix_id.errors && submitted}"
             class="custom d-flex justify-content-center" formControlName="ud_prefix_id">
             <ng-option [value]="1">นาย</ng-option>
             <ng-option [value]="2">นาง</ng-option>
@@ -32,12 +33,13 @@
           ชื่อ นามสกุล :
         </div>
         <div class="col-12 col-sm-6 col-md-6col-lg-6 font-detail ">
-          <input formControlName="ud_fullname_th" textarea class="form-control" id="exampleFormControlTextarea1" [ngClass]="{isinvalid : true}"
-            rows="3" placeholder="ประกัน ภักดี">
+          <input formControlName="ud_fullname_th" textarea class="form-control" id="exampleFormControlTextarea1"
+            [ngClass]="{isinvalid : emp.controls.ud_fullname_th.errors && submitted}" rows="3"
+            placeholder="ประกัน ภักดี">
         </div>
 
         <!-- alert ชื่อ นามสกุล-->
-        <div class="row">
+        <div class="row" *ngIf="emp.controls.ud_fullname_th.errors && submitted">
           <div class="col-5"></div>
           <div class="col-7 d-flex justify-content-end">
             <div *ngIf="true" class="alerttext">
@@ -53,15 +55,16 @@
           Name and Last name :
         </div>
         <div class="col-12 col-sm-6 col-md-6col-lg-6 font-detail">
-          <input formControlName="ud_fullname_en" textarea class="form-control" id="exampleFormControlTextarea1" [ngClass]="{isinvalid : true}"
-            rows="3" placeholder="Prakan Pakdee">
+          <input formControlName="ud_fullname_en" textarea class="form-control" id="exampleFormControlTextarea1"
+            [ngClass]="{isinvalid : emp.controls.ud_fullname_en.errors && submitted}" rows="3"
+            placeholder="Prakan Pakdee">
         </div>
 
         <!-- alert Name and Last name -->
-        <div class="row">
+        <div class="row" *ngIf="emp.controls.ud_fullname_en.errors && submitted">
           <div class=" col-3"></div>
           <div class="col-9 d-flex justify-content-end">
-            <div *ngIf="true" class="alerttext">
+            <div class="alerttext">
               กรุณากรอกชื่อ-นามสกุลภาษาอังกฤษ
             </div>
           </div>
@@ -74,15 +77,15 @@
           ชื่อเล่น :
         </div>
         <div class="col-12 col-sm-6 col-md-6col-lg-6 font-detail ">
-          <input formControlName="ud_nickname" textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [ngClass]="{isinvalid : true}"
-            placeholder="กัน">
+          <input formControlName="ud_nickname" textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+            [ngClass]="{isinvalid : emp.controls.ud_nickname.errors && submitted}" placeholder="กัน">
         </div>
 
         <!-- alert ชื่อเล่น -->
-        <div class="row">
+        <div class="row" *ngIf="emp.controls.ud_nickname.errors && submitted">
           <div class="col-5"></div>
           <div class="col-7 d-flex justify-content-end">
-            <div *ngIf="true" class="alerttext">
+            <div class="alerttext">
               กรุณากรอกชื่อเล่น
             </div>
           </div>
@@ -95,16 +98,17 @@
           วันเดือนปีเกิด :
         </div>
         <div class="col-12 col-sm-6 col-md-6col-lg-6 font-detail">
-          <input formControlName="ud_birthday" type="text" placeholder="เลือกวันที่" class="form-control " bsDatepicker [ngClass]="{isinvalid : true}"
+          <input formControlName="ud_birthday" type="text" placeholder="เลือกวันที่" class="form-control " bsDatepicker
+            [ngClass]="{isinvalid : emp.controls.ud_birthday.errors && submitted}"
             [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD/MM/YYYY', containerClass: 'theme-dark-blue',showWeekNumbers: false}"
             [maxDate]="today" (keypress)="false">
         </div>
 
         <!-- alert วันเดือนปีเกิด -->
-        <div class="row">
+        <div class="row" *ngIf="emp.controls.ud_birthday.errors && submitted">
           <div class="col-5"></div>
           <div class="col-7 d-flex justify-content-end">
-            <div *ngIf="true" class="alerttext">
+            <div class="alerttext">
               กรุณาเลือกวันเดือนปีเกิด
             </div>
           </div>
@@ -117,15 +121,15 @@
           รหัสบัตรประชาชน :
         </div>
         <div class="col-12 col-sm-6 col-md-6col-lg-6 font-detail">
-          <input formControlName="ud_id_card" textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [ngClass]="{isinvalid : true}"
-            placeholder="10xxxxxxxxxx">
+          <input formControlName="ud_id_card" textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+            [ngClass]="{isinvalid : emp.controls.ud_id_card.errors && submitted}" placeholder="10xxxxxxxxxx">
         </div>
 
         <!-- alert รหัสบัตรประชาชน -->
-        <div class="row">
+        <div class="row" *ngIf="emp.controls.ud_id_card.errors && submitted">
           <div class="col-5"></div>
           <div class="col-7 d-flex justify-content-end">
-            <div *ngIf="true" class="alerttext">
+            <div class="alerttext">
               กรุณากรอกรหัสบัตรประชาชน
             </div>
           </div>
@@ -138,15 +142,15 @@
           เบอร์โทรศัพท์ :
         </div>
         <div class="col-12 col-sm-6 col-md-6col-lg-6 font-detail">
-          <input formControlName="ud_phone" textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [ngClass]="{isinvalid : true}"
-            placeholder="08x-xxxxxx">
+          <input formControlName="ud_phone" textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+            [ngClass]="{isinvalid : emp.controls.ud_phone.errors && submitted}" placeholder="08x-xxxxxx">
         </div>
 
         <!-- alert เบอร์โทรศัพท์ -->
-        <div class="row">
+        <div class="row" *ngIf="emp.controls.ud_phone.errors && submitted">
           <div class="col-5"></div>
           <div class="col-7 d-flex justify-content-end">
-            <div *ngIf="true" class="alerttext">
+            <div class="alerttext">
               กรุณากรอกเบอร์โทรศัพท์
             </div>
           </div>
@@ -159,15 +163,15 @@
           อีเมล :
         </div>
         <div class="col-12 col-sm-6 col-md-6col-lg-6 font-detail">
-          <input formControlName="ud_email" textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [ngClass]="{isinvalid : true}"
-            placeholder="ex_______@gamil.com">
+          <input formControlName="ud_email" textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+            [ngClass]="{isinvalid : emp.controls.ud_email.errors && submitted}" placeholder="ex_______@gamil.com">
         </div>
 
         <!-- alert อีเมล -->
-        <div class="row">
+        <div class="row" *ngIf="emp.controls.ud_email.errors && submitted">
           <div class="col-5"></div>
           <div class="col-7 d-flex justify-content-end">
-            <div *ngIf="true" class="alerttext">
+            <div class="alerttext">
               กรุณากรอกอีเมล
             </div>
           </div>
@@ -183,15 +187,15 @@
           ชื่อบริษัท :
         </div>
         <div class="col-12 col-sm-6 col-md-6col-lg-6 font-detail">
-          <input formControlName="user_company" textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [ngClass]="{isinvalid : true}"
-            placeholder="Exvention">
+          <input formControlName="user_company" textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+            [ngClass]="{isinvalid : emp.controls.user_company.errors && submitted}" placeholder="Exvention">
         </div>
 
         <!-- alert ชื่อบริษัท -->
-        <div class="row">
+        <div class="row" *ngIf="emp.controls.user_company.errors && submitted">
           <div class="col-5"></div>
           <div class="col-6 d-flex justify-content-end">
-            <div *ngIf="true" class="alerttext">
+            <div class="alerttext">
               กรุณากรอกบริษัท
             </div>
           </div>
@@ -204,17 +208,18 @@
           แผนก :
         </div>
         <div class="col-12 col-sm-6 col-md-6 col-lg-6 font-detail">
-          <ng-select formControlName="dept_name_en" [searchable]="false" placeholder="เลือกตัวเลือก" [clearable]="false" [ngClass]="{customnull : true}"
+          <ng-select formControlName="dept_name_en" [searchable]="false" placeholder="เลือกตัวเลือก" [clearable]="false"
+            [ngClass]="{customnull : emp.controls.dept_name_en.errors && submitted}"
             class="custom d-flex justify-content-center">
             <ng-option>Executive</ng-option>
           </ng-select>
         </div>
 
         <!-- alert แผนก -->
-        <div class="row">
+        <div class="row" *ngIf="emp.controls.dept_name_en.errors&& submitted">
           <div class="col-5"></div>
           <div class="col-6 d-flex justify-content-end">
-            <div *ngIf="true" class="alerttext">
+            <div class="alerttext">
               กรุณาเลือกแผนก
             </div>
           </div>
@@ -228,41 +233,41 @@
           ตำแหน่ง :
         </div>
         <div class="col-7">
-          <div class="row">
+          <div class="row" *ngFor="let posit of PositionCount; let i = index">
             <div class="col-10 font-detail">
-              <ng-select [(ngModel)]="Position[i].positions" *ngFor="let posit of Position; let i = index" 
-                [searchable]="false" placeholder="เลือกตัวเลือก" [clearable]="false"
-                [ngModelOptions]="{standalone: true}" class="custom d-flex justify-content-center"
-                style="margin-bottom: 24px;" [ngClass]="{'lastItemSelect' : i+1 == Position.length}" [ngClass]="{customnull : true}"> 
+              <ng-select [(ngModel)]="Position[i].positions" [searchable]="false" placeholder="เลือกตัวเลือก"
+                [clearable]="false" [ngModelOptions]="{standalone: true}" class="custom d-flex justify-content-center"
+                style="margin-bottom: 24px;" [ngClass]="{'lastItemSelect' : i+1 == Position.length}"
+                [ngClass]="{customnull : (Position[i].positions == null) && submitted}" (click)="Userselected()">
                 <ng-option *ngFor="let posit of positionDept" [value]="posit.position">{{posit.position}} </ng-option>
               </ng-select>
             </div>
 
-            <div *ngIf="true" class="col-2 py-2">
-              <i class="fa-solid fa-circle-xmark delete-dept iconDept"></i>
+            <div *ngIf="Position.length > 1" class="col-2 py-2" (click)="deleteDeptPosit(i)">
+              <i class="fa-solid fa-circle-xmark delete-dept iconDept" style="cursor: pointer;"></i>
             </div>
+            <!-- alert ตำแหน่ง -->
+            <div class="row" style="margin-top: -20px;">
+              <div class="col d-flex justify-content-end">
+                <div *ngIf="(Position[i].positions == null) && submitted" class="alerttext">
+                  กรุณาเลือกตำแหน่ง
+                </div>
+              </div>
+            </div>
+            <!-- alert ตำแหน่ง end -->
           </div>
         </div>
 
 
 
-        <!-- alert ตำแหน่ง -->
-        <div class="row">
-          <div class="col-5"></div>
-          <div class="col-6 d-flex justify-content-end">
-            <div *ngIf="true" class="alerttext">
-              กรุณาเลือกตำแหน่ง
-            </div>
-          </div>
-        </div>
-        <!-- alert ตำแหน่ง end -->
+
 
       </div>
       <div class="row mb-4">
         <div class="col-12 col-sm-4 col-md-4 col-lg-4 font-title">
         </div>
         <div class="col-12 col-sm-6 col-md-6col-lg-6 font-detail">
-          <div class="ms-0 text-button">
+          <div class="ms-0 text-button" (click)="addInputDeptPosit()">
             <i class="fa-solid fa-circle-plus" style="margin-right: 5px;"></i>เพิ่มตำแหน่ง
           </div>
         </div>
@@ -274,17 +279,18 @@
           ประเภทพนักงาน :
         </div>
         <div class="col-12 col-sm-6 col-md-6col-lg-6 font-detail">
-          <ng-select formControlName="user_contract_name" [searchable]="false" placeholder="เลือกตัวเลือก" [ngClass]="{customnull : true}"
-            [clearable]="false" class="custom d-flex justify-content-center">
+          <ng-select formControlName="user_contract_name" [searchable]="false" placeholder="เลือกตัวเลือก"
+            [ngClass]="{customnull : emp.controls.user_contract_name.errors&& submitted}" [clearable]="false"
+            class="custom d-flex justify-content-center">
             <ng-option>พนักงานประจำ</ng-option>
           </ng-select>
         </div>
 
         <!-- alert ประเภทพนักงาน -->
-        <div class="row">
+        <div class="row" *ngIf="emp.controls.user_contract_name.errors&& submitted">
           <div class="col-5"></div>
           <div class="col-6 d-flex justify-content-end">
-            <div *ngIf="true" class="alerttext">
+            <div class="alerttext">
               กรุณาเลือกประเภทพนักงาน
             </div>
           </div>
@@ -305,17 +311,17 @@
           วันที่เริ่มงาน :
         </div>
         <div class="col-12 col-sm-6 col-md-6col-lg-6 font-detail">
-          <input formControlName="user_created_at" type="text" placeholder="เลือกวันที่" class="form-control " [ngClass]="{isinvalid : true}"
-            bsDatepicker
+          <input formControlName="user_created_at" type="text" placeholder="เลือกวันที่" class="form-control "
+            [ngClass]="{isinvalid : emp.controls.user_created_at.errors && submitted}" bsDatepicker
             [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD/MM/YYYY', containerClass: 'theme-dark-blue',showWeekNumbers: false}"
             [minDate]="today" (keypress)="false">
         </div>
 
         <!-- alert วันที่เริ่มงาน -->
-        <div class="row">
+        <div class="row" *ngIf="emp.controls.user_created_at.errors && submitted">
           <div class="col-5"></div>
           <div class="col-6 d-flex justify-content-end">
-            <div *ngIf="true" class="alerttext">
+            <div class="alerttext">
               กรุณาเลือกวันที่เริ่มงาน
             </div>
           </div>
@@ -336,7 +342,7 @@
           วันที่ทำงานวันสุดท้าย :
         </div>
         <div class="col-12 col-sm-6 col-md-6col-lg-6 font-detail">
-          <input formControlName="enddate" type="text" placeholder="เลือกวันที่" class="form-control " bsDatepicker
+          <input  type="text" placeholder="เลือกวันที่" class="form-control " bsDatepicker
             [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD/MM/YYYY', containerClass: 'theme-dark-blue',showWeekNumbers: false}"
             [minDate]="today" (keypress)="false">
         </div>
@@ -376,18 +382,19 @@
           ลากิจ
         </div>
         <div class="col-12 col-sm-4 col-md-4 col-lg-4 ">
-          <input formControlName="user_leave_day" textarea class="form-control form-input" [ngClass]="{isinvalid : true}"
-            id="exampleFormControlTextarea1" rows="3" placeholder="6">
+          <input formControlName="user_leave_day" textarea class="form-control form-input"
+            [ngClass]="{isinvalid : emp.controls.user_leave_day.errors&& submitted}" id="exampleFormControlTextarea1"
+            rows="3" placeholder="6">
         </div>
         <div class="col-12 col-sm-4 col-md-4 col-lg-4">
           วัน
         </div>
 
         <!-- alert ลากิจ -->
-        <div class="row">
+        <div class="row" *ngIf="emp.controls.user_leave_day.errors&& submitted">
           <div class="col-3"></div>
           <div class="col-6 d-flex justify-content-end">
-            <div *ngIf="true" class="alerttext">
+            <div class="alerttext">
               กรุณากรอกจำนวน
             </div>
           </div>
@@ -400,18 +407,19 @@
           ลาป่วย
         </div>
         <div class="col-12 col-sm-4 col-md-4 col-lg-4">
-          <input formControlName="user_sick_day" textarea class="form-control form-input" [ngClass]="{isinvalid : true}"
-            id="exampleFormControlTextarea1" rows="3" placeholder="30">
+          <input formControlName="user_sick_day" textarea class="form-control form-input"
+            [ngClass]="{isinvalid : emp.controls.user_sick_day.errors&& submitted}" id="exampleFormControlTextarea1"
+            rows="3" placeholder="30">
         </div>
         <div class="col-12 col-sm-4 col-md-4 col-lg-4">
           วัน
         </div>
 
         <!-- alert ลาป่วย -->
-        <div class="row">
+        <div class="row" *ngIf="emp.controls.user_sick_day.errors&& submitted">
           <div class="col-3"></div>
           <div class="col-6 d-flex justify-content-end">
-            <div *ngIf="true" class="alerttext">
+            <div class="alerttext">
               กรุณากรอกจำนวน
             </div>
           </div>
@@ -424,18 +432,19 @@
           ลาพักร้อน
         </div>
         <div class="col-12 col-sm-4 col-md-4 col-lg-4">
-          <input formControlName="user_take_annual_day" textarea class="form-control form-input" [ngClass]="{isinvalid : true}"
+          <input formControlName="user_take_annual_day" textarea class="form-control form-input"
+            [ngClass]="{isinvalid : emp.controls.user_take_annual_day.errors&& submitted}"
             id="exampleFormControlTextarea1" rows="3" placeholder="12">
         </div>
         <div class="col-12 col-sm-4 col-md-4 col-lg-4">
           วัน
         </div>
-        
+
         <!-- alert ลาพักร้อน -->
-        <div class="row">
+        <div class="row" *ngIf="emp.controls.user_take_annual_day.errors&& submitted">
           <div class="col-3"></div>
           <div class="col-6 d-flex justify-content-end">
-            <div *ngIf="true" class="alerttext">
+            <div class="alerttext">
               กรุณากรอกจำนวน
             </div>
           </div>
@@ -448,7 +457,8 @@
           ลาบวช
         </div>
         <div class="col-12 col-sm-4 col-md-4 col-lg-4">
-          <input formControlName="user_ordination_day" textarea class="form-control form-input" [ngClass]="{isinvalid : true}"
+          <input formControlName="user_ordination_day" textarea class="form-control form-input"
+            [ngClass]="{isinvalid : emp.controls.user_ordination_day.errors&& submitted}"
             id="exampleFormControlTextarea1" rows="3" placeholder="7">
         </div>
         <div class="col-12 col-sm-4 col-md-4 col-lg-4 ">
@@ -456,10 +466,10 @@
         </div>
 
         <!-- alert ลาบวช -->
-        <div class="row">
+        <div class="row" *ngIf="emp.controls.user_ordination_day.errors&& submitted">
           <div class="col-3"></div>
           <div class="col-6 d-flex justify-content-end">
-            <div *ngIf="true" class="alerttext">
+            <div class="alerttext">
               กรุณากรอกจำนวน
             </div>
           </div>
@@ -472,7 +482,8 @@
           ลาเพื่อรับราชการทหาร
         </div>
         <div class="col-12 col-sm-4 col-md-4 col-lg-4">
-          <input formControlName="user_military_service_day" textarea class="form-control form-input" [ngClass]="{isinvalid : true}"
+          <input formControlName="user_military_service_day" textarea class="form-control form-input"
+            [ngClass]="{isinvalid : emp.controls.user_military_service_day.errors&& submitted}"
             id="exampleFormControlTextarea1" rows="3" placeholder="30">
         </div>
         <div class="col-12 col-sm-4 col-md-4 col-lg-4">
@@ -480,10 +491,10 @@
         </div>
 
         <!-- alert ลาเพื่อรับราชการทหาร -->
-        <div class="row">
+        <div class="row" *ngIf="emp.controls.user_military_service_day.errors&& submitted">
           <div class="col-3"></div>
           <div class="col-6 d-flex justify-content-end">
-            <div *ngIf="true" class="alerttext">
+            <div class="alerttext">
               กรุณากรอกจำนวน
             </div>
           </div>
@@ -496,7 +507,8 @@
           ลาคลอด
         </div>
         <div class="col-12 col-sm-4 col-md-4 col-lg-4">
-          <input formControlName="user_maternity_day" textarea class="form-control form-input" [ngClass]="{isinvalid : true}"
+          <input formControlName="user_maternity_day" textarea class="form-control form-input"
+            [ngClass]="{isinvalid : emp.controls.user_maternity_day.errors&& submitted}"
             id="exampleFormControlTextarea1" rows="3" placeholder="-">
         </div>
         <div class="col-12 col-sm-4 col-md-4 col-lg-4">
@@ -504,10 +516,10 @@
         </div>
 
         <!-- alert ลาคลอด -->
-        <div class="row">
+        <div class="row" *ngIf="emp.controls.user_maternity_day.errors&& submitted">
           <div class="col-3"></div>
           <div class="col-6 d-flex justify-content-end">
-            <div *ngIf="true" class="alerttext">
+            <div class="alerttext">
               กรุณากรอกจำนวน
             </div>
           </div>
@@ -520,7 +532,8 @@
           ลาเพื่อทำหมัน
         </div>
         <div class="col-12 col-sm-4 col-md-4 col-lg-4">
-          <input formControlName="user_sterilization_day" textarea class="form-control form-input" [ngClass]="{isinvalid : true}"
+          <input formControlName="user_sterilization_day" textarea class="form-control form-input"
+            [ngClass]="{isinvalid : emp.controls.user_sterilization_day.errors&& submitted}"
             id="exampleFormControlTextarea1" rows="3" placeholder="-">
         </div>
         <div class="col-12 col-sm-4 col-md-4 col-lg-4">
@@ -528,10 +541,10 @@
         </div>
 
         <!-- alert ลาเพื่อทำหมัน -->
-        <div class="row">
+        <div class="row" *ngIf="emp.controls.user_sterilization_day.errors&& submitted">
           <div class="col-3"></div>
           <div class="col-6 d-flex justify-content-end">
-            <div *ngIf="true" class="alerttext">
+            <div class="alerttext">
               กรุณากรอกจำนวน
             </div>
           </div>
@@ -544,7 +557,8 @@
           ลาโดยไม่รับเงิน
         </div>
         <div class="col-12 col-sm-4 col-md-4 col-lg-4">
-          <input formControlName="user_without_pay_day" textarea class="form-control form-input" [ngClass]="{isinvalid : true}"
+          <input formControlName="user_without_pay_day" textarea class="form-control form-input"
+            [ngClass]="{isinvalid : emp.controls.user_without_pay_day.errors&& submitted}"
             id="exampleFormControlTextarea1" rows="3" placeholder="-">
         </div>
         <div class="col-12 col-sm-4 col-md-4 col-lg-4">
@@ -552,10 +566,10 @@
         </div>
 
         <!-- alert ลาโดยไม่รับเงิน -->
-        <div class="row">
+        <div class="row" *ngIf="emp.controls.user_without_pay_day.errors&& submitted">
           <div class="col-3"></div>
           <div class="col-6 d-flex justify-content-end">
-            <div *ngIf="true" class="alerttext">
+            <div class="alerttext">
               กรุณากรอกจำนวน
             </div>
           </div>
@@ -568,18 +582,19 @@
           ลาใช้สิทธิทดแทน
         </div>
         <div class="col-12 col-sm-4 col-md-4 col-lg-4">
-          <input formControlName="user_resign_day" textarea class="form-control form-input" [ngClass]="{isinvalid : true}"
-            id="exampleFormControlTextarea1" rows="3" placeholder="-">
+          <input formControlName="user_resign_day" textarea class="form-control form-input"
+            [ngClass]="{isinvalid : emp.controls.user_resign_day.errors&& submitted}" id="exampleFormControlTextarea1"
+            rows="3" placeholder="-">
         </div>
         <div class="col-12 col-sm-4 col-md-4 col-lg-4">
           วัน
         </div>
 
         <!-- alert ลาใช้สิทธิทดแทน -->
-        <div class="row">
+        <div class="row" *ngIf="emp.controls.user_resign_day.errors&& submitted">
           <div class="col-3"></div>
           <div class="col-6 d-flex justify-content-end">
-            <div *ngIf="true" class="alerttext">
+            <div class="alerttext">
               กรุณากรอกจำนวน
             </div>
           </div>
@@ -588,166 +603,9 @@
 
       </div>
     </div>
-
-    <!-- <div class="row">
-    <div class="col-4 font-header">ข้อมูลส่วนตัว</div>
-    <div class="col-4 font-header">ข้อมูลในบริษัท</div>
-    <div class="col-4 font-header">สิทธิ</div>
-    <div class="row">
-      <div class="col-2">
-        <br>
-        <div class="font-title">คำนำหน้า: </div>
-        <div class="font-title">ชื่อ-นามสกุล: </div>
-        <div class="font-title">Name and Last name : </div>
-        <div class="font-title">ชื่อเล่น : </div>
-        <div class="font-title">วันเดือนปีเกิด : </div>
-        <div class="font-title">รหัสบัตรประชาชน :</div>
-        <div class="font-title">เบอร์โทรศัพท์ : </div>
-        <div class="font-title">อีเมล :</div>
-      </div>
-      <div class="col-2">
-        <br>
-        <div class="font-detail ">
-          <ng-select [searchable]="false" placeholder="เลือกตัวเลือก" [clearable]="false"
-            class="custom d-flex justify-content-center">
-            <ng-option>นาย</ng-option>
-            <ng-option>นาง</ng-option>
-            <ng-option>นางสาว</ng-option>
-          </ng-select>
-        </div>
-        <div class="font-detail">
-          <input textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="ประกัน ภักดี">
-        </div>
-        <div class="font-detail">
-          <input textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Prakan Pakdee">          
-        </div>
-        <div class="font-detail">
-          <input textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="กัน">
-        </div>
-        <div class="font-detail">
-          <input type="text" placeholder="เลือกวันที่" class="form-control " 
-          bsDatepicker [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD/MM/YYYY', containerClass: 'theme-dark-blue',showWeekNumbers: false}"[minDate]="today"(keypress)="false">
-        </div>
-        <div class="font-detail">1
-          <input textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="10xxxxxxxxxx">
-        </div>
-        <div class="font-detail">
-          <input textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="08x-xxxxxx">
-        </div>
-        <div class="font-detail">
-          <input textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="ex_______@gamil.com">
-        </div>
-      </div>
-      <div class="col-2">
-        <br>
-        <div class="font-title">บริษัท: </div>
-        <div class="font-title">แผนก : </div>
-        <div class="font-title">ตำแหน่ง :</div>
-        <div class="font-title">ประเภทพนักงาน :</div>
-        <div class="font-title">รหัสพนักงาน :</div>
-        <div class="font-title">วันที่เริ่มงาน :</div>
-        <div class="font-title">อายุงาน :</div>
-        <div class="font-title">วันที่ทำงานวันสุดท้าย :</div>
-      </div>
-      <div class="col-2">
-        <br>
-        <div class="font-detail">Exvention</div>
-        <div class="font-detail">
-          <ng-select [searchable]="false" placeholder="เลือกตัวเลือก" [clearable]="false"
-            class="custom d-flex justify-content-center">
-            <ng-option>Executive</ng-option>
-          </ng-select>
-        </div>
-        <div class="font-detail">
-          <ng-select [searchable]="false" placeholder="เลือกตัวเลือก" [clearable]="false"
-            class="custom d-flex justify-content-center">
-            <ng-option>ผู้บริหาร</ng-option>
-          </ng-select>
-          
-        </div>
-        
-        <div class="col-8 d-flex justify-content-left">
-          <a>
-            <div class="text-button mb-4" >
-              <i class="fa-solid fa-circle-plus"></i>เพิ่มตำแหน่ง
-            </div>
-          </a>
-        </div>
-        <div class="font-detail">
-          <ng-select [searchable]="false" placeholder="เลือกตัวเลือก" [clearable]="false"
-            class="custom d-flex justify-content-center">
-            <ng-option>พนักงานประจำ</ng-option>
-          </ng-select>
-        </div>
-        <div class="font-detail">1xxxxxx0</div>
-        <div class="font-detail">
-          <input type="text" placeholder="เลือกวันที่" class="form-control " 
-          bsDatepicker [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD/MM/YYYY', containerClass: 'theme-dark-blue',showWeekNumbers: false}"[minDate]="today"(keypress)="false">
-        </div>
-        <div class="font-detail">5 ปี 5 เดือน 1 วัน</div>
-        <div class="font-detail">
-          <input type="text" placeholder="เลือกวันที่" class="form-control " 
-          bsDatepicker [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD/MM/YYYY', containerClass: 'theme-dark-blue',showWeekNumbers: false}"[minDate]="today"(keypress)="false">
-        </div>
-      </div>
-      <div class="col-2">
-        <br>
-        <div class="font-title">วันลาคงเหลือ :</div>
-        <div class="font-detail">ลากิจ</div>
-        <div class="font-detail">ลาป่วย</div>
-        <div class="font-detail">ลาพักร้อน</div>
-        <div class="font-detail">ลาบวช</div>
-        <div class="font-detail">ลาเพื่อรับราชการทหาร</div>
-        <div class="font-detail">ลาเพื่อทำหมัน</div>
-        <div class="font-detail">ลาโดยไม่รับเงิน</div>
-        <div class="font-detail">ลาใช้สิทธิทดแทน</div>
-      </div>
-      <div class="col" >
-        <br><br><br>
-        <div class="font-detail">
-          <input textarea class="form-control form-input" id="exampleFormControlTextarea1" rows="3" placeholder="6">
-        </div>
-        <div class="font-detail">
-          <input textarea class="form-control form-input" id="exampleFormControlTextarea1" rows="3" placeholder="30">
-        </div>
-        <div class="font-detail">
-          <input textarea class="form-control form-input" id="exampleFormControlTextarea1" rows="3" placeholder="12">
-        </div>
-        <div class="font-detail">
-          <input textarea class="form-control form-input" id="exampleFormControlTextarea1" rows="3" placeholder="7">
-        </div>
-        <div class="font-detail">
-          <input textarea class="form-control form-input" id="exampleFormControlTextarea1" rows="3" placeholder="60">
-        </div>
-        <div class="font-detail">
-          <input textarea class="form-control form-input" id="exampleFormControlTextarea1" rows="3" placeholder="-">
-        </div>
-        <div class="font-detail">
-          <input textarea class="form-control form-input" id="exampleFormControlTextarea1" rows="3" placeholder="-">
-        </div>
-        <div class="font-detail">
-          <input textarea class="form-control form-input" id="exampleFormControlTextarea1" rows="3" placeholder="-">
-        </div>
-      </div>
-      <div class="col">
-        <br><br><br>
-        <div class="font-detail">วัน</div>
-        <div class="font-detail">วัน</div>
-        <div class="font-detail">วัน</div>
-        <div class="font-detail">วัน</div>
-        <div class="font-detail">วัน</div>
-        <div class="font-detail">วัน</div>
-        <div class="font-detail">วัน</div>
-        <div class="font-detail">วัน</div>
-      </div>
-
-    </div>
-
-
-  </div> -->
     <div class="row mb-4 mt-5 d-flex justify-content-center">
       <div class="col-6 col-sm-3 col-md-3 col-lg-3"><button class="cancel-button d-flex justify-content-center w-100"
-          type="" data-bs-toggle="modal" routerLink="../">
+          type=""  routerLink="../">
           <div class="cancel-text">ยกเลิก</div>
         </button>
       </div>

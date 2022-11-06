@@ -6,6 +6,7 @@ import { DataPersonService } from '../../data-person.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AddEmployeeService } from '../../../add-employee/add-employee.service';
 import { Router } from '@angular/router';
+import { EditDetailService } from './edit-detail.service';
 
 @Component({
   selector: 'app-edit-detail-person',
@@ -14,13 +15,15 @@ import { Router } from '@angular/router';
 })
 export class EditDetailPersonComponent implements OnInit {
 
-  constructor(private localeService: BsLocaleService, private dataService: DataPersonService, private addEmpService: AddEmployeeService, private router: Router) { }
+  constructor(private localeService: BsLocaleService, private dataService: DataPersonService, private addEmpService: AddEmployeeService, private router: Router, private editservice: EditDetailService) { }
   locale = 'th';
   today!: Date;
   emp_id: any
   Objdata: any
   Position: any
+  PositionCount: any[] = [];
   positionDept: any
+  submitted: boolean = false
 
   UserselectedPosit: any
 
@@ -29,7 +32,7 @@ export class EditDetailPersonComponent implements OnInit {
     ud_fullname_th: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
     ud_fullname_en: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
     ud_nickname: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
-    ud_birthday: new FormControl('15/10/2545', [Validators.required,]),
+    ud_birthday: new FormControl('', [Validators.required,]),
     ud_id_card: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
     ud_phone: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
     ud_email: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
@@ -38,8 +41,8 @@ export class EditDetailPersonComponent implements OnInit {
     dept_name_en: new FormControl(null, [Validators.required]),
     user_contract_name: new FormControl(null, [Validators.required, this.noWhitespaceValidator]),
     user_card_number: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
-    user_created_at: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
-    enddate: new FormControl(''),
+    user_created_at: new FormControl('', [Validators.required]),
+    // enddate: new FormControl(''),
 
     user_sick_day: new FormControl('', [Validators.required]),
     user_leave_day: new FormControl('', [Validators.required]),
@@ -59,7 +62,74 @@ export class EditDetailPersonComponent implements OnInit {
   }
 
   Submit() {
+    // this.checkNull()
+    // this.submitted = true
+    // console.log(this.emp.invalid)
 
+
+    // console.log(this.emp.controls.user_contract_name.invalid,
+    //   this.emp.controls.user_company.invalid,
+    //   this.emp.controls.ud_prefix_id.invalid,
+    //   this.emp.controls.ud_email.invalid,
+    //   this.emp.controls.ud_fullname_en.invalid,
+    //   this.emp.controls.ud_fullname_th.invalid,
+    //   this.emp.controls.ud_nickname.invalid,
+    //   this.emp.controls.ud_phone.invalid,
+    //   this.emp.controls.ud_id_card.invalid,
+    //   this.emp.controls.ud_birthday.invalid,
+    //   this.emp.controls.user_leave_day.invalid,
+    //   this.emp.controls.user_sick_day.invalid,
+    //   this.emp.controls.user_take_annual_day.invalid,
+    //   this.emp.controls.user_ordination_day.invalid,
+    //   this.emp.controls.user_maternity_day.invalid,
+    //   this.emp.controls.user_sterilization_day.invalid,
+    //   this.emp.controls.user_military_service_day.invalid,
+    //   this.emp.controls.user_without_pay_day.invalid,
+    //   this.emp.controls.user_resign_day.invalid,)
+
+
+    // if (this.emp.invalid)
+    //   return
+
+
+    let user_id = localStorage.getItem('empPerson')
+    let username = "A"
+    let ary = ['a', 'b']
+    let dept = 2
+
+    this.editservice.editData(user_id,
+      username,
+      this.emp.controls.user_contract_name,
+      this.emp.controls.user_company,
+      this.emp.controls.ud_prefix_id,
+      ary,
+      dept,
+      this.emp.controls.ud_email,
+      this.emp.controls.ud_fullname_en,
+      this.emp.controls.ud_fullname_th,
+      this.emp.controls.ud_nickname,
+      this.emp.controls.ud_phone,
+      this.emp.controls.ud_id_card,
+      this.emp.controls.ud_birthday,
+      this.emp.controls.user_leave_day,
+      this.emp.controls.user_sick_day,
+      this.emp.controls.user_take_annual_day,
+      this.emp.controls.user_ordination_day,
+      this.emp.controls.user_maternity_day,
+      this.emp.controls.user_sterilization_day,
+      this.emp.controls.user_military_service_day,
+      this.emp.controls.user_without_pay_day,
+      this.emp.controls.user_resign_day,
+    ).subscribe({
+      next: (res: any) => {
+        // this.router.navigate(['/main/employee/data-person/${user_id}']); 
+        console.log("test edit")
+      },
+      error: (err: any) => {
+        console.log("test edit2")
+       }
+    })
+    console.log("test edit3")
   }
 
   getPosition(value: any) {
@@ -92,6 +162,7 @@ export class EditDetailPersonComponent implements OnInit {
   }
 
 
+
   ngOnInit() {
     this.today = new Date();
     defineLocale('th', thBeLocale);
@@ -109,7 +180,12 @@ export class EditDetailPersonComponent implements OnInit {
         console.log("edit", this.Objdata)
 
         this.Position = this.Objdata.positions
-        this.getPosition(this.Objdata.dept_positions[0].dp_dept_id)
+
+        for (let i = 0; i < this.Position.length; i++) {
+          this.PositionCount.push(i + 1)
+        }
+
+        this.getPosition(this.Objdata.dept_id)
         console.log("position", this.Position)
 
 
@@ -127,7 +203,7 @@ export class EditDetailPersonComponent implements OnInit {
         this.emp.controls.dept_name_en.setValue(this.Objdata.dept_name_en)
         this.emp.controls.user_contract_name.setValue(this.Objdata.user_contract_name)
         this.emp.controls.user_created_at.setValue(this.Objdata.user_created_at)
-        this.emp.controls.enddate.setValue(this.Objdata.enddate)
+        // this.emp.controls.enddate.setValue(this.Objdata.enddate)
 
         this.emp.controls.user_sick_day.setValue(this.Objdata.user_sick_day)
         this.emp.controls.user_leave_day.setValue(this.Objdata.user_leave_day)
@@ -142,9 +218,53 @@ export class EditDetailPersonComponent implements OnInit {
       },
       error: (error: any) => { },
     });
-
-
     console.log(this.emp_id)
+    console.log("this.PositionCount", this.PositionCount)
+
+  }
+
+  addInputDeptPosit() {
+    console.log(this.Position);
+    // console.log(this.DeptPosit[this.countDeptPosit.length - 1]);
+    let ObjNull = {}
+    if (this.Position[this.PositionCount.length - 1] == null || this.Position[this.PositionCount.length - 1] == ObjNull) {
+      alert('กรุณากรอกข้อมูลให้ครบถ้วน');
+    } else {
+      this.PositionCount?.push(this.PositionCount.length + 1);
+      this.Position.push({});
+    }
+  }
+
+  Userselected() {
+    for (let i = 0; i < this.Position.length; i++) {
+      console.log("loop", this.positionDept)
+      console.log("objkey", Object.keys(this.positionDept).length)
+      for (let j = 0; j < Object.keys(this.positionDept).length; j++) {
+        if (this.Position[i].positions == this.positionDept[j].position) {
+          this.positionDept.splice(j, 1);
+        }
+      }
+    }
+  }
+
+  deleteDeptPosit(index: number) {
+    console.log(this.Position)
+    console.log("this.positionDept", this.positionDept)
+    let person = { position: String(this.Position[index].positions) };
+    this.positionDept.push(person)
+    this.Position.splice(index, 1);
+    this.PositionCount.splice(index, 1);
+  }
+
+  checkNull(): boolean {
+
+    for (let j = 0; j < this.Position.length; j++) {
+      if (this.Position[j] == null) {
+        return true
+      }
+    }
+
+    return false
   }
 
 }
