@@ -250,6 +250,7 @@ export class AddEmployeeComponent implements OnInit {
           .subscribe({
             next: (res: any) => {
               console.log('success');
+              this.router.navigate(['/main/employee']);
             },
             error: (err: any) => { },
           });
