@@ -19,6 +19,7 @@ export class AuthService {
 
   Logout() {
     this.router.navigate(['']);
+    localStorage.clear()
     const headers = new HttpHeaders({
       Authorization: 'Bearer' + localStorage.getItem('tokenLocal')
     });
