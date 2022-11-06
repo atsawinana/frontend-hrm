@@ -333,16 +333,16 @@
                         *ngFor="let row of countposit ; let j = index">
                         <div class="col-10">
                             <div class="row">
-                                <div class="col-9">
+                                <div class="col-10">
                                     <ng-select [(ngModel)]="position[j]" [ngModelOptions]="{standalone: true}"
                                         [ngClass]="{customnull :( position[j] == null) && summited}" [searchable]="true"
-                                        placeholder="เลือกตำแหน่ง" [clearable]="false" class="custom space-input mb-4"
+                                        placeholder="เลือกตำแหน่ง" [clearable]="false" class="w-75 custom space-input mb-4"
                                         (change)="PositionChang()">
                                         <ng-option *ngFor="let posit of positionDept" [value]="posit.position">
                                             {{posit.position}}</ng-option>
                                     </ng-select>
                                 </div>
-                                <div class="col-1">
+                                <div class="col-2">
                                     <a *ngIf="j > 0">
                                         <i class="fa-solid fa-circle-xmark delete-dept iconDept py-2"
                                             (click)="deleteInputDept(j)"></i>
