@@ -81,6 +81,7 @@
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
+    margin-left: 50px;
 }
 
 .alerttext {
@@ -196,67 +197,72 @@ input::placeholder {
 }
 
 .space-IDcard {
-    margin-left: 105px;
+    margin-left: 75px;
     margin-top: 5px;
 }
 
 .space-prefix {
-    margin-left: 30px;
+    margin-left: 0px;
     margin-top: 5px;
 }
 
 .space-name {
-    margin-left: 85px;
+    margin-left: 55px;
     margin-top: 5px;
 }
 
 .space-nameen {
-    margin-left: 65px;
-    margin-top: 5px;
-}
-
-.space-nickname {
-    margin-left: 62px;
-    margin-top: 5px;
-}
-
-.space-birthdate {
-    margin-left: 25px;
-    margin-top: 5px;
-}
-
-.space-phone {
-    margin-left: 22px;
-    margin-top: 5px;
-}
-
-.space-email {
-    margin-left: 70px;
-    margin-top: 5px;
-}
-
-.space-department {
-    margin-left: 70px;
-    margin-top: 5px;
-}
-
-.space-typeemployee {
-    margin-left: 10px;
-    margin-top: 5px;
-}
-
-.space-idemployee {
-    margin-left: 23px;
-    margin-top: 5px;
-}
-
-.space-startwork {
     margin-left: 35px;
     margin-top: 5px;
 }
 
+.space-nickname {
+    margin-left: 30px;
+    margin-top: 5px;
+}
+
+.space-birthdate {
+    margin-left: -5px;
+    margin-top: 5px;
+}
+
+.space-phone {
+    margin-left: -8px;
+    margin-top: 5px;
+}
+
+.space-email {
+    margin-left: 40px;
+    margin-top: 5px;
+}
+
+.space-department {
+    margin-left: 40px;
+    margin-top: 5px;
+}
+
+.space-position {
+    margin-left: 25px;
+    margin-top: 5px;
+}
+
+.space-typeemployee {
+    margin-left: -20px;
+    margin-top: 5px;
+}
+
+.space-idemployee {
+    margin-left: -7px;
+    margin-top: 5px;
+}
+
+.space-startwork {
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
 .space-password {
-    /* margin-left: 35px; */
+    margin-left: -30px;
     margin-top: 5px;
 }
 
