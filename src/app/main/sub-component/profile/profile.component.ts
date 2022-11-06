@@ -29,77 +29,6 @@ export class ProfileComponent implements OnInit {
   baseURL = environment.apiURL;
   whenEdit: boolean = false
   phonenumber: any
-  //  กราฟผู้ชาย
-  public ChartLabels: string[] = [''];
-  public ChartData: ChartData<'bar'> = {
-    labels: this.ChartLabels,
-    datasets: [
-      {
-        label: 'ลากิจ',
-        data: [6],
-        backgroundColor: '#FD9229',
-        barPercentage: 0.5,
-      },
-      {
-        label: 'ลาป่วย',
-        data: [30],
-        backgroundColor: '#63C8CE',
-        barPercentage: 0.5,
-      },
-      {
-        label: 'ลาพักร้อน',
-        data: [12],
-        backgroundColor: '#C83039',
-        barPercentage: 0.5,
-      },
-      {
-        label: 'ลาบวช',
-        data: [7],
-        backgroundColor: '#13466A',
-        barPercentage: 0.5,
-      },
-      {
-        label: 'ลาเพื่อรับราชการทหาร',
-        data: [60],
-        backgroundColor: '#8CC34D',
-        barPercentage: 0.5,
-      },
-    ],
-  };
-  public ChartType: ChartType = 'bar';
-
-  //  กราฟผู้หญิง
-  public ChartLabels2: string[] = [''];
-  public ChartData2: ChartData<'bar'> = {
-    labels: this.ChartLabels2,
-    datasets: [
-      {
-        label: 'ลากิจ',
-        data: [6],
-        backgroundColor: '#FD9229',
-        barPercentage: 0.5,
-      },
-      {
-        label: 'ลาป่วย',
-        data: [30],
-        backgroundColor: '#63C8CE',
-        barPercentage: 0.5,
-      },
-      {
-        label: 'ลาพักร้อน',
-        data: [12],
-        backgroundColor: '#C83039',
-        barPercentage: 0.5,
-      },
-      {
-        label: 'ลาคลอด',
-        data: [90],
-        backgroundColor: '#13466A',
-        barPercentage: 0.5,
-      },
-    ],
-  };
-  public ChartType2: ChartType = 'bar';
 
   // events
   public chartClicked({
@@ -154,7 +83,11 @@ export class ProfileComponent implements OnInit {
 
   }
 
-  editPhoneNumber() {
+  editcalcel(){
+    location.reload()
+  }
+
+  editProfile() {
     console.log("phone:", this.phonenumber)
     if (this.phonenumber.trim() == "" || this.phonenumber.trim() == null) {
       Swal.fire({
@@ -192,14 +125,14 @@ export class ProfileComponent implements OnInit {
 
     const formData = new FormData()
     // this.picname = file.name
-    formData.append("name", file)
-    console.log("file", file)
-    console.log('test form', formData)
+    formData.append("file", file)
+    // console.log("file", file)
+    // console.log('test form', formData)
     // console.log("test param ", this.picfile)
 
-    this.profileService.uploadImgprofile(file).subscribe({
+    this.profileService.uploadImgprofile(formData).subscribe({
       next: (res: any) => {
-        location.reload()
+        // location.reload()
       },
       error: (err: any) => {
 

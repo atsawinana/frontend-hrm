@@ -21,6 +21,7 @@ export class ChartLeaveComponent implements OnInit {
 
   public doughnutChartLabels: string[] = ['ลากิจ', 'ลาป่วย', 'ลาพักร้อน'];
   public doughnutChartData: ChartData<'doughnut'> = {
+    labels: this.doughnutChartLabels,
     datasets: [
       {
         data: [
@@ -32,6 +33,15 @@ export class ChartLeaveComponent implements OnInit {
       },
     ],
   };
+
+  public doughnutChartOption: ChartConfiguration['options'] = {
+    plugins: {
+      legend: {
+        display: false,
+      },
+    }
+  };
+
   public doughnutChartType: ChartType = 'doughnut';
 
   ngOnInit() {}
