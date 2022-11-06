@@ -1,0 +1,122 @@
+<div>
+  <div>
+    <div style="display: block">
+      <canvas *ngIf="ObjdataUser.ud_prefix_id == 1" id="mychart" baseChart [data]="ChartData"
+        [type]="ChartType" [options]="ChartOption"></canvas>
+      <canvas *ngIf="
+                  ObjdataUser.ud_prefix_id == 2 || ObjdataUser.ud_prefix_id == 3
+                " id="mychart" baseChart [data]="ChartData2" [type]="ChartType2" [options]="ChartOption"></canvas>
+    </div>
+  </div>
+</div>
+
+<div class="col-12 mb-4">
+  <div class="row d-flex justify-content-center graphfont">
+    กราฟแสดงวันลาคงเหลือ
+  </div>
+</div>
+<div class="row leavefont">
+  <div class="col">
+    <div class="row mb-2">
+      <div class="col ps-5 ms-5" id="leaveDay">
+        <p>
+          <i class="fa-solid fa-circle" style="font-size: 16px; color: #fd9229"></i>
+          ลากิจ
+        </p>
+      </div>
+      <div class="col-2 d-flex justify-content-center">
+        {{ ObjdataUser.user_leave_day }}
+      </div>
+    </div>
+    <div class="row mb-2">
+      <div class="col ps-5 ms-5" id="leaveDay">
+        <p>
+          <i class="fa-solid fa-circle" style="font-size: 16px; color: #63c8ce"></i>
+          ลาป่วย
+        </p>
+      </div>
+      <div class="col-2 d-flex justify-content-center">
+        {{ ObjdataUser.user_sick_day }}
+      </div>
+    </div>
+    <div class="row mb-2">
+      <div class="col ps-5 ms-5" id="leaveDay">
+        <p>
+          <i class="fa-solid fa-circle" style="font-size: 16px; color: #c83039"></i>
+          ลาพักร้อน
+        </p>
+      </div>
+      <div class="col-2 d-flex justify-content-center">
+        {{ ObjdataUser.user_take_annual_day }}
+      </div>
+    </div>
+    <div class="row mb-2" *ngIf="ObjdataUser.ud_gender_id == 1">
+      <div class="col ps-5 ms-5" id="leaveDay">
+        <p>
+          <i class="fa-solid fa-circle" style="font-size: 16px; color: #13466a"></i>
+          ลาบวช
+        </p>
+      </div>
+      <div class="col-2 d-flex justify-content-center">
+        {{ ObjdataUser.user_ordination_day }}
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="row mb-2" *ngIf="ObjdataUser.ud_gender_id == 1">
+      <div class="col ps-5 ms-5" id="leaveDay">
+        <p>
+          <i class="fa-solid fa-circle" style="font-size: 16px; color: #8cc34d"></i>
+          ลาเพื่อรับราชการทหาร
+        </p>
+      </div>
+      <div class="col-2 d-flex justify-content-center">
+        {{ ObjdataUser.user_military_service_day }}
+      </div>
+    </div>
+    <div class="row mb-2" *ngIf="!(ObjdataUser.ud_gender_id == 1)">
+      <div class="col ps-5 ms-5" id="leaveDay">
+        <p>
+          <i class="fa-solid fa-circle" style="font-size: 16px; color: #8cc34d"></i>
+          ลาคลอด
+        </p>
+      </div>
+      <div class="col-2 d-flex justify-content-center">
+        {{ ObjdataUser.user_maternity_day }}
+      </div>
+    </div>
+    <div class="row mb-2">
+      <div class="col ps-5 ms-5" id="leaveDay">
+        <p>
+          <i class="fa-solid fa-circle" style="font-size: 16px; color: white"></i>
+          ลาเพื่อทำหมัน
+        </p>
+      </div>
+      <div class="col-2 d-flex justify-content-center">
+        {{ ObjdataUser.user_sterilization_day }}
+      </div>
+    </div>
+    <div class="row mb-2">
+      <div class="col ps-5 ms-5" id="leaveDay">
+        <p>
+          <i class="fa-solid fa-circle" style="font-size: 16px; color: white"></i>
+          ลาโดยไม่รับเงิน
+        </p>
+      </div>
+      <div class="col-2 d-flex justify-content-center">
+        {{ ObjdataUser.user_without_pay_day }}
+      </div>
+    </div>
+    <div class="row mb-2">
+      <div class="col ps-5 ms-5" id="leaveDay">
+        <p>
+          <i class="fa-solid fa-circle" style="font-size: 16px; color: white"></i>
+          ลาใช้สิทธิทดแทน
+        </p>
+      </div>
+      <div class="col-2 d-flex justify-content-center">
+        {{ ObjdataUser.user_resign_day }}
+      </div>
+    </div>
+  </div>
+</div>

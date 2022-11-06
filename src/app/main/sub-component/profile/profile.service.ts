@@ -50,4 +50,14 @@ export class ProfileService {
     );
   }
 
+  confirmPicture(path: any) {
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+    });
+
+    return this.httpClient.post(`${environment.apiURL}/employee/acceptEditPicture`, {
+      path: path
+    }, { headers });
+  }
+
 }
