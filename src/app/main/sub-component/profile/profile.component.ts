@@ -74,7 +74,7 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  numberOnly(event:any): boolean {
+  numberOnly(event: any): boolean {
     const charCode = (event.which) ? event.which : event.keyCode;
     if (charCode > 31 && (charCode < 48 || charCode > 57)) {
       return false;
@@ -83,7 +83,7 @@ export class ProfileComponent implements OnInit {
 
   }
 
-  editcalcel(){
+  editcalcel() {
     location.reload()
   }
 
@@ -104,7 +104,13 @@ export class ProfileComponent implements OnInit {
     }
     this.profileService.editNumber(this.phonenumber).subscribe({
       next: (res: any) => {
-        location.reload()
+        this.profileService.confirmPicture().subscribe({
+          next: (res: any) => {
+            location.reload()
+          },
+          error: (err: any) => {
+          }
+        })
       },
       error: (err: any) => {
 
@@ -129,9 +135,12 @@ export class ProfileComponent implements OnInit {
     // console.log("file", file)
     // console.log('test form', formData)
     // console.log("test param ", this.picfile)
-
+    let objPic
     this.profileService.uploadImgprofile(formData).subscribe({
       next: (res: any) => {
+        objPic = res.data
+        console.log(objPic)
+        this.ObjdataUser.ud_picture = objPic
         // location.reload()
       },
       error: (err: any) => {
