@@ -279,6 +279,7 @@ export class AddEmployeeComponent implements OnInit {
     this.addEmpService.getLeaveDay(prefixID, birthstart!).subscribe({
       next: (res: any) => {
         this.Objleave = res.data;
+        console.log(this.Objleave)
         this.emp.controls.leave.setValue(this.Objleave.user_leave);
         this.emp.controls.leavesick.setValue(this.Objleave.user_sick);
         this.emp.controls.leaveordination.setValue(this.Objleave.user_ordination);
