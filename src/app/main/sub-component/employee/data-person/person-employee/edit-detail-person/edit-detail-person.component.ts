@@ -7,6 +7,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AddEmployeeService } from '../../../add-employee/add-employee.service';
 import { Router } from '@angular/router';
 import { EditDetailService } from './edit-detail.service';
+import { DatePipe } from '@angular/common';
+import { start } from '@popperjs/core';
 
 @Component({
   selector: 'app-edit-detail-person',
@@ -15,7 +17,7 @@ import { EditDetailService } from './edit-detail.service';
 })
 export class EditDetailPersonComponent implements OnInit {
 
-  constructor(private localeService: BsLocaleService, private dataService: DataPersonService, private addEmpService: AddEmployeeService, private router: Router, private editservice: EditDetailService) { }
+  constructor(private localeService: BsLocaleService, private dataService: DataPersonService, private addEmpService: AddEmployeeService, private router: Router, private editservice: EditDetailService, public datepipe: DatePipe) { }
   locale = 'th';
   today!: Date;
   emp_id: any
@@ -24,7 +26,7 @@ export class EditDetailPersonComponent implements OnInit {
   PositionCount: any[] = [];
   positionDept: any
   submitted: boolean = false
-
+  dept_id: any
   UserselectedPosit: any
 
   emp = new FormGroup({
@@ -40,9 +42,7 @@ export class EditDetailPersonComponent implements OnInit {
     user_company: new FormControl('Exvention', [Validators.required, this.noWhitespaceValidator]),
     dept_name_en: new FormControl(null, [Validators.required]),
     user_contract_name: new FormControl(null, [Validators.required, this.noWhitespaceValidator]),
-    user_card_number: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
     user_created_at: new FormControl('', [Validators.required]),
-    // enddate: new FormControl(''),
 
     user_sick_day: new FormControl('', [Validators.required]),
     user_leave_day: new FormControl('', [Validators.required]),
@@ -55,6 +55,9 @@ export class EditDetailPersonComponent implements OnInit {
     user_resign_day: new FormControl('', [Validators.required]),
   });
 
+  user_deleted_at = new FormControl(null, [Validators.required])
+
+
   public noWhitespaceValidator(control: FormControl) {
     const isWhitespace = (control.value || '').trim().length === 0;
     const isValid = !isWhitespace;
@@ -62,74 +65,82 @@ export class EditDetailPersonComponent implements OnInit {
   }
 
   Submit() {
-    // this.checkNull()
-    // this.submitted = true
-    // console.log(this.emp.invalid)
+    this.checkNull()
+    this.submitted = true
+    console.log(this.emp)
+    console.log(this.emp.invalid)
 
 
-    // console.log(this.emp.controls.user_contract_name.invalid,
-    //   this.emp.controls.user_company.invalid,
-    //   this.emp.controls.ud_prefix_id.invalid,
-    //   this.emp.controls.ud_email.invalid,
-    //   this.emp.controls.ud_fullname_en.invalid,
-    //   this.emp.controls.ud_fullname_th.invalid,
-    //   this.emp.controls.ud_nickname.invalid,
-    //   this.emp.controls.ud_phone.invalid,
-    //   this.emp.controls.ud_id_card.invalid,
-    //   this.emp.controls.ud_birthday.invalid,
-    //   this.emp.controls.user_leave_day.invalid,
-    //   this.emp.controls.user_sick_day.invalid,
-    //   this.emp.controls.user_take_annual_day.invalid,
-    //   this.emp.controls.user_ordination_day.invalid,
-    //   this.emp.controls.user_maternity_day.invalid,
-    //   this.emp.controls.user_sterilization_day.invalid,
-    //   this.emp.controls.user_military_service_day.invalid,
-    //   this.emp.controls.user_without_pay_day.invalid,
-    //   this.emp.controls.user_resign_day.invalid,)
+    console.log(this.emp.controls.user_contract_name.invalid,
+      this.emp.controls.user_company.invalid,
+      this.emp.controls.ud_prefix_id.invalid,
+      this.emp.controls.ud_email.invalid,
+      this.emp.controls.ud_fullname_en.invalid,
+      this.emp.controls.ud_fullname_th.invalid,
+      this.emp.controls.ud_nickname.invalid,
+      this.emp.controls.ud_phone.invalid,
+      this.emp.controls.ud_id_card.invalid,
+      this.emp.controls.ud_birthday.invalid,
+      this.emp.controls.user_leave_day.invalid,
+      this.emp.controls.user_sick_day.invalid,
+      this.emp.controls.user_take_annual_day.invalid,
+      this.emp.controls.user_ordination_day.invalid,
+      this.emp.controls.user_maternity_day.invalid,
+      this.emp.controls.user_sterilization_day.invalid,
+      this.emp.controls.user_military_service_day.invalid,
+      this.emp.controls.user_without_pay_day.invalid,
+      this.emp.controls.user_resign_day.invalid,)
 
 
-    // if (this.emp.invalid)
-    //   return
+    if (this.emp.invalid)
+      return
 
 
     let user_id = localStorage.getItem('empPerson')
     let username = "A"
-    let ary = ['a', 'b']
-    let dept = 2
+    let aryPosition = []
 
-    this.editservice.editData(user_id,
-      username,
-      this.emp.controls.user_contract_name,
-      this.emp.controls.user_company,
-      this.emp.controls.ud_prefix_id,
-      ary,
-      dept,
-      this.emp.controls.ud_email,
-      this.emp.controls.ud_fullname_en,
-      this.emp.controls.ud_fullname_th,
-      this.emp.controls.ud_nickname,
-      this.emp.controls.ud_phone,
-      this.emp.controls.ud_id_card,
-      this.emp.controls.ud_birthday,
-      this.emp.controls.user_leave_day,
-      this.emp.controls.user_sick_day,
-      this.emp.controls.user_take_annual_day,
-      this.emp.controls.user_ordination_day,
-      this.emp.controls.user_maternity_day,
-      this.emp.controls.user_sterilization_day,
-      this.emp.controls.user_military_service_day,
-      this.emp.controls.user_without_pay_day,
-      this.emp.controls.user_resign_day,
+    for (let i = 0; i < this.Position.length; i++) {
+      aryPosition.push(this.Position[i].positions)
+    }
+
+
+    let startdate = this.datepipe.transform(this.emp.controls.user_created_at.value, 'YYYY-dd-MM');
+    let bthdate = this.datepipe.transform(this.emp.controls.user_created_at.value, 'YYYY-dd-MM')
+    console.log(startdate)
+    this.editservice.editData(
+      user_id,
+      this.emp.controls.user_contract_name.value,
+      this.emp.controls.user_company.value,
+      this.emp.controls.ud_prefix_id.value,
+      aryPosition,
+      this.dept_id,
+      this.emp.controls.ud_email.value,
+      this.emp.controls.ud_fullname_en.value,
+      this.emp.controls.ud_fullname_th.value,
+      this.emp.controls.ud_nickname.value,
+      this.emp.controls.ud_phone.value,
+      this.emp.controls.ud_id_card.value,
+      bthdate,
+      this.emp.controls.user_leave_day.value,
+      this.emp.controls.user_sick_day.value,
+      this.emp.controls.user_take_annual_day.value,
+      this.emp.controls.user_ordination_day.value,
+      this.emp.controls.user_maternity_day.value,
+      this.emp.controls.user_sterilization_day.value,
+      this.emp.controls.user_military_service_day.value,
+      this.emp.controls.user_without_pay_day.value,
+      this.emp.controls.user_resign_day.value,
+      this.user_deleted_at.value,
+      startdate
+
     ).subscribe({
       next: (res: any) => {
-        // this.router.navigate(['/main/employee/data-person/${user_id}']); 
-        console.log("test edit")
+        this.router.navigate([`/main/employee/data-person/${user_id}`]); 
       },
       error: (err: any) => {
-        console.log("test edit2")
-       }
+      }
     })
-    console.log("test edit3")
   }
 
   getPosition(value: any) {
@@ -173,6 +184,7 @@ export class EditDetailPersonComponent implements OnInit {
     this.dataService.getUserProfile(this.emp_id).subscribe({
       next: (res: any) => {
         this.Objdata = res.data
+        this.dept_id = this.Objdata.dept_id
         console.log(this.Objdata)
         if (this.Objdata.ud_picture == null) {
           this.Objdata.ud_picture = "/files/image/default.jpg"

@@ -344,7 +344,7 @@
         <div class="col-12 col-sm-6 col-md-6col-lg-6 font-detail">
           <input  type="text" placeholder="เลือกวันที่" class="form-control " bsDatepicker
             [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD/MM/YYYY', containerClass: 'theme-dark-blue',showWeekNumbers: false}"
-            [minDate]="today" (keypress)="false">
+            [minDate]="today" (keypress)="false" [formControl]="user_deleted_at">
         </div>
         <div class="col-12 col-sm-2 col-md-2 col-lg-2 font-title">
           <div class="col-1">
