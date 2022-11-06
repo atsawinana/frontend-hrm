@@ -6,6 +6,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AddEmployeeService } from './add-employee.service';
 import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-add-employee',
@@ -21,27 +22,28 @@ export class AddEmployeeComponent implements OnInit {
   ) { }
 
   emp = new FormGroup({
-    idcard: new FormControl('', Validators.required),
-    prefix: new FormControl(null, Validators.required),
-    nameth: new FormControl('', Validators.required),
-    nameen: new FormControl('', Validators.required),
-    nickname: new FormControl('', Validators.required),
-    birthdate: new FormControl('', Validators.required),
-    phonenumber: new FormControl('', Validators.required),
-    email: new FormControl('', Validators.required),
-    company: new FormControl('', Validators.required),
-    department: new FormControl(null, Validators.required),
-    typecontract: new FormControl(null, Validators.required),
-    empid: new FormControl('', Validators.required),
-    startdate: new FormControl('', Validators.required),
-    usernameid: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.required),
-    leavesick: new FormControl('', Validators.required),
-    leave: new FormControl('', Validators.required),
-    leaveVacation: new FormControl('', Validators.required),
-    leaveordination: new FormControl(''),
-    leavemilitary: new FormControl(''),
-    leavematernity: new FormControl(''),
+    idcard: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
+    prefix: new FormControl(null, [Validators.required]),
+    nameth: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
+    nameen: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
+    nickname: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
+    birthdate: new FormControl('', [Validators.required,]),
+    phonenumber: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
+    email: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
+    company: new FormControl('Exvention', [Validators.required, this.noWhitespaceValidator]),
+    department: new FormControl(null, [Validators.required]),
+    typecontract: new FormControl(null, [Validators.required, this.noWhitespaceValidator]),
+    empid: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
+    startdate: new FormControl('', [Validators.required]),
+    usernameid: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
+    password: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
+
+    leavesick: new FormControl('', [Validators.required]),
+    leave: new FormControl('', [Validators.required]),
+    leaveVacation: new FormControl('', [Validators.required]),
+    leaveordination: new FormControl('', [Validators.required]),
+    leavemilitary: new FormControl('', [Validators.required]),
+    leavematernity: new FormControl('', [Validators.required]),
   });
 
   locale = 'th';
@@ -54,6 +56,15 @@ export class AddEmployeeComponent implements OnInit {
   position: any[] = [];
   countposit: any[] = [];
   positionDept: any;
+  baseURL = environment.apiURL;
+  pathPic: string = "/files/image/default.jpg"
+  confirmPath: string = ""
+
+  public noWhitespaceValidator(control: FormControl) {
+    const isWhitespace = (control.value || '').trim().length === 0;
+    const isValid = !isWhitespace;
+    return isValid ? null : { 'whitespace': true };
+  }
 
   ngOnInit() {
     this.today = new Date();
@@ -64,6 +75,8 @@ export class AddEmployeeComponent implements OnInit {
     this.getDepartment()
   }
 
+
+
   addInputDeptPosit() {
     console.log(this.position);
     // console.log(this.DeptPosit[this.countDeptPosit.length - 1]);
@@ -72,6 +85,15 @@ export class AddEmployeeComponent implements OnInit {
     } else {
       this.countposit?.push(this.countposit.length + 1);
     }
+  }
+
+  numberOnly(event: any): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      return false;
+    }
+    return true;
+
   }
 
   Usernameset() {
@@ -96,10 +118,16 @@ export class AddEmployeeComponent implements OnInit {
   }
 
   deleteInputDept(index: number) {
+
+    let person = { position: String(this.position[index]) };
+    this.positionDept.push(person)
+
+    this.position.splice(index, 1);
     this.countposit.splice(index, 1);
   }
 
   getDepartment() {
+
     this.addEmpService.getAllDepartment().subscribe({
       next: (res: any) => {
         this.deprtmentsData = res.data.deprtments;
@@ -119,7 +147,22 @@ export class AddEmployeeComponent implements OnInit {
     });
   }
 
+  PositionChang() {
+
+    for (let i = 0; i < this.position.length; i++) {
+      for (let j = 0; j < this.positionDept.length; j++) {
+        if (this.position[i] == this.positionDept[j].position) {
+          this.positionDept.splice(j, 1)
+        }
+      }
+    }
+  }
+
   getPosition(value: any) {
+
+    this.position = []
+    this.countposit = [1]
+
     this.addEmpService.ShowPosition(value).subscribe({
       next: (res: any) => {
         this.positionDept = res.data.dept_potitions
@@ -151,9 +194,10 @@ export class AddEmployeeComponent implements OnInit {
     this.emp.controls.password.setValue(password);
   }
 
+
   Submit() {
     this.summited = true;
-    console.log('value invalid', this.emp.controls.nickname.invalid);
+    console.log('value invalid', this.emp);
 
     if (this.emp.invalid) {
       return;
@@ -161,11 +205,11 @@ export class AddEmployeeComponent implements OnInit {
 
     let birthdate = this.datepipe.transform(
       this.emp.controls.birthdate.value,
-      'yyyy/MM/dd'
+      'yyyy-MM-dd'
     );
-    let birthstart = this.datepipe.transform(
+    let datestart = this.datepipe.transform(
       this.emp.controls.startdate.value,
-      'yyyy/MM/dd'
+      'yyyy-MM-dd'
     );
 
     Swal.fire({
@@ -196,21 +240,23 @@ export class AddEmployeeComponent implements OnInit {
             this.emp.controls.typecontract.value!,
             this.emp.controls.usernameid.value!,
             this.emp.controls.password.value!,
-            birthstart!,
+            datestart!,
             // วันลา
             this.emp.controls.leave.value!,
             this.emp.controls.leavesick.value!,
             this.emp.controls.leaveVacation.value!,
             this.emp.controls.leaveordination.value!,
             this.emp.controls.leavematernity.value!,
-            this.emp.controls.prefix.value!,
+            null,
             this.emp.controls.leavemilitary.value!,
-            this.emp.controls.prefix.value!,
-            this.emp.controls.prefix.value!
+            null,
+            null,
+            this.confirmPath
           )
           .subscribe({
             next: (res: any) => {
               console.log('success');
+              this.router.navigate(['/main/employee']);
             },
             error: (err: any) => { },
           });
@@ -240,23 +286,41 @@ export class AddEmployeeComponent implements OnInit {
     this.addEmpService.getLeaveDay(prefixID, birthstart!).subscribe({
       next: (res: any) => {
         this.Objleave = res.data;
-        if (this.Objleave.ud_gender_id == 1) {
-          this.emp.controls.leave.setValue('6');
-          this.emp.controls.leavesick.setValue('30');
-          this.emp.controls.leaveordination.setValue('7');
-          this.emp.controls.leavemilitary.setValue('60');
-          this.emp.controls.leaveVacation.setValue('6');
-        } else {
-          this.emp.controls.leave.setValue('6');
-          this.emp.controls.leavesick.setValue('30');
-          this.emp.controls.leaveVacation.setValue('6');
-          this.emp.controls.leavematernity.setValue('98');
-        }
+        console.log(this.Objleave)
+        this.emp.controls.leave.setValue(this.Objleave.user_leave);
+        this.emp.controls.leavesick.setValue(this.Objleave.user_sick);
+        this.emp.controls.leaveordination.setValue(this.Objleave.user_ordination);
+        this.emp.controls.leavemilitary.setValue(this.Objleave.user_military_service);
+        this.emp.controls.leaveVacation.setValue(this.Objleave.user_take_annual);
+        this.emp.controls.leavematernity.setValue(this.Objleave.user_maternity);
         this.APISuccess = false;
       },
       error: (err: any) => { },
     });
   }
 
-  modal() { }
+  editPicture(event: any) {
+    const file: File = event.target.files[0];
+
+    const formData = new FormData()
+    // this.picname = file.name
+    formData.append("file", file)
+    // console.log("file", file)
+    // console.log('test form', formData)
+    // console.log("test param ", this.picfile)
+    let objPic
+    this.addEmpService.uploadImgprofile(formData).subscribe({
+      next: (res: any) => {
+        objPic = res
+        this.confirmPath = objPic.data
+        this.pathPic = objPic.data
+        console.log(objPic)
+        // location.reload()
+      },
+      error: (err: any) => {
+
+      }
+    })
+  }
+
 }

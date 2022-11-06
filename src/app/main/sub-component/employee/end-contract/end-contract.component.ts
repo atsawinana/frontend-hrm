@@ -29,6 +29,8 @@ export class EndContractComponent implements OnInit {
   ngOnInit() {
     this.empService.getAllUser().subscribe({
       next: (res: any) => {
+        this.LoadingAPI = true
+
         this.Objemployee = res.data.employee
         this.Objemptable = JSON.parse(JSON.stringify(this.Objemployee))
 
@@ -38,7 +40,6 @@ export class EndContractComponent implements OnInit {
           delete this.Objemptable[i].id
           delete this.Objemptable[i].page
         }
-        this.LoadingAPI = true
       },
       error: (err: any) => {
 

@@ -5,16 +5,17 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class EndContractService {
+export class EditDetailService {
 
   constructor(private httpClient: HttpClient) { }
+
   getAllUser() {
 
     const headers = new HttpHeaders({
       'Authorization': 'Bearer' + localStorage.getItem('tokenLocal'),
     });
 
-    return this.httpClient.get(`${environment.apiURL}/employee/showEmployeesResigned`, { headers });
+    return this.httpClient.get(`${environment.apiURL}/department/getAllUser`, { headers });
   }
 
 }

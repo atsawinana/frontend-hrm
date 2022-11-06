@@ -71,6 +71,7 @@ export class AddEmployeeService {
     military: string | null,
     withoutpay: string | null,
     resign: string | null,
+    ud_picture:string
   ) {
     const headers = new HttpHeaders({
       Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
@@ -89,9 +90,9 @@ export class AddEmployeeService {
         ud_phone: phone,
         user_company: company,
         dept_id: deptid,
-        dp_name_en: ["1", "3", "2"],
+        dp_name_en: dp_name_en,
         user_contract_type: contract,
-        user_username: "12345afasf",
+        user_username: usernamne,
         user_password: password,
         user_created_at: create,
         user_leave: leave,
@@ -103,8 +104,34 @@ export class AddEmployeeService {
         user_military_service: military,
         user_without_pay: null,
         user_resign: null,
+        ud_picture:ud_picture
       },
       { headers }
     );
   }
+
+  uploadImgprofile(
+    file: any
+  ) {
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+    });
+
+    return this.httpClient.post(
+      `${environment.apiURL}/employee/uploadPicture`,
+      file,
+      { headers }
+    );
+  }
+
+  confirmPicture(path: any) {
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+    });
+
+    return this.httpClient.post(`${environment.apiURL}/employee/acceptEditPicture`, {
+      path: path
+    }, { headers });
+  }
+
 }

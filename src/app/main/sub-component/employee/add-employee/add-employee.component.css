@@ -1,180 +1,266 @@
 .back-button {
-  width: 32px;
-  height: 32px;
-  background: linear-gradient(90deg, #E69755 0.1%, #FF5444 100.01%);
-  border-radius: 8px;
-  border: none;
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(90deg, #E69755 0.1%, #FF5444 100.01%);
+    border-radius: 8px;
+    border: none;
 }
+
+.file_upload {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    padding: 5px;
+    background: #FFFFFF;
+    border: 1px solid #005FBC;
+    cursor: pointer;
+    position:relative;
+    left: 240px;
+    top: -80px;
+  }
 
 .back-icon {
-  font-size: 28px;
-  color: white;
-  margin-top: 1px;
+    font-size: 28px;
+    color: white;
+    margin-top: 1px;
 }
 
-.heightonLast{
-  height: 30px;
+.heightonLast {
+    height: 30px;
 }
 
 .font-header {
-  font-family: 'Kanit';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 24px;
-  text-align: center;
-  color: #000000;
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    text-align: center;
+    color: #000000;
 }
 
 .isinvalid {
-  border: 1px solid #EF0303 !important;
+    border: 1px solid #EF0303 !important;
 }
 
 .ng-select.customnull::ng-deep.ng-select-container {
     border-color: #ff0000 !important;
 }
 
-.profile-img {
-  width: 202px;
-  height: 202px;
-  border-radius: 50%;
-  background-color: #E69755;
+.img-profile {
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+}
+
+
+.hide {
+    display: none;
+    width: 0px !important;
 }
 
 .upload-img {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background-color: #FFFFFF;
-  border: 1px solid #005FBC;
-  position: relative;
-  top: -50px;
-  right: -140px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: #FFFFFF;
+    border: 1px solid #005FBC;
+    position: relative;
+    top: -50px;
+    right: -140px;
 }
 
 .upload-icon {
-  position: relative;
-  left: 103px;
-  top: -35px;
-  font-size: 28px;
-  color: #005FBC;
+    position: relative;
+    font-size: 28px;
+    color: #005FBC;
 }
 
 .font-content {
-  font-family: 'Kanit';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
 }
 
 .alerttext {
-  font-family: 'Kanit';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  color: red;
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: red;
 }
 
 .sub-text {
-  font-family: 'Kanit';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
 }
 
 input::placeholder {
-  opacity: .5;
-  color: #212529;
-  font-family: 'Kanit';
-  font-style: bold;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 20px;
+    opacity: .5;
+    color: #212529;
+    font-family: 'Kanit';
+    font-style: bold;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
 }
 
 .ng-select.custom::ng-deep.ng-select-container {
-  min-height: 0px;
-  border-radius: 0.375rem;
-  height: 38px;
-  border-color: #ced4da;
+    min-height: 0px;
+    border-radius: 0.375rem;
+    height: 38px;
+    border-color: #ced4da;
 }
 
 .text-button {
-  font-family: 'Kanit';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  color: #005FBC;
-  cursor: pointer;
-  margin-left: 70px;
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #005FBC;
+    cursor: pointer;
+    margin-left: 70px;
 }
 
 .delete-dept {
-  font-size: 20px;
-  color: red;
-  display: block;
+    font-size: 20px;
+    color: red;
+    display: block;
 }
 
 .random-button {
-  height: 40px;
-  width: 131px;
-  background: #005FBC;
-  border-radius: 10px;
-  border: none;
+    height: 40px;
+    width: 131px;
+    background: #005FBC;
+    border-radius: 10px;
+    border: none;
 }
 
 .random-text {
-  font-family: 'Kanit';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  color: #FFFFFF;
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
 }
 
 .maxWidth {
-  width: 70px;
+    width: 70px;
 }
 
 .cancel-button {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  padding: 12px 16px;
-  background: #FFFFFF;
-  border: 1px solid #005FBC;
-  border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 12px 16px;
+    background: #FFFFFF;
+    border: 1px solid #005FBC;
+    border-radius: 8px;
 }
 
 .cancel-text {
-  font-family: 'Kanit';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  color: #005FBC;
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #005FBC;
 }
 
 .submit-button {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  padding: 12px 16px;
-  background: linear-gradient(270.74deg, #2E3579 0.35%, #005FBC 99.1%, #005FBC 99.1%);
-  border-radius: 8px;
-  border: 1px solid #005FBC;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 12px 16px;
+    background: linear-gradient(270.74deg, #2E3579 0.35%, #005FBC 99.1%, #005FBC 99.1%);
+    border-radius: 8px;
+    border: 1px solid #005FBC;
 }
 
 .submit-text {
-  font-family: 'Kanit';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  color: #FFFFFF;
-
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #FFFFFF;
 }
+
+.space-IDcard {
+    margin-left: 105px;
+    margin-top: 5px;
+}
+
+.space-prefix {
+    margin-left: 30px;
+    margin-top: 5px;
+}
+
+.space-name {
+    margin-left: 85px;
+    margin-top: 5px;
+}
+
+.space-nameen {
+    margin-left: 65px;
+    margin-top: 5px;
+}
+
+.space-nickname {
+    margin-left: 62px;
+    margin-top: 5px;
+}
+
+.space-birthdate {
+    margin-left: 25px;
+    margin-top: 5px;
+}
+
+.space-phone {
+    margin-left: 22px;
+    margin-top: 5px;
+}
+
+.space-email {
+    margin-left: 70px;
+    margin-top: 5px;
+}
+
+.space-department {
+    margin-left: 70px;
+    margin-top: 5px;
+}
+
+.space-typeemployee {
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.space-idemployee {
+    margin-left: 23px;
+    margin-top: 5px;
+}
+
+.space-startwork {
+    margin-left: 35px;
+    margin-top: 5px;
+}
+
+.space-password {
+    /* margin-left: 35px; */
+    margin-top: 5px;
+}
+
+.space-input {
+    width: 480px;
+}
+
