@@ -60,6 +60,8 @@ export class AddEmployeeComponent implements OnInit {
   pathPic: string = "/files/image/default.jpg"
   confirmPath: string = ""
 
+  checknullPosit: boolean = false
+
   public noWhitespaceValidator(control: FormControl) {
     const isWhitespace = (control.value || '').trim().length === 0;
     const isValid = !isWhitespace;
@@ -124,6 +126,14 @@ export class AddEmployeeComponent implements OnInit {
 
     this.position.splice(index, 1);
     this.countposit.splice(index, 1);
+    
+    if (this.position.length == this.countposit.length) {
+      this.checknullPosit = false
+      return;
+    } else {
+      this.checknullPosit = true
+      return;
+    }
   }
 
   getDepartment() {
@@ -196,10 +206,23 @@ export class AddEmployeeComponent implements OnInit {
 
 
   Submit() {
+
+    console.log("test position", this.position)
+    console.log("count posit", this.countposit)
+
+
     this.summited = true;
     console.log('value invalid', this.emp);
 
+
+
+
+
     if (this.emp.invalid) {
+      if (this.position.length != this.countposit.length) {
+        this.checknullPosit = true
+        return;
+      }
       return;
     }
 

@@ -25,6 +25,10 @@
     margin-top: 1px;
 }
 
+.marginalign{
+    margin-top: -30px;
+}
+
 .heightonLast {
     height: 30px;
 }
