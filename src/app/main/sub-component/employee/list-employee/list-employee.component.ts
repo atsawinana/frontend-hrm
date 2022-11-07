@@ -20,6 +20,8 @@ export class ListEmployeeComponent implements OnInit {
     elemtable: any
     ObjDepartment: any
     DeptIDemp: string = ""
+    TestModel: any[] = []
+
 
     public config: PaginationInstance = {
         id: 'custom',
@@ -27,13 +29,18 @@ export class ListEmployeeComponent implements OnInit {
         currentPage: 1
     }
 
+    setValueDepartment(value: any) {
+        console.log(this.TestModel)
+        console.log(value)
+        this.DeptIDemp += value + ','
+        console.log(this.DeptIDemp)
+    }
 
     ngOnInit() {
         this.empService.getAllUser().subscribe({
             next: (res: any) => {
                 this.Objemployee = res.data.employee
                 this.Objemptable = JSON.parse(JSON.stringify(this.Objemployee))
-
                 for (let i = 0; i < this.Objemptable.length; i++) {
                     delete this.Objemptable[i].user_username
                     delete this.Objemptable[i].ud_fullname_en
@@ -48,25 +55,42 @@ export class ListEmployeeComponent implements OnInit {
         this.empService.getAllDepartment().subscribe({
             next: (res: any) => {
                 this.ObjDepartment = res.data.deprtments
-                console.log(this.ObjDepartment)
+                // console.log(this.ObjDepartment)
+                // for (let i = 0; i < this.ObjDepartment.length; i++) {
+                //     this.TestModel.push(true)
+                // }
             },
             error: (err: any) => {
             }
         })
     }
 
-    setValueDepartment(value: string) {
-        this.DeptIDemp += value+','
-        console.log(this.DeptIDemp)
-    }
+
 
     loadempFromDepartment() {
-        this.empService.getEmployeefromDeptID(this.DeptIDemp).subscribe({
+
+        let dept_id = ""
+        console.log("dept", this.ObjDepartment)
+        for (let i = 0; i < this.TestModel.length; i++) {
+            if (this.TestModel[i]) {
+                dept_id += String(this.ObjDepartment[i].dept_id) + ","
+            }
+        }
+
+        console.log(dept_id)
+
+        this.empService.getEmployeefromDeptID(dept_id).subscribe({
             next: (res: any) => {
                 console.log(res.data.employee)
+                this.Objemptable = res.data.employee
+                for (let i = 0; i < this.Objemptable.length; i++) {
+                    delete this.Objemptable[i].user_username
+                    delete this.Objemptable[i].ud_fullname_en
+                    delete this.Objemptable[i].page
+                }
                 console.log(this.Objemptable)
             },
-            error: (err: any) => {}
+            error: (err: any) => { }
         })
     }
 

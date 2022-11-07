@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { defineLocale, thBeLocale } from 'ngx-bootstrap/chronos';
+import { defineLocale, getFullYear, thBeLocale } from 'ngx-bootstrap/chronos';
 import Swal from 'sweetalert2';
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { DataPersonService } from '../../data-person.service';
@@ -107,7 +107,19 @@ export class EditDetailPersonComponent implements OnInit {
 
     let startdate = this.datepipe.transform(this.emp.controls.user_created_at.value, 'YYYY-dd-MM');
     let bthdate = this.datepipe.transform(this.emp.controls.user_created_at.value, 'YYYY-dd-MM')
-    console.log(startdate)
+    let enddate = null
+
+    let year = new Date()
+    let year3 = getFullYear(year)
+    let year2 = getFullYear(year) + 543
+    // year.setFullYear(year2+543)
+    let replaceDate = null
+    if(this.user_deleted_at.value != null){
+      enddate = this.datepipe.transform(this.user_deleted_at.value, 'YYYY-MM-dd')
+      replaceDate = String(enddate).replace(String(year3),String(year2))
+      console.log(replaceDate)
+    }
+    
     this.editservice.editData(
       user_id,
       this.emp.controls.user_contract_name.value,
@@ -131,7 +143,7 @@ export class EditDetailPersonComponent implements OnInit {
       this.emp.controls.user_military_service_day.value,
       this.emp.controls.user_without_pay_day.value,
       this.emp.controls.user_resign_day.value,
-      this.user_deleted_at.value,
+      replaceDate,
       startdate
 
     ).subscribe({

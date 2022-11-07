@@ -17,4 +17,29 @@ export class EndContractService {
     return this.httpClient.get(`${environment.apiURL}/employee/showEmployeesResigned`, { headers });
   }
 
+  getEmployeefromDeptID(dept_id: string) {
+
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer' + localStorage.getItem('tokenLocal'),
+    });
+
+    return this.httpClient.get(`${environment.apiURL}/employee/showEmployeesResigned`, {
+      headers,
+      params: {
+        sort_by: dept_id
+      }
+    });
+  }
+
+  getAllDepartment() {
+
+    const headers = new HttpHeaders({
+        'Authorization': 'Bearer' + localStorage.getItem('tokenLocal'),
+    });
+
+    return this.httpClient.get(`${environment.apiURL}/department/getAllDepartment`, {
+        headers
+    });
+}
+
 }

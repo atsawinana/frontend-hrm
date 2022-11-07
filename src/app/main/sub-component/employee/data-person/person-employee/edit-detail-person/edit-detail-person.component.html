@@ -122,7 +122,8 @@
         </div>
         <div class="col-12 col-sm-6 col-md-6col-lg-6 font-detail">
           <input formControlName="ud_id_card" textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-            [ngClass]="{isinvalid : emp.controls.ud_id_card.errors && submitted}" placeholder="10xxxxxxxxxx" maxlength="13" minlength="13">
+            [ngClass]="{isinvalid : emp.controls.ud_id_card.errors && submitted}" placeholder="10xxxxxxxxxx"
+            maxlength="13" minlength="13">
         </div>
 
         <!-- alert รหัสบัตรประชาชน -->
@@ -143,7 +144,8 @@
         </div>
         <div class="col-12 col-sm-6 col-md-6col-lg-6 font-detail">
           <input formControlName="ud_phone" textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-            [ngClass]="{isinvalid : emp.controls.ud_phone.errors && submitted}" placeholder="08x-xxxxxx" maxlength="10" minlength="10">
+            [ngClass]="{isinvalid : emp.controls.ud_phone.errors && submitted}" placeholder="08x-xxxxxx" maxlength="10"
+            minlength="10">
         </div>
 
         <!-- alert เบอร์โทรศัพท์ -->
@@ -164,7 +166,8 @@
         </div>
         <div class="col-12 col-sm-6 col-md-6col-lg-6 font-detail">
           <input formControlName="ud_email" textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-            [ngClass]="{isinvalid : emp.controls.ud_email.errors && submitted}" placeholder="ex_______@gamil.com" email="true">
+            [ngClass]="{isinvalid : emp.controls.ud_email.errors && submitted}" placeholder="ex_______@gamil.com"
+            email="true">
         </div>
 
         <!-- alert อีเมล -->
@@ -282,7 +285,8 @@
           <ng-select formControlName="user_contract_name" [searchable]="false" placeholder="เลือกตัวเลือก"
             [ngClass]="{customnull : emp.controls.user_contract_name.errors&& submitted}" [clearable]="false"
             class="custom d-flex justify-content-center">
-            <ng-option>พนักงานประจำ</ng-option>
+            <ng-option value="1">ประจำ</ng-option>
+            <ng-option value="2">สัญญาจ้าง</ng-option>
           </ng-select>
         </div>
 
@@ -342,9 +346,10 @@
           วันที่ทำงานวันสุดท้าย :
         </div>
         <div class="col-12 col-sm-6 col-md-6col-lg-6 font-detail">
-          <input  type="text" placeholder="เลือกวันที่" class="form-control " bsDatepicker
+          <input [formControl]="user_deleted_at" type="text" placeholder="เลือกวันที่" class="form-control " bsDatepicker
+            [ngClass]="{isinvalid : emp.controls.ud_birthday.errors && submitted}"
             [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD/MM/YYYY', containerClass: 'theme-dark-blue',showWeekNumbers: false}"
-            [minDate]="today" (keypress)="false" [formControl]="user_deleted_at">
+            [maxDate]="today" (keypress)="false">
         </div>
         <div class="col-12 col-sm-2 col-md-2 col-lg-2 font-title">
           <div class="col-1">
@@ -605,7 +610,7 @@
     </div>
     <div class="row mb-4 mt-5 d-flex justify-content-center">
       <div class="col-6 col-sm-3 col-md-3 col-lg-3"><button class="cancel-button d-flex justify-content-center w-100"
-          type=""  routerLink="../">
+          type="" routerLink="../">
           <div class="cancel-text">ยกเลิก</div>
         </button>
       </div>

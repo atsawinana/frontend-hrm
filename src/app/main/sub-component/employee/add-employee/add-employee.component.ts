@@ -33,7 +33,7 @@ export class AddEmployeeComponent implements OnInit {
     company: new FormControl('Exvention', [Validators.required, this.noWhitespaceValidator]),
     department: new FormControl(null, [Validators.required]),
     typecontract: new FormControl(null, [Validators.required, this.noWhitespaceValidator]),
-    empid: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
+    // empid: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
     startdate: new FormControl('', [Validators.required]),
     usernameid: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
     password: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
@@ -126,7 +126,7 @@ export class AddEmployeeComponent implements OnInit {
 
     this.position.splice(index, 1);
     this.countposit.splice(index, 1);
-    
+
     if (this.position.length == this.countposit.length) {
       this.checknullPosit = false
       return;
@@ -212,17 +212,20 @@ export class AddEmployeeComponent implements OnInit {
 
 
     this.summited = true;
+
+    if (this.position.length == this.countposit.length) {
+      this.checknullPosit = false
+    } else {
+      this.checknullPosit = true
+    }
+
+
+
     console.log('value invalid', this.emp);
 
+    console.log("null posit",this.checknullPosit)
 
-
-
-
-    if (this.emp.invalid) {
-      if (this.position.length != this.countposit.length) {
-        this.checknullPosit = true
-        return;
-      }
+    if (this.emp.invalid || this.checknullPosit) {
       return;
     }
 

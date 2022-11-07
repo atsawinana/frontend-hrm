@@ -3,7 +3,7 @@
 <div>
   <div class="row d-flex justify-content-between">
     <div class="col-3">
-      <div class="list-header" (click)="loadempFromDepartment()">รายชื่อพนักงาน</div>
+      <div class="list-header" >รายชื่อพนักงาน</div>
     </div>
 
     <div class="col-9 d-flex align-items-center justify-content-end">
@@ -22,7 +22,6 @@
             <i class="fa-solid fa-sliders filter-icon"></i>
           </div>
         </div>
-
         <!-- filter box -->
         <div id="filterBox" style="display:none;" class="filter-outframe">
           <div class="filter-box">
@@ -30,11 +29,12 @@
               <div class="row filter-text">
                 <div class="col"> หมวดหมู่</div>
 
-                <div class="row mt-3">
+                <div class="row mt-3" >
 
-                  <label class="col-6 mb-3" *ngFor="let posit of ObjDepartment">
+                  <label class="col-6 mb-3" *ngFor="let posit of ObjDepartment ; let i = index">
                     <div class="box ">{{posit.dept_name_en}}
-                      <input type="checkbox" [value]="posit.dept_id" (change)="setValueDepartment(posit.dept_id)">
+                      <!-- <input type="checkbox" [value]="posit.dept_id" (change)="setValueDepartment($event)"> -->
+                      <input type="checkbox" [(ngModel)]="TestModel[i]" (change)="setValueDepartment($event.target)" [checked]="true">
                       <span class="checkmark"></span>
                     </div>
                   </label>
@@ -51,7 +51,7 @@
                   </button>
                 </div>
                 <div class="col-6 col-sm-3 col-md-3 col-lg-3"><button 
-                    class="submit-button d-flex justify-content-center w-100" type="submit">
+                    class="submit-button d-flex justify-content-center w-100" type="submit" (click)="showFilterBox()" (click)="loadempFromDepartment()">
                     <div class="submit-text">ตกลง</div>
                   </button>
                 </div>
@@ -104,7 +104,7 @@
 
           <div class="row d-flex justify-content-center">
             <div class="col-1 px-0 mx-1">
-              <div class="activity-table icon-fix" data-bs-toggle="modal" href="#exampleModalToggle_de" role="button">
+              <div class="activity-table icon-fix"  role="button">
                 <i class="fa-solid fa-ellipsis-vertical"></i>
               </div>
             </div>

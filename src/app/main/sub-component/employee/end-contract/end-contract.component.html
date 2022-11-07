@@ -33,26 +33,17 @@
                 <div class="row filter-text">
                   <div class="col"> หมวดหมู่</div>
   
-                  <label class="col">
-                    <div class="box w-75">Designer
-                      <input type="checkbox">
-                      <span class="checkmark"></span>
-                    </div>
-                  </label>
+                  <div class="row mt-3" >
+
+                    <label class="col-6 mb-3" *ngFor="let posit of ObjDepartment ; let i = index">
+                      <div class="box ">{{posit.dept_name_en}}
+                        <!-- <input type="checkbox" [value]="posit.dept_id" (change)="setValueDepartment($event)"> -->
+                        <input type="checkbox" [(ngModel)]="TestModel[i]"  [checked]="true">
+                        <span class="checkmark"></span>
+                      </div>
+                    </label>
   
-                  <label class="col">
-                    <div class="box">Developer
-                      <input type="checkbox">
-                      <span class="checkmark"></span>
-                    </div>
-                  </label>
-  
-                  <label class="col">
-                    <div class="box">Marketing
-                      <input type="checkbox">
-                      <span class="checkmark"></span>
-                    </div>
-                  </label>
+                  </div>
   
                 </div>
                 <hr>
@@ -63,7 +54,7 @@
                       <div class="cancel-text">ยกเลิก</div>
                     </button>
                   </div>
-                  <div class="col-6 col-sm-3 col-md-3 col-lg-3"><button
+                  <div class="col-6 col-sm-3 col-md-3 col-lg-3"><button (click)="showFilterBox()"  (click)="loadempFromDepartment()"
                       class="submit-button d-flex justify-content-center w-100" type="submit">
                       <div class="submit-text">ตกลง</div>
                     </button>
@@ -107,19 +98,19 @@
 
       <tbody class="list-content">
 
-        <tr routerLink="data-person" routerLinkActive="router-link-active" id=""
-          *ngFor="let emp of Objemptable | paginate: config  | filter : searchInput">
+        <tr  routerLinkActive="router-link-active" id=""
+          *ngFor="let emp of Objemployee | paginate: config  | filter : searchInput">
           <td>{{emp.number}}</td>
           <td class="text-start">{{emp.user_card_number}}</td>
           <td class="text-start">{{emp.ud_fullname_th}}</td>
           <td class="text-start">{{emp.dept_name_en}}</td>
-          <td class="text-start">{{emp.position}}</td>
-          <td class="text-start">{{emp.user_created_at}}</td>
+          <td class="text-start">{{emp.positions}}</td>
+          <td class="text-start">{{emp.user_deleted_at}}</td>
           <td>
 
             <div class="row d-flex justify-content-center">
               <div class="col-1 px-0 mx-1">
-                <div class="activity-table icon-fix" data-bs-toggle="modal" href="#exampleModalToggle_de" role="button">
+                <div class="activity-table icon-fix"  role="button">
                   <i class="fa-solid fa-ellipsis-vertical"></i>
                 </div>
               </div>

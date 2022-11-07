@@ -64,8 +64,9 @@
                                 [searchable]="false" placeholder="เลือกคำนำหน้าชื่อ" [clearable]="false" class="custom"
                                 formControlName="prefix"
                                 (change)="changValueLeave($event,this.emp.controls.startdate.value)">
-                                <ng-option value="1">ชาย</ng-option>
-                                <ng-option value="2">หญิง</ng-option>
+                                <ng-option value="1">นาย</ng-option>
+                                <ng-option value="2">นาง</ng-option>
+                                <ng-option value="3">นางสาว</ng-option>
                             </ng-select>
                         </div>
                     </div>
@@ -401,7 +402,7 @@
         <!-- ประเภทพนักงาน* end -->
 
         <!-- รหัสพนักงาน* -->
-        <div class="row mb-4">
+        <!-- <div class="row mb-4">
             <div class="row">
                 <div
                     class="sub-text col-12 col-sm-4 col-md-4 col-lg-4 text-center text-xs d-flex justify-content-end align-items-center">
@@ -427,7 +428,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- รหัสพนักงาน* end -->
 
         <!-- วันที่เริ่มงาน* -->

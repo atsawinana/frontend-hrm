@@ -6,7 +6,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class DataPersonService {
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) { }
 
   getUserProfile(id: any) {
     const headers = new HttpHeaders({
@@ -23,4 +23,23 @@ export class DataPersonService {
       }
     );
   }
+
+  // /employee/resetPassword [patch]
+
+  reSetPassword(id: any) {
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+    });
+
+    return this.httpClient.patch(
+      `${environment.apiURL}/employee/resetPassword`,
+      {
+        user_id: id,
+      },
+      {
+        headers
+      }
+    );
+  }
+
 }

@@ -19,6 +19,9 @@ export class EndContractComponent implements OnInit {
   searchInput: string = ''
   elemtable: any
   LoadingAPI: boolean = false
+  ObjDepartment: any
+  TestModel: any[] = []
+
 
   public config: PaginationInstance = {
     id: 'custom',
@@ -31,21 +34,45 @@ export class EndContractComponent implements OnInit {
       next: (res: any) => {
         this.LoadingAPI = true
 
-        this.Objemployee = res.data.employee
-        this.Objemptable = JSON.parse(JSON.stringify(this.Objemployee))
+        this.Objemployee = res.data.users
 
-        for (let i = 0; i < this.Objemptable.length; i++) {
-          delete this.Objemptable[i].user_username
-          delete this.Objemptable[i].ud_fullname_en
-          delete this.Objemptable[i].id
-          delete this.Objemptable[i].page
-        }
+
       },
       error: (err: any) => {
 
       }
     })
+
+
+    this.empService.getAllDepartment().subscribe({
+      next: (res: any) => {
+        this.ObjDepartment = res.data.deprtments
+      },
+      error: (err: any) => {
+      }
+    })
+
   }
+
+  loadempFromDepartment() {
+
+    let dept_id = ""
+    for (let i = 0; i < this.TestModel.length; i++) {
+      if (this.TestModel[i]) {
+        dept_id += String(this.ObjDepartment[i].dept_id) + ","
+      }
+    }
+
+
+    this.empService.getEmployeefromDeptID(dept_id).subscribe({
+      next: (res: any) => {
+        this.Objemployee = res.data.users
+        
+      },
+      error: (err: any) => { }
+    })
+  }
+
 
   listPerpage() {
     this.config.itemsPerPage = this.listPerPage
