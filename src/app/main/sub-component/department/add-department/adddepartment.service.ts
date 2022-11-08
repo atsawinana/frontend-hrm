@@ -20,6 +20,7 @@ export class AdddepartmentService {
 
     return this.httpClient.post(
       `${environment.apiURL}/department/addDepartment`,
+      
       {
         dept_name_en: namedepartment_en,
         dept_name_th: namedepartment_th,
@@ -27,6 +28,7 @@ export class AdddepartmentService {
         dept_update_by: 'FixID',
         dmm_username: nameleader,
       },
+
       { headers }
     );
   }

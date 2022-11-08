@@ -3,63 +3,214 @@
   text-align: center;
 }
 
-.div-test {
-  width: 100%;
-  height: 200px;
+.hide {
+  display: none;
+  width: 0px !important;
 }
 
-.modal123 {
-    font-family: "Kanit";
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.1);
-  }
-  
-  .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border-radius: 8px;
+.file_upload {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  padding: 5px;
+  background: #FFFFFF;
+  border: 1px solid #005FBC;
+  position: relative;
+  left: -70px;
+  top: 140px;
+  cursor: pointer;
+}
+
+.editPhonenumber {
+  background: #FFFFFF;
+  border: 1px solid #005FBC;
+  border-radius: 10px;
+}
+
+.btn-submit {
+  background: #005FBC;
+  border-radius: 10px;
+  border: 0px;
+  font-family: 'Kanit';
+  font-style: normal;
+  font-size: 14px;
+  color: #FFFFFF;
+
+}
+
+.btn-cancel {
+  background: #FFFFFF;
+  border: 1px solid #005FBC;
+  border-radius: 10px;
+  font-family: 'Kanit';
+  font-style: normal;
+  font-size: 14px;
+  color: #005FBC;
+}
+
+.img-profile {
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.fontStyle {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-size: 16px;
+}
+
+.positionEdit{
+  margin-left: 73px !important;
+}
+
+.fontgraph {
+  font-family: 'Kanit';
+  font-size: 16px;
+  color: #000000;
+}
+
+.OtfontApproved {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+
+}
+
+.upload-icon {
+  position: relative;
+  font-size: 28px;
+  color: #005FBC;
+}
+
+.profileBG {
+  background: #FFFFFF;
+  box-shadow: 0px 4px 30px -16px rgba(138, 159, 171, 0.35);
+  border-radius: 20px;
+  padding: 32px;
+  border: 1px solid #D1D1D6;
+  margin-bottom: 16px;
+
+}
+
+.cycle {
+  background-color: #005FBC;
+  width: 16px !important;
+  height: 16px !important;
+  border-radius: 50%;
+}
+
+.fontIcon {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 35px;
+  color: #005FBC;
+}
+
+.fontOT {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: #000000;
+
+}
+
+.leavefont {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: #000000;
+
+}
+
+.graphfont {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 35px;
+  color: #000000;
+}
+
+.cancel-button {
+  padding: 12px 16px;
+  width: 203px;
+  height: 48px;
+  background: #FFFFFF;
+  border: 1px solid #005FBC;
+  border-radius: 8px;
+  color: #005FBC;
+}
+
+.submit-button {
+  padding: 12px 16px;
+  width: 203px;
+  height: 48px;
+  background: linear-gradient(270.74deg, #2E3579 0.35%, #005FBC 99.1%, #005FBC 99.1%);
+  border-radius: 8px;
+  border: none;
+  color: #ffffff;
+}
+
+.editprofile {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  align-items: center;
+  text-decoration-line: underline;
+  color: #FF5444;
+}
+
+.changPass {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  color: #FF5444;
+}
+
+.fontprofileMan {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 35px;
+  display: flex;
+  align-items: center;
+  color: #000000;
+}
+
+.fontcontract {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: #005FBC;
+
+}
+
+@media screen and (max-width: 1435px) {
+  #leaveDay {
+    padding-left: 0px !important;
+    margin-left: 0px !important;
   }
 
-  .font-modal {
-    font-family: 'Kanit';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 24px;
-    text-align: center;
+  #Dataperson {
+    padding-left: 30px !important;
   }
-  
-  .modal-size {
-    width: 550px;
-    height: 345px;
-    margin-top: 280px;
-  }
-
-  .cancel-button {
-    padding: 12px 16px;
-    width: 203px;
-    height: 48px;
-    background: #FFFFFF;
-    border: 1px solid #005FBC;
-    border-radius: 8px;
-    color: #005FBC;
-  }
-  
-  .submit-button {
-    padding: 12px 16px;
-    width: 203px;
-    height: 48px;
-    background: linear-gradient(270.74deg, #2E3579 0.35%, #005FBC 99.1%, #005FBC 99.1%);
-    border-radius: 8px;
-    border: none;
-    color: #ffffff;
-  }
-  
+}

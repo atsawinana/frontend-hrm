@@ -6,10 +6,31 @@
     border: none;
 }
 
+.file_upload {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    padding: 5px;
+    background: #FFFFFF;
+    border: 1px solid #005FBC;
+    cursor: pointer;
+    position:relative;
+    left: 240px;
+    top: -80px;
+  }
+
 .back-icon {
     font-size: 28px;
     color: white;
     margin-top: 1px;
+}
+
+.marginalign{
+    margin-top: -30px;
+}
+
+.heightonLast {
+    height: 30px;
 }
 
 .font-header {
@@ -21,11 +42,25 @@
     color: #000000;
 }
 
-.profile-img {
-    width: 202px;
-    height: 202px;
+.isinvalid {
+    border: 1px solid #EF0303 !important;
+}
+
+.ng-select.customnull::ng-deep.ng-select-container {
+    border-color: #ff0000 !important;
+}
+
+.img-profile {
     border-radius: 50%;
-    background-color: #E69755;
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+}
+
+
+.hide {
+    display: none;
+    width: 0px !important;
 }
 
 .upload-img {
@@ -40,6 +75,7 @@
 }
 
 .upload-icon {
+    position: relative;
     font-size: 28px;
     color: #005FBC;
 }
@@ -49,6 +85,7 @@
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
+    margin-left: 50px;
 }
 
 .alerttext {
@@ -121,7 +158,7 @@ input::placeholder {
     color: #FFFFFF;
 }
 
-.maxWidth{
+.maxWidth {
     width: 70px;
 }
 
@@ -161,5 +198,77 @@ input::placeholder {
     font-size: 16px;
     line-height: 24px;
     color: #FFFFFF;
-
 }
+
+.space-IDcard {
+    margin-left: 75px;
+    margin-top: 5px;
+}
+
+.space-prefix {
+    margin-left: 0px;
+    margin-top: 5px;
+}
+
+.space-name {
+    margin-left: 55px;
+    margin-top: 5px;
+}
+
+.space-nameen {
+    margin-left: 35px;
+    margin-top: 5px;
+}
+
+.space-nickname {
+    margin-left: 30px;
+    margin-top: 5px;
+}
+
+.space-birthdate {
+    margin-left: -5px;
+    margin-top: 5px;
+}
+
+.space-phone {
+    margin-left: -8px;
+    margin-top: 5px;
+}
+
+.space-email {
+    margin-left: 40px;
+    margin-top: 5px;
+}
+
+.space-department {
+    margin-left: 40px;
+    margin-top: 5px;
+}
+
+.space-position {
+    margin-left: 25px;
+    margin-top: 5px;
+}
+
+.space-typeemployee {
+    margin-left: -20px;
+    margin-top: 5px;
+}
+
+.space-idemployee {
+    margin-left: -7px;
+    margin-top: 5px;
+}
+
+.space-startwork {
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+.space-password {
+    margin-left: -30px;
+    margin-top: 5px;
+}
+
+
+

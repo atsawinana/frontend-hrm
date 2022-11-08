@@ -1,0 +1,8 @@
+.position-outframe {
+  position: relative;
+  bottom: 110px;
+  z-index: 1;
+}
+.button-height{
+    height: 30px !important;
+}

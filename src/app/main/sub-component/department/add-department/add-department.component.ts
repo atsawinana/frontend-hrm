@@ -159,6 +159,7 @@ export class AddDepartmentComponent implements OnInit {
         this.countDeptPosit.splice(index, 1);
         this.DeptPosit.splice(index, 1);
     }
+    
     checkCancel() {
         Swal.fire({
             title: '<strong style = "font-family:Kanit"> คุณต้องการยกเลิกการเพิ่มแผนกใช่หรือไม่ </strong>',

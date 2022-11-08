@@ -25,10 +25,8 @@ const routes: Routes = [
     path: 'main',
     component: MainComponent,
     children: [
-      {
-        path: '', component: ProfileComponent, canActivate: [AuthGuardGuard]
-      },
-      { path: 'leave', component: LeaveComponent, canActivate: [AuthGuardGuard] },
+      { path: '', loadChildren: () => import('./main/sub-component/profile/profile.module').then((m) => m.ProfileModule), canActivate: [AuthGuardGuard] },
+      { path: 'leave', loadChildren: () => import('./main/sub-component/leave/leave.module').then((m)=> m.LeaveModule), canActivate: [AuthGuardGuard] },
       {
         path: 'department', loadChildren: () => import('./main/sub-component/department/department.module').then((m) => m.DepartmentModule), canActivate: [RoleGuard, AuthGuardGuard]
       },
@@ -38,6 +36,7 @@ const routes: Routes = [
       { path: 'employee', loadChildren: () => import('./main/sub-component/employee/employee.module').then((m) => m.EmployeeModule), canActivate: [RoleGuard, AuthGuardGuard] },
       { path: 'car', component: TravelExpensesComponent, canActivate: [AuthGuardGuard] },
       { path: 'activity', component: ActivityComponent, canActivate: [AuthGuardGuard] },
+      { path: 'notification', loadChildren: () => import('./main/sub-component/notification/noti.module').then((m)=> m.NotiModule) },
     ],
     canActivate: [AuthGuardGuard]
   },

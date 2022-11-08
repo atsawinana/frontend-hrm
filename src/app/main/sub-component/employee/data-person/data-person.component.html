@@ -1,15 +1,51 @@
-<div class="container-fluid h-100">
+<div class="container-fluid h-100" *ngIf="APISuccess">
   <div class="row">
-    <div class="col-12 border border-warning" style="height: 100px;">1</div>
-   <hr class="mt-3">
-    <div class="row">
-      <div class="col text-center border border-success" routerLink="detail">ข้อมูล</div>
-      <div class="col text-center border border-success" routerLink="work-history">เข้างาน</div>
-      <div class="col text-center border border-success" routerLink="leave-history">ลางาน</div>
-      <div class="col text-center border border-success" routerLink="ot-history">โอที</div>
+    <div class="row mb-4"><div class="back-button my-auto" routerLink="../../"><i class="fa-solid fa-angle-left back-icon"></i></div>
+      <div class="font-header ms-2 col">ข้อมูลพนักงาน</div>
+      <div class="col-5">
+        <div class="row d-flex justify-content-end">
+          <div class="buttonEdit me-3" routerLink="edit-detail"><i class="fa-solid fa-pencil me-3"></i> แก้ไข</div>
+          <div class="buttonreset" (click)="reSetPassword()"><i class="fa-solid fa-key me-3"></i>เปลี่ยนรหัสผ่าน</div>
+        </div>
+
+      </div>
+    </div>
+    <div class="row" style="height: auto;">
+      <div class="col image_container ">
+        <img class="img-thumbnail img-profile" src="{{baseURL}}{{ObjDataemp.ud_picture}}">
+      </div>
+      <div class="col-9 text-center ps-5 ">
+        <div class="row mb-2 font-header text-start">
+          <div class="col-4">{{ObjDataemp.ud_fullname_th}} </div>
+          <div class="col"></div>
+        </div>
+        <div class="row mb-2 font-detailPossition text-start">
+          <div class="col-4">{{ObjDataemp.department_map_managers}} </div>
+          <div class="col">{{ObjDataemp.user_contract_name}} </div>
+        </div>
+        <div class="row mb-2 font-title text-start">
+          <div class="col-4">ชื่อเล่น : </div>
+          <div class="col">{{ObjDataemp.ud_fullname_en}}</div>
+        </div>
+        <div class="row mb-2 font-title text-start">
+          <div class="col-4">เบอร์โทรศัพท์ : </div>
+          <div class="col">{{ObjDataemp.ud_phone}}</div>
+        </div>
+        <div class="row mb-2 font-title text-start">
+          <div class="col-4">อีเมล : </div>
+          <div class="col">{{ObjDataemp.ud_email}}</div>
+        </div>
+      </div>
     </div>
   </div>
-  <hr>
+
+  <div class="row mt-3">
+    <div class="col-2 font-menu" routerLink="detail">ข้อมูลพนักงาน</div>
+    <div class="col-2 font-menu" routerLink="work-history">เข้างาน</div>
+    <div class="col-2 font-menu" routerLink="leave-history">ลางาน</div>
+    <div class="col-2 font-menu" routerLink="ot-history">โอที</div>
+  </div>
+  <hr class="line">
   <router-outlet></router-outlet>
 </div>
 

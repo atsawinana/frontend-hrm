@@ -1,0 +1,164 @@
+.font-header {
+  font-family: "Kanit";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 24px;
+  color: #005fbc;
+}
+
+.font-title {
+  font-family: "Kanit";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  align-items: center;
+  display: flex;
+}
+
+.lastItemSelect {
+  margin-bottom: 0px !important;
+}
+
+.font-detail {
+  font-family: "Kanit";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.detail {
+  align-items: center;
+  display: flex;
+}
+
+.form-input {
+  text-align: center;
+}
+
+.ng-select.custom::ng-deep.ng-select-container {
+  min-height: 0px;
+  border-radius: 0.375rem;
+  height: 38px;
+  border-color: #ced4da;
+  font-family: "Kanit";
+  font-size: 16px;
+}
+
+input::placeholder {
+  opacity: 0.5;
+  color: #212529;
+  font-family: "Kanit";
+  font-style: bold;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.text-button {
+  font-family: "Kanit";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #005fbc;
+  cursor: pointer;
+  margin-left: 30px;
+}
+
+.icon {
+  color: #ffffff;
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+.icon-info {
+  color: #005fbc;
+  font-size: 24px;
+}
+
+.dropdown-menu {
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  width: 277px;
+}
+
+.cancel-button {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 12px 16px;
+  background: #FFFFFF;
+  border: 1px solid #005FBC;
+  border-radius: 8px;
+}
+
+.cancel-text {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #005FBC;
+}
+
+.submit-button {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 12px 16px;
+  background: linear-gradient(270.74deg, #2E3579 0.35%, #005FBC 99.1%, #005FBC 99.1%);
+  border-radius: 8px;
+  border: 1px solid #005FBC;
+}
+
+.submit-text {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #FFFFFF;
+
+}
+
+.alerttext {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  color: red;
+  margin-top: 5px;
+  margin-right: 25px;
+}
+
+.delete-dept {
+  font-size: 24px;
+  color: red;
+  display: block;
+}
+
+.isinvalid {
+  border: 1px solid #EF0303 !important;
+}
+
+.ng-select.customnull::ng-deep.ng-select-container {
+  border-color: #ff0000 !important;
+}
+
+.text-button {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #005FBC;
+  cursor: pointer;
+  margin-left: 70px;
+}
