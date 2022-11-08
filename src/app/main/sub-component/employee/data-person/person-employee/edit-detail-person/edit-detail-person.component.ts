@@ -251,12 +251,19 @@ export class EditDetailPersonComponent implements OnInit {
     console.log(this.Position);
     // console.log(this.DeptPosit[this.countDeptPosit.length - 1]);
     let ObjNull = {}
-    if (this.Position[this.PositionCount.length - 1] == null || this.Position[this.PositionCount.length - 1] == ObjNull) {
+
+    console.log(Object.keys(this.Position[this.PositionCount.length - 1]).length === 0)
+
+
+    if (Object.keys(this.Position[this.PositionCount.length - 1]).length === 0) {
       alert('กรุณากรอกข้อมูลให้ครบถ้วน');
     } else {
       this.PositionCount?.push(this.PositionCount.length + 1);
       this.Position.push({});
     }
+
+    console.log(this.Position.length)
+    console.log(this.PositionCount.length)
   }
 
   Userselected() {

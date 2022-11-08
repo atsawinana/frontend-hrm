@@ -76,12 +76,12 @@
         {{ObjDataemp.dept_name_en}}
       </div>
     </div>
-    <div class="row mb-4">
+    <div class="row ">
       <div class="col-12 col-sm-4 col-md-4 col-lg-4 font-title">
         ตำแหน่ง :
       </div>
       <div class="col-12 col-sm-8 col-md-8 col-lg-8 font-detail">
-        {{ObjDataemp.department_map_managers}}
+        <div class="mb-4" *ngFor="let posit of ObjDataemp.positions; let i = index"> {{posit.positions}}</div>
       </div>
     </div>
     <div class="row mb-4">
@@ -202,16 +202,16 @@
       </div>
     </div>
     <div class="row mb-4 font-detail">
-        <div class="col-12 col-sm-4 col-md-4 col-lg-4">
-          ลาคลอด
-        </div>
-        <div class="col-12 col-sm-4 col-md-4 col-lg-4">
-          {{ObjDataemp.user_maternity_day}}
-        </div>
-        <div class="col-12 col-sm-4 col-md-4 col-lg-4">
-          วัน
-        </div>
+      <div class="col-12 col-sm-4 col-md-4 col-lg-4">
+        ลาคลอด
       </div>
+      <div class="col-12 col-sm-4 col-md-4 col-lg-4">
+        {{ObjDataemp.user_maternity_day}}
+      </div>
+      <div class="col-12 col-sm-4 col-md-4 col-lg-4">
+        วัน
+      </div>
+    </div>
     <div class="row mb-4 font-detail">
       <div class="col-12 col-sm-4 col-md-4 col-lg-4">
         ลาใช้สิทธิทดแทน

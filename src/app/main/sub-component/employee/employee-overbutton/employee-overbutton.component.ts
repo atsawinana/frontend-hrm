@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 export class EmployeeOverbuttonComponent implements OnInit {
 
     role: boolean = false
+    route1 = localStorage.getItem("overbtn")
     constructor(private router: Router) { }
 
     ngOnInit() {
@@ -17,11 +18,17 @@ export class EmployeeOverbuttonComponent implements OnInit {
         }
     }
 
-    clickRoute1(){
+    clickRoute1() {
+        this.route1 = "true"
+        localStorage.setItem("overbtn",String(this.route1))
         this.router.navigate(['/main/employee']);
+
     }
 
-    clickRoute2(){
+    clickRoute2() {
+        this.route1 = "false"
+        localStorage.setItem("overbtn",String(this.route1))
         this.router.navigate(['/main/employee/end-contract-employee']);
+
     }
 }

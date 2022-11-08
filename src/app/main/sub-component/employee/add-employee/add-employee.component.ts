@@ -29,7 +29,7 @@ export class AddEmployeeComponent implements OnInit {
     nickname: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
     birthdate: new FormControl('', [Validators.required,]),
     phonenumber: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
-    email: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
+    email: new FormControl('',),
     company: new FormControl('Exvention', [Validators.required, this.noWhitespaceValidator]),
     department: new FormControl(null, [Validators.required]),
     typecontract: new FormControl(null, [Validators.required, this.noWhitespaceValidator]),

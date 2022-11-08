@@ -40,6 +40,7 @@ export class MainComponent implements OnInit {
     tokenCheck!: boolean;
     photo!: string
     checkApi: boolean = false;
+    Objdata:any
 
     ngOnInit() {
         this.getProfile();
@@ -54,7 +55,9 @@ export class MainComponent implements OnInit {
                 this.position_th = res.data.position_th;
                 this.role = res.data.role;
                 this.photo = res.data.ud_picture
+                this.Objdata = res.data
                 this.checkApi = true;
+
                 localStorage.setItem('roleUser', this.role)
                 this.coreToken.UserRole = this.role
             },

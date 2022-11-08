@@ -21,7 +21,7 @@ export class ListEmployeeComponent implements OnInit {
     ObjDepartment: any
     DeptIDemp: string = ""
     TestModel: any[] = []
-
+    ApiSuccess:boolean = false
 
     public config: PaginationInstance = {
         id: 'custom',
@@ -37,6 +37,9 @@ export class ListEmployeeComponent implements OnInit {
     }
 
     ngOnInit() {
+
+        localStorage.setItem("overbtn","true")
+
         this.empService.getAllUser().subscribe({
             next: (res: any) => {
                 this.Objemployee = res.data.employee
@@ -45,7 +48,8 @@ export class ListEmployeeComponent implements OnInit {
                     delete this.Objemptable[i].user_username
                     delete this.Objemptable[i].ud_fullname_en
                     delete this.Objemptable[i].page
-                }
+                }   
+                this.ApiSuccess = true
             },
             error: (err: any) => {
 
