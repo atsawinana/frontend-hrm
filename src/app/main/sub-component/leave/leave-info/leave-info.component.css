@@ -32,8 +32,8 @@ table {
 
 .btn-addform {
     background: linear-gradient(270.74deg, #2E3579 0.35%, #005FBC 99.1%, #005FBC 99.1%);
-    Width: 203px;
-    Height: 48px;
+    width: 203px;
+    height: 48px;
     border-radius: 8px;
     font-family: 'Kanit';
     font-style: normal;
@@ -44,8 +44,8 @@ table {
 
 .btn-history {
     background: linear-gradient(270.74deg, #FF5444 0%, #E69755 100%);
-    Width: 203px;
-    Height: 48px;
+    width: 203px;
+    height: 48px;
     border-radius: 8px;
     font-family: 'Kanit';
     font-style: normal;
@@ -70,8 +70,8 @@ table {
 
 .regtangle {
     color: #ffffff;
-    Width: 277px;
-    Height: 162px;
+    width: 277px;
+    height: 162px;
 }
 
 .space-table {
