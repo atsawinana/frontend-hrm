@@ -119,7 +119,7 @@ export class ListEmployeeComponent implements OnInit {
         let ExptExcel = JSON.parse(JSON.stringify(this.Objemptable))
         console.log(this.Objemptable)
         for (let i = 0; i < ExptExcel.length; i++) {
-            ExptExcel[i].ไอดีพนักงาน = ExptExcel[i]['id'];
+            ExptExcel[i].ไอดีพนักงาน = ExptExcel[i]['number'];
             ExptExcel[i].ตำแหน่ง = ExptExcel[i]['position'];
             ExptExcel[i].ชื่อภาษาไทย = ExptExcel[i]['ud_fullname_th'];
             ExptExcel[i].รหัสพนักงาน = ExptExcel[i]['user_card_number'];

@@ -38,7 +38,7 @@ export class EditDetailPersonComponent implements OnInit {
     ud_birthday: new FormControl('', [Validators.required,]),
     ud_id_card: new FormControl('', [Validators.required, this.noWhitespaceValidator,]),
     ud_phone: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
-    ud_email: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
+    ud_email: new FormControl('',),
 
     user_company: new FormControl('Exvention', [Validators.required, this.noWhitespaceValidator]),
     dept_name_en: new FormControl(null, [Validators.required]),
