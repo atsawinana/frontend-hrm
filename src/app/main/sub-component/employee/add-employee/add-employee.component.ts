@@ -217,7 +217,6 @@ export class AddEmployeeComponent implements OnInit {
     console.log("test position", this.position)
     console.log("count posit", this.countposit)
 
-
     this.summited = true;
 
     if (this.position.length == this.countposit.length) {
@@ -225,8 +224,6 @@ export class AddEmployeeComponent implements OnInit {
     } else {
       this.checknullPosit = true
     }
-
-
 
     console.log('value invalid', this.emp);
 
@@ -291,7 +288,9 @@ export class AddEmployeeComponent implements OnInit {
               console.log('success');
               this.router.navigate(['/main/employee']);
             },
-            error: (err: any) => { },
+            error: (err: any) => {
+              //ทำตรงนี้จ้า
+             },
           });
 
         //   Swal.fire({
