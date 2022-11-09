@@ -121,6 +121,13 @@ export class AddEmployeeComponent implements OnInit {
 
   deleteInputDept(index: number) {
 
+    console.log("option", this.positionDept)
+    if (this.positionDept.length == 0) {
+      this.position.splice(index, 1);
+      this.countposit.splice(index, 1);
+      return
+    }
+
     let person = { position: String(this.position[index]) };
     this.positionDept.push(person)
 
@@ -223,7 +230,7 @@ export class AddEmployeeComponent implements OnInit {
 
     console.log('value invalid', this.emp);
 
-    console.log("null posit",this.checknullPosit)
+    console.log("null posit", this.checknullPosit)
 
     if (this.emp.invalid || this.checknullPosit) {
       return;

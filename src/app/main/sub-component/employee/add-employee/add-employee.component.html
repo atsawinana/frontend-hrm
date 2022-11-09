@@ -123,7 +123,7 @@
                         <div class="col-10">
                             <input [ngClass]="{isinvalid : emp.controls.nameen.errors && summited}" ng-cloak type="text"
                                 placeholder="กรอกชื่อ-นามสกุลภาษาอังกฤษ" class="form-control w-100 maxWidth" id=""
-                                formControlName="nameen" (keypress)="Usernameset()">
+                                formControlName="nameen" (keyup)="Usernameset()">
                         </div>
                     </div>
                 </div>
@@ -211,7 +211,8 @@
                         <div class="col-10">
                             <input [ngClass]="{isinvalid : emp.controls.phonenumber.errors && summited}" ng-cloak
                                 type="text" placeholder="กรอกเบอร์โทรศัพท์" class="form-control w-100 maxWidth" id=""
-                                formControlName="phonenumber" maxlength="10" (keypress)="numberOnly($event)">
+                                formControlName="phonenumber" maxlength="10" minlength="10"
+                                (keypress)="numberOnly($event)">
                         </div>
                     </div>
                 </div>
@@ -324,8 +325,8 @@
                     <div *ngIf="j == 0"> ตำแหน่ง</div>
                 </div>
                 <div class="col-8 col-sm-8 col-md-8 col-lg-8 input-xs d-flex justify-content-left">
-                    <div class="row w-75 font-content " >
-                        <div class="col-10" >
+                    <div class="row w-75 font-content ">
+                        <div class="col-10">
                             <ng-select [(ngModel)]="position[j]" [ngModelOptions]="{standalone: true}"
                                 [ngClass]="{customnull :( position[j] == null) && summited}" [searchable]="true"
                                 placeholder="เลือกตำแหน่ง" [clearable]="false" class="custom"
@@ -643,7 +644,7 @@
             <!-- ลาพักร้อน end -->
 
             <!-- ลาพักร้อน -->
-            <div class="row mb-4" *ngIf="emp.controls.prefix.value == '2' || '3' ">
+            <div class="row mb-4" *ngIf="emp.controls.prefix.value == '2' || emp.controls.prefix.value =='3'">
                 <div
                     class="sub-text col-12 col-sm-4 col-md-4 col-lg-4 text-center text-xs d-flex justify-content-end align-items-center">
                     ลาคลอด
