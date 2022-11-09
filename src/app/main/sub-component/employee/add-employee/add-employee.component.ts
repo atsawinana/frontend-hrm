@@ -122,7 +122,7 @@ export class AddEmployeeComponent implements OnInit {
   deleteInputDept(index: number) {
 
     console.log("option", this.positionDept)
-    if (this.positionDept.length == 0) {
+    if (this.position[index] == undefined) {
       this.position.splice(index, 1);
       this.countposit.splice(index, 1);
       return
