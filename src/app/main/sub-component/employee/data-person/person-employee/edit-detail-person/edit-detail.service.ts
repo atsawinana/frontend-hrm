@@ -9,30 +9,30 @@ export class EditDetailService {
 
   constructor(private httpClient: HttpClient) { }
   editData(
-      user_idp: any,
-      user_contract_typep: any,
-      user_companyp: any,
-      ud_prefix_idp: any,
-      dp_name_enp: any[],
-      dept_idp: any,
-      ud_emailp: any,
-      ud_fullname_enp: any,
-      ud_fullname_thp: any,
-      ud_nicknamep: any,
-      ud_phonep: any,
-      ud_id_cardp: any,
-      ud_birthdayp: any,
-      user_leavep: any,
-      user_sickp: any,
-      user_take_annualp: any,
-      user_ordinationp: any,
-      user_maternityp: any,
-      user_sterilizationp: any,
-      user_military_servicep: any,
-      user_without_payp: any,
-      user_resignp: any,
-      user_deleted_at: any,
-      user_created_at:any
+    user_idp: any,
+    user_contract_typep: any,
+    user_companyp: any,
+    ud_prefix_idp: any,
+    dp_name_enp: any[],
+    dept_idp: any,
+    ud_emailp: any,
+    ud_fullname_enp: any,
+    ud_fullname_thp: any,
+    ud_nicknamep: any,
+    ud_phonep: any,
+    ud_id_cardp: any,
+    ud_birthdayp: any,
+    user_leavep: any,
+    user_sickp: any,
+    user_take_annualp: any,
+    user_ordinationp: any,
+    user_maternityp: any,
+    user_sterilizationp: any,
+    user_military_servicep: any,
+    user_without_payp: any,
+    user_resignp: any,
+    user_deleted_at: any,
+    user_created_at: any
   ) {
 
     const headers = new HttpHeaders({
@@ -72,6 +72,18 @@ export class EditDetailService {
       }
     );
   }
+
+  getAllDepartment() {
+
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer' + localStorage.getItem('tokenLocal'),
+    });
+
+    return this.httpClient.get(`${environment.apiURL}/department/getAllDepartment`, {
+      headers
+    });
+  }
+
 
 }
 

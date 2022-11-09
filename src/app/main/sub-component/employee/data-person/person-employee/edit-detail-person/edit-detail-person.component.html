@@ -213,8 +213,8 @@
         <div class="col-12 col-sm-6 col-md-6 col-lg-6 font-detail">
           <ng-select formControlName="dept_name_en" [searchable]="false" placeholder="เลือกตัวเลือก" [clearable]="false"
             [ngClass]="{customnull : emp.controls.dept_name_en.errors && submitted}"
-            class="custom d-flex justify-content-center">
-            <ng-option>Executive</ng-option>
+            class="custom d-flex justify-content-center" (change)="ChangeDepartment($event)">
+            <ng-option *ngFor="let department of ObjDepartment" [value]="department.dept_id">{{department.dept_name_en}}</ng-option>
           </ng-select>
         </div>
 

@@ -28,6 +28,7 @@ export class EditDetailPersonComponent implements OnInit {
   submitted: boolean = false
   dept_id: any
   UserselectedPosit: any
+  ObjDepartment:any
 
   emp = new FormGroup({
     ud_prefix_id: new FormControl(1, [Validators.required]),
@@ -64,6 +65,18 @@ export class EditDetailPersonComponent implements OnInit {
     return isValid ? null : { 'whitespace': true };
   }
 
+  getAllDepartment(){
+    this.editservice.getAllDepartment().subscribe({
+      next: (res: any) => {
+          this.ObjDepartment = res.data.deprtments
+          console.log(this.ObjDepartment)
+      },
+      error: (err: any) => {
+      }
+  })
+  }
+
+  
   Submit() {
     this.checkNull()
     this.submitted = true
@@ -184,6 +197,34 @@ export class EditDetailPersonComponent implements OnInit {
     });
   }
 
+  ChangeDepartment(value: any) {
+    this.addEmpService.ShowPosition(value).subscribe({
+      next: (res: any) => {
+        this.positionDept = res.data.dept_potitions
+        
+        for (let i = 0; i < this.Position.length; i++) {
+          delete this.Position[i].positions
+        }
+        this.Position.splice(1,this.Position.length)
+        this.PositionCount = [1]
+
+        console.log("position",this.Position)
+        console.log("position C",this.PositionCount)
+      },
+      error: (err: any) => {
+        if (err.status === 419) {
+          Swal.fire({
+            icon: 'warning',
+            title: 'เซสชั่นหมดอายุ',
+            text: 'กรุณา Login ใหม่ เพื่อใช้งาน',
+          }).then((e) => {
+            this.router.navigate(['']);
+          })
+        }
+      },
+    });
+  }
+
 
 
   ngOnInit() {
@@ -212,8 +253,6 @@ export class EditDetailPersonComponent implements OnInit {
         this.getPosition(this.Objdata.dept_id)
         console.log("position", this.Position)
 
-
-
         this.emp.controls.ud_prefix_id.setValue(this.Objdata.ud_prefix_id)
         this.emp.controls.ud_fullname_th.setValue(this.Objdata.ud_fullname_th)
         this.emp.controls.ud_fullname_en.setValue(this.Objdata.ud_fullname_en)
@@ -239,6 +278,7 @@ export class EditDetailPersonComponent implements OnInit {
         this.emp.controls.user_without_pay_day.setValue(this.Objdata.user_without_pay_day)
         this.emp.controls.user_resign_day.setValue(this.Objdata.user_resign_day)
 
+        this.getAllDepartment()
       },
       error: (error: any) => { },
     });
