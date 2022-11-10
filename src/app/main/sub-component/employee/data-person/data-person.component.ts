@@ -37,7 +37,7 @@ export class DataPersonComponent implements OnInit {
   reSetPassword() {
     Swal.fire({
       title: `<strong style = "font-family:Kanit"> คุณต้องการเปลี่ยนรหัสผ่านของ <br> ${this.ObjDataemp.ud_fullname_th} หรือไม่ ? </strong>`,
-      icon: 'warning',
+      icon: 'question',
       showCancelButton: true,
       confirmButtonColor: '#005FBC',
       cancelButtonColor: '#d33',
