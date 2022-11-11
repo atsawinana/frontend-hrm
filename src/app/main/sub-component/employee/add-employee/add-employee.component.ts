@@ -62,6 +62,10 @@ export class AddEmployeeComponent implements OnInit {
 
   checknullPosit: boolean = false
 
+  indexSelect: any
+  stateBeforeCheck: boolean = false
+  valueStateBefore: any
+
   public noWhitespaceValidator(control: FormControl) {
     const isWhitespace = (control.value || '').trim().length === 0;
     const isValid = !isWhitespace;
@@ -166,6 +170,8 @@ export class AddEmployeeComponent implements OnInit {
 
   PositionChang() {
 
+    console.log(this.stateBeforeCheck)
+
     for (let i = 0; i < this.position.length; i++) {
       for (let j = 0; j < this.positionDept.length; j++) {
         if (this.position[i] == this.positionDept[j].position) {
@@ -173,6 +179,22 @@ export class AddEmployeeComponent implements OnInit {
         }
       }
     }
+
+    if (!this.stateBeforeCheck) {
+      console.log("not null")
+      this.positionDept.push(this.valueStateBefore)
+    }
+  }
+
+  settingIndex(index: any) {
+    this.indexSelect = index
+    if (this.position[this.indexSelect] == undefined) {
+      this.stateBeforeCheck = true
+    } else {
+      this.valueStateBefore = { position: String(this.position[this.indexSelect]) };
+      this.stateBeforeCheck = false
+    }
+
   }
 
   getPosition(value: any) {

@@ -330,7 +330,7 @@
                             <ng-select [(ngModel)]="position[j]" [ngModelOptions]="{standalone: true}"
                                 [ngClass]="{customnull :( position[j] == null) && summited}" [searchable]="true"
                                 placeholder="เลือกตำแหน่ง" [clearable]="false" class="custom"
-                                (change)="PositionChang()">
+                                (change)="PositionChang()" (click)="settingIndex(j)" >
                                 <ng-option *ngFor="let posit of positionDept" [value]="posit.position">
                                     {{posit.position}}</ng-option>
                             </ng-select>
