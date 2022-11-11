@@ -241,7 +241,7 @@
               <ng-select [(ngModel)]="Position[i].positions" [searchable]="false" placeholder="เลือกตัวเลือก"
                 [clearable]="false" [ngModelOptions]="{standalone: true}" class="custom d-flex justify-content-center"
                 style="margin-bottom: 24px;" [ngClass]="{'lastItemSelect' : i+1 == Position.length}"
-                [ngClass]="{customnull : (Position[i].positions == null) && submitted}" (click)="Userselected()">
+                [ngClass]="{customnull : (Position[i].positions == null) && submitted}" (change)="Userselected()" (click)="settingIndex(i)">
                 <ng-option *ngFor="let posit of positionDept" [value]="posit.position">{{posit.position}} </ng-option>
               </ng-select>
             </div>

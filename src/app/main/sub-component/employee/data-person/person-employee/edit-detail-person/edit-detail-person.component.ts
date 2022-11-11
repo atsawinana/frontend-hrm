@@ -28,7 +28,11 @@ export class EditDetailPersonComponent implements OnInit {
   submitted: boolean = false
   dept_id: any
   UserselectedPosit: any
-  ObjDepartment:any
+  ObjDepartment: any
+
+  indexSelect: any
+  stateBeforeCheck: boolean = false
+  valueStateBefore: any
 
   emp = new FormGroup({
     ud_prefix_id: new FormControl(1, [Validators.required]),
@@ -65,18 +69,20 @@ export class EditDetailPersonComponent implements OnInit {
     return isValid ? null : { 'whitespace': true };
   }
 
-  getAllDepartment(){
+  getAllDepartment() {
     this.editservice.getAllDepartment().subscribe({
       next: (res: any) => {
-          this.ObjDepartment = res.data.deprtments
-          console.log(this.ObjDepartment)
+        this.ObjDepartment = res.data.deprtments
+        console.log(this.ObjDepartment)
       },
       error: (err: any) => {
       }
-  })
+    })
   }
 
-  
+
+
+
   Submit() {
     this.checkNull()
     this.submitted = true
@@ -127,12 +133,12 @@ export class EditDetailPersonComponent implements OnInit {
     let year2 = getFullYear(year) + 543
     // year.setFullYear(year2+543)
     let replaceDate = null
-    if(this.user_deleted_at.value != null){
+    if (this.user_deleted_at.value != null) {
       enddate = this.datepipe.transform(this.user_deleted_at.value, 'YYYY-MM-dd')
-      replaceDate = String(enddate).replace(String(year3),String(year2))
+      replaceDate = String(enddate).replace(String(year3), String(year2))
       console.log(replaceDate)
     }
-    
+
     this.editservice.editData(
       user_id,
       this.emp.controls.user_contract_name.value,
@@ -161,7 +167,7 @@ export class EditDetailPersonComponent implements OnInit {
 
     ).subscribe({
       next: (res: any) => {
-        this.router.navigate([`/main/employee/data-person/${user_id}`]); 
+        this.router.navigate([`/main/employee/data-person/${user_id}`]);
       },
       error: (err: any) => {
       }
@@ -201,15 +207,15 @@ export class EditDetailPersonComponent implements OnInit {
     this.addEmpService.ShowPosition(value).subscribe({
       next: (res: any) => {
         this.positionDept = res.data.dept_potitions
-        
+
         for (let i = 0; i < this.Position.length; i++) {
           delete this.Position[i].positions
         }
-        this.Position.splice(1,this.Position.length)
+        this.Position.splice(1, this.Position.length)
         this.PositionCount = [1]
 
-        console.log("position",this.Position)
-        console.log("position C",this.PositionCount)
+        console.log("position", this.Position)
+        console.log("position C", this.PositionCount)
       },
       error: (err: any) => {
         if (err.status === 419) {
@@ -316,13 +322,34 @@ export class EditDetailPersonComponent implements OnInit {
         }
       }
     }
+
+    if (!this.stateBeforeCheck) {
+      console.log("not null")
+      this.positionDept.push(this.valueStateBefore)
+    }
+  }
+
+  settingIndex(index: any) {
+    this.indexSelect = index
+    console.log(Object.keys(this.Position[this.indexSelect]).length)
+    if (Object.keys(this.Position[this.indexSelect]).length == 0) {
+      this.stateBeforeCheck = true
+    } else {
+      this.valueStateBefore = { position: String(this.Position[this.indexSelect].positions) };
+      this.stateBeforeCheck = false
+    }
+
   }
 
   deleteDeptPosit(index: number) {
     console.log(this.Position)
     console.log("this.positionDept", this.positionDept)
-    let person = { position: String(this.Position[index].positions) };
-    this.positionDept.push(person)
+
+    if (Object.keys(this.Position[index]).length != 0){
+      let person = { position: String(this.Position[index].positions) }
+      this.positionDept.push(person)
+    }
+
     this.Position.splice(index, 1);
     this.PositionCount.splice(index, 1);
   }

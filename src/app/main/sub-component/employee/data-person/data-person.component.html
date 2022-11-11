@@ -1,12 +1,14 @@
 <div class="container-fluid h-100" *ngIf="APISuccess">
   <div class="row">
-    <div class="row mb-4"><div class="back-button my-auto" routerLink="../../"><i class="fa-solid fa-angle-left back-icon"></i></div>
+    <div class="row mb-4">
+      <div class="back-button my-auto" *ngIf="ObjDataemp.user_is_deleted == 0" routerLink="../../"><i class="fa-solid fa-angle-left back-icon"></i></div>
+      <div class="back-button my-auto" *ngIf="ObjDataemp.user_is_deleted == 1" routerLink="../../end-contract-employee"><i class="fa-solid fa-angle-left back-icon"></i></div>
       <div class="font-header ms-2 col">ข้อมูลพนักงาน</div>
       <div class="col-5">
         <div class="row d-flex justify-content-end">
           <div class="buttonEdit me-3" routerLink="edit-detail" *ngIf="ObjDataemp.user_is_deleted != 1"><i class="fa-solid fa-pencil me-3"></i> แก้ไข</div>
           <div class="buttonreset" (click)="reSetPassword()" *ngIf="ObjDataemp.user_is_deleted != 1"><i class="fa-solid fa-key me-3"></i>รีเซ็ตรหัสผ่าน</div>
-          <div class="buttonreset" (click)="reSetPassword()" *ngIf="ObjDataemp.user_is_deleted == 1 && ObjDataemp.user_data_is_deleted == 0"><i class="fa-solid fa-key me-3"></i>ลบข้อมูล</div>
+          <div class="buttonreset" (click)="DeleteEmployee()" *ngIf="ObjDataemp.user_is_deleted == 1 && ObjDataemp.user_data_is_deleted == 0"><i class="fa-solid fa-trash me-3"></i>ลบข้อมูล</div>
         </div>
 
       </div>
