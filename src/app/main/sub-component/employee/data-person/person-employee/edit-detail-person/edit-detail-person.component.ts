@@ -244,7 +244,7 @@ export class EditDetailPersonComponent implements OnInit {
       next: (res: any) => {
         this.Objdata = res.data
         this.dept_id = this.Objdata.dept_id
-        console.log(this.Objdata)
+        console.log("this.Objdata", this.Objdata)
         if (this.Objdata.ud_picture == null) {
           this.Objdata.ud_picture = "/files/image/default.jpg"
         }
@@ -259,6 +259,33 @@ export class EditDetailPersonComponent implements OnInit {
         this.getPosition(this.Objdata.dept_id)
         console.log("position", this.Position)
 
+        {
+          let datebth = this.Objdata.ud_birthday
+          let posit = String(datebth).lastIndexOf('/')
+          let tempdate = String(datebth).substring(0, posit + 1)
+          console.log("tempdate", tempdate)
+
+          let tempyear = Number(String(datebth).substring(posit + 1, datebth.length))
+          tempyear += 543
+          console.log("tempyear", tempyear)
+          this.Objdata.ud_birthday = tempdate + String(tempyear)
+          console.log("this.Objdata.ud_birthday", this.Objdata.ud_birthday)
+        }
+        
+        {
+          let datestart = this.Objdata.user_created_at
+          let posit1 = String(datestart).lastIndexOf('/')
+          let tempdate1 = String(datestart).substring(0, posit1 + 1)
+          console.log("tempdate", tempdate1)
+
+          let tempyear1 = Number(String(datestart).substring(posit1 + 1, datestart.length))
+          tempyear1 += 543
+          console.log("tempyear", tempyear1)
+          this.Objdata.user_created_at = tempdate1 + String(tempyear1)
+          console.log("this.Objdata.ud_birthday", this.Objdata.user_created_at)
+        }
+
+
         this.emp.controls.ud_prefix_id.setValue(this.Objdata.ud_prefix_id)
         this.emp.controls.ud_fullname_th.setValue(this.Objdata.ud_fullname_th)
         this.emp.controls.ud_fullname_en.setValue(this.Objdata.ud_fullname_en)
@@ -270,7 +297,7 @@ export class EditDetailPersonComponent implements OnInit {
 
         this.emp.controls.user_company.setValue(this.Objdata.user_company)
         this.emp.controls.dept_name_en.setValue(this.Objdata.dept_name_en)
-        this.emp.controls.user_contract_name.setValue(this.Objdata.user_contract_name)
+        this.emp.controls.user_contract_name.setValue(this.Objdata.user_contract_type, { onlySelf: true })
         this.emp.controls.user_created_at.setValue(this.Objdata.user_created_at)
         // this.emp.controls.enddate.setValue(this.Objdata.enddate)
 
@@ -345,7 +372,7 @@ export class EditDetailPersonComponent implements OnInit {
     console.log(this.Position)
     console.log("this.positionDept", this.positionDept)
 
-    if (Object.keys(this.Position[index]).length != 0){
+    if (Object.keys(this.Position[index]).length != 0) {
       let person = { position: String(this.Position[index].positions) }
       this.positionDept.push(person)
     }
