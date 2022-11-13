@@ -28,6 +28,13 @@ export class EditDetailPersonComponent implements OnInit {
   submitted: boolean = false
   dept_id: any
   UserselectedPosit: any
+  ObjDepartment: any
+
+  indexSelect: any
+  stateBeforeCheck: boolean = false
+  valueStateBefore: any
+
+  IDcarderr:boolean = false
 
   emp = new FormGroup({
     ud_prefix_id: new FormControl(1, [Validators.required]),
@@ -37,7 +44,7 @@ export class EditDetailPersonComponent implements OnInit {
     ud_birthday: new FormControl('', [Validators.required,]),
     ud_id_card: new FormControl('', [Validators.required, this.noWhitespaceValidator,]),
     ud_phone: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
-    ud_email: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
+    ud_email: new FormControl('',),
 
     user_company: new FormControl('Exvention', [Validators.required, this.noWhitespaceValidator]),
     dept_name_en: new FormControl(null, [Validators.required]),
@@ -63,6 +70,20 @@ export class EditDetailPersonComponent implements OnInit {
     const isValid = !isWhitespace;
     return isValid ? null : { 'whitespace': true };
   }
+
+  getAllDepartment() {
+    this.editservice.getAllDepartment().subscribe({
+      next: (res: any) => {
+        this.ObjDepartment = res.data.deprtments
+        console.log("department", this.ObjDepartment)
+      },
+      error: (err: any) => {
+      }
+    })
+  }
+
+
+
 
   Submit() {
     this.checkNull()
@@ -96,63 +117,92 @@ export class EditDetailPersonComponent implements OnInit {
       return
 
 
-    let user_id = localStorage.getItem('empPerson')
-    let username = "A"
-    let aryPosition = []
+    Swal.fire({
+      title:
+        '<strong style = "font-family:Kanit"> คุณต้องการแก้ไขข้อมูลพนักงาน หรือไม่ ? </strong>',
+      icon: 'question',
+      showCancelButton: true,
+      cancelButtonColor: '#d33',
+      cancelButtonText: '<div style = "font-family:Kanit"> ยกเลิก </div>',
+      confirmButtonText: '<div style = "font-family:Kanit"> ตกลง </div>',
+      confirmButtonColor: '#005FBC',
+      reverseButtons: true,
+    }).then((result) => {
+      if (result.isConfirmed) {
 
-    for (let i = 0; i < this.Position.length; i++) {
-      aryPosition.push(this.Position[i].positions)
-    }
 
 
-    let startdate = this.datepipe.transform(this.emp.controls.user_created_at.value, 'YYYY-dd-MM');
-    let bthdate = this.datepipe.transform(this.emp.controls.user_created_at.value, 'YYYY-dd-MM')
-    let enddate = null
-
-    let year = new Date()
-    let year3 = getFullYear(year)
-    let year2 = getFullYear(year) + 543
-    // year.setFullYear(year2+543)
-    let replaceDate = null
-    if(this.user_deleted_at.value != null){
-      enddate = this.datepipe.transform(this.user_deleted_at.value, 'YYYY-MM-dd')
-      replaceDate = String(enddate).replace(String(year3),String(year2))
-      console.log(replaceDate)
-    }
+        let user_id = localStorage.getItem('empPerson')
+        let username = "A"
+        let aryPosition = []
     
-    this.editservice.editData(
-      user_id,
-      this.emp.controls.user_contract_name.value,
-      this.emp.controls.user_company.value,
-      this.emp.controls.ud_prefix_id.value,
-      aryPosition,
-      this.dept_id,
-      this.emp.controls.ud_email.value,
-      this.emp.controls.ud_fullname_en.value,
-      this.emp.controls.ud_fullname_th.value,
-      this.emp.controls.ud_nickname.value,
-      this.emp.controls.ud_phone.value,
-      this.emp.controls.ud_id_card.value,
-      bthdate,
-      this.emp.controls.user_leave_day.value,
-      this.emp.controls.user_sick_day.value,
-      this.emp.controls.user_take_annual_day.value,
-      this.emp.controls.user_ordination_day.value,
-      this.emp.controls.user_maternity_day.value,
-      this.emp.controls.user_sterilization_day.value,
-      this.emp.controls.user_military_service_day.value,
-      this.emp.controls.user_without_pay_day.value,
-      this.emp.controls.user_resign_day.value,
-      replaceDate,
-      startdate
+        for (let i = 0; i < this.Position.length; i++) {
+          aryPosition.push(this.Position[i].positions)
+        }
+    
+    
+        let startdate = this.datepipe.transform(this.emp.controls.user_created_at.value, 'YYYY-dd-MM');
+        let bthdate = this.datepipe.transform(this.emp.controls.user_created_at.value, 'YYYY-dd-MM')
+        let enddate = null
+    
+        let year = new Date()
+        let year3 = getFullYear(year)
+        let year2 = getFullYear(year) + 543
+        // year.setFullYear(year2+543)
+        let replaceDate = null
+        if (this.user_deleted_at.value != null) {
+          enddate = this.datepipe.transform(this.user_deleted_at.value, 'YYYY-MM-dd')
+          replaceDate = String(enddate).replace(String(year3), String(year2))
+          console.log(replaceDate)
+        }
 
-    ).subscribe({
-      next: (res: any) => {
-        this.router.navigate([`/main/employee/data-person/${user_id}`]); 
-      },
-      error: (err: any) => {
+        this.editservice
+          .editData(
+            user_id,
+            this.emp.controls.user_contract_name.value,
+            this.emp.controls.user_company.value,
+            this.emp.controls.ud_prefix_id.value,
+            aryPosition,
+            this.emp.controls.dept_name_en.value,
+            this.emp.controls.ud_email.value,
+            this.emp.controls.ud_fullname_en.value,
+            this.emp.controls.ud_fullname_th.value,
+            this.emp.controls.ud_nickname.value,
+            this.emp.controls.ud_phone.value,
+            this.emp.controls.ud_id_card.value,
+            bthdate,
+            this.emp.controls.user_leave_day.value,
+            this.emp.controls.user_sick_day.value,
+            this.emp.controls.user_take_annual_day.value,
+            this.emp.controls.user_ordination_day.value,
+            this.emp.controls.user_maternity_day.value,
+            this.emp.controls.user_sterilization_day.value,
+            this.emp.controls.user_military_service_day.value,
+            this.emp.controls.user_without_pay_day.value,
+            this.emp.controls.user_resign_day.value,
+            replaceDate,
+            startdate
+          )
+          .subscribe({
+            next: (res: any) => {
+              console.log('success')
+              this.router.navigate([`/main/employee/data-person/${user_id}`]);
+            },
+            error: (err: any) => {
+              if (err.status === 403) {
+
+                this.IDcarderr = true
+
+                Swal.fire({
+                  icon: 'error',
+                  title: 'รหัสบัตรประชาชนไม่ถูกต้อง',
+                  text: 'กรุณาตรวจสอบเลขบัตรประชาชนอีกครั้ง',
+                })
+              }
+            },
+          });
       }
-    })
+    });
   }
 
   getPosition(value: any) {
@@ -184,7 +234,43 @@ export class EditDetailPersonComponent implements OnInit {
     });
   }
 
+  ChangeDepartment(value: any) {
+    console.log(value)
+    console.log(this.emp.controls.dept_name_en.value)
+    this.addEmpService.ShowPosition(value).subscribe({
+      next: (res: any) => {
+        this.positionDept = res.data.dept_potitions
 
+        for (let i = 0; i < this.Position.length; i++) {
+          delete this.Position[i].positions
+        }
+        this.Position.splice(1, this.Position.length)
+        this.PositionCount = [1]
+
+        console.log("position", this.Position)
+        console.log("position C", this.PositionCount)
+      },
+      error: (err: any) => {
+        if (err.status === 419) {
+          Swal.fire({
+            icon: 'warning',
+            title: 'เซสชั่นหมดอายุ',
+            text: 'กรุณา Login ใหม่ เพื่อใช้งาน',
+          }).then((e) => {
+            this.router.navigate(['']);
+          })
+        }
+      },
+    });
+  }
+
+  numberOnly(event: any): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      return false;
+    }
+    return true;
+  }
 
   ngOnInit() {
     this.today = new Date();
@@ -193,11 +279,11 @@ export class EditDetailPersonComponent implements OnInit {
 
     this.emp_id = localStorage.getItem('empPerson')
 
-    this.dataService.getUserProfile(this.emp_id).subscribe({
+    this.editservice.getUserProfile(this.emp_id).subscribe({
       next: (res: any) => {
         this.Objdata = res.data
         this.dept_id = this.Objdata.dept_id
-        console.log(this.Objdata)
+        console.log("this.Objdata", this.Objdata)
         if (this.Objdata.ud_picture == null) {
           this.Objdata.ud_picture = "/files/image/default.jpg"
         }
@@ -212,6 +298,31 @@ export class EditDetailPersonComponent implements OnInit {
         this.getPosition(this.Objdata.dept_id)
         console.log("position", this.Position)
 
+        {
+          let datebth = this.Objdata.ud_birthday
+          let posit = String(datebth).lastIndexOf('/')
+          let tempdate = String(datebth).substring(0, posit + 1)
+          console.log("tempdate", tempdate)
+
+          let tempyear = Number(String(datebth).substring(posit + 1, datebth.length))
+          tempyear += 543
+          console.log("tempyear", tempyear)
+          this.Objdata.ud_birthday = tempdate + String(tempyear)
+          console.log("this.Objdata.ud_birthday", this.Objdata.ud_birthday)
+        }
+
+        {
+          let datestart = this.Objdata.user_created_at
+          let posit1 = String(datestart).lastIndexOf('/')
+          let tempdate1 = String(datestart).substring(0, posit1 + 1)
+          console.log("tempdate", tempdate1)
+
+          let tempyear1 = Number(String(datestart).substring(posit1 + 1, datestart.length))
+          tempyear1 += 543
+          console.log("tempyear", tempyear1)
+          this.Objdata.user_created_at = tempdate1 + String(tempyear1)
+          console.log("this.Objdata.ud_birthday", this.Objdata.user_created_at)
+        }
 
 
         this.emp.controls.ud_prefix_id.setValue(this.Objdata.ud_prefix_id)
@@ -225,7 +336,7 @@ export class EditDetailPersonComponent implements OnInit {
 
         this.emp.controls.user_company.setValue(this.Objdata.user_company)
         this.emp.controls.dept_name_en.setValue(this.Objdata.dept_name_en)
-        this.emp.controls.user_contract_name.setValue(this.Objdata.user_contract_name)
+        this.emp.controls.user_contract_name.setValue(this.Objdata.user_contract_type, { onlySelf: true })
         this.emp.controls.user_created_at.setValue(this.Objdata.user_created_at)
         // this.emp.controls.enddate.setValue(this.Objdata.enddate)
 
@@ -239,6 +350,7 @@ export class EditDetailPersonComponent implements OnInit {
         this.emp.controls.user_without_pay_day.setValue(this.Objdata.user_without_pay_day)
         this.emp.controls.user_resign_day.setValue(this.Objdata.user_resign_day)
 
+        this.getAllDepartment()
       },
       error: (error: any) => { },
     });
@@ -251,12 +363,19 @@ export class EditDetailPersonComponent implements OnInit {
     console.log(this.Position);
     // console.log(this.DeptPosit[this.countDeptPosit.length - 1]);
     let ObjNull = {}
-    if (this.Position[this.PositionCount.length - 1] == null || this.Position[this.PositionCount.length - 1] == ObjNull) {
+
+    console.log(Object.keys(this.Position[this.PositionCount.length - 1]).length === 0)
+
+
+    if (Object.keys(this.Position[this.PositionCount.length - 1]).length === 0) {
       alert('กรุณากรอกข้อมูลให้ครบถ้วน');
     } else {
       this.PositionCount?.push(this.PositionCount.length + 1);
       this.Position.push({});
     }
+
+    console.log(this.Position.length)
+    console.log(this.PositionCount.length)
   }
 
   Userselected() {
@@ -269,13 +388,34 @@ export class EditDetailPersonComponent implements OnInit {
         }
       }
     }
+
+    if (!this.stateBeforeCheck) {
+      console.log("not null")
+      this.positionDept.push(this.valueStateBefore)
+    }
+  }
+
+  settingIndex(index: any) {
+    this.indexSelect = index
+    console.log(Object.keys(this.Position[this.indexSelect]).length)
+    if (Object.keys(this.Position[this.indexSelect]).length == 0) {
+      this.stateBeforeCheck = true
+    } else {
+      this.valueStateBefore = { position: String(this.Position[this.indexSelect].positions) };
+      this.stateBeforeCheck = false
+    }
+
   }
 
   deleteDeptPosit(index: number) {
     console.log(this.Position)
     console.log("this.positionDept", this.positionDept)
-    let person = { position: String(this.Position[index].positions) };
-    this.positionDept.push(person)
+
+    if (Object.keys(this.Position[index]).length != 0) {
+      let person = { position: String(this.Position[index].positions) }
+      this.positionDept.push(person)
+    }
+
     this.Position.splice(index, 1);
     this.PositionCount.splice(index, 1);
   }

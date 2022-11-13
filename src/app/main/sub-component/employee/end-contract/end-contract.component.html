@@ -1,70 +1,72 @@
-<app-employee-overbutton></app-employee-overbutton>
-<!-- <app-loading-employee *ngIf="!LoadingAPI" class="d-flex justify-content-center h-100 align-items-center">
-</app-loading-employee> -->
+<app-employee-overbutton ></app-employee-overbutton>
+<app-loading-employee *ngIf="!LoadingAPI" class="d-flex justify-content-center h-100 align-items-center">
+</app-loading-employee>
+
 
 <div *ngIf="LoadingAPI">
   <div>
-    <div class="row d-flex justify-content-between">
-      <div class="col-3">
-        <div class="list-header">รายชื่อพนักงาน</div>
-      </div>
+    <div>
+      <div class="row d-flex justify-content-between">
+        <div class="col-3">
+          <div class="list-header">รายชื่อพนักงาน</div>
+        </div>
 
-      <div class="col-9 d-flex align-items-center justify-content-end">
+        <div class="col-9 d-flex align-items-center justify-content-end">
 
-        <div class="col-4 h-100">
-          <div class="row h-100 w-100 ms-1 search-bar">
-            <div class="col-2 py-1">
-              <img class="py-2 px-2 search-icon" src="assets/img/department/search-bar.png" alt="" />
-            </div>
-            <div class="col-6 p-0">
-              <input [(ngModel)]="searchInput" class="h-100 w-100" id="search-bar" type="text" pattern="[a-zA-Z]*"
-                placeholder="ค้นหา" />
-            </div>
-            <div class="col-4 d-flex align-items-center justify-content-center filter-font" (click)="showFilterBox()">
-              Filter
-              <i class="fa-solid fa-sliders filter-icon"></i>
-            </div>
-          </div>
-  
-          <!-- filter box -->
-          <div id="filterBox" style="display:none;" class="filter-outframe">
-            <div class="filter-box">
-              <div class="container">
-                <div class="row filter-text">
-                  <div class="col"> หมวดหมู่</div>
-  
-                  <div class="row mt-3" >
-
-                    <label class="col-6 mb-3" *ngFor="let posit of ObjDepartment ; let i = index">
-                      <div class="box ">{{posit.dept_name_en}}
-                        <!-- <input type="checkbox" [value]="posit.dept_id" (change)="setValueDepartment($event)"> -->
-                        <input type="checkbox" [(ngModel)]="TestModel[i]"  [checked]="true">
-                        <span class="checkmark"></span>
-                      </div>
-                    </label>
-  
-                  </div>
-  
-                </div>
-                <hr>
-                <div class="row d-flex justify-content-end">
-                  <div class="col-6 col-sm-3 col-md-3 col-lg-3"><button
-                      class="cancel-button d-flex justify-content-center w-100" type=""
-                      (click)="showFilterBox()">
-                      <div class="cancel-text">ยกเลิก</div>
-                    </button>
-                  </div>
-                  <div class="col-6 col-sm-3 col-md-3 col-lg-3"><button (click)="showFilterBox()"  (click)="loadempFromDepartment()"
-                      class="submit-button d-flex justify-content-center w-100" type="submit">
-                      <div class="submit-text">ตกลง</div>
-                    </button>
-                  </div>
-                </div>
-  
+          <div class="col-4 h-100">
+            <div class="row h-100 w-100 ms-1 search-bar">
+              <div class="col-2 py-1">
+                <img class="py-2 px-2 search-icon" src="assets/img/department/search-bar.png" alt="" />
+              </div>
+              <div class="col-6 p-0">
+                <input [(ngModel)]="searchInput" class="h-100 w-100" id="search-bar" type="text" pattern="[a-zA-Z]*"
+                  placeholder="ค้นหา" />
+              </div>
+              <div class="col-4 d-flex align-items-center justify-content-center filter-font" (click)="showFilterBox()">
+                Filter
+                <i class="fa-solid fa-sliders filter-icon"></i>
               </div>
             </div>
-          </div>
-          <!-- filter box end -->
+
+            <!-- filter box -->
+            <div id="filterBox" style="display:none;" class="filter-outframe">
+              <div class="filter-box">
+                <div class="container">
+                  <div class="row filter-text">
+                    <div class="col"> หมวดหมู่</div>
+
+                    <div class="row mt-3">
+
+                      <label class="col-6 mb-3" *ngFor="let posit of ObjDepartment ; let i = index">
+                        <div class="box ">{{posit.dept_name_en}}
+                          <!-- <input type="checkbox" [value]="posit.dept_id" (change)="setValueDepartment($event)"> -->
+                          <input type="checkbox" [(ngModel)]="TestModel[i]" [checked]="true">
+                          <span class="checkmark"></span>
+                        </div>
+                      </label>
+
+                    </div>
+
+                  </div>
+                  <hr>
+                  <div class="row d-flex justify-content-end">
+                    <div class="col-6 col-sm-3 col-md-3 col-lg-3"><button
+                        class="cancel-button d-flex justify-content-center w-100" type="" (click)="showFilterBox()">
+                        <div class="cancel-text">ยกเลิก</div>
+                      </button>
+                    </div>
+                    <div class="col-6 col-sm-3 col-md-3 col-lg-3"><button (click)="showFilterBox()"
+                        (click)="loadempFromDepartment()" class="submit-button d-flex justify-content-center w-100"
+                        type="submit">
+                        <div class="submit-text">ตกลง</div>
+                      </button>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <!-- filter box end -->
 
           </div>
         </div>
@@ -98,8 +100,8 @@
 
       <tbody class="list-content">
 
-        <tr  routerLinkActive="router-link-active" id=""
-          *ngFor="let emp of Objemployee | paginate: config  | filter : searchInput">
+        <tr routerLinkActive="router-link-active" id=""
+          *ngFor="let emp of Objemployee | paginate: config  | filter : searchInput" >
           <td>{{emp.number}}</td>
           <td class="text-start">{{emp.user_card_number}}</td>
           <td class="text-start">{{emp.ud_fullname_th}}</td>
@@ -110,8 +112,8 @@
 
             <div class="row d-flex justify-content-center">
               <div class="col-1 px-0 mx-1">
-                <div class="activity-table icon-fix"  role="button">
-                  <i class="fa-solid fa-ellipsis-vertical"></i>
+                <div class="activity-table icon-fix py-1" role="button" routerLink="../data-person/{{emp.id}}">
+                  <i class="fa-solid fa-list-ul"></i>
                 </div>
               </div>
             </div>
@@ -172,3 +174,4 @@
       </div>
     </div>
   </div>
+</div>

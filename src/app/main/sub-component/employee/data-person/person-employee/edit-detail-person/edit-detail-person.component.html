@@ -122,12 +122,12 @@
         </div>
         <div class="col-12 col-sm-6 col-md-6col-lg-6 font-detail">
           <input formControlName="ud_id_card" textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-            [ngClass]="{isinvalid : emp.controls.ud_id_card.errors && submitted}" placeholder="10xxxxxxxxxx"
-            maxlength="13" minlength="13">
+            [ngClass]="{isinvalid : (emp.controls.ud_id_card.errors && submitted) || IDcarderr } " placeholder="10xxxxxxxxxx"
+            maxlength="13" minlength="13" (keypress)="numberOnly($event)">
         </div>
 
         <!-- alert รหัสบัตรประชาชน -->
-        <div class="row" *ngIf="emp.controls.ud_id_card.errors && submitted">
+        <div class="row" *ngIf="(emp.controls.ud_id_card.errors && submitted)">
           <div class="col-5"></div>
           <div class="col-7 d-flex justify-content-end">
             <div class="alerttext">
@@ -137,6 +137,18 @@
         </div>
         <!-- alert รหัสบัตรประชาชน end -->
 
+             <!-- alert รหัสบัตรประชาชน -->
+             <div class="row" *ngIf="IDcarderr">
+              <div class="col-5"></div>
+              <div class="col-7 d-flex justify-content-end">
+                <div class="alerttext">
+                  รหัสบัตรประชาชนไม่ถูกต้อง
+                </div>
+              </div>
+            </div>
+            <!-- alert รหัสบัตรประชาชน end -->
+    
+
       </div>
       <div class="row mb-4">
         <div class="col-12 col-sm-5 col-md-5 col-lg-5 font-title">
@@ -145,7 +157,7 @@
         <div class="col-12 col-sm-6 col-md-6col-lg-6 font-detail">
           <input formControlName="ud_phone" textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
             [ngClass]="{isinvalid : emp.controls.ud_phone.errors && submitted}" placeholder="08x-xxxxxx" maxlength="10"
-            minlength="10">
+            minlength="10" (keypress)="numberOnly($event)">
         </div>
 
         <!-- alert เบอร์โทรศัพท์ -->
@@ -213,8 +225,8 @@
         <div class="col-12 col-sm-6 col-md-6 col-lg-6 font-detail">
           <ng-select formControlName="dept_name_en" [searchable]="false" placeholder="เลือกตัวเลือก" [clearable]="false"
             [ngClass]="{customnull : emp.controls.dept_name_en.errors && submitted}"
-            class="custom d-flex justify-content-center">
-            <ng-option>Executive</ng-option>
+            class="custom d-flex justify-content-center" (change)="ChangeDepartment($event)">
+            <ng-option *ngFor="let department of ObjDepartment" [value]="department.dept_id">{{department.dept_name_en}}</ng-option>
           </ng-select>
         </div>
 
@@ -241,7 +253,7 @@
               <ng-select [(ngModel)]="Position[i].positions" [searchable]="false" placeholder="เลือกตัวเลือก"
                 [clearable]="false" [ngModelOptions]="{standalone: true}" class="custom d-flex justify-content-center"
                 style="margin-bottom: 24px;" [ngClass]="{'lastItemSelect' : i+1 == Position.length}"
-                [ngClass]="{customnull : (Position[i].positions == null) && submitted}" (click)="Userselected()">
+                [ngClass]="{customnull : (Position[i].positions == null) && submitted}" (change)="Userselected()" (click)="settingIndex(i)">
                 <ng-option *ngFor="let posit of positionDept" [value]="posit.position">{{posit.position}} </ng-option>
               </ng-select>
             </div>
@@ -285,7 +297,7 @@
           <ng-select formControlName="user_contract_name" [searchable]="false" placeholder="เลือกตัวเลือก"
             [ngClass]="{customnull : emp.controls.user_contract_name.errors&& submitted}" [clearable]="false"
             class="custom d-flex justify-content-center">
-            <ng-option value="1">ประจำ</ng-option>
+            <ng-option value="1">พนักงานประจำ</ng-option>
             <ng-option value="2">สัญญาจ้าง</ng-option>
           </ng-select>
         </div>

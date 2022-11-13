@@ -29,7 +29,7 @@ export class AddEmployeeComponent implements OnInit {
     nickname: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
     birthdate: new FormControl('', [Validators.required,]),
     phonenumber: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
-    email: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
+    email: new FormControl('',),
     company: new FormControl('Exvention', [Validators.required, this.noWhitespaceValidator]),
     department: new FormControl(null, [Validators.required]),
     typecontract: new FormControl(null, [Validators.required, this.noWhitespaceValidator]),
@@ -61,6 +61,10 @@ export class AddEmployeeComponent implements OnInit {
   confirmPath: string = ""
 
   checknullPosit: boolean = false
+
+  indexSelect: any
+  stateBeforeCheck: boolean = false
+  valueStateBefore: any
 
   public noWhitespaceValidator(control: FormControl) {
     const isWhitespace = (control.value || '').trim().length === 0;
@@ -121,6 +125,13 @@ export class AddEmployeeComponent implements OnInit {
 
   deleteInputDept(index: number) {
 
+    console.log("option", this.positionDept)
+    if (this.position[index] == undefined) {
+      this.position.splice(index, 1);
+      this.countposit.splice(index, 1);
+      return
+    }
+
     let person = { position: String(this.position[index]) };
     this.positionDept.push(person)
 
@@ -159,12 +170,29 @@ export class AddEmployeeComponent implements OnInit {
 
   PositionChang() {
 
+    console.log(this.stateBeforeCheck)
+
     for (let i = 0; i < this.position.length; i++) {
       for (let j = 0; j < this.positionDept.length; j++) {
         if (this.position[i] == this.positionDept[j].position) {
           this.positionDept.splice(j, 1)
         }
       }
+    }
+
+    if (!this.stateBeforeCheck) {
+      console.log("not null")
+      this.positionDept.push(this.valueStateBefore)
+    }
+  }
+
+  settingIndex(index: any) {
+    this.indexSelect = index
+    if (this.position[this.indexSelect] == undefined) {
+      this.stateBeforeCheck = true
+    } else {
+      this.valueStateBefore = { position: String(this.position[this.indexSelect]) };
+      this.stateBeforeCheck = false
     }
   }
 
@@ -203,13 +231,28 @@ export class AddEmployeeComponent implements OnInit {
     }
     this.emp.controls.password.setValue(password);
   }
-
+  cancel() {
+    Swal.fire({
+      title:
+        '<strong style = "font-family:Kanit"> คุณต้องการยกเลิกการเพิ่มใช่หรือไม่ </strong>',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonColor: '#005FBC',
+      cancelButtonColor: '#d33',
+      confirmButtonText: '<div style = "font-family:Kanit"> ตกลง </div>',
+      cancelButtonText: '<div style = "font-family:Kanit"> ยกเลิก </div>',
+      reverseButtons: true,
+    }).then((e) => {
+      if (e.isConfirmed) {
+        this.router.navigate(['/main/employee']);
+      }
+    });
+  }
 
   Submit() {
 
     console.log("test position", this.position)
     console.log("count posit", this.countposit)
-
 
     this.summited = true;
 
@@ -219,11 +262,9 @@ export class AddEmployeeComponent implements OnInit {
       this.checknullPosit = true
     }
 
-
-
     console.log('value invalid', this.emp);
 
-    console.log("null posit",this.checknullPosit)
+    console.log("null posit", this.checknullPosit)
 
     if (this.emp.invalid || this.checknullPosit) {
       return;
@@ -241,7 +282,7 @@ export class AddEmployeeComponent implements OnInit {
     Swal.fire({
       title:
         '<strong style = "font-family:Kanit"> คุณต้องการเพิ่มข้อมูลพนักงาน หรือไม่ ? </strong>',
-      icon: 'warning',
+      icon: 'question',
       showCancelButton: true,
       cancelButtonColor: '#d33',
       cancelButtonText: '<div style = "font-family:Kanit"> ยกเลิก </div>',
@@ -284,7 +325,18 @@ export class AddEmployeeComponent implements OnInit {
               console.log('success');
               this.router.navigate(['/main/employee']);
             },
-            error: (err: any) => { },
+            error: (err: any) => {
+              if (err.status === 403) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'รหัสบัตรประชาชนไม่ถูกต้อง',
+                    text: 'กรุณาตรวจสอบเลขบัตรประชาชนอีกครั้ง',
+                })
+            }
+            else{
+                // this.main.Error()
+            }
+             },
           });
 
         //   Swal.fire({

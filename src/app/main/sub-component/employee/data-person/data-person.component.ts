@@ -12,7 +12,8 @@ import Swal from 'sweetalert2';
 export class DataPersonComponent implements OnInit {
   constructor(
     private dataService: DataPersonService,
-    private router: ActivatedRoute
+    private router: ActivatedRoute,
+    private route: Router
   ) { }
   Empid: any;
   baseURL = environment.apiURL;
@@ -37,7 +38,7 @@ export class DataPersonComponent implements OnInit {
   reSetPassword() {
     Swal.fire({
       title: `<strong style = "font-family:Kanit"> คุณต้องการเปลี่ยนรหัสผ่านของ <br> ${this.ObjDataemp.ud_fullname_th} หรือไม่ ? </strong>`,
-      icon: 'warning',
+      icon: 'question',
       showCancelButton: true,
       confirmButtonColor: '#005FBC',
       cancelButtonColor: '#d33',
@@ -58,6 +59,45 @@ export class DataPersonComponent implements OnInit {
               cancelButtonColor: '#d33',
               reverseButtons: true,
               confirmButtonText: '<div style = "font-family:Kanit"> ตกลง </div>',
+            })
+          },
+          error: (err: any) => {
+            Swal.fire({
+              title: `<strong style = "font-family:Kanit"> เกิดข้อผิดพลาด <br> กรุณาลองใหม่อีกครั้ง </strong>`,
+              icon: 'error',
+              showConfirmButton: false,
+              timer: 1500
+            })
+          }
+        })
+      }
+    })
+  }
+
+
+  DeleteEmployee() {
+    Swal.fire({
+      title: `<strong style = "font-family:Kanit"> คุณต้องการลบข้อมูลของ <br>  ${this.ObjDataemp.ud_prefix_name}  ${this.ObjDataemp.ud_fullname_th} หรือไม่ ? </strong>`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#005FBC',
+      cancelButtonColor: '#d33',
+      confirmButtonText: '<div style = "font-family:Kanit"> ตกลง </div>',
+      cancelButtonText: '<div style = "font-family:Kanit"> ยกเลิก </div>',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.dataService.deleteEMP(this.ObjDataemp.user_id).subscribe({
+          next: (res: any) => {
+            Swal.fire({
+              title: `<strong style = "font-family:Kanit"> ลบข้อมูลสำเร็จ </strong>`,
+              icon: 'success',
+              confirmButtonColor: '#005FBC',
+              cancelButtonColor: '#d33',
+              reverseButtons: true,
+              confirmButtonText: '<div style = "font-family:Kanit"> ตกลง </div>',
+            }).then((e) => {
+              this.route.navigate(['/main/employee/end-contract-employee']);
             })
           },
           error: (err: any) => {

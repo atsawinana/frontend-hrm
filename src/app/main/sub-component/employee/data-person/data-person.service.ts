@@ -42,4 +42,19 @@ export class DataPersonService {
     );
   }
 
+  deleteEMP(
+    user_username: string,
+  ) {
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+    });
+
+    return this.httpClient.delete(`${environment.apiURL}/employee/deleteDataEmployee`, {
+      headers,
+      params: {
+        'user_id': user_username
+      }
+    });
+  }
+
 }

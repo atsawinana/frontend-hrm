@@ -46,6 +46,10 @@ export class EditComponentComponent implements OnInit {
     checkMapfalse: boolean = false;
     UserSelected: any[] = [];
 
+    indexSelect: any
+    stateBeforeCheck: boolean = false
+    valueStateBefore: any
+
     ngOnInit(): void {
         this.dept_id = this.router.snapshot.params['dept_id'];
         this.WaitApiData();
@@ -110,6 +114,25 @@ export class EditComponentComponent implements OnInit {
                 }
             }
         }
+
+        if (!this.stateBeforeCheck) {
+            console.log("not null")
+            this.DeptUserID.push(this.valueStateBefore)
+        }
+    }
+
+    settingIndex(index: any) {
+
+        console.log(this.DeptUserID)
+        this.indexSelect = index
+        console.log(Object.keys(this.ObjDeptMana[this.indexSelect]).length)
+        if (Object.keys(this.ObjDeptMana[this.indexSelect]).length == 0) {
+            this.stateBeforeCheck = true
+        } else {
+            this.valueStateBefore = { ud_fullname_th: String(this.ObjDeptMana[this.indexSelect].ud_fullname_th) };
+            this.stateBeforeCheck = false
+        }
+
     }
 
     EditData() {
