@@ -36,6 +36,8 @@ export class EditDetailPersonComponent implements OnInit {
 
   IDcarderr:boolean = false
 
+  APIsuccess:boolean = false
+
   emp = new FormGroup({
     ud_prefix_id: new FormControl(1, [Validators.required]),
     ud_fullname_th: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
@@ -272,6 +274,14 @@ export class EditDetailPersonComponent implements OnInit {
     return true;
   }
 
+  minusDetect(event: any): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode == 45) {
+      return false;
+    }
+    return true;
+  }
+
   ngOnInit() {
     this.today = new Date();
     defineLocale('th', thBeLocale);
@@ -283,7 +293,7 @@ export class EditDetailPersonComponent implements OnInit {
       next: (res: any) => {
         this.Objdata = res.data
         this.dept_id = this.Objdata.dept_id
-        console.log("this.Objdata", this.Objdata)
+        console.log("this.Objdata1234", this.Objdata)
         if (this.Objdata.ud_picture == null) {
           this.Objdata.ud_picture = "/files/image/default.jpg"
         }
@@ -351,6 +361,7 @@ export class EditDetailPersonComponent implements OnInit {
         this.emp.controls.user_resign_day.setValue(this.Objdata.user_resign_day)
 
         this.getAllDepartment()
+        this.APIsuccess = true
       },
       error: (error: any) => { },
     });

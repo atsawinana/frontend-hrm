@@ -358,7 +358,7 @@ table {
 
 .filter-box {
   width: 700px;
-  min-height: 170px;
+  height: auto;
   background: #FFFFFF;
   border: 1px solid #005FBC;
   border-radius: 10px;

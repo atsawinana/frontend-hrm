@@ -34,7 +34,6 @@
   background: #FFFFFF;
   border: 1px solid #005FBC;
   border-radius: 8px;
-  margin-bottom: 50px;
 }
 
 
@@ -118,7 +117,6 @@
   background: linear-gradient(270.74deg, #2E3579 0.35%, #005FBC 99.1%, #005FBC 99.1%);
   border-radius: 8px;
   border: 1px solid #005FBC;
-  margin-bottom: 50px;
 }
 
 .submit-text {
@@ -360,13 +358,11 @@ table {
 
 .filter-box {
   width: 674px;
-  min-height: 160px;
   background: #FFFFFF;
   border: 1px solid #005FBC;
   border-radius: 10px;
   position: absolute;
   margin-top: 10px;
-  /* margin-left: 5px; */
   right: 70px;
 }
 
