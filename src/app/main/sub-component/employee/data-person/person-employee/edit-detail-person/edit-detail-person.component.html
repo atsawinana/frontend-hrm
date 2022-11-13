@@ -362,8 +362,7 @@
         <div class="col-12 col-sm-6 col-md-6col-lg-6 font-detail">
           <input [formControl]="user_deleted_at" type="text" placeholder="วันที่ทำงานวันสุดท้าย" class="form-control " bsDatepicker
             [ngClass]="{isinvalid : emp.controls.ud_birthday.errors && submitted}"
-            [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD/MM/YYYY', containerClass: 'theme-dark-blue',showWeekNumbers: false}"
-            [maxDate]="today" (keypress)="false">
+            [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD/MM/YYYY', containerClass: 'theme-dark-blue',showWeekNumbers: false}" (keypress)="false">
         </div>
         <div class="col-12 col-sm-2 col-md-2 col-lg-2 font-title">
           <div class="col-1">
