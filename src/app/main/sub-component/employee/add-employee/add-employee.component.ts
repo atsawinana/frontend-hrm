@@ -232,13 +232,28 @@ export class AddEmployeeComponent implements OnInit {
     }
     this.emp.controls.password.setValue(password);
   }
-
+  cancel() {
+    Swal.fire({
+      title:
+        '<strong style = "font-family:Kanit"> คุณต้องการยกเลิกการเพิ่มใช่หรือไม่ </strong>',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonColor: '#005FBC',
+      cancelButtonColor: '#d33',
+      confirmButtonText: '<div style = "font-family:Kanit"> ตกลง </div>',
+      cancelButtonText: '<div style = "font-family:Kanit"> ยกเลิก </div>',
+      reverseButtons: true,
+    }).then((e) => {
+      if (e.isConfirmed) {
+        this.router.navigate(['/main/employee']);
+      }
+    });
+  }
 
   Submit() {
 
     console.log("test position", this.position)
     console.log("count posit", this.countposit)
-
 
     this.summited = true;
 
@@ -247,8 +262,6 @@ export class AddEmployeeComponent implements OnInit {
     } else {
       this.checknullPosit = true
     }
-
-
 
     console.log('value invalid', this.emp);
 
@@ -270,7 +283,7 @@ export class AddEmployeeComponent implements OnInit {
     Swal.fire({
       title:
         '<strong style = "font-family:Kanit"> คุณต้องการเพิ่มข้อมูลพนักงาน หรือไม่ ? </strong>',
-      icon: 'warning',
+      icon: 'question',
       showCancelButton: true,
       cancelButtonColor: '#d33',
       cancelButtonText: '<div style = "font-family:Kanit"> ยกเลิก </div>',
@@ -313,7 +326,18 @@ export class AddEmployeeComponent implements OnInit {
               console.log('success');
               this.router.navigate(['/main/employee']);
             },
-            error: (err: any) => { },
+            error: (err: any) => {
+              if (err.status === 403) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'รหัสบัตรประชาชนไม่ถูกต้อง',
+                    text: 'กรุณาตรวจสอบเลขบัตรประชาชนอีกครั้ง',
+                })
+            }
+            else{
+                // this.main.Error()
+            }
+             },
           });
 
         //   Swal.fire({

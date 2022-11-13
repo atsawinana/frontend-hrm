@@ -18,7 +18,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit {
-  constructor(private profileService: ProfileService) { }
+  constructor(private profileService: ProfileService) {}
   roleHR: boolean = false;
   lineChart: any = [];
   ObjdataUser: any = {};
@@ -27,9 +27,9 @@ export class ProfileComponent implements OnInit {
   ObjTestCircle1 = { l1: 4, l2: 12, l3: 7 };
   ObjTestCircle2 = { l1: 13, l2: 2, l3: 3, l4: 5 };
   baseURL = environment.apiURL;
-  whenEdit: boolean = false
-  phonenumber: any
-  confirmPath: string = ""
+  whenEdit: boolean = false;
+  phonenumber: any;
+  confirmPath: string = '';
 
   // events
   public chartClicked({
@@ -65,90 +65,113 @@ export class ProfileComponent implements OnInit {
     this.profileService.getProfile().subscribe({
       next: (res: any) => {
         this.ObjdataUser = res.data;
-        localStorage.setItem('user_id', this.ObjdataUser.user_id)
-        this.phonenumber = this.ObjdataUser.ud_phone
+        localStorage.setItem('user_id', this.ObjdataUser.user_id);
+        this.phonenumber = this.ObjdataUser.ud_phone;
         this.testleaveday = this.ObjdataUser.user_maternity_day;
         this.ApiSuccess = true;
         console.log(this.ObjdataUser);
       },
-      error: (err: any) => { },
+      error: (err: any) => {},
     });
   }
 
   numberOnly(event: any): boolean {
-    const charCode = (event.which) ? event.which : event.keyCode;
+    const charCode = event.which ? event.which : event.keyCode;
     if (charCode > 31 && (charCode < 48 || charCode > 57)) {
       return false;
     }
     return true;
-
   }
 
   editcalcel() {
-    location.reload()
+    Swal.fire({
+      title:
+        '<strong style = "font-family:Kanit"> คุณต้องการยกเลิกการแก้ไขใช่หรือไม่ </strong>',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#005FBC',
+      cancelButtonColor: '#d33',
+      confirmButtonText: '<div style = "font-family:Kanit"> ตกลง </div>',
+      cancelButtonText: '<div style = "font-family:Kanit"> ยกเลิก </div>',
+      reverseButtons: true,
+    }).then((e) => {
+      if (e.isConfirmed) {
+        location.reload();
+      }
+    });
   }
 
   editProfile() {
-    console.log("phone:", this.phonenumber)
-    if (this.phonenumber.trim() == "" || this.phonenumber.trim() == null) {
+    console.log('phone:', this.phonenumber);
+    if (this.phonenumber.trim() == '' || this.phonenumber.trim() == null) {
       Swal.fire({
         icon: 'warning',
         title: 'กรุณาใส่เบอร์โทร',
-      })
-      return
+      });
+      return;
     } else if (this.phonenumber.length != 10) {
       Swal.fire({
         icon: 'warning',
         title: 'กรุณาใส่เบอร์โทรให้ครบ 10 ตัว',
-      })
-      return
+      });
+      return;
     }
-    this.profileService.editNumber(this.phonenumber).subscribe({
-      next: (res: any) => {
-        this.profileService.confirmPicture(this.confirmPath).subscribe({
-          next: (res: any) => {
-            location.reload()
-          },
-          error: (err: any) => {
-          }
-        })
-      },
-      error: (err: any) => {
+    Swal.fire({
+      title:
+        '<strong style = "font-family:Kanit"> คุณต้องการยืนยันการแก้ไขใช่หรือไม่ </strong>',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#005FBC',
+      cancelButtonColor: '#d33',
+      confirmButtonText: '<div style = "font-family:Kanit"> ตกลง </div>',
+      cancelButtonText: '<div style = "font-family:Kanit"> ยกเลิก </div>',
+      reverseButtons: true,
+    }).then((e) => {
+      if (e.isConfirmed) {
+        this.profileService.editNumber(this.phonenumber).subscribe({
 
+          next: (res: any) => {
+            this.profileService.confirmPicture(this.confirmPath).subscribe({
+              next: (res: any) => {
+                location.reload();
+              },
+              error: (err: any) => {},
+            });
+          },
+
+          error: (err: any) => {},
+        });
       }
-    })
+    });
   }
 
   editData() {
     if (this.whenEdit == true) {
-      this.whenEdit = false
+      this.whenEdit = false;
     } else {
-      this.whenEdit = true
+      this.whenEdit = true;
     }
   }
 
   editPicture(event: any) {
     const file: File = event.target.files[0];
 
-    const formData = new FormData()
+    const formData = new FormData();
     // this.picname = file.name
-    formData.append("file", file)
+    formData.append('file', file);
     // console.log("file", file)
     // console.log('test form', formData)
     // console.log("test param ", this.picfile)
-    let objPic
+    let objPic;
     this.profileService.uploadImgprofile(formData).subscribe({
       next: (res: any) => {
-        objPic = res
-        this.confirmPath = objPic.data
-        console.log(objPic)
-        this.ObjdataUser.ud_picture = objPic.data
+        objPic = res;
+        this.confirmPath = objPic.data;
+        console.log(objPic);
+        this.ObjdataUser.ud_picture = objPic.data;
         // location.reload()
       },
-      error: (err: any) => {
-
-      }
-    })
+      error: (err: any) => {},
+    });
   }
-
 }
