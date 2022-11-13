@@ -34,9 +34,12 @@ export class EditDetailPersonComponent implements OnInit {
   stateBeforeCheck: boolean = false
   valueStateBefore: any
 
-  IDcarderr:boolean = false
+  IDcarderr: boolean = false
 
-  APIsuccess:boolean = false
+  APIsuccess: boolean = false
+
+  dateInputBTH: boolean = false
+  dateInputStart: boolean = false
 
   emp = new FormGroup({
     ud_prefix_id: new FormControl(1, [Validators.required]),
@@ -48,7 +51,7 @@ export class EditDetailPersonComponent implements OnInit {
     ud_phone: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
     ud_email: new FormControl('',),
 
-    user_company: new FormControl({value:'Exvention Co., Ltd.',disabled: true}, [Validators.required, this.noWhitespaceValidator]),
+    user_company: new FormControl({ value: 'Exvention Co., Ltd.', disabled: true }, [Validators.required, this.noWhitespaceValidator]),
     dept_name_en: new FormControl(null, [Validators.required]),
     user_contract_name: new FormControl(null, [Validators.required, this.noWhitespaceValidator]),
     user_created_at: new FormControl('', [Validators.required]),
@@ -137,16 +140,49 @@ export class EditDetailPersonComponent implements OnInit {
         let user_id = localStorage.getItem('empPerson')
         let username = "A"
         let aryPosition = []
-    
+
         for (let i = 0; i < this.Position.length; i++) {
           aryPosition.push(this.Position[i].positions)
         }
-    
-    
-        let startdate = this.datepipe.transform(this.emp.controls.user_created_at.value, 'YYYY-dd-MM');
-        let bthdate = this.datepipe.transform(this.emp.controls.ud_birthday.value, 'YYYY-MM-dd')
+
+        let datetemp = new Date(String(this.emp.controls.ud_birthday.value))
+        console.log('date string1', this.emp.controls.user_created_at.value)
+        console.log('date string2', this.emp.controls.ud_birthday.value)
+
+        let startdate = ""
+        let bthdate = ""
+
+        console.log("this.dateInputBTH", this.dateInputBTH)
+        console.log("this.dateInputStart", this.dateInputStart)
+        if (this.dateInputBTH) {
+          let bthdate = this.datepipe.transform(this.emp.controls.ud_birthday.value, 'YYYY-dd-MM');
+        } else {
+          let arydate1 = this.emp.controls.ud_birthday.value?.split("/")
+          console.log(arydate1)
+          for (let i = arydate1?.length! - 1; i > -1; i--) {
+            if (i != 0)
+              bthdate += arydate1![i] + "-"
+            else
+              bthdate += arydate1![i]
+          }
+          console.log("sub string", bthdate)
+        }
+
+
+        if (this.dateInputStart) {
+          let startdate = this.datepipe.transform(this.emp.controls.user_created_at.value, 'YYYY-dd-MM');
+        } else {
+          let arydate2 = this.emp.controls.user_created_at.value?.split("/")
+          console.log(arydate2)
+          for (let i = arydate2?.length! - 1; i > -1; i--) {
+            if (i != 0)
+              startdate += arydate2![i] + "-"
+            else
+              startdate += arydate2![i]
+          }
+        }
         let enddate = null
-    
+
         let year = new Date()
         let year3 = getFullYear(year)
         let year2 = getFullYear(year) + 543
@@ -205,6 +241,20 @@ export class EditDetailPersonComponent implements OnInit {
           });
       }
     });
+  }
+
+  onValueChangeDateBTH(event: any) {
+    console.log("this.dateInputBTHCHange", this.dateInputBTH)
+    this.dateInputBTH = true
+    console.log("this.dateInputBTHCHange", this.dateInputBTH)
+
+  }
+
+  onValueChangeDateStart(event: any) {
+    console.log("this.dateInputCHange", this.dateInputStart)
+    this.dateInputStart = true
+    console.log("this.dateInputCHange", this.dateInputStart)
+
   }
 
   getPosition(value: any) {
@@ -283,6 +333,9 @@ export class EditDetailPersonComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    console.log("this.dateInputBTH1", this.dateInputBTH)
+    console.log("this.dateInputStart1", this.dateInputStart)
     this.today = new Date();
     defineLocale('th', thBeLocale);
     this.localeService.use(this.locale);
@@ -361,6 +414,10 @@ export class EditDetailPersonComponent implements OnInit {
         this.emp.controls.user_resign_day.setValue(this.Objdata.user_resign_day)
 
         this.getAllDepartment()
+        console.log("this.dateInputBTH2", this.dateInputBTH)
+        console.log("this.dateInputStart2", this.dateInputStart)
+        this.dateInputBTH = false
+        this.dateInputStart = false
         this.APIsuccess = true
       },
       error: (error: any) => { },

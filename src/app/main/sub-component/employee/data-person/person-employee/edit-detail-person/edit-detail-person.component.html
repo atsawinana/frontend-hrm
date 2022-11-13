@@ -103,7 +103,7 @@
           <input formControlName="ud_birthday" type="text" placeholder="เลือกวันเดือนปีเกิด" class="form-control " bsDatepicker
             [ngClass]="{isinvalid : emp.controls.ud_birthday.errors && submitted}"
             [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD/MM/YYYY', containerClass: 'theme-dark-blue',showWeekNumbers: false}"
-            [maxDate]="today" (keypress)="false">
+            [maxDate]="today" (keypress)="false" (ngModelChange)="onValueChangeDateBTH($event)">
         </div>
 
         <!-- alert วันเดือนปีเกิด -->
@@ -332,7 +332,7 @@
           <input formControlName="user_created_at" type="text" placeholder="เลือกวันที่เริ่มงาน" class="form-control "
             [ngClass]="{isinvalid : emp.controls.user_created_at.errors && submitted}" bsDatepicker
             [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD/MM/YYYY', containerClass: 'theme-dark-blue',showWeekNumbers: false}"
-            (keypress)="false">
+            (keypress)="false" (ngModelChange)="onValueChangeDateStart($event)">
         </div>
 
         <!-- alert วันที่เริ่มงาน -->
