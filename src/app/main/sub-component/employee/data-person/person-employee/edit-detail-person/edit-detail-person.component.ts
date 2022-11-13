@@ -73,7 +73,7 @@ export class EditDetailPersonComponent implements OnInit {
     this.editservice.getAllDepartment().subscribe({
       next: (res: any) => {
         this.ObjDepartment = res.data.deprtments
-        console.log(this.ObjDepartment)
+        console.log("department",this.ObjDepartment)
       },
       error: (err: any) => {
       }
@@ -145,7 +145,7 @@ export class EditDetailPersonComponent implements OnInit {
       this.emp.controls.user_company.value,
       this.emp.controls.ud_prefix_id.value,
       aryPosition,
-      this.dept_id,
+      this.emp.controls.dept_name_en.value,
       this.emp.controls.ud_email.value,
       this.emp.controls.ud_fullname_en.value,
       this.emp.controls.ud_fullname_th.value,
@@ -204,6 +204,8 @@ export class EditDetailPersonComponent implements OnInit {
   }
 
   ChangeDepartment(value: any) {
+    console.log(value)
+    console.log(this.emp.controls.dept_name_en.value)
     this.addEmpService.ShowPosition(value).subscribe({
       next: (res: any) => {
         this.positionDept = res.data.dept_potitions
@@ -231,7 +233,13 @@ export class EditDetailPersonComponent implements OnInit {
     });
   }
 
-
+  numberOnly(event: any): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      return false;
+    }
+    return true;
+  }
 
   ngOnInit() {
     this.today = new Date();
@@ -240,7 +248,7 @@ export class EditDetailPersonComponent implements OnInit {
 
     this.emp_id = localStorage.getItem('empPerson')
 
-    this.dataService.getUserProfile(this.emp_id).subscribe({
+    this.editservice.getUserProfile(this.emp_id).subscribe({
       next: (res: any) => {
         this.Objdata = res.data
         this.dept_id = this.Objdata.dept_id
@@ -271,7 +279,7 @@ export class EditDetailPersonComponent implements OnInit {
           this.Objdata.ud_birthday = tempdate + String(tempyear)
           console.log("this.Objdata.ud_birthday", this.Objdata.ud_birthday)
         }
-        
+
         {
           let datestart = this.Objdata.user_created_at
           let posit1 = String(datestart).lastIndexOf('/')

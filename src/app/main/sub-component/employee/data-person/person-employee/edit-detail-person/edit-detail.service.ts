@@ -73,6 +73,22 @@ export class EditDetailService {
     );
   }
 
+  getUserProfile(id: any) {
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+    });
+
+    return this.httpClient.get(
+      `${environment.apiURL}/employee/showEditEmployeeProfile`,
+      {
+        headers,
+        params: {
+          user_id: id,
+        },
+      }
+    );
+  }
+
   getAllDepartment() {
 
     const headers = new HttpHeaders({
