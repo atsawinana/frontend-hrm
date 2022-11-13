@@ -34,6 +34,8 @@ export class EditDetailPersonComponent implements OnInit {
   stateBeforeCheck: boolean = false
   valueStateBefore: any
 
+  IDcarderr:boolean = false
+
   emp = new FormGroup({
     ud_prefix_id: new FormControl(1, [Validators.required]),
     ud_fullname_th: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
@@ -73,7 +75,7 @@ export class EditDetailPersonComponent implements OnInit {
     this.editservice.getAllDepartment().subscribe({
       next: (res: any) => {
         this.ObjDepartment = res.data.deprtments
-        console.log("department",this.ObjDepartment)
+        console.log("department", this.ObjDepartment)
       },
       error: (err: any) => {
       }
@@ -115,63 +117,92 @@ export class EditDetailPersonComponent implements OnInit {
       return
 
 
-    let user_id = localStorage.getItem('empPerson')
-    let username = "A"
-    let aryPosition = []
+    Swal.fire({
+      title:
+        '<strong style = "font-family:Kanit"> คุณต้องการแก้ไขข้อมูลพนักงาน หรือไม่ ? </strong>',
+      icon: 'question',
+      showCancelButton: true,
+      cancelButtonColor: '#d33',
+      cancelButtonText: '<div style = "font-family:Kanit"> ยกเลิก </div>',
+      confirmButtonText: '<div style = "font-family:Kanit"> ตกลง </div>',
+      confirmButtonColor: '#005FBC',
+      reverseButtons: true,
+    }).then((result) => {
+      if (result.isConfirmed) {
 
-    for (let i = 0; i < this.Position.length; i++) {
-      aryPosition.push(this.Position[i].positions)
-    }
 
 
-    let startdate = this.datepipe.transform(this.emp.controls.user_created_at.value, 'YYYY-dd-MM');
-    let bthdate = this.datepipe.transform(this.emp.controls.user_created_at.value, 'YYYY-dd-MM')
-    let enddate = null
+        let user_id = localStorage.getItem('empPerson')
+        let username = "A"
+        let aryPosition = []
+    
+        for (let i = 0; i < this.Position.length; i++) {
+          aryPosition.push(this.Position[i].positions)
+        }
+    
+    
+        let startdate = this.datepipe.transform(this.emp.controls.user_created_at.value, 'YYYY-dd-MM');
+        let bthdate = this.datepipe.transform(this.emp.controls.user_created_at.value, 'YYYY-dd-MM')
+        let enddate = null
+    
+        let year = new Date()
+        let year3 = getFullYear(year)
+        let year2 = getFullYear(year) + 543
+        // year.setFullYear(year2+543)
+        let replaceDate = null
+        if (this.user_deleted_at.value != null) {
+          enddate = this.datepipe.transform(this.user_deleted_at.value, 'YYYY-MM-dd')
+          replaceDate = String(enddate).replace(String(year3), String(year2))
+          console.log(replaceDate)
+        }
 
-    let year = new Date()
-    let year3 = getFullYear(year)
-    let year2 = getFullYear(year) + 543
-    // year.setFullYear(year2+543)
-    let replaceDate = null
-    if (this.user_deleted_at.value != null) {
-      enddate = this.datepipe.transform(this.user_deleted_at.value, 'YYYY-MM-dd')
-      replaceDate = String(enddate).replace(String(year3), String(year2))
-      console.log(replaceDate)
-    }
+        this.editservice
+          .editData(
+            user_id,
+            this.emp.controls.user_contract_name.value,
+            this.emp.controls.user_company.value,
+            this.emp.controls.ud_prefix_id.value,
+            aryPosition,
+            this.emp.controls.dept_name_en.value,
+            this.emp.controls.ud_email.value,
+            this.emp.controls.ud_fullname_en.value,
+            this.emp.controls.ud_fullname_th.value,
+            this.emp.controls.ud_nickname.value,
+            this.emp.controls.ud_phone.value,
+            this.emp.controls.ud_id_card.value,
+            bthdate,
+            this.emp.controls.user_leave_day.value,
+            this.emp.controls.user_sick_day.value,
+            this.emp.controls.user_take_annual_day.value,
+            this.emp.controls.user_ordination_day.value,
+            this.emp.controls.user_maternity_day.value,
+            this.emp.controls.user_sterilization_day.value,
+            this.emp.controls.user_military_service_day.value,
+            this.emp.controls.user_without_pay_day.value,
+            this.emp.controls.user_resign_day.value,
+            replaceDate,
+            startdate
+          )
+          .subscribe({
+            next: (res: any) => {
+              console.log('success')
+              this.router.navigate([`/main/employee/data-person/${user_id}`]);
+            },
+            error: (err: any) => {
+              if (err.status === 403) {
 
-    this.editservice.editData(
-      user_id,
-      this.emp.controls.user_contract_name.value,
-      this.emp.controls.user_company.value,
-      this.emp.controls.ud_prefix_id.value,
-      aryPosition,
-      this.emp.controls.dept_name_en.value,
-      this.emp.controls.ud_email.value,
-      this.emp.controls.ud_fullname_en.value,
-      this.emp.controls.ud_fullname_th.value,
-      this.emp.controls.ud_nickname.value,
-      this.emp.controls.ud_phone.value,
-      this.emp.controls.ud_id_card.value,
-      bthdate,
-      this.emp.controls.user_leave_day.value,
-      this.emp.controls.user_sick_day.value,
-      this.emp.controls.user_take_annual_day.value,
-      this.emp.controls.user_ordination_day.value,
-      this.emp.controls.user_maternity_day.value,
-      this.emp.controls.user_sterilization_day.value,
-      this.emp.controls.user_military_service_day.value,
-      this.emp.controls.user_without_pay_day.value,
-      this.emp.controls.user_resign_day.value,
-      replaceDate,
-      startdate
+                this.IDcarderr = true
 
-    ).subscribe({
-      next: (res: any) => {
-        this.router.navigate([`/main/employee/data-person/${user_id}`]);
-      },
-      error: (err: any) => {
+                Swal.fire({
+                  icon: 'error',
+                  title: 'รหัสบัตรประชาชนไม่ถูกต้อง',
+                  text: 'กรุณาตรวจสอบเลขบัตรประชาชนอีกครั้ง',
+                })
+              }
+            },
+          });
       }
-    })
+    });
   }
 
   getPosition(value: any) {

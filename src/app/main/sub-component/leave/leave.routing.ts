@@ -7,11 +7,12 @@ import { LeaveHistoryComponent } from './leave-history/leave-history.component';
 import { LeaveInfoComponent } from './leave-info/leave-info.component';
 import { UnapprovedComponent } from './leave-info/unapproved/unapproved.component';
 import { LeaveRequestComponent } from './leave-request/leave-request.component';
+import { LeaveComponent } from './leave.component';
 
 const routes: Routes = [
     {
         path: '',
-        component: LeaveInfoComponent,
+        component: LeaveComponent,
     },
     {
         path: 'info',

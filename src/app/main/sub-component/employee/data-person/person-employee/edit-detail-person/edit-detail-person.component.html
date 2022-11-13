@@ -122,12 +122,12 @@
         </div>
         <div class="col-12 col-sm-6 col-md-6col-lg-6 font-detail">
           <input formControlName="ud_id_card" textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-            [ngClass]="{isinvalid : emp.controls.ud_id_card.errors && submitted}" placeholder="10xxxxxxxxxx"
+            [ngClass]="{isinvalid : (emp.controls.ud_id_card.errors && submitted) || IDcarderr } " placeholder="10xxxxxxxxxx"
             maxlength="13" minlength="13" (keypress)="numberOnly($event)">
         </div>
 
         <!-- alert รหัสบัตรประชาชน -->
-        <div class="row" *ngIf="emp.controls.ud_id_card.errors && submitted">
+        <div class="row" *ngIf="(emp.controls.ud_id_card.errors && submitted)">
           <div class="col-5"></div>
           <div class="col-7 d-flex justify-content-end">
             <div class="alerttext">
@@ -136,6 +136,18 @@
           </div>
         </div>
         <!-- alert รหัสบัตรประชาชน end -->
+
+             <!-- alert รหัสบัตรประชาชน -->
+             <div class="row" *ngIf="IDcarderr">
+              <div class="col-5"></div>
+              <div class="col-7 d-flex justify-content-end">
+                <div class="alerttext">
+                  รหัสบัตรประชาชนไม่ถูกต้อง
+                </div>
+              </div>
+            </div>
+            <!-- alert รหัสบัตรประชาชน end -->
+    
 
       </div>
       <div class="row mb-4">

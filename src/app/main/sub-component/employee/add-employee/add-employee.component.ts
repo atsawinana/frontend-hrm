@@ -194,7 +194,6 @@ export class AddEmployeeComponent implements OnInit {
       this.valueStateBefore = { position: String(this.position[this.indexSelect]) };
       this.stateBeforeCheck = false
     }
-
   }
 
   getPosition(value: any) {

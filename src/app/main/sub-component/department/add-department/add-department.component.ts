@@ -35,6 +35,11 @@ export class AddDepartmentComponent implements OnInit {
     checkLoadAPI: boolean = false;
     UserSelected: any[] = [];
 
+
+    indexSelect: any
+    stateBeforeCheck: boolean = false
+    valueStateBefore: any
+
     constructor(
         private Add_dp: AdddepartmentService,
         private Maindept: DepartmentService,
@@ -90,7 +95,7 @@ export class AddDepartmentComponent implements OnInit {
                     }).then((e) => {
                         this.route.navigate(['']);
                     })
-                }else{
+                } else {
                     this.main.Error()
                 }
             },
@@ -105,6 +110,23 @@ export class AddDepartmentComponent implements OnInit {
                     this.DeptUserID.splice(j, 1);
                 }
             }
+        }
+
+        if (!this.stateBeforeCheck) {
+            console.log("not null")
+            this.DeptUserID.push(this.valueStateBefore)
+        }
+    }
+
+    settingIndex(index: any) {
+        console.log(this.DeptUserID)
+        this.indexSelect = index
+        console.log(this.DeptMana[this.indexSelect])
+        if (this.DeptMana[this.indexSelect] == undefined) {
+            this.stateBeforeCheck = true
+        } else {
+            this.valueStateBefore = { ud_fullname_th: String(this.DeptMana[this.indexSelect]) };
+            this.stateBeforeCheck = false
         }
     }
 
@@ -145,7 +167,7 @@ export class AddDepartmentComponent implements OnInit {
         this.countDeptPosit.splice(index, 1);
         this.DeptPosit.splice(index, 1);
     }
-    
+
     checkCancel() {
         Swal.fire({
             title: '<strong style = "font-family:Kanit"> คุณต้องการยกเลิกการเพิ่มแผนกใช่หรือไม่ </strong>',
@@ -262,7 +284,7 @@ export class AddDepartmentComponent implements OnInit {
                                         }).then((e) => {
                                             this.route.navigate(['']);
                                         })
-                                    }else{
+                                    } else {
                                         this.main.Error()
                                     }
                                 },

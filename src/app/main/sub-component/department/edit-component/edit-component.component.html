@@ -54,7 +54,7 @@
         <div class="col-10">
 
             <ng-select [ngClass]="{customnull : CheckNullMana[i]}" [(ngModel)]="ObjDeptMana[i].ud_fullname_th" [clearable]="false"
-              class="custom maxWidth mb-4 add-boss" (change)="userSelected()" required>
+              class="custom maxWidth mb-4 add-boss" (change)="userSelected()" (click)="settingIndex(i)" required>
               <ng-option *ngFor="let uid of DeptUserID" [value]="uid.ud_fullname_th">{{uid.ud_fullname_th}}</ng-option>
             </ng-select>
 
