@@ -48,7 +48,7 @@ export class EditDetailPersonComponent implements OnInit {
     ud_phone: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
     ud_email: new FormControl('',),
 
-    user_company: new FormControl('Exvention', [Validators.required, this.noWhitespaceValidator]),
+    user_company: new FormControl({value:'Exvention Co., Ltd.',disabled: true}, [Validators.required, this.noWhitespaceValidator]),
     dept_name_en: new FormControl(null, [Validators.required]),
     user_contract_name: new FormControl(null, [Validators.required, this.noWhitespaceValidator]),
     user_created_at: new FormControl('', [Validators.required]),
@@ -144,7 +144,7 @@ export class EditDetailPersonComponent implements OnInit {
     
     
         let startdate = this.datepipe.transform(this.emp.controls.user_created_at.value, 'YYYY-dd-MM');
-        let bthdate = this.datepipe.transform(this.emp.controls.user_created_at.value, 'YYYY-dd-MM')
+        let bthdate = this.datepipe.transform(this.emp.controls.ud_birthday.value, 'YYYY-MM-dd')
         let enddate = null
     
         let year = new Date()
@@ -344,7 +344,7 @@ export class EditDetailPersonComponent implements OnInit {
         this.emp.controls.ud_phone.setValue(this.Objdata.ud_phone)
         this.emp.controls.ud_email.setValue(this.Objdata.ud_email)
 
-        this.emp.controls.user_company.setValue(this.Objdata.user_company)
+        this.emp.controls.user_company.setValue('Exvention Co., Ltd.')
         this.emp.controls.dept_name_en.setValue(this.Objdata.dept_name_en)
         this.emp.controls.user_contract_name.setValue(this.Objdata.user_contract_type, { onlySelf: true })
         this.emp.controls.user_created_at.setValue(this.Objdata.user_created_at)
