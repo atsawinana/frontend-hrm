@@ -231,7 +231,6 @@
             <ng-option *ngFor="let department of ObjDepartment" [value]="department.dept_id">{{department.dept_name_en}}</ng-option>
           </ng-select>
         </div>
-
         <!-- alert แผนก -->
         <div class="row" *ngIf="emp.controls.dept_name_en.errors&& submitted">
           <div class="col-5"></div>

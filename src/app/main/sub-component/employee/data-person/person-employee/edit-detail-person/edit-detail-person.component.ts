@@ -81,6 +81,7 @@ export class EditDetailPersonComponent implements OnInit {
       next: (res: any) => {
         this.ObjDepartment = res.data.deprtments
         console.log("department", this.ObjDepartment)
+        this.APIsuccess = true
       },
       error: (err: any) => {
       }
@@ -154,6 +155,7 @@ export class EditDetailPersonComponent implements OnInit {
 
         console.log("this.dateInputBTH", this.dateInputBTH)
         console.log("this.dateInputStart", this.dateInputStart)
+        
         if (this.dateInputBTH) {
           let bthdate = this.datepipe.transform(this.emp.controls.ud_birthday.value, 'YYYY-dd-MM');
         } else {
@@ -398,7 +400,7 @@ export class EditDetailPersonComponent implements OnInit {
         this.emp.controls.ud_email.setValue(this.Objdata.ud_email)
 
         this.emp.controls.user_company.setValue('Exvention Co., Ltd.')
-        this.emp.controls.dept_name_en.setValue(this.Objdata.dept_name_en)
+        this.emp.controls.dept_name_en.setValue(this.Objdata.dept_id)
         this.emp.controls.user_contract_name.setValue(this.Objdata.user_contract_type, { onlySelf: true })
         this.emp.controls.user_created_at.setValue(this.Objdata.user_created_at)
         // this.emp.controls.enddate.setValue(this.Objdata.enddate)
@@ -418,7 +420,6 @@ export class EditDetailPersonComponent implements OnInit {
         console.log("this.dateInputStart2", this.dateInputStart)
         this.dateInputBTH = false
         this.dateInputStart = false
-        this.APIsuccess = true
       },
       error: (error: any) => { },
     });
