@@ -159,7 +159,7 @@ export class EditComponentComponent implements OnInit {
     }
 
     checkDeltePosit(index: number): boolean {
-        if (this.ObjDeptPosit[index].can_delete) {
+        if (!this.ObjDeptPosit[index].can_delete) {
             return false
         } else {
             return true

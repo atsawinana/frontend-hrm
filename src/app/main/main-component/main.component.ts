@@ -43,6 +43,7 @@ export class MainComponent implements OnInit {
   Objdata: any;
 
   ngOnInit() {
+    localStorage.setItem('overbtn','true')
     this.getProfile();
   }
 

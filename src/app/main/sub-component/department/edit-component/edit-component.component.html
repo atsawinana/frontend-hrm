@@ -103,7 +103,7 @@
           ">
         </div>
         <div *ngIf="countDeptPosit.length > 1" class="col-2 py-2">
-          <i [ngClass]="{notDelelte : !checkDeltePosit(i)}" class="fa-solid fa-circle-xmark delete-dept iconDept"
+          <i [ngClass]="{notDelelte : checkDeltePosit(i)}" class="fa-solid fa-circle-xmark delete-dept iconDept"
             (click)="deleteDeptPosit(i)"></i>
         </div>
 

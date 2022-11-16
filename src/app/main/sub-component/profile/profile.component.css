@@ -61,7 +61,7 @@
   font-size: 16px;
 }
 
-.positionEdit{
+.positionEdit {
   margin-left: 73px !important;
 }
 
@@ -212,5 +212,34 @@
 
   #Dataperson {
     padding-left: 30px !important;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  #leaveDay {
+    padding-left: 0px !important;
+    margin-left: 0px !important;
+  }
+
+  #Dataperson {
+    padding-left: 30px !important;
+  }
+
+  .chart-res-row {
+    display: flex;
+    justify-content: space-between;
+    /* padding-left: 80px;
+    padding-right: 80px; */
+  }
+
+  .chart-res {
+    margin-right: 30px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .col-lg-5 {
+    flex: 0 0 auto !important;
+    width: 49% !important;
   }
 }
