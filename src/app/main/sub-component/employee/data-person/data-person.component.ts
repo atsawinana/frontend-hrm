@@ -17,17 +17,19 @@ export class DataPersonComponent implements OnInit {
   ) { }
   Empid: any;
   baseURL = environment.apiURL;
-  ObjDataemp: any;
   APISuccess: boolean = false
+
+  objDataemp: any;
+
   ngOnInit() {
     this.Empid = this.router.snapshot.params['id'];
     localStorage.setItem('empPerson', this.Empid)
     this.dataService.getUserProfile(this.Empid).subscribe({
       next: (res: any) => {
-        this.ObjDataemp = res.data
-        console.log(this.ObjDataemp)
-        if (this.ObjDataemp.ud_picture == null) {
-          this.ObjDataemp.ud_picture = "/files/image/default.jpg"
+        this.objDataemp = res.data
+        console.log(this.objDataemp)
+        if (this.objDataemp.ud_picture == null) {
+          this.objDataemp.ud_picture = "/files/image/default.jpg"
         }
         this.APISuccess = true
       },
@@ -35,9 +37,9 @@ export class DataPersonComponent implements OnInit {
     });
   }
 
-  reSetPassword() {
+  resetPassword() {
     Swal.fire({
-      title: `<strong style = "font-family:Kanit"> คุณต้องการเปลี่ยนรหัสผ่านของ <br> ${this.ObjDataemp.ud_fullname_th} หรือไม่ ? </strong>`,
+      title: `<strong style = "font-family:Kanit"> คุณต้องการเปลี่ยนรหัสผ่านของ <br> ${this.objDataemp.ud_fullname_th} หรือไม่ ? </strong>`,
       icon: 'question',
       showCancelButton: true,
       confirmButtonColor: '#005FBC',
@@ -47,7 +49,7 @@ export class DataPersonComponent implements OnInit {
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
-        this.dataService.reSetPassword(this.ObjDataemp.user_id).subscribe({
+        this.dataService.resetPassword(this.objDataemp.user_id).subscribe({
           next: (res: any) => {
 
             let password = res.data
@@ -75,9 +77,9 @@ export class DataPersonComponent implements OnInit {
   }
 
 
-  DeleteEmployee() {
+  deleteEmployee() {
     Swal.fire({
-      title: `<strong style = "font-family:Kanit"> คุณต้องการลบข้อมูลของ <br>  ${this.ObjDataemp.ud_prefix_name}  ${this.ObjDataemp.ud_fullname_th} หรือไม่ ? </strong>`,
+      title: `<strong style = "font-family:Kanit"> คุณต้องการลบข้อมูลของ <br>  ${this.objDataemp.ud_prefix_name}  ${this.objDataemp.ud_fullname_th} หรือไม่ ? </strong>`,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#005FBC',
@@ -87,7 +89,7 @@ export class DataPersonComponent implements OnInit {
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
-        this.dataService.deleteEMP(this.ObjDataemp.user_id).subscribe({
+        this.dataService.deleteEmployee(this.objDataemp.user_id).subscribe({
           next: (res: any) => {
             Swal.fire({
               title: `<strong style = "font-family:Kanit"> ลบข้อมูลสำเร็จ </strong>`,

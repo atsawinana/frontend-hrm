@@ -125,7 +125,7 @@
         <div class="col-12 col-sm-6 col-md-6col-lg-6 font-detail">
           <input formControlName="ud_id_card" textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
             [ngClass]="{isinvalid : (emp.controls.ud_id_card.errors && submitted) || IDcarderr } " placeholder="กรอกรหัสบัตรประชาชน"
-            maxlength="13" minlength="13" (keypress)="numberOnly($event)">
+            maxlength="13" minlength="13" (keypress)="iputNumberOnly($event)">
         </div>
 
         <!-- alert รหัสบัตรประชาชน -->
@@ -159,7 +159,7 @@
         <div class="col-12 col-sm-6 col-md-6col-lg-6 font-detail">
           <input formControlName="ud_phone" textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
             [ngClass]="{isinvalid : emp.controls.ud_phone.errors && submitted}" placeholder="กรอกเบอร์โทรศัพท์" maxlength="10"
-            minlength="10" (keypress)="numberOnly($event)">
+            minlength="10" (keypress)="iputNumberOnly($event)">
         </div>
 
         <!-- alert เบอร์โทรศัพท์ -->
@@ -227,7 +227,7 @@
         <div class="col-12 col-sm-6 col-md-6 col-lg-6 font-detail">
           <ng-select formControlName="dept_name_en" [searchable]="false" placeholder="เลือกแผนก" [clearable]="false"
             [ngClass]="{customnull : emp.controls.dept_name_en.errors && submitted}"
-            class="custom d-flex justify-content-center" (change)="ChangeDepartment($event)">
+            class="custom d-flex justify-content-center" (change)="changeDepartment($event)">
             <ng-option *ngFor="let department of ObjDepartment" [value]="department.dept_id">{{department.dept_name_en}}</ng-option>
           </ng-select>
         </div>
@@ -254,7 +254,7 @@
               <ng-select [(ngModel)]="Position[i].positions" [searchable]="false" placeholder="เลือกตำแหน่ง"
                 [clearable]="false" [ngModelOptions]="{standalone: true}" class="custom d-flex justify-content-center"
                 style="margin-bottom: 24px;" [ngClass]="{'lastItemSelect' : i+1 == Position.length}"
-                [ngClass]="{customnull : (Position[i].positions == null) && submitted}" (change)="Userselected()" (click)="settingIndex(i)">
+                [ngClass]="{customnull : (Position[i].positions == null) && submitted}" (change)="selectedPosition()" (click)="settingIndex(i)">
                 <ng-option *ngFor="let posit of positionDept" [value]="posit.position">{{posit.position}} </ng-option>
               </ng-select>
             </div>
@@ -401,7 +401,7 @@
         <div class="col-12 col-sm-4 col-md-4 col-lg-4 ">
           <input formControlName="user_leave_day" textarea class="form-control form-input"
             [ngClass]="{isinvalid : emp.controls.user_leave_day.errors&& submitted}" id="exampleFormControlTextarea1"
-            rows="3" placeholder="6"  type="number" min="0"  (keypress)="minusDetect($event)">
+            rows="3" placeholder="6"  type="number" min="0"  (keypress)="inputMinusDetect($event)">
         </div>
         <div class="col-12 col-sm-4 col-md-4 col-lg-4">
           วัน
@@ -426,7 +426,7 @@
         <div class="col-12 col-sm-4 col-md-4 col-lg-4">
           <input formControlName="user_sick_day" textarea class="form-control form-input"
             [ngClass]="{isinvalid : emp.controls.user_sick_day.errors&& submitted}" id="exampleFormControlTextarea1"
-            rows="3" placeholder="30"  type="number" min="0"  (keypress)="minusDetect($event)">
+            rows="3" placeholder="30"  type="number" min="0"  (keypress)="inputMinusDetect($event)">
         </div>
         <div class="col-12 col-sm-4 col-md-4 col-lg-4">
           วัน
@@ -451,7 +451,7 @@
         <div class="col-12 col-sm-4 col-md-4 col-lg-4">
           <input formControlName="user_take_annual_day" textarea class="form-control form-input"
             [ngClass]="{isinvalid : emp.controls.user_take_annual_day.errors&& submitted}"
-            id="exampleFormControlTextarea1" rows="3" placeholder="12"  type="number" min="0"  (keypress)="minusDetect($event)">
+            id="exampleFormControlTextarea1" rows="3" placeholder="12"  type="number" min="0"  (keypress)="inputMinusDetect($event)">
         </div>
         <div class="col-12 col-sm-4 col-md-4 col-lg-4">
           วัน
@@ -476,7 +476,7 @@
         <div class="col-12 col-sm-4 col-md-4 col-lg-4">
           <input formControlName="user_ordination_day"textarea class="form-control form-input"
             [ngClass]="{isinvalid : emp.controls.user_ordination_day.errors&& submitted}"
-            id="exampleFormControlTextarea1" rows="3" placeholder="7"  type="number" min="0"  (keypress)="minusDetect($event)">
+            id="exampleFormControlTextarea1" rows="3" placeholder="7"  type="number" min="0"  (keypress)="inputMinusDetect($event)">
         </div>
         <div class="col-12 col-sm-4 col-md-4 col-lg-4 ">
           วัน
@@ -501,7 +501,7 @@
         <div class="col-12 col-sm-4 col-md-4 col-lg-4">
           <input formControlName="user_military_service_day" textarea class="form-control form-input"
             [ngClass]="{isinvalid : emp.controls.user_military_service_day.errors&& submitted}"
-            id="exampleFormControlTextarea1" rows="3" placeholder="30"  type="number" min="0"  (keypress)="minusDetect($event)">
+            id="exampleFormControlTextarea1" rows="3" placeholder="30"  type="number" min="0"  (keypress)="inputMinusDetect($event)">
         </div>
         <div class="col-12 col-sm-4 col-md-4 col-lg-4">
           วัน
@@ -526,7 +526,7 @@
         <div class="col-12 col-sm-4 col-md-4 col-lg-4">
           <input formControlName="user_maternity_day" textarea class="form-control form-input"
             [ngClass]="{isinvalid : emp.controls.user_maternity_day.errors&& submitted}"
-            id="exampleFormControlTextarea1" rows="3" placeholder="-"  type="number" min="0"  (keypress)="minusDetect($event)">
+            id="exampleFormControlTextarea1" rows="3" placeholder="-"  type="number" min="0"  (keypress)="inputMinusDetect($event)">
         </div>
         <div class="col-12 col-sm-4 col-md-4 col-lg-4">
           วัน
@@ -551,7 +551,7 @@
         <div class="col-12 col-sm-4 col-md-4 col-lg-4">
           <input formControlName="user_sterilization_day" textarea class="form-control form-input"
             [ngClass]="{isinvalid : emp.controls.user_sterilization_day.errors&& submitted}"
-            id="exampleFormControlTextarea1" rows="3" placeholder="-"  type="number" min="0"  (keypress)="minusDetect($event)">
+            id="exampleFormControlTextarea1" rows="3" placeholder="-"  type="number" min="0"  (keypress)="inputMinusDetect($event)">
         </div>
         <div class="col-12 col-sm-4 col-md-4 col-lg-4">
           วัน
@@ -576,7 +576,7 @@
         <div class="col-12 col-sm-4 col-md-4 col-lg-4">
           <input formControlName="user_without_pay_day" textarea class="form-control form-input"
             [ngClass]="{isinvalid : emp.controls.user_without_pay_day.errors&& submitted}"
-            id="exampleFormControlTextarea1" rows="3" placeholder="-"  type="number" min="0"  (keypress)="minusDetect($event)">
+            id="exampleFormControlTextarea1" rows="3" placeholder="-"  type="number" min="0"  (keypress)="inputMinusDetect($event)">
         </div>
         <div class="col-12 col-sm-4 col-md-4 col-lg-4">
           วัน
@@ -601,7 +601,7 @@
         <div class="col-12 col-sm-4 col-md-4 col-lg-4">
           <input formControlName="user_resign_day" textarea class="form-control form-input"
             [ngClass]="{isinvalid : emp.controls.user_resign_day.errors&& submitted}" id="exampleFormControlTextarea1"
-            rows="3" placeholder="-"  type="number" min="0"  (keypress)="minusDetect($event)">
+            rows="3" placeholder="-"  type="number" min="0"  (keypress)="inputMinusDetect($event)">
         </div>
         <div class="col-12 col-sm-4 col-md-4 col-lg-4">
           วัน

@@ -26,7 +26,7 @@ export class DataPersonService {
 
   // /employee/resetPassword [patch]
 
-  reSetPassword(id: any) {
+  resetPassword(id: any) {
     const headers = new HttpHeaders({
       Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
     });
@@ -42,7 +42,7 @@ export class DataPersonService {
     );
   }
 
-  deleteEMP(
+  deleteEmployee(
     user_username: string,
   ) {
     const headers = new HttpHeaders({

@@ -14,17 +14,17 @@ export class EmployeeOverbuttonComponent implements OnInit {
     constructor(private router: Router) { }
 
     ngOnInit() {
-        if (localStorage.getItem('roleUser') == "2" || localStorage.getItem('roleUser') == "3") 
+        if (localStorage.getItem('roleUser') == "3") 
             this.role = true
     }
 
-    clickRoute1() {
+    clickRouteEmployee() {
         this.route1 = "true"
         localStorage.setItem("overbtn",String(this.route1))
         this.router.navigate(['/main/employee']);
     }
 
-    clickRoute2() {
+    clickRouteEndContract() {
         this.route1 = "false"
         localStorage.setItem("overbtn",String(this.route1))
         this.router.navigate(['/main/employee/end-contract-employee']);

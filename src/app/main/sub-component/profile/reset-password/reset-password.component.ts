@@ -44,16 +44,6 @@ export class ResetPasswordComponent implements OnInit {
     toggle!.setAttribute("src", srcAttribute);
   }
 
-  modal() {
-    Swal.fire({
-      icon: 'success',
-      title: '<strong style="font-family:Kanit; font-size:24px; color: #2F2F2F">เปลี่ยนรหัสผ่านสำเร็จ</strong>',
-      html: '<div style="font-family:Kanit; font-size:18px"; color: #2F2F2F">เราได้บันทึกรหัสผ่านใหม่ของคุณแล้ว' + '<br>' + 'คุณสามารถเข้าสู่ระบบได้แล้วตอนนี้</div>',
-      confirmButtonColor: '#005FBC',
-      confirmButtonText: '<div style="font-family:Kanit">กลับสู่หน้าหลัก</div>',
-    })
-  }
-
   checkSpace(event: any) {
     if (event.keyCode == 32) {
       return false;

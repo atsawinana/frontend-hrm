@@ -39,7 +39,7 @@
                 </div>
                 <div *ngIf="whenEdit" class="row ps-4 fontprofileMan">
                   <div class="row"> เบอร์โทรศัพท์:
-                    <input [(ngModel)]="phonenumber" (keypress)="numberOnly($event)" maxlength="10" type="text"
+                    <input [(ngModel)]="phonenumber" (keypress)="iputNumberOnly($event)" maxlength="10" type="text"
                       class="ms-2 col-6 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5 editPhonenumber"></div>
                 </div>
               </div>
@@ -70,7 +70,7 @@
           </div>
         </div>
         <div *ngIf="whenEdit" class="row d-flex justify-content-center" style="height: 40px;">
-          <button class="col-1 btn-cancel me-2" (click)="editcalcel()">ยกเลิก</button>
+          <button class="col-1 btn-cancel me-2" (click)="editModalCancel()">ยกเลิก</button>
           <button class="col-1 btn-submit" (click)="editProfile()">บันทึก</button>
         </div>
       </div>

@@ -3,42 +3,42 @@
 <div class="container-fluid h-100" *ngIf="APISuccess">
   <div class="row">
     <div class="row mb-4">
-      <div class="back-button my-auto" *ngIf="ObjDataemp.user_is_deleted == 0" routerLink="../../"><i class="fa-solid fa-angle-left back-icon"></i></div>
-      <div class="back-button my-auto" *ngIf="ObjDataemp.user_is_deleted == 1" routerLink="../../end-contract-employee"><i class="fa-solid fa-angle-left back-icon"></i></div>
+      <div class="back-button my-auto" *ngIf="objDataemp.user_is_deleted == 0" routerLink="../../"><i class="fa-solid fa-angle-left back-icon"></i></div>
+      <div class="back-button my-auto" *ngIf="objDataemp.user_is_deleted == 1" routerLink="../../end-contract-employee"><i class="fa-solid fa-angle-left back-icon"></i></div>
       <div class="font-header ms-2 col">ข้อมูลพนักงาน</div>
       <div class="col-5">
         <div class="row d-flex justify-content-end">
-          <div class="buttonEdit me-3" routerLink="edit-detail" *ngIf="ObjDataemp.user_is_deleted != 1"><i class="fa-solid fa-pencil me-3"></i> แก้ไข</div>
-          <div class="buttonreset" (click)="reSetPassword()" *ngIf="ObjDataemp.user_is_deleted != 1"><i class="fa-solid fa-key me-3"></i>รีเซ็ตรหัสผ่าน</div>
-          <div class="buttonreset" (click)="DeleteEmployee()" *ngIf="ObjDataemp.user_is_deleted == 1 && ObjDataemp.user_data_is_deleted == 0"><i class="fa-solid fa-trash me-3"></i>ลบข้อมูล</div>
+          <div class="buttonEdit me-3" routerLink="edit-detail" *ngIf="objDataemp.user_is_deleted != 1"><i class="fa-solid fa-pencil me-3"></i> แก้ไข</div>
+          <div class="buttonreset" (click)="resetPassword()" *ngIf="objDataemp.user_is_deleted != 1"><i class="fa-solid fa-key me-3"></i>รีเซ็ตรหัสผ่าน</div>
+          <div class="buttonreset" (click)="deleteEmployee()" *ngIf="objDataemp.user_is_deleted == 1 && objDataemp.user_data_is_deleted == 0"><i class="fa-solid fa-trash me-3"></i>ลบข้อมูล</div>
         </div>
 
       </div>
     </div>
     <div class="row" style="height: auto;">
       <div class="col image_container ">
-        <img class="img-thumbnail img-profile" src="{{baseURL}}{{ObjDataemp.ud_picture}}">
+        <img class="img-thumbnail img-profile" src="{{baseURL}}{{objDataemp.ud_picture}}">
       </div>
       <div class="col-9 text-center ps-5 ">
         <div class="row mb-2 font-header text-start">
-          <div class="col-4">{{ObjDataemp.ud_fullname_th}} </div>
+          <div class="col-4">{{objDataemp.ud_fullname_th}} </div>
           <div class="col"></div>
         </div>
         <div class="row mb-2 font-detailPossition text-start">
-          <div class="col-4">{{ObjDataemp.department_map_managers}} </div>
-          <div class="col">{{ObjDataemp.user_contract_name}} </div>
+          <div class="col-4">{{objDataemp.department_map_managers}} </div>
+          <div class="col">{{objDataemp.user_contract_name}} </div>
         </div>
         <div class="row mb-2 font-title text-start">
           <div class="col-4">ชื่อเล่น : </div>
-          <div class="col">{{ObjDataemp.ud_nickname}}</div>
+          <div class="col">{{objDataemp.ud_nickname}}</div>
         </div>
         <div class="row mb-2 font-title text-start">
           <div class="col-4">เบอร์โทรศัพท์ : </div>
-          <div class="col">{{ObjDataemp.ud_phone}}</div>
+          <div class="col">{{objDataemp.ud_phone}}</div>
         </div>
         <div class="row mb-2 font-title text-start">
           <div class="col-4">อีเมล : </div>
-          <div class="col">{{ObjDataemp.ud_email}}</div>
+          <div class="col">{{objDataemp.ud_email}}</div>
         </div>
       </div>
     </div>

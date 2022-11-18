@@ -26,6 +26,11 @@ export class ListEmployeeComponent implements OnInit {
     TestModel: any[] = []
     ApiSuccess: boolean = false
 
+    listPerpage() {
+        this.config.itemsPerPage = this.listPerPage
+        this.config.currentPage = 1
+    }
+
     public config: PaginationInstance = {
         id: 'custom',
         itemsPerPage: this.listPerPage,
@@ -40,9 +45,7 @@ export class ListEmployeeComponent implements OnInit {
     }
 
     ngOnInit() {
-
         localStorage.setItem("overbtn", "true")
-
         this.empService.getAllUser().subscribe({
             next: (res: any) => {
                 this.Objemployee = res.data.employee
@@ -101,12 +104,6 @@ export class ListEmployeeComponent implements OnInit {
         })
     }
 
-
-    listPerpage() {
-        this.config.itemsPerPage = this.listPerPage
-        this.config.currentPage = 1
-    }
-
     exportExcel() {
         // const ws:XLSX:WorkSheet = XLSX.utils.table_to_sheet(this.elemtable)
         let elem = document.getElementById('tableemp')
@@ -120,11 +117,11 @@ export class ListEmployeeComponent implements OnInit {
         console.log(this.Objemptable)
         for (let i = 0; i < ExptExcel.length; i++) {
             ExptExcel[i].ไอดีพนักงาน = ExptExcel[i]['number'];
-            ExptExcel[i].ตำแหน่ง = ExptExcel[i]['position'];
-            ExptExcel[i].ชื่อภาษาไทย = ExptExcel[i]['ud_fullname_th'];
             ExptExcel[i].รหัสพนักงาน = ExptExcel[i]['user_card_number'];
-            ExptExcel[i].วันที่เข้างาน = ExptExcel[i]['user_created_at'];
             ExptExcel[i].แผนก = ExptExcel[i]['dept_name_en'];
+            ExptExcel[i].ตำแหน่ง = ExptExcel[i]['position'];
+            ExptExcel[i]['ชื่อ-สกุล'] = ExptExcel[i]['ud_fullname_th'];
+            ExptExcel[i].วันที่เข้างาน = ExptExcel[i]['user_created_at'];
             delete ExptExcel[i].id;
             delete ExptExcel[i].position;
             delete ExptExcel[i].ud_fullname_th;

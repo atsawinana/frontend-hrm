@@ -83,28 +83,25 @@
   </div>
 
   <div class="table-responsive">
-    <table class="table-responsive table table-striped text-center mt-3 list-table" id="tableemp">
+    <table class="table table-striped text-center mt-3 list-table" id="tableemp">
       <thead>
         <tr>
-          <th class="text-start" style="width: 5% !important;">ลำดับ</th>
+          <th class="text-center" style="width: 5% !important;">ลำดับ</th>
           <th class="text-start" style="width: 10% !important;">รหัสพนักงาน</th>
-          <th class="text-start" style="width: 15% !important;">รายชื่อ</th>
-          <th class="text-start" style="width: 15% !important;">แผนก</th>
+          <th class="text-start" style="width: 25% !important;">รายชื่อ</th>
+          <th class="text-start" style="width: 20% !important;">แผนก</th>
           <th class="text-start" style="width: 25% !important;">ตำแหน่ง</th>
-          <th class="text-center" style="width: 20% !important;">วันที่เข้าทำงานวันแรก</th>
           <th style="width: 10% !important;">การดำเนินการ</th>
         </tr>
       </thead>
 
       <tbody class="list-content">
-        <tr id="" *ngFor="let emp of Objemptable | paginate: config | filter : searchInput"
-          >
-          <td>{{emp.number}}</td>
+        <tr id="" *ngFor="let emp of Objemptable | paginate: config | filter : searchInput">
+          <td class="text-center">{{emp.number}}</td>
           <td class="text-start">{{emp.user_card_number}}</td>
           <td class="text-start">{{emp.ud_fullname_th}}</td>
           <td class="text-start">{{emp.dept_name_en}}</td>
           <td class="text-start">{{emp.position}}</td>
-          <td class="text-center">{{emp.user_created_at}}</td>
           <td>
 
             <div class="row d-flex justify-content-center">

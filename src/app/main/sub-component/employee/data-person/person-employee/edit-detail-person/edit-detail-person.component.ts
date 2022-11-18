@@ -288,7 +288,7 @@ export class EditDetailPersonComponent implements OnInit {
     });
   }
 
-  ChangeDepartment(value: any) {
+  changeDepartment(value: any) {
     console.log(value)
     console.log(this.emp.controls.dept_name_en.value)
     this.addEmpService.ShowPosition(value).subscribe({
@@ -318,7 +318,7 @@ export class EditDetailPersonComponent implements OnInit {
     });
   }
 
-  numberOnly(event: any): boolean {
+  iputNumberOnly(event: any): boolean {
     const charCode = (event.which) ? event.which : event.keyCode;
     if (charCode > 31 && (charCode < 48 || charCode > 57)) {
       return false;
@@ -326,7 +326,7 @@ export class EditDetailPersonComponent implements OnInit {
     return true;
   }
 
-  minusDetect(event: any): boolean {
+  inputMinusDetect(event: any): boolean {
     const charCode = (event.which) ? event.which : event.keyCode;
     if (charCode == 45) {
       return false;
@@ -447,7 +447,7 @@ export class EditDetailPersonComponent implements OnInit {
     console.log(this.PositionCount.length)
   }
 
-  Userselected() {
+  selectedPosition() {
     for (let i = 0; i < this.Position.length; i++) {
       console.log("loop", this.positionDept)
       console.log("objkey", Object.keys(this.positionDept).length)

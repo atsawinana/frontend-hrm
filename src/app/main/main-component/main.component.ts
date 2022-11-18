@@ -43,7 +43,7 @@ export class MainComponent implements OnInit {
   Objdata: any;
 
   ngOnInit() {
-    localStorage.setItem('overbtn','true')
+    localStorage.setItem('overbtn', 'true');
     this.getProfile();
   }
 
@@ -90,10 +90,10 @@ export class MainComponent implements OnInit {
       reverseButtons: true,
     }).then((result) => {
       if (result.isConfirmed) {
-        this.coreToken.Logout()
-        .subscribe({
+        this.coreToken.Logout().subscribe({
           next: (res: any) => {
-            location.reload()
+            localStorage.clear();
+            location.reload();
           },
           error: (err: any) => {},
         });
