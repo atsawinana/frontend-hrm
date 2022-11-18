@@ -100,8 +100,8 @@ export class ChartPersonalComponent implements OnInit {
   };
 
   roleHR: boolean = false;
-  lineChart: any = [];
-  ObjdataUser: any = {};
+  arylineChart: any = [];
+  objdataUser: any = {};
   ApiSuccess: boolean = false;
   phonenumber: any
 
@@ -109,43 +109,43 @@ export class ChartPersonalComponent implements OnInit {
   ngOnInit() {
     this.profileService.getProfile().subscribe({
       next: (res: any) => {
-        this.ObjdataUser = res.data;
-        localStorage.setItem('user_id', this.ObjdataUser.user_id)
-        this.phonenumber = this.ObjdataUser.ud_phone
+        this.objdataUser = res.data;
+        localStorage.setItem('user_id', this.objdataUser.user_id)
+        this.phonenumber = this.objdataUser.ud_phone
         this.ApiSuccess = true;
-        console.log(this.ObjdataUser);
+        console.log(this.objdataUser);
 
-        if (this.ObjdataUser.ud_gender_id == 1) {
+        if (this.objdataUser.ud_gender_id == 1) {
           this.ChartData = {
             labels: this.ChartLabels,
             datasets: [
               {
                 label: 'ลากิจ',
-                data: [this.ObjdataUser.user_leave_day],
+                data: [this.objdataUser.user_leave_day],
                 backgroundColor: '#FD9229',
                 barPercentage: 0.5,
               },
               {
                 label: 'ลาป่วย',
-                data: [this.ObjdataUser.user_sick_day],
+                data: [this.objdataUser.user_sick_day],
                 backgroundColor: '#63C8CE',
                 barPercentage: 0.5,
               },
               {
                 label: 'ลาพักร้อน',
-                data: [this.ObjdataUser.user_take_annual_day],
+                data: [this.objdataUser.user_take_annual_day],
                 backgroundColor: '#C83039',
                 barPercentage: 0.5,
               },
               {
                 label: 'ลาบวช',
-                data: [this.ObjdataUser.user_ordination_day],
+                data: [this.objdataUser.user_ordination_day],
                 backgroundColor: '#13466A',
                 barPercentage: 0.5,
               },
               {
                 label: 'ลาเพื่อรับราชการทหาร',
-                data: [this.ObjdataUser.user_military_service_day],
+                data: [this.objdataUser.user_military_service_day],
                 backgroundColor: '#8CC34D',
                 barPercentage: 0.5,
               },
@@ -157,25 +157,25 @@ export class ChartPersonalComponent implements OnInit {
             datasets: [
               {
                 label: 'ลากิจ',
-                data: [this.ObjdataUser.user_leave_day],
+                data: [this.objdataUser.user_leave_day],
                 backgroundColor: '#FD9229',
                 barPercentage: 0.5,
               },
               {
                 label: 'ลาป่วย',
-                data: [this.ObjdataUser.user_sick_day],
+                data: [this.objdataUser.user_sick_day],
                 backgroundColor: '#63C8CE',
                 barPercentage: 0.5,
               },
               {
                 label: 'ลาพักร้อน',
-                data: [this.ObjdataUser.user_take_annual_day],
+                data: [this.objdataUser.user_take_annual_day],
                 backgroundColor: '#C83039',
                 barPercentage: 0.5,
               },
               {
                 label: 'ลาคลอด',
-                data: [this.ObjdataUser.user_maternity_day],
+                data: [this.objdataUser.user_maternity_day],
                 backgroundColor: '#13466A',
                 barPercentage: 0.5,
               },

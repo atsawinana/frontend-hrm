@@ -34,10 +34,10 @@
 
                   <div class="row mt-3">
 
-                    <label class="col-6 mb-3" *ngFor="let posit of ObjDepartment ; let i = index">
+                    <label class="col-6 mb-3" *ngFor="let posit of objDepartment ; let i = index">
                       <div class="box ">{{posit.dept_name_en}}
                         <!-- <input type="checkbox" [value]="posit.dept_id" (change)="setValueDepartment($event)"> -->
-                        <input type="checkbox" [(ngModel)]="TestModel[i]" (change)="setValueDepartment($event.target)"
+                        <input type="checkbox" [(ngModel)]="aryModel[i]" (change)="setValueDepartment($event.target)"
                           [checked]="true">
                         <span class="checkmark"></span>
                       </div>
@@ -96,7 +96,7 @@
       </thead>
 
       <tbody class="list-content">
-        <tr id="" *ngFor="let emp of Objemptable | paginate: config | filter : searchInput">
+        <tr id="" *ngFor="let emp of objemptable | paginate: config | filter : searchInput">
           <td class="text-center">{{emp.number}}</td>
           <td class="text-start">{{emp.user_card_number}}</td>
           <td class="text-start">{{emp.ud_fullname_th}}</td>

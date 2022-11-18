@@ -16,14 +16,14 @@ export class ListEmployeeComponent implements OnInit {
 
     constructor(private empService: ListEmployeeService) { }
 
-    Objemployee: any
-    Objemptable: any
+    objemployee: any
+    objemptable: any
     listPerPage: number = 10
     searchInput: string = ''
     elemtable: any
-    ObjDepartment: any
+    objDepartment: any
     DeptIDemp: string = ""
-    TestModel: any[] = []
+    aryModel: any[] = []
     ApiSuccess: boolean = false
 
     listPerpage() {
@@ -38,7 +38,7 @@ export class ListEmployeeComponent implements OnInit {
     }
 
     setValueDepartment(value: any) {
-        console.log(this.TestModel)
+        console.log(this.aryModel)
         console.log(value)
         this.DeptIDemp += value + ','
         console.log(this.DeptIDemp)
@@ -48,12 +48,12 @@ export class ListEmployeeComponent implements OnInit {
         localStorage.setItem("overbtn", "true")
         this.empService.getAllUser().subscribe({
             next: (res: any) => {
-                this.Objemployee = res.data.employee
-                this.Objemptable = JSON.parse(JSON.stringify(this.Objemployee))
-                for (let i = 0; i < this.Objemptable.length; i++) {
-                    delete this.Objemptable[i].user_username
-                    delete this.Objemptable[i].ud_fullname_en
-                    delete this.Objemptable[i].page
+                this.objemployee = res.data.employee
+                this.objemptable = JSON.parse(JSON.stringify(this.objemployee))
+                for (let i = 0; i < this.objemptable.length; i++) {
+                    delete this.objemptable[i].user_username
+                    delete this.objemptable[i].ud_fullname_en
+                    delete this.objemptable[i].page
                 }
                 this.ApiSuccess = true
             },
@@ -64,10 +64,10 @@ export class ListEmployeeComponent implements OnInit {
 
         this.empService.getAllDepartment().subscribe({
             next: (res: any) => {
-                this.ObjDepartment = res.data.deprtments
-                // console.log(this.ObjDepartment)
-                // for (let i = 0; i < this.ObjDepartment.length; i++) {
-                //     this.TestModel.push(true)
+                this.objDepartment = res.data.deprtments
+                // console.log(this.objDepartment)
+                // for (let i = 0; i < this.objDepartment.length; i++) {
+                //     this.aryModel.push(true)
                 // }
             },
             error: (err: any) => {
@@ -80,10 +80,10 @@ export class ListEmployeeComponent implements OnInit {
     loadempFromDepartment() {
 
         let dept_id = ""
-        console.log("dept", this.ObjDepartment)
-        for (let i = 0; i < this.TestModel.length; i++) {
-            if (this.TestModel[i]) {
-                dept_id += String(this.ObjDepartment[i].dept_id) + ","
+        console.log("dept", this.objDepartment)
+        for (let i = 0; i < this.aryModel.length; i++) {
+            if (this.aryModel[i]) {
+                dept_id += String(this.objDepartment[i].dept_id) + ","
             }
         }
 
@@ -92,13 +92,13 @@ export class ListEmployeeComponent implements OnInit {
         this.empService.getEmployeefromDeptID(dept_id).subscribe({
             next: (res: any) => {
                 console.log(res.data.employee)
-                this.Objemptable = res.data.employee
-                for (let i = 0; i < this.Objemptable.length; i++) {
-                    delete this.Objemptable[i].user_username
-                    delete this.Objemptable[i].ud_fullname_en
-                    delete this.Objemptable[i].page
+                this.objemptable = res.data.employee
+                for (let i = 0; i < this.objemptable.length; i++) {
+                    delete this.objemptable[i].user_username
+                    delete this.objemptable[i].ud_fullname_en
+                    delete this.objemptable[i].page
                 }
-                console.log(this.Objemptable)
+                console.log(this.objemptable)
             },
             error: (err: any) => { }
         })
@@ -113,8 +113,8 @@ export class ListEmployeeComponent implements OnInit {
 
     public exportAsExcelFile(): void {
 
-        let ExptExcel = JSON.parse(JSON.stringify(this.Objemptable))
-        console.log(this.Objemptable)
+        let ExptExcel = JSON.parse(JSON.stringify(this.objemptable))
+        console.log(this.objemptable)
         for (let i = 0; i < ExptExcel.length; i++) {
             ExptExcel[i].ไอดีพนักงาน = ExptExcel[i]['number'];
             ExptExcel[i].รหัสพนักงาน = ExptExcel[i]['user_card_number'];

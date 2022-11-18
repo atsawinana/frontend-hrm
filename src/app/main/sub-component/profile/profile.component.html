@@ -15,7 +15,7 @@
             <div class="col-4 d-flex justify-content-center px-0">
               <img [ngClass]="{positionEdit : whenEdit}"
                 class="img-profile mx-auto d-block d-flex justify-content-end img-thumbnail"
-                src="{{ baseURL }}{{ ObjdataUser.ud_picture }}" />
+                src="{{ baseURL }}{{ objdataUser.ud_picture }}" />
               <label *ngIf="whenEdit" for="getFile1" class="file_upload text-center col-0"><i
                   class="fa-solid fa-camera upload-icon upload-icon mt-1"></i></label>
               <input (change)="editPicture($event)" type="file" id="getFile1" class="hide" accept="image/*" />
@@ -24,18 +24,18 @@
               <div class="d-flex flex-column fontStyle" style="width: 100% !important">
                 <div class="row d-flex mb-4">
                   <div class="col ps-4 fontprofileMan">
-                    ชื่อ: {{ ObjdataUser.ud_prefix_name }}
-                    {{ ObjdataUser.ud_firstname_th }}
+                    ชื่อ: {{ objdataUser.ud_prefix_name }}
+                    {{ objdataUser.ud_firstname_th }}
                     <p class="d-flex align-items-center ms-3 my-0 fontcontract">
-                      ({{ ObjdataUser.user_contract_name }})
+                      ({{ objdataUser.user_contract_name }})
                     </p>
                   </div>
                 </div>
                 <div class="row mb-4 ps-4 fontprofileMan">
-                  นามสกุล: {{ ObjdataUser.ud_lastname_th }}
+                  นามสกุล: {{ objdataUser.ud_lastname_th }}
                 </div>
                 <div *ngIf="!whenEdit" class="row ps-4 fontprofileMan">
-                  เบอร์โทรศัพท์: {{ ObjdataUser.ud_phone }}
+                  เบอร์โทรศัพท์: {{ objdataUser.ud_phone }}
                 </div>
                 <div *ngIf="whenEdit" class="row ps-4 fontprofileMan">
                   <div class="row"> เบอร์โทรศัพท์:
@@ -61,11 +61,11 @@
               </div>
             </div>
             <div class="col">
-              <div class="mb-2">{{ ObjdataUser.dept_name_en }}</div>
-              <div class="mb-2">{{ ObjdataUser.user_position }}</div>
-              <div class="mb-2">{{ ObjdataUser.user_company }}</div>
-              <div class="mb-2">{{ ObjdataUser.user_start_date }}</div>
-              <div class="mb-2">{{ ObjdataUser.user_exprience }}</div>
+              <div class="mb-2">{{ objdataUser.dept_name_en }}</div>
+              <div class="mb-2">{{ objdataUser.user_position }}</div>
+              <div class="mb-2">{{ objdataUser.user_company }}</div>
+              <div class="mb-2">{{ objdataUser.user_start_date }}</div>
+              <div class="mb-2">{{ objdataUser.user_exprience }}</div>
             </div>
           </div>
         </div>

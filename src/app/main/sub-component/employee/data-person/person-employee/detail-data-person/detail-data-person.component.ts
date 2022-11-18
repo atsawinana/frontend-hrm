@@ -15,17 +15,17 @@ export class DetailDataPersonComponent implements OnInit {
   ) {}
   Empid: any;
   baseURL = environment.apiURL;
-  ObjDataemp: any;
+  objDataemp: any;
   APISuccess:boolean = false
   ngOnInit() {
     this.Empid = localStorage.getItem('empPerson')
 
     this.dataService.getUserProfile(this.Empid).subscribe({
         next: (res: any) => {
-          this.ObjDataemp = res.data
-          console.log(this.ObjDataemp)
-          if(this.ObjDataemp.ud_picture == null) {
-              this.ObjDataemp.ud_picture = "/files/image/default.jpg"
+          this.objDataemp = res.data
+          console.log(this.objDataemp)
+          if(this.objDataemp.ud_picture == null) {
+              this.objDataemp.ud_picture = "/files/image/default.jpg"
           } 
           this.APISuccess = true
         },

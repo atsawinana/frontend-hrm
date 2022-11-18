@@ -6,7 +6,7 @@
         ชื่อ นามสกุล :
       </div>
       <div class="col-12 col-sm-7 col-md-7 col-lg-7 font-detail ">
-        {{ObjDataemp.ud_prefix_name}} {{ObjDataemp.ud_fullname_th}}
+        {{objDataemp.ud_prefix_name}} {{objDataemp.ud_fullname_th}}
       </div>
     </div>
     <div class="row mb-4">
@@ -14,7 +14,7 @@
         Name and Last name :
       </div>
       <div class="col-12 col-sm-7 col-md-7 col-lg-7 font-detail">
-        {{ObjDataemp.ud_fullname_en}}
+        {{objDataemp.ud_fullname_en}}
       </div>
     </div>
     <div class="row mb-4">
@@ -22,7 +22,7 @@
         ชื่อเล่น :
       </div>
       <div class="col-12 col-sm-7 col-md-7 col-lg-7 font-detail ">
-        {{ObjDataemp.ud_nickname}}
+        {{objDataemp.ud_nickname}}
       </div>
     </div>
     <div class="row mb-4">
@@ -30,7 +30,7 @@
         วันเดือนปีเกิด :
       </div>
       <div class="col-12 col-sm-7 col-md-7 col-lg-7 font-detail">
-        {{ObjDataemp.ud_birthday}}
+        {{objDataemp.ud_birthday}}
       </div>
     </div>
     <div class="row mb-4">
@@ -38,7 +38,7 @@
         รหัสบัตรประชาชน :
       </div>
       <div class="col-12 col-sm-7 col-md-7 col-lg-7 font-detail">
-        {{ObjDataemp.ud_id_card}}
+        {{objDataemp.ud_id_card}}
       </div>
     </div>
     <div class="row mb-4">
@@ -46,7 +46,7 @@
         เบอร์โทรศัพท์ :
       </div>
       <div class="col-12 col-sm-7 col-md-7 col-lg-7 font-detail">
-        {{ObjDataemp.ud_phone}}
+        {{objDataemp.ud_phone}}
       </div>
     </div>
     <div class="row mb-4">
@@ -54,7 +54,7 @@
         อีเมล :
       </div>
       <div class="col-12 col-sm-7 col-md-7 col-lg-7 font-detail">
-        {{ObjDataemp.ud_email}}
+        {{objDataemp.ud_email}}
       </div>
     </div>
   </div>
@@ -65,7 +65,7 @@
         ชื่อบริษัท :
       </div>
       <div class="col-12 col-sm-8 col-md-8 col-lg-8 font-detail">
-        {{ObjDataemp.user_company}}
+        {{objDataemp.user_company}}
       </div>
     </div>
     <div class="row mb-4">
@@ -73,7 +73,7 @@
         แผนก :
       </div>
       <div class="col-12 col-sm-8 col-md-8 col-lg-8 font-detail">
-        {{ObjDataemp.dept_name_en}}
+        {{objDataemp.dept_name_en}}
       </div>
     </div>
     <div class="row ">
@@ -81,7 +81,7 @@
         ตำแหน่ง :
       </div>
       <div class="col-12 col-sm-8 col-md-8 col-lg-8 font-detail">
-        <div class="mb-4" *ngFor="let posit of ObjDataemp.positions; let i = index"> {{posit.positions}}</div>
+        <div class="mb-4" *ngFor="let posit of objDataemp.positions; let i = index"> {{posit.positions}}</div>
       </div>
     </div>
     <div class="row mb-4">
@@ -89,7 +89,7 @@
         ประเภทพนักงาน:
       </div>
       <div class="col-12 col-sm-8 col-md-8 col-lg-8 font-detail">
-        {{ObjDataemp.user_contract_name}}
+        {{objDataemp.user_contract_name}}
       </div>
     </div>
     <div class="row mb-4">
@@ -97,7 +97,7 @@
         รหัสพนักงาน :
       </div>
       <div class="col-12 col-sm-8 col-md-8 col-lg-8 font-detail">
-        {{ObjDataemp.user_card_number}}
+        {{objDataemp.user_card_number}}
       </div>
     </div>
     <div class="row mb-4">
@@ -105,7 +105,7 @@
         วันที่เริ่มงาน :
       </div>
       <div class="col-12 col-sm-8 col-md-8 col-lg-8 font-detail">
-        {{ObjDataemp.user_created_at}}
+        {{objDataemp.user_created_at}}
       </div>
     </div>
     <div class="row mb-4">
@@ -113,7 +113,7 @@
         อายุงาน :
       </div>
       <div class="col-12 col-sm-8 col-md-8 col-lg-8 font-detail">
-        {{ObjDataemp.user_exprience}}
+        {{objDataemp.user_exprience}}
       </div>
     </div>
   </div>
@@ -129,7 +129,7 @@
         ลากิจ
       </div>
       <div class="col-12 col-sm-4 col-md-4 col-lg-4 ">
-        {{ObjDataemp.user_leave_day}}
+        {{objDataemp.user_leave_day}}
       </div>
       <div class="col-12 col-sm-4 col-md-4 col-lg-4">
         วัน
@@ -140,7 +140,7 @@
         ลาป่วย
       </div>
       <div class="col-12 col-sm-4 col-md-4 col-lg-4">
-        {{ObjDataemp.user_sick_day}}
+        {{objDataemp.user_sick_day}}
       </div>
       <div class="col-12 col-sm-4 col-md-4 col-lg-4">
         วัน
@@ -151,7 +151,7 @@
         ลาพักร้อน
       </div>
       <div class="col-12 col-sm-4 col-md-4 col-lg-4">
-        {{ObjDataemp.user_take_annual_day}}
+        {{objDataemp.user_take_annual_day}}
       </div>
       <div class="col-12 col-sm-4 col-md-4 col-lg-4">
         วัน
@@ -162,7 +162,7 @@
         ลาบวช
       </div>
       <div class="col-12 col-sm-4 col-md-4 col-lg-4">
-        {{ObjDataemp.user_ordination_day}}
+        {{objDataemp.user_ordination_day}}
       </div>
       <div class="col-12 col-sm-4 col-md-4 col-lg-4 ">
         วัน
@@ -173,7 +173,7 @@
         ลาเพื่อรับราชการทหาร
       </div>
       <div class="col-12 col-sm-4 col-md-4 col-lg-4">
-        {{ObjDataemp.user_military_service_day}}
+        {{objDataemp.user_military_service_day}}
       </div>
       <div class="col-12 col-sm-4 col-md-4 col-lg-4">
         วัน
@@ -184,7 +184,7 @@
         ลาเพื่อทำหมัน
       </div>
       <div class="col-12 col-sm-4 col-md-4 col-lg-4">
-        {{ObjDataemp.user_sterilization_day}}
+        {{objDataemp.user_sterilization_day}}
       </div>
       <div class="col-12 col-sm-4 col-md-4 col-lg-4">
         วัน
@@ -195,7 +195,7 @@
         ลาโดยไม่รับเงิน
       </div>
       <div class="col-12 col-sm-4 col-md-4 col-lg-4">
-        {{ObjDataemp.user_without_pay_day}}
+        {{objDataemp.user_without_pay_day}}
       </div>
       <div class="col-12 col-sm-4 col-md-4 col-lg-4">
         วัน
@@ -206,7 +206,7 @@
         ลาคลอด
       </div>
       <div class="col-12 col-sm-4 col-md-4 col-lg-4">
-        {{ObjDataemp.user_maternity_day}}
+        {{objDataemp.user_maternity_day}}
       </div>
       <div class="col-12 col-sm-4 col-md-4 col-lg-4">
         วัน
@@ -217,7 +217,7 @@
         ลาใช้สิทธิทดแทน
       </div>
       <div class="col-12 col-sm-4 col-md-4 col-lg-4">
-        {{ObjDataemp.user_resign_day}}
+        {{objDataemp.user_resign_day}}
       </div>
       <div class="col-12 col-sm-4 col-md-4 col-lg-4">
         วัน

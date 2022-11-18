@@ -21,14 +21,14 @@ export class EditDetailPersonComponent implements OnInit {
   locale = 'th';
   today!: Date;
   emp_id: any
-  Objdata: any
+  objData: any
   Position: any
-  PositionCount: any[] = [];
+  aryPositionCount: any[] = [];
   positionDept: any
   submitted: boolean = false
   dept_id: any
   UserselectedPosit: any
-  ObjDepartment: any
+  objDepartment: any
 
   indexSelect: any
   stateBeforeCheck: boolean = false
@@ -79,8 +79,8 @@ export class EditDetailPersonComponent implements OnInit {
   getAllDepartment() {
     this.editservice.getAllDepartment().subscribe({
       next: (res: any) => {
-        this.ObjDepartment = res.data.deprtments
-        console.log("department", this.ObjDepartment)
+        this.objDepartment = res.data.deprtments
+        console.log("department", this.objDepartment)
         this.APIsuccess = true
       },
       error: (err: any) => {
@@ -299,10 +299,10 @@ export class EditDetailPersonComponent implements OnInit {
           delete this.Position[i].positions
         }
         this.Position.splice(1, this.Position.length)
-        this.PositionCount = [1]
+        this.aryPositionCount = [1]
 
         console.log("position", this.Position)
-        console.log("position C", this.PositionCount)
+        console.log("position C", this.aryPositionCount)
       },
       error: (err: any) => {
         if (err.status === 419) {
@@ -346,25 +346,25 @@ export class EditDetailPersonComponent implements OnInit {
 
     this.editservice.getUserProfile(this.emp_id).subscribe({
       next: (res: any) => {
-        this.Objdata = res.data
-        this.dept_id = this.Objdata.dept_id
-        console.log("this.Objdata1234", this.Objdata)
-        if (this.Objdata.ud_picture == null) {
-          this.Objdata.ud_picture = "/files/image/default.jpg"
+        this.objData = res.data
+        this.dept_id = this.objData.dept_id
+        console.log("this.objData1234", this.objData)
+        if (this.objData.ud_picture == null) {
+          this.objData.ud_picture = "/files/image/default.jpg"
         }
-        console.log("edit", this.Objdata)
+        console.log("edit", this.objData)
 
-        this.Position = this.Objdata.positions
+        this.Position = this.objData.positions
 
         for (let i = 0; i < this.Position.length; i++) {
-          this.PositionCount.push(i + 1)
+          this.aryPositionCount.push(i + 1)
         }
 
-        this.getPosition(this.Objdata.dept_id)
+        this.getPosition(this.objData.dept_id)
         console.log("position", this.Position)
 
         {
-          let datebth = this.Objdata.ud_birthday
+          let datebth = this.objData.ud_birthday
           let posit = String(datebth).lastIndexOf('/')
           let tempdate = String(datebth).substring(0, posit + 1)
           console.log("tempdate", tempdate)
@@ -372,12 +372,12 @@ export class EditDetailPersonComponent implements OnInit {
           let tempyear = Number(String(datebth).substring(posit + 1, datebth.length))
           tempyear += 543
           console.log("tempyear", tempyear)
-          this.Objdata.ud_birthday = tempdate + String(tempyear)
-          console.log("this.Objdata.ud_birthday", this.Objdata.ud_birthday)
+          this.objData.ud_birthday = tempdate + String(tempyear)
+          console.log("this.objData.ud_birthday", this.objData.ud_birthday)
         }
 
         {
-          let datestart = this.Objdata.user_created_at
+          let datestart = this.objData.user_created_at
           let posit1 = String(datestart).lastIndexOf('/')
           let tempdate1 = String(datestart).substring(0, posit1 + 1)
           console.log("tempdate", tempdate1)
@@ -385,35 +385,35 @@ export class EditDetailPersonComponent implements OnInit {
           let tempyear1 = Number(String(datestart).substring(posit1 + 1, datestart.length))
           tempyear1 += 543
           console.log("tempyear", tempyear1)
-          this.Objdata.user_created_at = tempdate1 + String(tempyear1)
-          console.log("this.Objdata.ud_birthday", this.Objdata.user_created_at)
+          this.objData.user_created_at = tempdate1 + String(tempyear1)
+          console.log("this.objData.ud_birthday", this.objData.user_created_at)
         }
 
 
-        this.emp.controls.ud_prefix_id.setValue(this.Objdata.ud_prefix_id)
-        this.emp.controls.ud_fullname_th.setValue(this.Objdata.ud_fullname_th)
-        this.emp.controls.ud_fullname_en.setValue(this.Objdata.ud_fullname_en)
-        this.emp.controls.ud_nickname.setValue(this.Objdata.ud_nickname)
-        this.emp.controls.ud_birthday.setValue(this.Objdata.ud_birthday)
-        this.emp.controls.ud_id_card.setValue(this.Objdata.ud_id_card)
-        this.emp.controls.ud_phone.setValue(this.Objdata.ud_phone)
-        this.emp.controls.ud_email.setValue(this.Objdata.ud_email)
+        this.emp.controls.ud_prefix_id.setValue(this.objData.ud_prefix_id)
+        this.emp.controls.ud_fullname_th.setValue(this.objData.ud_fullname_th)
+        this.emp.controls.ud_fullname_en.setValue(this.objData.ud_fullname_en)
+        this.emp.controls.ud_nickname.setValue(this.objData.ud_nickname)
+        this.emp.controls.ud_birthday.setValue(this.objData.ud_birthday)
+        this.emp.controls.ud_id_card.setValue(this.objData.ud_id_card)
+        this.emp.controls.ud_phone.setValue(this.objData.ud_phone)
+        this.emp.controls.ud_email.setValue(this.objData.ud_email)
 
         this.emp.controls.user_company.setValue('Exvention Co., Ltd.')
-        this.emp.controls.dept_name_en.setValue(this.Objdata.dept_id)
-        this.emp.controls.user_contract_name.setValue(this.Objdata.user_contract_type, { onlySelf: true })
-        this.emp.controls.user_created_at.setValue(this.Objdata.user_created_at)
-        // this.emp.controls.enddate.setValue(this.Objdata.enddate)
+        this.emp.controls.dept_name_en.setValue(this.objData.dept_id)
+        this.emp.controls.user_contract_name.setValue(this.objData.user_contract_type, { onlySelf: true })
+        this.emp.controls.user_created_at.setValue(this.objData.user_created_at)
+        // this.emp.controls.enddate.setValue(this.objData.enddate)
 
-        this.emp.controls.user_sick_day.setValue(this.Objdata.user_sick_day)
-        this.emp.controls.user_leave_day.setValue(this.Objdata.user_leave_day)
-        this.emp.controls.user_take_annual_day.setValue(this.Objdata.user_take_annual_day)
-        this.emp.controls.user_ordination_day.setValue(this.Objdata.user_ordination_day)
-        this.emp.controls.user_military_service_day.setValue(this.Objdata.user_military_service_day)
-        this.emp.controls.user_sterilization_day.setValue(this.Objdata.user_sterilization_day)
-        this.emp.controls.user_maternity_day.setValue(this.Objdata.user_maternity_day)
-        this.emp.controls.user_without_pay_day.setValue(this.Objdata.user_without_pay_day)
-        this.emp.controls.user_resign_day.setValue(this.Objdata.user_resign_day)
+        this.emp.controls.user_sick_day.setValue(this.objData.user_sick_day)
+        this.emp.controls.user_leave_day.setValue(this.objData.user_leave_day)
+        this.emp.controls.user_take_annual_day.setValue(this.objData.user_take_annual_day)
+        this.emp.controls.user_ordination_day.setValue(this.objData.user_ordination_day)
+        this.emp.controls.user_military_service_day.setValue(this.objData.user_military_service_day)
+        this.emp.controls.user_sterilization_day.setValue(this.objData.user_sterilization_day)
+        this.emp.controls.user_maternity_day.setValue(this.objData.user_maternity_day)
+        this.emp.controls.user_without_pay_day.setValue(this.objData.user_without_pay_day)
+        this.emp.controls.user_resign_day.setValue(this.objData.user_resign_day)
 
         this.getAllDepartment()
         console.log("this.dateInputBTH2", this.dateInputBTH)
@@ -424,7 +424,7 @@ export class EditDetailPersonComponent implements OnInit {
       error: (error: any) => { },
     });
     console.log(this.emp_id)
-    console.log("this.PositionCount", this.PositionCount)
+    console.log("this.aryPositionCount", this.aryPositionCount)
 
   }
 
@@ -433,18 +433,18 @@ export class EditDetailPersonComponent implements OnInit {
     // console.log(this.DeptPosit[this.countDeptPosit.length - 1]);
     let ObjNull = {}
 
-    console.log(Object.keys(this.Position[this.PositionCount.length - 1]).length === 0)
+    console.log(Object.keys(this.Position[this.aryPositionCount.length - 1]).length === 0)
 
 
-    if (Object.keys(this.Position[this.PositionCount.length - 1]).length === 0) {
+    if (Object.keys(this.Position[this.aryPositionCount.length - 1]).length === 0) {
       alert('กรุณากรอกข้อมูลให้ครบถ้วน');
     } else {
-      this.PositionCount?.push(this.PositionCount.length + 1);
+      this.aryPositionCount?.push(this.aryPositionCount.length + 1);
       this.Position.push({});
     }
 
     console.log(this.Position.length)
-    console.log(this.PositionCount.length)
+    console.log(this.aryPositionCount.length)
   }
 
   selectedPosition() {
@@ -486,7 +486,7 @@ export class EditDetailPersonComponent implements OnInit {
     }
 
     this.Position.splice(index, 1);
-    this.PositionCount.splice(index, 1);
+    this.aryPositionCount.splice(index, 1);
   }
 
   checkNull(): boolean {

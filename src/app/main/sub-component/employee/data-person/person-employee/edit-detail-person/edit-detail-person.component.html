@@ -228,7 +228,7 @@
           <ng-select formControlName="dept_name_en" [searchable]="false" placeholder="เลือกแผนก" [clearable]="false"
             [ngClass]="{customnull : emp.controls.dept_name_en.errors && submitted}"
             class="custom d-flex justify-content-center" (change)="changeDepartment($event)">
-            <ng-option *ngFor="let department of ObjDepartment" [value]="department.dept_id">{{department.dept_name_en}}</ng-option>
+            <ng-option *ngFor="let department of objDepartment" [value]="department.dept_id">{{department.dept_name_en}}</ng-option>
           </ng-select>
         </div>
         <!-- alert แผนก -->
@@ -249,7 +249,7 @@
           ตำแหน่ง :
         </div>
         <div class="col-7">
-          <div class="row" *ngFor="let posit of PositionCount; let i = index">
+          <div class="row" *ngFor="let posit of aryPositionCount; let i = index">
             <div class="col-10 font-detail">
               <ng-select [(ngModel)]="Position[i].positions" [searchable]="false" placeholder="เลือกตำแหน่ง"
                 [clearable]="false" [ngModelOptions]="{standalone: true}" class="custom d-flex justify-content-center"
@@ -320,7 +320,7 @@
           รหัสพนักงาน :
         </div>
         <div class="col-12 col-sm-6 col-md-6col-lg-6 font-detail">
-            {{Objdata.user_card_number}}
+            {{objData.user_card_number}}
         </div>
       </div>
       <div class="row mb-4">
@@ -351,7 +351,7 @@
           อายุงาน :
         </div>
         <div class="col-12 col-sm-8 col-md-8 col-lg-8 font-detail">
-          {{Objdata.user_exprience}}
+          {{objData.user_exprience}}
         </div>
       </div>
       <div class="row mb-4">

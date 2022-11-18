@@ -1,10 +1,10 @@
 <div>
   <div>
     <div style="display: block">
-      <canvas *ngIf="ObjdataUser.ud_prefix_id == 1" id="mychart" baseChart [data]="ChartData"
+      <canvas *ngIf="objdataUser.ud_prefix_id == 1" id="mychart" baseChart [data]="ChartData"
         [type]="ChartType" [options]="ChartOption"></canvas>
       <canvas *ngIf="
-                  ObjdataUser.ud_prefix_id == 2 || ObjdataUser.ud_prefix_id == 3
+                  objdataUser.ud_prefix_id == 2 || objdataUser.ud_prefix_id == 3
                 " id="mychart" baseChart [data]="ChartData2" [type]="ChartType2" [options]="ChartOption"></canvas>
     </div>
   </div>
@@ -25,7 +25,7 @@
         </p>
       </div>
       <div class="col-2 d-flex justify-content-center">
-        {{ ObjdataUser.user_leave_day }}
+        {{ objdataUser.user_leave_day }}
       </div>
     </div>
     <div class="row mb-2">
@@ -36,7 +36,7 @@
         </p>
       </div>
       <div class="col-2 d-flex justify-content-center">
-        {{ ObjdataUser.user_sick_day }}
+        {{ objdataUser.user_sick_day }}
       </div>
     </div>
     <div class="row mb-2">
@@ -47,10 +47,10 @@
         </p>
       </div>
       <div class="col-2 d-flex justify-content-center">
-        {{ ObjdataUser.user_take_annual_day }}
+        {{ objdataUser.user_take_annual_day }}
       </div>
     </div>
-    <div class="row mb-2" *ngIf="ObjdataUser.ud_gender_id == 1">
+    <div class="row mb-2" *ngIf="objdataUser.ud_gender_id == 1">
       <div class="col ps-5 ms-5" id="leaveDay">
         <p>
           <i class="fa-solid fa-circle" style="font-size: 16px; color: #13466a"></i>
@@ -58,12 +58,12 @@
         </p>
       </div>
       <div class="col-2 d-flex justify-content-center">
-        {{ ObjdataUser.user_ordination_day }}
+        {{ objdataUser.user_ordination_day }}
       </div>
     </div>
   </div>
   <div class="col">
-    <div class="row mb-2" *ngIf="ObjdataUser.ud_gender_id == 1">
+    <div class="row mb-2" *ngIf="objdataUser.ud_gender_id == 1">
       <div class="col ps-5 ms-5" id="leaveDay">
         <p>
           <i class="fa-solid fa-circle" style="font-size: 16px; color: #8cc34d"></i>
@@ -71,10 +71,10 @@
         </p>
       </div>
       <div class="col-2 d-flex justify-content-center">
-        {{ ObjdataUser.user_military_service_day }}
+        {{ objdataUser.user_military_service_day }}
       </div>
     </div>
-    <div class="row mb-2" *ngIf="!(ObjdataUser.ud_gender_id == 1)">
+    <div class="row mb-2" *ngIf="!(objdataUser.ud_gender_id == 1)">
       <div class="col ps-5 ms-5" id="leaveDay">
         <p>
           <i class="fa-solid fa-circle" style="font-size: 16px; color: #13466A"></i>
@@ -82,7 +82,7 @@
         </p>
       </div>
       <div class="col-2 d-flex justify-content-center">
-        {{ ObjdataUser.user_maternity_day }}
+        {{ objdataUser.user_maternity_day }}
       </div>
     </div>
     <div class="row mb-2">
@@ -93,7 +93,7 @@
         </p>
       </div>
       <div class="col-2 d-flex justify-content-center">
-        {{ ObjdataUser.user_sterilization_day }}
+        {{ objdataUser.user_sterilization_day }}
       </div>
     </div>
     <div class="row mb-2">
@@ -104,7 +104,7 @@
         </p>
       </div>
       <div class="col-2 d-flex justify-content-center">
-        {{ ObjdataUser.user_without_pay_day }}
+        {{ objdataUser.user_without_pay_day }}
       </div>
     </div>
     <div class="row mb-2">
@@ -115,7 +115,7 @@
         </p>
       </div>
       <div class="col-2 d-flex justify-content-center">
-        {{ ObjdataUser.user_resign_day }}
+        {{ objdataUser.user_resign_day }}
       </div>
     </div>
   </div>

@@ -48,13 +48,13 @@ export class AddEmployeeComponent implements OnInit {
 
   locale = 'th';
   today!: Date;
-  Objleave: any;
+  objleave: any;
   APISuccess: boolean = false;
   summited: boolean = false;
   deprtmentsData: any
 
-  position: any[] = [];
-  countposit: any[] = [];
+  aryPosition: any[] = [];
+  aryCountposit: any[] = [];
   positionDept: any;
   baseURL = environment.apiURL;
   pathPic: string = "/files/image/default.jpg"
@@ -76,24 +76,24 @@ export class AddEmployeeComponent implements OnInit {
     this.today = new Date();
     defineLocale('th', thBeLocale);
     this.localeService.use(this.locale);
-    console.log(this.position.length);
-    this.countposit = [1];
+    console.log(this.aryPosition.length);
+    this.aryCountposit = [1];
     this.getDepartment()
   }
 
 
 
   addInputDeptPosit() {
-    console.log(this.position);
+    console.log(this.aryPosition);
     // console.log(this.DeptPosit[this.countDeptPosit.length - 1]);
-    if (this.position[this.countposit.length - 1] == null) {
+    if (this.aryPosition[this.aryCountposit.length - 1] == null) {
       alert('กรุณากรอกข้อมูลให้ครบถ้วน');
     } else {
-      this.countposit?.push(this.countposit.length + 1);
+      this.aryCountposit?.push(this.aryCountposit.length + 1);
     }
   }
 
-  numberOnly(event: any): boolean {
+  iputNumberOnly(event: any): boolean {
     const charCode = (event.which) ? event.which : event.keyCode;
     if (charCode > 31 && (charCode < 48 || charCode > 57)) {
       return false;
@@ -102,7 +102,7 @@ export class AddEmployeeComponent implements OnInit {
 
   }
 
-  Usernameset() {
+  setUsername() {
     console.log(this.emp.controls.nameen.value?.includes(' '));
     if (this.emp.controls.nameen.value?.includes(' ')) {
       let usernameSet1 = String(this.emp.controls.nameen.value)
@@ -119,26 +119,22 @@ export class AddEmployeeComponent implements OnInit {
     }
   }
 
-  changeTest() {
-    console.log("123123123")
-  }
-
   deleteInputDept(index: number) {
 
     console.log("option", this.positionDept)
-    if (this.position[index] == undefined) {
-      this.position.splice(index, 1);
-      this.countposit.splice(index, 1);
+    if (this.aryPosition[index] == undefined) {
+      this.aryPosition.splice(index, 1);
+      this.aryCountposit.splice(index, 1);
       return
     }
 
-    let person = { position: String(this.position[index]) };
+    let person = { position: String(this.aryPosition[index]) };
     this.positionDept.push(person)
 
-    this.position.splice(index, 1);
-    this.countposit.splice(index, 1);
+    this.aryPosition.splice(index, 1);
+    this.aryCountposit.splice(index, 1);
 
-    if (this.position.length == this.countposit.length) {
+    if (this.aryPosition.length == this.aryCountposit.length) {
       this.checknullPosit = false
       return;
     } else {
@@ -168,13 +164,13 @@ export class AddEmployeeComponent implements OnInit {
     });
   }
 
-  PositionChang() {
+  positionChang() {
 
     console.log(this.stateBeforeCheck)
 
-    for (let i = 0; i < this.position.length; i++) {
+    for (let i = 0; i < this.aryPosition.length; i++) {
       for (let j = 0; j < this.positionDept.length; j++) {
-        if (this.position[i] == this.positionDept[j].position) {
+        if (this.aryPosition[i] == this.positionDept[j].position) {
           this.positionDept.splice(j, 1)
         }
       }
@@ -188,18 +184,18 @@ export class AddEmployeeComponent implements OnInit {
 
   settingIndex(index: any) {
     this.indexSelect = index
-    if (this.position[this.indexSelect] == undefined) {
+    if (this.aryPosition[this.indexSelect] == undefined) {
       this.stateBeforeCheck = true
     } else {
-      this.valueStateBefore = { position: String(this.position[this.indexSelect]) };
+      this.valueStateBefore = { position: String(this.aryPosition[this.indexSelect]) };
       this.stateBeforeCheck = false
     }
   }
 
   getPosition(value: any) {
 
-    this.position = []
-    this.countposit = [1]
+    this.aryPosition = []
+    this.aryCountposit = [1]
 
     this.addEmpService.ShowPosition(value).subscribe({
       next: (res: any) => {
@@ -231,7 +227,8 @@ export class AddEmployeeComponent implements OnInit {
     }
     this.emp.controls.password.setValue(password);
   }
-  cancel() {
+
+  cancelModal() {
     Swal.fire({
       title:
         '<strong style = "font-family:Kanit"> คุณต้องการยกเลิกการเพิ่มใช่หรือไม่ </strong>',
@@ -251,12 +248,12 @@ export class AddEmployeeComponent implements OnInit {
 
   Submit() {
 
-    console.log("test position", this.position)
-    console.log("count posit", this.countposit)
+    console.log("test position", this.aryPosition)
+    console.log("count posit", this.aryCountposit)
 
     this.summited = true;
 
-    if (this.position.length == this.countposit.length) {
+    if (this.aryPosition.length == this.aryCountposit.length) {
       this.checknullPosit = false
     } else {
       this.checknullPosit = true
@@ -303,7 +300,7 @@ export class AddEmployeeComponent implements OnInit {
             this.emp.controls.phonenumber.value!,
             this.emp.controls.company.value!,
             this.emp.controls.department.value!,
-            this.position,
+            this.aryPosition,
             this.emp.controls.typecontract.value!,
             this.emp.controls.usernameid.value!,
             this.emp.controls.password.value!,
@@ -363,14 +360,14 @@ export class AddEmployeeComponent implements OnInit {
     this.APISuccess = true;
     this.addEmpService.getLeaveDay(prefixID, birthstart!).subscribe({
       next: (res: any) => {
-        this.Objleave = res.data;
-        console.log(this.Objleave)
-        this.emp.controls.leave.setValue(this.Objleave.user_leave);
-        this.emp.controls.leavesick.setValue(this.Objleave.user_sick);
-        this.emp.controls.leaveordination.setValue(this.Objleave.user_ordination);
-        this.emp.controls.leavemilitary.setValue(this.Objleave.user_military_service);
-        this.emp.controls.leaveVacation.setValue(this.Objleave.user_take_annual);
-        this.emp.controls.leavematernity.setValue(this.Objleave.user_maternity);
+        this.objleave = res.data;
+        console.log(this.objleave)
+        this.emp.controls.leave.setValue(this.objleave.user_leave);
+        this.emp.controls.leavesick.setValue(this.objleave.user_sick);
+        this.emp.controls.leaveordination.setValue(this.objleave.user_ordination);
+        this.emp.controls.leavemilitary.setValue(this.objleave.user_military_service);
+        this.emp.controls.leaveVacation.setValue(this.objleave.user_take_annual);
+        this.emp.controls.leavematernity.setValue(this.objleave.user_maternity);
         this.APISuccess = false;
       },
       error: (err: any) => { },

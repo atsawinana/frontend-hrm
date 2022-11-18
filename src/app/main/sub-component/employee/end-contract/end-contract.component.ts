@@ -12,13 +12,13 @@ import * as XLSX from 'xlsx';
 export class EndContractComponent implements OnInit {
   constructor(private empService: EndContractService) {}
 
-  Objemployee: any;
-  Objemptable: any;
+  objemployee: any;
+  objemptable: any;
   listPerPage: number = 10;
   searchInput: string = '';
   elemtable: any;
   LoadingAPI: boolean = false;
-  ObjDepartment: any;
+  objDepartment: any;
   TestModel: any[] = [];
 
   listPerpage() {
@@ -37,14 +37,14 @@ export class EndContractComponent implements OnInit {
       next: (res: any) => {
         this.LoadingAPI = true;
 
-        this.Objemployee = res.data.users;
+        this.objemployee = res.data.users;
       },
       error: (err: any) => {},
     });
 
     this.empService.getAllDepartment().subscribe({
       next: (res: any) => {
-        this.ObjDepartment = res.data.deprtments;
+        this.objDepartment = res.data.deprtments;
       },
       error: (err: any) => {},
     });
@@ -54,13 +54,13 @@ export class EndContractComponent implements OnInit {
     let dept_id = '';
     for (let i = 0; i < this.TestModel.length; i++) {
       if (this.TestModel[i]) {
-        dept_id += String(this.ObjDepartment[i].dept_id) + ',';
+        dept_id += String(this.objDepartment[i].dept_id) + ',';
       }
     }
 
     this.empService.getEmployeefromDeptID(dept_id).subscribe({
       next: (res: any) => {
-        this.Objemployee = res.data.users;
+        this.objemployee = res.data.users;
       },
       error: (err: any) => {},
     });

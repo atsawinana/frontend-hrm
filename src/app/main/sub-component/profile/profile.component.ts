@@ -20,12 +20,10 @@ import Swal from 'sweetalert2';
 export class ProfileComponent implements OnInit {
   constructor(private profileService: ProfileService) {}
   roleHR: boolean = false;
-  lineChart: any = [];
-  ObjdataUser: any = {};
+  arylineChart: any = [];
+  objdataUser: any = {};
   ApiSuccess: boolean = false;
   testleaveday: any;
-  ObjTestCircle1 = { l1: 4, l2: 12, l3: 7 };
-  ObjTestCircle2 = { l1: 13, l2: 2, l3: 3, l4: 5 };
   baseURL = environment.apiURL;
   whenEdit: boolean = false;
   phonenumber: any;
@@ -64,12 +62,12 @@ export class ProfileComponent implements OnInit {
     }
     this.profileService.getProfile().subscribe({
       next: (res: any) => {
-        this.ObjdataUser = res.data;
-        localStorage.setItem('user_id', this.ObjdataUser.user_id);
-        this.phonenumber = this.ObjdataUser.ud_phone;
-        this.testleaveday = this.ObjdataUser.user_maternity_day;
+        this.objdataUser = res.data;
+        localStorage.setItem('user_id', this.objdataUser.user_id);
+        this.phonenumber = this.objdataUser.ud_phone;
+        this.testleaveday = this.objdataUser.user_maternity_day;
         this.ApiSuccess = true;
-        console.log(this.ObjdataUser);
+        console.log(this.objdataUser);
       },
       error: (err: any) => {},
     });
@@ -168,7 +166,7 @@ export class ProfileComponent implements OnInit {
         objPic = res;
         this.confirmPath = objPic.data;
         console.log(objPic);
-        this.ObjdataUser.ud_picture = objPic.data;
+        this.objdataUser.ud_picture = objPic.data;
         // location.reload()
       },
       error: (err: any) => {},
