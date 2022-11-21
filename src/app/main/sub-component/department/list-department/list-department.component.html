@@ -47,8 +47,10 @@
 
           <tr id="rowContent" *ngFor="
           let datas of deptTable
-            | searchFilter: searchInput
+            | filter: searchInput
             | paginate: config ">
+
+            <!-- filter : searchInput -->
 
             <td>{{datas.number}}</td>
             <td id="nameDepartment" class="text-start ps-5">{{ datas.dept_name_en }}</td>
@@ -59,8 +61,7 @@
                   <div class="activity-table icon-fix" data-bs-toggle="modal" href="#exampleModalToggle_de"
                     role="button" (click)="DetailDept(datas.dept_id)">
 
-                    <img class="mx-auto pb-1" src="assets/img/department/magnifying-glass-plus-solid.svg" alt=""
-                      style="width: 18px; height: 100%px" />
+                    <i class="fa-light fa-file-magnifying-glass"  style="width: 18px; height: 100%px"></i>
                   </div>
                 </div>
                 <div class="col-1 px-0 mx-1">

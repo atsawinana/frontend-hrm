@@ -21,6 +21,8 @@ import { LoadingEmpComponent } from './loading-emp/loading-emp.component';
 import { DatePipe } from '@angular/common';
 import { EditDetailComponent } from '../leave/leave-history/detail/edit-detail/edit-detail.component';
 import { EditDetailPersonComponent } from './data-person/person-employee/edit-detail-person/edit-detail-person.component';
+import { DetailDataPersonService } from './data-person/person-employee/detail-data-person/detail-data-person.service';
+import { DataPersonBtnComponent } from './data-person/data-person-btn/data-person-btn.component';
 
 @NgModule({
   imports: [
@@ -47,7 +49,8 @@ import { EditDetailPersonComponent } from './data-person/person-employee/edit-de
     LoadingEmployeeComponent,
     EndContractComponent,
     LoadingEmpComponent,
-    EditDetailPersonComponent
+    EditDetailPersonComponent,
+    DataPersonBtnComponent
   ],
   providers: [DatePipe],
     

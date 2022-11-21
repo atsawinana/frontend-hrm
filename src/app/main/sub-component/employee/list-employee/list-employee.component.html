@@ -1,4 +1,4 @@
-<app-employee-overbutton ></app-employee-overbutton>
+<app-employee-overbutton></app-employee-overbutton>
 <app-loading-employee *ngIf="!ApiSuccess" class="d-flex justify-content-center h-100 align-items-center">
 </app-loading-employee>
 
@@ -34,6 +34,15 @@
 
                   <div class="row mt-3">
 
+                    <label class="col-6 mb-3">
+                      <div class="box "> All
+                        <!-- <input type="checkbox" [value]="posit.dept_id" (change)="setValueDepartment($event)"> -->
+                        <input type="checkbox" (change)="setAllValueFilter($event.returnValue)" [checked]="false"
+                          [(ngModel)]="checkMarkAll">
+                        <span class="checkmark"></span>
+                      </div>
+                    </label>
+
                     <label class="col-6 mb-3" *ngFor="let posit of objDepartment ; let i = index">
                       <div class="box ">{{posit.dept_name_en}}
                         <!-- <input type="checkbox" [value]="posit.dept_id" (change)="setValueDepartment($event)"> -->
@@ -43,23 +52,34 @@
                       </div>
                     </label>
 
+
+
+
                   </div>
 
 
                 </div>
                 <hr>
                 <div class="row d-flex justify-content-end mb-3">
-                  <div class="col-6 col-sm-3 col-md-3 col-lg-3"><button
-                      class="cancel-button d-flex justify-content-center w-100" type="" (click)="showFilterBox()">
-                      <div class="cancel-text">ยกเลิก</div>
-                    </button>
+                  <div class="col-6  ps-5  d-flex align-items-center">
+                    <p class="font-clear" (click)="clearAllValueFilter()">ล้างการค้นหา</p>
                   </div>
-                  <div class="col-6 col-sm-3 col-md-3 col-lg-3"><button
-                      class="submit-button d-flex justify-content-center w-100" type="submit" (click)="showFilterBox()"
-                      (click)="loadempFromDepartment()">
-                      <div class="submit-text">ตกลง</div>
-                    </button>
+                  <div class="col-6">
+                    <div class="row d-flex justify-content-end">
+                      <div class="col-6 "><button class="cancel-button d-flex justify-content-center w-100" type=""
+                          (click)="showFilterBox()">
+                          <div class="cancel-text">ยกเลิก</div>
+                        </button>
+                      </div>
+                      <div class="col-6 "><button class="submit-button d-flex justify-content-center w-100"
+                          type="submit" (click)="showFilterBox()" (click)="loadempFromDepartment()">
+                          <div class="submit-text">ตกลง</div>
+                        </button>
+                      </div>
+                    </div>
+
                   </div>
+
                 </div>
 
               </div>
@@ -96,7 +116,7 @@
       </thead>
 
       <tbody class="list-content">
-        <tr id="" *ngFor="let emp of objemptable | paginate: config | filter : searchInput">
+        <tr id="" *ngFor="let emp of objemptable | filter : searchInput | paginate: config">
           <td class="text-center">{{emp.number}}</td>
           <td class="text-start">{{emp.user_card_number}}</td>
           <td class="text-start">{{emp.ud_fullname_th}}</td>
@@ -107,7 +127,7 @@
             <div class="row d-flex justify-content-center">
               <div class="col-1 px-0 mx-1">
                 <div class="activity-table icon-fix py-1" role="button" routerLink="data-person/{{emp.id}}">
-                  <i class="fa-solid fa-list-ul" ></i>
+                  <i class="fa-solid fa-list-ul"></i>
                 </div>
               </div>
             </div>

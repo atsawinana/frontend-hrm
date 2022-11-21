@@ -1,0 +1,18 @@
+.font-menu {
+  font-family: 'Kanit';
+  display: inline;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 47px;
+  color: #000000;
+}
+
+.line {
+  background: #005FBC;
+  color: #005FBC;
+  height: 2px;
+  border: 0px;
+  opacity: 1;
+  margin-top: 0px;
+}

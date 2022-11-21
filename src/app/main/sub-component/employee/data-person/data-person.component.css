@@ -90,16 +90,6 @@ img {
   justify-content: left;
 }
 
-.font-menu {
-  font-family: 'Kanit';
-  display: inline;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 18px;
-  line-height: 47px;
-  color: #000000;
-}
-
 .font-detailPossition {
   font-family: 'Kanit';
   font-style: normal;
@@ -127,6 +117,3 @@ img {
   color: #000000;
 }
 
-.line {
-  border-top: 6px solid #005FBC;
-}

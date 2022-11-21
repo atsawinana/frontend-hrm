@@ -3,14 +3,24 @@
 <div class="container-fluid h-100" *ngIf="APISuccess">
   <div class="row">
     <div class="row mb-4">
-      <div class="back-button my-auto" *ngIf="objDataemp.user_is_deleted == 0" routerLink="../../"><i class="fa-solid fa-angle-left back-icon"></i></div>
-      <div class="back-button my-auto" *ngIf="objDataemp.user_is_deleted == 1" routerLink="../../end-contract-employee"><i class="fa-solid fa-angle-left back-icon"></i></div>
+      <button class="back-button d-flex justify-content-center" *ngIf="objDataemp.user_is_deleted == 0"
+        routerLink="../../">
+        <i class="fa-solid fa-angle-left back-icon"></i>
+      </button>
+      <button class="back-button d-flex justify-content-center" *ngIf="objDataemp.user_is_deleted == 1"
+        routerLink="../../end-contract-employee">
+        <i class="fa-solid fa-angle-left back-icon"></i>
+      </button>
       <div class="font-header ms-2 col">ข้อมูลพนักงาน</div>
       <div class="col-5">
         <div class="row d-flex justify-content-end">
-          <div class="buttonEdit me-3" routerLink="edit-detail" *ngIf="objDataemp.user_is_deleted != 1"><i class="fa-solid fa-pencil me-3"></i> แก้ไข</div>
-          <div class="buttonreset" (click)="resetPassword()" *ngIf="objDataemp.user_is_deleted != 1"><i class="fa-solid fa-key me-3"></i>รีเซ็ตรหัสผ่าน</div>
-          <div class="buttonreset" (click)="deleteEmployee()" *ngIf="objDataemp.user_is_deleted == 1 && objDataemp.user_data_is_deleted == 0"><i class="fa-solid fa-trash me-3"></i>ลบข้อมูล</div>
+          <div class="buttonEdit me-3" routerLink="edit-detail" *ngIf="objDataemp.user_is_deleted != 1"><i
+              class="fa-solid fa-pencil me-3"></i> แก้ไข</div>
+          <div class="buttonreset" (click)="resetPassword()" *ngIf="objDataemp.user_is_deleted != 1"><i
+              class="fa-solid fa-key me-3"></i>รีเซ็ตรหัสผ่าน</div>
+          <div class="buttonreset" (click)="deleteEmployee()"
+            *ngIf="objDataemp.user_is_deleted == 1 && objDataemp.user_data_is_deleted == 0"><i
+              class="fa-solid fa-trash me-3"></i>ลบข้อมูล</div>
         </div>
 
       </div>
@@ -44,13 +54,8 @@
     </div>
   </div>
 
-  <div class="row mt-3">
-    <div class="col-2 font-menu" routerLink="detail">ข้อมูลพนักงาน</div>
-    <div class="col-2 font-menu" routerLink="work-history">เข้างาน</div>
-    <div class="col-2 font-menu" routerLink="leave-history">ลางาน</div>
-    <div class="col-2 font-menu" routerLink="ot-history">โอที</div>
-  </div>
-  <hr class="line">
+  <app-data-person-btn></app-data-person-btn>
+
   <router-outlet></router-outlet>
 </div>
 

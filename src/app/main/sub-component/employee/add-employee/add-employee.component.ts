@@ -19,24 +19,51 @@ export class AddEmployeeComponent implements OnInit {
     private addEmpService: AddEmployeeService,
     public datepipe: DatePipe,
     private router: Router
-  ) { }
+  ) {}
 
   emp = new FormGroup({
-    idcard: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
+    idcard: new FormControl('', [
+      Validators.required,
+      this.noWhitespaceValidator,
+    ]),
     prefix: new FormControl(null, [Validators.required]),
-    nameth: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
-    nameen: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
-    nickname: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
-    birthdate: new FormControl('', [Validators.required,]),
-    phonenumber: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
-    email: new FormControl('',),
-    company: new FormControl({value:'Exvention Co., Ltd.',disabled: true}, [Validators.required, this.noWhitespaceValidator]),
+    nameth: new FormControl('', [
+      Validators.required,
+      this.noWhitespaceValidator,
+    ]),
+    nameen: new FormControl('', [
+      Validators.required,
+      this.noWhitespaceValidator,
+    ]),
+    nickname: new FormControl('', [
+      Validators.required,
+      this.noWhitespaceValidator,
+    ]),
+    birthdate: new FormControl('', [Validators.required]),
+    phonenumber: new FormControl('', [
+      Validators.required,
+      this.noWhitespaceValidator,
+    ]),
+    email: new FormControl(''),
+    company: new FormControl({ value: 'Exvention Co., Ltd.', disabled: true }, [
+      Validators.required,
+      this.noWhitespaceValidator,
+    ]),
     department: new FormControl(null, [Validators.required]),
-    typecontract: new FormControl(null, [Validators.required, this.noWhitespaceValidator]),
+    typecontract: new FormControl(null, [
+      Validators.required,
+      this.noWhitespaceValidator,
+    ]),
     // empid: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
     startdate: new FormControl('', [Validators.required]),
-    usernameid: new FormControl({value:'',disabled: true}, [Validators.required, this.noWhitespaceValidator]),
-    password: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
+    usernameid: new FormControl({ value: '', disabled: true }, [
+      Validators.required,
+      this.noWhitespaceValidator,
+    ]),
+    password: new FormControl('', [
+      Validators.required,
+      this.noWhitespaceValidator,
+    ]),
 
     leavesick: new FormControl('', [Validators.required]),
     leave: new FormControl('', [Validators.required]),
@@ -51,25 +78,25 @@ export class AddEmployeeComponent implements OnInit {
   objleave: any;
   APISuccess: boolean = false;
   summited: boolean = false;
-  deprtmentsData: any
+  deprtmentsData: any;
 
   aryPosition: any[] = [];
   aryCountposit: any[] = [];
   positionDept: any;
   baseURL = environment.apiURL;
-  pathPic: string = "/files/image/default.jpg"
-  confirmPath: string = ""
+  pathPic: string = '/files/image/default.jpg';
+  confirmPath: string = '';
 
-  checknullPosit: boolean = false
+  checknullPosit: boolean = false;
 
-  indexSelect: any
-  stateBeforeCheck: boolean = false
-  valueStateBefore: any
+  indexSelect: any;
+  stateBeforeCheck: boolean = false;
+  valueStateBefore: any;
 
   public noWhitespaceValidator(control: FormControl) {
     const isWhitespace = (control.value || '').trim().length === 0;
     const isValid = !isWhitespace;
-    return isValid ? null : { 'whitespace': true };
+    return isValid ? null : { whitespace: true };
   }
 
   ngOnInit() {
@@ -78,10 +105,8 @@ export class AddEmployeeComponent implements OnInit {
     this.localeService.use(this.locale);
     console.log(this.aryPosition.length);
     this.aryCountposit = [1];
-    this.getDepartment()
+    this.getDepartment();
   }
-
-
 
   addInputDeptPosit() {
     console.log(this.aryPosition);
@@ -94,61 +119,61 @@ export class AddEmployeeComponent implements OnInit {
   }
 
   iputNumberOnly(event: any): boolean {
-    const charCode = (event.which) ? event.which : event.keyCode;
+    const charCode = event.which ? event.which : event.keyCode;
     if (charCode > 31 && (charCode < 48 || charCode > 57)) {
       return false;
     }
     return true;
-
   }
 
   setUsername() {
     console.log(this.emp.controls.nameen.value?.includes(' '));
     if (this.emp.controls.nameen.value?.includes(' ')) {
-      let usernameSet1 = String(this.emp.controls.nameen.value)
-      let usernameSet2 = String(this.emp.controls.nameen.value)
-      usernameSet1 = usernameSet1.substring(0, usernameSet1.indexOf(' '))
+      let usernameSet1 = String(this.emp.controls.nameen.value);
+      let usernameSet2 = String(this.emp.controls.nameen.value);
+      usernameSet1 = usernameSet1.substring(0, usernameSet1.indexOf(' '));
       // usernameSet2  = usernameSet2.substring(usernameSet2.indexOf(' ')+1,4)
-      console.log("usernameSet1", usernameSet1)
-      console.log("usernameSet2", usernameSet2)
-      console.log("indexOf", usernameSet2.indexOf(" "))
-      usernameSet2 = usernameSet2.substring(usernameSet2.indexOf(" ") + 1, usernameSet2.indexOf(" ") + 4)
-      let fullUsername = usernameSet1 + "." + usernameSet2
-      console.log(fullUsername)
-      this.emp.controls.usernameid.setValue(fullUsername)
+      console.log('usernameSet1', usernameSet1);
+      console.log('usernameSet2', usernameSet2);
+      console.log('indexOf', usernameSet2.indexOf(' '));
+      usernameSet2 = usernameSet2.substring(
+        usernameSet2.indexOf(' ') + 1,
+        usernameSet2.indexOf(' ') + 4
+      );
+      let fullUsername = usernameSet1 + '.' + usernameSet2;
+      console.log(fullUsername);
+      this.emp.controls.usernameid.setValue(fullUsername);
     }
   }
 
   deleteInputDept(index: number) {
-
-    console.log("option", this.positionDept)
+    console.log('option', this.positionDept);
     if (this.aryPosition[index] == undefined) {
       this.aryPosition.splice(index, 1);
       this.aryCountposit.splice(index, 1);
-      return
+      return;
     }
 
     let person = { position: String(this.aryPosition[index]) };
-    this.positionDept.push(person)
+    this.positionDept.push(person);
 
     this.aryPosition.splice(index, 1);
     this.aryCountposit.splice(index, 1);
 
     if (this.aryPosition.length == this.aryCountposit.length) {
-      this.checknullPosit = false
+      this.checknullPosit = false;
       return;
     } else {
-      this.checknullPosit = true
+      this.checknullPosit = true;
       return;
     }
   }
 
   getDepartment() {
-
     this.addEmpService.getAllDepartment().subscribe({
       next: (res: any) => {
         this.deprtmentsData = res.data.deprtments;
-        console.log(this.deprtmentsData)
+        console.log(this.deprtmentsData);
       },
       error: (err: any) => {
         if (err.status === 419) {
@@ -158,49 +183,49 @@ export class AddEmployeeComponent implements OnInit {
             text: 'กรุณา Login ใหม่ เพื่อใช้งาน',
           }).then((e) => {
             this.router.navigate(['']);
-          })
+          });
         }
       },
     });
   }
 
   positionChang() {
-
-    console.log(this.stateBeforeCheck)
+    console.log(this.stateBeforeCheck);
 
     for (let i = 0; i < this.aryPosition.length; i++) {
       for (let j = 0; j < this.positionDept.length; j++) {
         if (this.aryPosition[i] == this.positionDept[j].position) {
-          this.positionDept.splice(j, 1)
+          this.positionDept.splice(j, 1);
         }
       }
     }
 
     if (!this.stateBeforeCheck) {
-      console.log("not null")
-      this.positionDept.push(this.valueStateBefore)
+      console.log('not null');
+      this.positionDept.push(this.valueStateBefore);
     }
   }
 
   settingIndex(index: any) {
-    this.indexSelect = index
+    this.indexSelect = index;
     if (this.aryPosition[this.indexSelect] == undefined) {
-      this.stateBeforeCheck = true
+      this.stateBeforeCheck = true;
     } else {
-      this.valueStateBefore = { position: String(this.aryPosition[this.indexSelect]) };
-      this.stateBeforeCheck = false
+      this.valueStateBefore = {
+        position: String(this.aryPosition[this.indexSelect]),
+      };
+      this.stateBeforeCheck = false;
     }
   }
 
   getPosition(value: any) {
-
-    this.aryPosition = []
-    this.aryCountposit = [1]
+    this.aryPosition = [];
+    this.aryCountposit = [1];
 
     this.addEmpService.ShowPosition(value).subscribe({
       next: (res: any) => {
-        this.positionDept = res.data.dept_potitions
-        console.log(res.data.dept_potitions)
+        this.positionDept = res.data.dept_potitions;
+        console.log(res.data.dept_potitions);
       },
       error: (err: any) => {
         if (err.status === 419) {
@@ -210,7 +235,7 @@ export class AddEmployeeComponent implements OnInit {
             text: 'กรุณา Login ใหม่ เพื่อใช้งาน',
           }).then((e) => {
             this.router.navigate(['']);
-          })
+          });
         }
       },
     });
@@ -247,21 +272,20 @@ export class AddEmployeeComponent implements OnInit {
   }
 
   Submit() {
-
-    console.log("test position", this.aryPosition)
-    console.log("count posit", this.aryCountposit)
+    console.log('test position', this.aryPosition);
+    console.log('count posit', this.aryCountposit);
 
     this.summited = true;
 
     if (this.aryPosition.length == this.aryCountposit.length) {
-      this.checknullPosit = false
+      this.checknullPosit = false;
     } else {
-      this.checknullPosit = true
+      this.checknullPosit = true;
     }
 
     console.log('value invalid', this.emp);
 
-    console.log("null posit", this.checknullPosit)
+    console.log('null posit', this.checknullPosit);
 
     if (this.emp.invalid || this.checknullPosit) {
       return;
@@ -325,15 +349,14 @@ export class AddEmployeeComponent implements OnInit {
             error: (err: any) => {
               if (err.status === 403) {
                 Swal.fire({
-                    icon: 'error',
-                    title: 'รหัสบัตรประชาชนไม่ถูกต้อง',
-                    text: 'กรุณาตรวจสอบเลขบัตรประชาชนอีกครั้ง',
-                })
-            }
-            else{
+                  icon: 'error',
+                  title: 'รหัสบัตรประชาชนไม่ถูกต้อง',
+                  text: 'กรุณาตรวจสอบเลขบัตรประชาชนอีกครั้ง',
+                });
+              } else {
                 // this.main.Error()
-            }
-             },
+              }
+            },
           });
 
         //   Swal.fire({
@@ -347,8 +370,19 @@ export class AddEmployeeComponent implements OnInit {
     });
   }
 
-  changValueLeave(prefixID: any, startDate: any) {
+  Copy() {
+    Swal.fire({
+      position: 'top-end',
+      icon: 'question',
+      iconHtml: '<i class="fa-regular fa-clipboard"></i>',
+      title: '<strong style = "font-family:Kanit"> copy user </strong>',
+      showConfirmButton: false,
+      timer: 1000,
+      backdrop: false
+    });
+  }
 
+  changValueLeave(prefixID: any, startDate: any) {
     let birthstart = this.datepipe.transform(startDate, 'yyyy/MM/dd');
 
     this.emp.controls.leave.setValue('');
@@ -361,41 +395,44 @@ export class AddEmployeeComponent implements OnInit {
     this.addEmpService.getLeaveDay(prefixID, birthstart!).subscribe({
       next: (res: any) => {
         this.objleave = res.data;
-        console.log(this.objleave)
+        console.log(this.objleave);
         this.emp.controls.leave.setValue(this.objleave.user_leave);
         this.emp.controls.leavesick.setValue(this.objleave.user_sick);
-        this.emp.controls.leaveordination.setValue(this.objleave.user_ordination);
-        this.emp.controls.leavemilitary.setValue(this.objleave.user_military_service);
-        this.emp.controls.leaveVacation.setValue(this.objleave.user_take_annual);
+        this.emp.controls.leaveordination.setValue(
+          this.objleave.user_ordination
+        );
+        this.emp.controls.leavemilitary.setValue(
+          this.objleave.user_military_service
+        );
+        this.emp.controls.leaveVacation.setValue(
+          this.objleave.user_take_annual
+        );
         this.emp.controls.leavematernity.setValue(this.objleave.user_maternity);
         this.APISuccess = false;
       },
-      error: (err: any) => { },
+      error: (err: any) => {},
     });
   }
 
   editPicture(event: any) {
     const file: File = event.target.files[0];
 
-    const formData = new FormData()
+    const formData = new FormData();
     // this.picname = file.name
-    formData.append("file", file)
+    formData.append('file', file);
     // console.log("file", file)
     // console.log('test form', formData)
     // console.log("test param ", this.picfile)
-    let objPic
+    let objPic;
     this.addEmpService.uploadImgprofile(formData).subscribe({
       next: (res: any) => {
-        objPic = res
-        this.confirmPath = objPic.data
-        this.pathPic = objPic.data
-        console.log(objPic)
+        objPic = res;
+        this.confirmPath = objPic.data;
+        this.pathPic = objPic.data;
+        console.log(objPic);
         // location.reload()
       },
-      error: (err: any) => {
-
-      }
-    })
+      error: (err: any) => {},
+    });
   }
-
 }
