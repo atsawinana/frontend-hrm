@@ -6,7 +6,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class AddEmployeeService {
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {}
 
   getLeaveDay(perFix: string, Startdate: string) {
     const headers = new HttpHeaders({
@@ -17,34 +17,39 @@ export class AddEmployeeService {
       headers,
       params: {
         ud_prefix_id: perFix,
-        user_created_at: Startdate
+        user_created_at: Startdate,
       },
     });
   }
 
-  ShowPosition(deptid: string,) {
+  ShowPosition(deptid: string) {
     const headers = new HttpHeaders({
       Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
     });
 
-    return this.httpClient.get(`${environment.apiURL}/employee/showPositionByDeptId`, {
-      headers,
-      params: {
-        dept_id: deptid
-      },
-    });
+    return this.httpClient.get(
+      `${environment.apiURL}/employee/showPositionByDeptId`,
+      {
+        headers,
+        params: {
+          dept_id: deptid,
+        },
+      }
+    );
   }
 
   getAllDepartment() {
     const headers = new HttpHeaders({
-      'Authorization': 'Bearer' + localStorage.getItem('tokenLocal'),
+      Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
     });
 
-    return this.httpClient.get(`${environment.apiURL}/department/getAllDepartment`, {
-      headers
-    });
+    return this.httpClient.get(
+      `${environment.apiURL}/department/getAllDepartment`,
+      {
+        headers,
+      }
+    );
   }
-
 
   Addemp(
     prefix: string,
@@ -71,7 +76,7 @@ export class AddEmployeeService {
     military: string | null,
     withoutpay: string | null,
     resign: string | null,
-    ud_picture:string
+    ud_picture: string
   ) {
     const headers = new HttpHeaders({
       Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
@@ -104,15 +109,13 @@ export class AddEmployeeService {
         user_military_service: military,
         user_without_pay: null,
         user_resign: null,
-        ud_picture:ud_picture
+        ud_picture: ud_picture,
       },
       { headers }
     );
   }
 
-  uploadImgprofile(
-    file: any
-  ) {
+  uploadImgprofile(file: any) {
     const headers = new HttpHeaders({
       Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
     });
@@ -129,9 +132,29 @@ export class AddEmployeeService {
       Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
     });
 
-    return this.httpClient.post(`${environment.apiURL}/employee/acceptEditPicture`, {
-      path: path
-    }, { headers });
+    return this.httpClient.post(
+      `${environment.apiURL}/employee/acceptEditPicture`,
+      {
+        path: path,
+      },
+      { headers }
+    );
+  }
+
+  //   /employee/findDataByIdCard[POST]
+  // body: ud_id_card
+  genDatafromIDCard(idcard: any) {
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+    });
+
+    return this.httpClient.post(
+      `${environment.apiURL}/employee/findDataByIdCard`,
+      {
+        ud_id_card: idcard,
+      },
+      { headers }
+    );
   }
 
 }

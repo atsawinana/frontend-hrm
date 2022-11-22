@@ -227,7 +227,7 @@
 
 </div> -->
 
-<div class="container px-0">
+<div class="container-fluid mx-0 px-0" *ngIf="APISuccess">
   <div class="row mb-3">
     <div class="col-12">
       <div class="block-shadow">
@@ -236,14 +236,49 @@
           <div class="row">
             <div class="font-header mb-4 px-0">ข้อมูลส่วนตัว</div>
           </div>
-          <div class="row"> ในคืนที่เราจ้องมองตาสบกัน
-            เหมือนฉันนั้นรู้สึก
-            ส่วนลึกข้างในหัวใจของฉันมันเปลี่ยนไป
-            ไม่เป็นดั่งเช่นเคย
-            เธอยืนอยู่ตรงนั้น
-            ไม่ไกลจากฉันเท่าไร
-            แต่ใจกลับไกล
-            เหมือนเราไม่เคยใกล้กัน
+          <div class="row px-5">
+            <div class="col-6 mb-2">
+              <div class="row">
+                <div class="col-5 font-detail-b"> ชื่อ - นามสกุล </div>
+                <div class="col font-detail"> {{objDataemp.ud_fullname_th}} </div>
+              </div>
+            </div>
+            <div class="col-6 mb-2">
+              <div class="row">
+                <div class="col-5 font-detail-b"> Name and Last name </div>
+                <div class="col font-detail"> {{objDataemp.ud_fullname_en}}</div>
+              </div>
+            </div>
+            <div class="col-6 mb-2">
+              <div class="row">
+                <div class="col-5 font-detail-b"> ชื่อเล่น </div>
+                <div class="col font-detail"> {{objDataemp.ud_nickname}}</div>
+              </div>
+            </div>
+            <div class="col-6 mb-2">
+              <div class="row">
+                <div class="col-5 font-detail-b"> วันเดือนปีเกิด </div>
+                <div class="col font-detail"> {{objDataemp.ud_birthday}}</div>
+              </div>
+            </div>
+            <div class="col-6 mb-2">
+              <div class="row">
+                <div class="col-5 font-detail-b"> เบอร์โทรศัพท์ </div>
+                <div class="col font-detail"> {{objDataemp.ud_phone}}</div>
+              </div>
+            </div>
+            <div class="col-6 mb-2">
+              <div class="row">
+                <div class="col-5 font-detail-b"> รหัสบัตรประชาชน </div>
+                <div class="col font-detail"> {{objDataemp.ud_id_card}}</div>
+              </div>
+            </div>
+            <div class="col-6 mb-2">
+              <div class="row">
+                <div class="col-5 font-detail-b"> อีเมล </div>
+                <div class="col font-detail"> {{objDataemp.ud_email}}</div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -257,14 +292,50 @@
           <div class="row">
             <div class="font-header mb-4 px-0">ข้อมูลในบริษัท</div>
           </div>
-          <div class="row"> ในคืนที่เราจ้องมองตาสบกัน
-            เหมือนฉันนั้นรู้สึก
-            ส่วนลึกข้างในหัวใจของฉันมันเปลี่ยนไป
-            ไม่เป็นดั่งเช่นเคย
-            เธอยืนอยู่ตรงนั้น
-            ไม่ไกลจากฉันเท่าไร
-            แต่ใจกลับไกล
-            เหมือนเราไม่เคยใกล้กัน
+          <div class="row px-5 font-detail">
+            <div class="col-4 mb-2 font-detail-b">
+              บริษัท
+            </div>
+            <div class="col-8 mb-2 ">
+              {{objDataemp.user_company}}
+            </div>
+            <div class="col-4 mb-2 font-detail-b">
+              แผนก
+            </div>
+            <div class="col-8 mb-2 ">
+              {{objDataemp.dept_name_en}}
+            </div>
+            <div class="col-4 mb-2 font-detail-b">
+              ตำแหน่ง
+            </div>
+            <div class="col-8 mb-2 ">
+              <div *ngFor="let posit of objDataemp.positions" class="col-12"> {{posit.positions}}</div>
+            </div>
+            <div class="col-4 mb-2 font-detail-b">
+              ประเภทพนักงาน
+            </div>
+            <div class="col-8 mb-2 ">
+              {{objDataemp.user_contract_name}}
+            </div>
+            <div class="col-4 mb-2 font-detail-b">
+              รหัสพนักงาน
+            </div>
+            <div class="col-8 mb-2 ">
+              {{objDataemp.user_card_number}}
+            </div>
+            <div class="col-4 mb-2 font-detail-b">
+              วันที่เริ่มงาน
+            </div>
+            <div class="col-8 mb-2 ">
+              {{objDataemp.user_created_at}}
+            </div>
+            <div class="col-4 mb-2 font-detail-b">
+              อายุงาน
+            </div>
+            <div class="col-8 mb-2 ">
+              {{objDataemp.user_exprience}}
+            </div>
+
           </div>
         </div>
 
@@ -276,14 +347,61 @@
           <div class="row">
             <div class="font-header mb-4 px-0">สิทธิวันลาคงเหลือ</div>
           </div>
-          <div class="row"> ในคืนที่เราจ้องมองตาสบกัน
-            เหมือนฉันนั้นรู้สึก
-            ส่วนลึกข้างในหัวใจของฉันมันเปลี่ยนไป
-            ไม่เป็นดั่งเช่นเคย
-            เธอยืนอยู่ตรงนั้น
-            ไม่ไกลจากฉันเท่าไร
-            แต่ใจกลับไกล
-            เหมือนเราไม่เคยใกล้กัน
+          <div class="row px-5 font-detail">
+            <div class="col-6 mb-2 ">
+              ลากิจ
+            </div>
+            <div class="col-6 mb-2 ">
+              {{objDataemp.user_leave_day}}   วัน
+            </div>
+            <div class="col-6 mb-2 ">
+              ลาป่วย
+            </div>
+            <div class="col-6 mb-2 ">
+              {{objDataemp.user_sick_day}} วัน
+            </div>
+            <div class="col-6 mb-2 ">
+              ลาพักร้อน
+            </div>
+            <div class="col-6 mb-2 ">
+              {{objDataemp.user_take_annual_day}} วัน
+            </div>
+            <div class="col-6 mb-2 " *ngIf="objDataemp.ud_prefix_id == 2 || objDataemp.ud_prefix_id == 3">
+              ลาคลอด
+            </div>
+            <div class="col-6 mb-2 " *ngIf="objDataemp.ud_prefix_id == 2 || objDataemp.ud_prefix_id == 3">
+              {{objDataemp.user_maternity_day}} วัน
+            </div>
+            <div class="col-6 mb-2 " *ngIf="objDataemp.ud_prefix_id == 1">
+              ลาบวช
+            </div>
+            <div class="col-6 mb-2 " *ngIf="objDataemp.ud_prefix_id == 1">
+              {{objDataemp.user_ordination_day}} วัน
+            </div>
+            <div class="col-6 mb-2 " *ngIf="objDataemp.ud_prefix_id == 1">
+              ลาเพื่อรับราชการทหาร
+            </div>
+            <div class="col-6 mb-2 " *ngIf="objDataemp.ud_prefix_id == 1">
+              {{objDataemp.user_military_service_day}} วัน
+            </div>
+            <div class="col-6 mb-2 ">
+              ลาเพื่อทำหมัน
+            </div>
+            <div class="col-6 mb-2 ">
+              {{objDataemp.user_sterilization_day}} วัน
+            </div>
+            <div class="col-6 mb-2 ">
+              ลาโดยไม่รับเงิน
+            </div>
+            <div class="col-6 mb-2 ">
+              {{objDataemp.user_without_pay_day}} วัน
+            </div>
+            <div class="col-6 mb-2 ">
+              ลาใช้สิทธิทดแทน
+            </div>
+            <div class="col-6 mb-2 ">
+              {{objDataemp.user_resign_day}} วัน
+            </div>
           </div>
         </div>
 

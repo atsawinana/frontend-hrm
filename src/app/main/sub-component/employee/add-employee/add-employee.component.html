@@ -1,6 +1,3 @@
-<button class="back-button d-flex justify-content-center" routerLink="../">
-  <i class="fa-solid fa-angle-left back-icon"></i>
-</button>
 <div class="container p-0">
   <div class=" font-header mb-5">
     เพิ่มข้อมูลพนักงาน
@@ -30,7 +27,7 @@
         <div class="col-8 col-sm-8 col-md-8 col-lg-8 input-xs d-flex justify-content-left">
           <div class="row w-75 font-content ">
             <div class="col-10">
-              <input (keypress)="iputNumberOnly($event)"
+              <input (keypress)="iputNumberOnly($event)" (keyup)="idcard()"
                 [ngClass]="{isinvalid : emp.controls.idcard.errors && summited}" ng-cloak type="text"
                 placeholder="กรอกรหัสบัตรประชาชน" class="form-control w-100 maxWidth" id="intTextBox"
                 formControlName="idcard" maxlength="13" minlength="13">
@@ -87,7 +84,7 @@
       <div class="row">
         <div
           class="sub-text col-12 col-sm-4 col-md-4 col-lg-4 text-center text-xs d-flex justify-content-end align-items-center">
-          ชื่อ-นามสกุล (TH)*
+          ชื่อ (TH)*
         </div>
         <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs d-flex justify-content-left">
           <div class="row font-content w-75">
@@ -110,12 +107,40 @@
     </div>
     <!-- ชื่อ-นามสกุล (TH)* end -->
 
+    <!-- ชื่อ-นามสกุล (TH)* -->
+    <div class="row mb-4">
+      <div class="row">
+        <div
+          class="sub-text col-12 col-sm-4 col-md-4 col-lg-4 text-center text-xs d-flex justify-content-end align-items-center">
+          นามสกุล (TH)*
+        </div>
+        <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs d-flex justify-content-left">
+          <div class="row font-content w-75">
+            <div class="col-10">
+              <input [ngClass]="{isinvalid : emp.controls.namethlast.errors && summited}" ng-cloak type="text"
+                placeholder="กรอกชื่อ-นามสกุลภาษาไทย" class="form-control w-100 maxWidth" id=""
+                formControlName="namethlast">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-7 col-md-8 col-sm-7 col-5 d-flex justify-content-left"></div>
+        <div class="col-sm-3 col-4 space-name">
+          <div *ngIf="emp.controls.nameth.errors && summited" class="alerttext">
+            กรุณากรอกชื่อ-นามสกุลภาษาไทย
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ชื่อ-นามสกุล (TH)* end -->
+
     <!-- ชื่อ-นามสกุล (EN)* -->
     <div class="row mb-4">
       <div class="row">
         <div
           class="sub-text col-12 col-sm-4 col-md-4 col-lg-4 text-center text-xs d-flex justify-content-end align-items-center">
-          ชื่อ-นามสกุล (EN)*
+          ชื่อ (EN)*
         </div>
         <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs d-flex justify-content-left">
           <div class="row font-content w-75">
@@ -137,6 +162,34 @@
       </div>
     </div>
     <!-- ชื่อ-นามสกุล (EN)* end -->
+
+        <!-- ชื่อ-นามสกุล (EN)* -->
+        <div class="row mb-4">
+            <div class="row">
+              <div
+                class="sub-text col-12 col-sm-4 col-md-4 col-lg-4 text-center text-xs d-flex justify-content-end align-items-center">
+                นามสกุล (EN)*
+              </div>
+              <div class="col-12 col-sm-8 col-md-8 col-lg-8 input-xs d-flex justify-content-left">
+                <div class="row font-content w-75">
+                  <div class="col-10">
+                    <input [ngClass]="{isinvalid : emp.controls.nameenlast.errors && summited}" ng-cloak type="text"
+                      placeholder="กรอกชื่อ-นามสกุลภาษาอังกฤษ" class="form-control w-100 maxWidth" id=""
+                      formControlName="nameenlast" (keyup)="setUsername()">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-7 col-md-8 col-sm-7 col-5 d-flex justify-content-left"></div>
+              <div class="col-sm-3 col-4 space-nameen">
+                <div *ngIf="emp.controls.nameenlast.errors && summited" class="alerttext">
+                  กรุณากรอกชื่อ-นามสกุลภาษาอังกฤษ
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ชื่อ-นามสกุล (EN)* end -->
 
     <!-- ชื่อเล่น* -->
     <div class="row mb-4">
@@ -477,7 +530,7 @@
                 <input type="text" class="form-control" placeholder="ชื่อผู้ใช้ระบบ" formControlName="usernameid"
                   aria-describedby="basic-addon2" (keypress)="false">
                 <div class="input-group-append">
-                  <button (click)="Copy()" class="form-copy" type="button"
+                  <button (click)="Copy()" [cdkCopyToClipboard]="this.emp.controls.usernameid.value!" class="form-copy" type="button"
                     style="border-top-left-radius: 0; border-bottom-left-radius: 0; "><i
                       class="fa-regular fa-copy"></i></button>
                 </div>
@@ -515,7 +568,7 @@
                 <input type="text" class="form-control" placeholder="ชื่อผู้ใช้ระบบ" formControlName="usernameid"
                   aria-describedby="basic-addon2" (keypress)="false" formControlName="password">
                 <div class="input-group-append">
-                  <button (click)="Copy()" class="form-copy" type="button"
+                  <button (click)="Copy()" [cdkCopyToClipboard]="this.emp.controls.password.value!" class="form-copy" type="button"
                     style="border-top-left-radius: 0; border-bottom-left-radius: 0; "><i
                       class="fa-regular fa-copy"></i></button>
                 </div>
