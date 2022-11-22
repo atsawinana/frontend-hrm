@@ -7,12 +7,13 @@ import { LeaveHistoryComponent } from './leave-history/leave-history.component';
 import { LeaveInfoComponent } from './leave-info/leave-info.component';
 import { UnapprovedComponent } from './leave-info/unapproved/unapproved.component';
 import { LeaveRequestComponent } from './leave-request/leave-request.component';
+import { LeaveViewRequestComponent } from './leave-view-request/leave-view-request.component';
 import { LeaveComponent } from './leave.component';
 
 const routes: Routes = [
     {
         path: '',
-        component: LeaveComponent,
+        component: LeaveInfoComponent,
     },
     {
         path: 'info',
@@ -43,6 +44,10 @@ const routes: Routes = [
     {
         path: 'unapproved',
         component: UnapprovedComponent,
+    },
+    {
+        path: 'view-request',
+        component: LeaveViewRequestComponent,
     }
 ];
 
