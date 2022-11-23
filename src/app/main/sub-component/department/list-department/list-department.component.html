@@ -56,23 +56,23 @@
             <td id="nameDepartment" class="text-start ps-5">{{ datas.dept_name_en }}</td>
             <td>{{ datas.member }} </td>
             <td>
-              <div class="row d-flex justify-content-center">
+              <div class="row d-flex justify-content-center" style="height: 30px;">
                 <div class="col-1 px-0 mx-1">
-                  <div class="activity-table icon-fix" data-bs-toggle="modal" href="#exampleModalToggle_de"
+                  <div class="activity-table icon-fix d-flex align-items-center" data-bs-toggle="modal" href="#exampleModalToggle_de"
                     role="button" (click)="DetailDept(datas.dept_id)">
 
-                    <i class="fa-light fa-file-magnifying-glass"  style="width: 18px; height: 100%px"></i>
+                    <i class="gg-browse mx-auto " style="width: 18px; z-index: 1;"></i>
                   </div>
                 </div>
                 <div class="col-1 px-0 mx-1">
                   <div class="activity-table icon-fix">
-                    <img class="mx-auto pb-1" src="assets/img/department/user-solid-3.svg" alt=""
+                    <img class="mx-auto " src="assets/img/department/user-solid-3.svg" alt=""
                       style="width: 18px; height: 100%px" />
                   </div>
                 </div>
                 <div class="col-1 px-0 mx-1">
                   <div class="activity-table icon-fix" routerLink="edit-department/{{datas.dept_id}}">
-                    <img class="mx-auto pb-1" src="assets/img/department/pencil-solid-1.svg" alt=""
+                    <img class="mx-auto " src="assets/img/department/pencil-solid-1.svg" alt=""
                       style="width: 18px; height: 100%px" />
                   </div>
                 </div>
@@ -82,7 +82,7 @@
                     <!-- <img class="mx-auto pb-1 notDelelte" src="assets/img/department/trash-solid-1.svg" alt=""
                     style="width: 18px; height: 100%px" /> -->
                     <i [ngClass]="{notDelelte : checkDel(datas.dept_id)}"
-                      class="fa-solid fa-trash mx-auto pb-1 deleteDepartment" style="width: 18px; height: 100%px"></i>
+                      class="fa-solid fa-trash mx-auto deleteDepartment" style="width: 18px; height: 100%px"></i>
                   </div>
                 </div>
 

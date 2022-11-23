@@ -12,7 +12,7 @@ import { LeaveComponent } from './leave.component';
 const routes: Routes = [
     {
         path: '',
-        component: LeaveComponent,
+        component: LeaveInfoComponent,
     },
     {
         path: 'info',
