@@ -3,6 +3,8 @@ import { AuthGuardGuard } from 'src/app/auth/auth-guard.guard';
 import { RoleGuard } from 'src/app/auth/role.guard';
 import { AddDepartmentComponent } from './add-department/add-department.component';
 import { EditComponentComponent } from './edit-component/edit-component.component';
+import { EmpDepartmentComponent } from './emp-department/emp-department.component';
+import { EmpEndDepartmentComponent } from './emp-end-department/emp-end-department.component';
 import { ListDepartmentComponent } from './list-department/list-department.component';
 
 const routes: Routes = [
@@ -24,6 +26,16 @@ const routes: Routes = [
   {
     path: 'edit-department/:dept_id',
     component: EditComponentComponent,
+    canActivate: [AuthGuardGuard, RoleGuard],
+  },
+  {
+    path: 'emp-department/:dept_id',
+    component: EmpDepartmentComponent,
+    canActivate: [AuthGuardGuard, RoleGuard],
+  },
+  {
+    path: 'emp-end-department/:dept_id',
+    component: EmpEndDepartmentComponent,
     canActivate: [AuthGuardGuard, RoleGuard],
   },
 ];

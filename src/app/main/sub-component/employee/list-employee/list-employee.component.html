@@ -164,7 +164,7 @@
           (pageChange)="config.currentPage = $event">
 
           <div class="custom-pagination d-flex flex-row justify-content-end mb-5">
-            <button [disabled]="p.isFirstPage()" style="width: 48px;"
+            <button [disabled]="p.isFirstPage()" style="width: 38px;"
               class=" buttonPage text-end d-flex align-items-center justify-content-center nextPage me-3"
               [class.disabled]="p.isFirstPage()" (click)="p.previous()">
               <i class="fa-solid fa-chevron-left"></i></button>
@@ -180,7 +180,7 @@
               </div>
             </div>
 
-            <button style="width: 48px;"
+            <button style="width: 38px;"
               class="buttonPage text-end d-flex align-items-center justify-content-center nextPage ms-3 me-3"
               [disabled]="p.isLastPage()" (click)="p.next()"><i class="fa-solid fa-chevron-right"></i></button>
           </div>

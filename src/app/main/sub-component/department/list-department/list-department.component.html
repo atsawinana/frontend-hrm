@@ -65,7 +65,7 @@
                   </div>
                 </div>
                 <div class="col-1 px-0 mx-1">
-                  <div class="activity-table icon-fix">
+                  <div class="activity-table icon-fix" routerLink="emp-department/{{datas.dept_id}}" (click)="setLocal(datas.dept_id)">
                     <img class="mx-auto " src="assets/img/department/user-solid-3.svg" alt=""
                       style="width: 18px; height: 100%px" />
                   </div>
@@ -164,13 +164,13 @@
         <div class="col-4 d-flex align-items-center justify-content-end previuspage">
 
           <pagination-template class="vw-100 " #p="paginationApi" id={{config.id}}
-            (pageChange)="config.currentPage = $event">
+            (pageChange)="config.currentPage = $event" >
 
             <div class="custom-pagination d-flex flex-row justify-content-end mb-5">
               <!-- <div class="pagination-previous me-3" [class.disabled]="p.isFirstPage()">
                 <a *ngIf="!p.isFirstPage()" (click)="p.previous()">< </a>
               </div>  -->
-              <button [disabled]="p.isFirstPage()" style="width: 48px;"
+              <button [disabled]="p.isFirstPage()" style="width: 38px;"
                 class=" buttonPage text-end d-flex align-items-center justify-content-center nextPage me-3"
                 [class.disabled]="p.isFirstPage()" (click)="p.previous()">
                 <i class="fa-solid fa-chevron-left"></i></button>
@@ -186,7 +186,7 @@
                 </div>
               </div>
 
-              <button style="width: 48px;"
+              <button style="width: 38px;"
                 class="buttonPage text-end d-flex align-items-center justify-content-center nextPage ms-3 me-3"
                 [disabled]="p.isLastPage()" (click)="p.next()"><i class="fa-solid fa-chevron-right"></i></button>
             </div>

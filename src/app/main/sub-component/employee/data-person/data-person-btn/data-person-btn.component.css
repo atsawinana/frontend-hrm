@@ -9,8 +9,8 @@
 }
 
 .line-active {
-  background: red !important;
-  color: red !important;
+  background: #FF5444 !important;
+  color: #FF5444 !important;
   height: 5px !important;
   border: 0px;
   opacity: 1;

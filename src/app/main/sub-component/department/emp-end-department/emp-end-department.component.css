@@ -13,6 +13,17 @@
   align-items: center;
 }
 
+.font-clear {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  text-decoration-line: underline;
+  color: #005FBC;
+  cursor: pointer;
+}
+
 .modal-title {
 
   margin-top: 50px;
@@ -357,13 +368,14 @@ table {
 }
 
 .filter-box {
-  width: 674px;
+  width: 700px;
+  height: auto;
   background: #FFFFFF;
   border: 1px solid #005FBC;
   border-radius: 10px;
   position: absolute;
   margin-top: 10px;
-  right: 70px;
+  margin-left: 5px;
 }
 
 .filter-outframe {
@@ -419,9 +431,9 @@ table {
 }
 
 /* On mouse-over, add a grey background color
-  .container:hover input ~ .checkmark {
-    background-color: #ccc;
-  } */
+    .container:hover input ~ .checkmark {
+      background-color: #ccc;
+    } */
 
 /* When the checkbox is checked, add a background */
 .box input:checked~.checkmark {
@@ -451,4 +463,19 @@ table {
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
+}
+
+.back-button {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(90deg, #E69755 0.1%, #FF5444 100.01%);
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.back-icon {
+  font-size: 28px;
+  color: white;
+  margin-top: 1px;
 }
