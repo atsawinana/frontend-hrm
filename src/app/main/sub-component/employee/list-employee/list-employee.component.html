@@ -155,17 +155,17 @@
       <thead>
         <tr>
           <th class="text-center" style="width: 5% !important">ลำดับ</th>
-          <th class="text-start" style="width: 10% !important">รหัสพนักงาน</th>
-          <th class="text-start" style="width: 25% !important">รายชื่อ</th>
-          <th class="text-start" style="width: 20% !important">แผนก</th>
-          <th class="text-start" style="width: 25% !important">ตำแหน่ง</th>
+          <th class="text-center" style="width: 10% !important">รหัสพนักงาน</th>
+          <th class="text-center" style="width: 25% !important">รายชื่อ</th>
+          <th class="text-center" style="width: 20% !important">แผนก</th>
+          <th class="text-center" style="width: 25% !important">ตำแหน่ง</th>
           <th style="width: 10% !important">การดำเนินการ</th>
         </tr>
       </thead>
 
       <tbody class="list-content">
         <tr
-          id=""
+          id="row-list"
           *ngFor="
             let emp of objemptable | filter: searchInput | paginate: config
           "
