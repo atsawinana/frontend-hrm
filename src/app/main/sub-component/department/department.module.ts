@@ -14,6 +14,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { BtnDepartmentComponent } from './btn-department/btn-department.component';
 import { EmpDepartmentComponent } from './emp-department/emp-department.component';
 import { EmpEndDepartmentComponent } from './emp-end-department/emp-end-department.component';
+import { DepartmentMainComponent } from './department-main/department-main.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { EmpEndDepartmentComponent } from './emp-end-department/emp-end-departme
         SearchFilterPipe,
         BtnDepartmentComponent,
         EmpDepartmentComponent,
-        EmpEndDepartmentComponent
+        EmpEndDepartmentComponent,
+        DepartmentMainComponent
     ],
 })
 export class DepartmentModule { }

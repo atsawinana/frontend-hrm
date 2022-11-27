@@ -452,3 +452,16 @@ table {
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
+
+@media screen and (max-width: 1200px) {
+  #text-filter {
+    display: none !important;
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+  #search-icon {
+    display: none !important;
+  }
+}

@@ -352,7 +352,6 @@ table {
   margin-left: 10px;
   font-size: 22px;
   color: #005FBC;
-  ;
 }
 
 .filter-font {
@@ -463,4 +462,18 @@ table {
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
+}
+
+@media screen and (max-width: 1200px) {
+  #text-filter {
+    display: none !important;
+  }
+
+
+}
+
+@media screen and (max-width: 768px) {
+  #search-icon {
+    display: none !important;
+  }
 }

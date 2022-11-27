@@ -117,4 +117,18 @@
     align-items: center;
     justify-content: center;
   }
+
+  #name-headerbar {
+    display: none !important;
+  }
+  #header-bar{
+    margin-bottom: 0px !important;
+  }
+  #main-content{
+    /* margin-top: 0px !important; */
+  }
+}
+
+@media screen and (max-width: 768px) {
+ 
 }

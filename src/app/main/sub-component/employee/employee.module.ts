@@ -22,6 +22,7 @@ import { DatePipe } from '@angular/common';
 import { EditDetailPersonComponent } from './data-person/person-employee/edit-detail-person/edit-detail-person.component';
 import { DataPersonBtnComponent } from './data-person/data-person-btn/data-person-btn.component';
 import { ClipboardModule } from '@angular/cdk/clipboard'
+import { EmployeeMainComponent } from './employee-main/employee-main.component';
 
 @NgModule({
   imports: [
@@ -50,7 +51,9 @@ import { ClipboardModule } from '@angular/cdk/clipboard'
     EndContractComponent,
     LoadingEmpComponent,
     EditDetailPersonComponent,
-    DataPersonBtnComponent
+    DataPersonBtnComponent,
+    EmployeeMainComponent
+
   ],
   providers: [DatePipe],
     

@@ -9,15 +9,15 @@
 }
 
 .file_upload {
-  width: 48px;
-  height: 48px;
+  width: 48px !important;
+  height: 38px !important;
   border-radius: 50%;
   padding: 5px;
   background: #FFFFFF;
   border: 1px solid #005FBC;
   position: relative;
-  left: -70px;
-  top: 140px;
+  left: -50px;
+  top: 155px;
   cursor: pointer;
 }
 
@@ -242,4 +242,12 @@
     flex: 0 0 auto !important;
     width: 49% !important;
   }
+
+}
+
+@media screen and (max-width: 992px) {
+  #main-element {
+    padding: 0px !important;
+  }
+
 }

@@ -7,44 +7,74 @@ import { EditDetailPersonComponent } from './data-person/person-employee/edit-de
 import { LeaveHistoryPersonComponent } from './data-person/person-employee/leave-history-person/leave-history-person.component';
 import { OtHistoryPersonComponent } from './data-person/person-employee/ot-history-person/ot-history-person.component';
 import { WorkHistoryPersonComponent } from './data-person/person-employee/work-history-person/work-history-person.component';
+import { EmployeeMainComponent } from './employee-main/employee-main.component';
 import { EndContractComponent } from './end-contract/end-contract.component';
 import { ListEmployeeComponent } from './list-employee/list-employee.component';
 
 const routes: Routes = [
-  { path: '', component: ListEmployeeComponent, canActivate: [AuthGuardGuard] },
-  { path: 'add-employee', component: AddEmployeeComponent, canActivate: [AuthGuardGuard] },
-  { path: 'list-employee', component: ListEmployeeComponent, canActivate: [AuthGuardGuard] },
-  { path: 'end-contract-employee', component: EndContractComponent, canActivate: [AuthGuardGuard] },
   {
-    path: 'data-person/:id',
-    component: DataPersonComponent,
+    path: '',
+    component: EmployeeMainComponent,
+    canActivate: [AuthGuardGuard],
     children: [
       {
         path: '',
-        component: DetailDataPersonComponent, canActivate: [AuthGuardGuard]
+        component: ListEmployeeComponent,
+        canActivate: [AuthGuardGuard],
       },
       {
-        path: 'detail',
-        component: DetailDataPersonComponent, canActivate: [AuthGuardGuard]
+        path: 'add-employee',
+        component: AddEmployeeComponent,
+        canActivate: [AuthGuardGuard],
       },
       {
-        path: 'leave-history',
-        component: LeaveHistoryPersonComponent, canActivate: [AuthGuardGuard]
+        path: 'list-employee',
+        component: ListEmployeeComponent,
+        canActivate: [AuthGuardGuard],
       },
       {
-        path: 'ot-history',
-        component: OtHistoryPersonComponent, canActivate: [AuthGuardGuard]
+        path: 'end-contract-employee',
+        component: EndContractComponent,
+        canActivate: [AuthGuardGuard],
       },
       {
-        path: 'work-history',
-        component: WorkHistoryPersonComponent, canActivate: [AuthGuardGuard]
-      },
-      {
-        path: 'edit-detail',
-        component: EditDetailPersonComponent, canActivate: [AuthGuardGuard]
+        path: 'data-person/:id',
+        component: DataPersonComponent,
+        children: [
+          {
+            path: '',
+            component: DetailDataPersonComponent,
+            canActivate: [AuthGuardGuard],
+          },
+          {
+            path: 'detail',
+            component: DetailDataPersonComponent,
+            canActivate: [AuthGuardGuard],
+          },
+          {
+            path: 'leave-history',
+            component: LeaveHistoryPersonComponent,
+            canActivate: [AuthGuardGuard],
+          },
+          {
+            path: 'ot-history',
+            component: OtHistoryPersonComponent,
+            canActivate: [AuthGuardGuard],
+          },
+          {
+            path: 'work-history',
+            component: WorkHistoryPersonComponent,
+            canActivate: [AuthGuardGuard],
+          },
+          {
+            path: 'edit-detail',
+            component: EditDetailPersonComponent,
+            canActivate: [AuthGuardGuard],
+          },
+        ],
+        canActivate: [AuthGuardGuard],
       },
     ],
-    canActivate: [AuthGuardGuard]
   },
 ];
 
