@@ -5,7 +5,6 @@ import { EditDetailComponent } from './leave-history/detail/edit-detail/edit-det
 import { HistoryComponent } from './leave-history/history/history.component';
 import { LeaveHistoryComponent } from './leave-history/leave-history.component';
 import { LeaveInfoComponent } from './leave-info/leave-info.component';
-import { UnapprovedComponent } from './leave-info/unapproved/unapproved.component';
 import { LeaveRequestComponent } from './leave-request/leave-request.component';
 import { LeaveViewRequestComponent } from './leave-view-request/leave-view-request.component';
 import { LeaveComponent } from './leave.component';
@@ -40,10 +39,6 @@ const routes: Routes = [
     {
         path: 'request',
         component: LeaveRequestComponent,
-    },
-    {
-        path: 'unapproved',
-        component: UnapprovedComponent,
     },
     {
         path: 'view-request',
