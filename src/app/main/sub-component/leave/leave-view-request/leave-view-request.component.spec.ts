@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { UnapprovedComponent } from './unapproved.component';
+import { LeaveViewRequestComponent } from './leave-view-request.component';
 
-describe('UnapprovedComponent', () => {
-  let component: UnapprovedComponent;
-  let fixture: ComponentFixture<UnapprovedComponent>;
+describe('LeaveViewRequestComponent', () => {
+  let component: LeaveViewRequestComponent;
+  let fixture: ComponentFixture<LeaveViewRequestComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UnapprovedComponent ]
+      declarations: [ LeaveViewRequestComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UnapprovedComponent);
+    fixture = TestBed.createComponent(LeaveViewRequestComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
