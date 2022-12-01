@@ -14,6 +14,8 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { LeaveViewRequestComponent } from './leave-view-request/leave-view-request.component';
+import { DetailViewRequestComponent } from './leave-view-request/detail-view-request/detail-view-request.component';
 
 @NgModule({
     imports: [
@@ -33,7 +35,9 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
         DetailComponent,
         EditDetailComponent,
         OverbuttonComponent,
-        LoadingLeaveInfoComponent
+        LoadingLeaveInfoComponent,
+        LeaveViewRequestComponent,
+        DetailViewRequestComponent
     ]
 })
 export class LeaveModule { }

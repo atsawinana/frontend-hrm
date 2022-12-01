@@ -664,7 +664,7 @@
                       <ng-option [value]="2">นาง</ng-option>
                       <ng-option [value]="3">นางสาว</ng-option>
                     </ng-select>
-                    <div class="row" *ngIf="true">
+                    <div class="row" *ngIf="emp.controls.ud_prefix_id.errors && submitted">
                       <div class="alerttext text-end">
                         กรุณากรอกรหัสบัตรประชาชน
                       </div>
@@ -687,7 +687,7 @@
                       }"
                       placeholder="กรอกชื่อเล่น"
                     />
-                    <div class="row" *ngIf="true">
+                    <div class="row" *ngIf="emp.controls.ud_nickname.errors">
                       <div class="alerttext text-end">
                         กรุณากรอกรหัสบัตรประชาชน
                       </div>
@@ -711,7 +711,7 @@
                       rows="3"
                       placeholder="กรอกชื่อ-นามสกุลภาษาไทย"
                     />
-                    <div class="row" *ngIf="true">
+                    <div class="row" *ngIf="emp.controls.ud_fullname_th.errors">
                       <div class="alerttext text-end">
                         กรุณากรอกรหัสบัตรประชาชน
                       </div>
@@ -739,7 +739,7 @@
                       minlength="13"
                       (keypress)="iputNumberOnly($event)"
                     />
-                    <div class="row" *ngIf="true">
+                    <div class="row" *ngIf="emp.controls.ud_id_card.errors">
                       <div class="alerttext text-end">
                         กรุณากรอกรหัสบัตรประชาชน
                       </div>
@@ -763,7 +763,7 @@
                       rows="3"
                       placeholder="กรอกชื่อ-นามสกุลภาษาไทย"
                     />
-                    <div class="row" *ngIf="true">
+                    <div class="row" *ngIf="emp.controls.ud_fullname_th2.errors">
                       <div class="alerttext text-end">
                         กรุณากรอกรหัสบัตรประชาชน
                       </div>
@@ -794,7 +794,7 @@
                       (keypress)="(false)"
                       (ngModelChange)="onValueChangeDateBTH($event)"
                     />
-                    <div class="row" *ngIf="true">
+                    <div class="row" *ngIf="emp.controls.ud_birthday.errors">
                       <div class="alerttext text-end">
                         กรุณากรอกรหัสบัตรประชาชน
                       </div>
@@ -818,7 +818,7 @@
                       rows="3"
                       placeholder="กรอกชื่อ-นามสกุลภาษาอังกฤษ"
                     />
-                    <div class="row" *ngIf="true">
+                    <div class="row" *ngIf="emp.controls.ud_fullname_en.errors">
                       <div class="alerttext text-end">
                         กรุณากรอกรหัสบัตรประชาชน
                       </div>
@@ -844,7 +844,7 @@
                       minlength="10"
                       (keypress)="iputNumberOnly($event)"
                     />
-                    <div class="row" *ngIf="true">
+                    <div class="row" *ngIf="emp.controls.ud_phone.errors">
                       <div class="alerttext text-end">
                         กรุณากรอกรหัสบัตรประชาชน
                       </div>
@@ -868,7 +868,7 @@
                       rows="3"
                       placeholder="กรอกชื่อ-นามสกุลภาษาอังกฤษ"
                     />
-                    <div class="row" *ngIf="true">
+                    <div class="row" *ngIf="emp.controls.ud_fullname_en2.errors">
                       <div class="alerttext text-end">
                         กรุณากรอกรหัสบัตรประชาชน
                       </div>
@@ -892,7 +892,7 @@
                       placeholder="กรอกอีเมล"
                       email="true"
                     />
-                    <div class="row" *ngIf="true">
+                    <div class="row" *ngIf="emp.controls.ud_email.errors">
                       <div class="alerttext text-end">
                         กรุณากรอกรหัสบัตรประชาชน
                       </div>
@@ -930,7 +930,7 @@
                         }"
                         placeholder="กรอกบริษัท"
                       />
-                      <div class="row" *ngIf="true">
+                      <div class="row" *ngIf="emp.controls.user_company.errors">
                         <div class="alerttext text-end">
                           กรุณากรอกรหัสบัตรประชาชน
                         </div>
@@ -962,7 +962,7 @@
                           >{{ department.dept_name_en }}</ng-option
                         >
                       </ng-select>
-                      <div class="row" *ngIf="true">
+                      <div class="row" *ngIf="emp.controls.dept_name_en.errors">
                         <div class="alerttext text-end">
                           กรุณากรอกรหัสบัตรประชาชน
                         </div>
@@ -985,8 +985,7 @@
                         placeholder="เลือกตำแหน่ง"
                         [clearable]="false"
                         [ngModelOptions]="{ standalone: true }"
-                        class="custom d-flex justify-content-center"
-                        style="margin-bottom: 24px"
+                        class="custom d-flex justify-content-center mb-2"
                         [ngClass]="{ lastItemSelect: i + 1 == Position.length }"
                         [ngClass]="{
                           customnull: Position[i].positions == null && submitted
@@ -1000,7 +999,7 @@
                           >{{ posit.position }}
                         </ng-option>
                       </ng-select>
-                      <div class="row" *ngIf="true">
+                      <div class="row" *ngIf="(Position[i].positions == null) && submitted">
                         <div class="alerttext text-end">
                           กรุณากรอกรหัสบัตรประชาชน
                         </div>
@@ -1046,7 +1045,7 @@
                         <ng-option value="1">พนักงานประจำ</ng-option>
                         <ng-option value="2">สัญญาจ้าง</ng-option>
                       </ng-select>
-                      <div class="row" *ngIf="true">
+                      <div class="row" *ngIf="emp.controls.user_contract_name.errors">
                         <div class="alerttext text-end">
                           กรุณากรอกรหัสบัตรประชาชน
                         </div>
@@ -1081,7 +1080,7 @@
                         (keypress)="(false)"
                         (ngModelChange)="onValueChangeDateStart($event)"
                       />
-                      <div class="row" *ngIf="true">
+                      <div class="row" *ngIf="emp.controls.user_created_at.errors">
                         <div class="alerttext text-end">
                           กรุณากรอกรหัสบัตรประชาชน
                         </div>
@@ -1115,7 +1114,7 @@
                         }"
                         (keypress)="(false)"
                       />
-                      <div class="row" *ngIf="true">
+                      <div class="row" *ngIf="emp.controls.ud_birthday.errors">
                         <div class="alerttext text-end">
                           กรุณากรอกรหัสบัตรประชาชน
                         </div>
@@ -1151,7 +1150,7 @@
                   min="0"
                   (keypress)="inputMinusDetect($event)"
                 />
-                <div class="row" *ngIf="true">
+                <div class="row" *ngIf="emp.controls.user_leave_day.errors">
                   <div class="alerttext text-end">กรุณากรอกรหัสบัตรประชาชน</div>
                 </div>
               </div>
@@ -1171,7 +1170,7 @@
                   min="0"
                   (keypress)="inputMinusDetect($event)"
                 />
-                <div class="row" *ngIf="true">
+                <div class="row" *ngIf="emp.controls.user_sick_day.errors">
                   <div class="alerttext text-end">กรุณากรอกรหัสบัตรประชาชน</div>
                 </div>
               </div>
@@ -1192,7 +1191,7 @@
                   min="0"
                   (keypress)="inputMinusDetect($event)"
                 />
-                <div class="row" *ngIf="true">
+                <div class="row" *ngIf="emp.controls.user_take_annual_day.errors">
                   <div class="alerttext text-end">กรุณากรอกรหัสบัตรประชาชน</div>
                 </div>
               </div>
@@ -1213,7 +1212,7 @@
                   min="0"
                   (keypress)="inputMinusDetect($event)"
                 />
-                <div class="row" *ngIf="true">
+                <div class="row" *ngIf="emp.controls.user_maternity_day.errors">
                   <div class="alerttext text-end">กรุณากรอกรหัสบัตรประชาชน</div>
                 </div>
               </div>
@@ -1234,7 +1233,7 @@
                   min="0"
                   (keypress)="inputMinusDetect($event)"
                 />
-                <div class="row" *ngIf="true">
+                <div class="row" *ngIf="emp.controls.user_ordination_day.errors">
                   <div class="alerttext text-end">กรุณากรอกรหัสบัตรประชาชน</div>
                 </div>
               </div>
@@ -1255,7 +1254,7 @@
                   min="0"
                   (keypress)="inputMinusDetect($event)"
                 />
-                <div class="row" *ngIf="true">
+                <div class="row" *ngIf="emp.controls.user_military_service_day.errors">
                   <div class="alerttext text-end">กรุณากรอกรหัสบัตรประชาชน</div>
                 </div>
               </div>
@@ -1276,7 +1275,7 @@
                   min="0"
                   (keypress)="inputMinusDetect($event)"
                 />
-                <div class="row" *ngIf="true">
+                <div class="row" *ngIf="emp.controls.user_sterilization_day.errors">
                   <div class="alerttext text-end">กรุณากรอกรหัสบัตรประชาชน</div>
                 </div>
               </div>
@@ -1297,7 +1296,7 @@
                   min="0"
                   (keypress)="inputMinusDetect($event)"
                 />
-                <div class="row" *ngIf="true">
+                <div class="row" *ngIf="emp.controls.user_without_pay_day.errors">
                   <div class="alerttext text-end">กรุณากรอกรหัสบัตรประชาชน</div>
                 </div>
               </div>
@@ -1317,7 +1316,7 @@
                   min="0"
                   (keypress)="inputMinusDetect($event)"
                 />
-                <div class="row" *ngIf="true">
+                <div class="row" *ngIf="emp.controls.user_resign_day.errors">
                   <div class="alerttext text-end">กรุณากรอกรหัสบัตรประชาชน</div>
                 </div>
               </div>

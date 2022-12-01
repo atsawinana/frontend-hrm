@@ -6,6 +6,7 @@ import { HistoryComponent } from './leave-history/history/history.component';
 import { LeaveHistoryComponent } from './leave-history/leave-history.component';
 import { LeaveInfoComponent } from './leave-info/leave-info.component';
 import { LeaveRequestComponent } from './leave-request/leave-request.component';
+import { DetailViewRequestComponent } from './leave-view-request/detail-view-request/detail-view-request.component';
 import { LeaveViewRequestComponent } from './leave-view-request/leave-view-request.component';
 import { LeaveComponent } from './leave.component';
 
@@ -43,6 +44,10 @@ const routes: Routes = [
     {
         path: 'view-request',
         component: LeaveViewRequestComponent,
+    },
+    {
+        path: 'view-request-detail/:id',
+        component: DetailViewRequestComponent,
     }
 ];
 

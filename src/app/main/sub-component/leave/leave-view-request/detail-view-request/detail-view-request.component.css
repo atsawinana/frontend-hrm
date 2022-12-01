@@ -1,0 +1,86 @@
+.back-button {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(90deg, #E69755 0.1%, #FF5444 100.01%);
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.back-icon {
+  font-size: 28px;
+  color: white;
+  margin-top: 1px;
+}
+
+.font-header {
+  font-family: 'Kanit';
+  font-size: 24px;
+  color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+.shadow-bg {
+  background: #FFFFFF;
+  box-shadow: 0px 4px 30px -16px rgba(138, 159, 171, 0.35);
+  border-radius: 20px;
+  padding: 32px;
+  border: 1px solid #D1D1D6;
+  margin-bottom: 16px;
+
+}
+
+.img-profile {
+  border-radius: 50%;
+  width: 165px;
+  height: 165px;
+  object-fit: cover;
+}
+
+.font-profile {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.font-profile-name {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 35px;
+  color: #005FBC;
+}
+
+.vl {
+  width: 2px;
+  height: 200px;
+  background-color: #8E8E93;
+}
+
+.circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #005FBC;
+}
+
+.circle-fail {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #E69755;
+  }
+  
+  .circle-waiting {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #8E8E93;
+  }
+  
+ 
