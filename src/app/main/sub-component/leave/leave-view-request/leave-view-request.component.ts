@@ -10,10 +10,17 @@ export class LeaveViewRequestComponent implements OnInit {
 
   constructor(private leaveviewreqest: LeaveViewRequestService) { }
 
+  objDataLeave:any
+
+  APISuccess:boolean = false
+
   ngOnInit() {
     this.leaveviewreqest.getAllshowUnapproved().subscribe({
         next: (res:any) => {
-            console.log(res.data)
+            // console.log(res.data)
+            this.objDataLeave = res.data.request_vacation
+            this.APISuccess = true
+            console.log(this.objDataLeave)
         },
         error: (err:any) => {}
     })

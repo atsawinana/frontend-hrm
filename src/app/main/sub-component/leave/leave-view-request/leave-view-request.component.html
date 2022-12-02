@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid" *ngIf="APISuccess">
     <div class="row mb-4">
         <button
             class="back-button d-flex justify-content-center"
@@ -28,30 +28,31 @@
                 </thead>
 
                 <tbody class="list-content">
-                    <tr id="row-list">
+                    <tr id="row-list" *ngFor="let objleave of objDataLeave">
                         <td>
-                            1
+                            {{objleave.number}}
                         </td>
                         <td>
-                            1
+                            {{objleave.user_card_number}}
                         </td>
                         <td>
-                            1
+                            {{objleave.ud_fullname_th}}
                         </td>
                         <td>
-                            1
+                            {{objleave.rvac_type_name}}
                         </td>
                         <td>
-                            1
+                            {{objleave.rvac_created_at}} - {{objleave.rvac_date_end}}
                         </td>
                         <td>
-                            1
+                            {{objleave.rvac_sum_duration}}
                         </td>
                         <td>
                             <div class="row d-flex justify-content-center">
                                 <div class="col-2 px-0 mx-1">
                                     <div class="activity-table icon-fix py-1"
-                                        role="button" routerLink="../view-request-detail/1"
+                                        role="button" routerLink="../view-request-detail/{{objleave.user_id}}
+                                        "
                                         >
                                         <i class="fa-solid fa-list-ul"></i>
                                     </div>
@@ -59,37 +60,7 @@
                             </div>
                         </td>
                     </tr>
-                    <tr id="row-list">
-                        <td>
-                            1
-                        </td>
-                        <td>
-                            1
-                        </td>
-                        <td>
-                            1
-                        </td>
-                        <td>
-                            1
-                        </td>
-                        <td>
-                            1
-                        </td>
-                        <td>
-                            1
-                        </td>
-                        <td>
-                            <div class="row d-flex justify-content-center">
-                                <div class="col-2 px-0 mx-1">
-                                    <div class="activity-table icon-fix py-1"
-                                        role="button" routerLink="../view-request-detail/2"
-                                        >
-                                        <i class="fa-solid fa-list-ul"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
+                    
                 </tbody>
             </table>
         </div>

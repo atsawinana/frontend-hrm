@@ -25,4 +25,25 @@ export class DetailViewRequestService {
         );
     }
 
+    getDetail(id: any) {
+        const headers = new HttpHeaders({
+            Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+        });
+
+        return this.httpClient.get(
+            `${environment.apiURL}/leaveOnline/showDetailsLeave`,
+            {
+                headers,
+                params: {
+                    rvac_id: id,
+                },
+            }
+        );
+    }
+
+
+//     /leaveOnline/showDetailsLeave[GET]
+// ดูรายละเอียดใบลา
+// params: rvac_id 
+
 }
