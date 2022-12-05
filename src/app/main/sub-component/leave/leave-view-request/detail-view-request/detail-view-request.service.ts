@@ -41,9 +41,45 @@ export class DetailViewRequestService {
         );
     }
 
+    approveRequest(id: any) {
+        const headers = new HttpHeaders({
+          Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+        });
+    
+        return this.httpClient.post(
+          `${environment.apiURL}/leaveOnline/approveRequest`,
+          {
+            rvac_id: id,
+          },
+          { headers }
+        );
+      }
+
+      disapproveRequest(id: any,reason: any) {
+        const headers = new HttpHeaders({
+          Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+        });
+    
+        return this.httpClient.post(
+          `${environment.apiURL}/leaveOnline/disapproveRequest`,
+          {
+            rvac_id: id,
+            rvac_reason: reason
+          },
+          { headers }
+        );
+      }
 
 //     /leaveOnline/showDetailsLeave[GET]
 // ดูรายละเอียดใบลา
 // params: rvac_id 
+
+// /leaveOnline/approveRequest[POST]
+// อนุมัติคำขอ 
+// body: rvac_id
+
+// /leaveOnline/disapproveRequest[POST]
+// ไม่อนุมัติคำขอ
+// body: rvac_id
 
 }

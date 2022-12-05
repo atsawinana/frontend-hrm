@@ -17,9 +17,6 @@
   font-family: 'Kanit';
   font-size: 24px;
   color: #000000;
-  display: flex;
-  align-items: center;
-  justify-content: left;
 }
 
 .shadow-bg {
@@ -58,7 +55,7 @@
 
 .vl {
   width: 2px;
-  height: 200px;
+  height: 202px;
   background-color: #8E8E93;
 }
 
@@ -70,17 +67,88 @@
 }
 
 .circle-fail {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: #E69755;
-  }
-  
-  .circle-waiting {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: #8E8E93;
-  }
-  
- 
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #E69755;
+}
+
+.circle-waiting {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #8E8E93;
+}
+
+.font-detail {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #000000;
+}
+
+.font-wait {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #EB760B;
+}
+
+.font-accept {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #239411;
+}
+
+.font-unaccept {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #EF0303;
+}
+
+.cancel-btn {
+  background: #FFFFFF;
+  border: 1px solid #005FBC;
+  border-radius: 10px;
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: #005FBC;
+  width: 200px;
+  height: 50px;
+}
+
+.submit-btn {
+  background: #005FBC;
+  border: 1px solid #005FBC;
+  border-radius: 10px;
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: #FFFFFF;
+  width: 200px;
+  height: 50px;
+}
+
+.circle-waiting-state0 {
+  height: 155px !important;
+}
+
+.inline-flex {
+  display: inline-flex !important;
+  margin: .5em !important;
+}

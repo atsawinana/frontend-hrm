@@ -1,15 +1,26 @@
 import { Component, OnInit } from '@angular/core';
+import { NotiService } from '../../noti.service';
 
 @Component({
-  selector: 'app-all-noti',
-  templateUrl: './all-noti.component.html',
-  styleUrls: ['./all-noti.component.css']
+    selector: 'app-all-noti',
+    templateUrl: './all-noti.component.html',
+    styleUrls: ['./all-noti.component.css']
 })
 export class AllNotiComponent implements OnInit {
 
-  constructor() { }
+    constructor(private notiservice: NotiService) { }
 
-  ngOnInit() {
-  }
+    objDataNoti:any
 
+    ngOnInit() {
+        this.notiservice.getAllNoti().subscribe({
+            next: (res: any) => {
+                console.log(res.data)
+                this.objDataNoti = res.data
+            },
+            error: (error: any) => {},
+        })
+
+    }
 }
+
