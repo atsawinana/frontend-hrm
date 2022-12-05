@@ -19,6 +19,10 @@ const routes: Routes = [
         component: LeaveInfoComponent,
     },
     {
+        path: 'all-history',
+        component: HistoryComponent,
+    },
+    {
         path: 'history',
         component: LeaveHistoryComponent,
         children: [
