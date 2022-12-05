@@ -11,9 +11,10 @@ import { EditDetailComponent } from './leave-history/detail/edit-detail/edit-det
 import { OverbuttonComponent } from './overbutton/overbutton.component';
 import { UnapprovedComponent } from './leave-info/unapproved/unapproved.component';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
     imports: [
@@ -23,6 +24,8 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
         BsDatepickerModule.forRoot(),
         RouterModule,
         FormsModule,
+        ReactiveFormsModule,
+        DatePipe,
     ],
     declarations: [
         LeaveComponent,
@@ -34,6 +37,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
         EditDetailComponent,
         OverbuttonComponent,
         UnapprovedComponent
-    ]
+    ],
+    providers: [DatePipe],
 })
 export class LeaveModule { }
