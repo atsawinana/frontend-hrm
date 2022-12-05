@@ -11,6 +11,10 @@ import { LoadingDepartmentComponent } from './loading-department/loading-departm
 import { NgSelectModule } from '@ng-select/ng-select';
 import { SearchFilterPipe } from './list-department/search-filter.pipe';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { BtnDepartmentComponent } from './btn-department/btn-department.component';
+import { EmpDepartmentComponent } from './emp-department/emp-department.component';
+import { EmpEndDepartmentComponent } from './emp-end-department/emp-end-department.component';
+import { DepartmentMainComponent } from './department-main/department-main.component';
 
 
 @NgModule({
@@ -29,7 +33,11 @@ import {NgxPaginationModule} from 'ngx-pagination';
         ListDepartmentComponent,
         EditComponentComponent,
         LoadingDepartmentComponent,
-        SearchFilterPipe
+        SearchFilterPipe,
+        BtnDepartmentComponent,
+        EmpDepartmentComponent,
+        EmpEndDepartmentComponent,
+        DepartmentMainComponent
     ],
 })
 export class DepartmentModule { }

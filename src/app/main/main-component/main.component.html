@@ -1,7 +1,7 @@
 <app-loading *ngIf="!checkApi"></app-loading>
 
 <div *ngIf="checkApi" class="container-fluid mx-auto p-0 vh-100">
-  <div class="row header header-shadow d-flex justify-content-between m-0 p-0 mb-5">
+  <div class="row header header-shadow d-flex justify-content-between m-0 p-0 mb-5" id="header-bar">
     <div class="ps-3 pe-0 col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2 px-auto my-auto align-items-center ">
       <div class="offcanvas offcanvas-start side-bar-canvas text-center pt-5" tabindex="-1" id="offcanvasExample"
         aria-labelledby="offcanvasExampleLabel" style="max-width: 90px;">
@@ -20,7 +20,7 @@
         <div class="col-2 d-flex justify-content-end align-items-center">
           <img class="img-profile d-block d-flex justify-content-end " src="{{baseURL}}{{photo}}"/>
         </div>
-        <div
+        <div id="name-headerbar"
           class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-5 col-6 p-0 d-flex justify-content-center align-items-center">
           <div class="text-profile-name ">
             <div class="profile-text"> {{ud_prefix}} {{ ud_fullname_th}}</div>
@@ -53,25 +53,21 @@
     </div>
   </div>
 
-  <div class="container-fluid ps-0 mt-4">
+  <div class="container-fluid ps-0 mt-4" id="main-content">
     <div class="row main-content-element">
 
-      <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 p-0 sidebar-element" style="max-width: 110px;">
-        <div class="side-bar text-center pt-4 pb-2 pe-2" style="max-width: 110px; min-height: 540px; max-height: auto;">
+      <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 sidebar-element px-0" style="max-width: 110px;">
+        <div class="side-bar text-center pt-4 pb-2 pe-2 " style="max-width: 110px; min-height: 540px; max-height: auto;">
 
           <app-side-bar *ngIf="checkApi" [role]="role"></app-side-bar>
 
         </div>
       </div>
-      <div class="col-11 col-xl-11 col-lg-11 ps-4">
-        <div class="container-fluid p-0 mb-5">
-          <div class="main-content h-100 p-5">
-            <router-outlet></router-outlet>
-          </div>
-        </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-11 col-xl-11 col-xxl-11 pe-0" id="main-content">
+            <router-outlet ></router-outlet>
       </div>
     </div>
   </div>
 
-
+ 
 </div>

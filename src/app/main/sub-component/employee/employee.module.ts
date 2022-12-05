@@ -19,10 +19,10 @@ import { LoadingEmployeeComponent } from './loading-employee/loading-employee.co
 import { EndContractComponent } from './end-contract/end-contract.component';
 import { LoadingEmpComponent } from './loading-emp/loading-emp.component';
 import { DatePipe } from '@angular/common';
-import { EditDetailComponent } from '../leave/leave-history/detail/edit-detail/edit-detail.component';
 import { EditDetailPersonComponent } from './data-person/person-employee/edit-detail-person/edit-detail-person.component';
-import { DetailDataPersonService } from './data-person/person-employee/detail-data-person/detail-data-person.service';
 import { DataPersonBtnComponent } from './data-person/data-person-btn/data-person-btn.component';
+import { ClipboardModule } from '@angular/cdk/clipboard'
+import { EmployeeMainComponent } from './employee-main/employee-main.component';
 
 @NgModule({
   imports: [
@@ -36,6 +36,7 @@ import { DataPersonBtnComponent } from './data-person/data-person-btn/data-perso
     ReactiveFormsModule,
     BsDatepickerModule.forRoot(),
     DatePipe,
+    ClipboardModule,
   ],
   declarations: [
     ListEmployeeComponent,
@@ -50,7 +51,9 @@ import { DataPersonBtnComponent } from './data-person/data-person-btn/data-perso
     EndContractComponent,
     LoadingEmpComponent,
     EditDetailPersonComponent,
-    DataPersonBtnComponent
+    DataPersonBtnComponent,
+    EmployeeMainComponent
+
   ],
   providers: [DatePipe],
     

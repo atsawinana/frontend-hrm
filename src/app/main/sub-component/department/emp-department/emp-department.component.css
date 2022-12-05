@@ -352,6 +352,7 @@ table {
   margin-left: 10px;
   font-size: 22px;
   color: #005FBC;
+  ;
 }
 
 .filter-font {
@@ -430,9 +431,9 @@ table {
 }
 
 /* On mouse-over, add a grey background color
-.container:hover input ~ .checkmark {
-  background-color: #ccc;
-} */
+  .container:hover input ~ .checkmark {
+    background-color: #ccc;
+  } */
 
 /* When the checkbox is checked, add a background */
 .box input:checked~.checkmark {
@@ -464,14 +465,17 @@ table {
   transform: rotate(45deg);
 }
 
-@media screen and (max-width: 1200px) {
-  #text-filter {
-    display: none !important;
-  }
+.back-button {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(90deg, #E69755 0.1%, #FF5444 100.01%);
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
 }
 
-@media screen and (max-width: 768px) {
-  #search-icon {
-    display: none !important;
-  }
+.back-icon {
+  font-size: 28px;
+  color: white;
+  margin-top: 1px;
 }

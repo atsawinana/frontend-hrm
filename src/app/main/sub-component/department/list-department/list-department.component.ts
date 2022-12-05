@@ -48,6 +48,9 @@ export class ListDepartmentComponent implements OnInit {
         currentPage: 1
     }
 
+    setLocal(dept_id:any){
+        localStorage.setItem('dept_id_emp',dept_id)
+    }
 
     getAllDepartment() {
         this.DepService.getAllDepartment().subscribe({

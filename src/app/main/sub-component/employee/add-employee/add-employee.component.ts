@@ -31,7 +31,15 @@ export class AddEmployeeComponent implements OnInit {
       Validators.required,
       this.noWhitespaceValidator,
     ]),
+    namethlast: new FormControl('', [
+      Validators.required,
+      this.noWhitespaceValidator,
+    ]),
     nameen: new FormControl('', [
+      Validators.required,
+      this.noWhitespaceValidator,
+    ]),
+    nameenlast: new FormControl('', [
       Validators.required,
       this.noWhitespaceValidator,
     ]),
@@ -127,23 +135,29 @@ export class AddEmployeeComponent implements OnInit {
   }
 
   setUsername() {
-    console.log(this.emp.controls.nameen.value?.includes(' '));
-    if (this.emp.controls.nameen.value?.includes(' ')) {
-      let usernameSet1 = String(this.emp.controls.nameen.value);
-      let usernameSet2 = String(this.emp.controls.nameen.value);
-      usernameSet1 = usernameSet1.substring(0, usernameSet1.indexOf(' '));
-      // usernameSet2  = usernameSet2.substring(usernameSet2.indexOf(' ')+1,4)
-      console.log('usernameSet1', usernameSet1);
-      console.log('usernameSet2', usernameSet2);
-      console.log('indexOf', usernameSet2.indexOf(' '));
-      usernameSet2 = usernameSet2.substring(
-        usernameSet2.indexOf(' ') + 1,
-        usernameSet2.indexOf(' ') + 4
-      );
-      let fullUsername = usernameSet1 + '.' + usernameSet2;
-      console.log(fullUsername);
-      this.emp.controls.usernameid.setValue(fullUsername);
-    }
+    // console.log(this.emp.controls.nameen.value?.includes(' '));
+    // if (this.emp.controls.nameen.value?.includes(' ')) {
+    //   let usernameSet1 = String(this.emp.controls.nameen.value);
+    //   let usernameSet2 = String(this.emp.controls.nameen.value);
+    //   usernameSet1 = usernameSet1.substring(0, usernameSet1.indexOf(' '));
+    //   // usernameSet2  = usernameSet2.substring(usernameSet2.indexOf(' ')+1,4)
+    //   console.log('usernameSet1', usernameSet1);
+    //   console.log('usernameSet2', usernameSet2);
+    //   console.log('indexOf', usernameSet2.indexOf(' '));
+    //   usernameSet2 = usernameSet2.substring(
+    //     usernameSet2.indexOf(' ') + 1,
+    //     usernameSet2.indexOf(' ') + 4
+    //   );
+    //   let fullUsername = usernameSet1 + '.' + usernameSet2;
+    //   console.log(fullUsername);
+    //   this.emp.controls.usernameid.setValue(fullUsername);
+    // }
+
+    let usernameSet1 = String(this.emp.controls.nameen.value);
+    let usernameSet2 = String(this.emp.controls.nameenlast.value);
+    usernameSet2 = usernameSet2.substring(usernameSet2.indexOf(' ') + 1, 3);
+    let fullUsername = usernameSet1 + '.' + usernameSet2;
+    this.emp.controls.usernameid.setValue(fullUsername);
   }
 
   deleteInputDept(index: number) {
@@ -300,6 +314,18 @@ export class AddEmployeeComponent implements OnInit {
       'yyyy-MM-dd'
     );
 
+    let tempnameth =
+      this.emp.controls.nameth.value?.trim() +
+      ' ' +
+      this.emp.controls.namethlast.value?.trim()!;
+    this.emp.controls.nameth.setValue(tempnameth);
+
+    let tempnameen =
+      this.emp.controls.nameen.value?.trim() +
+      ' ' +
+      this.emp.controls.nameenlast.value?.trim()!;
+    this.emp.controls.nameen.setValue(tempnameen);
+
     Swal.fire({
       title:
         '<strong style = "font-family:Kanit"> คุณต้องการเพิ่มข้อมูลพนักงาน หรือไม่ ? </strong>',
@@ -371,15 +397,34 @@ export class AddEmployeeComponent implements OnInit {
   }
 
   Copy() {
-    Swal.fire({
+    const Toast = Swal.mixin({
+      toast: true,
       position: 'top-end',
-      icon: 'question',
-      iconHtml: '<i class="fa-regular fa-clipboard"></i>',
-      title: '<strong style = "font-family:Kanit"> copy user </strong>',
       showConfirmButton: false,
-      timer: 1000,
-      backdrop: false
+      timer: 2000,
+      timerProgressBar: true,
     });
+
+    Toast.fire({
+      icon: 'question',
+      iconColor: '#56B06D',
+      iconHtml: '<i class="fa-regular fa-clipboard"></i>',
+      title:
+        '<strong style = "font-family:Kanit"> คัดลอกลง Clipboard สำเร็จ </strong>',
+    });
+
+    // Swal.fire({
+    //     position: 'top-end',
+    //     icon: 'question',
+    //     iconColor: '#56B06D',
+    //     iconHtml: '<i class="fa-regular fa-clipboard"></i>',
+    //     title: '<strong style = "font-family:Kanit"> คัดลอกลง Clipboard สำเร็จ </strong>',
+    //     showConfirmButton: false,
+    //     timer: 1500,
+    //     backdrop: false,
+    //   });
+
+    // `<strong style = "font-family:Kanit"> </strong>`
   }
 
   changValueLeave(prefixID: any, startDate: any) {
@@ -410,7 +455,9 @@ export class AddEmployeeComponent implements OnInit {
         this.emp.controls.leavematernity.setValue(this.objleave.user_maternity);
         this.APISuccess = false;
       },
-      error: (err: any) => {},
+      error: (err: any) => {
+        this.APISuccess = false;
+      },
     });
   }
 
@@ -434,5 +481,33 @@ export class AddEmployeeComponent implements OnInit {
       },
       error: (err: any) => {},
     });
+  }
+
+  idcard() {
+    if (this.emp.controls.idcard.value?.length == 13) {
+      this.APISuccess = true;
+      this.addEmpService
+        .genDatafromIDCard(this.emp.controls.idcard.value)
+        .subscribe({
+          next: (res: any) => {
+            console.log(res.data);
+            this.emp.controls.prefix.setValue(res.data.ud_prefix_id);
+            this.emp.controls.nameth.setValue(res.data.ud_firstname_th);
+            this.emp.controls.namethlast.setValue(res.data.ud_lastname_th);
+            this.emp.controls.nameen.setValue(res.data.ud_firstname_en);
+            this.emp.controls.nameenlast.setValue(res.data.ud_lastname_en);
+            this.emp.controls.nickname.setValue(res.data.ud_nickname);
+            this.emp.controls.birthdate.setValue(res.data.ud_birthday);
+            this.emp.controls.phonenumber.setValue(res.data.ud_phone);
+            this.emp.controls.email.setValue(res.data.ud_email);
+            this.emp.controls.usernameid.setValue(res.data.user_username);
+            this.pathPic = res.data.ud_picture;
+            this.APISuccess = false;
+          },
+          error: (err: any) => {
+            this.APISuccess = false;
+          },
+        });
+    }
   }
 }
