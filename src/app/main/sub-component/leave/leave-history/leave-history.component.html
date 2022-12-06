@@ -1,8 +1,4 @@
 <app-overbutton></app-overbutton>
-<!-- <app-loading-leave-info *ngIf="!ApiSuccess" class="d-flex justify-content-center h-100 align-items-center">
-</app-loading-leave-info>
-<div *ngIf="ApiSuccess"></div> -->
-<!--table History-->
 <div>
     <div class="row">
         <div class="col">
@@ -42,47 +38,47 @@
 
                         <tbody class="list-content">
                             <!--row 1 colum ประเภทการลา-->
-                            <tr>
+                            <tr *ngFor="let item of objdataTable">
                                 <td>
                                     <div class="col d-flex justify-content-center mt-1">
-                                        1
+                                        {{item.number}}
                                     </div>
                                 </td>
                                 <td>
                                     <div class="mt-1">
-                                        ลากิจ
+                                        {{item.rvac_type_name}}
                                     </div>
                                 </td>
                                 <td>
                                     <div class="mt-1">
-                                        19/10/2564
+                                        {{item.rvac_created_at}}
                                     </div>
                                 </td>
                                 <td>
                                     <div class="mt-1">
-                                        21/10/2564
+                                        {{item.rvac_date}}
                                     </div>
                                 </td>
                                 <td>
                                     <div class="mt-1">
-                                        ลาทั้งวัน
+                                        {{item.rvac_duration_time}}
                                     </div>
                                 </td>
                                 <td>
                                     <div class="mt-1">
-                                        0 วัน 8 ชั่วโมง
+                                        {{item.rvac_sum_duration}}
                                     </div>
                                 </td>
 
 
                                 <td>
                                     <div class="mt-1 status-pending ">
-                                        รออนุมัติ
+                                        {{item.rvac_status_name}}
                                     </div>
                                 </td>
 
 
-                                <td class="space-table">
+                                <td class="text-center">
                                     <div class="row ">
                                         <div class="dropdown">
                                             <button type="button " class="btn btn-primary btn-dropdown "

@@ -8,29 +8,35 @@ import { LeaveHistoryService } from './leave-history.service';
 
 
 @Component({
-  selector: 'app-leave-history',
-  templateUrl: './leave-history.component.html',
-  styleUrls: ['./leave-history.component.css']
+    selector: 'app-leave-history',
+    templateUrl: './leave-history.component.html',
+    styleUrls: ['./leave-history.component.css']
 })
 export class LeaveHistoryComponent implements OnInit {
-  constructor(private localeService: BsLocaleService,
-    private leavehistoryservice: LeaveHistoryService) { }
+    constructor(private localeService: BsLocaleService,
+        private leavehistoryservice: LeaveHistoryService) { }
 
 
-  locale = 'th';
-  today!: Date;
+    locale = 'th';
+    today!: Date;
 
-  ngOnInit() {
-    this.today = new Date();
-    defineLocale('th', thBeLocale);
-    this.localeService.use(this.locale);
+    objdataTable:any
 
-    this.leavehistoryservice.getUserHistory(sortDate).subscribe({
-      next: (res: any) => {
-        
-      }
-    })
-  }
+    ngOnInit() {
+        this.today = new Date();
+        defineLocale('th', thBeLocale);
+        this.localeService.use(this.locale);
+
+        this.leavehistoryservice.getUserHistory("").subscribe({
+            next: (res: any) => {
+                console.log(res.data.leave_online)
+                this.objdataTable = res.data.leave_online
+            },
+            error: (err: any) => {
+
+            }
+        })
+    }
 
 
 }

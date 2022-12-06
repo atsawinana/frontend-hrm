@@ -12,42 +12,49 @@ import { LeaveComponent } from './leave.component';
 const routes: Routes = [
     {
         path: '',
-        component: LeaveInfoComponent,
-    },
-    {
-        path: 'info',
-        component: LeaveInfoComponent,
-    },
-    {
-        path: 'all-history',
-        component: HistoryComponent,
-    },
-    {
-        path: 'history',
-        component: LeaveHistoryComponent,
+        component: LeaveComponent,
         children: [
             {
                 path: '',
-                component: HistoryComponent
+                component: LeaveInfoComponent,
             },
             {
-                path: 'detail/:id',
-                component: DetailComponent
+                path: 'info',
+                component: LeaveInfoComponent,
             },
             {
-                path: 'edit-detail/:id',
-                component: EditDetailComponent
+                path: 'all-history',
+                component: HistoryComponent,
+            },
+            {
+                path: 'history',
+                component: LeaveHistoryComponent,
+                children: [
+                    {
+                        path: '',
+                        component: HistoryComponent
+                    },
+                    {
+                        path: 'detail/:id',
+                        component: DetailComponent
+                    },
+                    {
+                        path: 'edit-detail/:id',
+                        component: EditDetailComponent
+                    }
+                ]
+            },
+            {
+                path: 'request',
+                component: LeaveRequestComponent,
+            },
+            {
+                path: 'view-request',
+                component: LeaveViewRequestComponent,
             }
         ]
     },
-    {
-        path: 'request',
-        component: LeaveRequestComponent,
-    },
-    {
-        path: 'view-request',
-        component: LeaveViewRequestComponent,
-    }
+
 ];
 
 export const LeaveRoutes = RouterModule.forChild(routes);
