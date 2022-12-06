@@ -1,0 +1,57 @@
+.back-button {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(90deg, #E69755 0.1%, #FF5444 100.01%);
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.back-icon {
+  font-size: 28px;
+  color: white;
+  margin-top: 1px;
+}
+
+.font-header {
+  font-family: 'Kanit';
+  font-size: 24px;
+  color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+td {
+  background: rgb(255, 255, 255);
+  border-bottom: 2px solid white;
+  font-family: 'Kanit';
+  font-style: normal;
+  font-size: 16px;
+}
+
+th {
+  background: #005FBC;
+  color: #ffffff;
+  font-family: 'Kanit';
+  font-style: normal;
+  font-size: 18px;
+}
+
+table {
+  border-collapse: collapse;
+  border-radius: 1em;
+  overflow: hidden;
+}
+
+.activity-table {
+  background: #FFFFFF;
+  border: 1px solid #D1D1D6;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.activity-table:hover {
+  background-color: #D1D1D6;
+  transition: 0.25s;
+}
