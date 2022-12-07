@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LeaveHistoryPersonService } from './leave-history-person.service';
 
 @Component({
   selector: 'app-leave-history-person',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LeaveHistoryPersonComponent implements OnInit {
 
-  constructor() { }
+  constructor(private historyservice: LeaveHistoryPersonService) { }
 
   ngOnInit() {
+    let empid = localStorage.getItem('empPerson')
+    this.historyservice.getUserProfile(empid, "").subscribe({
+      next: (res: any) => { 
+
+        console.log(res.data)
+
+      },
+      error: (err: any) => { }
+    })
   }
 
 }
