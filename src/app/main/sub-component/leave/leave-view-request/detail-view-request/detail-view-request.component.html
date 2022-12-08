@@ -1,5 +1,6 @@
 <div class="container-fluid" *ngIf="APISuccess">
     <div class="row mb-4">
+
         <button
             class="back-button d-flex justify-content-center"
             (click)="backClicked()">
@@ -46,8 +47,9 @@
                             <div class="col-12 circle px-0 pt-1">
                                 <i class="fa-solid fa-check" style="color:white; font-size: 40px;"></i>
                             </div>
+
                             <div class="col-12 pe-4">
-                                <div class="vl ms-auto"></div>
+                                <div class="vl ms-auto" [ngClass]="{'circle-waiting-approve': ((stateLeave == 0 || (stateLeave == 2 && approve_req.ar_is_approv2 == 1)) && ownerCheck) ,  'circle-waiting-approve2': ((stateLeave == 1 || stateLeave == 2) && ownerCheck) && (approve_req.ar_is_approv1 == 0 || approve_req.ar_is_approv2 == 0) }" ></div>
                             </div>
 
                             <div class="col-12 circle-waiting px-0 pt-1" *ngIf="approve_req.ar_is_approv1 == null">
@@ -85,8 +87,9 @@
                             <div class="col-12 circle px-0 pt-1">
                                 <i class="fa-solid fa-check" style="color:white; font-size: 40px;"></i>
                             </div>
-                            <div class="col-12 pe-4">
-                                <div class="vl ms-auto"></div>
+
+                            <div class="col-12 pe-4" >
+                                <div class="vl ms-auto" [ngClass]="{'circle-waiting-approve': ((stateLeave == 0 || (stateLeave == 2 && approve_req.ar_is_approv2 == 1)) && ownerCheck) ,  'circle-waiting-approve2': ((stateLeave == 1 || stateLeave == 2) && ownerCheck) && (approve_req.ar_is_approv1 == 0 || approve_req.ar_is_approv2 == 0) }" ></div>
                             </div>
 
                             <div class="col-12 circle-waiting px-0 pt-1" *ngIf="approve_req.ar_is_approv2 == null">
@@ -132,7 +135,10 @@
                                         <div class="mb-2">{{objProfile.rvac_type}}</div>
                                         <div class="mb-2">{{objProfile.rvac_detail}}</div>
                                     </div>
-                                </div>
+                                </div> 
+                                <button class="col-3 btn-cancel" *ngIf="(stateLeave == 2 && approve_req.ar_is_approv2 == 1) && ownerCheck">ยกเลิก</button>
+                                <button class="col-3 btn-cancel" *ngIf="(stateLeave == 0 && ownerCheck)">ยกเลิก</button>
+                                <button class="col-3 btn-edit" *ngIf="((stateLeave == 1 || stateLeave == 2) && ownerCheck) && (approve_req.ar_is_approv1 == 0 || approve_req.ar_is_approv2 == 0)">แก้ไข</button>
                             </div>
                         </div>
 
@@ -183,7 +189,7 @@
                                     </div>
                                 </div>
 
-                                <div class="row" *ngIf="(stateLeave == 0 && objProfile.rvac_special_case != 1) && objProfile.ar_is_approv2 == null "> 
+                                <div class="row" *ngIf="((stateLeave == 0 && objProfile.rvac_special_case != 1) && objProfile.ar_is_approv2 == null ) && !ownerCheck"> 
                                     <div>1 {{stateLeave}}</div>
                                     <div>2 {{objProfile.rvac_special_case}}</div> 
                                     <div>3 {{approve_req.ar_is_approv2}}</div>  
@@ -191,7 +197,7 @@
                                     <button class="submit-btn" (click)="approveRequest()">อนุมัติ</button>
                                 </div>
 
-                                <div class="row" *ngIf="(stateLeave == 1 && objProfile.rvac_special_case == 1) && objProfile.ar_is_approv2 == null "> 
+                                <div class="row" *ngIf="(stateLeave == 1 && objProfile.rvac_special_case == 1) && objProfile.ar_is_approv2 == null && !ownerCheck "> 
                                     <div>1 {{stateLeave}}</div>
                                     <div>2 {{objProfile.rvac_special_case}}</div> 
                                     <div>3 {{approve_req.ar_is_approv2}}</div>  

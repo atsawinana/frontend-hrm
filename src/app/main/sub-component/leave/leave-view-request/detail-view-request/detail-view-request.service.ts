@@ -43,43 +43,80 @@ export class DetailViewRequestService {
 
     approveRequest(id: any) {
         const headers = new HttpHeaders({
-          Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+            Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
         });
-    
-        return this.httpClient.post(
-          `${environment.apiURL}/leaveOnline/approveRequest`,
-          {
-            rvac_id: id,
-          },
-          { headers }
-        );
-      }
 
-      disapproveRequest(id: any,reason: any) {
+        return this.httpClient.post(
+            `${environment.apiURL}/leaveOnline/approveRequest`,
+            {
+                rvac_id: id,
+            },
+            { headers }
+        );
+    }
+
+    disapproveRequest(id: any, reason: any) {
         const headers = new HttpHeaders({
-          Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+            Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
         });
-    
+
         return this.httpClient.post(
-          `${environment.apiURL}/leaveOnline/disapproveRequest`,
-          {
-            rvac_id: id,
-            rvac_reason: reason
-          },
-          { headers }
+            `${environment.apiURL}/leaveOnline/disapproveRequest`,
+            {
+                rvac_id: id,
+                rvac_reason: reason
+            },
+            { headers }
         );
-      }
+    }
 
-//     /leaveOnline/showDetailsLeave[GET]
-// ดูรายละเอียดใบลา
-// params: rvac_id 
+    cancelVacation(id: any) {
+        const headers = new HttpHeaders({
+            Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+        });
 
-// /leaveOnline/approveRequest[POST]
-// อนุมัติคำขอ 
-// body: rvac_id
+        return this.httpClient.patch(
+            `${environment.apiURL}/leaveOnline/cancelVacation`,
+            {
+                rvac_id: id,
+            },
+            { headers, }
+        );
+    }
 
-// /leaveOnline/disapproveRequest[POST]
-// ไม่อนุมัติคำขอ
-// body: rvac_id
+    cancelVacationOnApprove(id: any,reason :any) {
+        const headers = new HttpHeaders({
+            Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+        });
+
+        return this.httpClient.patch(
+            `${environment.apiURL}/leaveOnline/cancelVacation2`,
+            {
+                rvac_id: id,
+                rvac_reason: reason
+            },
+            { headers, }
+        );
+    }
+
+    // /leaveOnline/cancelVacation[PATCH]
+    // ยกเลิกการลากรณียังไม่มีคนอนุมัติ
+    // body: rvac_id
+
+    // /leaveOnline/cancelVacation2[PATCH]
+    // ยกเลิกการลากรณีมีคนอนุมัติเรียบร้อย
+    // body: rvac_id 5, rvac_reason เปลี่ยนใจไม่ลาแล้ว
+
+    //     /leaveOnline/showDetailsLeave[GET]
+    // ดูรายละเอียดใบลา
+    // params: rvac_id 
+
+    // /leaveOnline/approveRequest[POST]
+    // อนุมัติคำขอ 
+    // body: rvac_id
+
+    // /leaveOnline/disapproveRequest[POST]
+    // ไม่อนุมัติคำขอ
+    // body: rvac_id
 
 }

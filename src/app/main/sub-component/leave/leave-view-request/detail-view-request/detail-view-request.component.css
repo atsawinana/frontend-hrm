@@ -148,7 +148,50 @@
   height: 155px !important;
 }
 
+.circle-waiting-approve {
+  height: 250px !important;
+}
+
+.circle-waiting-approve2 {
+    height: 250px !important;
+  }
+
 .inline-flex {
   display: inline-flex !important;
   margin: .5em !important;
+}
+
+.btn-cancel {
+
+  background: #FFFFFF;
+  border: 1px solid #005FBC;
+  border-radius: 8px;
+  height: 48px !important;
+
+  /* Regular 16 */
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+
+  /* Primary/Color EVT 2 */
+  color: #005FBC;
+
+}
+
+.btn-edit {
+  background: linear-gradient(90deg, #E69755 0.1%, #FF5444 100.01%);
+  border: 0px ;
+  border-radius: 8px;
+  height: 48px !important;
+
+
+  /* Regular 16 */
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #FFFFFF;
 }
