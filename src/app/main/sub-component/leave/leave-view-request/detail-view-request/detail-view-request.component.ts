@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
+import { Location } from '@angular/common';
 import { DetailViewRequestService } from './detail-view-request.service';
 
 @Component({
@@ -11,7 +12,7 @@ import { DetailViewRequestService } from './detail-view-request.service';
 })
 export class DetailViewRequestComponent implements OnInit {
 
-    constructor(private router: ActivatedRoute, private serviceDetail: DetailViewRequestService) { }
+    constructor(private router: ActivatedRoute, private serviceDetail: DetailViewRequestService, private _location: Location) { }
 
     rvac_id: any
     objProfile: any
@@ -21,9 +22,13 @@ export class DetailViewRequestComponent implements OnInit {
 
     approve_req: any
 
+    ownerCheck: any
+
     APISuccess: boolean = false
 
-
+    backClicked() {
+        this._location.back();
+    }
 
     ngOnInit() {
         this.rvac_id = this.router.snapshot.params['id'];
@@ -34,6 +39,7 @@ export class DetailViewRequestComponent implements OnInit {
                 this.objProfile = res.data.req_vacations
                 this.approve_req = res.data.approve_reqs
                 this.stateLeave = res.data.state
+                this.ownerCheck = res.data.owner
                 this.APISuccess = true
             },
             error: (err: any) => { }
@@ -94,9 +100,9 @@ export class DetailViewRequestComponent implements OnInit {
 
                 if (reason) {
                     console.log("reason", reason)
-                    this.serviceDetail.disapproveRequest(this.rvac_id,reason).subscribe({
-                        next: (res: any) => {},
-                        error: (err: any) => {}
+                    this.serviceDetail.disapproveRequest(this.rvac_id, reason).subscribe({
+                        next: (res: any) => { },
+                        error: (err: any) => { }
                     })
                 }
             }

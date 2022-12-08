@@ -24,7 +24,7 @@ import { environment } from 'src/environments/environment';
         return this.httpClient.post(
           `${environment.apiURL}/leaveOnline/addRequestLeave`,
           {
-            rvac_type: leaveType,
+            rvac_type: String(leaveType),
             rvac_date_start: startDate,
             rvac_date_end: endDate,
             rvac_duration: duration,

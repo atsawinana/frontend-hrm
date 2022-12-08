@@ -52,21 +52,22 @@ const routes: Routes = [
             {
                 path: 'view-request',
                 component: LeaveViewRequestComponent,
+            },
+            {
+                path: 'request',
+                component: LeaveRequestComponent,
+            },
+            {
+                path: 'view-request',
+                component: LeaveViewRequestComponent,
+            },
+            {
+                path: 'view-request-detail/:id',
+                component: DetailViewRequestComponent,
             }
         ]
     },
-    {
-        path: 'request',
-        component: LeaveRequestComponent,
-    },
-    {
-        path: 'view-request',
-        component: LeaveViewRequestComponent,
-    },
-    {
-        path: 'view-request-detail/:id',
-        component: DetailViewRequestComponent,
-    }
+
 ];
 
 export const LeaveRoutes = RouterModule.forChild(routes);
