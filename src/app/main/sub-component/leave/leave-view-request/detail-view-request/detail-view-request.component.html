@@ -190,9 +190,6 @@
                                 </div>
 
                                 <div class="row" *ngIf="((stateLeave == 0 && objProfile.rvac_special_case != 1) && objProfile.ar_is_approv2 == null ) && !ownerCheck"> 
-                                    <div>1 {{stateLeave}}</div>
-                                    <div>2 {{objProfile.rvac_special_case}}</div> 
-                                    <div>3 {{approve_req.ar_is_approv2}}</div>  
                                     <button class="cancel-btn me-3" (click)="disapproveRequest()">ไม่อนุมัติ</button>
                                     <button class="submit-btn" (click)="approveRequest()">อนุมัติ</button>
                                 </div>

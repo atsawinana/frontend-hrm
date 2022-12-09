@@ -17,6 +17,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { LeaveViewRequestComponent } from './leave-view-request/leave-view-request.component';
 import { DetailViewRequestComponent } from './leave-view-request/detail-view-request/detail-view-request.component';
 import { DatePipe } from '@angular/common';
+import { LeaveEditRequestComponent } from './leave-edit-request/leave-edit-request.component';
 
 @NgModule({
     imports: [
@@ -41,6 +42,8 @@ import { DatePipe } from '@angular/common';
         LoadingLeaveInfoComponent,
         LeaveViewRequestComponent,
         DetailViewRequestComponent,
+        LeaveEditRequestComponent
+
     ],
     providers: [DatePipe],
 })
