@@ -70,7 +70,7 @@ export class DetailViewRequestService {
         );
     }
 
-    cancelVacation(id: any) {
+    cancelVacation(id: any, reason: any) {
         const headers = new HttpHeaders({
             Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
         });
@@ -79,12 +79,13 @@ export class DetailViewRequestService {
             `${environment.apiURL}/leaveOnline/cancelVacation`,
             {
                 rvac_id: id,
+                rvac_reason: reason
             },
             { headers, }
         );
     }
 
-    cancelVacationOnApprove(id: any,reason :any) {
+    cancelVacationOnApprove(id: any, reason: any) {
         const headers = new HttpHeaders({
             Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
         });

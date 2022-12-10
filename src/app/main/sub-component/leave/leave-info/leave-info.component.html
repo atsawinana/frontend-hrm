@@ -19,7 +19,7 @@
             </button>
 
             <!--button request-->
-            <button type="button" class="btn btn-primary w-75 btn-addform " routerLink="view-request">
+            <button *ngIf="role != 1" type="button" class="btn btn-primary w-75 btn-addform " routerLink="view-request">
                 <div class="row">
                     <div class="col-1 space-icon"><i class="fa-regular fa-comment-dots"></i></div>
                     <div class="col">ดูคำขอการลา</div>

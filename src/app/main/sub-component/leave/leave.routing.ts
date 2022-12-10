@@ -1,5 +1,6 @@
 import { Routes, RouterModule } from '@angular/router';
 import { RoleGuard } from 'src/app/auth/role.guard';
+import { LeaveEditRequestComponent } from './leave-edit-request/leave-edit-request.component';
 import { DetailComponent } from './leave-history/detail/detail.component';
 import { EditDetailComponent } from './leave-history/detail/edit-detail/edit-detail.component';
 import { HistoryComponent } from './leave-history/history/history.component';
@@ -64,6 +65,10 @@ const routes: Routes = [
             {
                 path: 'view-request-detail/:id',
                 component: DetailViewRequestComponent,
+            },
+            {
+                path: 'edit-detail/:id',
+                component: LeaveEditRequestComponent,
             }
         ]
     },

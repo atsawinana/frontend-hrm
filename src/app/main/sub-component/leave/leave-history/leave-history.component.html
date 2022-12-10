@@ -72,13 +72,16 @@
 
 
                                 <td>
-                                    <div class="mt-1 status-pending " *ngIf="item.rvac_approve_status == null">
+                                    <div class="mt-1 status-pending " *ngIf="item.rvac_approve_status == null && item.rvac_is_canceled == 0">
                                         {{item.rvac_status_name}}
                                     </div>
-                                    <div class="mt-1 status-disapproved " *ngIf="item.rvac_approve_status == 0">
+                                    <div class="mt-1 status-disapproved " *ngIf="item.rvac_approve_status == 0 && item.rvac_is_canceled == 0">
                                         {{item.rvac_status_name}}
                                     </div>
-                                    <div class="mt-1 status-accept " *ngIf="item.rvac_approve_status == 1">
+                                    <div class="mt-1 status-accept " *ngIf="item.rvac_approve_status == 1 && item.rvac_is_canceled == 0">
+                                        {{item.rvac_status_name}}
+                                    </div>
+                                    <div class="mt-1 status-cancel " *ngIf="item.rvac_is_canceled == 1">
                                         {{item.rvac_status_name}}
                                     </div>
                                 </td>

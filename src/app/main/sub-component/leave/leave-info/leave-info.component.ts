@@ -11,6 +11,7 @@ export class LeaveInfoComponent implements OnInit {
 
   objLeaveInfo: any;
   ApiSuccess:boolean = false;
+  role: any = localStorage.getItem('roleUser')
 
   ngOnInit() {
     this.leaveService.getAllInfo().subscribe({

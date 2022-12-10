@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
-import { Router } from '@angular/router';
-import { LeaveRequestService } from '../leave-request/leave-request.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { defineLocale, thBeLocale } from 'ngx-bootstrap/chronos';
 import Swal from 'sweetalert2';
+import { LeaveEditRequestService } from './leave-edit-request.service';
 
 @Component({
     selector: 'app-leave-edit-request',
@@ -16,9 +16,9 @@ export class LeaveEditRequestComponent implements OnInit {
 
     constructor(
         private localeService: BsLocaleService,
-        private LeaveReqService: LeaveRequestService,
+        private editService: LeaveEditRequestService,
         public datepipe: DatePipe,
-        private route: Router
+        private router: ActivatedRoute
     ) { }
     leaveRequest = new FormGroup({
         leaveType: new FormControl(null, [Validators.required]),
@@ -30,94 +30,66 @@ export class LeaveEditRequestComponent implements OnInit {
             this.noWhitespaceValidator,
         ]),
     });
-    locale = 'th';
-    today!: Date;
-    amount: string = "0 วัน 0 ชั่วโมง";
-    summited: boolean = false;
-    LeavesDays: any;
-
-    gender = localStorage.getItem('ud_gender_id');
-
-
-
-
-    ngOnInit() {
-        this.today = new Date();
-        defineLocale('th', thBeLocale);
-        this.localeService.use(this.locale);
-        this.getVacation();
-    }
-    
-    checkCancel() {
-        Swal.fire({
-            title:
-                '<strong style = "font-family:Kanit"> คุณต้องการส่งยกเลิกการส่งแบบฟอร์มการลา ใช่หรือไม่ </strong>',
-            icon: 'warning',
-            showCancelButton: true,
-            cancelButtonColor: '#d33',
-            cancelButtonText: '<div style = "font-family:Kanit"> ยกเลิก </div>',
-            confirmButtonText: '<div style = "font-family:Kanit"> ตกลง </div>',
-            confirmButtonColor: '#005FBC',
-            reverseButtons: true,
-        }).then((result) => {
-            if (result.isConfirmed) {
-                this.route.navigate(['../main/leave']);
-            }
-        });
-    }
-    checkNull() {
-        this.summited = true;
-        let startDate = this.datepipe.transform(
-            this.leaveRequest.controls.startDate.value,
-            'yyyy-MM-dd'
-        );
-
-        let endDate = this.datepipe.transform(
-            this.leaveRequest.controls.endDate.value,
-            'yyyy-MM-dd'
-        );
-        if (this.leaveRequest.invalid)
-            return;
-
-
-
-        Swal.fire({
-            title:
-                '<strong style = "font-family:Kanit"> คุณต้องการส่งแบบฟอร์มการลา ใช่หรือไม่ </strong>',
-            icon: 'warning',
-            showCancelButton: true,
-            cancelButtonColor: '#d33',
-            cancelButtonText: '<div style = "font-family:Kanit"> ยกเลิก </div>',
-            confirmButtonText: '<div style = "font-family:Kanit"> ตกลง </div>',
-            confirmButtonColor: '#005FBC',
-            reverseButtons: true,
-
-        }).then((result) => {
-            if (result.isConfirmed) {
-                this.LeaveReqService
-                    .addLeaveRequest(
-                        this.leaveRequest.controls.leaveType.value!,
-                        this.leaveRequest.controls.startDate.value!,
-                        this.leaveRequest.controls.endDate.value,
-                        this.leaveRequest.controls.duration.value!,
-                        this.leaveRequest.controls.detail.value!
-                    )
-
-                    .subscribe({
-                        next: (res: any) => {
-                            console.log('success');
-                            this.route.navigate(['../main/leave']);
-                        },
-                    });
-
-            }
-        });
-    }
 
     noWhitespaceValidator(control: FormControl) {
         const isWhitespace = (control.value || '').trim().length === 0;
         const isValid = !isWhitespace;
         return isValid ? null : { whitespace: true };
+    }
+
+    locale = 'th';
+    today!: Date;
+    amount: string = "0 วัน 0 ชั่วโมง";
+    summited: boolean = false;
+    LeavesDays: any;
+    rvac_id: string = this.router.snapshot.params['id'];
+
+    APISuccess: boolean = false
+
+    objData: any
+
+    date = {
+        dateStart: "",
+        dateEnd: ""
+    }
+
+    ngOnInit() {
+        this.getVacation()
+        this.today = new Date();
+        defineLocale('th', thBeLocale);
+        this.localeService.use(this.locale);
+        console.log(this.rvac_id)
+
+        this.editService.showReverseVacation(this.rvac_id).subscribe({
+            next: (res: any) => {
+                this.objData = res.data
+                this.leaveRequest.controls.leaveType.setValue(this.objData.rvac_type)
+                this.leaveRequest.controls.startDate.setValue(this.objData.rvac_date_start)
+                this.leaveRequest.controls.endDate.setValue(this.objData.rvac_date_end)
+                this.objData.rvac_duration = 1
+                this.leaveRequest.controls.duration.setValue(this.objData.rvac_duration)
+                this.leaveRequest.controls.detail.setValue(this.objData.rvac_detail)
+                console.log(res.data)
+                this.countDays()
+                console.log(this.leaveRequest)
+                this.APISuccess = true
+            },
+            error: (err: any) => {
+            }
+        });
+
+    }
+
+    getVacation() {
+        this.editService.getVacationType().subscribe({
+            next: (res: any) => {
+                this.LeavesDays = res.data.leaveDays;
+                console.log(this.LeavesDays);
+            },
+            error: (res: any) => {
+
+            }
+        });
     }
 
     countDays() {
@@ -159,25 +131,84 @@ export class LeaveEditRequestComponent implements OnInit {
         this.amount = amount_days + " วัน " + amount_hours + " ชั่วโมง";
 
     }
-    getGender() {
-        if (this.gender == "1") {
-            return 1;
-        }
-        else {
-            return 2;
-        }
+
+    onValueChangeDateStart() {
+        let startDate = this.datepipe.transform(this.leaveRequest.controls.startDate.value, 'yyyy-MM-dd');
+
+        let arydate1 = startDate!.toString().split("-")
+        console.log("test1", arydate1)
+
+        arydate1[0] = (Number(arydate1[0]) + 543).toString()
+
+        console.log("test2", arydate1.toString())
+
+        let date = arydate1.toString().replace(",", "-")
+        date = date?.replace(",", "-")
+
+        console.log(date)
+        this.date.dateStart = date!
+
     }
 
-    getVacation() {
-        this.LeaveReqService.getVacationType().subscribe({
+    onValueChangeDateEnd() {
+
+        let endDate = this.datepipe.transform(this.leaveRequest.controls.endDate.value, 'yyyy-MM-dd');
+        let arydate1 = endDate!.toString().split("-")
+        console.log("test1", arydate1)
+
+        arydate1[0] = (Number(arydate1[0]) + 543).toString()
+
+        console.log("test2", arydate1.toString())
+
+        let date = arydate1.toString().replace(",", "-")
+        date = date?.replace(",", "-")
+
+        console.log(date)
+        this.date.dateEnd = endDate!
+
+    }
+
+    resendRequest() {
+        console.log(this.leaveRequest.value)
+
+        if (this.date.dateStart == "") {
+            let tempdate = this.leaveRequest.controls.startDate.value?.toString().split("/")
+            let date = tempdate?.reverse().toString().replace(",", "-")
+            date = date?.replace(",", "-")
+            console.log(date)
+            this.date.dateStart = date!
+        } else {
+            console.log(this.date.dateStart)
+        }
+
+        if (this.date.dateEnd == "") {
+            let tempdate = this.leaveRequest.controls.endDate.value?.toString().split("/")
+            let date = tempdate?.reverse().toString().replace(",", "-")
+            date = date?.replace(",", "-")
+            console.log(date)
+            this.date.dateEnd = date!
+        } else {
+            console.log(this.date.dateEnd)
+        }
+
+        //   body:     'rvac_id'   :  3,
+        //                   'rvac_type'   :  '3',
+        //                   'rvac_date_start'   :  '2565-12-09',
+        //                   'rvac_date_end' : '2565-12-12,
+        //                   'rvac_duration' : '3',
+        //                   'rvac_detail' : 'อนุมัติเถอะ',
+
+
+        this.editService.resendRequest(
+            this.rvac_id, this.leaveRequest.controls.leaveType.value, this.date.dateStart, this.date.dateEnd, this.leaveRequest.controls.duration.value, this.leaveRequest.controls.detail.value
+        ).subscribe({
             next: (res: any) => {
-                this.LeavesDays = res.data.leaveDays;
-                console.log(this.LeavesDays);
             },
             error: (res: any) => {
-
             }
         });
-
     }
 }
+
+
+
