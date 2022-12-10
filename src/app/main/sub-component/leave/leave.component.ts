@@ -10,6 +10,7 @@ export class LeaveComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    localStorage.setItem('overbtnLeave',"true")
   }
 
 }

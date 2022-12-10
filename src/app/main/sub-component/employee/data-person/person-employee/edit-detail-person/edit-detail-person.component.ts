@@ -43,8 +43,13 @@ export class EditDetailPersonComponent implements OnInit {
 
   emp = new FormGroup({
     ud_prefix_id: new FormControl(1, [Validators.required]),
+
     ud_fullname_th: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
     ud_fullname_en: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
+
+    ud_fullname_th2: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
+    ud_fullname_en2: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
+
     ud_nickname: new FormControl('', [Validators.required, this.noWhitespaceValidator]),
     ud_birthday: new FormControl('', [Validators.required,]),
     ud_id_card: new FormControl('', [Validators.required, this.noWhitespaceValidator,]),
@@ -196,6 +201,11 @@ export class EditDetailPersonComponent implements OnInit {
           console.log(replaceDate)
         }
 
+
+        let fullnameth = this.emp.controls.ud_fullname_th.value?.trim()+" "+this.emp.controls.ud_fullname_th2.value?.trim()
+        let fullnameen = this.emp.controls.ud_fullname_en.value?.trim()+" "+this.emp.controls.ud_fullname_en2.value?.trim()
+
+
         this.editservice
           .editData(
             user_id,
@@ -205,8 +215,8 @@ export class EditDetailPersonComponent implements OnInit {
             aryPosition,
             this.emp.controls.dept_name_en.value,
             this.emp.controls.ud_email.value,
-            this.emp.controls.ud_fullname_en.value,
-            this.emp.controls.ud_fullname_th.value,
+            fullnameen,
+            fullnameth,
             this.emp.controls.ud_nickname.value,
             this.emp.controls.ud_phone.value,
             this.emp.controls.ud_id_card.value,
@@ -391,8 +401,10 @@ export class EditDetailPersonComponent implements OnInit {
 
 
         this.emp.controls.ud_prefix_id.setValue(this.objData.ud_prefix_id)
-        this.emp.controls.ud_fullname_th.setValue(this.objData.ud_fullname_th)
-        this.emp.controls.ud_fullname_en.setValue(this.objData.ud_fullname_en)
+        this.emp.controls.ud_fullname_th.setValue(this.objData.ud_firstname_th)
+        this.emp.controls.ud_fullname_en.setValue(this.objData.ud_firstname_en)
+        this.emp.controls.ud_fullname_th2.setValue(this.objData.ud_lastname_th)
+        this.emp.controls.ud_fullname_en2.setValue(this.objData.ud_lastname_en)
         this.emp.controls.ud_nickname.setValue(this.objData.ud_nickname)
         this.emp.controls.ud_birthday.setValue(this.objData.ud_birthday)
         this.emp.controls.ud_id_card.setValue(this.objData.ud_id_card)

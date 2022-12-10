@@ -1,5 +1,5 @@
 <div *ngIf="role" class="position-outframe" style="width:400px">
-    <button class="btn btn-primary  w-50 button-height" routerLink="/main/leave/history">ประวัติการลา</button>
-    <button class="btn btn-primary  w-50 button-height" routerLink="/main/leave/unapproved">ประวัติการลาทั้งหมด</button>
+    <button [ngClass]="{active: route1 == 'true'}" class="btn btn-primary  w-50 button-height inactive-button inactive-text" (click)="clickRouteHistory()">ประวัติการลา</button>
+    <button [ngClass]="{active: route1 == 'false'}" class="btn btn-primary  w-50 button-height inactive-button inactive-text" (click)="clickRouteHistoryall()">ประวัติการลาทั้งหมด</button>
 </div>
   

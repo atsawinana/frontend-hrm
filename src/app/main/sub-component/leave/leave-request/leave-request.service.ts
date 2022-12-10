@@ -2,7 +2,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
-
 @Injectable({
     providedIn: 'root',
   })
@@ -24,7 +23,7 @@ import { environment } from 'src/environments/environment';
         return this.httpClient.post(
           `${environment.apiURL}/leaveOnline/addRequestLeave`,
           {
-            rvac_type: leaveType,
+            rvac_type: String(leaveType),
             rvac_date_start: startDate,
             rvac_date_end: endDate,
             rvac_duration: duration,

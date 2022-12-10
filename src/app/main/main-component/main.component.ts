@@ -21,6 +21,7 @@ export class MainComponent implements OnInit {
   ) {
     this.setTimeout();
     this.userInactive.subscribe(() => {
+      this.coreToken.Logout()
       Swal.fire({
         icon: 'warning',
         title: 'เซสชั่นหมดอายุ',
