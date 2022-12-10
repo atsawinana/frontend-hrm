@@ -38,8 +38,7 @@
     </div>
     <div class="row">
         <div class="container-fluid shadow-bg">
-            <div class="row">
-                <div class="col-4 d-flex justify-content-end">
+            <!-- <div class="col-4 d-flex justify-content-end">
                     <div class="container-fluid">
 
 
@@ -158,176 +157,334 @@
 
 
                     </div>
-                </div>
-                <div class="col-8">
-                    <div class="container">
+                </div> -->
+            <div class="row mb-4">
+                <div class="container ">
+                    <div class="row my-3">
+                        <div class="col d-flex justify-content-end">
+                            <div class="circle px-0 pt-1 d-flex
+                                justify-content-center"
+                                *ngIf="objProfile.rvac_is_canceled ==
+                                0">
+                                <i class="fa-solid fa-check mx-auto"
+                                    style="color:white;
+                                    font-size: 40px;"></i>
+                            </div>
 
-                        <div class="row mb-4">
-                            <div class="container">
-                                <div class="row my-3">
-                                    <div class="col font-header">ยื่นคำร้อง</div>
+                            <div class="circle-fail px-0 pt-1 d-flex
+                                justify-content-center"
+                                *ngIf="objProfile.rvac_is_canceled ==
+                                1">
+                                <i class="fa-solid fa-xmark mx-auto"
+                                    style="color:white;
+                                    font-size:42px;"></i>
+                            </div>
+                        </div>
+
+                        <div class="col-8 ">
+                            <div class="col font-header d-flex
+                                align-items-center" style="height: 50px;">ยื่นคำร้อง</div>
+                            <div class="row font-detail">
+                                <div class="col-4 ">
+                                    <div class="mb-2"
+                                        *ngIf="objProfile.rvac_reason !=
+                                        '-'">เหตุผลการยกเลิก :</div>
+                                    <div class="mb-2">ประเภทการลา :</div>
+                                    <div class="mb-2">วันที่ยื่นลา :</div>
+                                    <div class="mb-2">วันที่ต้องการลา :</div>
+                                    <div class="mb-2">ช่วงเวลาในการลา :</div>
+                                    <div class="mb-2">รวมวันลาทั้งหมด :</div>
+                                    <div class="mb-2">เหตุผลการลา :</div>
                                 </div>
-                                <div class="row font-detail">
-                                    <div class="col-4">
-                                        <div class="mb-2"
-                                            *ngIf="objProfile.rvac_reason !=
-                                            '-'">เหตุผลการยกเลิก :</div>
-                                        <div class="mb-2">ประเภทการลา :</div>
-                                        <div class="mb-2">วันที่ยื่นลา :</div>
-                                        <div class="mb-2">วันที่ต้องการลา :</div>
-                                        <div class="mb-2">ช่วงเวลาในการลา :</div>
-                                        <div class="mb-2">รวมวันลาทั้งหมด :</div>
-                                        <div class="mb-2">เหตุผลการลา :</div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="mb-2"
-                                            *ngIf="objProfile.rvac_reason !=
-                                            '-'">{{objProfile.rvac_reason}}</div>
-                                        <div class="mb-2">{{objProfile.rvac_type}}</div>
-                                        <div class="mb-2">{{objProfile.rvac_created_at}}</div>
-                                        <div class="mb-2">{{objProfile.rvac_date_start}}</div>
-                                        <div class="mb-2">{{objProfile.rvac_date_end}}</div>
-                                        <div class="mb-2">{{objProfile.rvac_type}}</div>
-                                        <div class="mb-2">{{objProfile.rvac_detail}}</div>
-                                    </div>
+                                <div class="col">
+                                    <div class="mb-2"
+                                        *ngIf="objProfile.rvac_reason !=
+                                        '-'">{{objProfile.rvac_reason}}</div>
+                                    <div class="mb-2">{{objProfile.rvac_type}}</div>
+                                    <div class="mb-2">{{objProfile.rvac_created_at}}</div>
+                                    <div class="mb-2">{{objProfile.rvac_date_start}}</div>
+                                    <div class="mb-2">{{objProfile.rvac_date_end}}</div>
+                                    <div class="mb-2">{{objProfile.rvac_type}}</div>
+                                    <div class="mb-2">{{objProfile.rvac_detail}}</div>
                                 </div>
-                                <button (click)="cancelVacationOnApprove()"
-                                    class="col-3 btn-cancel" *ngIf="(stateLeave
-                                    == 2 && approve_req.ar_is_approv2 == 1) &&
-                                    ownerCheck && objProfile.rvac_is_canceled ==
+                            </div>
+
+                            <div>
+                                <button
+                                    (click)="cancelVacationOnApprove()"
+                                    class="col-2 btn-cancel"
+                                    *ngIf="(stateLeave
+                                    == 2 && approve_req.ar_is_approv2 == 1)
+                                    &&
+                                    ownerCheck &&
+                                    objProfile.rvac_is_canceled ==
                                     0">ยกเลิก</button>
-                                <button (click)="cancelVacation()" class="col-3
+                                <button (click)="cancelVacation()"
+                                    class="col-2
                                     btn-cancel" *ngIf="(stateLeave == 0 &&
-                                    ownerCheck) && objProfile.rvac_is_canceled
+                                    ownerCheck) &&
+                                    objProfile.rvac_is_canceled
                                     == 0">ยกเลิก</button>
-                                <button class="col-3 btn-edit"
-                                    *ngIf="((stateLeave == 1 || stateLeave == 2)
-                                    && ownerCheck) && (approve_req.ar_is_approv1
+                                <button class="col-2 btn-edit"
+                                    *ngIf="((stateLeave == 1 || stateLeave
+                                    == 2)
+                                    && ownerCheck) &&
+                                    (approve_req.ar_is_approv1
                                     == 0 || approve_req.ar_is_approv2 == 0)"
                                     routerLink="../../edit-detail/{{rvac_id}}">แก้ไข</button>
                             </div>
+
                         </div>
-
-                        <div class="row mb-4"
-                            *ngIf="objProfile.rvac_special_case == 1">
-                            <div class="container">
-                                <div class="row mb-3">
-                                    <div class="col font-header">อนุมัติโดยหัวหน้าแผนก:</div>
-                                </div>
-                                <div class="row font-detail" *ngFor="let item of
-                                    objLog ; let i= index">
-                                    <div class="col-4">
-                                        <div class="mb-2"
-                                            [ngClass]="{'font-log':objLog.length
-                                            != i+1}">อนุมัติวันที่ :</div>
-                                        <div class="mb-2"
-                                            [ngClass]="{'font-log':objLog.length
-                                            != i+1}">สถานะ :</div>
-                                        <div class="mb-2"
-                                            [ngClass]="{'font-log':objLog.length
-                                            != i+1}">เหตุผล :</div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="mb-2"
-                                            [ngClass]="{'font-log':objLog.length
-                                            != i+1}">{{item.ar_update_at1}}</div>
-                                        <div class="mb-2 font-wait"
-                                            [ngClass]="{'font-log':objLog.length
-                                            != i+1}" *ngIf="item.ar_is_approv1
-                                            == null">{{item.ar_is_approv1_name}}</div>
-                                        <div class="mb-2 font-accept"
-                                            [ngClass]="{'font-log':objLog.length
-                                            != i+1}" *ngIf="item.ar_is_approv1
-                                            == 1">{{item.ar_is_approv1_name}}</div>
-                                        <div class="mb-2 font-unaccept"
-                                            [ngClass]="{'font-log':objLog.length
-                                            != i+1}" *ngIf="item.ar_is_approv1
-                                            == 0">{{item.ar_is_approv1_name}}</div>
-                                        <div class="mb-2"
-                                            [ngClass]="{'font-log':objLog.length
-                                            != i+1}">{{item.ar_reason1}}</div>
-                                    </div>
-                                </div>
-
-                                <div class="row" *ngIf="stateLeave == 0 &&
-                                    !ownerCheck">
-                                    <button class="cancel-btn me-3"
-                                        (click)="disapproveRequest()">ไม่อนุมัติ</button>
-                                    <button class="submit-btn"
-                                        (click)="approveRequest()">อนุมัติ</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row mb-5">
-                            <div class="container">
-                                <div class="row mb-4">
-                                    <div class="col font-header">อนุมัติโดยเจ้าหน้าที่ฝ่ายบุคคล</div>
-                                </div>
-                                <div class="row font-detail" *ngFor="let item of
-                                    objLog ; let i= index">
-                                    <div class="col-4">
-                                        <div class="mb-2"
-                                            [ngClass]="{'font-log':objLog.length
-                                            != i+1}">อนุมัติวันที่ :</div>
-                                        <div class="mb-2"
-                                            [ngClass]="{'font-log':objLog.length
-                                            != i+1}">สถานะ :</div>
-                                        <div class="mb-2"
-                                            [ngClass]="{'font-log':objLog.length
-                                            != i+1}">เหตุผล :</div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="mb-2"
-                                            [ngClass]="{'font-log':objLog.length
-                                            != i+1}">{{item.ar_update_at2}}</div>
-                                        <div class="mb-2 font-wait"
-                                            [ngClass]="{'font-log':objLog.length
-                                            != i+1}" *ngIf="item.ar_is_approv2
-                                            == null">{{item.ar_is_approv2_name}}</div>
-                                        <div class="mb-2 font-accept"
-                                            [ngClass]="{'font-log':objLog.length
-                                            != i+1}" *ngIf="item.ar_is_approv2
-                                            == 1">{{item.ar_is_approv2_name}}</div>
-                                        <div class="mb-2 font-unaccept"
-                                            [ngClass]="{'font-log':objLog.length
-                                            != i+1}" *ngIf="item.ar_is_approv2
-                                            == 0">{{item.ar_is_approv2_name}}</div>
-                                        <div class="mb-2"
-                                            [ngClass]="{'font-log':objLog.length
-                                            != i+1}">{{item.ar_reason2}}</div>
-                                    </div>
-                                </div>
-
-                                <div class="row" *ngIf="((stateLeave == 0 &&
-                                    objProfile.rvac_special_case != 1) &&
-                                    objProfile.ar_is_approv2 == null ) &&
-                                    !ownerCheck">
-                                    <button class="cancel-btn me-3"
-                                        (click)="disapproveRequest()">ไม่อนุมัติ</button>
-                                    <button class="submit-btn"
-                                        (click)="approveRequest()">อนุมัติ</button>
-                                </div>
-
-                                <div class="row" *ngIf="(stateLeave == 1 &&
-                                    objProfile.rvac_special_case == 1) &&
-                                    objProfile.ar_is_approv2 == null &&
-                                    !ownerCheck ">
-                                    <div>1 {{stateLeave}}</div>
-                                    <div>2 {{objProfile.rvac_special_case}}</div>
-                                    <div>3 {{approve_req.ar_is_approv2}}</div>
-                                    <button class="cancel-btn me-3"
-                                        (click)="disapproveRequest()">ไม่อนุมัติ</button>
-                                    <button class="submit-btn"
-                                        (click)="approveRequest()">อนุมัติ</button>
-                                </div>
-
-                            </div>
-                        </div>
-
                     </div>
                 </div>
             </div>
+
+
+            <!-- <div class="col-12 circle-waiting px-0 pt-1"
+            *ngIf="approve_req.ar_is_approv1 == null">
+        </div>
+
+        <div class="col-12 circle-fail px-0 pt-1"
+            *ngIf="approve_req.ar_is_approv1 == 0">
+            <i class="fa-solid fa-xmark" style="color:white;
+                font-size:42px;"></i>
+        </div>
+
+        <div class="col-12 circle px-0 pt-1"
+            *ngIf="approve_req.ar_is_approv1 == 1">
+            <i class="fa-solid fa-check" style="color:white;
+                font-size:40px;"></i>
+        </div> -->
+            <div class="row mb-4" *ngIf="objProfile.rvac_special_case == 1">
+                <div class="container">
+                    <div class="row mb-3">
+
+                        <div class="col d-flex justify-content-end">
+                            <div class="col-12 circle-waiting d-flex
+                                justify-content-center px-0 pt-1"
+                                *ngIf="approve_req.ar_is_approv1 == null">
+                            </div>
+
+                            <div class="col-12 circle-fail d-flex
+                                justify-content-center px-0 pt-1"
+                                *ngIf="approve_req.ar_is_approv1 == 0">
+                                <i class="fa-solid fa-xmark" style="color:white;
+                                    font-size:42px;"></i>
+                            </div>
+
+                            <div class="col-12 circle d-flex
+                                justify-content-center px-0 pt-1"
+                                *ngIf="approve_req.ar_is_approv1 == 1">
+                                <i class="fa-solid fa-check" style="color:white;
+                                    font-size:40px;"></i>
+                            </div>
+                        </div>
+
+                        <div class="col-8">
+                            <div class="col font-header d-flex
+                                align-items-center" style="height: 50px;">อนุมัติโดยหัวหน้าแผนก</div>
+                            <div class="row font-detail" *ngFor="let item of
+                                objLog ; let i= index">
+                                <div class="col-4">
+                                    <div class="mb-2"
+                                        [ngClass]="{'font-log':objLog.length
+                                        != i+1}">อนุมัติวันที่ :</div>
+                                    <div class="mb-2"
+                                        [ngClass]="{'font-log':objLog.length
+                                        != i+1}">สถานะ :</div>
+                                    <div class="mb-2"
+                                        [ngClass]="{'font-log':objLog.length
+                                        != i+1}">เหตุผล :</div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-2"
+                                        [ngClass]="{'font-log':objLog.length
+                                        != i+1}">{{item.ar_update_at1}}</div>
+                                    <div class="mb-2 font-wait"
+                                        [ngClass]="{'font-log':objLog.length
+                                        != i+1}" *ngIf="item.ar_is_approv1
+                                        == null">{{item.ar_is_approv1_name}}</div>
+                                    <div class="mb-2 font-accept"
+                                        [ngClass]="{'font-log':objLog.length
+                                        != i+1}" *ngIf="item.ar_is_approv1
+                                        == 1">{{item.ar_is_approv1_name}}</div>
+                                    <div class="mb-2 font-unaccept"
+                                        [ngClass]="{'font-log':objLog.length
+                                        != i+1}" *ngIf="item.ar_is_approv1
+                                        == 0">{{item.ar_is_approv1_name}}</div>
+                                    <div class="mb-2"
+                                        [ngClass]="{'font-log':objLog.length
+                                        != i+1}">{{item.ar_reason1}}</div>
+                                </div>
+                            </div>
+
+                            <div class="row" *ngIf="stateLeave == 0 &&
+                                !ownerCheck">
+                                <button class="cancel-btn me-3"
+                                    (click)="disapproveRequest()">ไม่อนุมัติ</button>
+                                <button class="submit-btn"
+                                    (click)="approveRequest()">อนุมัติ</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row mb-4">
+                <div class="container">
+                    <div class="row mb-3">
+
+                        <div class="col d-flex justify-content-end">
+                            <div class="col-12 circle-waiting d-flex
+                                justify-content-center px-0 pt-1"
+                                *ngIf="approve_req.ar_is_approv2 == null">
+                            </div>
+
+                            <div class="col-12 circle-fail d-flex
+                                justify-content-center px-0 pt-1"
+                                *ngIf="approve_req.ar_is_approv2 == 0">
+                                <i class="fa-solid fa-xmark" style="color:white;
+                                    font-size:42px;"></i>
+                            </div>
+
+                            <div class="col-12 circle d-flex
+                                justify-content-center px-0 pt-1"
+                                *ngIf="approve_req.ar_is_approv2 == 1">
+                                <i class="fa-solid fa-check" style="color:white;
+                                    font-size:40px;"></i>
+                            </div>
+                        </div>
+
+                        <div class="col-8">
+                            <div class="col font-header d-flex
+                                align-items-center" style="height: 50px;">อนุมัติโดยเจ้าหน้าที่ฝ่ายบุคคล</div>
+                            <div class="row font-detail" *ngFor="let item of
+                                objLog ; let i= index">
+                                <div class="col-4">
+                                    <div class="mb-2"
+                                        [ngClass]="{'font-log':objLog.length
+                                        != i+1}">อนุมัติวันที่ :</div>
+                                    <div class="mb-2"
+                                        [ngClass]="{'font-log':objLog.length
+                                        != i+1}">สถานะ :</div>
+                                    <div class="mb-2"
+                                        [ngClass]="{'font-log':objLog.length
+                                        != i+1}">เหตุผล :</div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-2"
+                                        [ngClass]="{'font-log':objLog.length
+                                        != i+1}">{{item.ar_update_at2}}</div>
+                                    <div class="mb-2 font-wait"
+                                        [ngClass]="{'font-log':objLog.length
+                                        != i+1}" *ngIf="item.ar_is_approv2
+                                        == null">{{item.ar_is_approv2_name}}</div>
+                                    <div class="mb-2 font-accept"
+                                        [ngClass]="{'font-log':objLog.length
+                                        != i+1}" *ngIf="item.ar_is_approv2
+                                        == 1">{{item.ar_is_approv2_name}}</div>
+                                    <div class="mb-2 font-unaccept"
+                                        [ngClass]="{'font-log':objLog.length
+                                        != i+1}" *ngIf="item.ar_is_approv2
+                                        == 0">{{item.ar_is_approv2_name}}</div>
+                                    <div class="mb-2"
+                                        [ngClass]="{'font-log':objLog.length
+                                        != i+1}">{{item.ar_reason2}}</div>
+                                </div>
+                            </div>
+
+                            <div class="row" *ngIf="((stateLeave == 0 &&
+                                objProfile.rvac_special_case != 1) &&
+                                objProfile.ar_is_approv2 == null ) &&
+                                !ownerCheck">
+                                <button class="cancel-btn me-3"
+                                    (click)="disapproveRequest()">ไม่อนุมัติ</button>
+                                <button class="submit-btn"
+                                    (click)="approveRequest()">อนุมัติ</button>
+                            </div>
+
+                            <div class="row" *ngIf="(stateLeave == 1 &&
+                                objProfile.rvac_special_case == 1) &&
+                                objProfile.ar_is_approv2 == null &&
+                                !ownerCheck ">
+                                <button class="cancel-btn me-3"
+                                    (click)="disapproveRequest()">ไม่อนุมัติ</button>
+                                <button class="submit-btn"
+                                    (click)="approveRequest()">อนุมัติ</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- <div class="row mb-5">
+                <div class="container">
+                    <div class="row mb-4">
+                        <div class="col font-header d-flex
+                            align-items-center">อนุมัติโดยเจ้าหน้าที่ฝ่ายบุคคล</div>
+                    </div>
+                    <div class="row font-detail" *ngFor="let item of
+                        objLog ; let i= index">
+                        <div class="col-4">
+                            <div class="mb-2"
+                                [ngClass]="{'font-log':objLog.length
+                                != i+1}">อนุมัติวันที่ :</div>
+                            <div class="mb-2"
+                                [ngClass]="{'font-log':objLog.length
+                                != i+1}">สถานะ :</div>
+                            <div class="mb-2"
+                                [ngClass]="{'font-log':objLog.length
+                                != i+1}">เหตุผล :</div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-2"
+                                [ngClass]="{'font-log':objLog.length
+                                != i+1}">{{item.ar_update_at2}}</div>
+                            <div class="mb-2 font-wait"
+                                [ngClass]="{'font-log':objLog.length
+                                != i+1}" *ngIf="item.ar_is_approv2
+                                == null">{{item.ar_is_approv2_name}}</div>
+                            <div class="mb-2 font-accept"
+                                [ngClass]="{'font-log':objLog.length
+                                != i+1}" *ngIf="item.ar_is_approv2
+                                == 1">{{item.ar_is_approv2_name}}</div>
+                            <div class="mb-2 font-unaccept"
+                                [ngClass]="{'font-log':objLog.length
+                                != i+1}" *ngIf="item.ar_is_approv2
+                                == 0">{{item.ar_is_approv2_name}}</div>
+                            <div class="mb-2"
+                                [ngClass]="{'font-log':objLog.length
+                                != i+1}">{{item.ar_reason2}}</div>
+                        </div>
+                    </div>
+
+                    <div class="row" *ngIf="((stateLeave == 0 &&
+                        objProfile.rvac_special_case != 1) &&
+                        objProfile.ar_is_approv2 == null ) &&
+                        !ownerCheck">
+                        <button class="cancel-btn me-3"
+                            (click)="disapproveRequest()">ไม่อนุมัติ</button>
+                        <button class="submit-btn"
+                            (click)="approveRequest()">อนุมัติ</button>
+                    </div>
+
+                    <div class="row" *ngIf="(stateLeave == 1 &&
+                        objProfile.rvac_special_case == 1) &&
+                        objProfile.ar_is_approv2 == null &&
+                        !ownerCheck ">
+                        <div>1 {{stateLeave}}</div>
+                        <div>2 {{objProfile.rvac_special_case}}</div>
+                        <div>3 {{approve_req.ar_is_approv2}}</div>
+                        <button class="cancel-btn me-3"
+                            (click)="disapproveRequest()">ไม่อนุมัติ</button>
+                        <button class="submit-btn"
+                            (click)="approveRequest()">อนุมัติ</button>
+                    </div>
+
+                </div>
+            </div> -->
         </div>
     </div>
 </div>
