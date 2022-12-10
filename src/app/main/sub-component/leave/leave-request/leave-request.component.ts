@@ -8,6 +8,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { isEmpty } from 'rxjs';
 
+
 @Component({
   selector: 'app-leave-request',
   templateUrl: './leave-request.component.html',
@@ -37,6 +38,7 @@ export class LeaveRequestComponent implements OnInit {
   summited: boolean = false;
   LeavesDays: any;
 
+
   gender = localStorage.getItem('ud_gender_id');
   
   
@@ -46,8 +48,9 @@ export class LeaveRequestComponent implements OnInit {
     this.today = new Date();
     defineLocale('th', thBeLocale);
     this.localeService.use(this.locale);
-    this.getVacation();
+    this.getVacation(); 
   }
+  
   checkCancel() {
     Swal.fire({
       title:
@@ -79,7 +82,7 @@ export class LeaveRequestComponent implements OnInit {
     if(this.leaveRequest.invalid)
       return;
     
-    
+    console.log(startDate);
 
     Swal.fire({
       title:
@@ -97,8 +100,8 @@ export class LeaveRequestComponent implements OnInit {
         this.LeaveReqService
         .addLeaveRequest(
           this.leaveRequest.controls.leaveType.value!,
-          this.leaveRequest.controls.startDate.value!,
-          this.leaveRequest.controls.endDate.value,
+          startDate!,
+          endDate,
           this.leaveRequest.controls.duration.value!,
           this.leaveRequest.controls.detail.value!
         )
@@ -119,8 +122,31 @@ export class LeaveRequestComponent implements OnInit {
     const isValid = !isWhitespace;
     return isValid ? null : { whitespace: true };
   }
-
+  //User input start date and end date
   countDays(){
+    let startDateS = this.leaveRequest.controls.startDate.value;//String Value
+    let endDateS = this.leaveRequest.controls.endDate.value;//String Value
+    let amount_days = 0,diff;
+    //User input start date
+    if(startDateS != null){
+      //User input end date
+      if(endDateS){
+        let startDate =  new Date(startDateS);//Change string to Date
+        let endDate =  new Date(endDateS);//Change string to Date
+        diff = (endDate.getTime() - startDate.getTime());
+        amount_days = Math.ceil(diff / (1000 * 60 * 60 * 24)) + 1;
+      }
+      //No input end date
+      else{
+        amount_days = 1;
+      }
+    }
+    
+    this.amount = amount_days + " วัน " + 0 + " ชั่วโมง";
+    
+  }
+  //User input start date ,end date and duration
+  countDaysAndDuration(){
     let amount_hours = 0,amount_days = 0,diff; 
     let startDateS = this.leaveRequest.controls.startDate.value;//String Value
     let endDateS = this.leaveRequest.controls.endDate.value;//String Value
@@ -138,7 +164,7 @@ export class LeaveRequestComponent implements OnInit {
             amount_hours = 4;
           }
           //leave all the days
-          else{
+          else if(duration == "3" ){
             diff = (endDate.getTime() - startDate.getTime());
             amount_days = Math.ceil(diff / (1000 * 60 * 60 * 24)) + 1;
             amount_hours = 0;
@@ -157,17 +183,8 @@ export class LeaveRequestComponent implements OnInit {
         }
     }
     this.amount = amount_days + " วัน " + amount_hours + " ชั่วโมง";
-
   }
-  getGender(){
-    if(this.gender == "1"){
-      return 1;
-    }
-    else{
-      return 2;
-    }
-  }
-
+  
   getVacation() {
     this.LeaveReqService.getVacationType().subscribe({
       next: (res: any) => {
