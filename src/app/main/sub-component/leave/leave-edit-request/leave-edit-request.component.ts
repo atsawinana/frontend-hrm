@@ -70,7 +70,7 @@ export class LeaveEditRequestComponent implements OnInit {
                 this.leaveRequest.controls.duration.setValue(this.objData.rvac_duration)
                 this.leaveRequest.controls.detail.setValue(this.objData.rvac_detail)
                 console.log(res.data)
-                this.countDays()
+                this.countEditDays()
                 console.log(this.leaveRequest)
                 this.APISuccess = true
             },
@@ -91,18 +91,31 @@ export class LeaveEditRequestComponent implements OnInit {
             }
         });
     }
+    changeDate(date: any){
+        let ary = date!.toString().split("/")
+        ary[2] = (Number(ary[2]) - 543).toString()
+        date = ary[1] +"-" + ary[0] + "-" + ary[2]
+        return date
+    }
 
-    countDays() {
+    countEditDays(){
+        
         let amount_hours = 0, amount_days = 0, diff;
         let startDateS = this.leaveRequest.controls.startDate.value;//String Value
         let endDateS = this.leaveRequest.controls.endDate.value;//String Value
         let duration = this.leaveRequest.controls.duration.value;
+        startDateS = this.changeDate(startDateS!)
+        endDateS =  this.changeDate(endDateS!)
+        console.log(startDateS)
+        console.log(endDateS)   
         //User is input strat date.
         if (startDateS != null) {
             //User is input end. 
             if (endDateS) {
                 let startDate = new Date(startDateS);//Change string to Date
                 let endDate = new Date(endDateS);//Change string to Date
+                console.log(startDate)
+                console.log(endDate)  
                 //leave morning
                 if (duration == "1") {
                     diff = (endDate.getTime() - startDate.getTime());
@@ -132,6 +145,57 @@ export class LeaveEditRequestComponent implements OnInit {
 
     }
 
+    countDays(){
+        
+        let amount_hours = 0, amount_days = 0, diff;
+        let startDateS = this.leaveRequest.controls.startDate.value;//String Value
+        let endDateS = this.leaveRequest.controls.endDate.value;//String Value
+        let duration = this.leaveRequest.controls.duration.value;
+        if(this.date.dateStart == ""){
+            startDateS = this.changeDate(startDateS!)
+        }
+       if(this.date.dateEnd == ""){
+            endDateS =  this.changeDate(endDateS!)
+       }
+        console.log(startDateS)
+        console.log(endDateS)   
+        //User is input strat date.
+        if (startDateS != null) {
+            //User is input end. 
+            if (endDateS) {
+                let startDate = new Date(startDateS);//Change string to Date
+                let endDate = new Date(endDateS);//Change string to Date
+                console.log(startDate)
+                console.log(endDate)  
+                //leave morning
+                if (duration == "1" || duration == "2") {
+                    diff = (endDate.getTime() - startDate.getTime());
+                    amount_days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+                    amount_hours = 4;
+                }
+                //leave all the days
+                else {
+                    diff = (endDate.getTime() - startDate.getTime());
+                    amount_days = Math.ceil(diff / (1000 * 60 * 60 * 24)) + 1;
+                    amount_hours = 0;
+                }
+            }
+            //User is not input end.
+            else {
+                if (duration == "3") {
+                    amount_days = 1;
+                    amount_hours = 0;
+                }
+                else {
+                    amount_days = 0;
+                    amount_hours = 4;
+                }
+            }
+        }
+        this.amount = amount_days + " วัน " + amount_hours + " ชั่วโมง";
+
+    }
+    
     onValueChangeDateStart() {
         let startDate = this.datepipe.transform(this.leaveRequest.controls.startDate.value, 'yyyy-MM-dd');
 

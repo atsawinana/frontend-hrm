@@ -126,9 +126,10 @@
                                     [clearable]="false"
                                     class="custom"
                                     formControlName="duration"
+                                    (change)="countDays()"
                                 >
                                     <ng-option [value]="1">ลาช่วงเช้า</ng-option>
-                                    <ng-option [value]="2" *ngIf="!leaveRequest.controls.endDate.value">ลาช่วงบ่าย</ng-option>
+                                    <ng-option [value]="2" *ngIf="!leaveRequest.controls.endDate.value || !leaveRequest.controls.endDate.value == !leaveRequest.controls.startDate.value">ลาช่วงบ่าย</ng-option>
                                     <ng-option [value]="3">ลาทั้งวัน</ng-option>
                                 </ng-select>
 
