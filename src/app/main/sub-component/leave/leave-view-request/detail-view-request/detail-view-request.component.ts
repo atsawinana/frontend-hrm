@@ -25,7 +25,7 @@ export class DetailViewRequestComponent implements OnInit {
 
     ownerCheck: any
 
-    objLog:any
+    objLog: any
 
     APISuccess: boolean = false
 
@@ -66,12 +66,14 @@ export class DetailViewRequestComponent implements OnInit {
             confirmButtonColor: '#005FBC',
             reverseButtons: true,
         }).then((e) => {
-            this.serviceDetail.approveRequest(this.rvac_id).subscribe({
-                next: (res: any) => {
-                    this.backClicked()
-                },
-                error: (err: any) => { }
-            })
+            if (e.isConfirmed) {
+                this.serviceDetail.approveRequest(this.rvac_id).subscribe({
+                    next: (res: any) => {
+                        this.backClicked()
+                    },
+                    error: (err: any) => { }
+                })
+            }
         })
     }
 
@@ -176,7 +178,7 @@ export class DetailViewRequestComponent implements OnInit {
 
             }
 
-        }else{
+        } else {
             this.serviceDetail.cancelVacation(this.rvac_id, elsereason).subscribe({
                 next: (res: any) => {
                     this.backClicked()
