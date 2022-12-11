@@ -6,194 +6,272 @@ import { ActivatedRoute, Route, Router, RouterLink } from '@angular/router';
 import { LeaveRequestService } from './leave-request.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DatePipe } from '@angular/common';
+import { LeaveService } from '../leave.service';
 
 
 @Component({
-  selector: 'app-leave-request',
-  templateUrl: './leave-request.component.html',
-  styleUrls: ['./leave-request.component.css'],
+    selector: 'app-leave-request',
+    templateUrl: './leave-request.component.html',
+    styleUrls: ['./leave-request.component.css'],
 })
 export class LeaveRequestComponent implements OnInit {
 
-  constructor(
-    private localeService: BsLocaleService,
-    private  LeaveReqService : LeaveRequestService,
-    public datepipe: DatePipe,
-    private route: Router 
-  ) {}
+    constructor(
+        private localeService: BsLocaleService,
+        private LeaveReqService: LeaveRequestService,
+        public datepipe: DatePipe,
+        private route: Router,
+        private leaveservice: LeaveService
+    ) { }
     leaveRequest = new FormGroup({
-      leaveType: new FormControl(null, [Validators.required]),
-      startDate: new FormControl('', [Validators.required]),
-      endDate : new FormControl(''),
-      duration: new FormControl(null, [Validators.required]),
-      detail : new FormControl('', [
-        Validators.required,
-        this.noWhitespaceValidator,
-      ]),
+        leaveType: new FormControl(null, [Validators.required]),
+        startDate: new FormControl('', [Validators.required]),
+        endDate: new FormControl(''),
+        duration: new FormControl(null, [Validators.required]),
+        detail: new FormControl('', [
+            Validators.required,
+            this.noWhitespaceValidator,
+        ]),
     });
-  locale = 'th';
-  today!: Date;
-  amount: string = "0 วัน 0 ชั่วโมง";
-  summited: boolean = false;
-  LeavesDays: any;
+    locale = 'th';
+    today!: Date;
+    amount: string = "0 วัน 0 ชั่วโมง";
+    summited: boolean = false;
+    LeavesDays: any;
 
+    objDateVerify: any
+    datesum: any = ""
 
-  gender = localStorage.getItem('ud_gender_id');
-  
-  
-  
-  
-  ngOnInit() {
-    this.today = new Date();
-    defineLocale('th', thBeLocale);
-    this.localeService.use(this.locale);
-    this.getVacation(); 
-  }
-  
-  checkCancel() {
-    Swal.fire({
-      title:
-        '<strong style = "font-family:Kanit"> คุณต้องการส่งยกเลิกการส่งแบบฟอร์มการลา ใช่หรือไม่ </strong>',
-      icon: 'warning',
-      showCancelButton: true,
-      cancelButtonColor: '#d33',
-      cancelButtonText: '<div style = "font-family:Kanit"> ยกเลิก </div>',
-      confirmButtonText: '<div style = "font-family:Kanit"> ตกลง </div>',
-      confirmButtonColor: '#005FBC',
-      reverseButtons: true,
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.route.navigate(['../main/leave']);
-      }
-    });
-  }
-  checkNull() {
-    this.summited = true;
-    let startDate = this.datepipe.transform(
-      this.leaveRequest.controls.startDate.value,
-      'yyyy-MM-dd'
-    );
+    gender = localStorage.getItem('ud_gender_id');
 
-    let endDate = this.datepipe.transform(
-      this.leaveRequest.controls.endDate.value,
-      'yyyy-MM-dd'
-    );
-    if(this.leaveRequest.invalid)
-      return;
-    
-    console.log(startDate);
-
-    Swal.fire({
-      title:
-        '<strong style = "font-family:Kanit"> คุณต้องการส่งแบบฟอร์มการลา ใช่หรือไม่ </strong>',
-      icon: 'warning',
-      showCancelButton: true,
-      cancelButtonColor: '#d33',
-      cancelButtonText: '<div style = "font-family:Kanit"> ยกเลิก </div>',
-      confirmButtonText: '<div style = "font-family:Kanit"> ตกลง </div>',
-      confirmButtonColor: '#005FBC',
-      reverseButtons: true,
-      
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.LeaveReqService
-        .addLeaveRequest(
-          this.leaveRequest.controls.leaveType.value!,
-          startDate!,
-          endDate,
-          this.leaveRequest.controls.duration.value!,
-          this.leaveRequest.controls.detail.value!
-        )
-      
-      .subscribe({
-        next: (res: any) => {
-          console.log('success');
-          this.route.navigate(['../main/leave']);
-        },
-      });
-
+    date = {
+        dateStart: "",
+        dateEnd: ""
     }
-    });
-  }
 
-  noWhitespaceValidator(control: FormControl) {
-    const isWhitespace = (control.value || '').trim().length === 0;
-    const isValid = !isWhitespace;
-    return isValid ? null : { whitespace: true };
-  }
-  //User input start date and end date
-  countDays(){
-    let startDateS = this.leaveRequest.controls.startDate.value;//String Value
-    let endDateS = this.leaveRequest.controls.endDate.value;//String Value
-    let amount_days = 0,diff;
-    //User input start date
-    if(startDateS != null){
-      //User input end date
-      if(endDateS){
-        let startDate =  new Date(startDateS);//Change string to Date
-        let endDate =  new Date(endDateS);//Change string to Date
-        diff = (endDate.getTime() - startDate.getTime());
-        amount_days = Math.ceil(diff / (1000 * 60 * 60 * 24)) + 1;
-      }
-      //No input end date
-      else{
-        amount_days = 1;
-      }
+
+    ngOnInit() {
+        this.today = new Date();
+        defineLocale('th', thBeLocale);
+        this.localeService.use(this.locale);
+        this.getVacation();
     }
-    
-    this.amount = amount_days + " วัน " + 0 + " ชั่วโมง";
-    
-  }
-  //User input start date ,end date and duration
-  countDaysAndDuration(){
-    let amount_hours = 0,amount_days = 0,diff; 
-    let startDateS = this.leaveRequest.controls.startDate.value;//String Value
-    let endDateS = this.leaveRequest.controls.endDate.value;//String Value
-    let duration = this.leaveRequest.controls.duration.value;
-    //User is input strat date.
-    if(startDateS != null){
-      //User is input end. 
-        if(endDateS){
-          let startDate =  new Date(startDateS);//Change string to Date
-          let endDate =  new Date(endDateS);//Change string to Date
-          //leave morning
-          if(duration == "1"){
-            diff = (endDate.getTime() - startDate.getTime());
-            amount_days = Math.ceil(diff / (1000 * 60 * 60 * 24));
-            amount_hours = 4;
-          }
-          //leave all the days
-          else if(duration == "3" ){
-            diff = (endDate.getTime() - startDate.getTime());
-            amount_days = Math.ceil(diff / (1000 * 60 * 60 * 24)) + 1;
-            amount_hours = 0;
-          }
-        }
-        //User is not input end.
-        else{
-            if(duration == "3"){
-              amount_days = 1;
-              amount_hours = 0;
+
+    checkCancel() {
+        Swal.fire({
+            title:
+                '<strong style = "font-family:Kanit"> คุณต้องการส่งยกเลิกการส่งแบบฟอร์มการลา ใช่หรือไม่ </strong>',
+            icon: 'warning',
+            showCancelButton: true,
+            cancelButtonColor: '#d33',
+            cancelButtonText: '<div style = "font-family:Kanit"> ยกเลิก </div>',
+            confirmButtonText: '<div style = "font-family:Kanit"> ตกลง </div>',
+            confirmButtonColor: '#005FBC',
+            reverseButtons: true,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                this.route.navigate(['../main/leave']);
             }
-            else{
-              amount_days = 0;
-              amount_hours = 4;
+        });
+    }
+
+    // leaveType: new FormControl(null, [Validators.required]),
+    //     startDate: new FormControl('', [Validators.required]),
+    //     endDate: new FormControl(''),
+    //     duration: new FormControl(null, [Validators.required]),
+    //     detail: new FormControl('', [
+
+
+    verifydate() {
+
+        if (this.leaveRequest.controls.leaveType.invalid
+            || this.leaveRequest.controls.startDate.invalid
+            || this.leaveRequest.controls.endDate.invalid
+            || this.leaveRequest.controls.duration.invalid
+        ) {
+            return
+        }
+
+        this.leaveservice.getVerify(this.leaveRequest.controls.leaveType.value,
+            this.date.dateStart,
+            this.date.dateEnd,
+            this.leaveRequest.controls.duration.value,
+        ).subscribe({
+            next: (res: any) => {
+                this.objDateVerify = res.data
+                this.datesum = this.objDateVerify.sum_time
+                console.log(this.objDateVerify)
+            },
+            error: (res: any) => {
+
+            }
+        })
+    }
+
+    checkNull() {
+        this.summited = true;
+
+        if (this.leaveRequest.invalid)
+            return;
+        console.log("this.objDateVerify.stautus",this.objDateVerify.stautus)
+        console.log("this.objDateVerify.stautus",this.objDateVerify.stautus == false)
+        if (this.objDateVerify.stautus == false) {
+            Swal.fire({
+                title: '<strong style = "font-family:Kanit"> วันลาของคุณไม่เพียงพอ </strong>',
+                icon: 'warning',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            return
+        }
+
+        Swal.fire({
+            title: '<strong style = "font-family:Kanit"> คุณต้องการส่งแบบฟอร์มการลา ใช่หรือไม่ </strong>',
+            icon: 'warning',
+            showCancelButton: true,
+            cancelButtonColor: '#d33',
+            cancelButtonText: '<div style = "font-family:Kanit"> ยกเลิก </div>',
+            confirmButtonText: '<div style = "font-family:Kanit"> ตกลง </div>',
+            confirmButtonColor: '#005FBC',
+            reverseButtons: true,
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                console.log(this.date.dateStart)
+                console.log(this.date.dateEnd)
+
+                this.LeaveReqService
+                    .addLeaveRequest(
+                        this.leaveRequest.controls.leaveType.value!,
+                        this.date.dateStart,
+                        this.date.dateEnd,
+                        this.leaveRequest.controls.duration.value!,
+                        this.leaveRequest.controls.detail.value!
+                    ).subscribe({
+                        next: (res: any) => {
+                            console.log('success');
+                            this.route.navigate(['../main/leave']);
+                        },
+                    });
+            }
+        });
+    }
+
+    noWhitespaceValidator(control: FormControl) {
+        const isWhitespace = (control.value || '').trim().length === 0;
+        const isValid = !isWhitespace;
+        return isValid ? null : { whitespace: true };
+    }
+    //User input start date and end date
+    countDays() {
+        let startDateS = this.leaveRequest.controls.startDate.value;//String Value
+        let endDateS = this.leaveRequest.controls.endDate.value;//String Value
+        let amount_days = 0, diff;
+        //User input start date
+        if (startDateS != null) {
+            //User input end date
+            if (endDateS) {
+                let startDate = new Date(startDateS);//Change string to Date
+                let endDate = new Date(endDateS);//Change string to Date
+                diff = (endDate.getTime() - startDate.getTime());
+                amount_days = Math.ceil(diff / (1000 * 60 * 60 * 24)) + 1;
+            }
+            //No input end date
+            else {
+                amount_days = 1;
             }
         }
-    }
-    this.amount = amount_days + " วัน " + amount_hours + " ชั่วโมง";
-  }
-  
-  getVacation() {
-    this.LeaveReqService.getVacationType().subscribe({
-      next: (res: any) => {
-        this.LeavesDays = res.data.leaveDays;
-        console.log(this.LeavesDays);
-      },
-      error:(res: any) => {
 
-      }
-    });
-  
-  }
+        this.amount = amount_days + " วัน " + 0 + " ชั่วโมง";
+
+    }
+    //User input start date ,end date and duration
+    countDaysAndDuration() {
+        let amount_hours = 0, amount_days = 0, diff;
+        let startDateS = this.leaveRequest.controls.startDate.value;//String Value
+        let endDateS = this.leaveRequest.controls.endDate.value;//String Value
+        let duration = this.leaveRequest.controls.duration.value;
+        //User is input strat date.
+        if (startDateS != null) {
+            //User is input end. 
+            if (endDateS) {
+                let startDate = new Date(startDateS);//Change string to Date
+                let endDate = new Date(endDateS);//Change string to Date
+                //leave morning
+                if (duration == "1") {
+                    diff = (endDate.getTime() - startDate.getTime());
+                    amount_days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+                    amount_hours = 4;
+                }
+                //leave all the days
+                else if (duration == "3") {
+                    diff = (endDate.getTime() - startDate.getTime());
+                    amount_days = Math.ceil(diff / (1000 * 60 * 60 * 24)) + 1;
+                    amount_hours = 0;
+                }
+            }
+            //User is not input end.
+            else {
+                if (duration == "3") {
+                    amount_days = 1;
+                    amount_hours = 0;
+                }
+                else {
+                    amount_days = 0;
+                    amount_hours = 4;
+                }
+            }
+        }
+        this.amount = amount_days + " วัน " + amount_hours + " ชั่วโมง";
+    }
+
+    getVacation() {
+        this.LeaveReqService.getVacationType().subscribe({
+            next: (res: any) => {
+                this.LeavesDays = res.data.leaveDays;
+                console.log(this.LeavesDays);
+            },
+            error: (res: any) => {
+
+            }
+        });
+    }
+
+    onValueChangeDateStart() {
+        let startDate = this.datepipe.transform(this.leaveRequest.controls.startDate.value, 'yyyy-MM-dd');
+
+        let arydate1 = startDate!.toString().split("-")
+        console.log("test1", arydate1)
+
+        arydate1[0] = (Number(arydate1[0]) + 543).toString()
+
+        console.log("test2", arydate1.toString())
+
+        let date = arydate1.toString().replace(",", "-")
+        date = date?.replace(",", "-")
+
+        console.log(date, "dateStart")
+        this.date.dateStart = date!
+
+    }
+
+    onValueChangeDateEnd() {
+
+        let endDate = this.datepipe.transform(this.leaveRequest.controls.endDate.value, 'yyyy-MM-dd');
+        let arydate1 = endDate!.toString().split("-")
+        console.log("test1", arydate1)
+
+        arydate1[0] = (Number(arydate1[0]) + 543).toString()
+
+        console.log("test2", arydate1.toString())
+
+        let date = arydate1.toString().replace(",", "-")
+        date = date?.replace(",", "-")
+
+        console.log(date, "endDate")
+        this.date.dateEnd = date!
+
+    }
+
+
 }

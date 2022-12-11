@@ -25,6 +25,7 @@
                                         [clearable]="false"
                                         class="custom" 
                                         formControlName="leaveType"
+                                        (change)="verifydate()"
                                     >
                                     <ng-option *ngFor="let leaves of LeavesDays" [value]="leaves.vt_id" > {{ leaves.vt_name }} </ng-option>
                                     </ng-select>
@@ -73,6 +74,7 @@
                                                 (keypress)="false"
                                                 formControlName="startDate"
                                                 (ngModelChange)="onValueChangeDateStart()"
+                                                (ngModelChange)="verifydate()"
                                             >
                                             </div>
                                         <div class="col-1">_</div>
@@ -91,6 +93,7 @@
                                                 (keypress)="false"
                                                 formControlName="endDate"
                                                 (ngModelChange)="onValueChangeDateEnd()"
+                                                (ngModelChange)="verifydate()"
                                             >
                                         </div>
                                     </div>
@@ -127,6 +130,7 @@
                                     class="custom"
                                     formControlName="duration"
                                     (change)="countDays()"
+                                    (change)="verifydate()"
                                 >
                                     <ng-option [value]="1">ลาช่วงเช้า</ng-option>
                                     <ng-option [value]="2" *ngIf="!leaveRequest.controls.endDate.value || !leaveRequest.controls.endDate.value == !leaveRequest.controls.startDate.value">ลาช่วงบ่าย</ng-option>
@@ -156,7 +160,7 @@
                     <div class="col-lg-6 col-md-12 col-sm-12 col-12 d-flex align-items-center">
                         <div class="row">
                             <div class="col-lg-11 col-md-11 col-sm-11 col-10">
-                                <div id="font-content">{{amount}}</div>
+                                <div id="font-content" *ngIf="datesum != ''">{{objDateVerify.sum_time}}</div>
                             </div>
                             <div class="col-1"></div>
                         </div>

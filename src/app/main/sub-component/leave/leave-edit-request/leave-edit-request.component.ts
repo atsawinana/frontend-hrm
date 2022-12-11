@@ -6,6 +6,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { defineLocale, thBeLocale } from 'ngx-bootstrap/chronos';
 import Swal from 'sweetalert2';
 import { LeaveEditRequestService } from './leave-edit-request.service';
+import { LeaveService } from '../leave.service';
 
 @Component({
     selector: 'app-leave-edit-request',
@@ -18,7 +19,8 @@ export class LeaveEditRequestComponent implements OnInit {
         private localeService: BsLocaleService,
         private editService: LeaveEditRequestService,
         public datepipe: DatePipe,
-        private router: ActivatedRoute
+        private router: ActivatedRoute,
+        private leaveservice: LeaveService
     ) { }
     leaveRequest = new FormGroup({
         leaveType: new FormControl(null, [Validators.required]),
@@ -46,6 +48,9 @@ export class LeaveEditRequestComponent implements OnInit {
 
     APISuccess: boolean = false
 
+    objDateVerify: any
+    datesum: any = ""
+
     objData: any
 
     date = {
@@ -71,6 +76,7 @@ export class LeaveEditRequestComponent implements OnInit {
                 this.leaveRequest.controls.detail.setValue(this.objData.rvac_detail)
                 console.log(res.data)
                 this.countEditDays()
+                this.verifydateinit()
                 console.log(this.leaveRequest)
                 this.APISuccess = true
             },
@@ -91,23 +97,23 @@ export class LeaveEditRequestComponent implements OnInit {
             }
         });
     }
-    changeDate(date: any){
+    changeDate(date: any) {
         let ary = date!.toString().split("/")
         ary[2] = (Number(ary[2]) - 543).toString()
-        date = ary[1] +"-" + ary[0] + "-" + ary[2]
+        date = ary[1] + "-" + ary[0] + "-" + ary[2]
         return date
     }
 
-    countEditDays(){
-        
+    countEditDays() {
+
         let amount_hours = 0, amount_days = 0, diff;
         let startDateS = this.leaveRequest.controls.startDate.value;//String Value
         let endDateS = this.leaveRequest.controls.endDate.value;//String Value
         let duration = this.leaveRequest.controls.duration.value;
         startDateS = this.changeDate(startDateS!)
-        endDateS =  this.changeDate(endDateS!)
+        endDateS = this.changeDate(endDateS!)
         console.log(startDateS)
-        console.log(endDateS)   
+        console.log(endDateS)
         //User is input strat date.
         if (startDateS != null) {
             //User is input end. 
@@ -115,7 +121,7 @@ export class LeaveEditRequestComponent implements OnInit {
                 let startDate = new Date(startDateS);//Change string to Date
                 let endDate = new Date(endDateS);//Change string to Date
                 console.log(startDate)
-                console.log(endDate)  
+                console.log(endDate)
                 //leave morning
                 if (duration == "1") {
                     diff = (endDate.getTime() - startDate.getTime());
@@ -145,20 +151,20 @@ export class LeaveEditRequestComponent implements OnInit {
 
     }
 
-    countDays(){
-        
+    countDays() {
+
         let amount_hours = 0, amount_days = 0, diff;
         let startDateS = this.leaveRequest.controls.startDate.value;//String Value
         let endDateS = this.leaveRequest.controls.endDate.value;//String Value
         let duration = this.leaveRequest.controls.duration.value;
-        if(this.date.dateStart == ""){
+        if (this.date.dateStart == "") {
             startDateS = this.changeDate(startDateS!)
         }
-       if(this.date.dateEnd == ""){
-            endDateS =  this.changeDate(endDateS!)
-       }
+        if (this.date.dateEnd == "") {
+            endDateS = this.changeDate(endDateS!)
+        }
         console.log(startDateS)
-        console.log(endDateS)   
+        console.log(endDateS)
         //User is input strat date.
         if (startDateS != null) {
             //User is input end. 
@@ -166,7 +172,7 @@ export class LeaveEditRequestComponent implements OnInit {
                 let startDate = new Date(startDateS);//Change string to Date
                 let endDate = new Date(endDateS);//Change string to Date
                 console.log(startDate)
-                console.log(endDate)  
+                console.log(endDate)
                 //leave morning
                 if (duration == "1" || duration == "2") {
                     diff = (endDate.getTime() - startDate.getTime());
@@ -195,7 +201,7 @@ export class LeaveEditRequestComponent implements OnInit {
         this.amount = amount_days + " วัน " + amount_hours + " ชั่วโมง";
 
     }
-    
+
     onValueChangeDateStart() {
         let startDate = this.datepipe.transform(this.leaveRequest.controls.startDate.value, 'yyyy-MM-dd');
 
@@ -228,12 +234,15 @@ export class LeaveEditRequestComponent implements OnInit {
         date = date?.replace(",", "-")
 
         console.log(date)
-        this.date.dateEnd = endDate!
+        this.date.dateEnd = date!
 
     }
 
     resendRequest() {
         console.log(this.leaveRequest.value)
+
+        if (this.leaveRequest.invalid)
+            return;
 
         if (this.date.dateStart == "") {
             let tempdate = this.leaveRequest.controls.startDate.value?.toString().split("/")
@@ -255,23 +264,111 @@ export class LeaveEditRequestComponent implements OnInit {
             console.log(this.date.dateEnd)
         }
 
-        //   body:     'rvac_id'   :  3,
-        //                   'rvac_type'   :  '3',
-        //                   'rvac_date_start'   :  '2565-12-09',
-        //                   'rvac_date_end' : '2565-12-12,
-        //                   'rvac_duration' : '3',
-        //                   'rvac_detail' : 'อนุมัติเถอะ',
+        if (this.objDateVerify.stautus == false) {
+            Swal.fire({
+                title: '<strong style = "font-family:Kanit"> วันลาของคุณไม่เพียงพอ </strong>',
+                icon: 'warning',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            return
+        }
 
+        Swal.fire({
+            title: '<strong style = "font-family:Kanit"> คุณต้องการส่งแบบฟอร์มการลา ใช่หรือไม่ </strong>',
+            icon: 'warning',
+            showCancelButton: true,
+            cancelButtonColor: '#d33',
+            cancelButtonText: '<div style = "font-family:Kanit"> ยกเลิก </div>',
+            confirmButtonText: '<div style = "font-family:Kanit"> ตกลง </div>',
+            confirmButtonColor: '#005FBC',
+            reverseButtons: true,
+        }).then((e) => {
+            if (e.isConfirmed) {
+                this.editService.resendRequest(
+                    this.rvac_id, this.leaveRequest.controls.leaveType.value, this.date.dateStart, this.date.dateEnd, this.leaveRequest.controls.duration.value, this.leaveRequest.controls.detail.value
+                ).subscribe({
+                    next: (res: any) => {
+                    },
+                    error: (res: any) => {
+                    }
+                });
+            }
+        })
+    }
 
-        this.editService.resendRequest(
-            this.rvac_id, this.leaveRequest.controls.leaveType.value, this.date.dateStart, this.date.dateEnd, this.leaveRequest.controls.duration.value, this.leaveRequest.controls.detail.value
+    verifydate() {
+
+        if (this.leaveRequest.controls.leaveType.invalid
+            || this.leaveRequest.controls.startDate.invalid
+            || this.leaveRequest.controls.endDate.invalid
+            || this.leaveRequest.controls.duration.invalid
+        ) {
+            return
+        }
+
+        this.leaveservice.getVerify(this.leaveRequest.controls.leaveType.value,
+            this.date.dateStart,
+            this.date.dateEnd,
+            this.leaveRequest.controls.duration.value,
         ).subscribe({
             next: (res: any) => {
+                this.objDateVerify = res.data
+                this.datesum = this.objDateVerify.sum_time
+                console.log(this.objDateVerify)
             },
             error: (res: any) => {
+
             }
-        });
+        })
     }
+
+    verifydateinit() {
+
+        if (this.date.dateStart == "") {
+            let tempdate = this.leaveRequest.controls.startDate.value?.toString().split("/")
+            let date = tempdate?.reverse().toString().replace(",", "-")
+            date = date?.replace(",", "-")
+            console.log(date)
+            this.date.dateStart = date!
+        } else {
+            console.log(this.date.dateStart)
+        }
+
+        if (this.date.dateEnd == "") {
+            let tempdate = this.leaveRequest.controls.endDate.value?.toString().split("/")
+            let date = tempdate?.reverse().toString().replace(",", "-")
+            date = date?.replace(",", "-")
+            console.log(date)
+            this.date.dateEnd = date!
+        } else {
+            console.log(this.date.dateEnd)
+        }
+
+        if (this.leaveRequest.controls.leaveType.invalid
+            || this.leaveRequest.controls.startDate.invalid
+            || this.leaveRequest.controls.endDate.invalid
+            || this.leaveRequest.controls.duration.invalid
+        ) {
+            return
+        }
+
+        this.leaveservice.getVerify(this.leaveRequest.controls.leaveType.value,
+            this.date.dateStart,
+            this.date.dateEnd,
+            this.leaveRequest.controls.duration.value,
+        ).subscribe({
+            next: (res: any) => {
+                this.objDateVerify = res.data
+                this.datesum = this.objDateVerify.sum_time
+                console.log(this.objDateVerify)
+            },
+            error: (res: any) => {
+
+            }
+        })
+    }
+
 }
 
 
