@@ -14,8 +14,18 @@ export class OverbuttonComponent implements OnInit {
     constructor(private router: Router) { }
 
     ngOnInit() {
+
+      
+
         if (localStorage.getItem('roleUser') == "3") 
             this.role = true
+
+
+        this.route1 = localStorage.getItem("overbtnLeave")
+        if(this.route1 == "false"){
+            this.clickRouteHistoryall()
+        }
+        
     }
 
     clickRouteHistory() {
@@ -28,6 +38,5 @@ export class OverbuttonComponent implements OnInit {
         this.route1 = "false"
         localStorage.setItem("overbtnLeave",String(this.route1))
         this.router.navigate(['/main/leave/all-history']);
-
     }
 }

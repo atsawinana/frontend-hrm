@@ -18,6 +18,7 @@ import { LeaveViewRequestComponent } from './leave-view-request/leave-view-reque
 import { DetailViewRequestComponent } from './leave-view-request/detail-view-request/detail-view-request.component';
 import { DatePipe } from '@angular/common';
 import { LeaveEditRequestComponent } from './leave-edit-request/leave-edit-request.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { LeaveEditRequestComponent } from './leave-edit-request/leave-edit-reque
         RouterModule,
         FormsModule,
         ReactiveFormsModule,
+        Ng2SearchPipeModule,
         DatePipe,
     ],
     declarations: [

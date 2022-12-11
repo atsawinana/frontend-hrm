@@ -212,28 +212,90 @@ export class DetailViewRequestComponent implements OnInit {
 
     }
 
-    cancelVacationOnApprove() {
+    async cancelVacationOnApprove() {
 
-        Swal.fire({
-            title: `<strong style = "font-family:Kanit"> กรุณากรอกเหตุผลยกเลิกการลา <br>   </strong>`,
-            icon: 'question',
+
+        const { value: reason } = await Swal.fire({
+            title: 'กรุณากรอกเหตุผลยกเลิกการลา',
+            input: 'select',
+            inputOptions: {
+                "ต้องการเปลี่ยนแปลงวันลา": 'ต้องการเปลี่ยนแปลงวันลา',
+                "สามารถทำธุระในวันหยุดแทนได้": 'สามารถทำธุระในวันหยุดแทนได้',
+                "มีความจำเป็นต้องทำงานในวันที่ลา": 'มีความจำเป็นต้องทำงานในวันที่ลา',
+                "ไม่ต้องการลา": 'ไม่ต้องการลา',
+                "อื่น ๆ (กดตกลงเพื่อกรอกเหตุผล)": 'อื่น ๆ (กดตกลงเพื่อกรอกเหตุผล)',
+            },
+            inputPlaceholder: 'เลือกเหตุผลการยกเลิกลา',
             showCancelButton: true,
-            confirmButtonColor: '#005FBC',
-            cancelButtonColor: '#d33',
-            confirmButtonText: '<div style = "font-family:Kanit"> ตกลง </div>',
-            cancelButtonText: '<div style = "font-family:Kanit"> ยกเลิก </div>',
-            reverseButtons: true,
-        }).then((result) => {
-            if (result.isConfirmed) {
-                this.serviceDetail.cancelVacationOnApprove(this.rvac_id, "reason").subscribe({
+            inputValidator: (value) => {
+                return new Promise((resolve) => {
+                    if (value != "") {
+                        resolve("")
+                    } else {
+                        resolve('กรุณากรอกข้อมูล')
+                    }
+                })
+            }
+        })
+        let elsereason = reason
+        if (reason == "อื่น ๆ (กดตกลงเพื่อกรอกเหตุผล)") {
+            let { value: reason } = await Swal.fire({
+                title: '<strong style = "font-family:Kanit"> กรุณากรอกเหตุผลไม่อนุมัติการลา </strong>',
+                input: 'textarea',
+                html: '<strong style = "font-family:Kanit; font-size:16px"> เหุผลไม่อนุมัติการลา* </strong>',
+                inputPlaceholder: 'กรอกข้อมูล',
+                inputAttributes: {
+                    'aria-label': 'Type your message here'
+                },
+                showCancelButton: true,
+                cancelButtonColor: '#d33',
+                cancelButtonText: '<div style = "font-family:Kanit"> ยกเลิก </div>',
+                confirmButtonText: '<div style = "font-family:Kanit"> ตกลง </div>',
+                confirmButtonColor: '#005FBC',
+                reverseButtons: true,
+            })
+
+            if (reason) {
+                console.log("reason", reason)
+
+                this.serviceDetail.cancelVacationOnApprove(this.rvac_id, reason).subscribe({
                     next: (res: any) => {
                         this.backClicked()
                     },
                     error: (err: any) => { }
                 })
+
             }
 
-        })
+        } else {
+            this.serviceDetail.cancelVacationOnApprove(this.rvac_id, elsereason).subscribe({
+                next: (res: any) => {
+                    this.backClicked()
+                },
+                error: (err: any) => { }
+            })
+        }
+
+        // Swal.fire({
+        //     title: `<strong style = "font-family:Kanit"> กรุณากรอกเหตุผลยกเลิกการลา <br>   </strong>`,
+        //     icon: 'question',
+        //     showCancelButton: true,
+        //     confirmButtonColor: '#005FBC',
+        //     cancelButtonColor: '#d33',
+        //     confirmButtonText: '<div style = "font-family:Kanit"> ตกลง </div>',
+        //     cancelButtonText: '<div style = "font-family:Kanit"> ยกเลิก </div>',
+        //     reverseButtons: true,
+        // }).then((result) => {
+        //     if (result.isConfirmed) {
+        //         this.serviceDetail.cancelVacationOnApprove(this.rvac_id, "reason").subscribe({
+        //             next: (res: any) => {
+        //                 this.backClicked()
+        //             },
+        //             error: (err: any) => { }
+        //         })
+        //     }
+
+        // })
 
 
     }

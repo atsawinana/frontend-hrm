@@ -11,8 +11,8 @@
 
                 <div class="col-2 ms-4 d-flex align-items-center">
                     <input type="text" placeholder="เลือกวันเดือนปี" class="form-control w-75" bsDatepicker
-                        (keypress)="false"
-                        [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD/MM/YYYY', containerClass: 'theme-dark-blue', showWeekNumbers: false}">
+                        (keypress)="false" (onShown)="onOpenCalendar($event)"  (onHidden)="sortdate()" [(ngModel)]="date"
+                        [bsConfig]="{ isAnimated: true, dateInputFormat: 'MM/YYYY', containerClass: 'theme-dark-blue', showWeekNumbers: false}">
                 </div>
             </div>
 

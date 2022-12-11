@@ -2,23 +2,55 @@
 <div>
     <div class="row">
         <div class="col">
-            <div class="col list-header d-flex p-2">
-                <button type="button"
-                    class="btn btn-primary btn-backpage d-flex
-                    align-items-center justify-content-center"
-                    routerLink="../">
-                    <i class="fa-solid fa-chevron-left icon d-flex
-                        justify-content-center"></i>
-                </button>ประวัติการลา
+            <div class="col list-header d-flex p-2 d-flex justify-content-between">
 
-                <div class="col-2 ms-4 d-flex align-items-center">
-                    <input type="text" placeholder="เลือกวันเดือนปี"
-                        class="form-control w-75" bsDatepicker
-                        (keypress)="false"
-                        [bsConfig]="{ isAnimated: true, dateInputFormat:
-                        'DD/MM/YYYY', containerClass: 'theme-dark-blue',
-                        showWeekNumbers: false}">
+                <div class="row">
+                    <button type="button"
+                        class="btn btn-primary btn-backpage d-flex
+                        align-items-center justify-content-center" s
+                        routerLink="../">
+                        <i class="fa-solid fa-chevron-left icon d-flex
+                            justify-content-center"></i>
+                    </button>ประวัติการลาทั้งหมด
+
+                    <div class="col-4 ms-4 d-flex align-items-center">
+                        <input type="text" placeholder="เลือกวันเดือนปี"
+                            class="form-control w-75" bsDatepicker
+                            (keypress)="false"
+                            (onShown)="onOpenCalendar($event)"
+                            (onHidden)="sortdate()" [(ngModel)]="date"
+                            [bsConfig]="{ isAnimated: true, dateInputFormat:
+                            'MM/YYYY', containerClass: 'theme-dark-blue',
+                            showWeekNumbers: false}">
+                    </div>
                 </div>
+
+
+                <div class="row d-flex justify-content-end">
+                    <button
+                        type="button"
+                        class="col-5 btn btn-primary btn-export-excel"
+                        (click)="exportAsExcelFile()">
+                        Export Excel
+                    </button>
+
+                    <div
+                        class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5
+                        col-xxl-5
+                        p-0 d-flex align-items-center ms-3">
+                        <input
+                            [(ngModel)]="searchInput"
+                            class=" form-control "
+                            id="search-bar"
+                            type="text"
+                            pattern="[a-zA-Z]*"
+                            placeholder="ค้นหา"
+                            />
+                    </div>
+                </div>
+
+
+
             </div>
 
             <div>
@@ -29,6 +61,8 @@
                             <tr>
 
                                 <th scope="col" style="text-align: center;">ลำดับ</th>
+                                <th scope="col" style="text-align: center;">รหัสพนักงาน</th>
+                                <th scope="col" style="text-align: center;">รายชื่อ</th>
                                 <th scope="col" style="text-align: center;">ประเภทการลา</th>
                                 <th scope="col" style="text-align: center;">วันที่ยื่นลา</th>
                                 <th scope="col" style="text-align: center;">วันที่ต้องการลา</th>
@@ -42,11 +76,24 @@
 
                         <tbody class="list-content">
                             <!--row 1 colum ประเภทการลา-->
-                            <tr *ngFor="let item of objdataTable">
+                            <tr *ngFor="let item of objdataTable | filter:
+                                searchInput">
                                 <td>
                                     <div class="col d-flex
                                         justify-content-center mt-1">
                                         {{item.number}}
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="col d-flex
+                                        justify-content-center mt-1">
+                                        {{item.user_card_number}}
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="col d-flex
+                                        justify-content-center mt-1">
+                                        {{item.ud_fullname_th}}
                                     </div>
                                 </td>
                                 <td>
@@ -77,13 +124,17 @@
 
 
                                 <td>
-                                    <div class="mt-1 status-pending " *ngIf="item.rvac_approve_status == null">
+                                    <div class="mt-1 status-pending "
+                                        *ngIf="item.rvac_approve_status ==
+                                        null">
                                         {{item.rvac_status_name}}
                                     </div>
-                                    <div class="mt-1 status-disapproved " *ngIf="item.rvac_approve_status == 0">
+                                    <div class="mt-1 status-disapproved "
+                                        *ngIf="item.rvac_approve_status == 0">
                                         {{item.rvac_status_name}}
                                     </div>
-                                    <div class="mt-1 status-accept " *ngIf="item.rvac_approve_status == 1">
+                                    <div class="mt-1 status-accept "
+                                        *ngIf="item.rvac_approve_status == 1">
                                         {{item.rvac_status_name}}
                                     </div>
                                 </td>
@@ -92,9 +143,16 @@
                                 <td class="text-center">
                                     <div class="row ">
                                         <div class="dropdown">
-                                            <button type="button " class="btn btn-primary btn-dropdown" id="dropdownMenuButton1" routerLink="../view-request-detail/{{item.rvac_id}}">
-                                                <div class="col icon-dropdown d-flex justify-content-center">
-                                                    <i class="fa-solid fa-list-ul icon-dropdown"></i>
+                                            <button type="button " class="btn
+                                                btn-primary btn-dropdown"
+                                                id="dropdownMenuButton1"
+                                                routerLink="../view-request-detail/{{item.rvac_id}}">
+                                                <div class="col icon-dropdown
+                                                    d-flex
+                                                    justify-content-center">
+                                                    <i class="fa-solid
+                                                        fa-list-ul
+                                                        icon-dropdown"></i>
                                                 </div>
                                             </button>
                                         </div>
