@@ -1,5 +1,6 @@
 import { Routes, RouterModule } from '@angular/router';
 import { RoleGuard } from 'src/app/auth/role.guard';
+import { LeaveEditDateleaveComponent } from './leave-edit-dateleave/leave-edit-dateleave.component';
 import { LeaveEditRequestComponent } from './leave-edit-request/leave-edit-request.component';
 import { DetailComponent } from './leave-history/detail/detail.component';
 import { EditDetailComponent } from './leave-history/detail/edit-detail/edit-detail.component';
@@ -69,6 +70,10 @@ const routes: Routes = [
             {
                 path: 'edit-detail/:id',
                 component: LeaveEditRequestComponent,
+            },
+            {
+                path: 'leave-edit-dateleave',
+                component: LeaveEditDateleaveComponent,
             }
         ]
     },

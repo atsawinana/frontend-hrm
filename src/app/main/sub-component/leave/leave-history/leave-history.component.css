@@ -166,3 +166,40 @@ input::placeholder {
   color: #636366 !important;
   font-size: 16px;
 }
+
+.buttonPage {
+    background: #FFFFFF;
+    border: 1px solid #C7C7CC;
+    border-radius: 8px;
+    width: 38px;
+    height: 38px;
+    font-size: 22px;
+    font-family: 'Kanit';
+    margin-right: 10px;
+  }
+  
+  .on-page {
+    background: #005FBC;
+    width: 38px;
+    height: 38px;
+    border: 1px solid #005FBC;
+    border-radius: 8px;
+    font-size: 22px;
+    font-family: 'Kanit';
+    color: #FFFFFF;
+    margin-right: 10px;
+  }
+  
+  .buttonPage:hover {
+    background-color: #005FBC;
+    color: #ffffff;
+    transition: 0.5s;
+  }
+
+  .cut-text { 
+    text-overflow: ellipsis;
+    overflow: hidden; 
+    white-space: nowrap;
+  }
+
+  

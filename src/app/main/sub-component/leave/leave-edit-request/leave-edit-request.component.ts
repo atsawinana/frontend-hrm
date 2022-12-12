@@ -7,6 +7,7 @@ import { defineLocale, thBeLocale } from 'ngx-bootstrap/chronos';
 import Swal from 'sweetalert2';
 import { LeaveEditRequestService } from './leave-edit-request.service';
 import { LeaveService } from '../leave.service';
+import { Location } from '@angular/common';
 
 @Component({
     selector: 'app-leave-edit-request',
@@ -20,7 +21,8 @@ export class LeaveEditRequestComponent implements OnInit {
         private editService: LeaveEditRequestService,
         public datepipe: DatePipe,
         private router: ActivatedRoute,
-        private leaveservice: LeaveService
+        private leaveservice: LeaveService,
+        private _location: Location
     ) { }
     leaveRequest = new FormGroup({
         leaveType: new FormControl(null, [Validators.required]),
@@ -32,6 +34,10 @@ export class LeaveEditRequestComponent implements OnInit {
             this.noWhitespaceValidator,
         ]),
     });
+
+    backClicked() {
+        this._location.back();
+    }
 
     noWhitespaceValidator(control: FormControl) {
         const isWhitespace = (control.value || '').trim().length === 0;
@@ -289,6 +295,7 @@ export class LeaveEditRequestComponent implements OnInit {
                     this.rvac_id, this.leaveRequest.controls.leaveType.value, this.date.dateStart, this.date.dateEnd, this.leaveRequest.controls.duration.value, this.leaveRequest.controls.detail.value
                 ).subscribe({
                     next: (res: any) => {
+                        this.backClicked()
                     },
                     error: (res: any) => {
                     }

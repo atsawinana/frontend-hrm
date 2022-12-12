@@ -21,6 +21,14 @@ export class LeaveHistoryComponent implements OnInit {
 
     date: any
 
+    listPerPage: number = 5
+
+    public config: PaginationInstance = {
+        id: 'custom',
+        itemsPerPage: this.listPerPage,
+        currentPage: 1
+    }
+
     ngOnInit() {
         this.today = new Date();
         defineLocale('th', thBeLocale);

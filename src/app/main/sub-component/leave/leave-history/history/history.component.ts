@@ -5,6 +5,7 @@ import { defineLocale, thBeLocale } from 'ngx-bootstrap/chronos';
 import { DatePipe } from '@angular/common';
 import * as XLSX from 'xlsx';
 import * as fileSaver from 'file-saver';
+import { PaginationInstance } from 'ngx-pagination';
 const EXCEL_TYPE =
   'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
 const EXCEL_EXTENSION = '.xlsx';
@@ -27,6 +28,14 @@ export class HistoryComponent implements OnInit {
     date: any
 
     searchInput:any
+
+    listPerPage: number = 5
+
+    public config: PaginationInstance = {
+        id: 'custom',
+        itemsPerPage: this.listPerPage,
+        currentPage: 1
+    }
 
     ngOnInit() {
         if (localStorage.getItem('roleUser') == "2" || localStorage.getItem('roleUser') == "3") {

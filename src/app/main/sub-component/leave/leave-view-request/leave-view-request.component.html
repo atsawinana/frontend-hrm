@@ -17,13 +17,13 @@
                 style="min-width: 1140px">
                 <thead>
                     <tr>
-                        <th class="text-center" style="width: 10% !important">ลำดับ</th>
-                        <th class="text-center" style="width: 10% !important">รหัสพนักงาน</th>
-                        <th class="text-center" style="width: 20% !important">รายชื่อ</th>
-                        <th class="text-center" style="width: 10% !important">ประเภทการลา</th>
-                        <th class="text-center" style="width: 20% !important">วันที่ต้องการลา</th>
-                        <th style="width: 20% !important">รวมวันที่ลา/ชั่วโมง</th>
-                        <th style="width: 10% !important">การดำเนินการ</th>
+                        <th class="text-center cut-text" style="width: 10% !important">ลำดับ</th>
+                        <th class="text-center cut-text" style="width: 10% !important">รหัสพนักงาน</th>
+                        <th class="text-center cut-text" style="width: 20% !important">รายชื่อ</th>
+                        <th class="text-center cut-text" style="width: 10% !important">ประเภทการลา</th>
+                        <th class="text-center cut-text" style="width: 20% !important">วันที่ต้องการลา</th>
+                        <th class="cut-text" style="width: 20% !important">รวมวันที่ลา/ชั่วโมง</th>
+                        <th class="cut-text" style="width: 10% !important">การดำเนินการ</th>
                     </tr>
                 </thead>
 
@@ -42,23 +42,26 @@
                             {{objleave.rvac_type_name}}
                         </td>
                         <td>
-                            {{objleave.rvac_created_at}} - {{objleave.rvac_date_end}}
+                            {{objleave.rvac_created_at}} -
+                            {{objleave.rvac_date_end}}
                         </td>
                         <td>
                             {{objleave.rvac_sum_duration}}
                         </td>
+                        <!-- routerLink="../view-request-detail/{{objleave.rvac_id}}" -->
                         <td>
-                            <div class="row d-flex justify-content-center">
-                                <div class="col-2 px-0 mx-1">
-                                    <div class="activity-table icon-fix py-1"
-                                        role="button" routerLink="../view-request-detail/{{objleave.rvac_id}}">
-                                        <i class="fa-solid fa-list-ul"></i>
-                                    </div>
+                            <div class="row ">
+                                <div class="dropdown">
+                                    <button type="button " class="btn btn-primary btn-dropdown" id="dropdownMenuButton1" routerLink="../view-request-detail/{{objleave.rvac_id}}">
+                                        <div class="col icon-dropdown d-flex justify-content-center">
+                                            <i class="fa-solid fa-list-ul icon-dropdown"></i>
+                                        </div>
+                                    </button>
                                 </div>
                             </div>
+
                         </td>
                     </tr>
-                    
                 </tbody>
             </table>
         </div>

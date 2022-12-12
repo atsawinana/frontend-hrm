@@ -19,6 +19,8 @@ import { DetailViewRequestComponent } from './leave-view-request/detail-view-req
 import { DatePipe } from '@angular/common';
 import { LeaveEditRequestComponent } from './leave-edit-request/leave-edit-request.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { LeaveEditDateleaveComponent } from './leave-edit-dateleave/leave-edit-dateleave.component';
 
 
 @NgModule({
@@ -31,6 +33,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
         FormsModule,
         ReactiveFormsModule,
         Ng2SearchPipeModule,
+        NgxPaginationModule,
         DatePipe,
     ],
     declarations: [
@@ -45,8 +48,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
         LoadingLeaveInfoComponent,
         LeaveViewRequestComponent,
         DetailViewRequestComponent,
-        LeaveEditRequestComponent
-
+        LeaveEditRequestComponent,
+        LeaveEditDateleaveComponent
     ],
     providers: [DatePipe],
 })

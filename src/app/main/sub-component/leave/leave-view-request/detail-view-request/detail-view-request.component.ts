@@ -266,7 +266,6 @@ export class DetailViewRequestComponent implements OnInit {
                 })
 
             }
-
         } else {
             this.serviceDetail.cancelVacationOnApprove(this.rvac_id, elsereason).subscribe({
                 next: (res: any) => {

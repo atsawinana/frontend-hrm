@@ -95,3 +95,9 @@ table {
     color: #005FBC;
     margin: none;
 }
+
+.cut-text { 
+    text-overflow: ellipsis;
+    overflow: hidden; 
+    white-space: nowrap;
+  }
