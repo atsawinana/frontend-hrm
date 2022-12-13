@@ -68,7 +68,8 @@
                                 <div class="row ">
                                     <div class="col-lg-11 col-md-11 col-sm-11
                                         col-10">
-                                        <div class="row">
+                                        <div class="row d-flex
+                                            justify-content-between ">
                                             <div class="col-5">
                                                 <input
                                                     [ngClass]="{
@@ -88,7 +89,6 @@
                                                     'theme-dark-blue',
                                                     showWeekNumbers: false
                                                     }"
-                                                    [minDate]="today"
                                                     (keypress)="false"
                                                     [daysDisabled]="[6,0]"
                                                     formControlName="startDate"
@@ -96,9 +96,13 @@
                                                     (ngModelChange)="onValueChangeDateStart()"
                                                     (ngModelChange)="verifydate()">
                                             </div>
-                                            <div class="col-1">_</div>
+                                            <div class="col text-center ">_</div>
                                             <div class="col-5">
                                                 <input
+                                                    [ngClass]="{
+                                                    isinvalid:
+                                                    leaveRequest.controls.endDate.errors
+                                                    && summited}"
                                                     type="text"
                                                     placeholder="เลือกวันที่"
                                                     class="form-control"
@@ -110,7 +114,6 @@
                                                     'theme-dark-blue',
                                                     showWeekNumbers: false
                                                     }"
-                                                    [minDate]="today"
                                                     [daysDisabled]="[6,0]"
                                                     (keypress)="false"
                                                     formControlName="endDate"
@@ -122,7 +125,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row px-0">
                                 <div
                                     class="col-lg-7 col-md-8 col-sm-7 col-5
                                     d-flex justify-content-left"></div>
@@ -140,7 +143,7 @@
                     <div class="row font-content p-2 justify-content-center">
                         <div class="col-lg-2 col-md-12 col-sm-12 col-12
                             d-inline-flex p-2" id="font-content">
-                            ช่วงเวลาในการลา*
+                            ช่วงเวลาในการลา*  {{this.date.dateStart == '' && this.date.dateEnd == ''}}
                         </div>
                         <div class="col-lg-6 col-md-12 col-sm-12 col-12">
                             <div class="row" id="font-content">
@@ -161,7 +164,8 @@
                                         (change)="verifydate()">
                                         <ng-option value="1">ลาช่วงเช้า</ng-option>
                                         <ng-option value="2"
-                                            *ngIf="!leaveRequest.controls.endDate.value">ลาช่วงบ่าย</ng-option>
+                                            *ngIf="date.dateStart ==
+                                            date.dateEnd">ลาช่วงบ่าย</ng-option>
                                         <ng-option value="3">ลาทั้งวัน</ng-option>
                                     </ng-select>
 
@@ -195,6 +199,8 @@
                                     col-10">
                                     <div id="font-content" *ngIf="datesum !=
                                         ''">{{objDateVerify.sum_time}}</div>
+                                    <div id="font-content" *ngIf="!(datesum !=
+                                        '')"> 0 วัน 0 ชั่วโมง</div>
                                 </div>
                                 <div class="col-1"></div>
                             </div>

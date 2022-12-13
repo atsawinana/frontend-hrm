@@ -26,7 +26,7 @@ export class LeaveRequestComponent implements OnInit {
     leaveRequest = new FormGroup({
         leaveType: new FormControl(null, [Validators.required]),
         startDate: new FormControl('', [Validators.required]),
-        endDate: new FormControl(''),
+        endDate: new FormControl('' , [Validators.required]),
         duration: new FormControl(null, [Validators.required]),
         detail: new FormControl('', [
             Validators.required,
