@@ -46,55 +46,54 @@
                             <tr *ngFor="let item of objdataTable |
                                 paginate:config">
                                 <td>
-                                    <div class="col d-flex
-                                        justify-content-center mt-1">
+                                    <div class="col d-flex justify-content-center mt-1">
                                         {{item.number}}
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="mt-1">
+                                    <div class="mt-1 text-center">
                                         {{item.rvac_type_name}}
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="mt-1">
+                                    <div class="mt-1 text-center">
                                         {{item.rvac_created_at}}
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="mt-1">
+                                    <div class="mt-1 text-center">
                                         {{item.rvac_date}}
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="mt-1">
+                                    <div class="mt-1 text-center">
                                         {{item.rvac_duration_time}}
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="mt-1">
+                                    <div class="mt-1 text-center">
                                         {{item.rvac_sum_duration}}
                                     </div>
                                 </td>
 
 
                                 <td>
-                                    <div class="mt-1 status-pending "
+                                    <div class="mt-1 status-pending text-center"
                                         *ngIf="item.rvac_approve_status == null
                                         && item.rvac_is_canceled == 0">
                                         {{item.rvac_status_name}}
                                     </div>
-                                    <div class="mt-1 status-disapproved "
+                                    <div class="mt-1 status-disapproved text-center"
                                         *ngIf="item.rvac_approve_status == 0 &&
                                         item.rvac_is_canceled == 0">
                                         {{item.rvac_status_name}}
                                     </div>
-                                    <div class="mt-1 status-accept "
+                                    <div class="mt-1 status-accept text-center"
                                         *ngIf="item.rvac_approve_status == 1 &&
                                         item.rvac_is_canceled == 0">
                                         {{item.rvac_status_name}}
                                     </div>
-                                    <div class="mt-1 status-cancel "
+                                    <div class="mt-1 status-cancel text-center"
                                         *ngIf="item.rvac_is_canceled == 1">
                                         {{item.rvac_status_name}}
                                     </div>
