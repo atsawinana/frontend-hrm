@@ -1,0 +1,65 @@
+.font-header {
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 47px;
+    text-align: center;
+    color: #000000;
+}
+#font-content {
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+}
+.cancel-text {
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #005FBC;
+}
+.submit-text {
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #FFFFFF;
+
+}
+.cancel-button {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 12px 16px;
+    background: #FFFFFF;
+    border: 1px solid #005FBC;
+    border-radius: 8px;
+}
+.submit-button {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 12px 16px;
+    background: linear-gradient(270.74deg, #2E3579 0.35%, #005FBC 99.1%, #005FBC 99.1%);
+    border-radius: 8px;
+    border: 1px solid #005FBC;
+}
+.alerttext {
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: red;
+}
+.space-data {
+    margin-left: 90px;
+    margin-top: 5px;
+}
+.isinvalid {
+    border: 1px solid #EF0303 !important;
+}
