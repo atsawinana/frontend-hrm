@@ -1,38 +1,45 @@
 .font-header {
-    font-family: 'Kanit';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 24px;
-    color: #000000;
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  color: #000000;
 }
 
 .noti-type {
-    font-family: 'Kanit';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 18px;
-    color: #000000;
-    cursor: pointer;
-    
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  color: #000000;
+  cursor: pointer;
+
 }
 
 .active-box {
-    border-bottom: 3px solid #FF5444;
-    padding-top: 5px;
-    border-radius: 5px 5px 0px 0px;
+  border-bottom: 3px solid #FF5444;
+  padding-top: 5px;
+  border-radius: 5px 5px 0px 0px;
 }
 
 .headline {
-    border-bottom: 1px solid #005FBC;
+  border-bottom: 1px solid #005FBC;
 }
 
 .clean-history {
-    font-family: 'Kanit';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    text-decoration-line: underline;
-    color: #005FBC;
-    cursor: pointer;
-    width: 180px;
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  text-decoration-line: underline;
+  color: #005FBC;
+  cursor: pointer;
+  width: 180px;
+}
+
+.main-content {
+  background: #FFFFFF;
+  border: 1px solid #D1D1D6;
+  box-shadow: 0px 4px 16px rgba(138, 159, 171, 0.35);
+  border-radius: 24px;
 }

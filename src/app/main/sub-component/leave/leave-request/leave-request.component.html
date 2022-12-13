@@ -62,7 +62,7 @@
                             justify-content-center">
                             <div class="col-lg-2 col-md-12 col-sm-12 col-12
                                 d-inline-flex mb-2 p-2" id="font-content">
-                                วัน/เดือน/ปี ที่ต้องการลา*
+                                วัน/เดือน/ปี ที่ต้องการลา* 
                             </div>
                             <div class="col-lg-6 col-md-12 col-sm-12 col-12">
                                 <div class="row ">
@@ -106,7 +106,10 @@
                                                     type="text"
                                                     placeholder="เลือกวันที่"
                                                     class="form-control"
-                                                    bsDatepicker [bsConfig]="{
+                                                    bsDatepicker
+                                                    [minDate]="minDate"
+                                                    [isDisabled]="isDisabled"
+                                                    [bsConfig]="{
                                                     isAnimated: true,
                                                     dateInputFormat:
                                                     'DD/MM/YYYY',
@@ -143,7 +146,8 @@
                     <div class="row font-content p-2 justify-content-center">
                         <div class="col-lg-2 col-md-12 col-sm-12 col-12
                             d-inline-flex p-2" id="font-content">
-                            ช่วงเวลาในการลา*  {{this.date.dateStart == '' && this.date.dateEnd == ''}}
+                            ช่วงเวลาในการลา* {{this.date.dateStart == '' &&
+                            this.date.dateEnd == ''}}
                         </div>
                         <div class="col-lg-6 col-md-12 col-sm-12 col-12">
                             <div class="row" id="font-content">

@@ -1,20 +1,32 @@
-<div class="font-header mb-4">
-    การแจ้งเตือน
-</div>
 
-<div class="row headline d-flex justify-content-start">
-    <div (click)="URLcheck($event)" [ngClass]="{'active-box' : all}"
-        class="col-2 text-center noti-type" 
-        routerLink="all-notification">ทั้งหมด</div>
-    <div (click)="URLcheck($event)" [ngClass]="{'active-box' : worknoti}"
-        *ngIf="role != 1" class="col-2 text-center noti-type"
-        routerLink="work-notification">อนุมัติทำงาน</div>
-    <div (click)="URLcheck($event)" [ngClass]="{'active-box' : leaveHnoti}"
-        *ngIf="role != 1" class="col-2 text-center noti-type "
-        routerLink="leave-notification">อนุมัติลา</div>
-    <div (click)="URLcheck($event)" [ngClass]="{'active-box' : otnoti}"
-        *ngIf="role != 1" class="col-2 text-center noti-type"
-        routerLink="ot-notification">อนุมัติโอที</div>
-</div>
 
-<router-outlet></router-outlet>
+<div class="container-fluid p-0 mb-5">
+    <div class="main-content h-100 p-5">
+
+
+        <div class="font-header mb-4">
+            การแจ้งเตือน
+        </div>
+
+        <div class="row headline d-flex justify-content-start">
+            <div (click)="URLcheck($event)" [ngClass]="{'active-box' : all}"
+                class="col-2 text-center noti-type"
+                routerLink="all-notification">ทั้งหมด</div>
+            <div (click)="URLcheck($event)" [ngClass]="{'active-box' :
+                worknoti}"
+                *ngIf="role != 1" class="col-2 text-center noti-type"
+                routerLink="work-notification">อนุมัติทำงาน</div>
+            <div (click)="URLcheck($event)" [ngClass]="{'active-box' :
+                leaveHnoti}"
+                *ngIf="role != 1" class="col-2 text-center noti-type "
+                routerLink="leave-notification">อนุมัติลา</div>
+            <div (click)="URLcheck($event)" [ngClass]="{'active-box' : otnoti}"
+                *ngIf="role != 1" class="col-2 text-center noti-type"
+                routerLink="ot-notification">อนุมัติโอที</div>
+        </div>
+
+        <router-outlet></router-outlet>
+
+
+    </div>
+</div>

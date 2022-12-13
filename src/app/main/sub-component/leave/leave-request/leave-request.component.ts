@@ -38,9 +38,11 @@ export class LeaveRequestComponent implements OnInit {
     amount: string = "0 วัน 0 ชั่วโมง";
     summited: boolean = false;
     LeavesDays: any;
-
+    minDate:any
     objDateVerify: any
     datesum: any = ""
+
+    isDisabled:boolean = true
 
     gender = localStorage.getItem('ud_gender_id');
 
@@ -83,7 +85,6 @@ export class LeaveRequestComponent implements OnInit {
 
 
     verifydate() {
-
         if (this.leaveRequest.controls.leaveType.invalid
             || this.leaveRequest.controls.startDate.invalid
             || this.leaveRequest.controls.endDate.invalid
@@ -238,8 +239,17 @@ export class LeaveRequestComponent implements OnInit {
     }
 
     onValueChangeDateStart() {
-        let startDate = this.datepipe.transform(this.leaveRequest.controls.startDate.value, 'yyyy-MM-dd');
 
+        if(this.leaveRequest.controls.startDate.invalid){
+            this.isDisabled = true
+        }else{
+            this.isDisabled = false
+        }
+
+
+        let startDate = this.datepipe.transform(this.leaveRequest.controls.startDate.value, 'yyyy-MM-dd');
+        let mindate = this.datepipe.transform(this.leaveRequest.controls.startDate.value, 'MM-dd-yyyy');
+        this.minDate = new Date(mindate!)
         let arydate1 = startDate!.toString().split("-")
         console.log("test1", arydate1)
 
@@ -253,9 +263,12 @@ export class LeaveRequestComponent implements OnInit {
         console.log(date, "dateStart")
         this.date.dateStart = date!
 
+
     }
 
     onValueChangeDateEnd() {
+
+      
 
         let endDate = this.datepipe.transform(this.leaveRequest.controls.endDate.value, 'yyyy-MM-dd');
         let arydate1 = endDate!.toString().split("-")
@@ -270,7 +283,6 @@ export class LeaveRequestComponent implements OnInit {
 
         console.log(date, "endDate")
         this.date.dateEnd = date!
-
     }
 
 
