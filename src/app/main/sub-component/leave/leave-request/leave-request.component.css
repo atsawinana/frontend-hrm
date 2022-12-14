@@ -91,13 +91,10 @@ textarea::placeholder {
     color: red;
 }
 .space-data {
-    margin-left: 150px;
+    margin-left: 140px;
     margin-top: 5px;
 }
-.space-date{
-    margin-left: 100px;
-    margin-top: 5px;
-}
+
 
 .ng-select.customnull::ng-deep.ng-select-container {
     border-color: #ff0000 !important;
