@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PaginationInstance } from 'ngx-pagination';
 import { EmpDepartmentService } from './emp-department.service';
 import * as XLSX from 'xlsx';
@@ -16,7 +16,8 @@ const EXCEL_EXTENSION = '.xlsx';
 export class EmpDepartmentComponent implements OnInit {
   constructor(
     private router: ActivatedRoute,
-    private service: EmpDepartmentService
+    private service: EmpDepartmentService,
+    private route:Router
   ) {}
   dept_id: any;
   objemployee: any;
@@ -101,5 +102,9 @@ export class EmpDepartmentComponent implements OnInit {
       data,
       fileName + '_export_' + new Date().getTime() + EXCEL_EXTENSION
     );
+  }
+
+  navigateEmp(id:any){
+    this.route.navigate([`/main/employee/data-person/${id}`]);
   }
 }

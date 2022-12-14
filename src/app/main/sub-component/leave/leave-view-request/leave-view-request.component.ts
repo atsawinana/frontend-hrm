@@ -25,7 +25,6 @@ export class LeaveViewRequestComponent implements OnInit {
                 // console.log(res.data)
                 this.objDataLeave = res.data.request_vacation
                 this.APISuccess = true
-                console.log(this.objDataLeave)
             },
             error: (err: any) => { }
         })

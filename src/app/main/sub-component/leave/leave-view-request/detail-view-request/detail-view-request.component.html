@@ -1,3 +1,5 @@
+<app-loading-leave-info *ngIf="!APISuccess" class="d-flex justify-content-center h-100 align-items-center">
+</app-loading-leave-info>
 <div class="container-fluid" *ngIf="APISuccess">
     <div class="row mb-4">
 
@@ -38,126 +40,6 @@
     </div>
     <div class="row">
         <div class="container-fluid shadow-bg">
-            <!-- <div class="col-4 d-flex justify-content-end">
-                    <div class="container-fluid">
-
-
-                        <div class="row text-center d-flex justify-content-end"
-                            *ngIf="objProfile.rvac_special_case == 1">
-
-                            <div class="col-12 circle px-0 pt-1"
-                                *ngIf="objProfile.rvac_is_canceled == 0">
-                                <i class="fa-solid fa-check" style="color:white;
-                                    font-size: 40px;"></i>
-                            </div>
-
-                            <div class="col-12 circle-fail px-0 pt-1"
-                                *ngIf="objProfile.rvac_is_canceled == 1">
-                                <i class="fa-solid fa-xmark" style="color:white;
-                                    font-size:42px;"></i>
-                            </div>
-
-                            <div class="col-12 pe-4">
-                                <div class="vl ms-auto"
-                                    [ngClass]="{'circle-waiting-approve':
-                                    ((stateLeave == 0 || (stateLeave == 2 &&
-                                    approve_req.ar_is_approv2 == 1)) &&
-                                    ownerCheck) , 'circle-waiting-approve2':
-                                    ((stateLeave == 1 || stateLeave == 2) &&
-                                    ownerCheck) && (approve_req.ar_is_approv1 ==
-                                    0 || approve_req.ar_is_approv2 == 0) }"></div>
-                            </div>
-
-                            <div class="col-12 circle-waiting px-0 pt-1"
-                                *ngIf="approve_req.ar_is_approv1 == null">
-                            </div>
-
-                            <div class="col-12 circle-fail px-0 pt-1"
-                                *ngIf="approve_req.ar_is_approv1 == 0">
-                                <i class="fa-solid fa-xmark" style="color:white;
-                                    font-size:42px;"></i>
-                            </div>
-
-                            <div class="col-12 circle px-0 pt-1"
-                                *ngIf="approve_req.ar_is_approv1 == 1">
-                                <i class="fa-solid fa-check" style="color:white;
-                                    font-size:40px;"></i>
-                            </div>
-
-                            <div class="col-12 pe-4">
-                                <div class="vl ms-auto" style="height:110px"
-                                    [ngClass]="{'circle-waiting-state0':
-                                    stateLeave == 0}"></div>
-                            </div>
-
-                            <div class="col-12 circle-waiting px-0 pt-1"
-                                *ngIf="approve_req.ar_is_approv2 == null">
-                            </div>
-
-                            <div class="col-12 circle-fail px-0 pt-1"
-                                *ngIf="approve_req.ar_is_approv2 == 0">
-                                <i class="fa-solid fa-xmark" style="color:white;
-                                    font-size:42px;"></i>
-                            </div>
-
-                            <div class="col-12 circle px-0 pt-1"
-                                *ngIf="approve_req.ar_is_approv2 == 1">
-                                <i class="fa-solid fa-check" style="color:white;
-                                    font-size:40px;"></i>
-                            </div>
-
-                        </div>
-
-
-                        <div class="row text-center d-flex justify-content-end"
-                            *ngIf="objProfile.rvac_special_case != 1">
-
-
-                            <div class="col-12 circle px-0 pt-1"
-                                *ngIf="objProfile.rvac_is_canceled == 0">
-                                <i class="fa-solid fa-check" style="color:white;
-                                    font-size: 40px;"></i>
-                            </div>
-
-                            <div class="col-12 circle-fail px-0 pt-1"
-                                *ngIf="objProfile.rvac_is_canceled == 1">
-                                <i class="fa-solid fa-xmark" style="color:white;
-                                    font-size:42px;"></i>
-                            </div>
-
-                            <div class="col-12 pe-4">
-                                <div class="vl ms-auto"
-                                    [ngClass]="{'circle-waiting-approve':
-                                    ((stateLeave == 0 || (stateLeave == 2 &&
-                                    approve_req.ar_is_approv2 == 1)) &&
-                                    ownerCheck) , 'circle-waiting-approve2':
-                                    ((stateLeave == 1 || stateLeave == 2) &&
-                                    ownerCheck) && (approve_req.ar_is_approv1 ==
-                                    0 || approve_req.ar_is_approv2 == 0) }"></div>
-                            </div>
-
-                            <div class="col-12 circle-waiting px-0 pt-1"
-                                *ngIf="approve_req.ar_is_approv2 == null">
-                            </div>
-
-                            <div class="col-12 circle-fail px-0 pt-1"
-                                *ngIf="approve_req.ar_is_approv2 == 0">
-                                <i class="fa-solid fa-xmark" style="color:white;
-                                    font-size:42px;"></i>
-                            </div>
-
-                            <div class="col-12 circle px-0 pt-1"
-                                *ngIf="approve_req.ar_is_approv2 == 1">
-                                <i class="fa-solid fa-check" style="color:white;
-                                    font-size:40px;"></i>
-                            </div>
-
-                        </div>
-
-
-
-                    </div>
-                </div> -->
             <div class="row mb-4">
                 <div class="container ">
                     <div class="row my-3">
@@ -243,24 +125,7 @@
                     </div>
                 </div>
             </div>
-
-
-            <!-- <div class="col-12 circle-waiting px-0 pt-1"
-            *ngIf="approve_req.ar_is_approv1 == null">
-        </div>
-
-        <div class="col-12 circle-fail px-0 pt-1"
-            *ngIf="approve_req.ar_is_approv1 == 0">
-            <i class="fa-solid fa-xmark" style="color:white;
-                font-size:42px;"></i>
-        </div>
-
-        <div class="col-12 circle px-0 pt-1"
-            *ngIf="approve_req.ar_is_approv1 == 1">
-            <i class="fa-solid fa-check" style="color:white;
-                font-size:40px;"></i>
-        </div> -->
-            <div class="row mb-4" *ngIf="objProfile.rvac_special_case == 1">
+            <div class="row mb-4" *ngIf="objProfile.rvac_special_case == 1 && objProfile.rvac_is_canceled == 0" >
                 <div class="container">
                     <div class="row mb-3">
 
@@ -336,7 +201,7 @@
                 </div>
             </div>
 
-            <div class="row mb-4">
+            <div class="row mb-4" *ngIf="!(objProfile.rvac_is_canceled == 1 && objProfile.rvac_status == 10)">
                 <div class="container">
                     <div class="row mb-3">
 

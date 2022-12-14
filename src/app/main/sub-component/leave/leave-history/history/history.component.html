@@ -1,5 +1,7 @@
-<app-overbutton></app-overbutton>
-<div>
+<app-loading-leave-info *ngIf="!ApiSuccess" class="d-flex justify-content-center h-100 align-items-center">
+</app-loading-leave-info>
+<app-overbutton *ngIf="ApiSuccess"></app-overbutton>
+<div *ngIf="ApiSuccess">
     <div class="row">
         <div class="col">
             <div class="row list-header d-flex p-2 d-flex
@@ -78,14 +80,17 @@
 
             </div>
 
-            <div>
+            <h1 class="row mt-5 d-flex justify-content-center" *ngIf="objdataTable.length == 0" style="font-family: 'Kanit';">
+                ไม่พบประวัตการลาทั้งหมด
+            </h1>
+
+            <div *ngIf="objdataTable.length != 0">
                 <div class="table-responsive" style="overflow-x: scroll">
                     <table class="table-responsive table table-striped mt-3"
                         style="min-width: 1140px">
                         <!--table header-->
                         <thead class="ps-5 list-table">
                             <tr>
-
                                 <th class="cut-text" scope="col"
                                     style="text-align: center;">ลำดับ</th>
                                 <th class="cut-text" scope="col"

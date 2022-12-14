@@ -69,7 +69,6 @@ export class LeaveEditRequestComponent implements OnInit {
         this.today = new Date();
         defineLocale('th', thBeLocale);
         this.localeService.use(this.locale);
-        console.log(this.rvac_id)
 
         this.editService.showReverseVacation(this.rvac_id).subscribe({
             next: (res: any) => {
@@ -83,7 +82,6 @@ export class LeaveEditRequestComponent implements OnInit {
                 console.log(res.data)
                 this.countEditDays()
                 this.verifydateinit()
-                console.log(this.leaveRequest)
                 this.APISuccess = true
             },
             error: (err: any) => {
@@ -96,7 +94,6 @@ export class LeaveEditRequestComponent implements OnInit {
         this.editService.getVacationType().subscribe({
             next: (res: any) => {
                 this.LeavesDays = res.data.leaveDays;
-                console.log(this.LeavesDays);
             },
             error: (res: any) => {
 
@@ -118,16 +115,12 @@ export class LeaveEditRequestComponent implements OnInit {
         let duration = this.leaveRequest.controls.duration.value;
         startDateS = this.changeDate(startDateS!)
         endDateS = this.changeDate(endDateS!)
-        console.log(startDateS)
-        console.log(endDateS)
         //User is input strat date.
         if (startDateS != null) {
             //User is input end. 
             if (endDateS) {
                 let startDate = new Date(startDateS);//Change string to Date
                 let endDate = new Date(endDateS);//Change string to Date
-                console.log(startDate)
-                console.log(endDate)
                 //leave morning
                 if (duration == "1") {
                     diff = (endDate.getTime() - startDate.getTime());
@@ -169,16 +162,12 @@ export class LeaveEditRequestComponent implements OnInit {
         if (this.date.dateEnd == "") {
             endDateS = this.changeDate(endDateS!)
         }
-        console.log(startDateS)
-        console.log(endDateS)
         //User is input strat date.
         if (startDateS != null) {
             //User is input end. 
             if (endDateS) {
                 let startDate = new Date(startDateS);//Change string to Date
                 let endDate = new Date(endDateS);//Change string to Date
-                console.log(startDate)
-                console.log(endDate)
                 //leave morning
                 if (duration == "1" || duration == "2") {
                     diff = (endDate.getTime() - startDate.getTime());
@@ -212,16 +201,13 @@ export class LeaveEditRequestComponent implements OnInit {
         let startDate = this.datepipe.transform(this.leaveRequest.controls.startDate.value, 'yyyy-MM-dd');
 
         let arydate1 = startDate!.toString().split("-")
-        console.log("test1", arydate1)
 
         arydate1[0] = (Number(arydate1[0]) + 543).toString()
 
-        console.log("test2", arydate1.toString())
 
         let date = arydate1.toString().replace(",", "-")
         date = date?.replace(",", "-")
 
-        console.log(date)
         this.date.dateStart = date!
 
     }
@@ -230,22 +216,18 @@ export class LeaveEditRequestComponent implements OnInit {
 
         let endDate = this.datepipe.transform(this.leaveRequest.controls.endDate.value, 'yyyy-MM-dd');
         let arydate1 = endDate!.toString().split("-")
-        console.log("test1", arydate1)
 
         arydate1[0] = (Number(arydate1[0]) + 543).toString()
 
-        console.log("test2", arydate1.toString())
 
         let date = arydate1.toString().replace(",", "-")
         date = date?.replace(",", "-")
 
-        console.log(date)
         this.date.dateEnd = date!
 
     }
 
     resendRequest() {
-        console.log(this.leaveRequest.value)
 
         if (this.leaveRequest.invalid)
             return;
@@ -254,20 +236,16 @@ export class LeaveEditRequestComponent implements OnInit {
             let tempdate = this.leaveRequest.controls.startDate.value?.toString().split("/")
             let date = tempdate?.reverse().toString().replace(",", "-")
             date = date?.replace(",", "-")
-            console.log(date)
             this.date.dateStart = date!
         } else {
-            console.log(this.date.dateStart)
         }
 
         if (this.date.dateEnd == "") {
             let tempdate = this.leaveRequest.controls.endDate.value?.toString().split("/")
             let date = tempdate?.reverse().toString().replace(",", "-")
             date = date?.replace(",", "-")
-            console.log(date)
             this.date.dateEnd = date!
         } else {
-            console.log(this.date.dateEnd)
         }
 
         if (this.objDateVerify.stautus == false) {
@@ -322,7 +300,6 @@ export class LeaveEditRequestComponent implements OnInit {
             next: (res: any) => {
                 this.objDateVerify = res.data
                 this.datesum = this.objDateVerify.sum_time
-                console.log(this.objDateVerify)
             },
             error: (res: any) => {
 
@@ -336,20 +313,16 @@ export class LeaveEditRequestComponent implements OnInit {
             let tempdate = this.leaveRequest.controls.startDate.value?.toString().split("/")
             let date = tempdate?.reverse().toString().replace(",", "-")
             date = date?.replace(",", "-")
-            console.log(date)
             this.date.dateStart = date!
         } else {
-            console.log(this.date.dateStart)
         }
 
         if (this.date.dateEnd == "") {
             let tempdate = this.leaveRequest.controls.endDate.value?.toString().split("/")
             let date = tempdate?.reverse().toString().replace(",", "-")
             date = date?.replace(",", "-")
-            console.log(date)
             this.date.dateEnd = date!
         } else {
-            console.log(this.date.dateEnd)
         }
 
         if (this.leaveRequest.controls.leaveType.invalid

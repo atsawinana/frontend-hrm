@@ -40,7 +40,6 @@ export class DetailViewRequestComponent implements OnInit {
         console.log("this.rvac_id", this.rvac_id)
         this.serviceDetail.getDetail(this.rvac_id).subscribe({
             next: (res: any) => {
-                console.log(res.data)
                 this.objProfile = res.data.req_vacations
                 this.approve_req = res.data.approve_req
                 this.objLog = res.data.approve_reqs

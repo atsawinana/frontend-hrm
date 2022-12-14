@@ -1,11 +1,12 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { MainService } from '../main.service';
-import { Route, Router, RouterLink } from '@angular/router';
+import { NavigationEnd, Route, Router, RouterLink } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
 import { Subject } from 'rxjs/internal/Subject';
 import { LoadingComponent } from 'src/app/login/loading/loading-template/loading.component';
 import Swal from 'sweetalert2';
 import { environment } from 'src/environments/environment';
+import { NotiService } from '../sub-component/notification/noti.service';
 
 @Component({
     selector: 'app-main',
@@ -17,7 +18,8 @@ export class MainComponent implements OnInit {
         private MainService: MainService,
         private router: Router,
         private coreToken: AuthService,
-        private main: MainService
+        private main: MainService,
+        private notiservice: NotiService
     ) {
         this.setTimeout();
         this.userInactive.subscribe(() => {
@@ -30,6 +32,19 @@ export class MainComponent implements OnInit {
                 this.coreToken.Logout();
             });
         });
+
+        this.router.events.subscribe(event => {
+            if (event instanceof NavigationEnd) {
+                this.notiservice.showNumOfNotification().subscribe({
+                    next: (res: any) => {
+                        localStorage.setItem('notification', res.data.sum_notification)
+                        this.notificationCOunt = res.data.sum_notification
+                    },
+                    error: (error: any) => { },
+                })
+            }
+        });
+
     }
     baseURL = environment.apiURL;
     token!: any;
@@ -124,4 +139,5 @@ export class MainComponent implements OnInit {
         clearTimeout(this.userActivity);
         this.setTimeout();
     }
+
 }

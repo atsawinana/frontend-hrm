@@ -17,8 +17,6 @@ export class LeaveInfoComponent implements OnInit {
     this.leaveService.getAllInfo().subscribe({
       next: (res: any) => {
         this.objLeaveInfo = res.data;
-        console.log(this.objLeaveInfo)
-
         this.ApiSuccess = true;
       },
       error: (err: any) => {},

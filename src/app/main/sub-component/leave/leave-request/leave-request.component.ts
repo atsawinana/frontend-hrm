@@ -101,7 +101,6 @@ export class LeaveRequestComponent implements OnInit {
             next: (res: any) => {
                 this.objDateVerify = res.data
                 this.datesum = this.objDateVerify.sum_time
-                console.log(this.objDateVerify)
             },
             error: (res: any) => {
 
@@ -114,8 +113,6 @@ export class LeaveRequestComponent implements OnInit {
 
         if (this.leaveRequest.invalid)
             return;
-        console.log("this.objDateVerify.stautus",this.objDateVerify.stautus)
-        console.log("this.objDateVerify.stautus",this.objDateVerify.stautus == false)
         if (this.objDateVerify.stautus == false) {
             Swal.fire({
                 title: '<strong style = "font-family:Kanit"> วันลาของคุณไม่เพียงพอ </strong>',
@@ -138,8 +135,6 @@ export class LeaveRequestComponent implements OnInit {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                console.log(this.date.dateStart)
-                console.log(this.date.dateEnd)
 
                 this.LeaveReqService
                     .addLeaveRequest(
@@ -230,7 +225,6 @@ export class LeaveRequestComponent implements OnInit {
         this.LeaveReqService.getVacationType().subscribe({
             next: (res: any) => {
                 this.LeavesDays = res.data.leaveDays;
-                console.log(this.LeavesDays);
             },
             error: (res: any) => {
 
@@ -251,16 +245,13 @@ export class LeaveRequestComponent implements OnInit {
         let mindate = this.datepipe.transform(this.leaveRequest.controls.startDate.value, 'MM-dd-yyyy');
         this.minDate = new Date(mindate!)
         let arydate1 = startDate!.toString().split("-")
-        console.log("test1", arydate1)
 
         arydate1[0] = (Number(arydate1[0]) + 543).toString()
 
-        console.log("test2", arydate1.toString())
 
         let date = arydate1.toString().replace(",", "-")
         date = date?.replace(",", "-")
 
-        console.log(date, "dateStart")
         this.date.dateStart = date!
 
 
@@ -272,16 +263,13 @@ export class LeaveRequestComponent implements OnInit {
 
         let endDate = this.datepipe.transform(this.leaveRequest.controls.endDate.value, 'yyyy-MM-dd');
         let arydate1 = endDate!.toString().split("-")
-        console.log("test1", arydate1)
 
         arydate1[0] = (Number(arydate1[0]) + 543).toString()
 
-        console.log("test2", arydate1.toString())
 
         let date = arydate1.toString().replace(",", "-")
         date = date?.replace(",", "-")
 
-        console.log(date, "endDate")
         this.date.dateEnd = date!
     }
 

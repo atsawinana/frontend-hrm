@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class NotiService {
 
@@ -11,71 +11,73 @@ export class NotiService {
 
     getAllNoti() {
         const headers = new HttpHeaders({
-          Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+            Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
         });
-    
-        return this.httpClient.get(
-          `${environment.apiURL}/leaveOnline/notification`,
-          {
-            headers,
-          }
-        );
-      }
 
-      clearNoti() {
+        return this.httpClient.get(
+            `${environment.apiURL}/leaveOnline/notification`,
+            {
+                headers,
+            }
+        );
+    }
+
+    clearNoti() {
         const headers = new HttpHeaders({
-          Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+            Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
         });
-    
+
         return this.httpClient.patch(
-          `${environment.apiURL}/leaveOnline/clearNotification`,
-          {
-            headers,
-          }
+            `${environment.apiURL}/leaveOnline/clearNotification`,
+            {
+            },
+            {
+                headers,
+            }
         );
-      }
+    }
 
-      getLeaveNoti() {
+    getLeaveNoti() {
         const headers = new HttpHeaders({
-          Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+            Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
         });
-    
+
         return this.httpClient.get(
-          `${environment.apiURL}/leaveOnline/notificationReqLeave`,
-          {
-            headers,
-          }
+            `${environment.apiURL}/leaveOnline/notificationReqLeave`,
+            {
+                headers,
+            }
         );
-      }
+    }
 
-      clearLeaveNoti() {
+    clearLeaveNoti() {
         const headers = new HttpHeaders({
-          Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+            Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
         });
-    
+
         return this.httpClient.patch(
-          `${environment.apiURL}/leaveOnline/clearNotificationReqLeave`,
-          {
-          },
-          {
-            headers
-          }
+            `${environment.apiURL}/leaveOnline/clearNotificationReqLeave`,
+            {
+            },
+            {
+                headers
+            }
         );
-      }
+    }
 
-      
-      showNumOfNotification() {
+
+    showNumOfNotification() {
         const headers = new HttpHeaders({
-          Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+            Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
         });
-    
+
         return this.httpClient.get(
-          `${environment.apiURL}/leaveOnline/showNumOfNotification`,
-          {
-            headers,
-          }
+            `${environment.apiURL}/leaveOnline/showNumOfNotification`,
+            {
+                headers,
+            }
         );
-      }
+    }
 
 
     //   /leaveOnline/showNumOfNotification[GET]
@@ -94,16 +96,16 @@ export class NotiService {
     //   }
 
 
-// /leaveOnline/notification[GET]
-// ดูการแจ้งเตือนการอนุมัติ
+    // /leaveOnline/notification[GET]
+    // ดูการแจ้งเตือนการอนุมัติ
 
-// /leaveOnline/clearNotification[PATCH]
-// ลบการแจ้งเตือนการอนุมัติ
+    // /leaveOnline/clearNotification[PATCH]
+    // ลบการแจ้งเตือนการอนุมัติ
 
-// /leaveOnline/notificationReqLeave[GET]
-// ดูการแจ้งเตือนคำร้องการลา
+    // /leaveOnline/notificationReqLeave[GET]
+    // ดูการแจ้งเตือนคำร้องการลา
 
-// /leaveOnline/clearNotificationReqLeave[PATCH]
-// ลบการแจ้งเตือนคำร้องการลา 
+    // /leaveOnline/clearNotificationReqLeave[PATCH]
+    // ลบการแจ้งเตือนคำร้องการลา 
 
 }

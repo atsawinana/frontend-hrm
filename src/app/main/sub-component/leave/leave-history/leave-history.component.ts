@@ -21,6 +21,8 @@ export class LeaveHistoryComponent implements OnInit {
 
     date: any
 
+    ApiSuccess:boolean = false
+
     listPerPage: number = 5
 
     public config: PaginationInstance = {
@@ -40,8 +42,8 @@ export class LeaveHistoryComponent implements OnInit {
 
         this.leavehistoryservice.getUserHistory("").subscribe({
             next: (res: any) => {
-                console.log(res.data.leave_online)
                 this.objdataTable = res.data.leave_online
+                this.ApiSuccess = true
             },
             error: (err: any) => {
 

@@ -8,9 +8,8 @@
         </div>
 
 
-        <div class="col-lg-5 h-100 d-flex justify-content-center">
+        <div class="col-lg-5 h-100 d-flex justify-content-center px-0">
 
-            <!--button history-->
             <button type="button" class="btn btn-primary w-75 btn-history " routerLink="history">
                 <div class="row">
                     <div class="col-1 space-icon"><i class="fa-solid fa-clock-rotate-left icon"></i></div>
@@ -18,19 +17,17 @@
                 </div>
             </button>
 
-            <!--button request-->
             <button *ngIf="role != 1" type="button" class="btn btn-primary w-75 btn-addform " routerLink="view-request">
                 <div class="row">
-                    <div class="col-1 space-icon"><i class="fa-regular fa-comment-dots"></i></div>
+                    <div class="col-1 space-icon"><i class="fa-regular fa-comment-dots icon"></i></div>
                     <div class="col cut-text">ดูคำขอการลา</div>
                 </div>
             </button>
 
-            <!--button addform-->
             <button type="button" class="btn btn-primary w-75 btn-addform " routerLink="request">
                 <div class="row">
-                    <div class="col-1 space-icon"><i class="fa-solid fa-circle-plus icon"></i></div>
-                    <div class="col cut-text">สร้างฟอร์มการลา</div>
+                    <div class="col-1 space-icon "><i class="fa-solid fa-circle-plus icon"></i></div>
+                    <div class="col cut-text ">สร้างฟอร์มการลา</div>
                 </div>
             </button>
 

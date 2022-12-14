@@ -31,6 +31,8 @@ export class HistoryComponent implements OnInit {
 
     listPerPage: number = 5
 
+    ApiSuccess:boolean = false
+
     public config: PaginationInstance = {
         id: 'custom',
         itemsPerPage: this.listPerPage,
@@ -48,8 +50,8 @@ export class HistoryComponent implements OnInit {
 
         this.leavehistoryservice.getAllUserHistory("").subscribe({
             next: (res: any) => {
-                console.log(res.data)
                 this.objdataTable = res.data.leave_online
+                this.ApiSuccess = true
             },
             error: (err: any) => {
 
@@ -81,7 +83,7 @@ export class HistoryComponent implements OnInit {
 
         let date = arydate1[0] + "-" + arydate1[1]
 
-        this.leavehistoryservice.getAllUserHistory(date).subscribe({
+        this.leavehistoryservice.getUserHistory(date).subscribe({
             next: (res: any) => {
                 console.log(res.data)
                 this.objdata =  res.data.leave_online

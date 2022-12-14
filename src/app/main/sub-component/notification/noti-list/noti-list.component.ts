@@ -13,7 +13,7 @@ export class NotiListComponent implements OnInit {
     constructor(private router: Router, private service: NotiService) { }
     role: any = localStorage.getItem('roleUser')
 
-    all: boolean = false;
+    all: boolean = true;
     worknoti: boolean = false;
     leaveHnoti: boolean = false;
     otnoti: boolean = false;
@@ -33,15 +33,12 @@ export class NotiListComponent implements OnInit {
 
         if (this.router.url.includes('work-notification')) {
             this.worknoti = true;
-            console.log(this.worknoti)
         } if (this.router.url.includes('leave-notification')) {
             this.leaveHnoti = true;
         } if (this.router.url.includes('ot-notification')) {
-            console.log(this.leaveHnoti)
             this.otnoti = true;
         } if (this.router.url.includes('all-notification' || 'notification')) {
             this.all = true;
-            console.log(this.all)
         }
     }
 
@@ -58,7 +55,7 @@ export class NotiListComponent implements OnInit {
     showNumOfNotification() {
         this.service.showNumOfNotification().subscribe({
             next: (res: any) => {
-                console.log(res.data)
+                localStorage.setItem('notification',res.data.sum_notification)
             },
             error: (error: any) => { },
         })

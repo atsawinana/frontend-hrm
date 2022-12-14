@@ -83,7 +83,6 @@ export class LeaveEditDateleaveComponent implements OnInit {
     if (this.leaveDays.invalid)
     return;
 
-    console.log(this.leaveDays.controls.sick.value)
     Swal.fire({
       title: '<strong style = "font-family:Kanit"> คุณต้องการบันทึกการเเก้ไขวันลา ใช่หรือไม่ </strong>',
       icon: 'warning',
