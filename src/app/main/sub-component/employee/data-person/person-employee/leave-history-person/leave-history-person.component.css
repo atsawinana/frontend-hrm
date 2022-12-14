@@ -11,6 +11,7 @@ table {
   font-size: 18px;
   color: #ffffff;
 }
+
 .list-content {
   font-family: "Kanit";
   font-style: normal;
@@ -18,10 +19,34 @@ table {
   font-size: 16px;
   line-height: 24px;
 }
+
 .font-content {
   font-family: "Kanit";
   font-style: normal;
   font-weight: 500;
   font-size: 24px;
   line-height: 35px;
+}
+
+.border-input {
+  background: transparent;
+  border: 1px solid #005FBC;
+  border-radius: 10px;
+  position: relative;
+}
+
+
+input {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-size: 18px;
+  border: none;
+  background-color: transparent;
+  resize: none;
+  outline: none;
+}
+
+
+.icon-color {
+  color: #005FBC !important;
 }

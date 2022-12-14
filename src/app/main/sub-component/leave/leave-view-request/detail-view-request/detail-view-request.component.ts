@@ -93,7 +93,7 @@ export class DetailViewRequestComponent implements OnInit {
                 let { value: reason } = await Swal.fire({
                     title: '<strong style = "font-family:Kanit"> กรุณากรอกเหตุผลไม่อนุมัติการลา </strong>',
                     input: 'textarea',
-                    html: '<strong style = "font-family:Kanit; font-size:16px"> เหุผลไม่อนุมัติการลา* </strong>',
+                    html: '<strong style = "font-family:Kanit; font-size:16px"> เหตุผลไม่อนุมัติการลา* </strong>',
                     inputPlaceholder: 'กรอกข้อมูล',
                     inputAttributes: {
                         'aria-label': 'Type your message here'
@@ -104,6 +104,15 @@ export class DetailViewRequestComponent implements OnInit {
                     confirmButtonText: '<div style = "font-family:Kanit"> ตกลง </div>',
                     confirmButtonColor: '#005FBC',
                     reverseButtons: true,
+                    inputValidator: (value) => {
+                        return new Promise((resolve) => {
+                            if (value.trim() != "") {
+                                resolve("")
+                            } else {
+                                resolve('กรุณากรอกข้อมูล')
+                            }
+                        })
+                    }
                 })
 
                 if (reason) {
@@ -146,7 +155,7 @@ export class DetailViewRequestComponent implements OnInit {
             reverseButtons: true,
             inputValidator: (value) => {
                 return new Promise((resolve) => {
-                    if (value != "") {
+                    if (value.trim() != "") {
                         resolve("")
                     } else {
                         resolve('กรุณากรอกข้อมูล')
@@ -157,9 +166,9 @@ export class DetailViewRequestComponent implements OnInit {
         let elsereason = reason
         if (reason == "อื่น ๆ (กดตกลงเพื่อกรอกเหตุผล)") {
             let { value: reason } = await Swal.fire({
-                title: '<strong style = "font-family:Kanit"> กรุณากรอกเหตุผลไม่อนุมัติการลา </strong>',
+                title: '<strong style = "font-family:Kanit"> กรุณากรอกเหตุผลยกเลิกการลา </strong>',
                 input: 'textarea',
-                html: '<strong style = "font-family:Kanit; font-size:16px"> เหุผลไม่อนุมัติการลา* </strong>',
+                html: '<strong style = "font-family:Kanit; font-size:16px"> เหตุผลยกเลิกการลา* </strong>',
                 inputPlaceholder: 'กรอกข้อมูล',
                 inputAttributes: {
                     'aria-label': 'Type your message here'
@@ -170,6 +179,15 @@ export class DetailViewRequestComponent implements OnInit {
                 confirmButtonText: '<div style = "font-family:Kanit"> ตกลง </div>',
                 confirmButtonColor: '#005FBC',
                 reverseButtons: true,
+                inputValidator: (value) => {
+                    return new Promise((resolve) => {
+                        if (value.trim() != "") {
+                            resolve("")
+                        } else {
+                            resolve('กรุณากรอกข้อมูล')
+                        }
+                    })
+                }
             })
 
             if (reason) {
@@ -236,6 +254,11 @@ export class DetailViewRequestComponent implements OnInit {
             },
             inputPlaceholder: 'เลือกเหตุผลการยกเลิกลา',
             showCancelButton: true,
+            cancelButtonColor: '#d33',
+            cancelButtonText: '<div style = "font-family:Kanit"> ยกเลิก </div>',
+            confirmButtonText: '<div style = "font-family:Kanit"> ตกลง </div>',
+            confirmButtonColor: '#005FBC',
+            reverseButtons: true,
             inputValidator: (value) => {
                 return new Promise((resolve) => {
                     if (value != "") {

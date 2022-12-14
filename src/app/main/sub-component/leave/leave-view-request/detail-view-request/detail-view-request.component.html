@@ -1,4 +1,5 @@
-<app-loading-leave-info *ngIf="!APISuccess" class="d-flex justify-content-center h-100 align-items-center">
+<app-loading-leave-info *ngIf="!APISuccess" class="d-flex justify-content-center
+    h-100 align-items-center">
 </app-loading-leave-info>
 <div class="container-fluid" *ngIf="APISuccess">
     <div class="row mb-4">
@@ -9,7 +10,7 @@
             <i class="fa-solid fa-angle-left back-icon"></i>
         </button>
 
-        <div class="font-header ms-2 col d-flex align-items-center" >รายละเอียดการลา</div>
+        <div class="font-header ms-2 col d-flex align-items-center">รายละเอียดการลา</div>
     </div>
     <div class="row" *ngIf="!ownerCheck">
         <div class="container-fluid shadow-bg">
@@ -43,7 +44,9 @@
             <div class="row mb-4">
                 <div class="container ">
                     <div class="row my-3">
-                        <div class="col d-flex justify-content-end">
+                        <div class="col d-flex flex-column-reverse
+                            justify-content-end align-items-end">
+
                             <div class="circle px-0 pt-1 d-flex
                                 justify-content-center"
                                 *ngIf="objProfile.rvac_is_canceled ==
@@ -84,7 +87,8 @@
                                         '-'">{{objProfile.rvac_reason}}</div>
                                     <div class="mb-2">{{objProfile.rvac_type}}</div>
                                     <div class="mb-2">{{objProfile.rvac_created_at}}</div>
-                                    <div class="mb-2">{{objProfile.rvac_date_start}} - {{objProfile.rvac_date_end}}</div>
+                                    <div class="mb-2">{{objProfile.rvac_date_start}}
+                                        - {{objProfile.rvac_date_end}}</div>
                                     <div class="mb-2">{{objProfile.rvac_duration}}</div>
                                     <div class="mb-2">{{objProfile.rvac_sum_duration}}</div>
                                     <div class="mb-2">{{objProfile.rvac_detail}}</div>
@@ -92,6 +96,7 @@
                             </div>
 
                             <div>
+                                
                                 <button
                                     (click)="cancelVacationOnApprove()"
                                     class="col-2 btn-cancel"
@@ -100,32 +105,40 @@
                                     &&
                                     ownerCheck &&
                                     objProfile.rvac_is_canceled ==
-                                    0">ยกเลิก</button>
+                                    0">ยกเลิก
+                                </button>
+
                                 <button (click)="cancelVacationOnApprove()"
                                     class="col-2
                                     btn-cancel" *ngIf="(stateLeave == 1 &&
                                     objProfile.rvac_special_case != 1) &&
-                                    approve_req.ar_is_approv2 == 1">ยกเลิก</button>
+                                    approve_req.ar_is_approv2 == 1">ยกเลิก
+                                </button>
+
                                 <button (click)="cancelVacation()"
                                     class="col-2
                                     btn-cancel" *ngIf="(stateLeave == 0 &&
                                     ownerCheck) &&
                                     objProfile.rvac_is_canceled
-                                    == 0">ยกเลิก</button>
+                                    == 0">ยกเลิก
+                                </button>
+
                                 <button class="col-2 btn-edit"
                                     *ngIf="((stateLeave == 1 || stateLeave
                                     == 2)
                                     && ownerCheck) &&
                                     (approve_req.ar_is_approv1
                                     == 0 || approve_req.ar_is_approv2 == 0)"
-                                    routerLink="../../edit-detail/{{rvac_id}}">แก้ไข</button>
-                            </div>
+                                    routerLink="../../edit-detail/{{rvac_id}}">แก้ไข
+                                </button>
 
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row mb-4" *ngIf="objProfile.rvac_special_case == 1 && objProfile.rvac_is_canceled == 0" >
+            <div class="row mb-4" *ngIf="objProfile.rvac_special_case == 1 &&
+                objProfile.rvac_is_canceled == 0">
                 <div class="container">
                     <div class="row mb-3">
 
@@ -152,7 +165,8 @@
 
                         <div class="col-8">
                             <div class="col font-header d-flex
-                                align-items-center" style="height: 50px;">อนุมัติโดยหัวหน้าแผนก : {{approve_req.ud_fullname_th1}}</div>
+                                align-items-center" style="height: 50px;">อนุมัติโดยหัวหน้าแผนก
+                                : {{approve_req.ud_fullname_th1}}</div>
                             <div class="row font-detail" *ngFor="let item of
                                 objLog ; let i= index">
                                 <div class="col-4">
@@ -188,20 +202,22 @@
                                 </div>
                             </div>
 
-                            <div class="row" *ngIf="stateLeave == 0 && !ownerCheck">
+                            <div class="row" *ngIf="stateLeave == 0 &&
+                                !ownerCheck">
                                 <button class="cancel-btn me-3"
                                     (click)="disapproveRequest()">ไม่อนุมัติ</button>
                                 <button class="submit-btn"
                                     (click)="approveRequest()">อนุมัติ</button>
                             </div>
-   
+
                         </div>
                     </div>
 
                 </div>
             </div>
 
-            <div class="row mb-4" *ngIf="!(objProfile.rvac_is_canceled == 1 && objProfile.rvac_status == 10)">
+            <div class="row mb-4" *ngIf="!(objProfile.rvac_is_canceled == 1 &&
+                objProfile.rvac_status == 10)">
                 <div class="container">
                     <div class="row mb-3">
 

@@ -57,6 +57,9 @@ export class LeaveEditRequestComponent implements OnInit {
     objDateVerify: any
     datesum: any = ""
 
+    minDate:any
+    isDisabled:boolean = true
+
     objData: any
 
     date = {
@@ -76,7 +79,6 @@ export class LeaveEditRequestComponent implements OnInit {
                 this.leaveRequest.controls.leaveType.setValue(this.objData.rvac_type)
                 this.leaveRequest.controls.startDate.setValue(this.objData.rvac_date_start)
                 this.leaveRequest.controls.endDate.setValue(this.objData.rvac_date_end)
-                this.objData.rvac_duration = 1
                 this.leaveRequest.controls.duration.setValue(this.objData.rvac_duration)
                 this.leaveRequest.controls.detail.setValue(this.objData.rvac_detail)
                 console.log(res.data)
@@ -198,8 +200,17 @@ export class LeaveEditRequestComponent implements OnInit {
     }
 
     onValueChangeDateStart() {
-        let startDate = this.datepipe.transform(this.leaveRequest.controls.startDate.value, 'yyyy-MM-dd');
 
+        if(this.leaveRequest.controls.startDate.invalid){
+            this.isDisabled = true
+        }else{
+            this.isDisabled = false
+        }
+
+
+        let startDate = this.datepipe.transform(this.leaveRequest.controls.startDate.value, 'yyyy-MM-dd');
+        let mindate = this.datepipe.transform(this.leaveRequest.controls.startDate.value, 'MM-dd-yyyy');
+        this.minDate = new Date(mindate!)
         let arydate1 = startDate!.toString().split("-")
 
         arydate1[0] = (Number(arydate1[0]) + 543).toString()
@@ -209,6 +220,7 @@ export class LeaveEditRequestComponent implements OnInit {
         date = date?.replace(",", "-")
 
         this.date.dateStart = date!
+
 
     }
 

@@ -51,6 +51,7 @@ export class HistoryComponent implements OnInit {
         this.leavehistoryservice.getAllUserHistory("").subscribe({
             next: (res: any) => {
                 this.objdataTable = res.data.leave_online
+                console.log(this.objdataTable)
                 this.ApiSuccess = true
             },
             error: (err: any) => {

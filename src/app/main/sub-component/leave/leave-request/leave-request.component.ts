@@ -38,10 +38,10 @@ export class LeaveRequestComponent implements OnInit {
     amount: string = "0 วัน 0 ชั่วโมง";
     summited: boolean = false;
     LeavesDays: any;
-    minDate:any
     objDateVerify: any
     datesum: any = ""
 
+    minDate:any
     isDisabled:boolean = true
 
     gender = localStorage.getItem('ud_gender_id');

@@ -1,6 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { MainService } from '../main.service';
-import { NavigationEnd, Route, Router, RouterLink } from '@angular/router';
+import { NavigationEnd, NavigationStart, Route, Router, RouterLink } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
 import { Subject } from 'rxjs/internal/Subject';
 import { LoadingComponent } from 'src/app/login/loading/loading-template/loading.component';
@@ -34,7 +34,7 @@ export class MainComponent implements OnInit {
         });
 
         this.router.events.subscribe(event => {
-            if (event instanceof NavigationEnd) {
+            if (event instanceof NavigationStart) {
                 this.notiservice.showNumOfNotification().subscribe({
                     next: (res: any) => {
                         localStorage.setItem('notification', res.data.sum_notification)
