@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NotiService } from '../noti.service';
 
 @Component({
     selector: 'app-noti-list',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 export class NotiListComponent implements OnInit {
 
 
-    constructor(private router: Router) { }
+    constructor(private router: Router, private service: NotiService) { }
     role: any = localStorage.getItem('roleUser')
 
     all: boolean = false;
@@ -18,15 +19,9 @@ export class NotiListComponent implements OnInit {
     otnoti: boolean = false;
 
     ngOnInit() {
-        console.log(this.all)
-        console.log(this.worknoti)
-        console.log(this.leaveHnoti)
-        console.log(this.otnoti)
+
         this.URLcheck("")
-        console.log(this.all)
-        console.log(this.worknoti)
-        console.log(this.leaveHnoti)
-        console.log(this.otnoti)
+        this.showNumOfNotification()
     }
 
     navigateActive() {
@@ -39,12 +34,12 @@ export class NotiListComponent implements OnInit {
         if (this.router.url.includes('work-notification')) {
             this.worknoti = true;
             console.log(this.worknoti)
-        }if (this.router.url.includes('leave-notification')) {
+        } if (this.router.url.includes('leave-notification')) {
             this.leaveHnoti = true;
-        }if (this.router.url.includes('ot-notification')) {
+        } if (this.router.url.includes('ot-notification')) {
             console.log(this.leaveHnoti)
             this.otnoti = true;
-        }if (this.router.url.includes('all-notification' || 'notification')) {
+        } if (this.router.url.includes('all-notification' || 'notification')) {
             this.all = true;
             console.log(this.all)
         }
@@ -60,6 +55,13 @@ export class NotiListComponent implements OnInit {
         });
     }
 
-
+    showNumOfNotification() {
+        this.service.showNumOfNotification().subscribe({
+            next: (res: any) => {
+                console.log(res.data)
+            },
+            error: (error: any) => { },
+        })
+    }
 
 }

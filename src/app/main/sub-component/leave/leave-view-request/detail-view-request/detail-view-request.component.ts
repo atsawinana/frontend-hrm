@@ -19,6 +19,8 @@ export class DetailViewRequestComponent implements OnInit {
     objProfile: any
     baseURL = environment.apiURL;
 
+    role:any = localStorage.getItem('roleUser')
+
     stateLeave: any
 
     approve_req: any
@@ -217,6 +219,9 @@ export class DetailViewRequestComponent implements OnInit {
 
     }
 
+
+
+
     async cancelVacationOnApprove() {
 
 
@@ -303,4 +308,5 @@ export class DetailViewRequestComponent implements OnInit {
 
 
     }
+
 }

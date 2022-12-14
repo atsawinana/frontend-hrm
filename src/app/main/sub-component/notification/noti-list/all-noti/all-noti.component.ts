@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 import { NotiService } from '../../noti.service';
 
 @Component({
@@ -8,9 +10,10 @@ import { NotiService } from '../../noti.service';
 })
 export class AllNotiComponent implements OnInit {
 
-    constructor(private notiservice: NotiService) { }
+    constructor(private notiservice: NotiService,private router: Router) { }
 
     objDataNoti:any
+    baseURL = environment.apiURL;
 
     ngOnInit() {
         this.notiservice.getAllNoti().subscribe({
@@ -21,6 +24,10 @@ export class AllNotiComponent implements OnInit {
             error: (error: any) => {},
         })
 
+    }
+
+    NavigateToLeave(id:any){
+        this.router.navigate([`/main/leave/view-request-detail/${id}`]);
     }
 }
 

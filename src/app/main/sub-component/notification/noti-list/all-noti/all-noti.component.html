@@ -5,7 +5,7 @@
     </div>
     <div class="row noti-rectangle">
         <div class="col-1 my-auto" style="max-width:65px;">
-            <div class="image"></div>
+            <img class="image" src="{{baseURL}}{{item.ud_picture}}">
         </div>
         <div class="col my-auto">
             <div class="row">
@@ -28,7 +28,7 @@
                 <div class="content-text-bold">{{item.rvac_date}}</div>
 
                 <div class="col d-flex justify-content-end">
-                    <div class="text-end more">ดูเพิ่มเติม</div>
+                    <div class="text-end more" (click)="NavigateToLeave(item.rvac_id)">ดูเพิ่มเติม</div>
                 </div>
 
             </div>

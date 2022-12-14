@@ -63,6 +63,37 @@ export class NotiService {
         );
       }
 
+      
+      showNumOfNotification() {
+        const headers = new HttpHeaders({
+          Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+        });
+    
+        return this.httpClient.get(
+          `${environment.apiURL}/leaveOnline/showNumOfNotification`,
+          {
+            headers,
+          }
+        );
+      }
+
+
+    //   /leaveOnline/showNumOfNotification[GET]
+    //   ข้อมูลที่ได้ 
+    //   {
+    //       "status": {
+    //           "description": "Show num of notification Successfully"
+    //       },
+    //       "data": {
+    //           "sum_notification": 0, *เลขที่ขึ้นในหน้าหลังทั้งหมด (ที่ยังไม่อ่าน)
+    //           "all_notification": 0, นอติโหมดทั้งหมด (ที่ยังไม่อ่าน)
+    //           "leave_notification": 0, นอติโหมดคำร้องการลา (ที่ยังไม่อ่าน)
+    //           "attendance_notification": 0, นอติโหมดเข้างานออกงาน (ที่ยังไม่อ่าน)
+    //           "overtime_notification": 0 นอติโหมดโอที (ที่ยังไม่อ่าน)
+    //       }
+    //   }
+
+
 // /leaveOnline/notification[GET]
 // ดูการแจ้งเตือนการอนุมัติ
 
