@@ -29,6 +29,10 @@ export class LeaveHistoryComponent implements OnInit {
         currentPage: 1
     }
 
+    UpdateListPerpage(){
+        this.config.itemsPerPage = this.listPerPage
+    }
+
     ngOnInit() {
         this.today = new Date();
         defineLocale('th', thBeLocale);

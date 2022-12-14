@@ -57,6 +57,10 @@ export class HistoryComponent implements OnInit {
         })
     }
 
+    UpdateListPerpage(){
+        this.config.itemsPerPage = this.listPerPage
+    }
+
     onOpenCalendar(container: any) {
         container.monthSelectHandler = (event: any): void => {
             container._store.dispatch(container._actions.select(event.date));

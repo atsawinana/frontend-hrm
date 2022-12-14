@@ -195,30 +195,30 @@
                     <div class="row d-flex justify-content-between">
                         <div class="col-5">
                             <div class="row">
-                                <div class="col-3 px-0 text-end d-flex
-                                    align-items-center justify-content-end">
+                                <div
+                                    class="col-4 col-sm-4 col-md-4 col-lg-4
+                                    col-xl-3
+                                    col-xxl-3 px-0 text-end d-flex
+                                    align-items-center
+                                    justify-content-end">
                                     <div class="list-perPage">รายการต่อหน้า</div>
                                 </div>
-                                <div class="col-2 ms-2 p-0 select-perPage d-flex
+                                <div
+                                    class="col-2 col-sm-2 col-md-2 col-lg-2
+                                    col-xl-2
+                                    col-xxl-2 ms-2 p-0 select-perPage d-flex
                                     align-items-center my-auto">
-                                    <select id="listPerPage"
-                                        [(ngModel)]="listPerPage">
-                                        <option value="3">3</option>
-                                        <option value="5">5</option>
-                                        <option selected value="10">10</option>
-                                    </select>
-
-                                    <!-- <ng-select style="width: 60px;" [(ngModel)]="listPerPage" [clearable]="false" class="custom maxWidth add-boss" (change)="listPerpage()" required>
-                          <ng-option [value]="3">3</ng-option>
-                          <ng-option [value]="5">5</ng-option>
-                          <ng-option [value]="10">10</ng-option>
-                        </ng-select>
-           -->
-                                    <!-- <select id="listPerPage" class="form-select" aria-label="Default select example" (change)="listPerpage()">
-                          <option value="3">3</option>
-                          <option selected value="5">5</option>
-                          <option value="10">10</option>
-                        </select> -->
+                                    <ng-select
+                                        style="width: 60px"
+                                        [(ngModel)]="listPerPage"
+                                        [clearable]="false"
+                                        class="custom maxWidth add-boss"
+                                        (change)="UpdateListPerpage()"
+                                        required>
+                                        <ng-option [value]="3">3</ng-option>
+                                        <ng-option [value]="5">5</ng-option>
+                                        <ng-option [value]="10">10</ng-option>
+                                    </ng-select>
                                 </div>
                             </div>
                         </div>

@@ -79,7 +79,7 @@ export class DetailViewRequestComponent implements OnInit {
 
     disapproveRequest() {
         Swal.fire({
-            title: `<strong style = "font-family:Kanit"> คุณต้องการอนุมัติการลา <br> จาก ${this.objProfile.ud_fullname_th} <br> แผนก ${this.objProfile.department} </strong>`,
+            title: `<strong style = "font-family:Kanit"> คุณต้องการไม่อนุมัติการลา <br> จาก ${this.objProfile.ud_fullname_th} <br> แผนก ${this.objProfile.department} </strong>`,
             icon: 'question',
             showCancelButton: true,
             cancelButtonColor: '#d33',
@@ -127,7 +127,7 @@ export class DetailViewRequestComponent implements OnInit {
     async cancelVacation() {
 
         const { value: reason } = await Swal.fire({
-            title: 'กรุณากรอกเหตุผลยกเลิกการลา',
+            title: '<div style = "font-family:Kanit"> กรุณากรอกเหตุผลยกเลิกการลา </div>',
             input: 'select',
             inputOptions: {
                 "ต้องการเปลี่ยนแปลงวันลา": 'ต้องการเปลี่ยนแปลงวันลา',
@@ -138,6 +138,11 @@ export class DetailViewRequestComponent implements OnInit {
             },
             inputPlaceholder: 'เลือกเหตุผลการยกเลิกลา',
             showCancelButton: true,
+            cancelButtonColor: '#d33',
+            cancelButtonText: '<div style = "font-family:Kanit"> ยกเลิก </div>',
+            confirmButtonText: '<div style = "font-family:Kanit"> ตกลง </div>',
+            confirmButtonColor: '#005FBC',
+            reverseButtons: true,
             inputValidator: (value) => {
                 return new Promise((resolve) => {
                     if (value != "") {

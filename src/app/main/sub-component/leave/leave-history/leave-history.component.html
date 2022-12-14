@@ -11,32 +11,55 @@
                         justify-content-center"></i>
                 </button>ประวัติการลา
 
-                <div class="col-2 ms-4 d-flex align-items-center">
-                    <input type="text" placeholder="เลือกวันเดือนปี"
-                        class="form-control w-75" bsDatepicker
-                        (keypress)="false" (onShown)="onOpenCalendar($event)"
-                        (onHidden)="sortdate()" [(ngModel)]="date"
-                        [bsConfig]="{ isAnimated: true, dateInputFormat:
-                        'MM/YYYY', containerClass: 'theme-dark-blue',
-                        showWeekNumbers: false}">
+                <div class="col-2 ms-4 d-flex align-items-center border-input">
+                    <div class="container">
+                        <div class="row">
+                            <input type="text" placeholder="เลือกวันเดือนปี"
+                                class="col-9 w-75 dateIcon icon-bg"
+                                bsDatepicker (keypress)="false"
+                                (onShown)="onOpenCalendar($event)"
+                                (onHidden)="sortdate()" [(ngModel)]="date"
+                                [bsConfig]="{ isAnimated: true,
+                                dateInputFormat:
+                                'MM/YYYY', containerClass:
+                                'theme-dark-blue',
+                                showWeekNumbers: false}">
+
+                            <div class="col-3 d-flex align-items-center
+                                justify-content-center px-0">
+                                <i class="fa-solid fa-calendar-days icon-color"></i>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
+
             </div>
 
             <div>
                 <div class="table-responsive " style="overflow-x: scroll">
-                    <table class="table-responsive table table-striped mt-3" style="min-width: 1140px">
+                    <table class="table-responsive table table-striped mt-3"
+                        style="min-width: 1140px">
                         <!--table header-->
                         <thead class="ps-5 list-table">
                             <tr>
 
-                                <th class="cut-text" scope="col" style="text-align: center;">ลำดับ</th>
-                                <th class="cut-text" scope="col" style="text-align: center;">ประเภทการลา</th>
-                                <th class="cut-text" scope="col" style="text-align: center;">วันที่ยื่นลา</th>
-                                <th class="cut-text" scope="col" style="text-align: center;">วันที่ต้องการลา</th>
-                                <th class="cut-text" scope="col" style="text-align: center;">ช่วงเวลาในการลา</th>
-                                <th class="cut-text" scope="col" style="text-align: center;">รวมวันที่ลา/ชั่วโมง</th>
-                                <th class="cut-text" scope="col" style="text-align: center;">สถานะ</th>
-                                <th class="cut-text" scope="col" style="text-align: center;">การดำเนินการ</th>
+                                <th class="cut-text" scope="col"
+                                    style="text-align: center;">ลำดับ</th>
+                                <th class="cut-text" scope="col"
+                                    style="text-align: center;">ประเภทการลา</th>
+                                <th class="cut-text" scope="col"
+                                    style="text-align: center;">วันที่ยื่นลา</th>
+                                <th class="cut-text" scope="col"
+                                    style="text-align: center;">วันที่ต้องการลา</th>
+                                <th class="cut-text" scope="col"
+                                    style="text-align: center;">ช่วงเวลาในการลา</th>
+                                <th class="cut-text" scope="col"
+                                    style="text-align: center;">รวมวันที่ลา/ชั่วโมง</th>
+                                <th class="cut-text" scope="col"
+                                    style="text-align: center;">สถานะ</th>
+                                <th class="cut-text" scope="col"
+                                    style="text-align: center;">การดำเนินการ</th>
                             </tr>
                         </thead>
                         <!---->
@@ -46,7 +69,8 @@
                             <tr *ngFor="let item of objdataTable |
                                 paginate:config">
                                 <td>
-                                    <div class="col d-flex justify-content-center mt-1">
+                                    <div class="col d-flex
+                                        justify-content-center mt-1">
                                         {{item.number}}
                                     </div>
                                 </td>
@@ -83,7 +107,8 @@
                                         && item.rvac_is_canceled == 0">
                                         {{item.rvac_status_name}}
                                     </div>
-                                    <div class="mt-1 status-disapproved text-center"
+                                    <div class="mt-1 status-disapproved
+                                        text-center"
                                         *ngIf="item.rvac_approve_status == 0 &&
                                         item.rvac_is_canceled == 0">
                                         {{item.rvac_status_name}}
@@ -131,29 +156,30 @@
                     <div class="row d-flex justify-content-between">
                         <div class="col-5">
                             <div class="row">
-                                <div class="col-3 px-0 text-end d-flex
-                                    align-items-center justify-content-end">
+                                <div
+                                    class="col-4 col-sm-4 col-md-4 col-lg-4
+                                    col-xl-3
+                                    col-xxl-3 px-0 text-end d-flex
+                                    align-items-center
+                                    justify-content-end">
                                     <div class="list-perPage">รายการต่อหน้า</div>
                                 </div>
-                                <div class="col-2 ms-2 p-0 select-perPage d-flex
+                                <div
+                                    class="col-2 col-sm-2 col-md-2 col-lg-2
+                                    col-xl-2
+                                    col-xxl-2 ms-2 p-0 select-perPage d-flex
                                     align-items-center my-auto">
-                                    <select id="listPerPage">
-                                        <option value="3">3</option>
-                                        <option value="5">5</option>
-                                        <option selected value="10">10</option>
-                                    </select>
-
-                                    <!-- <ng-select style="width: 60px;" [(ngModel)]="listPerPage" [clearable]="false" class="custom maxWidth add-boss" (change)="listPerpage()" required>
-                          <ng-option [value]="3">3</ng-option>
-                          <ng-option [value]="5">5</ng-option>
-                          <ng-option [value]="10">10</ng-option>
-                        </ng-select>
-           -->
-                                    <!-- <select id="listPerPage" class="form-select" aria-label="Default select example" (change)="listPerpage()">
-                          <option value="3">3</option>
-                          <option selected value="5">5</option>
-                          <option value="10">10</option>
-                        </select> -->
+                                    <ng-select
+                                        style="width: 60px"
+                                        [(ngModel)]="listPerPage"
+                                        [clearable]="false"
+                                        class="custom maxWidth add-boss"
+                                        (change)="UpdateListPerpage()"
+                                        required>
+                                        <ng-option [value]="3">3</ng-option>
+                                        <ng-option [value]="5">5</ng-option>
+                                        <ng-option [value]="10">10</ng-option>
+                                    </ng-select>
                                 </div>
                             </div>
                         </div>

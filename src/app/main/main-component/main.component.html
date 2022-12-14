@@ -15,10 +15,10 @@
         style="width: 35px; height: 50%;">
       <img class="m-3 logo-element" src="assets/img/logo.png" style="width: 65px; height: auto;" />
     </div>
-    <div class="col-xxl-5 col-xl-6 col-lg-7 col-md-9 col-sm-10 col-10 p-0">
-      <div class="me-2 h-100 d-flex justify-content-end">
+    <div class="col-xxl-5 col-xl-6 col-lg-7 col-md-9 col-sm-10 col-10 p-0 me-4">
+      <div class="me-4 h-100 d-flex justify-content-end">
         <div class="col-2 d-flex justify-content-end align-items-center">
-          <img class="img-profile d-block d-flex justify-content-end " src="{{baseURL}}{{photo}}"/>
+          <img class="img-profile d-block d-flex justify-content-start " src="{{baseURL}}{{photo}}"/>
         </div>
         <div id="name-headerbar"
           class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-5 col-6 p-0 d-flex justify-content-center align-items-center">
@@ -27,8 +27,9 @@
             <div class="profile-text-position">{{Objdata.position_en}}</div>
           </div>
         </div>
-        <div class="col-1 p-0 d-flex justify-content-end align-items-center">
+        <div class="p-0 d-flex justify-content-end align-items-center">
           <div class="dropdown">
+            <span class="badge">{{notificationCOunt}}</span>
             <img class="btn p-0" src="assets/img/header/angle-down-solid.svg" alt="" type="button"
               data-bs-toggle="dropdown" aria-expanded="false" style="height: 30px; width:100%">
             <ul class="dropdown-menu py-0">
@@ -36,6 +37,7 @@
                 <li class="dropdown-list py-1">
                   <div class="d-inline d-flex justify-content-between px-4 py-1" routerLink="notification">
                     <img class="pe-1" src="assets/img/header/bell-solid.svg" alt="" style="height: auto; width:25px">
+                    <span class="badge">{{notificationCOunt}}</span>
                     <div class="font-dropdown-menu pe-2" >แจ้งเตือน</div>
                   </div>
                 </li>

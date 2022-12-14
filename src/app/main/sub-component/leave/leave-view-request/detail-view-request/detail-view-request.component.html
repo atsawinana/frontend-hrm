@@ -7,7 +7,7 @@
             <i class="fa-solid fa-angle-left back-icon"></i>
         </button>
 
-        <div class="font-header ms-2 col">รายละเอียดการลา</div>
+        <div class="font-header ms-2 col d-flex align-items-center">รายละเอียดการลา</div>
     </div>
     <div class="row" *ngIf="!ownerCheck">
         <div class="container-fluid shadow-bg">
@@ -202,8 +202,8 @@
                                         '-'">{{objProfile.rvac_reason}}</div>
                                     <div class="mb-2">{{objProfile.rvac_type}}</div>
                                     <div class="mb-2">{{objProfile.rvac_created_at}}</div>
-                                    <div class="mb-2">{{objProfile.rvac_date_start}}</div>
-                                    <div class="mb-2">{{objProfile.rvac_date_end}}</div>
+                                    <div class="mb-2">{{objProfile.rvac_date_start}} - {{objProfile.rvac_date_end}}</div>
+                                    <div class="mb-2">{{objProfile.rvac_duration}}</div>
                                     <div class="mb-2">{{objProfile.rvac_type}}</div>
                                     <div class="mb-2">{{objProfile.rvac_detail}}</div>
                                 </div>

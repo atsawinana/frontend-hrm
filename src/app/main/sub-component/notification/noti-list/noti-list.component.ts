@@ -18,7 +18,11 @@ export class NotiListComponent implements OnInit {
     otnoti: boolean = false;
 
     ngOnInit() {
-        this.navigateActive()
+        console.log(this.all)
+        console.log(this.worknoti)
+        console.log(this.leaveHnoti)
+        console.log(this.otnoti)
+        this.URLcheck("")
         console.log(this.all)
         console.log(this.worknoti)
         console.log(this.leaveHnoti)
@@ -34,12 +38,15 @@ export class NotiListComponent implements OnInit {
 
         if (this.router.url.includes('work-notification')) {
             this.worknoti = true;
-        } else if (this.router.url.includes('leave-notification')) {
+            console.log(this.worknoti)
+        }if (this.router.url.includes('leave-notification')) {
             this.leaveHnoti = true;
-        } else if (this.router.url.includes('ot-notification')) {
+        }if (this.router.url.includes('ot-notification')) {
+            console.log(this.leaveHnoti)
             this.otnoti = true;
-        } else if (this.router.url.includes('all-notification')) {
+        }if (this.router.url.includes('all-notification' || 'notification')) {
             this.all = true;
+            console.log(this.all)
         }
     }
 

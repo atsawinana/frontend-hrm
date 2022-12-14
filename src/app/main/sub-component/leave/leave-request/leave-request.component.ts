@@ -62,7 +62,7 @@ export class LeaveRequestComponent implements OnInit {
     checkCancel() {
         Swal.fire({
             title:
-                '<strong style = "font-family:Kanit"> คุณต้องการส่งยกเลิกการส่งแบบฟอร์มการลา ใช่หรือไม่ </strong>',
+                '<strong style = "font-family:Kanit"> คุณต้องการยกเลิกการส่งแบบฟอร์มการลา ใช่หรือไม่ </strong>',
             icon: 'warning',
             showCancelButton: true,
             cancelButtonColor: '#d33',
