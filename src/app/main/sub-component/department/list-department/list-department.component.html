@@ -72,14 +72,13 @@
                     *ngFor="
                     let datas of deptTable | filter: searchInput |
                     paginate:config
-                    " 
-                    routerLink="emp-department/{{ datas.dept_id}}"
-                    style="cursor:pointer"
-                    >
+                    ">
                     <!-- filter : searchInput -->
 
                     <td>{{ datas.number }}</td>
-                    <td id="nameDepartment" class="text-start ps-5">
+                    <td id="nameDepartment" class="text-start ps-5"
+                        routerLink="emp-department/{{ datas.dept_id}}"
+                        style="cursor:pointer">
                         {{ datas.dept_name_en }}
                     </td>
                     <td>{{ datas.member }}</td>
@@ -106,7 +105,8 @@
                                 col-xxl-1 px-0 mx-1">
                                 <div
                                     class="activity-table icon-fix"
-                                    routerLink="emp-department/{{ datas.dept_id}}"
+                                    routerLink="emp-department/{{
+                                    datas.dept_id}}"
                                     (click)="setLocal(datas.dept_id)">
                                     <img
                                         class="mx-auto"
@@ -293,7 +293,7 @@
                         </div>
                         <div id="modal_detail">
                             <div class="row mb-3">
-                                <div class="col-5  ps-5 text-end">
+                                <div class="col-5 ps-5 text-end">
                                     ชื่อแผนก (TH) :
                                 </div>
                                 <div class="col-7">
@@ -307,7 +307,7 @@
                             </div>
 
                             <div class="row mb-3">
-                                <div class="col-5  text-end
+                                <div class="col-5 text-end
                                     ps-5">
                                     วันที่สร้าง :
                                 </div>
@@ -322,7 +322,7 @@
                             </div>
 
                             <div class="row mb-3">
-                                <div class="col-5  text-end
+                                <div class="col-5 text-end
                                     ps-5">
                                     ตำแหน่ง :
                                 </div>
@@ -339,7 +339,7 @@
                             </div>
 
                             <div class="row mb-3">
-                                <div class="col-5  text-end
+                                <div class="col-5 text-end
                                     ps-5">
                                     หัวหน้าแผนก :
                                 </div>

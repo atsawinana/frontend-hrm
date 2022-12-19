@@ -27,7 +27,7 @@ export class DetailViewRequestComponent implements OnInit {
 
     ownerCheck: any
 
-    objLog: any
+    approve_reqs: any
 
     APISuccess: boolean = false
 
@@ -42,7 +42,7 @@ export class DetailViewRequestComponent implements OnInit {
             next: (res: any) => {
                 this.objProfile = res.data.req_vacations
                 this.approve_req = res.data.approve_req
-                this.objLog = res.data.approve_reqs
+                this.approve_reqs = res.data.approve_reqs
                 this.stateLeave = res.data.state
                 this.ownerCheck = res.data.owner
                 this.APISuccess = true
@@ -274,7 +274,7 @@ export class DetailViewRequestComponent implements OnInit {
             let { value: reason } = await Swal.fire({
                 title: '<strong style = "font-family:Kanit"> กรุณากรอกเหตุผลไม่อนุมัติการลา </strong>',
                 input: 'textarea',
-                html: '<strong style = "font-family:Kanit; font-size:16px"> เหุผลไม่อนุมัติการลา* </strong>',
+                html: '<strong style = "font-family:Kanit; font-size:16px"> เหตุผลไม่อนุมัติการลา* </strong>',
                 inputPlaceholder: 'กรอกข้อมูล',
                 inputAttributes: {
                     'aria-label': 'Type your message here'

@@ -48,22 +48,22 @@
             <thead>
                 <tr>
                     <th class="text-center" style="width: 5% !important;">ลำดับ</th>
-                    <th class="text-start" style="width: 10% !important;">รหัสพนักงาน</th>
-                    <th class="text-start" style="width: 25% !important;">รายชื่อ</th>
-                    <th class="text-start" style="width: 20% !important;">ตำแหน่ง</th>
-                    <th class="text-start" style="width: 25% !important;">วันที่เริ่มงาน</th>
+                    <th class="text-center" style="width: 10% !important;">รหัสพนักงาน</th>
+                    <th class="text-center" style="width: 25% !important;">รายชื่อ</th>
+                    <th class="text-center" style="width: 20% !important;">ตำแหน่ง</th>
+                    <th class="text-center" style="width: 25% !important;">วันที่เริ่มงาน</th>
                     <th style="width: 10% !important;">การดำเนินการ</th>
                 </tr>
             </thead>
 
             <tbody class="list-content">
                 <tr id="" *ngFor="let emp of objemptable | filter : searchInput
-                    | paginate: config">
+                    | paginate: config" style="color: #48484A !important;">
                     <td class="text-center">{{emp.number}}</td>
                     <td class="text-start">{{emp.user_card_number}}</td>
                     <td class="text-start">{{emp.ud_fullname_th}}</td>
                     <td class="text-start">{{emp.positions}}</td>
-                    <td class="text-start">{{emp.start_date}}</td>
+                    <td class="text-center">{{emp.start_date}}</td>
                     <td>
 
                         <div class="row d-flex justify-content-center">
