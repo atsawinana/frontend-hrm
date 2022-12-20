@@ -136,9 +136,9 @@
                 </div>
                 <div
                     class="col-3 h-100 d-flex justify-content-center btn-margin"
-                    routerLink="add-employee">
+                    routerLink="add-employee" *ngIf="role == 3">
                     <button type="button" class="btn btn-primary w-100
-                        btn-add-employee">
+                        btn-add-employee" >
                         เพิ่มพนักงาน
                     </button>
                 </div>

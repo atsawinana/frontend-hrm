@@ -28,6 +28,8 @@ export class ListEmployeeComponent implements OnInit {
 
   checkMarkAll: boolean = false;
 
+  role:any = localStorage.getItem('roleUser')
+
   listPerpage() {
     this.config.itemsPerPage = this.listPerPage;
     this.config.currentPage = 1;

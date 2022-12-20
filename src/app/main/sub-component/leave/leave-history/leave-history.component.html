@@ -17,7 +17,7 @@
                 <div class="col-2 ms-4 d-flex align-items-center border-input">
                     <div class="container">
                         <div class="row">
-                            <input type="text" placeholder="เลือกวันเดือนปี"
+                            <input type="text" placeholder="เลือกเดือนและปี"
                                 class="col-9 w-75 dateIcon icon-bg"
                                 bsDatepicker (keypress)="false"
                                 (onShown)="onOpenCalendar($event)"
@@ -49,7 +49,7 @@
 
             <div *ngIf="objdataTable.length != 0">
                 <div class="table-responsive " style="overflow-x: scroll">
-                    <table class="table-responsive table table-striped mt-3"
+                    <table class="table-responsive table table-striped mt-3 "
                         style="min-width: 1140px">
                         <!--table header-->
                         <thead class="ps-5 list-table">
