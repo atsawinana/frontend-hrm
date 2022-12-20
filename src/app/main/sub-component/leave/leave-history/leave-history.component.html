@@ -1,4 +1,5 @@
-<app-loading-leave-info *ngIf="!ApiSuccess" class="d-flex justify-content-center h-100 align-items-center">
+<app-loading-leave-info *ngIf="!ApiSuccess" class="d-flex justify-content-center
+    h-100 align-items-center">
 </app-loading-leave-info>
 <app-overbutton *ngIf="ApiSuccess"></app-overbutton>
 <div *ngIf="ApiSuccess">
@@ -21,11 +22,14 @@
                                 bsDatepicker (keypress)="false"
                                 (onShown)="onOpenCalendar($event)"
                                 (onHidden)="sortdate()" [(ngModel)]="date"
+                                (bsValueChange)="sortdate()"
                                 [bsConfig]="{ isAnimated: true,
                                 dateInputFormat:
                                 'MM/YYYY', containerClass:
                                 'theme-dark-blue',
-                                showWeekNumbers: false}">
+                                showWeekNumbers: false,
+                                showClearButton: true,
+                                clearPosition: 'right'}">
 
                             <div class="col-3 d-flex align-items-center
                                 justify-content-center px-0">
@@ -38,7 +42,8 @@
 
             </div>
 
-            <h1 class="row mt-5 d-flex justify-content-center" *ngIf="objdataTable.length == 0" style="font-family: 'Kanit';">
+            <h1 class="row mt-5 d-flex justify-content-center"
+                *ngIf="objdataTable.length == 0" style="font-family: 'Kanit';">
                 ไม่พบประวัตการลาทั้งหมด
             </h1>
 
@@ -128,7 +133,7 @@
                                         *ngIf="item.rvac_is_canceled == 1">
                                         {{item.rvac_status_name}}
                                     </div>
-                                    
+
                                 </td>
 
 

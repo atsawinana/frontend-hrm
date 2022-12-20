@@ -99,7 +99,7 @@
                                 <button (click)="cancelVacation()"
                                     *ngIf="objProfile.rvac_can_cancel == 1 &&
                                     ownerCheck" class="col-2 btn-cancel">ยกเลิก</button>
-                                <button class="col-2 btn-edit" *ngIf="objProfile.rvac_can_cancel == 2"
+                                <button class="col-2 btn-edit" *ngIf="objProfile.rvac_can_cancel == 2 && ownerCheck"
                                     routerLink="../../edit-detail/{{rvac_id}}">แก้ไข</button>
                             </div>
                         </div>
