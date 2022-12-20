@@ -73,7 +73,7 @@ export class LeaveHistoryComponent implements OnInit {
 
         let date = arydate1[0] + "-" + arydate1[1]
 
-        this.leavehistoryservice.getAllUserHistory(date).subscribe({
+        this.leavehistoryservice.getUserHistory(date).subscribe({
             next: (res: any) => {
                 console.log(res.data)
                 this.objdataTable = res.data.leave_online

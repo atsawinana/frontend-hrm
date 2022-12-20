@@ -136,13 +136,13 @@
                         <div class="col-8">
                             <div class="col font-header d-flex
                                 align-items-center" style="height: 50px;">{{reqs.ar_head}}</div>
-                            <div class="row font-detail" >
+                            <div class="row font-detail" *ngIf="reqs.ar_head != 'ยื่นคำร้องใหม่'">
                                 <div class="col-4 ">
                                     <div class="mb-2 fw-bolder" >อนุมัติวันที่ :</div>
                                     <div class="mb-2 fw-bolder" >สถานะ :</div>
                                     <div class="mb-2 fw-bolder" >เหตุผล :</div>
                                 </div>
-                                <div class="col">
+                                <div class="col" >
                                     <div class="mb-2" >{{reqs.ar_update_at}}</div>
                                     <div class="mb-2 font-wait" *ngIf="reqs.ar_is_approv == null">{{reqs.ar_is_approv_name}}</div>
                                     <div class="mb-2 font-accept" *ngIf="reqs.ar_is_approv == 1">{{reqs.ar_is_approv_name}}</div>

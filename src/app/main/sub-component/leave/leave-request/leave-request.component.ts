@@ -234,6 +234,8 @@ export class LeaveRequestComponent implements OnInit {
 
     onValueChangeDateStart() {
 
+        this.leaveRequest.controls.endDate.setValue('')
+
         if(this.leaveRequest.controls.startDate.invalid){
             this.isDisabled = true
         }else{
