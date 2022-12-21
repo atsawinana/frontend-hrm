@@ -217,3 +217,27 @@
     color: #FFFFFF;
 
 }
+
+.btn-histroyall {
+    background: linear-gradient(90deg, #E69755 0.1%, #FF5444 100.01%);
+    border: 0px;
+    border-radius: 8px;
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+}
+
+.btn-viewrequest {
+    background: linear-gradient(270.74deg, #2E3579 0.35%, #005FBC 99.1%, #005FBC 99.1%);
+    border: 0px;
+    border-radius: 8px;
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+}

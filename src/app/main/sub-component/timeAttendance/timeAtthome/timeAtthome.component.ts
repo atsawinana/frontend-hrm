@@ -23,6 +23,7 @@ export class TimeAtthomeComponent implements OnInit {
   rxTime: any;
   intervalId: any;
   subscription: Subscription | undefined;
+  role:boolean = false
 
   constructor() {
 
@@ -42,6 +43,12 @@ export class TimeAtthomeComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    let role = localStorage.getItem('roleUser')
+    if(role == '2' || role == '3'){
+      this.role = true
+    }
+
     // Using Basic Interval
     this.intervalId = setInterval(() => {
       this.time = new Date();

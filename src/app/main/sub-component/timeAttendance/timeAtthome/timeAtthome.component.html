@@ -46,7 +46,7 @@
   <div class="main-content h-100 p-5">
     <div class="container-fluid">
 
-      <div class="row">
+      <div class="row" *ngIf="!role">
         <div class="col d-flex align-items-center font-table">
           ประวัติการเข้างาน
         </div>
@@ -58,6 +58,21 @@
         </div>
       </div>
 
+      <div class="row" *ngIf="role">
+        <div class="col-4 d-flex align-items-center font-table">
+          ประวัติการเข้างาน
+        </div>
+        <div class="col-8 d-flex justify-content-end flex-row" style="height: 48px !important;">
+          <button class="btn-histroyall p-2 col-3 mx-1">
+            <i class="fa-solid fa-user-clock icon me-1"></i>ประวัติเข้างานทั้งหมด</button>
+          <button class="btn-histroy p-2 col-3 mx-1"><i
+              class="fa-solid fa-clock-rotate-left icon me-1"></i>ประวัติคำร้อง</button>
+          <button class="btn-viewrequest p-2 col-3 mx-1"><i class="fa-solid fa-image-portrait icon me-1"></i>คำร้องเข้างาน</button>
+          <button class="btn-request p-2 col-3 mx-1"><i
+              class="fa-solid fa-circle-plus icon me-1"></i>สร้างฟอร์มคำร้องเข้างาน</button>
+        </div>
+      </div>
+
       <div class="row">
         <div class="table-responsive">
           <table class="table-responsive table table-striped mt-3">
@@ -65,22 +80,24 @@
             <!--table header-->
             <thead class="ps-5 list-table">
               <tr align="center">
-                <th scope="col">ลำดับ</th>
-                <th scope="col">วันที่</th>
-                <th scope="col">ระยะเวลาเริ่มต้น-สิ้นสุด</th>
-                <th scope="col">ชื่องาน</th>
-                <th scope="col">รายละเอียดการทำงาน</th>
+                <th class="text-center">ลำดับ</th>
+                <th class="text-center">วันที่ทำงาน </th>
+                <th class="text-center">เวลาเข้าทำงาน(24ชม.)</th>
+                <th class="text-center">เวลาออกงาน(24ชม.)</th>
+                <th class="text-center">จำนวนชั่วโมงที่ทำงาน</th>
+                <th class="text-center">หมายเหตุ</th>
               </tr>
             </thead>
             <!---->
 
             <tbody class="list-content">
               <tr align="center" *ngFor="let item of ary | paginate: config">
-                <td class="space-table">1</td>
-                <td class="space-table">25/10/2564</td>
-                <td class="space-table">19.00 น. - 22.00 น.</td>
-                <td class="space-table">CRM - Beyond</td>
-                <td class="space-table">ออกแบบ UI ระบบรายชื่อลูกค้า, ระบบงานต่ออายุ, โปรไฟล์</td>
+                <td class="text-center">1</td>
+                <td class="text-center">25/10/2564</td>
+                <td class="text-center">19.00 น. - 22.00 น.</td>
+                <td class="text-center">CRM - Beyond</td>
+                <td class="text-center">900 วัน</td>
+                <td class="text-start">ออกแบบ UI ระบบรายชื่อลูกค้า, ระบบงานต่ออายุ, โปรไฟล์</td>
               </tr>
             </tbody>
           </table>
