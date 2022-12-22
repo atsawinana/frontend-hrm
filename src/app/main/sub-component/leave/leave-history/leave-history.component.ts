@@ -13,7 +13,7 @@ import { DatePipe } from '@angular/common';
 })
 export class LeaveHistoryComponent implements OnInit {
 
-    constructor(private localeService: BsLocaleService, private leavehistoryservice: LeaveHistoryService,public datepipe: DatePipe,) { }
+    constructor(private localeService: BsLocaleService, private leavehistoryservice: LeaveHistoryService, public datepipe: DatePipe,) { }
     locale = 'th';
     today!: Date;
 
@@ -21,7 +21,7 @@ export class LeaveHistoryComponent implements OnInit {
 
     date: any
 
-    ApiSuccess:boolean = false
+    ApiSuccess: boolean = false
 
     listPerPage: number = 5
 
@@ -31,7 +31,7 @@ export class LeaveHistoryComponent implements OnInit {
         currentPage: 1
     }
 
-    UpdateListPerpage(){
+    UpdateListPerpage() {
         this.config.itemsPerPage = this.listPerPage
     }
 
@@ -40,10 +40,25 @@ export class LeaveHistoryComponent implements OnInit {
         defineLocale('th', thBeLocale);
         this.localeService.use(this.locale);
 
+
+
         this.leavehistoryservice.getUserHistory("").subscribe({
             next: (res: any) => {
                 this.objdataTable = res.data.leave_online
                 console.log(this.objdataTable)
+
+                let startDate = new Date()
+                this.date = startDate
+                // let startString
+                // startString = this.datepipe.transform(startDate, 'MM/yyyy')!
+                // let monthth = startString.substring(0, startString.indexOf('/') + 1)
+                // let yearth = startString.substring(startString.indexOf('/') + 1, startString.length)
+                // let yearstring
+                // yearstring = Number(yearth) + 543
+                // startString = monthth + yearstring
+                // this.date = startString
+
+
                 this.ApiSuccess = true
             },
             error: (err: any) => {
@@ -52,7 +67,7 @@ export class LeaveHistoryComponent implements OnInit {
         })
     }
 
-    onOpenCalendar(container:any) {
+    onOpenCalendar(container: any) {
         container.monthSelectHandler = (event: any): void => {
             container._store.dispatch(container._actions.select(event.date));
         };
@@ -61,7 +76,7 @@ export class LeaveHistoryComponent implements OnInit {
 
 
     sortdate() {
-        if(this.date == "" || this.date == null)
+        if (this.date == "" || this.date == null)
             return
         console.log(this.date)
         let startDate = this.datepipe.transform(this.date, 'yyyy-MM-dd')
@@ -84,5 +99,5 @@ export class LeaveHistoryComponent implements OnInit {
         })
     }
 
-    
+
 }

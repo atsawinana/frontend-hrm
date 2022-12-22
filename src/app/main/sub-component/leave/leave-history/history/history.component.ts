@@ -52,6 +52,10 @@ export class HistoryComponent implements OnInit {
             next: (res: any) => {
                 this.objdataTable = res.data.leave_online
                 console.log(this.objdataTable)
+
+                let startDate = new Date()
+                this.date = startDate
+
                 this.ApiSuccess = true
             },
             error: (err: any) => {

@@ -151,6 +151,16 @@
                                 </div>
                             </div>
 
+                            <div class="row font-detail" *ngIf="reqs.ar_head == 'ยื่นคำร้องใหม่'">
+                                <div class="col-4 ">
+                                    <div class="mb-2 fw-bolder" >ยื่นคำร้องใหม่วันที่ :</div>
+                                </div>
+                                <div class="col" >
+                                    <div class="mb-2" >{{reqs.ar_update_at}}</div>
+                                </div>
+                            </div>
+
+
                             <div class="row" *ngIf="reqs.ar_can_approve == 1 && !ownerCheck">
                                 <button class="cancel-btn me-3" (click)="disapproveRequest()">ไม่อนุมัติ</button>
                                 <button class="submit-btn" (click)="approveRequest()">อนุมัติ</button>

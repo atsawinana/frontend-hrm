@@ -165,13 +165,12 @@
                                         formControlName="duration"
                                         (change)="countDays()"
                                         (change)="verifydate()">
-                                        <ng-option [value]="1">ลาช่วงเช้า</ng-option>
+                                        <ng-option [value]="1"
+                                            *ngIf="date.dateStart ==
+                                            date.dateEnd">ลาช่วงเช้า</ng-option>
                                         <ng-option [value]="2"
-                                            *ngIf="!leaveRequest.controls.endDate.value
-                                            ||
-                                            !leaveRequest.controls.endDate.value
-                                            ==
-                                            !leaveRequest.controls.startDate.value">ลาช่วงบ่าย</ng-option>
+                                            *ngIf="date.dateStart ==
+                                            date.dateEnd">ลาช่วงบ่าย</ng-option>
                                         <ng-option [value]="3">ลาทั้งวัน</ng-option>
                                     </ng-select>
 
@@ -230,7 +229,7 @@
                                         id="exampleFormControlTextarea1"
                                         rows="3"
                                         formControlName="detail">
-                                    </textarea> 
+                                    </textarea>
                                 </div>
                             </div>
                         </div>
