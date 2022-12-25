@@ -23,7 +23,7 @@ export class LeaveHistoryComponent implements OnInit {
 
     ApiSuccess: boolean = false
 
-    listPerPage: number = 5
+    listPerPage: number = 10
 
     public config: PaginationInstance = {
         id: 'custom',

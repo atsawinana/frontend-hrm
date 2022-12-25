@@ -29,7 +29,7 @@ export class HistoryComponent implements OnInit {
 
     searchInput:any
 
-    listPerPage: number = 5
+    listPerPage: number = 10
 
     ApiSuccess:boolean = false
 

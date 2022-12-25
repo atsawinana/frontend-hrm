@@ -17,6 +17,7 @@ export class NotiListComponent implements OnInit {
     worknoti: boolean = false;
     leaveHnoti: boolean = false;
     otnoti: boolean = false;
+    noti:any
 
     ngOnInit() {
 
@@ -56,6 +57,7 @@ export class NotiListComponent implements OnInit {
         this.service.showNumOfNotification().subscribe({
             next: (res: any) => {
                 localStorage.setItem('notification',res.data.sum_notification)
+                this.noti = res.data
             },
             error: (error: any) => { },
         })

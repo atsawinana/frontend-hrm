@@ -11,18 +11,28 @@
         <div class="row headline d-flex justify-content-start">
             <div (click)="URLcheck($event)" [ngClass]="{'active-box' : all}"
                 class="col-2 text-center noti-type"
-                routerLink="all-notification">แจ้งเตือนของฉัน</div>
+                routerLink="all-notification">
+                <span class="badge" *ngIf="noti.all_notification != 0">{{noti.all_notification}}</span>
+
+                แจ้งเตือนของฉัน</div>
+
             <div (click)="URLcheck($event)" [ngClass]="{'active-box' :
                 worknoti}"
                 *ngIf="role != 1" class="col-2 text-center noti-type"
-                routerLink="work-notification">อนุมัติทำงาน</div>
+                routerLink="work-notification">
+                <span class="badge" *ngIf="noti.attendance_notification != 0">{{noti.attendance_notification}}</span>
+                อนุมัติทำงาน</div>
             <div (click)="URLcheck($event)" [ngClass]="{'active-box' :
                 leaveHnoti}"
                 *ngIf="role != 1" class="col-2 text-center noti-type "
-                routerLink="leave-notification">อนุมัติลา</div>
+                routerLink="leave-notification">
+                <span class="badge" *ngIf="noti.leave_notification != 0">{{noti.leave_notification}}</span>
+                อนุมัติลา</div>
             <div (click)="URLcheck($event)" [ngClass]="{'active-box' : otnoti}"
                 *ngIf="role != 1" class="col-2 text-center noti-type"
-                routerLink="ot-notification">อนุมัติโอที</div>
+                routerLink="ot-notification">
+                <span class="badge" *ngIf="noti.overtime_notification != 0">{{noti.overtime_notification}}</span>
+                อนุมัติโอที</div>
         </div>
 
         <router-outlet></router-outlet>
