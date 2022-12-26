@@ -137,18 +137,18 @@
                 <div
                     class="col-3 h-100 d-flex justify-content-center btn-margin"
                     routerLink="add-employee" *ngIf="role == 3">
-                    <button type="button" class="btn btn-primary w-100
-                        btn-add-employee" >
-                        เพิ่มพนักงาน
+                    <button type="button" class="btn btn-primary w-100 btn-add-employee d-flex align-items-center justify-content-center " >
+                        <i class="fa-solid fa-circle-plus" style="font-size: 26px;"></i>
+                        <div class="px-2">เพิ่มพนักงาน</div> 
                     </button>
                 </div>
                 <div class="col-3 h-100 d-flex justify-content-center
                     btn-margin">
                     <button
                         type="button"
-                        class="btn btn-primary w-100 btn-export-excel"
-                        (click)="exportAsExcelFile()">
-                        Export Excel
+                        class="btn btn-primary w-100 btn-export-excel d-flex align-items-center justify-content-center"
+                        (click)="exportAsExcelFile()"> <i class="fa-regular fa-file-excel" style="font-size: 26px;"></i>
+                        <div class="px-2">Export Excel</div>    
                     </button>
                 </div>
             </div>
@@ -157,11 +157,11 @@
 
     <div class="table-responsive" style="overflow-x: scroll">
         <table
-            class="table table-striped text-center mt-3 list-table"
+            class="table align-middle table-striped text-center mt-3 list-table"
             id="tableemp"
             style="min-width: 1140px">
             <thead>
-                <tr>
+                <tr >
                     <th class="text-center" style="width: 5% !important">ลำดับ</th>
                     <th class="text-center" style="width: 10% !important">รหัสพนักงาน</th>
                     <th class="text-center" style="width: 25% !important">รายชื่อ</th>
@@ -172,7 +172,7 @@
             </thead>
 
             <tbody class="list-content">
-                <tr
+                <tr 
                     id="row-list"
                     *ngFor="
                     let emp of objemptable | filter: searchInput | paginate:

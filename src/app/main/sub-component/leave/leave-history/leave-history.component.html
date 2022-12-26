@@ -19,6 +19,7 @@
                         <div class="row">
                             <input type="text" placeholder="เลือกเดือนและปี"
                                 class="col-9 w-75 dateIcon icon-bg"
+                                #dp="bsDatepicker"
                                 bsDatepicker (keypress)="false"
                                 (onShown)="onOpenCalendar($event)"
                                 (onHidden)="sortdate()" [(ngModel)]="date"
@@ -31,7 +32,7 @@
                                 clearPosition: 'right'}">
 
                             <div class="col-3 d-flex align-items-center
-                                justify-content-center px-0">
+                                justify-content-center px-0" (click)="dp.toggle()" [attr.aria-expanded]="dp.isOpen" style="cursor: pointer;">
                                 <i class="fa-solid fa-calendar-days icon-color"></i>
                             </div>
                         </div>
@@ -111,23 +112,23 @@
 
                                 <td>
                                     <div class="mt-1 status-pending text-center"
-                                        *ngIf="item.rvac_approve_status == null
-                                        && item.rvac_is_canceled == 0">
+                                        *ngIf="item.rvac_approve_status == null">
                                         {{item.rvac_status_name}}
                                     </div>
+
                                     <div class="mt-1 status-disapproved
                                         text-center"
-                                        *ngIf="item.rvac_approve_status == 0 &&
-                                        item.rvac_is_canceled == 0">
+                                        *ngIf="item.rvac_approve_status == 0">
                                         {{item.rvac_status_name}}
                                     </div>
+
                                     <div class="mt-1 status-accept text-center"
-                                        *ngIf="item.rvac_approve_status == 1 &&
-                                        item.rvac_is_canceled == 0">
+                                        *ngIf="item.rvac_approve_status == 1">
                                         {{item.rvac_status_name}}
                                     </div>
+
                                     <div class="mt-1 status-cancel text-center"
-                                        *ngIf="item.rvac_is_canceled == 1">
+                                        *ngIf="item.rvac_approve_status == 2">
                                         {{item.rvac_status_name}}
                                     </div>
 

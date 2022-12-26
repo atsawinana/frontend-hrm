@@ -1,4 +1,5 @@
-<app-loading-leave-info *ngIf="!ApiSuccess" class="d-flex justify-content-center h-100 align-items-center">
+<app-loading-leave-info *ngIf="!ApiSuccess" class="d-flex justify-content-center
+    h-100 align-items-center">
 </app-loading-leave-info>
 <div *ngIf="ApiSuccess">
 
@@ -10,30 +11,28 @@
 
         <div class="col-lg-5 h-100 d-flex justify-content-center px-0">
 
-            <button type="button" class="btn btn-primary w-75 btn-history " routerLink="history">
-                <div class="row">
-                    <div class="col-1 space-icon"><i class="fa-solid fa-clock-rotate-left icon"></i></div>
-                    <div class="col cut-text">ประวัติการลา</div>
-                </div>
+            <button type="button" class="btn btn-primary w-75 btn-history d-flex
+                align-items-center justify-content-center" routerLink="history">
+                <i class="fa-solid fa-clock-rotate-left" style="font-size:
+                    26px;"></i>
+                <div class="px-2">ประวัติการลา</div>
             </button>
 
-            <button *ngIf="role != 1" type="button" class="btn btn-primary w-75 btn-addform " routerLink="view-request">
-                <div class="row">
-                    <div class="col-1 space-icon"><i class="fa-regular fa-comment-dots icon"></i></div>
-                    <div class="col cut-text">ดูคำขอการลา</div>
-                </div>
+            <button *ngIf="role != 1" type="button" class="btn btn-primary w-75
+                btn-addform d-flex align-items-center justify-content-center"
+                routerLink="view-request">
+                <i class="fa-regular fa-comment-dots" style="font-size: 26px;"></i>
+                <div class="px-2">ดูคำขอการลา</div>
             </button>
 
-            <button type="button" class="btn btn-primary w-75 btn-addform " routerLink="request">
-                <div class="row">
-                    <div class="col-1 " style="padding-left: -20px;" ><i class="fa-solid fa-circle-plus icon"></i></div>
-                    <div class="col cut-text">สร้างฟอร์มการลา</div>
-                </div>
+            <button type="button" class="btn btn-primary w-75 btn-addform d-flex
+                align-items-center justify-content-center" routerLink="request">
+                <i class="fa-solid fa-circle-plus" style="font-size: 26px;"></i>
+                <div class="px-2">สร้างฟอร์มการลา</div>
             </button>
 
         </div>
     </div>
-
 
     <div class="table-responsive">
         <table class="table-responsive table table-striped mt-3">
@@ -60,18 +59,24 @@
                             <div class="row">
                                 <div class="col-4"></div>
                                 <div class="col-2">{{objLeaveInfo.amount_leave.av_leave}}</div>
-                                <div class="col-5"><i class="fa-solid fa-circle-info icon-info" id="demo" type="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false"></i>
+                                <div class="col-5"><i class="fa-solid
+                                        fa-circle-info icon-info" id="demo"
+                                        type="button"
+                                        data-bs-toggle="dropdown"
+                                        aria-expanded="false"></i>
                                     <ul class="dropdown-menu py-0">
                                         <div class="p-1 ">
-                                            <div class="d-inline d-flex justify-content-between px-3 py-1">
+                                            <div class="d-inline d-flex
+                                                justify-content-between px-3
+                                                py-1">
                                                 <div class="row">
                                                     <div class="col">ข้อเเนะนำ</div>
                                                     <hr class="line">
                                                     <div class="col">
                                                         <p>การลากิจใช้ในกรณีมีธุระจำเป็น
                                                             หรือติดต่อหน่วยงานราชการเท่านั้น
-                                                            ไม่อนุญาตให้พนักงานลากิจในแต่ละครั้ง ติดต่อกันเกิน 2
+                                                            ไม่อนุญาตให้พนักงานลากิจในแต่ละครั้ง
+                                                            ติดต่อกันเกิน 2
                                                             วันทำงาน
                                                         </p>
                                                     </div>
@@ -111,16 +116,23 @@
                             <div class="row">
                                 <div class="col-4"></div>
                                 <div class="col-2">{{objLeaveInfo.amount_leave.av_sick}}</div>
-                                <div class="col-5"><i class="fa-solid fa-circle-info icon-info" id="demo" type="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false"></i>
+                                <div class="col-5"><i class="fa-solid
+                                        fa-circle-info icon-info" id="demo"
+                                        type="button"
+                                        data-bs-toggle="dropdown"
+                                        aria-expanded="false"></i>
                                     <ul class="dropdown-menu py-0">
                                         <div class="p-1 ">
-                                            <div class="d-inline d-flex justify-content-between px-3 py-1">
+                                            <div class="d-inline d-flex
+                                                justify-content-between px-3
+                                                py-1">
                                                 <div class="row">
                                                     <div class="col">ข้อเเนะนำ</div>
                                                     <hr class="line">
                                                     <div class="col">
-                                                        <p> หากพนักงานลาป่วยมากกว่า 3 วัน
+                                                        <p>
+                                                            หากพนักงานลาป่วยมากกว่า
+                                                            3 วัน
                                                             จะต้องมีหนังสือรับรองจากแพทย์แผนปัจจุบันชั้นหนึ่งมาแสดง
                                                         </p>
                                                     </div>
@@ -158,20 +170,31 @@
                             <div class="row">
                                 <div class="col-4"></div>
                                 <div class="col-2">{{objLeaveInfo.amount_leave.av_take_annual}}</div>
-                                <div class="col-5"><i class="fa-solid fa-circle-info icon-info" id="demo" type="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false"></i>
+                                <div class="col-5"><i class="fa-solid
+                                        fa-circle-info icon-info" id="demo"
+                                        type="button"
+                                        data-bs-toggle="dropdown"
+                                        aria-expanded="false"></i>
                                     <ul class="dropdown-menu py-0">
                                         <div class="p-1 ">
-                                            <div class="d-inline d-flex justify-content-between px-3 py-1">
+                                            <div class="d-inline d-flex
+                                                justify-content-between px-3
+                                                py-1">
                                                 <div class="row">
                                                     <div class="col">ข้อเเนะนำ</div>
                                                     <hr class="line">
                                                     <div class="col">
-                                                        <p> การลาพักร้อนจะมีสิทธิตามอายุงาน ดังนี้</p>
-                                                        <p>อายุงาน 1 ปี จำนวน 6 วัน</p>
-                                                        <p>อายุงาน 2 ปี จำนวน 8 วัน</p>
-                                                        <p>อายุงาน 3 ปี จำนวน 10 วัน</p>
-                                                        <p>อายุงาน 4 ปีขึ้นไป จำนวน 12 วัน</p>
+                                                        <p>
+                                                            การลาพักร้อนจะมีสิทธิตามอายุงาน
+                                                            ดังนี้</p>
+                                                        <p>อายุงาน 1 ปี จำนวน 6
+                                                            วัน</p>
+                                                        <p>อายุงาน 2 ปี จำนวน 8
+                                                            วัน</p>
+                                                        <p>อายุงาน 3 ปี จำนวน 10
+                                                            วัน</p>
+                                                        <p>อายุงาน 4 ปีขึ้นไป
+                                                            จำนวน 12 วัน</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -202,17 +225,24 @@
                             <div class="row">
                                 <div class="col-4"></div>
                                 <div class="col-2">{{objLeaveInfo.amount_leave.av_ordination}}</div>
-                                <div class="col-5"><i class="fa-solid fa-circle-info icon-info" id="demo" type="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false"></i>
+                                <div class="col-5"><i class="fa-solid
+                                        fa-circle-info icon-info" id="demo"
+                                        type="button"
+                                        data-bs-toggle="dropdown"
+                                        aria-expanded="false"></i>
                                     <ul class="dropdown-menu py-0">
                                         <div class="p-1 ">
-                                            <div class="d-inline d-flex justify-content-between px-3 py-1">
+                                            <div class="d-inline d-flex
+                                                justify-content-between px-3
+                                                py-1">
                                                 <div class="row">
                                                     <div class="col">ข้อเเนะนำ</div>
                                                     <hr class="line">
                                                     <div class="col">
-                                                        <p>พนักงานมีสิทธิลาเพื่ออุปสมบทได้ 7 วัน
-                                                            โดยได้รับค่าจ้างตามระยะเวลาที่ลา และสามารถลาได้ 1
+                                                        <p>พนักงานมีสิทธิลาเพื่ออุปสมบทได้
+                                                            7 วัน
+                                                            โดยได้รับค่าจ้างตามระยะเวลาที่ลา
+                                                            และสามารถลาได้ 1
                                                             ครั้งตลอดอายุการเป็นพนักงาน</p>
                                                     </div>
                                                 </div>
@@ -245,16 +275,23 @@
                             <div class="row">
                                 <div class="col-4"></div>
                                 <div class="col-2">{{objLeaveInfo.amount_leave.av_maternity}}</div>
-                                <div class="col-5"><i class="fa-solid fa-circle-info icon-info" id="demo" type="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false"></i>
+                                <div class="col-5"><i class="fa-solid
+                                        fa-circle-info icon-info" id="demo"
+                                        type="button"
+                                        data-bs-toggle="dropdown"
+                                        aria-expanded="false"></i>
                                     <ul class="dropdown-menu py-0">
                                         <div class="p-1 ">
-                                            <div class="d-inline d-flex justify-content-between px-3 py-1">
+                                            <div class="d-inline d-flex
+                                                justify-content-between px-3
+                                                py-1">
                                                 <div class="row">
                                                     <div class="col">ข้อเเนะนำ</div>
                                                     <hr class="line">
                                                     <div class="col">
-                                                        <p> สิทธิในการลาคลอดจะครอบคลุมถึง การฝากครรภ์
+                                                        <p>
+                                                            สิทธิในการลาคลอดจะครอบคลุมถึง
+                                                            การฝากครรภ์
                                                             เเละการตรวจครรภ์
                                                         </p>
                                                     </div>
@@ -288,16 +325,22 @@
                             <div class="row">
                                 <div class="col-4"></div>
                                 <div class="col-2">{{objLeaveInfo.amount_leave.av_sterilization}}</div>
-                                <div class="col-5"><i class="fa-solid fa-circle-info icon-info" id="demo" type="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false"></i>
+                                <div class="col-5"><i class="fa-solid
+                                        fa-circle-info icon-info" id="demo"
+                                        type="button"
+                                        data-bs-toggle="dropdown"
+                                        aria-expanded="false"></i>
                                     <ul class="dropdown-menu py-0">
                                         <div class="p-1 ">
-                                            <div class="d-inline d-flex justify-content-between px-3 py-1">
+                                            <div class="d-inline d-flex
+                                                justify-content-between px-3
+                                                py-1">
                                                 <div class="row">
                                                     <div class="col">ข้อเเนะนำ</div>
                                                     <hr class="line">
                                                     <div class="col">
-                                                        <p> หากพนักงานจะลาทำหมันจะต้องมีหนังสือรับรองจากแพทย์แผนปัจจุบันชั้นหนึ่งมาแสดง
+                                                        <p>
+                                                            หากพนักงานจะลาทำหมันจะต้องมีหนังสือรับรองจากแพทย์แผนปัจจุบันชั้นหนึ่งมาแสดง
                                                         </p>
                                                     </div>
                                                 </div>
@@ -389,9 +432,11 @@
     <!--button edit-->
     <div class="container-fluid">
         <div class="row d-flex justify-content-end">
-            <button *ngIf="role == 3" type="button" class="btn btn-primary btn-history" routerLink="leave-edit-dateleave">
+            <button *ngIf="role == 3" type="button" class="btn btn-primary
+                btn-history" routerLink="leave-edit-dateleave">
                 <div class="row">
-                    <div class="col-1 space-icon"><i class="fa-solid fa-pencil icon"></i></div>
+                    <div class="col-1 space-icon"><i class="fa-solid fa-pencil
+                            icon"></i></div>
                     <div class="col">แก้ไขวันลา</div>
                 </div>
             </button>

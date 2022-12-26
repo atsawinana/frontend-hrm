@@ -12,12 +12,12 @@ import { NotiService } from '../../noti.service';
 export class LeaveNotiComponent implements OnInit {
 
 
-    constructor(private notiservice: NotiService,private router: Router) { }
+    constructor(private notiservice: NotiService, private router: Router) { }
 
     objDataNoti: any
     baseURL = environment.apiURL;
 
-    ApiSuccess:boolean = false
+    ApiSuccess: boolean = false
 
     ngOnInit() {
         this.notiservice.getLeaveNoti().subscribe({
@@ -30,11 +30,18 @@ export class LeaveNotiComponent implements OnInit {
 
     }
 
-    NavigateToLeave(id:any){
+    NavigateToLeave(id: any) {
+
+        this.notiservice.updateHasSeen(id).subscribe({
+            next: (res: any) => {
+            },
+            error: (error: any) => { },
+        })
+
         this.router.navigate([`/main/leave/view-request-detail/${id}`]);
     }
 
-    clearLeaveNoti(){
+    clearLeaveNoti() {
 
         Swal.fire({
             title: `<strong style = "font-family:Kanit"> คุณต้องการล้างการแจ้งเตือนหรือไม่ </strong>`,
@@ -46,14 +53,14 @@ export class LeaveNotiComponent implements OnInit {
             confirmButtonColor: '#005FBC',
             reverseButtons: true,
         }).then((e) => {
-            if(e.isConfirmed){
+            if (e.isConfirmed) {
                 this.notiservice.clearLeaveNoti().subscribe({
                     next: (res: any) => {
                         location.reload()
                     },
                     error: (error: any) => { },
                 })
-            }else{
+            } else {
                 return
             }
         })

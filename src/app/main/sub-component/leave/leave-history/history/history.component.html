@@ -22,7 +22,9 @@
                             <div class="row">
                                 <input type="text" placeholder="เลือกเดือนและปี"
                                     class="col-9 w-75 dateIcon icon-bg"
-                                    bsDatepicker (keypress)="false"
+                                    #dp="bsDatepicker"
+                                    bsDatepicker
+                                    (keypress)="false"
                                     (onShown)="onOpenCalendar($event)"
                                     (onHidden)="sortdate()" [(ngModel)]="date"
                                     [bsConfig]="{ isAnimated: true,
@@ -32,7 +34,7 @@
                                     showWeekNumbers: false}">
 
                                 <div class="col-3 d-flex align-items-center
-                                    justify-content-center">
+                                    justify-content-center" (click)="dp.toggle()" [attr.aria-expanded]="dp.isOpen" style="cursor: pointer;">
                                     <i class="fa-solid fa-calendar-days
                                         icon-color"></i>
                                 </div>
@@ -46,13 +48,9 @@
 
                 <div class="col-3 d-flex justify-content-center">
 
-                    <button type="button" class="col btn btn-primary btn-export-excel" (click)="exportAsExcelFile()">
-                        <div class="row d-flex justify-content-center align-items-center ">
-                            <div class="col-2"><i class="fa-regular
-                                    fa-file-excel icon-size"></i></div>
-
-                            <div class="col-7">Export Excel</div>
-                        </div>
+                    <button type="button" class="col btn btn-primary btn-export-excel d-flex justify-content-center align-items-center" (click)="exportAsExcelFile()">
+                            <i class="fa-regular fa-file-excel" style="font-size: 26px;"></i>
+                            <div class="px-2">Export Excel</div>
                     </button>
 
                 </div>

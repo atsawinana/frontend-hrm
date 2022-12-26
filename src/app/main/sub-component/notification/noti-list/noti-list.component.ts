@@ -13,7 +13,7 @@ export class NotiListComponent implements OnInit {
     constructor(private router: Router, private service: NotiService) { }
     role: any = localStorage.getItem('roleUser')
 
-    all: boolean = true;
+    all: boolean = false;
     worknoti: boolean = false;
     leaveHnoti: boolean = false;
     otnoti: boolean = false;

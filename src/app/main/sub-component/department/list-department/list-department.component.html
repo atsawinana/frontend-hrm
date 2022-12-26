@@ -42,9 +42,9 @@
                 <div
                     class="col-4 h-100 d-flex justify-content-center"
                     routerLink="add-department">
-                    <button type="button" class="btn btn-primary w-75
-                        btn-add-department">
-                        เพิ่มแผนก
+                    <button type="button" class="btn btn-primary w-75 btn-add-department d-flex align-items-center justify-content-center"> 
+                        <i class="fa-solid fa-circle-plus" style="font-size: 26px;"></i>
+                         <div class="px-2">เพิ่มแผนก</div>
                     </button>
                 </div>
             </div>
@@ -53,7 +53,7 @@
 
     <div class="table-responsive" style="overflow-x: scroll">
         <table
-            class="table-responsive table table-striped text-center mt-3
+            class="table-responsive align-middle table table-striped text-center mt-3
             list-table"
             id="tableDept"
             style="min-width: 600px">
@@ -136,7 +136,7 @@
                                 class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-1
                                 col-xxl-1 px-0 mx-1">
                                 <div
-                                    class="activity-table icon-fix"
+                                    class="activity-table icon-fix d-flex align-items-center"
                                     (click)="SetDeptID(datas.dept_id)">
                                     <!-- <img class="mx-auto pb-1 notDelelte" src="assets/img/department/trash-solid-1.svg" alt=""
                     style="width: 18px; height: 100%px" /> -->

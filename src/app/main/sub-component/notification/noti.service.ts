@@ -79,6 +79,27 @@ export class NotiService {
         );
     }
 
+    updateHasSeen(id: any) {
+        const headers = new HttpHeaders({
+            Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+        });
+
+        return this.httpClient.patch(
+            `${environment.apiURL}/leaveOnline/updateHasSeen`,
+            {
+                'rvac_id': id
+            },
+            {
+                headers
+            }
+        );
+    }
+
+
+
+    // /leaveOnline/updateHasSeen[PATCH]
+    // body: 'rvac_id' : 1
+
 
     //   /leaveOnline/showNumOfNotification[GET]
     //   ข้อมูลที่ได้ 

@@ -19,7 +19,7 @@ export class DetailViewRequestComponent implements OnInit {
     objProfile: any
     baseURL = environment.apiURL;
 
-    role:any = localStorage.getItem('roleUser')
+    role: any = localStorage.getItem('roleUser')
 
     stateLeave: any
 
@@ -153,6 +153,10 @@ export class DetailViewRequestComponent implements OnInit {
             confirmButtonText: '<div style = "font-family:Kanit"> ตกลง </div>',
             confirmButtonColor: '#005FBC',
             reverseButtons: true,
+            inputAttributes :{
+                class:'font-custom-select'
+            },
+
             inputValidator: (value) => {
                 return new Promise((resolve) => {
                     if (value.trim() != "") {
