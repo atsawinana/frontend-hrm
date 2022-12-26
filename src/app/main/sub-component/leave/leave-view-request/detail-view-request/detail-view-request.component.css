@@ -54,7 +54,7 @@
 }
 
 .font-custom-select {
-  font-family: 'Kanit';
+  font-family: 'Kanit' !important;
 }
 
 .vl {

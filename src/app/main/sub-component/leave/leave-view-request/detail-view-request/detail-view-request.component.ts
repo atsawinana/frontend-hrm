@@ -153,8 +153,8 @@ export class DetailViewRequestComponent implements OnInit {
             confirmButtonText: '<div style = "font-family:Kanit"> ตกลง </div>',
             confirmButtonColor: '#005FBC',
             reverseButtons: true,
-            inputAttributes :{
-                class:'font-custom-select'
+            customClass :{
+                input:'font-custom-select'
             },
 
             inputValidator: (value) => {
