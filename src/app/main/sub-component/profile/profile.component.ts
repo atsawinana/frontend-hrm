@@ -37,7 +37,7 @@ export class ProfileComponent implements OnInit {
     event: ChartEvent;
     active: {}[];
   }): void {
-    console.log(event, active);
+    // console.log(event, active);
   }
 
   public chartHovered({
@@ -47,7 +47,7 @@ export class ProfileComponent implements OnInit {
     event: ChartEvent;
     active: {}[];
   }): void {
-    console.log(event, active);
+    // console.log(event, active);
   }
 
   //   {
@@ -68,7 +68,7 @@ export class ProfileComponent implements OnInit {
         this.phonenumber = this.objdataUser.ud_phone;
         this.testleaveday = this.objdataUser.user_maternity_day;
         this.ApiSuccess = true;
-        console.log(this.objdataUser);
+        // console.log(this.objdataUser);
       },
       error: (err: any) => {},
     });
@@ -101,7 +101,7 @@ export class ProfileComponent implements OnInit {
   }
 
   editProfile() {
-    console.log('phone:', this.phonenumber);
+    // console.log('phone:', this.phonenumber);
     if (this.phonenumber.trim() == '' || this.phonenumber.trim() == null) {
       Swal.fire({
         icon: 'warning',
@@ -166,7 +166,7 @@ export class ProfileComponent implements OnInit {
       next: (res: any) => {
         objPic = res;
         this.confirmPath = objPic.data;
-        console.log(objPic);
+        // console.log(objPic);
         this.objdataUser.ud_picture = objPic.data;
         // location.reload()
       },

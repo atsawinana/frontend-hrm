@@ -113,7 +113,6 @@ export class ChartPersonalComponent implements OnInit {
         localStorage.setItem('user_id', this.objdataUser.user_id)
         this.phonenumber = this.objdataUser.ud_phone
         this.ApiSuccess = true;
-        console.log(this.objdataUser);
 
         if (this.objdataUser.ud_gender_id == 1) {
           this.ChartData = {

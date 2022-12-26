@@ -30,7 +30,6 @@ export class DataPersonComponent implements OnInit {
     this.dataService.getUserProfile(this.Empid).subscribe({
       next: (res: any) => {
         this.objDataemp = res.data;
-        console.log(this.objDataemp);
         if (this.objDataemp.ud_picture == null) {
           this.objDataemp.ud_picture = '/files/image/default.jpg';
         }
@@ -96,10 +95,7 @@ export class DataPersonComponent implements OnInit {
     });
   }
 
-  CopyresetPassword() {
-    console.log('copy success');
-  }
-
+ 
   deleteEmployee() {
     Swal.fire({
       title: `<strong style = "font-family:Kanit"> คุณต้องการลบข้อมูลของ <br>  ${this.objDataemp.ud_prefix_name}  ${this.objDataemp.ud_fullname_th} หรือไม่ ? </strong>`,

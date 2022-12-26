@@ -37,7 +37,6 @@ export class DetailViewRequestComponent implements OnInit {
 
     ngOnInit() {
         this.rvac_id = this.router.snapshot.params['id'];
-        console.log("this.rvac_id", this.rvac_id)
         this.serviceDetail.getDetail(this.rvac_id).subscribe({
             next: (res: any) => {
                 this.objProfile = res.data.req_vacations
@@ -119,7 +118,6 @@ export class DetailViewRequestComponent implements OnInit {
                 })
 
                 if (reason) {
-                    console.log("reason", reason)
                     this.serviceDetail.disapproveRequest(this.rvac_id, reason).subscribe({
                         next: (res: any) => {
                             this.backClicked()
@@ -201,7 +199,6 @@ export class DetailViewRequestComponent implements OnInit {
             })
 
             if (reason) {
-                console.log("reason", reason)
 
                 this.serviceDetail.cancelVacation(this.rvac_id, reason).subscribe({
                     next: (res: any) => {
@@ -304,7 +301,6 @@ export class DetailViewRequestComponent implements OnInit {
             })
 
             if (reason) {
-                console.log("reason", reason)
 
                 this.serviceDetail.cancelVacationOnApprove(this.rvac_id, reason).subscribe({
                     next: (res: any) => {

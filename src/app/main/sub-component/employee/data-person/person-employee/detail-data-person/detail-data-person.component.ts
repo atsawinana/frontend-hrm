@@ -23,7 +23,6 @@ export class DetailDataPersonComponent implements OnInit {
     this.dataService.getUserProfile(this.Empid).subscribe({
         next: (res: any) => {
           this.objDataemp = res.data
-          console.log(this.objDataemp)
           if(this.objDataemp.ud_picture == null) {
               this.objDataemp.ud_picture = "/files/image/default.jpg"
           } 

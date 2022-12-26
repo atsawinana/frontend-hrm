@@ -85,7 +85,6 @@ export class EditDetailPersonComponent implements OnInit {
     this.editservice.getAllDepartment().subscribe({
       next: (res: any) => {
         this.objDepartment = res.data.deprtments
-        console.log("department", this.objDepartment)
         this.APIsuccess = true
       },
       error: (err: any) => {
@@ -99,31 +98,6 @@ export class EditDetailPersonComponent implements OnInit {
   Submit() {
     this.checkNull()
     this.submitted = true
-    console.log(this.emp)
-    console.log(this.emp.invalid)
-
-
-    console.log(this.emp.controls.user_contract_name.invalid,
-      this.emp.controls.user_company.invalid,
-      this.emp.controls.ud_prefix_id.invalid,
-      this.emp.controls.ud_email.invalid,
-      this.emp.controls.ud_fullname_en.invalid,
-      this.emp.controls.ud_fullname_th.invalid,
-      this.emp.controls.ud_nickname.invalid,
-      this.emp.controls.ud_phone.invalid,
-      this.emp.controls.ud_id_card.invalid,
-      this.emp.controls.ud_birthday.invalid,
-      this.emp.controls.user_leave_day.invalid,
-      this.emp.controls.user_sick_day.invalid,
-      this.emp.controls.user_take_annual_day.invalid,
-      this.emp.controls.user_ordination_day.invalid,
-      this.emp.controls.user_maternity_day.invalid,
-      this.emp.controls.user_sterilization_day.invalid,
-      this.emp.controls.user_military_service_day.invalid,
-      this.emp.controls.user_without_pay_day.invalid,
-      this.emp.controls.user_resign_day.invalid,)
-
-
     if (this.emp.invalid)
       return
 
@@ -152,27 +126,20 @@ export class EditDetailPersonComponent implements OnInit {
         }
 
         let datetemp = new Date(String(this.emp.controls.ud_birthday.value))
-        console.log('date string1', this.emp.controls.user_created_at.value)
-        console.log('date string2', this.emp.controls.ud_birthday.value)
 
         let startdate = ""
         let bthdate = ""
 
-        console.log("this.dateInputBTH", this.dateInputBTH)
-        console.log("this.dateInputStart", this.dateInputStart)
-        
         if (this.dateInputBTH) {
           let bthdate = this.datepipe.transform(this.emp.controls.ud_birthday.value, 'YYYY-dd-MM');
         } else {
           let arydate1 = this.emp.controls.ud_birthday.value?.split("/")
-          console.log(arydate1)
           for (let i = arydate1?.length! - 1; i > -1; i--) {
             if (i != 0)
               bthdate += arydate1![i] + "-"
             else
               bthdate += arydate1![i]
           }
-          console.log("sub string", bthdate)
         }
 
 
@@ -180,7 +147,6 @@ export class EditDetailPersonComponent implements OnInit {
           let startdate = this.datepipe.transform(this.emp.controls.user_created_at.value, 'YYYY-dd-MM');
         } else {
           let arydate2 = this.emp.controls.user_created_at.value?.split("/")
-          console.log(arydate2)
           for (let i = arydate2?.length! - 1; i > -1; i--) {
             if (i != 0)
               startdate += arydate2![i] + "-"
@@ -198,7 +164,6 @@ export class EditDetailPersonComponent implements OnInit {
         if (this.user_deleted_at.value != null) {
           enddate = this.datepipe.transform(this.user_deleted_at.value, 'YYYY-MM-dd')
           replaceDate = String(enddate).replace(String(year3), String(year2))
-          console.log(replaceDate)
         }
 
 
@@ -235,7 +200,6 @@ export class EditDetailPersonComponent implements OnInit {
           )
           .subscribe({
             next: (res: any) => {
-              console.log('success')
               this.router.navigate([`/main/employee/data-person/${user_id}`]);
             },
             error: (err: any) => {
@@ -256,16 +220,12 @@ export class EditDetailPersonComponent implements OnInit {
   }
 
   onValueChangeDateBTH(event: any) {
-    console.log("this.dateInputBTHCHange", this.dateInputBTH)
     this.dateInputBTH = true
-    console.log("this.dateInputBTHCHange", this.dateInputBTH)
 
   }
 
   onValueChangeDateStart(event: any) {
-    console.log("this.dateInputCHange", this.dateInputStart)
     this.dateInputStart = true
-    console.log("this.dateInputCHange", this.dateInputStart)
 
   }
 
@@ -274,15 +234,12 @@ export class EditDetailPersonComponent implements OnInit {
       next: (res: any) => {
         this.positionDept = res.data.dept_potitions
         for (let i = 0; i < this.Position.length; i++) {
-          console.log("loop", this.positionDept)
-          console.log("objkey", Object.keys(this.positionDept).length)
           for (let j = 0; j < Object.keys(this.positionDept).length; j++) {
             if (this.Position[i].positions == this.positionDept[j].position) {
               this.positionDept.splice(j, 1);
             }
           }
         }
-        console.log(res.data.dept_potitions)
       },
       error: (err: any) => {
         if (err.status === 419) {
@@ -299,8 +256,6 @@ export class EditDetailPersonComponent implements OnInit {
   }
 
   changeDepartment(value: any) {
-    console.log(value)
-    console.log(this.emp.controls.dept_name_en.value)
     this.addEmpService.ShowPosition(value).subscribe({
       next: (res: any) => {
         this.positionDept = res.data.dept_potitions
@@ -311,8 +266,6 @@ export class EditDetailPersonComponent implements OnInit {
         this.Position.splice(1, this.Position.length)
         this.aryPositionCount = [1]
 
-        console.log("position", this.Position)
-        console.log("position C", this.aryPositionCount)
       },
       error: (err: any) => {
         if (err.status === 419) {
@@ -346,8 +299,6 @@ export class EditDetailPersonComponent implements OnInit {
 
   ngOnInit() {
 
-    console.log("this.dateInputBTH1", this.dateInputBTH)
-    console.log("this.dateInputStart1", this.dateInputStart)
     this.today = new Date();
     defineLocale('th', thBeLocale);
     this.localeService.use(this.locale);
@@ -358,11 +309,9 @@ export class EditDetailPersonComponent implements OnInit {
       next: (res: any) => {
         this.objData = res.data
         this.dept_id = this.objData.dept_id
-        console.log("this.objData1234", this.objData)
         if (this.objData.ud_picture == null) {
           this.objData.ud_picture = "/files/image/default.jpg"
         }
-        console.log("edit", this.objData)
 
         this.Position = this.objData.positions
 
@@ -371,32 +320,25 @@ export class EditDetailPersonComponent implements OnInit {
         }
 
         this.getPosition(this.objData.dept_id)
-        console.log("position", this.Position)
 
         {
           let datebth = this.objData.ud_birthday
           let posit = String(datebth).lastIndexOf('/')
           let tempdate = String(datebth).substring(0, posit + 1)
-          console.log("tempdate", tempdate)
 
           let tempyear = Number(String(datebth).substring(posit + 1, datebth.length))
           tempyear += 543
-          console.log("tempyear", tempyear)
           this.objData.ud_birthday = tempdate + String(tempyear)
-          console.log("this.objData.ud_birthday", this.objData.ud_birthday)
         }
 
         {
           let datestart = this.objData.user_created_at
           let posit1 = String(datestart).lastIndexOf('/')
           let tempdate1 = String(datestart).substring(0, posit1 + 1)
-          console.log("tempdate", tempdate1)
 
           let tempyear1 = Number(String(datestart).substring(posit1 + 1, datestart.length))
           tempyear1 += 543
-          console.log("tempyear", tempyear1)
           this.objData.user_created_at = tempdate1 + String(tempyear1)
-          console.log("this.objData.ud_birthday", this.objData.user_created_at)
         }
 
 
@@ -428,24 +370,23 @@ export class EditDetailPersonComponent implements OnInit {
         this.emp.controls.user_resign_day.setValue(this.objData.user_resign_day)
 
         this.getAllDepartment()
-        console.log("this.dateInputBTH2", this.dateInputBTH)
-        console.log("this.dateInputStart2", this.dateInputStart)
+        // console.log("this.dateInputBTH2", this.dateInputBTH)
+        // console.log("this.dateInputStart2", this.dateInputStart)
         this.dateInputBTH = false
         this.dateInputStart = false
       },
       error: (error: any) => { },
     });
-    console.log(this.emp_id)
-    console.log("this.aryPositionCount", this.aryPositionCount)
+    // console.log(this.emp_id)
+    // console.log("this.aryPositionCount", this.aryPositionCount)
 
   }
 
   addInputDeptPosit() {
-    console.log(this.Position);
-    // console.log(this.DeptPosit[this.countDeptPosit.length - 1]);
+    // console.log(this.Position);
     let ObjNull = {}
 
-    console.log(Object.keys(this.Position[this.aryPositionCount.length - 1]).length === 0)
+    // console.log(Object.keys(this.Position[this.aryPositionCount.length - 1]).length === 0)
 
 
     if (Object.keys(this.Position[this.aryPositionCount.length - 1]).length === 0) {
@@ -455,14 +396,14 @@ export class EditDetailPersonComponent implements OnInit {
       this.Position.push({});
     }
 
-    console.log(this.Position.length)
-    console.log(this.aryPositionCount.length)
+    // console.log(this.Position.length)
+    // console.log(this.aryPositionCount.length)
   }
 
   selectedPosition() {
     for (let i = 0; i < this.Position.length; i++) {
-      console.log("loop", this.positionDept)
-      console.log("objkey", Object.keys(this.positionDept).length)
+    //   console.log("loop", this.positionDept)
+    //   console.log("objkey", Object.keys(this.positionDept).length)
       for (let j = 0; j < Object.keys(this.positionDept).length; j++) {
         if (this.Position[i].positions == this.positionDept[j].position) {
           this.positionDept.splice(j, 1);
@@ -471,14 +412,14 @@ export class EditDetailPersonComponent implements OnInit {
     }
 
     if (!this.stateBeforeCheck) {
-      console.log("not null")
+    //   console.log("not null")
       this.positionDept.push(this.valueStateBefore)
     }
   }
 
   settingIndex(index: any) {
     this.indexSelect = index
-    console.log(Object.keys(this.Position[this.indexSelect]).length)
+    // console.log(Object.keys(this.Position[this.indexSelect]).length)
     if (Object.keys(this.Position[this.indexSelect]).length == 0) {
       this.stateBeforeCheck = true
     } else {
@@ -489,8 +430,8 @@ export class EditDetailPersonComponent implements OnInit {
   }
 
   deleteDeptPosit(index: number) {
-    console.log(this.Position)
-    console.log("this.positionDept", this.positionDept)
+    // console.log(this.Position)
+    // console.log("this.positionDept", this.positionDept)
 
     if (Object.keys(this.Position[index]).length != 0) {
       let person = { position: String(this.Position[index].positions) }

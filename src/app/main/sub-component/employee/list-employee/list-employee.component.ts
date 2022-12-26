@@ -42,14 +42,14 @@ export class ListEmployeeComponent implements OnInit {
   };
 
   setValueDepartment(value: any) {
-    console.log('aryModel', this.aryModel);
-    console.log(value);
+    // console.log('aryModel', this.aryModel);
+    // console.log(value);
     this.DeptIDemp += value + ',';
-    console.log(this.DeptIDemp);
+    // console.log(this.DeptIDemp);
   }
 
   setAllValueFilter(value: any) {
-    console.log('this.checkMarkAll', this.checkMarkAll);
+    // console.log('this.checkMarkAll', this.checkMarkAll);
     if (this.checkMarkAll) {
       for (let i = 0; i < this.objDepartment.length; i++) {
         this.aryModel[i] = true;
@@ -63,7 +63,7 @@ export class ListEmployeeComponent implements OnInit {
 
   clearAllValueFilter() {
     this.checkMarkAll = false;
-    console.log('this.checkMarkAllClear', this.checkMarkAll);
+    // console.log('this.checkMarkAllClear', this.checkMarkAll);
     for (let i = 0; i < this.objDepartment.length; i++) {
       this.aryModel[i] = false;
     }
@@ -81,7 +81,7 @@ export class ListEmployeeComponent implements OnInit {
           delete this.objemptable[i].page;
           delete this.objemptable[i].user_created_at;
         }
-        console.log(this.objemptable)
+        // console.log(this.objemptable)
         this.ApiSuccess = true;
       },
       error: (err: any) => {},
@@ -101,25 +101,25 @@ export class ListEmployeeComponent implements OnInit {
 
   loadempFromDepartment() {
     let dept_id = '';
-    console.log('dept', this.objDepartment);
+    // console.log('dept', this.objDepartment);
     for (let i = 0; i < this.aryModel.length; i++) {
       if (this.aryModel[i]) {
         dept_id += String(this.objDepartment[i].dept_id) + ',';
       }
     }
 
-    console.log(dept_id);
+    // console.log(dept_id);
 
     this.empService.getEmployeefromDeptID(dept_id).subscribe({
       next: (res: any) => {
-        console.log(res.data.employee);
+        // console.log(res.data.employee);
         this.objemptable = res.data.employee;
         for (let i = 0; i < this.objemptable.length; i++) {
           delete this.objemptable[i].user_username;
           delete this.objemptable[i].ud_fullname_en;
           delete this.objemptable[i].page;
         }
-        console.log(this.objemptable);
+        // console.log(this.objemptable);
       },
       error: (err: any) => {},
     });
@@ -134,7 +134,7 @@ export class ListEmployeeComponent implements OnInit {
 
   public exportAsExcelFile(): void {
     let ExptExcel = JSON.parse(JSON.stringify(this.objemptable));
-    console.log(this.objemptable);
+    // console.log(this.objemptable);
     for (let i = 0; i < ExptExcel.length; i++) {
       ExptExcel[i].ไอดีพนักงาน = ExptExcel[i]['number'];
       ExptExcel[i].รหัสพนักงาน = ExptExcel[i]['user_card_number'];
@@ -150,7 +150,7 @@ export class ListEmployeeComponent implements OnInit {
       delete ExptExcel[i].dept_name_en;
       delete ExptExcel[i].number;
     }
-    console.log(ExptExcel);
+    // console.log(ExptExcel);
 
     const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(ExptExcel);
     const workbook: XLSX.WorkBook = {

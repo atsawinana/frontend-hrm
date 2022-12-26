@@ -113,15 +113,12 @@ export class AddDepartmentComponent implements OnInit {
         }
 
         if (!this.stateBeforeCheck) {
-            console.log("not null")
             this.DeptUserID.push(this.valueStateBefore)
         }
     }
 
     settingIndex(index: any) {
-        console.log(this.DeptUserID)
         this.indexSelect = index
-        console.log(this.DeptMana[this.indexSelect])
         if (this.DeptMana[this.indexSelect] == undefined) {
             this.stateBeforeCheck = true
         } else {

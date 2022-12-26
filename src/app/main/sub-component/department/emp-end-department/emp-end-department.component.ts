@@ -32,7 +32,6 @@ export class EmpEndDepartmentComponent implements OnInit {
           delete this.objemptable[i].page;
           delete this.objemptable[i].user_created_at;
         }
-        console.log(res.data.employee);
         //   this.ApiSuccess = true;
       },
       error: (err: any) => {},

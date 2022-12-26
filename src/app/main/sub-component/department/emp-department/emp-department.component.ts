@@ -38,7 +38,6 @@ export class EmpDepartmentComponent implements OnInit {
             delete this.objemptable[i].page;
             delete this.objemptable[i].user_created_at;
           }
-        console.log(res.data.employee);
         //   this.ApiSuccess = true;
       },
       error: (err: any) => {},
@@ -65,7 +64,6 @@ export class EmpDepartmentComponent implements OnInit {
 
   public exportAsExcelFile(): void {
     let ExptExcel = JSON.parse(JSON.stringify(this.objemptable));
-    console.log(this.objemptable);
     for (let i = 0; i < ExptExcel.length; i++) {
       ExptExcel[i].ไอดีพนักงาน = ExptExcel[i]['number'];
       ExptExcel[i].รหัสพนักงาน = ExptExcel[i]['user_card_number'];
@@ -83,7 +81,6 @@ export class EmpDepartmentComponent implements OnInit {
       delete ExptExcel[i].user_start_date;
       
     }
-    console.log(ExptExcel);
 
     const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(ExptExcel);
     const workbook: XLSX.WorkBook = {

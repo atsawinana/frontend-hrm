@@ -116,16 +116,13 @@ export class EditComponentComponent implements OnInit {
         }
 
         if (!this.stateBeforeCheck) {
-            console.log("not null")
             this.DeptUserID.push(this.valueStateBefore)
         }
     }
 
     settingIndex(index: any) {
 
-        console.log(this.DeptUserID)
         this.indexSelect = index
-        console.log(Object.keys(this.ObjDeptMana[this.indexSelect]).length)
         if (Object.keys(this.ObjDeptMana[this.indexSelect]).length == 0) {
             this.stateBeforeCheck = true
         } else {

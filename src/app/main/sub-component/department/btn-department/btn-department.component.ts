@@ -27,9 +27,7 @@ export class BtnDepartmentComponent implements OnInit {
   clickRouteEndContract() {
     this.route1 = 'false';
     localStorage.setItem('overbtn', String(this.route1));
-    console.log(this.router.url)
     let tempURL = this.router.url.replace('emp-department','emp-end-department')
-    console.log(tempURL)
     this.router.navigate([tempURL]);
   }
 }

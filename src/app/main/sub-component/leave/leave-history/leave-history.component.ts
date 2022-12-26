@@ -45,7 +45,7 @@ export class LeaveHistoryComponent implements OnInit {
         this.leavehistoryservice.getUserHistory("").subscribe({
             next: (res: any) => {
                 this.objdataTable = res.data.leave_online
-                console.log(this.objdataTable)
+                // console.log(this.objdataTable)
 
                 let startDate = new Date()
                 this.date = startDate
@@ -78,11 +78,11 @@ export class LeaveHistoryComponent implements OnInit {
     sortdate() {
         if (this.date == "" || this.date == null)
             return
-        console.log(this.date)
+        // console.log(this.date)
         let startDate = this.datepipe.transform(this.date, 'yyyy-MM-dd')
 
         let arydate1 = startDate!.toString().split("-")
-        console.log("test1", arydate1)
+        // console.log("test1", arydate1)
         arydate1[0] = (Number(arydate1[0]) + 543).toString()
 
 
@@ -90,7 +90,7 @@ export class LeaveHistoryComponent implements OnInit {
 
         this.leavehistoryservice.getUserHistory(date).subscribe({
             next: (res: any) => {
-                console.log(res.data)
+                // console.log(res.data)
                 this.objdataTable = res.data.leave_online
             },
             error: (err: any) => {

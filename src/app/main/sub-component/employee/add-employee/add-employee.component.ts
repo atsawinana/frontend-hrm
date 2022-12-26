@@ -111,13 +111,11 @@ export class AddEmployeeComponent implements OnInit {
     this.today = new Date();
     defineLocale('th', thBeLocale);
     this.localeService.use(this.locale);
-    console.log(this.aryPosition.length);
     this.aryCountposit = [1];
     this.getDepartment();
   }
 
   addInputDeptPosit() {
-    console.log(this.aryPosition);
     // console.log(this.DeptPosit[this.countDeptPosit.length - 1]);
     if (this.aryPosition[this.aryCountposit.length - 1] == null) {
       alert('กรุณากรอกข้อมูลให้ครบถ้วน');
@@ -161,7 +159,6 @@ export class AddEmployeeComponent implements OnInit {
   }
 
   deleteInputDept(index: number) {
-    console.log('option', this.positionDept);
     if (this.aryPosition[index] == undefined) {
       this.aryPosition.splice(index, 1);
       this.aryCountposit.splice(index, 1);
@@ -187,7 +184,6 @@ export class AddEmployeeComponent implements OnInit {
     this.addEmpService.getAllDepartment().subscribe({
       next: (res: any) => {
         this.deprtmentsData = res.data.deprtments;
-        console.log(this.deprtmentsData);
       },
       error: (err: any) => {
         if (err.status === 419) {
@@ -204,7 +200,6 @@ export class AddEmployeeComponent implements OnInit {
   }
 
   positionChang() {
-    console.log(this.stateBeforeCheck);
 
     for (let i = 0; i < this.aryPosition.length; i++) {
       for (let j = 0; j < this.positionDept.length; j++) {
@@ -215,7 +210,6 @@ export class AddEmployeeComponent implements OnInit {
     }
 
     if (!this.stateBeforeCheck) {
-      console.log('not null');
       this.positionDept.push(this.valueStateBefore);
     }
   }
@@ -239,7 +233,6 @@ export class AddEmployeeComponent implements OnInit {
     this.addEmpService.ShowPosition(value).subscribe({
       next: (res: any) => {
         this.positionDept = res.data.dept_potitions;
-        console.log(res.data.dept_potitions);
       },
       error: (err: any) => {
         if (err.status === 419) {
@@ -286,8 +279,6 @@ export class AddEmployeeComponent implements OnInit {
   }
 
   Submit() {
-    console.log('test position', this.aryPosition);
-    console.log('count posit', this.aryCountposit);
 
     this.summited = true;
 
@@ -297,9 +288,6 @@ export class AddEmployeeComponent implements OnInit {
       this.checknullPosit = true;
     }
 
-    console.log('value invalid', this.emp);
-
-    console.log('null posit', this.checknullPosit);
 
     if (this.emp.invalid || this.checknullPosit) {
       return;
@@ -369,7 +357,6 @@ export class AddEmployeeComponent implements OnInit {
           )
           .subscribe({
             next: (res: any) => {
-              console.log('success');
               this.router.navigate(['/main/employee']);
             },
             error: (err: any) => {
@@ -440,7 +427,6 @@ export class AddEmployeeComponent implements OnInit {
     this.addEmpService.getLeaveDay(prefixID, birthstart!).subscribe({
       next: (res: any) => {
         this.objleave = res.data;
-        console.log(this.objleave);
         this.emp.controls.leave.setValue(this.objleave.user_leave);
         this.emp.controls.leavesick.setValue(this.objleave.user_sick);
         this.emp.controls.leaveordination.setValue(
@@ -476,7 +462,6 @@ export class AddEmployeeComponent implements OnInit {
         objPic = res;
         this.confirmPath = objPic.data;
         this.pathPic = objPic.data;
-        console.log(objPic);
         // location.reload()
       },
       error: (err: any) => {},
@@ -490,7 +475,6 @@ export class AddEmployeeComponent implements OnInit {
         .genDatafromIDCard(this.emp.controls.idcard.value)
         .subscribe({
           next: (res: any) => {
-            console.log(res.data);
             this.emp.controls.prefix.setValue(res.data.ud_prefix_id);
             this.emp.controls.nameth.setValue(res.data.ud_firstname_th);
             this.emp.controls.namethlast.setValue(res.data.ud_lastname_th);

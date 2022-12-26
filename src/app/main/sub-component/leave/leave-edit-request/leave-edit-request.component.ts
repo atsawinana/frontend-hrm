@@ -81,7 +81,6 @@ export class LeaveEditRequestComponent implements OnInit {
                 this.leaveRequest.controls.endDate.setValue(this.objData.rvac_date_end)
                 this.leaveRequest.controls.duration.setValue(this.objData.rvac_duration)
                 this.leaveRequest.controls.detail.setValue(this.objData.rvac_detail)
-                console.log(res.data)
                 this.countEditDays()
                 this.verifydateinit()
                 this.APISuccess = true
@@ -353,7 +352,6 @@ export class LeaveEditRequestComponent implements OnInit {
             next: (res: any) => {
                 this.objDateVerify = res.data
                 this.datesum = this.objDateVerify.sum_time
-                console.log(this.objDateVerify)
             },
             error: (res: any) => {
 

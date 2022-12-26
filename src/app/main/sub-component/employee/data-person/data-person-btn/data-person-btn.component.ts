@@ -16,10 +16,7 @@ export class DataPersonBtnComponent implements OnInit {
 
   ngOnInit() {
     this.navigateActive()
-    console.log(this.detail)
-    console.log(this.workHistory)
-    console.log(this.leaveHistory)
-    console.log(this.otHistory)
+  
   }
 
   navigateActive() {

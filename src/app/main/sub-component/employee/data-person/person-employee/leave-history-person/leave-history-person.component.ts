@@ -18,7 +18,7 @@ export class LeaveHistoryPersonComponent implements OnInit {
     ngOnInit() {
         this.service.getHistory(this.empid, "").subscribe({
             next: (res: any) => {
-                console.log(res.data)
+                // console.log(res.data)
                 this.objTable = res.data.leave_online
             },
             error: (err: any) => {
@@ -38,11 +38,11 @@ export class LeaveHistoryPersonComponent implements OnInit {
     sortdate() {
         if (this.date == "" || this.date == null)
             return
-        console.log(this.date)
+        // console.log(this.date)
         let startDate = this.datepipe.transform(this.date, 'yyyy-MM-dd')
 
         let arydate1 = startDate!.toString().split("-")
-        console.log("test1", arydate1)
+        // console.log("test1", arydate1)
         arydate1[0] = (Number(arydate1[0]) + 543).toString()
 
 
@@ -50,7 +50,7 @@ export class LeaveHistoryPersonComponent implements OnInit {
 
         this.service.getHistory(this.empid, date).subscribe({
             next: (res: any) => {
-                console.log(res.data)
+                // console.log(res.data)
                 this.objTable = res.data.leave_online
             },
             error: (err: any) => {

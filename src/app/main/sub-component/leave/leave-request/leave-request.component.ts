@@ -145,7 +145,6 @@ export class LeaveRequestComponent implements OnInit {
                         this.leaveRequest.controls.detail.value!
                     ).subscribe({
                         next: (res: any) => {
-                            console.log('success');
                             this.route.navigate(['../main/leave']);
                         },
                     });
