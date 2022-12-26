@@ -104,6 +104,9 @@ export class DetailViewRequestComponent implements OnInit {
                     confirmButtonText: '<div style = "font-family:Kanit"> ตกลง </div>',
                     confirmButtonColor: '#005FBC',
                     reverseButtons: true,
+                    customClass :{
+                        input:'font-custom-select'
+                    },
                     inputValidator: (value) => {
                         return new Promise((resolve) => {
                             if (value.trim() != "") {
@@ -183,6 +186,9 @@ export class DetailViewRequestComponent implements OnInit {
                 confirmButtonText: '<div style = "font-family:Kanit"> ตกลง </div>',
                 confirmButtonColor: '#005FBC',
                 reverseButtons: true,
+                customClass :{
+                    input:'font-custom-select'
+                },
                 inputValidator: (value) => {
                     return new Promise((resolve) => {
                         if (value.trim() != "") {
@@ -263,6 +269,9 @@ export class DetailViewRequestComponent implements OnInit {
             confirmButtonText: '<div style = "font-family:Kanit"> ตกลง </div>',
             confirmButtonColor: '#005FBC',
             reverseButtons: true,
+            customClass :{
+                input:'font-custom-select'
+            },
             inputValidator: (value) => {
                 return new Promise((resolve) => {
                     if (value != "") {
@@ -289,6 +298,9 @@ export class DetailViewRequestComponent implements OnInit {
                 confirmButtonText: '<div style = "font-family:Kanit"> ตกลง </div>',
                 confirmButtonColor: '#005FBC',
                 reverseButtons: true,
+                customClass :{
+                    input:'font-custom-select'
+                },
             })
 
             if (reason) {
