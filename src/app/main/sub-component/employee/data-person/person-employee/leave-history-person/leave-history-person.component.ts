@@ -2,6 +2,7 @@ import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { DataPersonService } from '../../data-person.service';
+import { defineLocale, thBeLocale } from 'ngx-bootstrap/chronos';
 
 @Component({
     selector: 'app-leave-history-person',
@@ -11,15 +12,23 @@ import { DataPersonService } from '../../data-person.service';
 export class LeaveHistoryPersonComponent implements OnInit {
 
     constructor(private service: DataPersonService, private localeService: BsLocaleService, public datepipe: DatePipe,) { }
-
+    locale = 'th';
     date: any
     objTable: any
     empid:any = localStorage.getItem("user_id")
+    
     ngOnInit() {
+
+        defineLocale('th', thBeLocale);
+        this.localeService.use(this.locale);
+
         this.service.getHistory(this.empid, "").subscribe({
             next: (res: any) => {
                 // console.log(res.data)
                 this.objTable = res.data.leave_online
+                let startDate = new Date()
+                this.date = startDate
+
             },
             error: (err: any) => {
             },
