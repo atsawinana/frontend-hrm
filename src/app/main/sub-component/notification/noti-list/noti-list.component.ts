@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { NotiService } from '../noti.service';
 
 @Component({
@@ -10,27 +10,25 @@ import { NotiService } from '../noti.service';
 export class NotiListComponent implements OnInit {
 
 
-    constructor(private router: Router, private service: NotiService) { }
+    constructor(private router: Router, private service: NotiService) {}
     role: any = localStorage.getItem('roleUser')
 
-    all: boolean = true;
+    all: boolean = false;
     worknoti: boolean = false;
     leaveHnoti: boolean = false;
     otnoti: boolean = false;
     noti:any
 
+    APIsuccess:boolean = false
+
     ngOnInit() {
 
         this.URLcheck("")
         this.showNumOfNotification()
+        this.navigateActive()
     }
 
     navigateActive() {
-
-        // <div class="col-2 text-center noti-type" routerLink="../notification">ทั้งหมด</div>
-        // <div *ngIf="role != 1" class="col-2 text-center noti-type" routerLink="work-notification">อนุมัติทำงาน</div>
-        // <div *ngIf="role != 1" class="col-2 text-center noti-type " routerLink="leave-notification">อนุมัติลา</div>
-        // <div *ngIf="role != 1" class="col-2 text-center noti-type" routerLink="ot-notification">อนุมัติโอที</div>
 
         if (this.router.url.includes('work-notification')) {
             this.worknoti = true;
@@ -38,7 +36,7 @@ export class NotiListComponent implements OnInit {
             this.leaveHnoti = true;
         } if (this.router.url.includes('ot-notification')) {
             this.otnoti = true;
-        } if (this.router.url.includes('all-notification' || 'notification')) {
+        } if (this.router.url.includes('all-notification')) {
             this.all = true;
         }
     }
@@ -53,11 +51,19 @@ export class NotiListComponent implements OnInit {
         });
     }
 
+    routerLinkNoti(){
+        if(this.router.url == '/main/notification/all-notification')
+            return 
+        
+        this.router.navigate(['/main/notification/all-notification'])
+    }
+
     showNumOfNotification() {
         this.service.showNumOfNotification().subscribe({
             next: (res: any) => {
                 localStorage.setItem('notification',res.data.sum_notification)
                 this.noti = res.data
+                this.APIsuccess = true;
             },
             error: (error: any) => { },
         })

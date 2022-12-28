@@ -10,7 +10,6 @@ const routes: Routes = [
     path: '',
     component: NotiListComponent,
     children: [
-      { path: '', component: AllNotiComponent },
       { path: 'all-notification', component: AllNotiComponent },
       { path: 'work-notification', component: WorkNotiComponent },
       { path: 'leave-notification', component: LeaveNotiComponent },
