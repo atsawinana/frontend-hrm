@@ -19,7 +19,10 @@ export class EndContractComponent implements OnInit {
   elemtable: any;
   LoadingAPI: boolean = false;
   objDepartment: any;
+  checkMarkAll: boolean = false;
   TestModel: any[] = [];
+  aryModel: any[] = [];
+  DeptIDemp: string = '';
 
   listPerpage() {
     this.config.itemsPerPage = this.listPerPage;
@@ -50,10 +53,11 @@ export class EndContractComponent implements OnInit {
     });
   }
 
+
   loadempFromDepartment() {
     let dept_id = '';
-    for (let i = 0; i < this.TestModel.length; i++) {
-      if (this.TestModel[i]) {
+    for (let i = 0; i < this.aryModel.length; i++) {
+      if (this.aryModel[i]) {
         dept_id += String(this.objDepartment[i].dept_id) + ',';
       }
     }
@@ -64,6 +68,27 @@ export class EndContractComponent implements OnInit {
       },
       error: (err: any) => {},
     });
+  }
+
+  setAllValueFilter(value: any) {
+    // console.log('this.checkMarkAll', this.checkMarkAll);
+    if (this.checkMarkAll) {
+      for (let i = 0; i < this.objDepartment.length; i++) {
+        this.aryModel[i] = true;
+      }
+    } else {
+      for (let i = 0; i < this.objDepartment.length; i++) {
+        this.aryModel[i] = false;
+      }
+    }
+  }
+
+
+  setValueDepartment(value: any) {
+    // console.log('aryModel', this.aryModel);
+    // console.log(value);
+    this.DeptIDemp += value + ',';
+    // console.log(this.DeptIDemp);
   }
 
   // exportExcel() {
@@ -81,4 +106,15 @@ export class EndContractComponent implements OnInit {
       x!.style.display = 'none';
     }
   }
+
+  
+  clearAllValueFilter() {
+    this.checkMarkAll = false;
+    // console.log('this.checkMarkAllClear', this.checkMarkAll);
+    for (let i = 0; i < this.objDepartment.length; i++) {
+      this.aryModel[i] = false;
+    }
+  }
+
+
 }
