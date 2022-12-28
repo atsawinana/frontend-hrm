@@ -54,40 +54,38 @@
                     <td>ลากิจ</td>
 
                     <!--colum สิทธิการลา/วัน/ปี	-->
-                    <div>
-                        <td class="d-flex justify-content-center">
-                            <div class="row">
-                                <div class="col-4"></div>
-                                <div class="col-2">{{objLeaveInfo.amount_leave.av_leave}}</div>
-                                <div class="col-5"><i class="fa-solid
-                                        fa-circle-info icon-info" id="demo"
-                                        type="button"
-                                        data-bs-toggle="dropdown"
-                                        aria-expanded="false"></i>
-                                    <ul class="dropdown-menu py-0">
-                                        <div class="p-1 ">
-                                            <div class="d-inline d-flex
-                                                justify-content-between px-3
-                                                py-1">
-                                                <div class="row">
-                                                    <div class="col">ข้อเเนะนำ</div>
-                                                    <hr class="line">
-                                                    <div class="col">
-                                                        <p>การลากิจใช้ในกรณีมีธุระจำเป็น
-                                                            หรือติดต่อหน่วยงานราชการเท่านั้น
-                                                            ไม่อนุญาตให้พนักงานลากิจในแต่ละครั้ง
-                                                            ติดต่อกันเกิน 2
-                                                            วันทำงาน
-                                                        </p>
-                                                    </div>
+                    <td class="">
+                        <div class="row d-felx align-items-center">
+                            <!-- <div class="col-4"></div> -->
+                            <div class="col-6 text-end">{{objLeaveInfo.amount_leave.av_leave}}</div>
+                            <div class="col px-0"><i class="fa-solid
+                                    fa-circle-info icon-info" id="demo"
+                                    type="button"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"></i>
+                                <ul class="dropdown-menu py-0">
+                                    <div class="p-1 ">
+                                        <div class="d-inline d-flex
+                                            justify-content-between px-3
+                                            py-1">
+                                            <div class="row">
+                                                <div class="col">ข้อเเนะนำ</div>
+                                                <hr class="line">
+                                                <div class="col">
+                                                    <p>การลากิจใช้ในกรณีมีธุระจำเป็น
+                                                        หรือติดต่อหน่วยงานราชการเท่านั้น
+                                                        ไม่อนุญาตให้พนักงานลากิจในแต่ละครั้ง
+                                                        ติดต่อกันเกิน 2
+                                                        วันทำงาน
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
-                                    </ul>
-                                </div>
+                                    </div>
+                                </ul>
                             </div>
-                        </td>
-                    </div>
+                        </div>
+                    </td>
 
                     <!--colum วัน/ชั่วโมงที่ใช้ไป-->
                     <td>
@@ -111,39 +109,37 @@
                     <td scope="row">ลาป่วย</td>
 
                     <!--colum สิทธิการลา/วัน/ปี	-->
-                    <div>
-                        <td class="d-flex justify-content-center">
-                            <div class="row">
-                                <div class="col-4"></div>
-                                <div class="col-2">{{objLeaveInfo.amount_leave.av_sick}}</div>
-                                <div class="col-5"><i class="fa-solid
-                                        fa-circle-info icon-info" id="demo"
-                                        type="button"
-                                        data-bs-toggle="dropdown"
-                                        aria-expanded="false"></i>
-                                    <ul class="dropdown-menu py-0">
-                                        <div class="p-1 ">
-                                            <div class="d-inline d-flex
-                                                justify-content-between px-3
-                                                py-1">
-                                                <div class="row">
-                                                    <div class="col">ข้อเเนะนำ</div>
-                                                    <hr class="line">
-                                                    <div class="col">
-                                                        <p>
-                                                            หากพนักงานลาป่วยมากกว่า
-                                                            3 วัน
-                                                            จะต้องมีหนังสือรับรองจากแพทย์แผนปัจจุบันชั้นหนึ่งมาแสดง
-                                                        </p>
-                                                    </div>
+                    <td class="">
+                        <div class="row d-felx align-items-center">
+                            <!-- <div class="col-4"></div> -->
+                            <div class="col-6 text-end">{{objLeaveInfo.amount_leave.av_sick}}</div>
+                            <div class="col px-0"><i class="fa-solid
+                                    fa-circle-info icon-info" id="demo"
+                                    type="button"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"></i>
+                                <ul class="dropdown-menu py-0">
+                                    <div class="p-1 ">
+                                        <div class="d-inline d-flex
+                                            justify-content-between px-3
+                                            py-1">
+                                            <div class="row">
+                                                <div class="col">ข้อเเนะนำ</div>
+                                                <hr class="line">
+                                                <div class="col">
+                                                    <p>
+                                                        หากพนักงานลาป่วยมากกว่า
+                                                        3 วัน
+                                                        จะต้องมีหนังสือรับรองจากแพทย์แผนปัจจุบันชั้นหนึ่งมาแสดง
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
-                                    </ul>
-                                </div>
+                                    </div>
+                                </ul>
                             </div>
-                        </td>
-                    </div>
+                        </div>
+                    </td>
 
                     <!--colum วัน/ชั่วโมงที่ใช้ไป-->
                     <td>
@@ -165,45 +161,43 @@
                 <!--row 3 colum ประเภทการลา-->
                 <tr>
                     <td>ลาพักร้อน</td>
-                    <div>
-                        <td class="d-flex justify-content-center">
-                            <div class="row">
-                                <div class="col-4"></div>
-                                <div class="col-2">{{objLeaveInfo.amount_leave.av_take_annual}}</div>
-                                <div class="col-5"><i class="fa-solid
-                                        fa-circle-info icon-info" id="demo"
-                                        type="button"
-                                        data-bs-toggle="dropdown"
-                                        aria-expanded="false"></i>
-                                    <ul class="dropdown-menu py-0">
-                                        <div class="p-1 ">
-                                            <div class="d-inline d-flex
-                                                justify-content-between px-3
-                                                py-1">
-                                                <div class="row">
-                                                    <div class="col">ข้อเเนะนำ</div>
-                                                    <hr class="line">
-                                                    <div class="col">
-                                                        <p>
-                                                            การลาพักร้อนจะมีสิทธิตามอายุงาน
-                                                            ดังนี้</p>
-                                                        <p>อายุงาน 1 ปี จำนวน 6
-                                                            วัน</p>
-                                                        <p>อายุงาน 2 ปี จำนวน 8
-                                                            วัน</p>
-                                                        <p>อายุงาน 3 ปี จำนวน 10
-                                                            วัน</p>
-                                                        <p>อายุงาน 4 ปีขึ้นไป
-                                                            จำนวน 12 วัน</p>
-                                                    </div>
+                    <td class="">
+                        <div class="row d-flex align-items-center">
+                            <!-- <div class="col-4"></div> -->
+                            <div class="col-6 text-end">{{objLeaveInfo.amount_leave.av_take_annual}}</div>
+                            <div class="col px-0"><i class="fa-solid
+                                    fa-circle-info icon-info" id="demo"
+                                    type="button"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"></i>
+                                <ul class="dropdown-menu py-0">
+                                    <div class="p-1 ">
+                                        <div class="d-inline d-flex
+                                            justify-content-between px-3
+                                            py-1">
+                                            <div class="row">
+                                                <div class="col">ข้อเเนะนำ</div>
+                                                <hr class="line">
+                                                <div class="col">
+                                                    <p>
+                                                        การลาพักร้อนจะมีสิทธิตามอายุงาน
+                                                        ดังนี้</p>
+                                                    <p>อายุงาน 1 ปี จำนวน 6
+                                                        วัน</p>
+                                                    <p>อายุงาน 2 ปี จำนวน 8
+                                                        วัน</p>
+                                                    <p>อายุงาน 3 ปี จำนวน 10
+                                                        วัน</p>
+                                                    <p>อายุงาน 4 ปีขึ้นไป
+                                                        จำนวน 12 วัน</p>
                                                 </div>
                                             </div>
                                         </div>
-                                    </ul>
-                                </div>
+                                    </div>
+                                </ul>
                             </div>
-                        </td>
-                    </div>
+                        </div>
+                    </td>
                     <td>
                         <div class="d-flex justify-content-center">
                             {{objLeaveInfo.leave_used.user_take_annual}}:{{objLeaveInfo.leave_used.user_take_annual_hours}}
@@ -220,39 +214,37 @@
                 <!--row 4 colum ประเภทการลา-->
                 <tr>
                     <td>ลาบวช</td>
-                    <div>
-                        <td class="d-flex justify-content-center">
-                            <div class="row">
-                                <div class="col-4"></div>
-                                <div class="col-2">{{objLeaveInfo.amount_leave.av_ordination}}</div>
-                                <div class="col-5"><i class="fa-solid
-                                        fa-circle-info icon-info" id="demo"
-                                        type="button"
-                                        data-bs-toggle="dropdown"
-                                        aria-expanded="false"></i>
-                                    <ul class="dropdown-menu py-0">
-                                        <div class="p-1 ">
-                                            <div class="d-inline d-flex
-                                                justify-content-between px-3
-                                                py-1">
-                                                <div class="row">
-                                                    <div class="col">ข้อเเนะนำ</div>
-                                                    <hr class="line">
-                                                    <div class="col">
-                                                        <p>พนักงานมีสิทธิลาเพื่ออุปสมบทได้
-                                                            7 วัน
-                                                            โดยได้รับค่าจ้างตามระยะเวลาที่ลา
-                                                            และสามารถลาได้ 1
-                                                            ครั้งตลอดอายุการเป็นพนักงาน</p>
-                                                    </div>
+                    <td class="">
+                        <div class="row d-felx align-items-center">
+                            <!-- <div class="col-4"></div> -->
+                            <div class="col-6 text-end">{{objLeaveInfo.amount_leave.av_ordination}}</div>
+                            <div class="col px-0"><i class="fa-solid
+                                    fa-circle-info icon-info" id="demo"
+                                    type="button"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"></i>
+                                <ul class="dropdown-menu py-0">
+                                    <div class="p-1 ">
+                                        <div class="d-inline d-flex
+                                            justify-content-between px-3
+                                            py-1">
+                                            <div class="row">
+                                                <div class="col">ข้อเเนะนำ</div>
+                                                <hr class="line">
+                                                <div class="col">
+                                                    <p>พนักงานมีสิทธิลาเพื่ออุปสมบทได้
+                                                        7 วัน
+                                                        โดยได้รับค่าจ้างตามระยะเวลาที่ลา
+                                                        และสามารถลาได้ 1
+                                                        ครั้งตลอดอายุการเป็นพนักงาน</p>
                                                 </div>
                                             </div>
                                         </div>
-                                    </ul>
-                                </div>
+                                    </div>
+                                </ul>
                             </div>
-                        </td>
-                    </div>
+                        </div>
+                    </td>
 
                     <td>
                         <div class="d-flex justify-content-center">
@@ -270,39 +262,37 @@
                 <!--row 5 colum ประเภทการลา-->
                 <tr>
                     <td>ลาคลอด</td>
-                    <div>
-                        <td class="d-flex justify-content-center">
-                            <div class="row">
-                                <div class="col-4"></div>
-                                <div class="col-2">{{objLeaveInfo.amount_leave.av_maternity}}</div>
-                                <div class="col-5"><i class="fa-solid
-                                        fa-circle-info icon-info" id="demo"
-                                        type="button"
-                                        data-bs-toggle="dropdown"
-                                        aria-expanded="false"></i>
-                                    <ul class="dropdown-menu py-0">
-                                        <div class="p-1 ">
-                                            <div class="d-inline d-flex
-                                                justify-content-between px-3
-                                                py-1">
-                                                <div class="row">
-                                                    <div class="col">ข้อเเนะนำ</div>
-                                                    <hr class="line">
-                                                    <div class="col">
-                                                        <p>
-                                                            สิทธิในการลาคลอดจะครอบคลุมถึง
-                                                            การฝากครรภ์
-                                                            เเละการตรวจครรภ์
-                                                        </p>
-                                                    </div>
+                    <td class="">
+                        <div class="row align-items-center">
+                            <!-- <div class="col-4"></div> -->
+                            <div class="col-6 text-end">{{objLeaveInfo.amount_leave.av_maternity}}</div>
+                            <div class="col px-0"><i class="fa-solid
+                                    fa-circle-info icon-info" id="demo"
+                                    type="button"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"></i>
+                                <ul class="dropdown-menu py-0">
+                                    <div class="p-1 ">
+                                        <div class="d-inline d-flex
+                                            justify-content-between px-3
+                                            py-1">
+                                            <div class="row">
+                                                <div class="col">ข้อเเนะนำ</div>
+                                                <hr class="line">
+                                                <div class="col">
+                                                    <p>
+                                                        สิทธิในการลาคลอดจะครอบคลุมถึง
+                                                        การฝากครรภ์
+                                                        เเละการตรวจครรภ์
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
-                                    </ul>
-                                </div>
+                                    </div>
+                                </ul>
                             </div>
-                        </td>
-                    </div>
+                        </div>
+                    </td>
 
                     <td>
                         <div class="d-flex justify-content-center">
@@ -320,37 +310,35 @@
                 <!--row 6 colum ประเภทการลา-->
                 <tr>
                     <td>ลาเพื่อทำหมัน</td>
-                    <div>
-                        <td class="d-flex justify-content-center">
-                            <div class="row">
-                                <div class="col-4"></div>
-                                <div class="col-2">{{objLeaveInfo.amount_leave.av_sterilization}}</div>
-                                <div class="col-5"><i class="fa-solid
-                                        fa-circle-info icon-info" id="demo"
-                                        type="button"
-                                        data-bs-toggle="dropdown"
-                                        aria-expanded="false"></i>
-                                    <ul class="dropdown-menu py-0">
-                                        <div class="p-1 ">
-                                            <div class="d-inline d-flex
-                                                justify-content-between px-3
-                                                py-1">
-                                                <div class="row">
-                                                    <div class="col">ข้อเเนะนำ</div>
-                                                    <hr class="line">
-                                                    <div class="col">
-                                                        <p>
-                                                            หากพนักงานจะลาทำหมันจะต้องมีหนังสือรับรองจากแพทย์แผนปัจจุบันชั้นหนึ่งมาแสดง
-                                                        </p>
-                                                    </div>
+                    <td class="">
+                        <div class="row align-items-center">
+                            <!-- <div class="col-4"></div> -->
+                            <div class="col-6 text-end">{{objLeaveInfo.amount_leave.av_sterilization}}</div>
+                            <div class="col px-0"><i class="fa-solid
+                                    fa-circle-info icon-info" id="demo"
+                                    type="button"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"></i>
+                                <ul class="dropdown-menu py-0">
+                                    <div class="p-1 ">
+                                        <div class="d-inline d-flex
+                                            justify-content-between px-3
+                                            py-1">
+                                            <div class="row">
+                                                <div class="col">ข้อเเนะนำ</div>
+                                                <hr class="line">
+                                                <div class="col">
+                                                    <p>
+                                                        หากพนักงานจะลาทำหมันจะต้องมีหนังสือรับรองจากแพทย์แผนปัจจุบันชั้นหนึ่งมาแสดง
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
-                                    </ul>
-                                </div>
+                                    </div>
+                                </ul>
                             </div>
-                        </td>
-                    </div>
+                        </div>
+                    </td>
 
                     <td>
                         <div class="d-flex justify-content-center">
@@ -369,9 +357,13 @@
                 <!--row 7 colum ประเภทการลา-->
                 <tr>
                     <td>ลาเพื่อรับราชการทหาร</td>
-                    <div>
-                        <td class="d-flex justify-content-center">{{objLeaveInfo.amount_leave.av_military_service}}</td>
-                    </div>
+                    <td class="">
+                        <div class="row align-items-center">
+                            <div class="col-6 text-end">
+                                {{objLeaveInfo.amount_leave.av_military_service}}</div>
+                            <div class="col "></div>
+                        </div>
+                    </td>
 
                     <td>
                         <div class="d-flex justify-content-center">
@@ -389,9 +381,16 @@
                 <!--row 8 colum ประเภทการลา-->
                 <tr>
                     <td>ลาโดยไม่รับเงิน (Without pay)</td>
-                    <div>
+                    <!-- <div>
                         <td class="d-flex justify-content-center">{{objLeaveInfo.amount_leave.av_without_pay}}</td>
-                    </div>
+                    </div> -->
+                    <td class="">
+                        <div class="row align-items-center">
+                            <div class="col-6 text-end">
+                                {{objLeaveInfo.amount_leave.av_without_pay}}</div>
+                            <div class="col "></div>
+                        </div>
+                    </td>
 
                     <td>
                         <div class="d-flex justify-content-center">
@@ -409,9 +408,18 @@
                 <!--row 9 colum ประเภทการลา-->
                 <tr>
                     <td>ลาใช้สิทธิทดแทน (ออกงาน)</td>
-                    <div>
+                    <!-- <div>
                         <td class="d-flex justify-content-center">{{objLeaveInfo.amount_leave.av_resign}}</td>
-                    </div>
+                    </div> -->
+
+                    <td class="">
+                        <div class="row align-items-center">
+                            <div class="col-6 text-end">
+                                {{objLeaveInfo.amount_leave.av_resign}}</div>
+                            <div class="col "></div>
+                        </div>
+                    </td>
+
 
                     <td>
                         <div class="d-flex justify-content-center">

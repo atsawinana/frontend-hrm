@@ -3,14 +3,20 @@
     <div class="col-2 font-menu text-center divhover px-0" routerLink="detail">ข้อมูลพนักงาน
       <hr (click)="URLcheck($event)" [ngClass]="{'line-active' : detail}" class="line-inactive w-100 my-0 mx-0">
     </div>
-    <div (click)="URLcheck($event)" class="col-2 font-menu text-center divhover px-0" routerLink="work-history">เข้างาน
+    <!-- <div (click)="URLcheck($event)" class="col-2 font-menu text-center divhover px-0" routerLink="work-history">เข้างาน
       <hr [ngClass]="{'line-active' : workHistory}" class="line-inactive w-100 my-0 mx-0">
-    </div>
+    </div> -->
     <div (click)="URLcheck($event)" class="col-2 font-menu text-center divhover px-0" routerLink="leave-history">ลางาน
       <hr [ngClass]="{'line-active' : leaveHistory}" class="line-inactive w-100 my-0 mx-0">
     </div>
-    <div (click)="URLcheck($event)" class="col-2 font-menu text-center divhover px-0" routerLink="ot-history">โอที
+    <!-- <div (click)="URLcheck($event)" class="col-2 font-menu text-center divhover px-0" routerLink="ot-history">โอที
       <hr [ngClass]="{'line-active' : otHistory}" class="line-inactive w-100 my-0 mx-0">
+    </div> -->
+    <div class="col-2 font-menu text-center divhover d-flex align-items-end px-0">
+      <hr class="line-inactive w-100 my-0 mx-0">
+    </div>
+    <div class="col-2 font-menu text-center divhover d-flex align-items-end px-0">
+      <hr class="line-inactive w-100 my-0 mx-0">
     </div>
     <div class="col-2 font-menu text-center divhover d-flex align-items-end px-0">
       <hr class="line-inactive w-100 my-0 mx-0">
