@@ -1,16 +1,42 @@
-<div class="font-header mb-4">
-  การแจ้งเตือน
-</div>
 
-<div class="row headline d-flex justify-content-start">
-  <div class="col text-center noti-type" routerLink="../notification">ทั้งหมด</div>
-  <div class="col text-center noti-type" routerLink="work-notification">อนุมัติทำงาน</div>
-  <div class="col text-center noti-type active-box" routerLink="leave-notification">อนุมัติลา</div>
-  <div class="col text-center noti-type" routerLink="ot-notification">อนุมัติโอที</div>
-</div>
 
-<div class="row d-flex justify-content-end mt-2 mb-2">
-  <div class="col-2 clean-history d-flex justify-content-center">ล้างประวัติการแจ้งเตือน</div>
-</div>
+<div class="container-fluid p-0 mb-5">
+    <div class="main-content h-100 p-5">
 
-<router-outlet></router-outlet>
+
+        <div class="font-header mb-4">
+            การแจ้งเตือน
+        </div>
+
+        <div class="row headline d-flex justify-content-start">
+            <div (click)="URLcheck($event)" [ngClass]="{'active-box' : all}"
+                class="col-2 text-center noti-type"
+                routerLink="all-notification">
+                <span class="badge" *ngIf="noti.all_notification != 0">{{noti.all_notification}}</span>
+
+                แจ้งเตือนของฉัน</div>
+
+            <div (click)="URLcheck($event)" [ngClass]="{'active-box' :
+                worknoti}"
+                *ngIf="role != 1" class="col-2 text-center noti-type"
+                routerLink="work-notification">
+                <span class="badge" *ngIf="noti.attendance_notification != 0">{{noti.attendance_notification}}</span>
+                อนุมัติทำงาน</div>
+            <div (click)="URLcheck($event)" [ngClass]="{'active-box' :
+                leaveHnoti}"
+                *ngIf="role != 1" class="col-2 text-center noti-type "
+                routerLink="leave-notification">
+                <span class="badge" *ngIf="noti.leave_notification != 0">{{noti.leave_notification}}</span>
+                อนุมัติลา</div>
+            <div (click)="URLcheck($event)" [ngClass]="{'active-box' : otnoti}"
+                *ngIf="role != 1" class="col-2 text-center noti-type"
+                routerLink="ot-notification">
+                <span class="badge" *ngIf="noti.overtime_notification != 0">{{noti.overtime_notification}}</span>
+                อนุมัติโอที</div>
+        </div>
+
+        <router-outlet></router-outlet>
+
+
+    </div>
+</div>

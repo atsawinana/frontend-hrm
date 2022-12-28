@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { UnapprovedComponent } from './unapproved.component';
+import { NotificationLoadingComponent } from './notification-loading.component';
 
-describe('UnapprovedComponent', () => {
-  let component: UnapprovedComponent;
-  let fixture: ComponentFixture<UnapprovedComponent>;
+describe('NotificationLoadingComponent', () => {
+  let component: NotificationLoadingComponent;
+  let fixture: ComponentFixture<NotificationLoadingComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UnapprovedComponent ]
+      declarations: [ NotificationLoadingComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UnapprovedComponent);
+    fixture = TestBed.createComponent(NotificationLoadingComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

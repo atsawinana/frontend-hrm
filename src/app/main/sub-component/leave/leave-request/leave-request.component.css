@@ -1,73 +1,122 @@
 .font-header {
-    font-family: 'Kanit';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 32px;
-    line-height: 47px;
-    text-align: center;
-    color: #000000;
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 47px;
+  text-align: center;
+  color: #000000;
 }
 
 #font-content {
-    font-family: 'Kanit';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
 }
 
+
 .submit-button {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 12px 16px;
-    background: linear-gradient(270.74deg, #2E3579 0.35%, #005FBC 99.1%, #005FBC 99.1%);
-    border-radius: 8px;
-    border: 1px solid #005FBC;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 12px 16px;
+  background: linear-gradient(270.74deg, #2E3579 0.35%, #005FBC 99.1%, #005FBC 99.1%);
+  border-radius: 8px;
+  border: 1px solid #005FBC;
 }
 
 .submit-text {
-    font-family: 'Kanit';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    color: #FFFFFF;
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #FFFFFF;
 
 }
 
 .cancel-button {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 12px 16px;
-    background: #FFFFFF;
-    border: 1px solid #005FBC;
-    border-radius: 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 12px 16px;
+  background: #FFFFFF;
+  border: 1px solid #005FBC;
+  border-radius: 8px;
 }
 
 .cancel-text {
-    font-family: 'Kanit';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    color: #005FBC;
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #005FBC;
 }
+
 .ng-select.custom::ng-deep.ng-select-container {
-    min-height: 0px;
-    border-radius: 0.375rem;
-    height: 38px;
-    border-color: #ced4da;
-    font-family: 'Kanit';
-    font-size: 16px;
+  min-height: 0px;
+  border-radius: 0.375rem;
+  height: 38px;
+  border-color: #ced4da;
+  font-family: 'Kanit';
+  font-size: 16px;
 }
+
 input::placeholder {
-    opacity: .5;
-    color: #212529;
+  opacity: .5;
+  color: #212529;
+  font-family: 'Kanit';
+  font-style: bold;
+  font-weight: 400;
+  font-size: 16px;
+
+}
+
+textarea::placeholder {
+  opacity: .5;
+  color: #212529;
+  font-family: 'Kanit';
+  font-style: bold;
+  font-weight: 400;
+  font-size: 16px;
+
+}
+
+textarea {
+  font-family: 'Kanit';
+  font-style: bold;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+input{
     font-family: 'Kanit';
     font-style: bold;
     font-weight: 400;
     font-size: 16px;
-    
+  }
+
+.alerttext {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  color: red;
+}
+
+.space-data {
+  margin-left: 140px;
+  margin-top: 5px;
+}
+
+
+.ng-select.customnull::ng-deep.ng-select-container {
+  border-color: #ff0000 !important;
+}
+
+.isinvalid {
+  border: 1px solid #EF0303 !important;
 }

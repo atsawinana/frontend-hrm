@@ -20,6 +20,7 @@ export class DataPersonComponent implements OnInit {
   Empid: any;
   baseURL = environment.apiURL;
   APISuccess: boolean = false;
+  role:any = localStorage.getItem('roleUser')
 
   objDataemp: any;
 

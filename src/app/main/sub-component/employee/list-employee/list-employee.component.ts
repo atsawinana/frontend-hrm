@@ -28,6 +28,8 @@ export class ListEmployeeComponent implements OnInit {
 
   checkMarkAll: boolean = false;
 
+  role:any = localStorage.getItem('roleUser')
+
   listPerpage() {
     this.config.itemsPerPage = this.listPerPage;
     this.config.currentPage = 1;
@@ -139,7 +141,7 @@ export class ListEmployeeComponent implements OnInit {
       ExptExcel[i].แผนก = ExptExcel[i]['dept_name_en'];
       ExptExcel[i].ตำแหน่ง = ExptExcel[i]['position'];
       ExptExcel[i]['ชื่อ-สกุล'] = ExptExcel[i]['ud_fullname_th'];
-      ExptExcel[i].วันที่เข้างาน = ExptExcel[i]['user_created_at'];
+      ExptExcel[i].วันที่เข้างาน = this.objemployee[i]['user_created_at'];
       delete ExptExcel[i].id;
       delete ExptExcel[i].position;
       delete ExptExcel[i].ud_fullname_th;

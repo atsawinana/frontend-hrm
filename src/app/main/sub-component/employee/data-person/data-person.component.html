@@ -2,7 +2,7 @@
 </app-loading-employee>
 <div class="container-fluid h-100" *ngIf="APISuccess">
   <div class="row">
-    <div class="row mb-4">
+    <div class="row mb-4 d-flex justify-content-center align-items-center">
       <button class="back-button d-flex justify-content-center" *ngIf="objDataemp.user_is_deleted == 0"
         routerLink="../../">
         <i class="fa-solid fa-angle-left back-icon"></i>
@@ -13,14 +13,14 @@
       </button>
       <div class="font-header ms-2 col">ข้อมูลพนักงาน</div>
       <div class="col-5">
-        <div class="row d-flex justify-content-end">
+        <div class="row d-flex justify-content-end" *ngIf="role == 3">
           <div class="buttonEdit me-3" routerLink="edit-detail" *ngIf="objDataemp.user_is_deleted != 1"><i
-              class="fa-solid fa-pencil me-3"></i> แก้ไข</div>
+              class="fa-solid fa-pencil " style="font-size: 26px;"></i><div class="px-2">แก้ไข</div> </div>
           <div class="buttonreset" (click)="resetPassword()" *ngIf="objDataemp.user_is_deleted != 1"><i
-              class="fa-solid fa-key me-3"></i>รีเซ็ตรหัสผ่าน</div>
+              class="fa-solid fa-key " style="font-size: 26px;"></i><div class="px-2">รีเซ็ตรหัสผ่าน</div> </div>
           <div class="buttonreset" (click)="deleteEmployee()"
             *ngIf="objDataemp.user_is_deleted == 1 && objDataemp.user_data_is_deleted == 0"><i
-              class="fa-solid fa-trash me-3"></i>ลบข้อมูล</div>
+              class="fa-solid fa-trash " style="font-size: 26px;"></i><div class="px-2">ลบข้อมูล</div> </div>
         </div>
 
       </div>

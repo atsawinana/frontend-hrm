@@ -51,7 +51,7 @@
                 >
                   <div class="row d-flex mb-4">
                     <div class="col ps-4 fontprofileMan">
-                      ชื่อ: {{ objdataUser.ud_prefix_name }}
+                      ชื่อ : {{ objdataUser.ud_prefix_name }}
                       {{ objdataUser.ud_firstname_th }}
                       <p
                         class="d-flex align-items-center ms-3 my-0 fontcontract"
@@ -61,14 +61,14 @@
                     </div>
                   </div>
                   <div class="row mb-4 ps-4 fontprofileMan">
-                    นามสกุล: {{ objdataUser.ud_lastname_th }}
+                    นามสกุล : {{ objdataUser.ud_lastname_th }}
                   </div>
                   <div *ngIf="!whenEdit" class="row ps-4 fontprofileMan">
-                    เบอร์โทรศัพท์: {{ objdataUser.ud_phone }}
+                    เบอร์โทรศัพท์ : {{ objdataUser.ud_phone }}
                   </div>
                   <div *ngIf="whenEdit" class="row ps-4 fontprofileMan">
                     <div class="row">
-                      เบอร์โทรศัพท์:
+                      เบอร์โทรศัพท์ :
                       <input
                         [(ngModel)]="phonenumber"
                         (keypress)="iputNumberOnly($event)"

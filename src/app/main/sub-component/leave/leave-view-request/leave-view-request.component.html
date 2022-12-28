@@ -1,0 +1,75 @@
+<app-loading-leave-info *ngIf="!APISuccess" class="d-flex justify-content-center h-100 align-items-center">
+</app-loading-leave-info>
+<div class="container-fluid" *ngIf="APISuccess">
+    <div class="row mb-4">
+        <button
+            class="back-button d-flex justify-content-center"
+            (click)="backClicked()">
+            <i class="fa-solid fa-angle-left back-icon"></i>
+        </button>
+
+        <div class="font-header ms-2 col">คำขอการลา</div>
+    </div>
+
+
+    <h1 class="row mt-5 d-flex justify-content-center" *ngIf="objDataLeave.length == 0" style="font-family: 'Kanit';">
+        ไม่พบคำขอการลา
+    </h1>
+
+    <div class="row" *ngIf="objDataLeave.length != 0">
+        <div class="table-responsive" style="overflow-x: scroll">
+            <table
+                class="table table-striped text-center mt-3 list-table"
+                id="tableemp"
+                style="min-width: 1140px">
+                <thead>
+                    <tr>
+                        <th class="text-center cut-text" style="width: 10% !important">ลำดับ</th>
+                        <th class="text-center cut-text" style="width: 10% !important">รหัสพนักงาน</th>
+                        <th class="text-center cut-text" style="width: 20% !important">รายชื่อ</th>
+                        <th class="text-center cut-text" style="width: 10% !important">ประเภทการลา</th>
+                        <th class="text-center cut-text" style="width: 20% !important">วันที่ต้องการลา</th>
+                        <th class="cut-text" style="width: 20% !important">รวมวันที่ลา/ชั่วโมง</th>
+                        <th class="cut-text" style="width: 10% !important">การดำเนินการ</th>
+                    </tr>
+                </thead>
+
+                <tbody class="list-content">
+                    <tr id="row-list" *ngFor="let objleave of objDataLeave">
+                        <td>
+                            {{objleave.number}}
+                        </td>
+                        <td>
+                            {{objleave.user_card_number}}
+                        </td>
+                        <td class="text-start">
+                            {{objleave.ud_fullname_th}}
+                        </td>
+                        <td>
+                            {{objleave.rvac_type_name}}
+                        </td>
+                        <td>
+                            {{objleave.rvac_sum_date}}
+                        </td>
+                        <td>
+                            {{objleave.rvac_sum_duration}}
+                        </td>
+                        <!-- routerLink="../view-request-detail/{{objleave.rvac_id}}" -->
+                        <td>
+                            <div class="row ">
+                                <div class="dropdown">
+                                    <button type="button " class="btn btn-primary btn-dropdown" id="dropdownMenuButton1" routerLink="../view-request-detail/{{objleave.rvac_id}}">
+                                        <div class="col icon-dropdown d-flex justify-content-center">
+                                            <i class="fa-solid fa-list-ul icon-dropdown"></i>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

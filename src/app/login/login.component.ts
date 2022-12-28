@@ -73,7 +73,7 @@ export class LoginComponent implements OnInit {
           this.token = res.data.access_token;
           this.tokentype = res.data.token_type;
           this.expires = res.data.expires_in;
-
+          localStorage.setItem('notification',res.data.notification)
           // this.coreToken.token = localStorage.setItem('tokenLocal',this.token!)!
           
           localStorage.setItem('tokenLocal',this.token!)

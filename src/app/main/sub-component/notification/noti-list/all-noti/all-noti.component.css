@@ -1,69 +1,80 @@
 .type-text {
-    font-family: 'Kanit';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 18px;
-    color: #000000;
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  color: #000000;
 }
 
 .time-text {
-    font-family: 'Kanit';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    color: #636366;
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  color: #636366;
 
+}
+
+.clean-history {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  text-decoration-line: underline;
+  color: #005FBC;
+  cursor: pointer;
+  width: 180px;
 }
 
 .noti-box {
-    margin-left: 30px;
-    margin-right: 50px;
+  margin-left: 30px;
+  margin-right: 50px;
 }
 
 .noti-rectangle {
-    background: #E5F0FA;
-    border-radius: 4px;
-    height: 64px;
+  background: #E5F0FA;
+  border-radius: 4px;
+  height: 64px;
 }
 
 .image {
-    height: 48px;
-    width: 48px;
-    border-radius: 50%;
-    background-color: brown;
+  height: 48px;
+  width: 48px;
+  border-radius: 50%;
+  background-color: brown;
 }
 
 .content-text {
-    font-family: 'Kanit';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    color: #000000;
-    width: -moz-fit-content;
-    width: fit-content;
-    padding-right: 0px;
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  color: #000000;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding-right: 0px;
 }
 
 .content-text-bold {
-    font-family: 'Kanit';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 16px;
-    color: #000000;
-    width: -moz-fit-content;
-    width: fit-content;
-    padding-left: 5px;
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  color: #000000;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding-left: 5px;
 }
 
 .more {
-    font-family: 'Kanit';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    text-decoration-line: underline;
-    color: #005FBC;
-    cursor: pointer;
-    width: 180px;
-    width: -moz-fit-content;
-    width: fit-content;
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  text-decoration-line: underline;
+  color: #005FBC;
+  cursor: pointer;
+  width: 180px;
+  width: -moz-fit-content;
+  width: fit-content;
 }

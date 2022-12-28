@@ -739,7 +739,7 @@
                       minlength="13"
                       (keypress)="iputNumberOnly($event)"
                     />
-                    <div class="row" *ngIf="(emp.controls.ud_id_card.errors && submitted) || IDcarderr">
+                    <div class="row" *ngIf="emp.controls.ud_id_card.errors && submitted">
                       <div class="alerttext text-end">
                         กรุณากรอกข้อมูล
                       </div>
@@ -985,8 +985,7 @@
                         placeholder="เลือกตำแหน่ง"
                         [clearable]="false"
                         [ngModelOptions]="{ standalone: true }"
-                        class="custom d-flex justify-content-center"
-                        style="margin-bottom: 24px"
+                        class="custom d-flex justify-content-center mb-2"
                         [ngClass]="{ lastItemSelect: i + 1 == Position.length }"
                         [ngClass]="{
                           customnull: Position[i].positions == null && submitted

@@ -21,7 +21,7 @@ export class ListDepartmentComponent implements OnInit {
     deprtmentsData: any;
     deptTable: any;
     searchInput: string = "";
-    listPerPage: number = 5;
+    listPerPage: number = 10;
     onPage: number = 1;
     onPageNext: number = this.onPage + 1;
     maxListDept?: any;

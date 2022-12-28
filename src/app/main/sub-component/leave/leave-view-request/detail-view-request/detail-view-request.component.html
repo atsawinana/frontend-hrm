@@ -1,0 +1,173 @@
+<app-loading-leave-info *ngIf="!APISuccess" class="d-flex justify-content-center
+    h-100 align-items-center">
+</app-loading-leave-info>
+<div class="container-fluid" *ngIf="APISuccess">
+    <div class="row mb-4">
+
+        <button
+            class="back-button d-flex justify-content-center"
+            (click)="backClicked()">
+            <i class="fa-solid fa-angle-left back-icon"></i>
+        </button>
+
+        <div class="font-header ms-2 col d-flex align-items-center">รายละเอียดการลา</div>
+    </div>
+    <div class="row" *ngIf="!ownerCheck">
+        <div class="container-fluid shadow-bg">
+            <div class="row ">
+                <div class="col-5 pe-5 d-flex justify-content-end">
+                    <img
+                        class="img-fluid img-profile img-thumbnail"
+                        src="{{baseURL}}{{objProfile.ud_picture}}"
+                        />
+                </div>
+                <div class="col px-5 text-start d-flex align-items-center">
+                    <div class="row font-profile">
+                        <div class="col-12 font-profile-name mb-2">
+                            {{objProfile.ud_fullname_th}}
+                            ({{objProfile.ud_nickname}})
+                        </div>
+                        <div class="col-4 mb-2">แผนก</div>
+                        <div class="col-8">{{objProfile.department}}</div>
+                        <div class="col-4 ">ตำแหน่ง</div>
+                        <div class="col-8 mb-2">
+                            {{objProfile.position}}
+                        </div>
+                        <div class="col-4 mb-2">รหัสพนักงาน</div>
+                        <div class="col-8">{{objProfile.user_card_number}}</div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="container-fluid shadow-bg">
+            <div class="row mb-4">
+                <div class="container ">
+                    <div class="row my-3">
+                        <div class="col d-flex flex-column-reverse
+                            justify-content-end align-items-end">
+
+                            <div class="circle px-0 pt-1 d-flex
+                                justify-content-center">
+                                <i class="fa-solid fa-check mx-auto"
+                                    style="color:white;
+                                    font-size: 40px;"></i>
+                            </div>
+
+                            <!-- <div class="circle-fail px-0 pt-1 d-flex
+                                justify-content-center"
+                                *ngIf="objProfile.rvac_is_canceled ==
+                                1">
+                                <i class="fa-solid fa-xmark mx-auto"
+                                    style="color:white;
+                                    font-size:42px;"></i>
+                            </div> -->
+                        </div>
+
+                        <div class="col-8 ">
+                            <div class="col font-header d-flex
+                                align-items-center" style="height: 50px;">ยื่นคำร้อง</div>
+                            <div class="row font-detail">
+                                <div class="col-4 fw-bolder">
+                                    <div class="mb-2"
+                                        *ngIf="objProfile.rvac_reason !=
+                                        '-'">เหตุผลการยกเลิก :</div>
+                                    <div class="mb-2">ประเภทการลา :</div>
+                                    <div class="mb-2">วันที่ยื่นลา :</div>
+                                    <div class="mb-2">วันที่ต้องการลา :</div>
+                                    <div class="mb-2">ช่วงเวลาในการลา :</div>
+                                    <div class="mb-2">รวมวันลาทั้งหมด :</div>
+                                    <div class="mb-2">เหตุผลการลา :</div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-2"
+                                        *ngIf="objProfile.rvac_reason !=
+                                        '-'">{{objProfile.rvac_reason}}</div>
+                                    <div class="mb-2">{{objProfile.rvac_type}}</div>
+                                    <div class="mb-2">{{objProfile.rvac_created_at}}</div>
+                                    <div class="mb-2">{{objProfile.rvac_date_start}}
+                                        - {{objProfile.rvac_date_end}}</div>
+                                    <div class="mb-2">{{objProfile.rvac_duration}}</div>
+                                    <div class="mb-2">{{objProfile.rvac_sum_duration}}</div>
+                                    <div class="mb-2">{{objProfile.rvac_detail}}</div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <button (click)="cancelVacation()"
+                                    *ngIf="objProfile.rvac_can_cancel == 1 &&
+                                    ownerCheck" class="col-2 btn-cancel">ยกเลิก</button>
+                                <button class="col-2 btn-edit" *ngIf="objProfile.rvac_can_cancel == 2 && ownerCheck"
+                                    routerLink="../../edit-detail/{{rvac_id}}">แก้ไข</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-4" *ngFor="let reqs of approve_reqs; let i = index">
+                <div class="container">
+                    <div class="row mb-3">
+
+                        <div class="col d-flex justify-content-end">
+
+                            <div class="col-12 circle-waiting d-flex
+                                justify-content-center px-0 pt-1"
+                                *ngIf="reqs.ar_button == 0">
+                            </div>
+
+                            <div class="col-12 circle-fail d-flex
+                                justify-content-center px-0 pt-1"
+                                *ngIf="reqs.ar_button == 2">
+                                <i class="fa-solid fa-xmark" style="color:white;
+                                    font-size:42px;"></i>
+                            </div>
+
+                            <div class="col-12 circle d-flex
+                                justify-content-center px-0 pt-1"
+                                *ngIf="reqs.ar_button == 1">
+                                <i class="fa-solid fa-check" style="color:white;
+                                    font-size:40px;"></i>
+                            </div>
+                        </div>
+
+                        <div class="col-8">
+                            <div class="col font-header d-flex
+                                align-items-center" style="height: 50px;">{{reqs.ar_head}} : {{reqs.ar_fullname_th}}</div>
+                            <div class="row font-detail" *ngIf="reqs.ar_head != 'ยื่นคำร้องใหม่'">
+                                <div class="col-4 ">
+                                    <div class="mb-2 fw-bolder" >อนุมัติวันที่ :</div>
+                                    <div class="mb-2 fw-bolder" >สถานะ :</div>
+                                    <div class="mb-2 fw-bolder" >เหตุผล :</div>
+                                </div>
+                                <div class="col" >
+                                    <div class="mb-2" >{{reqs.ar_update_at}}</div>
+                                    <div class="mb-2 font-wait" *ngIf="reqs.ar_is_approv == null">{{reqs.ar_is_approv_name}}</div>
+                                    <div class="mb-2 font-accept" *ngIf="reqs.ar_is_approv == 1">{{reqs.ar_is_approv_name}}</div>
+                                    <div class="mb-2 font-unaccept" *ngIf="reqs.ar_is_approv == 0">{{reqs.ar_is_approv_name}}</div>
+                                    <div class="mb-2" >{{reqs.ar_reason}}</div>
+                                </div>
+                            </div>
+
+                            <div class="row font-detail" *ngIf="reqs.ar_head == 'ยื่นคำร้องใหม่'">
+                                <div class="col-4 ">
+                                    <div class="mb-2 fw-bolder" >ยื่นคำร้องใหม่วันที่ :</div>
+                                </div>
+                                <div class="col" >
+                                    <div class="mb-2" >{{reqs.ar_update_at}}</div>
+                                </div>
+                            </div>
+
+
+                            <div class="row" *ngIf="reqs.ar_can_approve == 1 && !ownerCheck">
+                                <button class="cancel-btn me-3" (click)="disapproveRequest()">ไม่อนุมัติ</button>
+                                <button class="submit-btn" (click)="approveRequest()">อนุมัติ</button>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

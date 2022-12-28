@@ -1,0 +1,243 @@
+.main-content {
+    background: #FFFFFF;
+    border: 1px solid #D1D1D6;
+    box-shadow: 0px 4px 16px rgba(138, 159, 171, 0.35);
+    border-radius: 24px;
+}
+
+.font-header {
+    /* Medium 36 */
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 48px;
+    /* identical to box height, or 133% */
+    color: #000000;
+}
+
+.time-stamp {
+    width: 100%;
+    background: linear-gradient(90deg, #FF5444 0.1%, #E69755 100.01%);
+    border-radius: 8px;
+}
+
+.on-work {
+    width: 100%;
+    height: 100%;
+    background: #005FBC;
+    border-radius: 20px;
+    border: 0px !important;
+}
+
+.out-work {
+    width: 100%;
+    height: 100%;
+    background: #AEAEB2;
+    border-radius: 20px;
+    border: 0px !important;
+
+}
+
+
+.list-table {
+    background-color: #005fbc;
+    font-family: "Kanit";
+    font-style: normal;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+.list-content {
+    font-family: "Kanit";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.font-content {
+    font-family: "Kanit";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 35px;
+}
+
+
+.buttonPage {
+    background: #FFFFFF;
+    border: 1px solid #C7C7CC;
+    border-radius: 8px;
+    width: 38px;
+    height: 38px;
+    font-size: 22px;
+    font-family: 'Kanit';
+    margin-right: 10px;
+}
+
+.on-page {
+    background: #005FBC;
+    width: 38px;
+    height: 38px;
+    border: 1px solid #005FBC;
+    border-radius: 8px;
+    font-size: 22px;
+    font-family: 'Kanit';
+    color: #FFFFFF;
+    margin-right: 10px;
+}
+
+.buttonPage:hover {
+    background-color: #005FBC;
+    color: #ffffff;
+    transition: 0.5s;
+}
+
+.btn-histroy {
+    /* Primary/Color EVT 6.1 */
+
+    background: linear-gradient(90deg, #E69755 0.1%, #FF5444 100.01%);
+    border-radius: 8px;
+    border: 0px !important;
+
+    /* Medium 14 */
+
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+
+    /* System/White */
+
+    color: #FFFFFF;
+}
+
+.btn-request {
+    /* Primary/Color EVT 3 */
+
+    background: linear-gradient(270.74deg, #2E3579 0.35%, #005FBC 99.1%, #005FBC 99.1%);
+    border-radius: 8px;
+    border: 0px !important;
+
+    /* Medium 14 */
+
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+
+    /* System/White */
+
+    color: #FFFFFF;
+
+}
+
+.font-table {
+
+    /* Medium 24 */
+
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 35px;
+    /* identical to box height, or 146% */
+
+
+    color: #000000;
+}
+
+.icon {
+    font-size: 22px !important;
+}
+
+.listperpage-font {
+
+    /* Regular 16 */
+
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    /* identical to box height, or 150% */
+}
+
+.select-perPage {
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    padding: 7px;
+    background: #FFFFFF;
+    border-radius: 8px;
+    border-color: #A8A8A8;
+}
+
+.flip {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+.font-inout {
+    /* Medium 24 */
+
+    font-family: 'Kanit';
+    font-size: 24px;
+    color: #FFFFFF;
+}
+
+.date-thai-format {
+
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 35px;
+    color: #FFFFFF;
+
+}
+
+.date-timestap {
+
+    /* Medium 96 */
+
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 96px;
+    line-height: 140px;
+    /* identical to box height, or 146% */
+
+    text-align: center;
+
+    color: #FFFFFF;
+
+}
+
+.btn-histroyall {
+    background: linear-gradient(90deg, #E69755 0.1%, #FF5444 100.01%);
+    border: 0px;
+    border-radius: 8px;
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+}
+
+.btn-viewrequest {
+    background: linear-gradient(270.74deg, #2E3579 0.35%, #005FBC 99.1%, #005FBC 99.1%);
+    border: 0px;
+    border-radius: 8px;
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+}

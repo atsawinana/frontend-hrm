@@ -178,6 +178,10 @@ input {
   outline: none;
 }
 
+tr:hover{
+    background-color: #000000 !important;
+}
+
 
 td {
   background: rgb(255, 255, 255);

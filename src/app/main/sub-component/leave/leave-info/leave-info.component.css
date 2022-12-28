@@ -66,16 +66,14 @@ table {
 .icon-info {
     color: #005FBC;
     font-size: 24px;
+    float: left !important;
+    overflow: hidden;
 }
 
 .regtangle {
     color: #ffffff;
     width: 277px;
     height: 162px;
-}
-
-.space-table {
-    padding-left: 45px;
 }
 
 .space-icon {
@@ -97,3 +95,9 @@ table {
     color: #005FBC;
     margin: none;
 }
+
+.cut-text { 
+    text-overflow: ellipsis;
+    overflow: hidden; 
+    white-space: nowrap;
+  }

@@ -64,6 +64,7 @@ export class ProfileComponent implements OnInit {
       next: (res: any) => {
         this.objdataUser = res.data;
         localStorage.setItem('user_id', this.objdataUser.user_id);
+        localStorage.setItem('ud_gender_id', this.objdataUser.ud_gender_id);
         this.phonenumber = this.objdataUser.ud_phone;
         this.testleaveday = this.objdataUser.user_maternity_day;
         this.ApiSuccess = true;
