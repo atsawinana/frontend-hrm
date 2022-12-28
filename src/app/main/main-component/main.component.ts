@@ -61,7 +61,7 @@ export class MainComponent implements OnInit {
     notificationCOunt: any
 
     ngOnInit() {
-        localStorage.setItem('overbtn', 'true');
+        // localStorage.setItem('overbtn', 'true');
         this.getProfile();
     }
 
