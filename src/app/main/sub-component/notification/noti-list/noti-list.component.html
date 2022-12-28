@@ -16,23 +16,23 @@
 
                 แจ้งเตือนของฉัน</div>
 
-            <div (click)="URLcheck($event)" [ngClass]="{'active-box' :
+            <!-- <div (click)="URLcheck($event)" [ngClass]="{'active-box' :
                 worknoti}"
                 *ngIf="role != 1" class="col-2 text-center noti-type"
                 routerLink="work-notification">
                 <span class="badge" *ngIf="noti.attendance_notification != 0">{{noti.attendance_notification}}</span>
-                อนุมัติทำงาน</div>
+                อนุมัติทำงาน</div> -->
             <div (click)="URLcheck($event)" [ngClass]="{'active-box' :
                 leaveHnoti}"
                 *ngIf="role != 1" class="col-2 text-center noti-type "
                 routerLink="leave-notification">
                 <span class="badge" *ngIf="noti.leave_notification != 0">{{noti.leave_notification}}</span>
                 อนุมัติลา</div>
-            <div (click)="URLcheck($event)" [ngClass]="{'active-box' : otnoti}"
+            <!-- <div (click)="URLcheck($event)" [ngClass]="{'active-box' : otnoti}"
                 *ngIf="role != 1" class="col-2 text-center noti-type"
                 routerLink="ot-notification">
                 <span class="badge" *ngIf="noti.overtime_notification != 0">{{noti.overtime_notification}}</span>
-                อนุมัติโอที</div>
+                อนุมัติโอที</div> -->
         </div>
 
         <router-outlet></router-outlet>
