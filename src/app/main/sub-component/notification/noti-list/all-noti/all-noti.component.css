@@ -78,3 +78,11 @@
   width: -moz-fit-content;
   width: fit-content;
 }
+
+.circle {
+  background: red;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  opacity: 0.8;
+}

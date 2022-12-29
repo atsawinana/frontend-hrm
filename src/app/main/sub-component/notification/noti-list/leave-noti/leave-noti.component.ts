@@ -30,9 +30,9 @@ export class LeaveNotiComponent implements OnInit {
 
     }
 
-    NavigateToLeave(id: any) {
+    NavigateToLeave(id: any,noti_id:any) {
 
-        this.notiservice.updateHasSeen(id).subscribe({
+        this.notiservice.updateHasSeen(noti_id).subscribe({
             next: (res: any) => {
             },
             error: (error: any) => { },

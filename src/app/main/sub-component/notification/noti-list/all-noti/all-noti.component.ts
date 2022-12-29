@@ -28,7 +28,14 @@ export class AllNotiComponent implements OnInit {
 
     }
 
-    NavigateToLeave(id: any) {
+    NavigateToLeave(id: any,noti_id:any) {
+
+        this.notiservice.updateHasSeen(noti_id).subscribe({
+            next: (res: any) => {
+            },
+            error: (error: any) => { },
+        })
+
         this.router.navigate([`/main/leave/view-request-detail/${id}`]);
     }
 

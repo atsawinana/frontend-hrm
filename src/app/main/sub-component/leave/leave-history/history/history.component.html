@@ -148,9 +148,8 @@
 
 
                                 <td>
-                                    <div class="mt-1 status-pending text-center"
-                                        *ngIf="item.rvac_approve_status ==
-                                        null">
+                                    <div class="mt-1 status-cancel text-center"
+                                        *ngIf="item.rvac_approve_status == 2">
                                         {{item.rvac_status_name}}
                                     </div>
                                     <div class="mt-1 status-disapproved
