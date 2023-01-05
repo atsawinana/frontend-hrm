@@ -47,6 +47,7 @@ export class MainComponent implements OnInit {
 
     }
     baseURL = environment.apiURL;
+    storageURL = environment.storageURL;
     token!: any;
     ud_fullname_th!: string;
     ud_prefix!: string;

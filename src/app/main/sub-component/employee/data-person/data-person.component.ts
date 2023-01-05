@@ -23,6 +23,7 @@ export class DataPersonComponent implements OnInit {
   role:any = localStorage.getItem('roleUser')
 
   objDataemp: any;
+  storageURL: any = environment.storageURL;
 
   ngOnInit() {
     this.Empid = this.router.snapshot.params['id'];
@@ -95,7 +96,7 @@ export class DataPersonComponent implements OnInit {
     });
   }
 
- 
+
   deleteEmployee() {
     Swal.fire({
       title: `<strong style = "font-family:Kanit"> คุณต้องการลบข้อมูลของ <br>  ${this.objDataemp.ud_prefix_name}  ${this.objDataemp.ud_fullname_th} หรือไม่ ? </strong>`,

@@ -47,4 +47,5 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: [AuthGuardGuard, RoleGuard]
 })
+
 export class AppRoutingModule { }

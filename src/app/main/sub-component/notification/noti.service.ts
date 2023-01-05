@@ -87,7 +87,7 @@ export class NotiService {
         return this.httpClient.patch(
             `${environment.apiURL}/leaveOnline/updateHasSeen`,
             {
-                'rvac_id': id
+                'noti_id': id
             },
             {
                 headers

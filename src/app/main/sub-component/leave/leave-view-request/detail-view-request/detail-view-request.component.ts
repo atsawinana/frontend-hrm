@@ -51,8 +51,9 @@ export class DetailViewRequestComponent implements OnInit {
     }
 
     //     คุณต้องการอนุมัติการลา
-    // จาก สหรัฐ เมืองดี 
-    // แผนก Designer หรือไม่? 
+    // จาก สหรัฐ เมืองดี
+    // แผนก Designer หรือไม่?
+  storageURL: any = environment.storageURL;
 
     approveRequest() {
 
@@ -231,7 +232,7 @@ export class DetailViewRequestComponent implements OnInit {
         // }).then((result) => {
         //     if (result.isConfirmed) {
         //         this.serviceDetail.cancelVacation(this.rvac_id, "reason").subscribe({
-        //             next: (res: any) => { 
+        //             next: (res: any) => {
         //                 this.backClicked()
         //              },
         //             error: (err: any) => { }

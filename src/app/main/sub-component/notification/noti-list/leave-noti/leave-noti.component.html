@@ -19,16 +19,16 @@
             </div>
             <div class="row noti-rectangle">
                 <div class="col-1 my-auto" style="max-width:65px;">
-                    <img class="image" src="{{baseURL}}{{item.ud_picture}}">
+                    <img class="image" src="{{storageURL}}{{item.ud_picture}}">
                 </div>
                 <div class="col my-auto">
                     <div class="row d-flex justify-content-between">
-                        <div class="col d-flex flex-row "> 
+                        <div class="col d-flex flex-row ">
                             <div class="content-text">จาก </div>
                             <div class="content-text-bold">{{item.ud_fullname_th}}</div>
                             <div class="content-text mx-2">ตำเเหน่ง :</div>
                             <div class="content-text-bold ">{{item.ud_position}}</div></div>
-                        <div class="col d-flex justify-content-end" *ngIf="item.noti_has_seen == 0"> 
+                        <div class="col d-flex justify-content-end" *ngIf="item.noti_has_seen == 0">
                             <div class="content-text circle"></div>
                         </div>
                     </div>

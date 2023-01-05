@@ -55,6 +55,7 @@ export class ProfileComponent implements OnInit {
   //     data: [6,3],
   //     backgroundColor: ['#FD9229','#63C8CE']
   //   },
+  storageURL = environment.storageURL;
 
   ngOnInit() {
     if (localStorage.getItem('roleUser') == '3') {

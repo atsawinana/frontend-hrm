@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  apiURL: "http://172.16.10.181/api/v1"
+  apiURL: "https://hr-api.exvention.co.th/api/v1",
+  storageURL: "https://hr-api.exvention.co.th"
 };

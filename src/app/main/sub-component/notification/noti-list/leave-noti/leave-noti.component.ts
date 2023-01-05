@@ -18,6 +18,7 @@ export class LeaveNotiComponent implements OnInit {
     baseURL = environment.apiURL;
 
     ApiSuccess: boolean = false
+  storageURL: any = environment.storageURL;
 
     ngOnInit() {
         this.notiservice.getLeaveNoti().subscribe({

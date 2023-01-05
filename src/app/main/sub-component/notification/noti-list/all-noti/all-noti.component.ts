@@ -16,6 +16,7 @@ export class AllNotiComponent implements OnInit {
     objDataNoti: any
     baseURL = environment.apiURL;
     ApiSuccess: boolean = false
+  storageURL: any = environment.storageURL;
 
     ngOnInit() {
         this.notiservice.getAllNoti().subscribe({
