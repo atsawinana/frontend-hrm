@@ -17,7 +17,7 @@ export class OverbuttonComponent implements OnInit {
 
       
 
-        if (localStorage.getItem('roleUser') == "3") 
+        if (localStorage.getItem('roleUser') == "3" || localStorage.getItem('roleUser') == "2") 
             this.role = true
 
 
