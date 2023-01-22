@@ -14,7 +14,7 @@ export class DataPersonService {
     });
 
     return this.httpClient.get(
-      `${environment.apiURL}/employee/GetProfileByUserId`,
+      `${environment.apiURL}/employee/getProfileByUserId`,
       {
         headers,
         params: {

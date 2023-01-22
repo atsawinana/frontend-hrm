@@ -72,7 +72,7 @@ export class NotiService {
         });
 
         return this.httpClient.get(
-            `${environment.apiURL}/leaveOnline/GetCountNotification`,
+            `${environment.apiURL}/leaveOnline/getCountNotification`,
             {
                 headers,
             }

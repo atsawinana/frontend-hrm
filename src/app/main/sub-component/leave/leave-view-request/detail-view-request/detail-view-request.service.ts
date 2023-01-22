@@ -31,7 +31,7 @@ export class DetailViewRequestService {
         });
 
         return this.httpClient.get(
-            `${environment.apiURL}/leaveOnline/getDetailsRequestLeave`,
+            `${environment.apiURL}/leaveOnline/getDetailRequestLeave`,
             {
                 headers,
                 params: {

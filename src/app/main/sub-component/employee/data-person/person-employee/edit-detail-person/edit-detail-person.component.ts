@@ -130,17 +130,17 @@ export class EditDetailPersonComponent implements OnInit {
                 let startdate = ""
                 let bthdate = ""
 
-                console.log(this.dateInputBTH)
-                console.log(this.dateInputStart)
+                // console.log(this.dateInputBTH)
+                // console.log(this.dateInputStart)
 
                 if (this.dateInputBTH) {
                     bthdate = this.datepipe.transform(this.emp.controls.ud_birthday.value, 'YYYY-MM-dd')!;
 
                     let arydate1 = bthdate.split("-")
-                    console.log(arydate1)
+                    // console.log(arydate1)
                     let yeartemp = Number(arydate1[0]) + 543
                     arydate1[0] = String(yeartemp)
-                    console.log(arydate1)
+                    // console.log(arydate1)
                     bthdate = ""
                     for (let i = 0; i < arydate1?.length!; i++) {
                         if (i != arydate1?.length! - 1)
@@ -148,8 +148,8 @@ export class EditDetailPersonComponent implements OnInit {
                         else
                             bthdate += arydate1![i]
                     }
-                    console.log(arydate1)
-                    console.log(bthdate)
+                    // console.log(arydate1)
+                    // console.log(bthdate)
 
                 } else {
                     let arydate1 = this.emp.controls.ud_birthday.value?.split("/")
@@ -166,10 +166,10 @@ export class EditDetailPersonComponent implements OnInit {
                     startdate = this.datepipe.transform(this.emp.controls.user_created_at.value, 'YYYY-MM-dd')!;
 
                     let arydate1 = startdate.split("-")
-                    console.log(arydate1)
+                    // console.log(arydate1)
                     let yeartemp = Number(arydate1[0]) + 543
                     arydate1[0] = String(yeartemp)
-                    console.log(arydate1)
+                    // console.log(arydate1)
                     startdate = ""
                     for (let i = 0; i < arydate1?.length!; i++) {
                         if (i != arydate1?.length! - 1)
@@ -177,8 +177,8 @@ export class EditDetailPersonComponent implements OnInit {
                         else
                         startdate += arydate1![i]
                     }
-                    console.log(arydate1)
-                    console.log(startdate)
+                    // console.log(arydate1)
+                    // console.log(startdate)
 
                 } else {
                     let arydate2 = this.emp.controls.user_created_at.value?.split("/")
@@ -255,12 +255,12 @@ export class EditDetailPersonComponent implements OnInit {
 
     onValueChangeDateBTH(event: any) {
         this.dateInputBTH = true
-        console.log(this.dateInputBTH)
+        // console.log(this.dateInputBTH)
     }
 
     onValueChangeDateStart(event: any) {
         this.dateInputStart = true
-        console.log(this.dateInputStart)
+        // console.log(this.dateInputStart)
     }
 
     getPosition(value: any) {
