@@ -30,14 +30,14 @@
                         <div class="row h-100">
                             <div class="col-6 h-100 d-flex
                                 justify-content-center align-items-center">
-                                <button class="on-work font-inout py-3 mx-1 ">
+                                <button [disabled]="!btnControl.checkinbtn" [ngClass]="{ 'btn-activate' : btnControl.checkinbtn }" class="btn-inactivate font-inout py-3 mx-1" (click)="clickCheckin()">
                                     <i class="fa-solid fa-right-to-bracket flip"
                                         style="font-size:56px;"></i><br><br>เข้างาน
                                 </button>
                             </div>
                             <div class="col-6 h-100 d-flex
                                 justify-content-center align-items-center">
-                                <button class="out-work font-inout py-3 mx-1 ">
+                                <button [disabled]="!btnControl.checkoutbtn" [ngClass]="{ 'btn-activate' : btnControl.checkoutbtn }" class="btn-inactivate font-inout py-3 mx-1" (click)="clickCheckout()">
                                     <i class="fa-solid fa-right-from-bracket"
                                         style="font-size:56px;"></i><br><br>ออกงาน
                                 </button>
