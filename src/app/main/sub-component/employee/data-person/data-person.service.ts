@@ -14,7 +14,7 @@ export class DataPersonService {
     });
 
     return this.httpClient.get(
-      `${environment.apiURL}/employee/showEmployeeProfile`,
+      `${environment.apiURL}/employee/GetProfileByUserId`,
       {
         headers,
         params: {
@@ -68,7 +68,7 @@ export class DataPersonService {
     });
 
     return this.httpClient.get(
-        `${environment.apiURL}/leaveOnline/viewAllLeaveHistoryEmployee`,
+        `${environment.apiURL}/leaveOnline/getLeaveHistoryByUserId`,
         {
             headers,
             params: {

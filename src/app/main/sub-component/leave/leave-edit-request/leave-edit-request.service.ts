@@ -16,7 +16,7 @@ export class LeaveEditRequestService {
         });
 
         return this.httpClient.get(
-            `${environment.apiURL}/leaveOnline/showReverseVacation`,
+            `${environment.apiURL}/leaveOnline/getReverseVacation`,
             {
                 headers,
                 params: {
@@ -53,7 +53,7 @@ export class LeaveEditRequestService {
         });
 
         return this.httpClient.patch(
-            `${environment.apiURL}/leaveOnline/reverseVacation`,
+            `${environment.apiURL}/leaveOnline/reverseRequestLeave`,
             {
                 'rvac_id': id,
                 'rvac_type': type,

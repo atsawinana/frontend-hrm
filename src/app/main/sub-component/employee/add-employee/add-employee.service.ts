@@ -28,7 +28,7 @@ export class AddEmployeeService {
     });
 
     return this.httpClient.get(
-      `${environment.apiURL}/employee/showPositionByDeptId`,
+      `${environment.apiURL}/employee/getPositionByDeptId`,
       {
         headers,
         params: {
@@ -133,7 +133,7 @@ export class AddEmployeeService {
     });
 
     return this.httpClient.post(
-      `${environment.apiURL}/employee/acceptEditPicture`,
+      `${environment.apiURL}/employee/saveEditPicture`,
       {
         path: path,
       },

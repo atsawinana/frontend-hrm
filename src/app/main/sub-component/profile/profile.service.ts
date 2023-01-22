@@ -13,7 +13,7 @@ export class ProfileService {
       Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
     });
 
-    return this.httpClient.get(`${environment.apiURL}/employee/showProfile`, {
+    return this.httpClient.get(`${environment.apiURL}/employee/getProfile`, {
       headers,
     });
   }

@@ -15,7 +15,7 @@ export class LeaveHistoryPersonComponent implements OnInit {
     locale = 'th';
     date: any
     objTable: any
-    empid:any = localStorage.getItem("user_id")
+    empid:any = localStorage.getItem("empPerson")
     
     ngOnInit() {
 
