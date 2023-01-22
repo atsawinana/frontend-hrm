@@ -15,7 +15,7 @@ export class LeaveService {
         });
 
         return this.httpClient.get(
-            `${environment.apiURL}/leaveOnline/checkDate`,
+            `${environment.apiURL}/leaveOnline/checkVacationDate`,
             {
                 headers,
                 params: {

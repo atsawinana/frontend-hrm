@@ -15,7 +15,7 @@ export class DetailViewRequestService {
         });
 
         return this.httpClient.get(
-            `${environment.apiURL}/employee/showEmployeeProfile`,
+            `${environment.apiURL}/employee/GetProfileByUserId`,
             {
                 headers,
                 params: {
@@ -31,7 +31,7 @@ export class DetailViewRequestService {
         });
 
         return this.httpClient.get(
-            `${environment.apiURL}/leaveOnline/showDetailsLeave`,
+            `${environment.apiURL}/leaveOnline/getDetailsRequestLeave`,
             {
                 headers,
                 params: {
@@ -76,7 +76,7 @@ export class DetailViewRequestService {
         });
 
         return this.httpClient.patch(
-            `${environment.apiURL}/leaveOnline/cancelVacation`,
+            `${environment.apiURL}/leaveOnline/cancelRequestLeave`,
             {
                 rvac_id: id,
                 rvac_reason: reason

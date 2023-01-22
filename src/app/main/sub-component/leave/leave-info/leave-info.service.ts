@@ -14,7 +14,7 @@ export class LeaveInfoService {
       'Authorization': 'Bearer' + localStorage.getItem('tokenLocal'),
     });
 
-    return this.httpClient.get(`${environment.apiURL}/leaveOnline/showVacationDate`, { headers });
+    return this.httpClient.get(`${environment.apiURL}/leaveOnline/getVacationDate`, { headers });
   }
 
 }
