@@ -15,7 +15,7 @@ export class NotiService {
         });
 
         return this.httpClient.get(
-            `${environment.apiURL}/leaveOnline/notification`,
+            `${environment.apiURL}/leaveOnline/getNotification`,
             {
                 headers,
             }
@@ -43,7 +43,7 @@ export class NotiService {
         });
 
         return this.httpClient.get(
-            `${environment.apiURL}/leaveOnline/notificationReqLeave`,
+            `${environment.apiURL}/leaveOnline/getNotificationRequestLeave`,
             {
                 headers,
             }
@@ -72,7 +72,7 @@ export class NotiService {
         });
 
         return this.httpClient.get(
-            `${environment.apiURL}/leaveOnline/showNumOfNotification`,
+            `${environment.apiURL}/leaveOnline/getCountNotification`,
             {
                 headers,
             }
@@ -85,7 +85,7 @@ export class NotiService {
         });
 
         return this.httpClient.patch(
-            `${environment.apiURL}/leaveOnline/updateHasSeen`,
+            `${environment.apiURL}/leaveOnline/updateSeenNotification`,
             {
                 'noti_id': id
             },

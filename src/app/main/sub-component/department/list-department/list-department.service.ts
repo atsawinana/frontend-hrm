@@ -41,7 +41,7 @@ export class ListDepartmentService {
       'Authorization': 'Bearer' + localStorage.getItem('tokenLocal'),
     });
 
-    return this.httpClient.get(`${environment.apiURL}/department/showDeteilDepartment`, {
+    return this.httpClient.get(`${environment.apiURL}/department/getDetailDepartmentByDeptId`, {
       headers,
       params: {
         'dept_id': deptID

@@ -16,7 +16,7 @@ export class LeaveEditDateleaveService {
         });
 
         return this.httpClient.get(
-            `${environment.apiURL}/leaveOnline/showPresetVacation`,
+            `${environment.apiURL}/leaveOnline/getPresetVacation`,
             {
                 headers,
             }

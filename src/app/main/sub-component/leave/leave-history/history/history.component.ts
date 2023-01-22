@@ -51,7 +51,7 @@ export class HistoryComponent implements OnInit {
         this.leavehistoryservice.getAllUserHistory("").subscribe({
             next: (res: any) => {
                 this.objdataTable = res.data.leave_online
-                console.log(this.objdataTable)
+                // console.log(this.objdataTable)
 
                 let startDate = new Date()
                 this.date = startDate
@@ -78,11 +78,11 @@ export class HistoryComponent implements OnInit {
     sortdate() {
         if(this.date == "" || this.date == null)
             return
-        console.log(this.date)
+        // console.log(this.date)
         let startDate = this.datepipe.transform(this.date, 'yyyy-MM-dd')
 
         let arydate1 = startDate!.toString().split("-")
-        console.log("test1", arydate1)
+        // console.log("test1", arydate1)
         arydate1[0] = (Number(arydate1[0]) + 543).toString()
 
 
@@ -90,7 +90,7 @@ export class HistoryComponent implements OnInit {
 
         this.leavehistoryservice.getAllUserHistory(date).subscribe({
             next: (res: any) => {
-                console.log(res.data)
+                // console.log(res.data)
                 this.objdata =  res.data.leave_online
                 this.objdataTable = JSON.parse(JSON.stringify(this.objdata));
                 delete this.objdataTable.rvac_id;
@@ -120,7 +120,7 @@ export class HistoryComponent implements OnInit {
 
     public exportAsExcelFile(): void {
         let ExptExcel = JSON.parse(JSON.stringify(this.objdataTable));
-        console.log(this.objdataTable);
+        // console.log(this.objdataTable);
         for (let i = 0; i < ExptExcel.length; i++) {
           ExptExcel[i].ลำดับ = ExptExcel[i]['number'];
           ExptExcel[i].รหัสพนักงาน	 = ExptExcel[i]['user_card_number'];
@@ -161,7 +161,7 @@ export class HistoryComponent implements OnInit {
           delete ExptExcel[i].page;
 
         }
-        console.log(ExptExcel);
+        // console.log(ExptExcel);
     
         const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(ExptExcel);
         const workbook: XLSX.WorkBook = {

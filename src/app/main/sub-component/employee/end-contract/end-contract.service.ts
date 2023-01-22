@@ -14,7 +14,7 @@ export class EndContractService {
       'Authorization': 'Bearer' + localStorage.getItem('tokenLocal'),
     });
 
-    return this.httpClient.get(`${environment.apiURL}/employee/showEmployeesResigned`, { headers });
+    return this.httpClient.get(`${environment.apiURL}/employee/getEmployeeResigned`, { headers });
   }
 
   getEmployeefromDeptID(dept_id: string) {
@@ -23,7 +23,7 @@ export class EndContractService {
       'Authorization': 'Bearer' + localStorage.getItem('tokenLocal'),
     });
 
-    return this.httpClient.get(`${environment.apiURL}/employee/showEmployeesResigned`, {
+    return this.httpClient.get(`${environment.apiURL}/employee/getEmployeeResigned`, {
       headers,
       params: {
         sort_by: dept_id

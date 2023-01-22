@@ -688,7 +688,6 @@
                 placeholder="เลือกวันที่เริ่มงาน"
                 class="form-control w-100"
                 bsDatepicker
-                [maxDate]="today"
                 (keypress)="(false)"
                 (bsValueChange)="
                   changValueLeave(this.emp.controls.prefix.value, $event)
@@ -792,7 +791,7 @@
                 <input
                   type="text"
                   class="form-control"
-                  placeholder="ชื่อผู้ใช้ระบบ"
+                  placeholder="สุ่มรหัสผ่าน"
                   formControlName="usernameid"
                   aria-describedby="basic-addon2"
                   (keypress)="(false)"
