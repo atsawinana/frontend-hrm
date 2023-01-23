@@ -9,7 +9,7 @@ export class TimeAttendanceService {
 
     constructor(private httpClient: HttpClient) { }
 
-    getTable() {
+    createTable() {
         const headers = new HttpHeaders({
             'Authorization': 'Bearer' + localStorage.getItem('tokenLocal'),
         });
@@ -58,6 +58,17 @@ export class TimeAttendanceService {
 
         return this.httpClient.get(
             `${environment.apiURL}/time-attendance/check-completed`,
+            { headers }
+        );
+    }
+
+    getTable() {
+        const headers = new HttpHeaders({
+            Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+        });
+
+        return this.httpClient.get(
+            `${environment.apiURL}/time-attendance/view-attendance-history`,
             { headers }
         );
     }

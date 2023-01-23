@@ -142,6 +142,17 @@ export class TimeAtthomeComponent implements OnInit {
                     confirmButtonText: '<div style = "font-family:Kanit"> ตกลง </div>',
                     confirmButtonColor: '#005FBC',
                     reverseButtons: true,
+                }).then((e) => {
+                    if(e.isConfirmed) {
+                        this.serviceTimeatd.checkout().subscribe({
+                            next : (res: any) => {
+                                this.checkCondition();
+                            },
+                            error : (err: any) => {
+                                
+                            },
+                        })
+                    }
                 })
 
                 this.checkCondition();
