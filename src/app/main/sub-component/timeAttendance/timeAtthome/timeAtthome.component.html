@@ -100,15 +100,14 @@
                         </thead>
 
                         <tbody class="list-content">
-                            <tr align="center" *ngFor="let item of ary |
-                                paginate: config">
-                                <td class="text-center">1</td>
-                                <td class="text-center">25/10/2564</td>
-                                <td class="text-center">19.00 น. - 22.00 น.</td>
-                                <td class="text-center">CRM - Beyond</td>
-                                <td class="text-center">900 วัน</td>
-                                <td class="text-start">ออกแบบ UI
-                                    ระบบรายชื่อลูกค้า, ระบบงานต่ออายุ, โปรไฟล์</td>
+                            <tr align="center" *ngFor="let item of objTable | paginate: config">
+                                
+                                <td class="text-center">ลำดับ</td>
+                                <td class="text-center">{{item.ta_date}}</td>
+                                <td class="text-center">{{item.ta_time_in}}</td>
+                                <td class="text-center">{{item.ta_time_out}}</td>
+                                <td class="text-center">{{item.ta_amount}}</td>
+                                <td class="text-center">{{item.ta_details}}</td>
                             </tr>
                         </tbody>
                     </table>

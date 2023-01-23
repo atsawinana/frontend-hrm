@@ -27,6 +27,7 @@ export class TimeAtthomeComponent implements OnInit {
     intervalId: any;
     subscription: Subscription | undefined;
     role: boolean = false
+    objTable: any
 
     btnControl = {
         checkinbtn: false,
@@ -38,6 +39,11 @@ export class TimeAtthomeComponent implements OnInit {
     }
 
     ngOnInit() {
+
+        // this.serviceTimeatd.createTable().subscribe({
+        //     next: (res: any) => { },
+        //     error: (res: any) => { }
+        // })
 
         let role = localStorage.getItem('roleUser')
         if (role == '2' || role == '3') {
@@ -61,7 +67,8 @@ export class TimeAtthomeComponent implements OnInit {
 
         this.serviceTimeatd.getTable().subscribe({
             next: (res: any) => {
-                console.log(res)
+                console.log(res.data)
+                this.objTable = res.data.time_attendance
             },
             error: (err: any) => { }
         })
@@ -143,13 +150,13 @@ export class TimeAtthomeComponent implements OnInit {
                     confirmButtonColor: '#005FBC',
                     reverseButtons: true,
                 }).then((e) => {
-                    if(e.isConfirmed) {
+                    if (e.isConfirmed) {
                         this.serviceTimeatd.checkout().subscribe({
-                            next : (res: any) => {
+                            next: (res: any) => {
                                 this.checkCondition();
                             },
-                            error : (err: any) => {
-                                
+                            error: (err: any) => {
+
                             },
                         })
                     }
