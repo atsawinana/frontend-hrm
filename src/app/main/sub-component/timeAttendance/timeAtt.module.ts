@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { TimeattendanceRequestComponent } from './timeattendance-request/timeattendance-request.component';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
   ],
   declarations: [
     TimeAttendanceComponent,
-    TimeAtthomeComponent
+    TimeAtthomeComponent,
+    TimeattendanceRequestComponent,
   ]
 })
 export class TimeAttModule { }

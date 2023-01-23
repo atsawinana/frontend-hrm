@@ -1,3 +1,156 @@
-<p>
-  timeattendance-request works!
-</p>
+<div class="container justify-content-center">
+  <div class="row">
+    <div class="col-12 justify-content-center">
+      <div class="row d-flex justify-content-center">
+
+        <div class="col-12 justify-content-center">
+          <p class="font-header">คำขอเข้าทำงาน</p>
+        </div>
+
+        <div class="col-12 justify-content-center">
+          <br />
+          <div class="row font-content p-2 justify-content-center">
+            <div class="col-lg-2 col-md-12 col-sm-12 col-12
+                      d-inline-flex p-2" id="font-content">
+              ประเภทคำร้อง*
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+              <div class="row" id="font-content">
+                <div class="col-lg-11 col-md-11 col-sm-11 col-10">
+                  <ng-select [ngClass]="{}" [searchable]="false" placeholder="เลือกคำร้อง" [clearable]="false"
+                    class="custom">
+                    <ng-option>Work from home</ng-option>
+                    <ng-option>ไปพบลูกค้า</ng-option>
+                  </ng-select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-7 col-md-8 col-sm-7 col-5 d-flex justify-content-left"></div>
+            <div class="col-sm-3 col-4 space-data">
+              <div class="alerttext">
+                กรุณากรอกข้อมูล
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 justify-content-center">
+          <br />
+          <div class="row font-content p-2 justify-content-center">
+            <div class="col-lg-2 col-md-12 col-sm-12 col-12
+                      d-inline-flex p-2" id="font-content">
+              วันที่เข้าทำงาน*
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+              <div class="row" id="font-content">
+                <div class="col-lg-11 col-md-11 col-sm-11 col-10">
+                  <input [ngClass]="{}" type="text" placeholder="เลือกวันที่" class="form-control" bsDatepicker
+                    (keypress)="false">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-7 col-md-8 col-sm-7 col-5 d-flex justify-content-left"></div>
+            <div class="col-sm-3 col-4 space-data">
+              <div class="alerttext">
+                กรุณากรอกข้อมูล
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 justify-content-center">
+          <br />
+          <div class="row font-content p-2 justify-content-center">
+            <div class="col-lg-2 col-md-12 col-sm-12 col-12
+                      d-inline-flex p-2" id="font-content">
+              ระบุเวลาเข้าทำงาน*
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+              <div class="row" id="font-content">
+                <div class="col-lg-11 col-md-11 col-sm-11 col-10">
+                  <input [ngClass]="{}" type="text" placeholder="เลือกเวลา" class="form-control" (keypress)="false"
+                    (click)="showTimeBox()">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- time box -->
+          <div id="timeBox" style="display: none" class="time-outframe">
+            <div class="time-box">
+              <div class="container">
+                <div class="row time-text">
+                  <div class="col">หมวดหมู่</div>
+
+                </div>
+                <hr />
+                <div class="row d-flex justify-content-end
+                     mb-3">
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- time box end -->
+
+          <div class="row">
+            <div class="col-lg-7 col-md-8 col-sm-7 col-5 d-flex justify-content-left"></div>
+            <div class="col-sm-3 col-4 space-data">
+              <div class="alerttext">
+                กรุณากรอกข้อมูล
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 justify-content-center">
+          <br />
+          <div class="row font-content p-2 justify-content-center">
+            <div class="col-lg-2 col-md-12 col-sm-12 col-12
+                      d-inline-flex p-2" id="font-content">
+              เหตุผล*
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+              <div class="row" id="font-content">
+                <div class="col-lg-11 col-md-11 col-sm-11 col-10">
+                  <textarea [ngClass]="{}" type="textarea" class="form-control" placeholder="กรอกข้อมูล"
+                    id="exampleFormControlTextarea1" rows="3">
+                </textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-7 col-md-8 col-sm-7 col-5 d-flex justify-content-left"></div>
+            <div class="col-sm-3 col-4 space-data">
+              <div class="alerttext">
+                กรุณากรอกข้อมูล
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row mb-4 mt-5 d-flex justify-content-center">
+    <div (click)="checkCancel()" class="col-6 col-sm-3 col-md-3
+        col-lg-3"><button class="cancel-button d-flex justify-content-center
+            w-100" type="" href="#Modal-cancel">
+        <div class="cancel-text">ยกเลิก</div>
+      </button>
+    </div>
+    <div class="col-6 col-sm-3 col-md-3
+        col-lg-3"><button class="submit-button d-flex justify-content-center
+            w-100" type="submit" href="#Modal-submit">
+        <div class="submit-text">ตกลง</div>
+      </button>
+    </div>
+  </div>
+
+</div>

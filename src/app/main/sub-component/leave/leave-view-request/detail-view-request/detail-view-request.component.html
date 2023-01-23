@@ -137,7 +137,7 @@
                             <div class="row font-detail" *ngIf="reqs.ar_head != 'ยื่นคำร้องใหม่'">
                                 <div class="col-4 ">
                                     <div class="mb-2 fw-bolder" >อนุมัติวันที่ :</div>
-                                    <div class="mb-2 fw-bolder" >สถานะ :</div>
+                                    <div class="mb-2 fw-bolder" *ngIf="reqs.ar_type != 4" >สถานะ :</div>
                                     <div class="mb-2 fw-bolder" >เหตุผล :</div>
                                 </div>
                                 <div class="col" >
