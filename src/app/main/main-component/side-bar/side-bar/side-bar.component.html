@@ -5,7 +5,7 @@
 </div>
 
 <div *ngIf="roleNormal || roleMana || roleHR" [ngClass]="{'bg-active' : timeattendance}" class="text-center d-flex justify-content-center align-items-center icon-sidebar ps-2 inactive-icon py-1 my-1 timeattendance" 
-  style="flex-direction: column;" (click)="URLcheck($event)" routerLink="timeattendance" id="timeattendance">
+  style="flex-direction: column;" (click)="URLcheck($event)" routerLink="timeattendance/home" id="timeattendance">
   <img class="d-flex justify-content-center" src="assets/img/sidebar/icon-work.png">
   <div class="icon-font">เข้างาน</div>
 </div>

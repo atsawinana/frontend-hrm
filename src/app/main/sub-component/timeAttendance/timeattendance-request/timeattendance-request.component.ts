@@ -40,7 +40,7 @@ export class TimeattendanceRequestComponent implements OnInit {
       reverseButtons: true,
     }).then((result) => {
       if (result.isConfirmed) {
-        this.route.navigate(['../main/timeattendance']);
+        this.route.navigate(['../main/timeattendance/home']);
       }
     });
   }

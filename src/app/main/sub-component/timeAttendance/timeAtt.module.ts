@@ -9,6 +9,11 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { TimeattendanceRequestComponent } from './timeattendance-request/timeattendance-request.component';
+import { TimeattendanceViewRequestComponent } from './timeattendance-view-request/timeattendance-view-request.component';
+import { TimeattendanceListRequestComponent } from './timeattendance-list-request/timeattendance-list-request.component';
+import { TimeattendanceHistoryAllComponent } from './timeattendance-history-all/timeattendance-history-all.component';
+import { TimeattendanceHistoryComponent } from './timeattendance-history/timeattendance-history.component';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 @NgModule({
   imports: [
@@ -19,11 +24,16 @@ import { TimeattendanceRequestComponent } from './timeattendance-request/timeatt
     NgSelectModule,
     NgxPaginationModule,
     Ng2SearchPipeModule,
+    BsDatepickerModule.forRoot(),
   ],
   declarations: [
     TimeAttendanceComponent,
     TimeAtthomeComponent,
     TimeattendanceRequestComponent,
+    TimeattendanceViewRequestComponent,
+    TimeattendanceListRequestComponent,
+    TimeattendanceHistoryAllComponent,
+    TimeattendanceHistoryComponent
   ]
 })
 export class TimeAttModule { }

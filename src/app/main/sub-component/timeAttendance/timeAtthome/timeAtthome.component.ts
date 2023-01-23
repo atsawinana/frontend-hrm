@@ -76,8 +76,7 @@ export class TimeAtthomeComponent implements OnInit {
 
     }
 
-    ary: any = [1, 2, 3]
-    listPerPage: any = 5
+    listPerPage: any = 10
 
     public config: PaginationInstance = {
         id: 'custom',
