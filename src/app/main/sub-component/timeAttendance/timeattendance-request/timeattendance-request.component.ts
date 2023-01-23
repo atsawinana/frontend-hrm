@@ -20,6 +20,8 @@ export class TimeattendanceRequestComponent implements OnInit {
   locale = 'th';
   today!: Date;
   summited: boolean = false;
+  minDate: any
+  isDisabled: boolean = true
 
   ngOnInit() {
     this.today = new Date();

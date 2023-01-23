@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { TimeattendanceRequestComponent } from './timeattendance-request/timeattendance-request.component';
 
 @NgModule({
@@ -19,6 +20,7 @@ import { TimeattendanceRequestComponent } from './timeattendance-request/timeatt
     NgSelectModule,
     NgxPaginationModule,
     Ng2SearchPipeModule,
+    BsDatepickerModule.forRoot(),
   ],
   declarations: [
     TimeAttendanceComponent,

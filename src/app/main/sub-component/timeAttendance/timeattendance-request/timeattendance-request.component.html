@@ -47,7 +47,7 @@
               <div class="row" id="font-content">
                 <div class="col-lg-11 col-md-11 col-sm-11 col-10">
                   <input [ngClass]="{}" type="text" placeholder="เลือกวันที่" class="form-control" bsDatepicker
-                    (keypress)="false">
+                    [bsConfig]="{isAnimated: true, dateInputFormat:'DD/MM/YYYY', containerClass:'theme-dark-blue', showWeekNumbers: false}" [daysDisabled]="[6,0]" (keypress)="false">
                 </div>
               </div>
             </div>
