@@ -22,7 +22,7 @@ export class TimeAttendanceService {
             'Authorization': 'Bearer' + localStorage.getItem('tokenLocal'),
         });
 
-        return this.httpClient.get(`${environment.apiURL}/time-attendance/check-time-attendance`, { headers });
+        return this.httpClient.get(`${environment.apiURL}/timeAttendance/checkAttendance`, { headers });
     }
 
     checkin() {
@@ -31,7 +31,7 @@ export class TimeAttendanceService {
         });
 
         return this.httpClient.post(
-            `${environment.apiURL}/time-attendance/check-in`,
+            `${environment.apiURL}/timeAttendance/CheckIn`,
             {
             },
             { headers }
@@ -44,7 +44,7 @@ export class TimeAttendanceService {
         });
 
         return this.httpClient.post(
-            `${environment.apiURL}/time-attendance/check-out`,
+            `${environment.apiURL}/timeAttendance/CheckOut`,
             {
             },
             { headers }
@@ -57,7 +57,7 @@ export class TimeAttendanceService {
         });
 
         return this.httpClient.get(
-            `${environment.apiURL}/time-attendance/check-completed`,
+            `${environment.apiURL}/timeAttendance/checkCompleted`,
             { headers }
         );
     }
@@ -68,9 +68,45 @@ export class TimeAttendanceService {
         });
 
         return this.httpClient.get(
-            `${environment.apiURL}/time-attendance/view-attendance-history`,
+            `${environment.apiURL}/timeAttendance/getAttendanceHistory`,
             { headers }
         );
     }
+
+    //     /timeAttendance/getUnapprovedRequestAttendances[GET]
+    // ดูคำร้องเข้างานที่ยังไม่ได้อนุมัติ
+
+
+    getUnapprovedRequestAttendances() {
+        const headers = new HttpHeaders({
+            Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+        });
+
+        return this.httpClient.get(
+            `${environment.apiURL}/timeAttendance/getUnapprovedRequestAttendances`,
+            { headers }
+        );
+    }
+
+    //     /timeAttendance/getDetailsRequestAttendances[GET]
+    // ดูรายละเอียดคำร้องเข้างาน
+    // params: rta_id = 1
+
+    getDetailsRequestAttendances(rta_id: any) {
+        const headers = new HttpHeaders({
+            Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+        });
+
+        return this.httpClient.get(
+            `${environment.apiURL}/timeAttendance/getDetailsRequestAttendances`,
+            {
+                params: {
+                    rta_id: rta_id,
+                },
+                headers
+            },
+        );
+    }
+
 }
 

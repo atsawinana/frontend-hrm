@@ -13,7 +13,7 @@
 
 
     <h1 class="row mt-5 d-flex justify-content-center"
-        *ngIf="true" style="font-family: 'Kanit';">
+        *ngIf="objListTable.lenght == 0" style="font-family: 'Kanit';">
         ไม่พบคำขอการเข้างาน
     </h1>
 
@@ -33,33 +33,33 @@
                         <th class="text-center cut-text" style="width: 20%
                             !important">รายชื่อ</th>
                         <th class="text-center cut-text" style="width: 10%
-                            !important">ประเภทการลา</th>
+                            !important">วันที่เข้าทำงาน</th>
                         <th class="text-center cut-text" style="width: 20%
-                            !important">วันที่ต้องการลา</th>
-                        <th class="cut-text" style="width: 20% !important">รวมวันที่ลา/ชั่วโมง</th>
+                            !important">ประเภทคำขอ</th>
+                        <th class="cut-text" style="width: 20% !important">ระบุเวลาเข้าทำงาน</th>
                         <th class="cut-text" style="width: 10% !important">การดำเนินการ</th>
                     </tr>
                 </thead>
 
                 <tbody class="list-content">
-                    <tr id="row-list" *ngFor="let objleave of ary">
+                    <tr id="row-list" *ngFor="let objleave of objListTable">
                         <td>
-                            {{objleave}}
+                            {{objleave.number}}
                         </td>
                         <td>
-                            {{objleave}}
+                            {{objleave.user_card_number}}
                         </td>
                         <td class="text-start">
-                            {{objleave}}
+                            {{objleave.ud_fullname_th}}
                         </td>
                         <td>
-                            {{objleave}}
+                            {{objleave.rta_update_at}}
                         </td>
                         <td>
-                            {{objleave}}
+                            {{objleave.rta_type_name}}
                         </td>
                         <td>
-                            {{objleave}}
+                            {{objleave.rta_start_time}} นาที
                         </td>
                         <!-- routerLink="../view-request-detail/{{objleave.rvac_id}}" -->
                         <td>
@@ -68,7 +68,7 @@
                                     <button type="button " class="btn
                                         btn-primary btn-dropdown"
                                         id="dropdownMenuButton1"
-                                        routerLink="../time-view-request/{{objleave}}">
+                                        routerLink="../time-view-request/{{objleave.rta_id}}">
                                         <div class="col icon-dropdown d-flex
                                             justify-content-center">
                                             <i class="fa-solid fa-list-ul

@@ -40,10 +40,10 @@ export class TimeAtthomeComponent implements OnInit {
 
     ngOnInit() {
 
-        // this.serviceTimeatd.createTable().subscribe({
-        //     next: (res: any) => { },
-        //     error: (res: any) => { }
-        // })
+        this.serviceTimeatd.createTable().subscribe({
+            next: (res: any) => { },
+            error: (res: any) => { }
+        })
 
         let role = localStorage.getItem('roleUser')
         if (role == '2' || role == '3') {

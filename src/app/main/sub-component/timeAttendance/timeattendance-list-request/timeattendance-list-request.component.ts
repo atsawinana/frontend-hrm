@@ -3,6 +3,7 @@ import { Location } from '@angular/common';
 import { PaginationInstance } from 'ngx-pagination';
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { defineLocale, thBeLocale } from 'ngx-bootstrap/chronos';
+import { TimeAttendanceService } from '../time-attendance.service';
 
 
 @Component({
@@ -12,13 +13,19 @@ import { defineLocale, thBeLocale } from 'ngx-bootstrap/chronos';
 })
 export class TimeattendanceListRequestComponent implements OnInit {
 
-    constructor(private _location: Location) { }
+    constructor(private _location: Location, private serviceatd: TimeAttendanceService) { }
 
     ary: any = ["หิว", "ข้าว", "มันไก่"]
     listPerPage: any = 10
+    objListTable:any
 
     ngOnInit() {
-      
+        this.serviceatd.getUnapprovedRequestAttendances().subscribe({
+            next: (res: any) => {
+                this.objListTable = res.data.request_time_attendances
+             },
+            error: (err: any) => { }
+        })
     }
 
     public config: PaginationInstance = {

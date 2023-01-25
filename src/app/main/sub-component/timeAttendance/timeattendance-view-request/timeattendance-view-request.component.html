@@ -14,23 +14,23 @@
             <div class="row ">
                 <div class="col-5 pe-5 d-flex justify-content-end">
                     <img
-                        class="img-fluid img-profile img-thumbnail" src="http://localhost:8000/files/image/default.jpg"
+                        class="img-fluid img-profile img-thumbnail"
+                        src="{{storageURL}}{{objDetailReq.ud_picture}}"
                         />
                 </div>
                 <div class="col px-5 text-start d-flex align-items-center">
                     <div class="row font-profile">
                         <div class="col-12 font-profile-name mb-2">
-                            {{id}}
-                            {{id}}
+                            {{objDetailReq.ud_fullname_th}}
                         </div>
                         <div class="col-4 mb-2">แผนก</div>
-                        <div class="col-8">{{id}}</div>
+                        <div class="col-8">{{objDetailReq.department}}</div>
                         <div class="col-4 ">ตำแหน่ง</div>
                         <div class="col-8 mb-2">
-                            {{id}}
+                            {{objDetailReq.position}}
                         </div>
                         <div class="col-4 mb-2">รหัสพนักงาน</div>
-                        <div class="col-8">{{id}}</div></div>
+                        <div class="col-8">{{objDetailReq.user_card_number}}</div></div>
                 </div>
             </div>
         </div>
@@ -66,38 +66,37 @@
                             <div class="row font-detail">
                                 <div class="col-4 fw-bolder">
                                     <div class="mb-2"
-                                        *ngIf="true">เหตุผลการยกเลิก :</div>
-                                    <div class="mb-2">ประเภทการลา :</div>
-                                    <div class="mb-2">วันที่ยื่นลา :</div>
-                                    <div class="mb-2">วันที่ต้องการลา :</div>
-                                    <div class="mb-2">ช่วงเวลาในการลา :</div>
-                                    <div class="mb-2">รวมวันลาทั้งหมด :</div>
-                                    <div class="mb-2">เหตุผลการลา :</div>
+                                        *ngIf="objDetailReq.rta_is_canceled ==
+                                        1">เหตุผลการยกเลิก :</div>
+                                    <div class="mb-2">ประเภทคำร้อง : </div>
+                                    <div class="mb-2">วันที่เข้าทำงาน : </div>
+                                    <div class="mb-2">ระบุเวลาเข้าทำงาน : </div>
+                                    <div class="mb-2">เหตุผล : </div>
                                 </div>
                                 <div class="col">
                                     <div class="mb-2"
-                                        *ngIf="true">111</div>
-                                    <div class="mb-2">222</div>
-                                    <div class="mb-2">333</div>
-                                    <div class="mb-2">444
-                                        - 555</div>
-                                    <div class="mb-2">66</div>
-                                    <div class="mb-2">77</div>
-                                    <div class="mb-2">88</div>
+                                        *ngIf="objDetailReq.rta_is_canceled ==
+                                        1">111</div>
+                                    <div class="mb-2">{{objDetailReq.rta_type}}</div>
+                                    <div class="mb-2">{{objDetailReq.rta_created_at}}</div>
+                                    <div class="mb-2">{{objDetailReq.rta_start_time}}</div>
+                                    <div class="mb-2">{{objDetailReq.rta_detail}}</div>
                                 </div>
                             </div>
 
                             <div>
-                                <button  *ngIf="true && true" class="col-2 btn-cancel">ยกเลิก</button>
-                                <button class="col-2 btn-edit" *ngIf="true && true" >แก้ไข</button>
+                                <button *ngIf="owner &&
+                                    objDetailReq.rta_can_cancel" class="col-2
+                                    btn-cancel">ยกเลิก</button>
+                                <button class="col-2 btn-edit" *ngIf="true &&
+                                    true">แก้ไข</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="row mb-4" *ngFor="let reqs of ary; let i=
-                index">
+            <div class="row mb-4" *ngFor="let reqs of aryApprove; let i= index">
                 <div class="container">
                     <div class="row mb-3">
 
@@ -159,11 +158,9 @@
                             </div>
 
 
-                            <div class="row" *ngIf="true">
-                                <button class="cancel-btn me-3"
-                                    >ไม่อนุมัติ</button>
-                                <button class="submit-btn"
-                                    >อนุมัติ</button>
+                            <div class="row" *ngIf="reqs.ar_can_approve == 1 && !owner">
+                                <button class="cancel-btn me-3">ไม่อนุมัติ</button>
+                                <button class="submit-btn">อนุมัติ</button>
                             </div>
 
                         </div>
