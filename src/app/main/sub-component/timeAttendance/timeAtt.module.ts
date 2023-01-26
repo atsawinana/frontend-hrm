@@ -17,30 +17,29 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { LOCALE_ID } from '@angular/core';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule,
-    FormsModule,
-    TimeAttRoutes,
-    ReactiveFormsModule,
-    NgSelectModule,
-    NgxPaginationModule,
-    Ng2SearchPipeModule,
-    BsDatepickerModule.forRoot(),
-    DatePipe,
-  ],
-  declarations: [
-    TimeAttendanceComponent,
-    TimeAtthomeComponent,
-    TimeattendanceRequestComponent,
-    TimeattendanceViewRequestComponent,
-    TimeattendanceListRequestComponent,
-    TimeattendanceHistoryAllComponent,
-    TimeattendanceHistoryComponent
-  ],
-  providers: [
-    DatePipe,
-    { provide: LOCALE_ID, useValue: "TH-th" }
-  ],
+    imports: [
+        CommonModule,
+        RouterModule,
+        FormsModule,
+        TimeAttRoutes,
+        ReactiveFormsModule,
+        NgSelectModule,
+        NgxPaginationModule,
+        Ng2SearchPipeModule,
+        BsDatepickerModule.forRoot(),
+        DatePipe,
+    ],
+    declarations: [
+        TimeAttendanceComponent,
+        TimeAtthomeComponent,
+        TimeattendanceRequestComponent,
+        TimeattendanceViewRequestComponent,
+        TimeattendanceListRequestComponent,
+        TimeattendanceHistoryAllComponent,
+        TimeattendanceHistoryComponent
+    ],
+    providers: [
+        DatePipe,
+    ],
 })
 export class TimeAttModule { }

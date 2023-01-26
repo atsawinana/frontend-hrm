@@ -191,3 +191,7 @@ input::-webkit-inner-spin-button {
     color: white;
     margin-top: 1px;
   }
+
+  .isinvalid {
+    border: 1px solid #EF0303 !important;
+  }

@@ -19,7 +19,11 @@
                                 <div class="row" id="font-content">
                                     <div class="col-lg-11 col-md-11 col-sm-11
                                         col-10">
-                                        <ng-select [ngClass]="{}"
+                                        <ng-select [ngClass]="{
+                                            isinvalid:
+                                            Request.controls.Type.errors &&
+                                            summited
+                                            }"
                                             [searchable]="false"
                                             placeholder="เลือกคำร้อง"
                                             [clearable]="false"
@@ -32,7 +36,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row" *ngIf="Request.controls.Type.errors &&
+                            summited">
                             <div class="col-lg-7 col-md-8 col-sm-7 col-5 d-flex
                                 justify-content-left"></div>
                             <div class="col-sm-3 col-4 space-data">
@@ -55,23 +60,29 @@
                                 <div class="row" id="font-content">
                                     <div class="col-lg-11 col-md-11 col-sm-11
                                         col-10">
-                                        <input [ngClass]="{}" type="text"
+                                        <input [ngClass]="{
+                                            isinvalid:
+                                            Request.controls.Date.errors &&
+                                            summited
+                                            }" type="text"
                                             placeholder="เลือกวันที่"
                                             class="form-control" bsDatepicker
-                                            (keypress)="false" formControlName="Date"
+                                            (keypress)="false"
+                                            formControlName="Date"
                                             [bsConfig]="{
-                                                isAnimated: true,
-                                                dateInputFormat:
-                                                'DD/MM/YYYY',
-                                                containerClass:
-                                                'theme-dark-blue',
-                                                showWeekNumbers: false
-                                                }">
+                                            isAnimated: true,
+                                            dateInputFormat:
+                                            'DD/MM/YYYY',
+                                            containerClass:
+                                            'theme-dark-blue',
+                                            showWeekNumbers: false
+                                            }">
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row" *ngIf="Request.controls.Date.errors &&
+                            summited">
                             <div class="col-lg-7 col-md-8 col-sm-7 col-5 d-flex
                                 justify-content-left"></div>
                             <div class="col-sm-3 col-4 space-data">
@@ -94,12 +105,16 @@
                                 <div class="row" id="font-content">
                                     <div class="col-lg-11 col-md-11 col-sm-11
                                         col-10">
-                                        <input [ngClass]="{}" type="text"
+                                        <input [ngClass]="{
+                                            isinvalid:
+                                            Request.controls.time.errors &&
+                                            summited
+                                            }" type="text"
                                             placeholder="เลือกเวลา"
                                             class="form-control"
                                             (keypress)="false"
                                             (click)="showTimeBox()"
-                                            formControlName="time" >
+                                            formControlName="time">
                                     </div>
                                 </div>
                             </div>
@@ -144,7 +159,9 @@
                                                             time.alerthours }"
                                                             class="form-control"
                                                             max="60" min="0"
-                                                            [(ngModel)]="time.hours" [ngModelOptions]="{standalone: true}"></div>
+                                                            [(ngModel)]="time.hours"
+                                                            [ngModelOptions]="{standalone:
+                                                            true}"></div>
                                                     <div class="col-6 d-flex
                                                         justify-content-start
                                                         font-time-picker">
@@ -187,7 +204,9 @@
                                                             time.alertmins }"
                                                             class="form-control"
                                                             max="60" min="0"
-                                                            [(ngModel)]="time.mins" [ngModelOptions]="{standalone: true}">
+                                                            [(ngModel)]="time.mins"
+                                                            [ngModelOptions]="{standalone:
+                                                            true}">
                                                     </div>
                                                     <div class="col-6 d-flex
                                                         justify-content-start
@@ -220,7 +239,7 @@
                         </div>
                         <!-- time box end -->
 
-                        <div class="row">
+                        <div class="row" *ngIf="Request.controls.time.errors && summited">
                             <div class="col-lg-7 col-md-8 col-sm-7 col-5 d-flex
                                 justify-content-left"></div>
                             <div class="col-sm-3 col-4 space-data">
@@ -243,19 +262,22 @@
                                 <div class="row" id="font-content">
                                     <div class="col-lg-11 col-md-11 col-sm-11
                                         col-10">
-                                        <textarea [ngClass]="{}" type="textarea"
+                                        <textarea [ngClass]="{
+                                            isinvalid:
+                                            Request.controls.detail.errors &&
+                                            summited
+                                            }" type="textarea"
                                             class="form-control"
                                             placeholder="กรอกข้อมูล"
                                             id="exampleFormControlTextarea1"
                                             rows="3"
-                                            formControlName="detail"
-                                            >
+                                            formControlName="detail">
                                         </textarea>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row" *ngIf="Request.controls.detail.errors && summited">
                             <div class="col-lg-7 col-md-8 col-sm-7 col-5 d-flex
                                 justify-content-left"></div>
                             <div class="col-sm-3 col-4 space-data">
@@ -275,7 +297,7 @@
             <div (click)="checkCancel()" class="col-6 col-sm-3 col-md-3
                 col-lg-3"><button class="cancel-button d-flex
                     justify-content-center
-                    w-100" type="" >
+                    w-100" type="">
                     <div class="cancel-text">ยกเลิก</div>
                 </button>
             </div>
@@ -283,7 +305,7 @@
                 col-lg-3"><button class="submit-button d-flex
                     justify-content-center
                     w-100" type="submit" (click)="submitButton()">
-                    <div class="submit-text" >ตกลง</div>
+                    <div class="submit-text">ตกลง</div>
                 </button>
             </div>
         </div>

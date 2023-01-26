@@ -130,5 +130,64 @@ export class TimeAttendanceService {
         );
     }
 
+    //     /timeAttendance/getRequestAttendanceHistory[GET]
+    // ดูประวัติคำร้องเข้างานของตนเอง 
+
+    getRequestAttendanceHistory() {
+        const headers = new HttpHeaders({
+            Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+        });
+
+        return this.httpClient.get(
+            `${environment.apiURL}/timeAttendance/getRequestAttendanceHistory`,
+            { headers }
+        );
+    }
+
+    // /timeAttendance/disapproveRequestAttendance[POST]
+    // ไม่อนุมัติเข้างาน
+    // body : "rta_id" : 1, "rta_reason" : "งานไม่เดิน"
+
+    disapproveRequestAttendance(rta_id: any, rta_reason: any) {
+        const headers = new HttpHeaders({
+            Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+        });
+
+        return this.httpClient.post(
+            `${environment.apiURL}/timeAttendance/disapproveRequestAttendance`,
+            {
+                rta_id: rta_id,
+                rta_reason: rta_reason,
+            },
+            { headers },
+
+        );
+    }
+
+
+    // /timeAttendance/approveRequestAttendance[POST]
+    // อนุมัติเข้างาน
+    // body : "rta_id" : 1
+
+    approveRequestAttendance(rta_id: any) {
+        const headers = new HttpHeaders({
+            Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+        });
+
+        return this.httpClient.post(
+            `${environment.apiURL}/timeAttendance/approveRequestAttendance`,
+            {
+                rta_id: rta_id,
+            },
+            { headers },
+
+        );
+    }
+
+
+
+
+
+
 }
 

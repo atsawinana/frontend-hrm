@@ -6,6 +6,7 @@ import { ActivatedRoute, Route, Router, RouterLink } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TimeAttendanceService } from '../time-attendance.service';
 import { DatePipe } from '@angular/common';
+import { Location } from '@angular/common';
 
 @Component({
     selector: 'app-timeattendance-request',
@@ -19,6 +20,7 @@ export class TimeattendanceRequestComponent implements OnInit {
         private route: Router,
         private timeatdService: TimeAttendanceService,
         private datepipe: DatePipe,
+        private _location: Location
     ) { }
 
     locale = 'th';
@@ -51,6 +53,10 @@ export class TimeattendanceRequestComponent implements OnInit {
         const isWhitespace = (control.value || '').trim().length === 0;
         const isValid = !isWhitespace;
         return isValid ? null : { whitespace: true };
+    }
+
+    backClicked() {
+        this._location.back();
     }
 
     checkCancel() {
@@ -131,32 +137,55 @@ export class TimeattendanceRequestComponent implements OnInit {
     }
 
     submitButton() {
-        let min, hour
+        this.summited = true
 
-        if (String(this.time.mins).length == 1) {
-            min = "0" + this.time.mins
-        }else{
-            min = String(this.time.mins)
-        }
-        
-        if (String(this.time.hours).length == 1) {
-            hour = "0" + this.time.hours
-        }else{
-            hour = String(this.time.hours)
-        }
+        if(this.Request.invalid)
+            return
 
-        let time = hour+":"+min;
-        let date  = this.datepipe.transform(this.Request.controls.Date.value, 'yyyy-MM-dd');
+        Swal.fire({
+            title: '<strong style = "font-family:Kanit"> คุณต้องการส่งแบบฟอร์มการลา ใช่หรือไม่ </strong>',
+            icon: 'warning',
+            showCancelButton: true,
+            cancelButtonColor: '#d33',
+            cancelButtonText: '<div style = "font-family:Kanit"> ยกเลิก </div>',
+            confirmButtonText: '<div style = "font-family:Kanit"> ตกลง </div>',
+            confirmButtonColor: '#005FBC',
+            reverseButtons: true,
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                let min, hour
+
+                if (String(this.time.mins).length == 1) {
+                    min = "0" + this.time.mins
+                } else {
+                    min = String(this.time.mins)
+                }
+
+                if (String(this.time.hours).length == 1) {
+                    hour = "0" + this.time.hours
+                } else {
+                    hour = String(this.time.hours)
+                }
+
+                let time = hour + ":" + min;
+                let date = this.datepipe.transform(this.Request.controls.Date.value, 'yyyy-MM-dd');
 
 
-        this.timeatdService.addRequestAttendance(
-            this.Request.controls.Type.value,
-            date,
-            time,
-            this.Request.controls.detail.value,
-        ).subscribe({
-            next: (res: any) => { },
-            error: (err: any) => { }
-        })
+                this.timeatdService.addRequestAttendance(
+                    this.Request.controls.Type.value,
+                    date,
+                    time,
+                    this.Request.controls.detail.value,
+                ).subscribe({
+                    next: (res: any) => {
+                        this.backClicked()
+                     },
+                    error: (err: any) => { }
+                })
+            }
+        });
+
+
     }
 }

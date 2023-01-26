@@ -3,24 +3,30 @@ import { PaginationInstance } from 'ngx-pagination';
 import { Location } from '@angular/common';
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { defineLocale, thBeLocale } from 'ngx-bootstrap/chronos';
+import { TimeAttendanceService } from '../time-attendance.service';
 
 @Component({
-  selector: 'app-timeattendance-history',
-  templateUrl: './timeattendance-history.component.html',
-  styleUrls: ['./timeattendance-history.component.css']
+    selector: 'app-timeattendance-history',
+    templateUrl: './timeattendance-history.component.html',
+    styleUrls: ['./timeattendance-history.component.css']
 })
 export class TimeattendanceHistoryComponent implements OnInit {
 
-    constructor(private _location: Location,private localeService: BsLocaleService) { }
+    constructor(private _location: Location, private localeService: BsLocaleService, private servicetime: TimeAttendanceService) { }
 
     ary: any = [1, 2, 3]
     listPerPage: any = 10
-    date:any
+    date: any
 
 
     ngOnInit() {
         defineLocale('th', thBeLocale);
         this.localeService.use('th');
+
+        this.servicetime.getRequestAttendanceHistory().subscribe({
+            next: (res: any) => { },
+            error: (err: any) => { }
+        })
     }
 
     public config: PaginationInstance = {
