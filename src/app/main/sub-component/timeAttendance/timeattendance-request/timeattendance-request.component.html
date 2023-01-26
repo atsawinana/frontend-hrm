@@ -58,7 +58,15 @@
                                         <input [ngClass]="{}" type="text"
                                             placeholder="เลือกวันที่"
                                             class="form-control" bsDatepicker
-                                            (keypress)="false" formControlName="Date">
+                                            (keypress)="false" formControlName="Date"
+                                            [bsConfig]="{
+                                                isAnimated: true,
+                                                dateInputFormat:
+                                                'DD/MM/YYYY',
+                                                containerClass:
+                                                'theme-dark-blue',
+                                                showWeekNumbers: false
+                                                }">
                                     </div>
                                 </div>
                             </div>
@@ -267,15 +275,15 @@
             <div (click)="checkCancel()" class="col-6 col-sm-3 col-md-3
                 col-lg-3"><button class="cancel-button d-flex
                     justify-content-center
-                    w-100" type="" href="#Modal-cancel">
+                    w-100" type="" >
                     <div class="cancel-text">ยกเลิก</div>
                 </button>
             </div>
             <div class="col-6 col-sm-3 col-md-3
                 col-lg-3"><button class="submit-button d-flex
                     justify-content-center
-                    w-100" type="submit" href="#Modal-submit">
-                    <div class="submit-text">ตกลง</div>
+                    w-100" type="submit" (click)="submitButton()">
+                    <div class="submit-text" >ตกลง</div>
                 </button>
             </div>
         </div>

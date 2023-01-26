@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { TimeAttendanceComponent } from './timeAttendance.component';
 import { TimeAttRoutes } from './timeAtt.routing';
 import { RouterModule } from '@angular/router';
@@ -14,6 +14,7 @@ import { TimeattendanceListRequestComponent } from './timeattendance-list-reques
 import { TimeattendanceHistoryAllComponent } from './timeattendance-history-all/timeattendance-history-all.component';
 import { TimeattendanceHistoryComponent } from './timeattendance-history/timeattendance-history.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { LOCALE_ID } from '@angular/core';
 
 @NgModule({
   imports: [
@@ -26,6 +27,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     NgxPaginationModule,
     Ng2SearchPipeModule,
     BsDatepickerModule.forRoot(),
+    DatePipe,
   ],
   declarations: [
     TimeAttendanceComponent,
@@ -35,6 +37,10 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     TimeattendanceListRequestComponent,
     TimeattendanceHistoryAllComponent,
     TimeattendanceHistoryComponent
-  ]
+  ],
+  providers: [
+    DatePipe,
+    { provide: LOCALE_ID, useValue: "TH-th" }
+  ],
 })
 export class TimeAttModule { }

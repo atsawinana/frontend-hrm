@@ -4,6 +4,8 @@ import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { defineLocale, thBeLocale } from 'ngx-bootstrap/chronos';
 import { ActivatedRoute, Route, Router, RouterLink } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { TimeAttendanceService } from '../time-attendance.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
     selector: 'app-timeattendance-request',
@@ -15,6 +17,8 @@ export class TimeattendanceRequestComponent implements OnInit {
     constructor(
         private localeService: BsLocaleService,
         private route: Router,
+        private timeatdService: TimeAttendanceService,
+        private datepipe: DatePipe,
     ) { }
 
     locale = 'th';
@@ -112,12 +116,47 @@ export class TimeattendanceRequestComponent implements OnInit {
                 this.time.alertmins = true
 
                 return
-            }else{
+            } else {
                 this.time.alerthours = false
                 this.time.alertmins = false
+            }
+
+            if (this.time.hours == 0 && this.time.mins == 0) {
+                x!.style.display = 'none';
+                return
             }
             this.Request.controls.time.setValue(this.time.hours.toString() + " ชั่วโมง " + this.time.mins.toString() + " นาที")
             x!.style.display = 'none';
         }
+    }
+
+    submitButton() {
+        let min, hour
+
+        if (String(this.time.mins).length == 1) {
+            min = "0" + this.time.mins
+        }else{
+            min = String(this.time.mins)
+        }
+        
+        if (String(this.time.hours).length == 1) {
+            hour = "0" + this.time.hours
+        }else{
+            hour = String(this.time.hours)
+        }
+
+        let time = hour+":"+min;
+        let date  = this.datepipe.transform(this.Request.controls.Date.value, 'yyyy-MM-dd');
+
+
+        this.timeatdService.addRequestAttendance(
+            this.Request.controls.Type.value,
+            date,
+            time,
+            this.Request.controls.detail.value,
+        ).subscribe({
+            next: (res: any) => { },
+            error: (err: any) => { }
+        })
     }
 }

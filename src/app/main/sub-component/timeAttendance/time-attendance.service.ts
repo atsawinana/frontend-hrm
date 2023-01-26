@@ -31,7 +31,7 @@ export class TimeAttendanceService {
         });
 
         return this.httpClient.post(
-            `${environment.apiURL}/timeAttendance/CheckIn`,
+            `${environment.apiURL}/timeAttendance/checkIn`,
             {
             },
             { headers }
@@ -44,7 +44,7 @@ export class TimeAttendanceService {
         });
 
         return this.httpClient.post(
-            `${environment.apiURL}/timeAttendance/CheckOut`,
+            `${environment.apiURL}/timeAttendance/checkOut`,
             {
             },
             { headers }
@@ -105,6 +105,28 @@ export class TimeAttendanceService {
                 },
                 headers
             },
+        );
+    }
+
+    //     /time-attendance/add-request-time-attendance[POST]
+    // เพิ่มคำร้องเข้างาน
+    // params : rta_type = 1, rta_date = 2566-01-21, rta_start_time = 10:00, rta_detail = ลืมกดปุ่ม
+
+    addRequestAttendance(rta_type: any, rta_date: any, rta_start_time: any, rta_detail: any,) {
+        const headers = new HttpHeaders({
+            Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+        });
+
+        return this.httpClient.post(
+            `${environment.apiURL}/timeAttendance/addRequestAttendance`,
+            {
+                rta_type: rta_type,
+                rta_date: rta_date,
+                rta_start_time: rta_start_time,
+                rta_detail: rta_detail,
+            },
+            { headers },
+
         );
     }
 
