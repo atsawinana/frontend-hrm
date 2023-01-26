@@ -17,15 +17,17 @@ export class TimeattendanceHistoryComponent implements OnInit {
     ary: any = [1, 2, 3]
     listPerPage: any = 10
     date: any
-
+    objTableHistory: any
 
     ngOnInit() {
         defineLocale('th', thBeLocale);
         this.localeService.use('th');
 
         this.servicetime.getRequestAttendanceHistory().subscribe({
-            next: (res: any) => { },
-            error: (err: any) => { }
+            next: (res: any) => {
+                this.objTableHistory = res.data.req_time_attendances
+            },
+            error: (err: any) => {}
         })
     }
 

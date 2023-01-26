@@ -11,13 +11,12 @@
         <div class="font-header ms-2 col">คำขอการเข้างาน</div>
     </div>
 
-
     <h1 class="row mt-5 d-flex justify-content-center"
-        *ngIf="objListTable.lenght == null" style="font-family: 'Kanit';">
+        *ngIf="objListTable.length == null" style="font-family: 'Kanit';">
         ไม่พบคำขอการเข้างาน
     </h1>
 
-    <div class="row" *ngIf="objListTable.lenght != null">
+    <div class="row" *ngIf="objListTable.length != null">
         <div class="table-responsive" style="overflow-x: scroll">
             <table
                 class="table table-striped align-middle text-center mt-3
