@@ -8,7 +8,7 @@
             <i class="fa-solid fa-angle-left back-icon"></i>
         </button>
 
-        <div class="font-header ms-2 col">ประวัติการเข้างาน</div>
+        <div class="font-header ms-2 col">ประวัติคำร้อง</div>
 
         <div class="col-2 ms-4 d-flex align-items-center border-input">
             <div class="container">
@@ -28,7 +28,9 @@
                         clearPosition: 'right'}">
 
                     <div class="col-3 d-flex align-items-center
-                        justify-content-center px-0" (click)="dp.toggle()" [attr.aria-expanded]="dp.isOpen" style="cursor: pointer;">
+                        justify-content-center px-0" (click)="dp.toggle()"
+                        [attr.aria-expanded]="dp.isOpen" style="cursor:
+                        pointer;">
                         <i class="fa-solid fa-calendar-days icon-color"></i>
                     </div>
                 </div>
@@ -39,7 +41,7 @@
 
     <h1 class="row mt-5 d-flex justify-content-center"
         *ngIf="objTableHistory.length == 0" style="font-family: 'Kanit';">
-        ไม่พบประวัติการเข้างาน
+        ไม่พบประวัติคำร้อง
     </h1>
 
     <div class="row" *ngIf="true">
@@ -51,42 +53,54 @@
                 style="min-width: 1140px">
                 <thead>
                     <tr>
-                        <th class="text-center cut-text" style="width: 10%
-                            !important">ลำดับ</th>
-                        <th class="text-center cut-text" style="width: 10%
-                            !important">รหัสพนักงาน</th>
-                        <th class="text-center cut-text" style="width: 20%
-                            !important">รายชื่อ</th>
-                        <th class="text-center cut-text" style="width: 10%
-                            !important">ประเภทการลา</th>
-                        <th class="text-center cut-text" style="width: 20%
-                            !important">วันที่ต้องการลา</th>
-                        <th class="cut-text" style="width: 20% !important">รวมวันที่ลา/ชั่วโมง</th>
-                        <th class="cut-text" style="width: 10% !important">การดำเนินการ</th>
+                        <th class="text-center cut-text">ลำดับ</th>
+                        <th class="text-center cut-text">วันที่ทำงาน</th>
+                        <th class="text-center cut-text">เวลาเข้าทำงาน</th>
+                        <th class="text-center cut-text">ประเภทคำร้อง</th>
+                        <th class="text-center cut-text">สถานะ</th>
+                        <th class="cut-text">เหตุผล</th>
+                        <th class="cut-text">การดำเนินการ</th>
                     </tr>
                 </thead>
 
                 <tbody class="list-content">
-                    <tr id="row-list" *ngFor="let objleave of ary">
+                    <tr id="row-list" *ngFor="let objleave of objTableHistory">
                         <td>
-                            11
-                        </td>
-                        <td>
-                            22
-                        </td>
-                        <td class="text-start">
-                            33
+                            {{objleave.number}}
                         </td>
                         <td>
-                            44
+                            {{objleave.rta_date}}
                         </td>
                         <td>
-                            55
+                            {{objleave.rta_start_time}}
                         </td>
                         <td>
-                            66
+                            {{objleave.rta_type_name}}
                         </td>
-                        <!-- routerLink="../view-request-detail/{{objleave.rvac_id}}" -->
+                        <td>
+                            <div class="mt-1 status-cancel text-center"
+                                *ngIf="objleave.rta_approve_status == 2">
+                                {{objleave.rta_status_name}}
+                            </div>
+                            <div class="mt-1 status-disapproved
+                                text-center"
+                                *ngIf="objleave.rta_approve_status == 0">
+                                {{objleave.rta_status_name}}
+                            </div>
+                            <div class="mt-1 status-accept text-center"
+                                *ngIf="objleave.rta_approve_status == 1">
+                                {{objleave.rta_status_name}}
+                            </div>
+                            <div class="mt-1 status-pending text-center"
+                                *ngIf="objleave.rta_approve_status == null">
+                                {{objleave.rta_status_name}}
+                            </div>
+                        </td>
+                        <td>
+                            {{objleave.rta_detail}}
+                        </td>
+
+                        <!-- routerLink="../view-request-detail/{{objleave.rta_id}}" -->
                         <td>
                             <div class="row ">
                                 <div class="dropdown">
