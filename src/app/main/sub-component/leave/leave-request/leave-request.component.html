@@ -1,4 +1,7 @@
-<div class="container justify-content-center">
+<app-loading-leave-info *ngIf="!APIsuccess" class="d-flex justify-content-center
+    h-100 align-items-center">
+</app-loading-leave-info>
+<div *ngIf="APIsuccess" class="container justify-content-center">
     <form [formGroup]="leaveRequest">
         <div class="row">
             <div class="col-12 justify-content-center">

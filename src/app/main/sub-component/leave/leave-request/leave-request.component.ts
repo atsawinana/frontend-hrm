@@ -40,6 +40,7 @@ export class LeaveRequestComponent implements OnInit {
     LeavesDays: any;
     objDateVerify: any
     datesum: any = ""
+    APIsuccess:boolean = false
 
     minDate:any
     isDisabled:boolean = true
@@ -224,6 +225,7 @@ export class LeaveRequestComponent implements OnInit {
         this.LeaveReqService.getVacationType().subscribe({
             next: (res: any) => {
                 this.LeavesDays = res.data.leaveDays;
+                this.APIsuccess = true
             },
             error: (res: any) => {
 
