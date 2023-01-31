@@ -18,7 +18,7 @@ export class LeaveNotiComponent implements OnInit {
     baseURL = environment.apiURL;
 
     ApiSuccess: boolean = false
-  storageURL: any = environment.storageURL;
+    storageURL: any = environment.storageURL;
 
     ngOnInit() {
         this.notiservice.getLeaveNoti().subscribe({
@@ -31,7 +31,7 @@ export class LeaveNotiComponent implements OnInit {
 
     }
 
-    NavigateToLeave(id: any,noti_id:any) {
+    NavigateToLeave(id: any, noti_id: any) {
 
         this.notiservice.updateHasSeen(noti_id).subscribe({
             next: (res: any) => {
@@ -56,15 +56,14 @@ export class LeaveNotiComponent implements OnInit {
         }).then((e) => {
             if (e.isConfirmed) {
                 this.notiservice.clearLeaveNoti().subscribe({
-                    next: (res: any) => {
-                        location.reload()
-                    },
-                    error: (error: any) => { },
+                    next: (res: any) => { },
+                    error: (err: any) => { }
                 })
             } else {
-                return
+
             }
         })
 
     }
+
 }

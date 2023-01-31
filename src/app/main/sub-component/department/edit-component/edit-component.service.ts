@@ -33,7 +33,7 @@ export class EditComponentService {
     });
 
     return this.httpClient.put(
-      `${environment.apiURL}/department/getEditDepartment`,
+      `${environment.apiURL}/department/editDepartment`,
       {
         dept_id: deptID,
         dept_name_en: deptnameen,

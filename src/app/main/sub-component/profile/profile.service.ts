@@ -55,7 +55,7 @@ export class ProfileService {
       Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
     });
 
-    return this.httpClient.post(`${environment.apiURL}/employee/acceptEditPicture`, {
+    return this.httpClient.post(`${environment.apiURL}/employee/saveEditPicture`, {
       path: path
     }, { headers });
   }
