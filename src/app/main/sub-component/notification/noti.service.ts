@@ -37,6 +37,21 @@ export class NotiService {
         );
     }
 
+    clearLeaveNoti() {
+        const headers = new HttpHeaders({
+            Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+        });
+
+        return this.httpClient.patch(
+            `${environment.apiURL}/leaveOnline/clearNotificationRequestLeave`,
+            {
+            },
+            {
+                headers,
+            }
+        );
+    }
+
     getLeaveNoti() {
         const headers = new HttpHeaders({
             Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
@@ -49,22 +64,6 @@ export class NotiService {
             }
         );
     }
-
-    clearLeaveNoti() {
-        const headers = new HttpHeaders({
-            Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
-        });
-
-        return this.httpClient.patch(
-            `${environment.apiURL}/leaveOnline/clearNotificationReqLeave`,
-            {
-            },
-            {
-                headers
-            }
-        );
-    }
-
 
     showNumOfNotification() {
         const headers = new HttpHeaders({

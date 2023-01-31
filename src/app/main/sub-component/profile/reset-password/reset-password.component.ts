@@ -70,7 +70,6 @@ export class ResetPasswordComponent implements OnInit {
     let confirmPassword = this.password.controls.confirm_password.value;
 
     this.summitted = true;
-    console.log('value invalid', this.password.controls.old_password.invalid);
 
     if (this.password.invalid) {
       return;
