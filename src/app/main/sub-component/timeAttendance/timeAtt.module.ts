@@ -14,7 +14,6 @@ import { TimeattendanceListRequestComponent } from './timeattendance-list-reques
 import { TimeattendanceHistoryAllComponent } from './timeattendance-history-all/timeattendance-history-all.component';
 import { TimeattendanceHistoryComponent } from './timeattendance-history/timeattendance-history.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
-import { LOCALE_ID } from '@angular/core';
 
 @NgModule({
     imports: [

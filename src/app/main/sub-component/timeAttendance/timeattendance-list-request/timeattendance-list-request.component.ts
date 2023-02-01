@@ -13,14 +13,14 @@ import { TimeAttendanceService } from '../time-attendance.service';
 })
 export class TimeattendanceListRequestComponent implements OnInit {
 
-    constructor(private _location: Location, private serviceatd: TimeAttendanceService) { }
+    constructor(private _location: Location, private serviceTimeatd: TimeAttendanceService) { }
 
     ary: any = ["หิว", "ข้าว", "มันไก่"]
     listPerPage: any = 10
     objListTable:any
 
     ngOnInit() {
-        this.serviceatd.getUnapprovedRequestAttendances().subscribe({
+        this.serviceTimeatd.getUnapprovedRequestAttendances().subscribe({
             next: (res: any) => {
                 this.objListTable = res.data.request_time_attendances
              },

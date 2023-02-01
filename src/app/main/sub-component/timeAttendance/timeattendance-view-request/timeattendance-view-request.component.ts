@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 })
 export class TimeattendanceViewRequestComponent implements OnInit {
 
-    constructor(private route: ActivatedRoute, private _location: Location, private serviceatd: TimeAttendanceService) { }
+    constructor(private route: ActivatedRoute, private _location: Location, private serviceTimeatd: TimeAttendanceService) { }
 
     storageURL = environment.apiURL
     ary: any = [1, 2, 3]
@@ -22,7 +22,7 @@ export class TimeattendanceViewRequestComponent implements OnInit {
     aryApprove: any
     ngOnInit() {
         this.id = this.route.snapshot.params['id'];
-        this.serviceatd.getDetailsRequestAttendances(this.id).subscribe({
+        this.serviceTimeatd.getDetailsRequestAttendances(this.id).subscribe({
             next: (res: any) => {
                 this.objDetailReq = res.data.req_attendances
                 this.aryApprove = res.data.approve_reqs
@@ -78,7 +78,7 @@ export class TimeattendanceViewRequestComponent implements OnInit {
                 })
 
                 if (reason) {
-                    this.serviceatd.disapproveRequestAttendance(this.id, reason).subscribe({
+                    this.serviceTimeatd.disapproveRequestAttendance(this.id, reason).subscribe({
                         next: (res: any) => {
                             this.backClicked();
                         },
@@ -102,7 +102,7 @@ export class TimeattendanceViewRequestComponent implements OnInit {
             reverseButtons: true,
         }).then((e) => {
             if (e.isConfirmed) {
-                this.serviceatd.approveRequestAttendance(this.id).subscribe({
+                this.serviceTimeatd.approveRequestAttendance(this.id).subscribe({
                     next: (res: any) => {
                         this.backClicked();
                     },

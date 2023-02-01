@@ -1,6 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { MainService } from '../main.service';
-import { NavigationEnd, NavigationStart, Route, Router, RouterLink } from '@angular/router';
+import { NavigationStart, Router,  } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
 import { Subject } from 'rxjs/internal/Subject';
 import { LoadingComponent } from 'src/app/login/loading/loading-template/loading.component';

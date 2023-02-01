@@ -1,10 +1,7 @@
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main-component/main.component';
-import { OtComponent } from './main/sub-component/ot/ot.component';
 import { AuthGuardGuard } from './auth/auth-guard.guard';
-import { TravelExpensesComponent } from './main/sub-component/travelExpenses/travelExpenses.component';
-import { ActivityComponent } from './main/sub-component/activity/activity.component';
 import { RoleGuard } from './auth/role.guard';
 import { NgModule } from '@angular/core';
 

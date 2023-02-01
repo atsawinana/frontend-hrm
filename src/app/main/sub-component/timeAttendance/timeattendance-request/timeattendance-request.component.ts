@@ -18,7 +18,7 @@ export class TimeattendanceRequestComponent implements OnInit {
     constructor(
         private localeService: BsLocaleService,
         private route: Router,
-        private timeatdService: TimeAttendanceService,
+        private serviceTimeatd: TimeAttendanceService,
         private datepipe: DatePipe,
         private _location: Location
     ) { }
@@ -172,7 +172,7 @@ export class TimeattendanceRequestComponent implements OnInit {
                 let date = this.datepipe.transform(this.Request.controls.Date.value, 'yyyy-MM-dd');
 
 
-                this.timeatdService.addRequestAttendance(
+                this.serviceTimeatd.addRequestAttendance(
                     this.Request.controls.Type.value,
                     date,
                     time,

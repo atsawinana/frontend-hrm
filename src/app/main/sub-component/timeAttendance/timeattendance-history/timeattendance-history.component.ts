@@ -12,7 +12,7 @@ import { TimeAttendanceService } from '../time-attendance.service';
 })
 export class TimeattendanceHistoryComponent implements OnInit {
 
-    constructor(private _location: Location, private localeService: BsLocaleService, private servicetime: TimeAttendanceService) { }
+    constructor(private _location: Location, private localeService: BsLocaleService, private serviceTimeatd: TimeAttendanceService) { }
 
     ary: any = [1, 2, 3]
     listPerPage: any = 10
@@ -23,7 +23,7 @@ export class TimeattendanceHistoryComponent implements OnInit {
         defineLocale('th', thBeLocale);
         this.localeService.use('th');
 
-        this.servicetime.getRequestAttendanceHistory().subscribe({
+        this.serviceTimeatd.getRequestAttendanceHistory().subscribe({
             next: (res: any) => {
                 this.objTableHistory = res.data.req_time_attendances
             },

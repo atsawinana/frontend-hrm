@@ -1,5 +1,4 @@
 import { Routes, RouterModule } from '@angular/router';
-import { RoleGuard } from 'src/app/auth/role.guard';
 import { LeaveEditDateleaveComponent } from './leave-edit-dateleave/leave-edit-dateleave.component';
 import { LeaveEditRequestComponent } from './leave-edit-request/leave-edit-request.component';
 import { DetailComponent } from './leave-history/detail/detail.component';
