@@ -184,9 +184,24 @@ export class TimeAttendanceService {
         );
     }
 
+    // /timeAttendance/cancelRequestAttendance[PATCH]
+    // ยกเลิกคำขอเข้างาน
+    // body : "rta_id" : "1", "rta_reason" : "อยากลา"
 
+    cancelRequestAttendance(id: any, reason: any) {
+        const headers = new HttpHeaders({
+            Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+        });
 
-
+        return this.httpClient.patch(
+            `${environment.apiURL}/timeAttendance/cancelRequestAttendance`,
+            {
+                rta_id: id,
+                rta_reason: reason
+            },
+            { headers, }
+        );
+    }
 
 
 }
