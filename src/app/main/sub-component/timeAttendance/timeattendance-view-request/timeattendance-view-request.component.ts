@@ -115,13 +115,13 @@ export class TimeattendanceViewRequestComponent implements OnInit {
     async cancelRequestAttendance() {
 
         const { value: reason } = await Swal.fire({
-            title: '<div style = "font-family:Kanit"> กรุณากรอกเหตุผลยกเลิกการลา </div>',
+            title: '<div style = "font-family:Kanit"> กรุณากรอกเหตุผลยกเลิกยื่นคำร้อง </div>',
             input: 'select',
             inputOptions: {
-                "ต้องการเปลี่ยนแปลงวันลา": 'ต้องการเปลี่ยนแปลงวันลา',
-                "สามารถทำธุระในวันหยุดแทนได้": 'สามารถทำธุระในวันหยุดแทนได้',
-                "มีความจำเป็นต้องทำงานในวันที่ลา": 'มีความจำเป็นต้องทำงานในวันที่ลา',
-                "ไม่ต้องการลา": 'ไม่ต้องการลา',
+                "ต้องการเปลี่ยนแปลงวันเข้างาน": 'ต้องการเปลี่ยนแปลงวันเข้างาน',
+                "ต้องการแก้ไขเหตุผล": 'ต้องการแก้ไขเหตุผล',
+                "ส่งคำร้องซ้ำ": 'ส่งคำร้องซ้ำ',
+                "ไม่ต้องการยื่นคำร้องเข้างาน": 'ไม่ต้องการยื่นคำร้องเข้างาน',
                 "อื่น ๆ (กดตกลงเพื่อกรอกเหตุผล)": 'อื่น ๆ (กดตกลงเพื่อกรอกเหตุผล)',
             },
             inputPlaceholder: 'เลือกเหตุผลการยกเลิกลา',
@@ -140,7 +140,7 @@ export class TimeattendanceViewRequestComponent implements OnInit {
                     if (value.trim() != "") {
                         resolve("")
                     } else {
-                        resolve('กรุณากรอกข้อมูล')
+                        resolve('<div style = "font-family:Kanit"> กรุณากรอกข้อมูล </div>')
                     }
                 })
             }

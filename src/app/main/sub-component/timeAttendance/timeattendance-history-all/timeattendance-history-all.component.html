@@ -1,40 +1,47 @@
 
 
 <div class="container-fluid" *ngIf="true">
-    <div class="row mb-4">
+    <div class="row mb-4 d-flex align-items-center">
         <button
-            class="back-button d-flex justify-content-center"
+            class="back-button d-flex justify-content-center "
             (click)="backClicked()">
             <i class="fa-solid fa-angle-left back-icon"></i>
         </button>
 
-        <div class="font-header ms-2 col">ประวัติการเข้างานทั้งหมด</div>
+        <div class="font-header mx-2 col">
+            <div>ประวัติการเข้างานทั้งหมด</div>
 
-        <div class="col-2 ms-4 d-flex align-items-center border-input">
-            <div class="container">
-                <div class="row">
-                    <input type="text" placeholder="เลือกเดือนและปี"
-                        class="col-9 w-75 dateIcon icon-bg"
-                        #dp="bsDatepicker"
-                        bsDatepicker (keypress)="false"
-                        (onShown)="onOpenCalendar($event)"
-                        (onHidden)="sortdate()" [(ngModel)]="date"
-                        (bsValueChange)="sortdate()"
-                        [bsConfig]="{ isAnimated: true,
-                        dateInputFormat:
-                        'MM/YYYY', containerClass:
-                        'theme-dark-blue',
-                        showWeekNumbers: false,
-                        clearPosition: 'right'}">
+            <div class="col-2 mx-4 d-flex align-items-center border-input">
+                <div class="container">
+                    <div class="row">
+                        <input type="text" placeholder="เลือกเดือนและปี"
+                            class="col-9 w-75 dateIcon icon-bg"
+                            style="height: 40px;"
+                            #dp="bsDatepicker"
+                            bsDatepicker (keypress)="false"
+                            (onShown)="onOpenCalendar($event)"
+                            (onHidden)="sortdate()" [(ngModel)]="date"
+                            (bsValueChange)="sortdate()"
+                            [bsConfig]="{ isAnimated: true,
+                            dateInputFormat:
+                            'MM/YYYY', containerClass:
+                            'theme-dark-blue',
+                            showWeekNumbers: false,
+                            clearPosition: 'right'}">
 
-                    <div class="col-3 d-flex align-items-center
-                        justify-content-center px-0" (click)="dp.toggle()" [attr.aria-expanded]="dp.isOpen" style="cursor: pointer;">
-                        <i class="fa-solid fa-calendar-days icon-color"></i>
+                        <div class="col-3 d-flex align-items-center
+                            justify-content-center px-0" (click)="dp.toggle()"
+                            [attr.aria-expanded]="dp.isOpen" style="cursor:
+                            pointer;">
+                            <i class="fa-solid fa-calendar-days icon-color"></i>
+                        </div>
                     </div>
                 </div>
             </div>
+
+
         </div>
-        
+
     </div>
 
 

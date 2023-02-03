@@ -98,7 +98,7 @@ export class TimeAttendanceService {
         });
 
         return this.httpClient.get(
-            `${environment.apiURL}/timeAttendance/getDetailsRequestAttendances`,
+            `${environment.apiURL}/timeAttendance/requestAttendance`,
             {
                 params: {
                     rta_id: rta_id,

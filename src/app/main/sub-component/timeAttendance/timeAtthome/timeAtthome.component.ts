@@ -34,6 +34,8 @@ export class TimeAtthomeComponent implements OnInit {
         checkoutbtn: false
     }
 
+    checkState:boolean = false
+
     constructor(private serviceTimeatd: TimeAttendanceService) {
 
     }
@@ -109,7 +111,7 @@ export class TimeAtthomeComponent implements OnInit {
                     this.btnControl.checkinbtn = false
                     this.btnControl.checkoutbtn = true
                 }
-
+                this.checkState = false
             },
             error: (err: any) => {
 
@@ -118,6 +120,9 @@ export class TimeAtthomeComponent implements OnInit {
     }
 
     clickCheckin() {
+
+        this.checkState = true
+
         if (!this.btnControl.checkinbtn)
             return
 
@@ -131,6 +136,8 @@ export class TimeAtthomeComponent implements OnInit {
     }
 
     clickCheckout() {
+
+        this.checkState = true
         if (!this.btnControl.checkoutbtn)
             return
 

@@ -1,20 +1,22 @@
 
 
 <div class="container-fluid" *ngIf="true">
-    <div class="row mb-4">
+    <div class="row mb-4 d-flex align-items-center">
         <button
             class="back-button d-flex justify-content-center"
             (click)="backClicked()">
             <i class="fa-solid fa-angle-left back-icon"></i>
         </button>
 
-        <div class="font-header ms-2 col">ประวัติคำร้อง</div>
-
-        <div class="col-2 ms-4 d-flex align-items-center border-input">
+        <div class="font-header mx-2 col">
+           <div>ประวัติคำร้อง</div> 
+        
+           <div class="col-2 mx-4 d-flex align-items-center border-input" >
             <div class="container">
                 <div class="row">
                     <input type="text" placeholder="เลือกเดือนและปี"
                         class="col-9 w-75 dateIcon icon-bg"
+                        style="height: 40px;"
                         #dp="bsDatepicker"
                         bsDatepicker (keypress)="false"
                         (onShown)="onOpenCalendar($event)"
@@ -36,6 +38,11 @@
                 </div>
             </div>
         </div>
+        
+        
+        </div>
+
+        
 
     </div>
 

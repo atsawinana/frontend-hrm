@@ -33,9 +33,13 @@
 
                 <div class="col-3 h-100 d-flex justify-content-center
                     btn-margin">
-                    <button type="button" class="btn btn-primary w-100
-                        btn-export-excel" (click)="exportAsExcelFile()">
-                        Export Excel
+                    <button
+                        type="button"
+                        class="btn btn-primary w-100 btn-export-excel d-flex
+                        align-items-center justify-content-center"
+                        (click)="exportAsExcelFile()"> <i class="fa-regular
+                            fa-file-excel" style="font-size: 26px;"></i>
+                        <div class="px-2">Export Excel</div>
                     </button>
                 </div>
             </div>
@@ -43,7 +47,8 @@
     </div>
 
     <div class="table-responsive">
-        <table class="table align-middle table-striped text-center mt-3 list-table"
+        <table class="table align-middle table-striped text-center mt-3
+            list-table"
             id="tableemp">
             <thead>
                 <tr>
