@@ -3,6 +3,7 @@ import { PaginationInstance } from 'ngx-pagination';
 import { Location } from '@angular/common';
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { defineLocale, thBeLocale } from 'ngx-bootstrap/chronos';
+import { TimeAttendanceService } from '../time-attendance.service';
 
 @Component({
   selector: 'app-timeattendance-history-all',
@@ -11,16 +12,24 @@ import { defineLocale, thBeLocale } from 'ngx-bootstrap/chronos';
 })
 export class TimeattendanceHistoryAllComponent implements OnInit {
 
-    constructor(private _location: Location,private localeService: BsLocaleService) { }
+    constructor(private _location: Location,private localeService: BsLocaleService, private serviceTimeatd: TimeAttendanceService) { }
 
     ary: any = [1, 2, 3]
     listPerPage: any = 10
     date:any
-
+    objTableHistory: any
 
     ngOnInit() {
         defineLocale('th', thBeLocale);
         this.localeService.use('th');
+
+
+        this.serviceTimeatd.allRequestAttendanceHistory().subscribe({
+            next: (res: any) => {
+                this.objTableHistory = res.data.time_attendance
+            },
+            error: (err: any) => {}
+        })
     }
 
     public config: PaginationInstance = {

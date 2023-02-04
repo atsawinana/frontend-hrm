@@ -3,7 +3,6 @@ import { PaginationInstance } from 'ngx-pagination';
 import { map, share, Subject, Subscription, timer } from 'rxjs';
 import * as moment from 'moment';
 import { TimeAttendanceService } from '../time-attendance.service';
-import { async } from '@angular/core/testing';
 import Swal from 'sweetalert2';
 
 @Component({

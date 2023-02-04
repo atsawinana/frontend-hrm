@@ -1,32 +1,34 @@
-import { Component, OnInit } from '@angular/core';
-import Swal from 'sweetalert2';
-import { BsLocaleService } from 'ngx-bootstrap/datepicker';
-import { defineLocale, thBeLocale } from 'ngx-bootstrap/chronos';
-import { ActivatedRoute, Route, Router, RouterLink } from '@angular/router';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { TimeAttendanceService } from '../time-attendance.service';
 import { DatePipe } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { defineLocale, thBeLocale } from 'ngx-bootstrap/chronos';
+import { BsLocaleService } from 'ngx-bootstrap/datepicker';
+import { TimeAttendanceService } from '../time-attendance.service';
 import { Location } from '@angular/common';
+import Swal from 'sweetalert2';
 
 @Component({
-    selector: 'app-timeattendance-request',
-    templateUrl: './timeattendance-request.component.html',
-    styleUrls: ['./timeattendance-request.component.css']
+    selector: 'app-timeattendance-edit-request',
+    templateUrl: './timeattendance-edit-request.component.html',
+    styleUrls: ['./timeattendance-edit-request.component.css']
 })
-export class TimeattendanceRequestComponent implements OnInit {
+export class TimeattendanceEditRequestComponent implements OnInit {
 
     constructor(
         private localeService: BsLocaleService,
-        private route: Router,
+        private router: Router,
         private serviceTimeatd: TimeAttendanceService,
         private datepipe: DatePipe,
-        private _location: Location
+        private _location: Location,
+        private route: ActivatedRoute
     ) { }
 
     locale = 'th';
     today!: Date;
     summited: boolean = false;
     requestStatus = 1
+    rta_id: any
 
     time = {
         hours: 0,
@@ -48,6 +50,18 @@ export class TimeattendanceRequestComponent implements OnInit {
         this.today = new Date();
         defineLocale('th', thBeLocale);
         this.localeService.use(this.locale);
+        this.rta_id = this.route.snapshot.params['id'];
+            this.serviceTimeatd.reverseAttendance(this.rta_id).subscribe({
+                next: (res: any) => {
+                    this.Request.controls.Type.setValue(res.data.rta_type)
+                    this.Request.controls.Date.setValue(res.data.rta_date)
+                    this.Request.controls.time.setValue(res.data.rta_start_time)
+                    this.Request.controls.detail.setValue(res.data.rta_detail)
+                },
+                error: (err: any) => { }
+            })
+
+
     }
 
     noWhitespaceValidator(control: FormControl) {
@@ -73,17 +87,12 @@ export class TimeattendanceRequestComponent implements OnInit {
             reverseButtons: true,
         }).then((result) => {
             if (result.isConfirmed) {
-                this.route.navigate(['../main/timeattendance/home']);
+                this.router.navigate(['../main/timeattendance/home']);
             }
         });
     }
 
     onValueChange(event: any) {
-
-        let a = new Date(this.Request.controls.Date.value!)
-        console.log(a.toLocaleDateString('th-TH'))
-
-
         let date = this.datepipe.transform(this.Request.controls.Date.value, 'yyyy-MM-dd');
         this.serviceTimeatd.checkRequestAttendance(date).subscribe({
             next: (res: any) => {
@@ -162,7 +171,6 @@ export class TimeattendanceRequestComponent implements OnInit {
     }
 
     submitButton() {
-
         this.summited = true
 
         if (this.Request.invalid)
@@ -224,4 +232,5 @@ export class TimeattendanceRequestComponent implements OnInit {
 
 
     }
+
 }

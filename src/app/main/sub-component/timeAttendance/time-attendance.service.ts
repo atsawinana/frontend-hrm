@@ -30,7 +30,7 @@ export class TimeAttendanceService {
             Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
         });
 
-        return this.httpClient.post(
+        return this.httpClient.patch(
             `${environment.apiURL}/timeAttendance/checkIn`,
             {
             },
@@ -43,7 +43,7 @@ export class TimeAttendanceService {
             Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
         });
 
-        return this.httpClient.post(
+        return this.httpClient.patch(
             `${environment.apiURL}/timeAttendance/checkOut`,
             {
             },
@@ -68,7 +68,7 @@ export class TimeAttendanceService {
         });
 
         return this.httpClient.get(
-            `${environment.apiURL}/timeAttendance/getAttendanceHistory`,
+            `${environment.apiURL}/timeAttendance/attendanceHistory`,
             { headers }
         );
     }
@@ -83,7 +83,7 @@ export class TimeAttendanceService {
         });
 
         return this.httpClient.get(
-            `${environment.apiURL}/timeAttendance/getUnapprovedRequestAttendances`,
+            `${environment.apiURL}/timeAttendance/unapprovedRequestAttendances`,
             { headers }
         );
     }
@@ -112,13 +112,13 @@ export class TimeAttendanceService {
     // เพิ่มคำร้องเข้างาน
     // params : rta_type = 1, rta_date = 2566-01-21, rta_start_time = 10:00, rta_detail = ลืมกดปุ่ม
 
-    addRequestAttendance(rta_type: any, rta_date: any, rta_start_time: any, rta_detail: any,) {
+    requestAttendance(rta_type: any, rta_date: any, rta_start_time: any, rta_detail: any,) {
         const headers = new HttpHeaders({
             Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
         });
 
         return this.httpClient.post(
-            `${environment.apiURL}/timeAttendance/addRequestAttendance`,
+            `${environment.apiURL}/timeAttendance/requestAttendance`,
             {
                 rta_type: rta_type,
                 rta_date: rta_date,
@@ -133,13 +133,24 @@ export class TimeAttendanceService {
     //     /timeAttendance/getRequestAttendanceHistory[GET]
     // ดูประวัติคำร้องเข้างานของตนเอง 
 
-    getRequestAttendanceHistory() {
+    allRequestAttendanceHistory() {
         const headers = new HttpHeaders({
             Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
         });
 
         return this.httpClient.get(
-            `${environment.apiURL}/timeAttendance/getRequestAttendanceHistory`,
+            `${environment.apiURL}/timeAttendance/allAttendanceHistory`,
+            { headers }
+        );
+    }
+
+    requestAttendanceHistory() {
+        const headers = new HttpHeaders({
+            Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+        });
+
+        return this.httpClient.get(
+            `${environment.apiURL}/timeAttendance/requestAttendanceHistory`,
             { headers }
         );
     }
@@ -202,6 +213,43 @@ export class TimeAttendanceService {
             { headers, }
         );
     }
+
+//     /timeAttendance/checkRequestAttendance [GET]
+// check_time_attendance_button
+
+checkRequestAttendance(rta_date:any) {
+    const headers = new HttpHeaders({
+        Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+    });
+
+    return this.httpClient.get(
+        `${environment.apiURL}/timeAttendance/checkRequestAttendance`,
+        {
+            params: {
+                rta_date: rta_date,
+            },
+            headers
+        },
+    );
+}
+
+//Route::get('/timeAttendance/reverseAttendance/{$rta_id}','TimeAttendance@get_reverse_attendance');
+
+reverseAttendance(rta_id:any) {
+    const headers = new HttpHeaders({
+        Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+    });
+
+    return this.httpClient.get(
+        `${environment.apiURL}/timeAttendance/reverseAttendance`,
+        {
+            params: {
+                rta_id: rta_id,
+            },
+            headers
+        },
+    );
+}
 
 
 }

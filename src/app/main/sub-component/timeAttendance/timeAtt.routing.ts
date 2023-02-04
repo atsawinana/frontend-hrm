@@ -1,4 +1,5 @@
 import { Routes, RouterModule } from '@angular/router';
+import { TimeattendanceEditRequestComponent } from './timeattendance-edit-request/timeattendance-edit-request.component';
 import { TimeattendanceHistoryAllComponent } from './timeattendance-history-all/timeattendance-history-all.component';
 import { TimeattendanceHistoryComponent } from './timeattendance-history/timeattendance-history.component';
 import { TimeattendanceListRequestComponent } from './timeattendance-list-request/timeattendance-list-request.component';
@@ -32,6 +33,10 @@ const routes: Routes = [
             {
                 path: 'time-history-all',
                 component: TimeattendanceHistoryAllComponent
+            },
+            {
+                path: 'time-edit-request/:id',
+                component: TimeattendanceEditRequestComponent
             }
         ]
     },

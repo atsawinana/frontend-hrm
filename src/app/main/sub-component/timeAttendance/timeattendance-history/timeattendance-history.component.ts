@@ -23,7 +23,7 @@ export class TimeattendanceHistoryComponent implements OnInit {
         defineLocale('th', thBeLocale);
         this.localeService.use('th');
 
-        this.serviceTimeatd.getRequestAttendanceHistory().subscribe({
+        this.serviceTimeatd.requestAttendanceHistory().subscribe({
             next: (res: any) => {
                 this.objTableHistory = res.data.req_time_attendances
             },
