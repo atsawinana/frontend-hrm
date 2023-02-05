@@ -171,6 +171,9 @@ export class TimeattendanceEditRequestComponent implements OnInit {
     }
 
     submitButton() {
+
+        console.log(this.Request.controls.Date.value)
+
         this.summited = true
 
         if (this.Request.invalid)
@@ -181,7 +184,7 @@ export class TimeattendanceEditRequestComponent implements OnInit {
                 title: '<strong style = "font-family:Kanit"> วันนี้คุณส่งคำขอเข้างานไปแล้ว </strong>',
                 icon: 'warning',
                 showConfirmButton: false,
-                timer: 1500
+                timer: 2500
             })
             return
         }
