@@ -79,10 +79,10 @@ export class TimeattendanceRequestComponent implements OnInit {
     }
 
     onValueChange(event: any) {
-
+        console.log(this.Request.controls.Date.value!)
         let a = new Date(this.Request.controls.Date.value!)
         console.log(a.toLocaleDateString('th-TH'))
-
+        console.log(a.toLocaleDateString('en-US'))
 
         let date = this.datepipe.transform(this.Request.controls.Date.value, 'yyyy-MM-dd');
         this.serviceTimeatd.checkRequestAttendance(date).subscribe({

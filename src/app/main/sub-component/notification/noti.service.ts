@@ -95,6 +95,27 @@ export class NotiService {
     }
 
 
+    //     /timeAttendance/notificationRequestAttendance[GET]
+    // noti ที่ยังไม่ได้อนุมัติคำร้อง
+
+
+    notificationRequestAttendance() {
+        const headers = new HttpHeaders({
+            Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+        });
+
+        return this.httpClient.get(
+            `${environment.apiURL}/timeAttendance/notificationRequestAttendance`,
+            {
+                headers,
+            }
+        );
+    }
+
+
+//     /timeAttendance/updateSeenNotification [PATCH]
+// body noti_id: 1
+
 
     // /leaveOnline/updateHasSeen[PATCH]
     // body: 'rvac_id' : 1

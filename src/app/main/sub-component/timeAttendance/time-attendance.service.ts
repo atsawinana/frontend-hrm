@@ -214,43 +214,63 @@ export class TimeAttendanceService {
         );
     }
 
-//     /timeAttendance/checkRequestAttendance [GET]
-// check_time_attendance_button
+    //     /timeAttendance/checkRequestAttendance [GET]
+    // check_time_attendance_button
 
-checkRequestAttendance(rta_date:any) {
-    const headers = new HttpHeaders({
-        Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
-    });
+    checkRequestAttendance(rta_date: any) {
+        const headers = new HttpHeaders({
+            Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+        });
 
-    return this.httpClient.get(
-        `${environment.apiURL}/timeAttendance/checkRequestAttendance`,
-        {
-            params: {
-                rta_date: rta_date,
+        return this.httpClient.get(
+            `${environment.apiURL}/timeAttendance/checkRequestAttendance`,
+            {
+                params: {
+                    rta_date: rta_date,
+                },
+                headers
             },
-            headers
-        },
-    );
-}
+        );
+    }
 
-//Route::get('/timeAttendance/reverseAttendance/{$rta_id}','TimeAttendance@get_reverse_attendance');
+    //Route::get('/timeAttendance/reverseAttendance/{$rta_id}','TimeAttendance@get_reverse_attendance');
 
-reverseAttendance(rta_id:any) {
-    const headers = new HttpHeaders({
-        Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
-    });
+    getReverseAttendance(rta_id: any) {
+        const headers = new HttpHeaders({
+            Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+        });
 
-    return this.httpClient.get(
-        `${environment.apiURL}/timeAttendance/reverseAttendance`,
-        {
-            params: {
+        return this.httpClient.get(
+            `${environment.apiURL}/timeAttendance/reverseAttendance`,
+            {
+                params: {
+                    rta_id: rta_id,
+                },
+                headers
+            },
+        );
+    }
+
+    // //แก้ไขใบคำร้อง
+    // Route::patch('/timeAttendance/reverseAttendance','TimeAttendance@reverse_attendance');
+
+    reverseAttendance(rta_id: any,rta_type: any, rta_date: any, rta_start_time: any, rta_detail: any) {
+        const headers = new HttpHeaders({
+            Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+        });
+
+        return this.httpClient.patch(
+            `${environment.apiURL}/timeAttendance/reverseAttendance`,
+            {
                 rta_id: rta_id,
+                rta_type: rta_type,
+                rta_date: rta_date,
+                rta_start_time: rta_start_time,
+                rta_detail: rta_detail,
             },
-            headers
-        },
-    );
-}
-
+            { headers, }
+        );
+    }
 
 }
 

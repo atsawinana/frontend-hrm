@@ -38,7 +38,7 @@ export class TimeattendanceEditRequestComponent implements OnInit {
     }
     Request = new FormGroup({
         Type: new FormControl(null, [Validators.required]),
-        Date: new FormControl('', [Validators.required]),
+        Date: new FormControl(new Date, [Validators.required]),
         time: new FormControl('', [Validators.required]),
         detail: new FormControl('', [
             Validators.required,
@@ -51,10 +51,13 @@ export class TimeattendanceEditRequestComponent implements OnInit {
         defineLocale('th', thBeLocale);
         this.localeService.use(this.locale);
         this.rta_id = this.route.snapshot.params['id'];
-            this.serviceTimeatd.reverseAttendance(this.rta_id).subscribe({
+            this.serviceTimeatd.getReverseAttendance(this.rta_id).subscribe({
                 next: (res: any) => {
+                    console.log(res.data.rta_date)
+                    let date = new Date(res.data.rta_date)
                     this.Request.controls.Type.setValue(res.data.rta_type)
-                    this.Request.controls.Date.setValue(res.data.rta_date)
+                    this.Request.controls.Date.setValue(date)
+                    console.log(this.Request.controls.Date.value)
                     this.Request.controls.time.setValue(res.data.rta_start_time)
                     this.Request.controls.detail.setValue(res.data.rta_detail)
                 },
@@ -219,7 +222,8 @@ export class TimeattendanceEditRequestComponent implements OnInit {
                 let date = this.datepipe.transform(this.Request.controls.Date.value, 'yyyy-MM-dd');
 
 
-                this.serviceTimeatd.requestAttendance(
+                this.serviceTimeatd.reverseAttendance(
+                    this.rta_id,
                     this.Request.controls.Type.value,
                     date,
                     time,

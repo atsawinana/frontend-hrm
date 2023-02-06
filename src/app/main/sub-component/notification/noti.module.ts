@@ -5,6 +5,7 @@ import { NotiListComponent } from './noti-list/noti-list.component';
 import { AllNotiComponent } from './noti-list/all-noti/all-noti.component';
 import { LeaveNotiComponent } from './noti-list/leave-noti/leave-noti.component';
 import { NotificationLoadingComponent } from './noti-list/notification-loading/notification-loading.component';
+import { WorkNotiComponent } from './noti-list/work-noti/work-noti.component';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { NotificationLoadingComponent } from './noti-list/notification-loading/n
     NotiListComponent,
     AllNotiComponent,
     LeaveNotiComponent,
-    NotificationLoadingComponent
+    NotificationLoadingComponent,
+    WorkNotiComponent
   ]
 })
 export class NotiModule { }
