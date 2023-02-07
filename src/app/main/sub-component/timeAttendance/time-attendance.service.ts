@@ -133,25 +133,35 @@ export class TimeAttendanceService {
     //     /timeAttendance/getRequestAttendanceHistory[GET]
     // ดูประวัติคำร้องเข้างานของตนเอง 
 
-    allRequestAttendanceHistory() {
+    allRequestAttendanceHistory(sortDate: any) {
         const headers = new HttpHeaders({
             Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
         });
 
         return this.httpClient.get(
             `${environment.apiURL}/timeAttendance/allAttendanceHistory`,
-            { headers }
+            {
+                headers,
+                params: {
+                    sort_date: sortDate
+                }
+            }
         );
     }
 
-    requestAttendanceHistory() {
+    requestAttendanceHistory(sortDate: any) {
         const headers = new HttpHeaders({
             Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
         });
 
         return this.httpClient.get(
             `${environment.apiURL}/timeAttendance/requestAttendanceHistory`,
-            { headers }
+            {
+                headers,
+                params: {
+                    sort_date: sortDate
+                }
+            }
         );
     }
 
@@ -254,7 +264,7 @@ export class TimeAttendanceService {
     // //แก้ไขใบคำร้อง
     // Route::patch('/timeAttendance/reverseAttendance','TimeAttendance@reverse_attendance');
 
-    reverseAttendance(rta_id: any,rta_type: any, rta_date: any, rta_start_time: any, rta_detail: any) {
+    reverseAttendance(rta_id: any, rta_type: any, rta_date: any, rta_start_time: any, rta_detail: any) {
         const headers = new HttpHeaders({
             Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
         });

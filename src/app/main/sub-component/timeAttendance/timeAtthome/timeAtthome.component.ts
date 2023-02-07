@@ -4,6 +4,7 @@ import { map, share, Subject, Subscription, timer } from 'rxjs';
 import * as moment from 'moment';
 import { TimeAttendanceService } from '../time-attendance.service';
 import Swal from 'sweetalert2';
+import { Locale } from 'ngx-bootstrap/chronos/locale/locale.class';
 
 @Component({
     selector: 'app-timeAtthome',
@@ -159,6 +160,7 @@ export class TimeAtthomeComponent implements OnInit {
                         this.serviceTimeatd.checkout().subscribe({
                             next: (res: any) => {
                                 this.checkCondition();
+                                location.reload()
                             },
                             error: (err: any) => {
 

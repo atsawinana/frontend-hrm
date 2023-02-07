@@ -40,6 +40,18 @@ export class AllNotiComponent implements OnInit {
         this.router.navigate([`/main/leave/view-request-detail/${id}`]);
     }
 
+    NavigateToTimeAttendance(id: any,noti_id:any) {
+
+        this.notiservice.updateHasSeen(noti_id).subscribe({
+            next: (res: any) => {
+            },
+            error: (error: any) => { },
+        })
+
+        this.router.navigate([`/main/timeattendance/time-view-request/${id}`]);
+    }
+
+
     clearNoti() {
         Swal.fire({
             title: `<strong style = "font-family:Kanit"> คุณต้องการล้างการแจ้งเตือนหรือไม่ </strong>`,

@@ -165,9 +165,6 @@ export class TimeattendanceRequestComponent implements OnInit {
 
         this.summited = true
 
-        if (this.Request.invalid)
-            return
-
         if (this.requestStatus == 0) {
             Swal.fire({
                 title: '<strong style = "font-family:Kanit"> วันนี้คุณส่งคำขอเข้างานไปแล้ว </strong>',
@@ -177,6 +174,9 @@ export class TimeattendanceRequestComponent implements OnInit {
             })
             return
         }
+
+        if (this.Request.invalid)
+            return
 
         Swal.fire({
             title: '<strong style = "font-family:Kanit"> คุณต้องการส่งแบบฟอร์มการลา ใช่หรือไม่ </strong>',
@@ -215,10 +215,10 @@ export class TimeattendanceRequestComponent implements OnInit {
                     this.Request.controls.detail.value,
                 ).subscribe({
                     next: (res: any) => {
-                        this.backClicked()
                     },
                     error: (err: any) => { }
                 })
+                this.backClicked()
             }
         });
 
