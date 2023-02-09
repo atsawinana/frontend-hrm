@@ -126,7 +126,7 @@
     <div class="row list-header d-flex p-2 d-flex
         justify-content-between">
 
-        <div class="col-5">
+        <div class="col-6 d-flex justify-content-start  ">
             <div class="row d-flex align-items-center">
                 <button type="button" class="btn btn-primary
                     back-button d-flex
@@ -136,38 +136,38 @@
                         justify-content-center"></i>
                 </button>
 
-                <div class="col font-header">ประวัติการเข้างานทั้งหมด</div>
+                <div class="font-header w-auto">ประวัติการเข้างานทั้งหมด</div>
 
-                <div class="col-4 ms-4 d-flex align-items-center
-                    border-input">
-                    <div class="row">
-                        <input type="text" placeholder="เลือกเดือนและปี"
-                            class="col-9 w-75 dateIcon icon-bg"
-                            #dp="bsDatepicker"
-                            bsDatepicker
-                            (keypress)="false"
-                            (onShown)="onOpenCalendar($event)"
-                            (onHidden)="sortdate()" [(ngModel)]="date"
-                            [bsConfig]="{ isAnimated: true,
-                            dateInputFormat:
-                            'MM/YYYY', containerClass:
-                            'theme-dark-blue',
-                            showWeekNumbers: false}">
+                <div class="col-4 px-0 mx-4 d-flex align-items-center border-input">
+                    <div class="container">
+                        <div class="row">
+                            <input type="text" placeholder="เลือกเดือนและปี"
+                                class="col-9 w-75 dateIcon icon-bg"
+                                style="height: 40px;"
+                                #dp="bsDatepicker"
+                                bsDatepicker (keypress)="false"
+                                (onShown)="onOpenCalendar($event)"
+                                (onHidden)="sortdate()" [(ngModel)]="date"
+                                (bsValueChange)="sortdate()"
+                                [bsConfig]="{ isAnimated: true,
+                                dateInputFormat:
+                                'MM/YYYY', containerClass:
+                                'theme-dark-blue',
+                                showWeekNumbers: false,
+                                clearPosition: 'right'}">
 
-                        <div class="col-3 d-flex align-items-center
-                            justify-content-center" (click)="dp.toggle()"
-                            [attr.aria-expanded]="dp.isOpen" style="cursor:
-                            pointer;">
-                            <i class="fa-solid fa-calendar-days
-                                icon-color"></i>
+                            <div class="col-3 d-flex align-items-center
+                                justify-content-center px-0"
+                                (click)="dp.toggle()"
+                                [attr.aria-expanded]="dp.isOpen" style="cursor:
+                                pointer;">
+                                <i class="fa-solid fa-calendar-days icon-color" style="font-size: 24px;"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
-
-        <div class="col"></div>
 
         <div class="col-3 ">
             <div class="ms-2 row border-input">
@@ -220,13 +220,13 @@
                             !important">ลำดับ</th>
                         <th class="text-center cut-text" style="width: 10%
                             !important">รหัสพนักงาน</th>
-                        <th class="text-center cut-text" style="width: 30%
+                        <th class="text-center cut-text" style="width: 20%
                             !important">รายชื่อ</th>
                         <th class="text-center cut-text" style="width: 10%
                             !important">วันที่ทำงาน</th>
                         <th class="text-center cut-text" style="width: 20%
                             !important">จำนวนชั่วโมงที่ทำงาน</th>
-                        <th class="cut-text" style="width: 20% !important">หมายเหตุ</th>
+                        <th class="cut-text" style="width: 30% !important">หมายเหตุ</th>
                     </tr>
                 </thead>
 
@@ -236,11 +236,11 @@
                         <td>
                             {{objleave.ta_number}}
                         </td>
-                        <td class="text-start">
-                            {{objleave.ta_amount}}
+                        <td class="text-center">
+                            {{objleave.user_card_number}}
                         </td>
-                        <td>
-                            {{objleave.ta_amount}}
+                        <td class="text-start">
+                            {{objleave.ud_fullname_th}}
                         </td>
                         <td>
                             {{objleave.ta_date}}
