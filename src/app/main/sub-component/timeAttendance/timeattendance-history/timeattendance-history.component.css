@@ -133,17 +133,6 @@ select#listPerPage {
   margin-right: 10px;
 }
 
-.buttonPage {
-  background: #FFFFFF;
-  border: 1px solid #C7C7CC;
-  border-radius: 8px;
-  width: 38px;
-  height: 38px;
-  font-size: 22px;
-  font-family: 'Kanit';
-  margin-right: 10px;
-}
-
 .on-page {
   background: #005FBC;
   width: 38px;

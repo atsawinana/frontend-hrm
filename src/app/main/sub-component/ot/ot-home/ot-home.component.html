@@ -1,30 +1,24 @@
 <div class="container">
     <div class="row">
-        <div class="col font-header">อัตราค่าล่วงเวลาการทำงาน</div>
+        <div class="col font-header d-flex align-items-center">อัตราค่าล่วงเวลาการทำงาน</div>
         <div class="col d-flex justify-content-end">
-            <button class="mx-2" routerLink="history">ประวัติการทำโอที</button>
-            <button class="mx-2" routerLink="list-request">คำขอโอที</button>
-            <button class="mx-2" routerLink="request">สร้างฟอร์มการทำโอที</button>
+            <button class="mx-2 btn-history" routerLink="history">ประวัติการทำโอที</button>
+            <button class="mx-2 btn-list-request" routerLink="list-request">คำขอโอที</button>
+            <button class="mx-2 btn-request " routerLink="request">สร้างฟอร์มการทำโอที</button>
         </div>
     </div>
 
     <div class="row">
         <div class="col"> 
-            <table class="table-responsive align-middle table
-                table-striped mt-3 "
-                style="min-width: 1140px">
-                <!--table header-->
+            <table class="table-responsive align-middle table table-striped mt-3 " style="min-width: 1140px">
                 <thead class="ps-5 list-table">
                     <tr>
-
-                        <th class="cut-text text-center w-25">สัปดาห์การทำงาน</th>
-                        <th class="cut-text text-center">เงื่อนไข</th>
+                        <th class="cut-text text-center ">สัปดาห์การทำงาน</th>
+                        <th class="cut-text text-center w-25">เงื่อนไข</th>
                         <th class="cut-text text-center ">อัตราค่าทำงาน/ค่าล่วงเวลา</th>
                     </tr>
                 </thead>
-                <!---->
                 <tbody class="list-content">
-                    <!--row 1 colum ประเภทการลา-->
                     <tr>
                         <td>
                             วันจันทร์ - วันศุกร์
@@ -57,15 +51,12 @@
                         <td class="text-center">
                             3 เท่า
                         </td>
-
                     </tr>
-                    <!---->
                 </tbody>
             </table>
         </div>
     </div>
 
-    <div>หมายเหตุ: หากทำงานในวันหยุด และวันหยุดนักขัตฤกษ์ จะได้ค่าจ้างที่อัตรา 1
-        เท่า</div>
+    <div class="font-detail">หมายเหตุ: หากทำงานในวันหยุด และวันหยุดนักขัตฤกษ์ จะได้ค่าจ้างที่อัตรา 1 เท่า</div>
 
 </div>

@@ -4,3 +4,60 @@
   font-size: 24px;
   color: #000000;
 }
+
+.btn-request,
+.btn-list-request,
+.btn-history {
+  width: 203px !important;
+  height: 48px !important;
+  font-family: 'Kanit';
+  font-style: normal;
+  font-size: 14px;
+  color: #FFFFFF;
+  border: 0px;
+}
+
+.btn-request {
+  background: linear-gradient(270.74deg, #2E3579 0.35%, #005FBC 99.1%, #005FBC 99.1%);
+  border-radius: 8px;
+}
+
+.btn-list-request {
+  background: linear-gradient(270.74deg, #2E3579 0.35%, #005FBC 99.1%, #005FBC 99.1%);
+  border-radius: 8px;
+}
+
+.btn-history {
+  background: linear-gradient(90deg, #E69755 0.1%, #FF5444 100.01%);
+  border-radius: 8px;
+}
+
+td {
+  background: rgb(255, 255, 255);
+  border-bottom: 2px solid white;
+  font-family: 'Kanit';
+  font-style: normal;
+  font-size: 16px;
+}
+
+th {
+  background: #005FBC;
+  color: #ffffff;
+  font-family: 'Kanit';
+  font-style: normal;
+  font-size: 18px;
+}
+
+table {
+  border-collapse: collapse;
+  border-radius: 1em;
+  overflow: hidden;
+}
+
+.font-detail {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}

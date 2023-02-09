@@ -10,6 +10,8 @@ export class OtHomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    localStorage.setItem("overbtnOt", "true")
+
   }
 
 }
