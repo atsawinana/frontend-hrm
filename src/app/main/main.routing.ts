@@ -11,7 +11,7 @@ const routes: Routes = [
     {
         path: 'department', loadChildren: () => import('./sub-component/department/department.module').then((m) => m.DepartmentModule), canActivate: [RoleGuard, AuthGuardGuard]
     },
-    // { path: 'ot', component: OtComponent, canActivate: [AuthGuardGuard] },
+    { path: 'ot', loadChildren: () => import('./sub-component/ot/ot.module').then((m) => m.OtModule), canActivate: [AuthGuardGuard] },
     { path: 'profile', loadChildren: () => import('./sub-component/profile/profile.module').then((m) => m.ProfileModule), canActivate: [AuthGuardGuard] },
     { path: 'timeattendance', loadChildren: () => import("./sub-component/timeAttendance/timeAtt.module").then((m) => m.TimeAttModule), canActivate: [AuthGuardGuard] },
     { path: 'employee', loadChildren: () => import('./sub-component/employee/employee.module').then((m) => m.EmployeeModule), canActivate: [RoleGuard, AuthGuardGuard] },
