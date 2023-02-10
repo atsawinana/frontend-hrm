@@ -17,7 +17,7 @@ export class AddEmployeeService {
       headers,
       params: {
         ud_prefix_id: perFix,
-        user_created_at: Startdate,
+        user_start_date: Startdate,
       },
     });
   }
@@ -99,7 +99,7 @@ export class AddEmployeeService {
         user_contract_type: contract,
         user_username: usernamne,
         user_password: password,
-        user_created_at: create,
+        user_start_date: create,
         user_leave: leave,
         user_sick: sick,
         user_take_annual: takeAnn,

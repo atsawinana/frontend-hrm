@@ -31,8 +31,8 @@ export class EditDetailService {
     user_military_servicep: any,
     user_without_payp: any,
     user_resignp: any,
-    user_deleted_at: any,
-    user_created_at: any
+    user_resign_at: any,
+    user_start_date: any
   ) {
 
     const headers = new HttpHeaders({
@@ -64,8 +64,8 @@ export class EditDetailService {
         user_military_service: user_military_servicep,
         user_without_pay: user_without_payp,
         user_resign: user_resignp,
-        user_deleted_at: user_deleted_at,
-        user_created_at: user_created_at
+        user_resign_at: user_resign_at,
+        user_start_date: user_start_date
       },
       {
         headers
