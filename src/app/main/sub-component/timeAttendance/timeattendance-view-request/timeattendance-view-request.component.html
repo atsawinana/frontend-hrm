@@ -80,13 +80,13 @@
                                     <div class="mb-2">{{objDetailReq.rta_type}}</div>
                                     <div class="mb-2">{{objDetailReq.rta_created_at}}</div>
                                     <div class="mb-2">{{objDetailReq.rta_start_time}}</div>
-                                    <div class="mb-2">{{objDetailReq.rta_detail}}</div>
+                                    <div class="mb-2"><p>{{objDetailReq.rta_detail}}</p></div>
                                 </div>
                             </div>
 
                             <div>
                                 <button *ngIf="owner && objDetailReq.rta_can_cancel == 1" class="col-2 btn-cancel" (click)="cancelRequestAttendance()">ยกเลิก</button>
-                                <button class="col-2 btn-edit" *ngIf="objDetailReq.rta_can_cancel == 2 && owner">แก้ไข</button>
+                                <button class="col-2 btn-edit" *ngIf="objDetailReq.rta_can_cancel == null && owner" routerLink="../../time-edit-request/{{objDetailReq.rta_id}}">แก้ไข</button>
                             </div>
                         </div>
                     </div>

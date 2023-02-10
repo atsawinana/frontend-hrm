@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Injectable({
     providedIn: 'root'
 })
 export class MainService {
 
-    constructor(private httpClient: HttpClient, private coreToken: AuthService) { }
+    constructor(private httpClient: HttpClient, private coreToken: AuthService, private router: Router,) { }
 
 
 
@@ -21,20 +22,16 @@ export class MainService {
     }
 
     Error() {
-        let timerInterval: any
         Swal.fire({
             icon: "error",
             title: 'เกิดข้อผิดพลาด กรุณาลองใช้งานอีกครั้ง',
-            timer: 2000,
-            timerProgressBar: true,
-            willClose: () => {
-                clearInterval(timerInterval)
-            }
         }).then((result) => {
             /* Read more about handling dismissals below */
-            if (result.dismiss === Swal.DismissReason.timer) {
-                console.log('I was closed by the timer')
-            }
+            this.coreToken.Logout().subscribe({
+                next: (res: any) => {},
+                error: (error: any) => {},
+            })
+            this.router.navigate(['']);
         })
     }
 

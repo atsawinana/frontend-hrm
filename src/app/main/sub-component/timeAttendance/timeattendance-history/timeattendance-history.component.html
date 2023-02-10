@@ -51,7 +51,7 @@
         ไม่พบประวัติคำร้อง
     </h1>
 
-    <div class="row" *ngIf="true">
+    <div class="row" *ngIf="objTableHistory.length != 0">
         <div class="table-responsive" style="overflow-x: scroll">
             <table
                 class="table table-striped align-middle text-center mt-3
@@ -60,13 +60,13 @@
                 style="min-width: 1140px">
                 <thead>
                     <tr>
-                        <th class="text-center cut-text">ลำดับ</th>
-                        <th class="text-center cut-text">วันที่ทำงาน</th>
-                        <th class="text-center cut-text">เวลาเข้าทำงาน</th>
-                        <th class="text-center cut-text">ประเภทคำร้อง</th>
-                        <th class="text-center cut-text">สถานะ</th>
-                        <th class="cut-text">เหตุผล</th>
-                        <th class="cut-text">การดำเนินการ</th>
+                        <th class="text-center cut-text" style="max-width: 10% !important;">ลำดับ</th>
+                        <th class="text-center cut-text" style="max-width: 10% !important;">วันที่ทำงาน</th>
+                        <th class="text-center cut-text" style="max-width: 20% !important;">เวลาเข้าทำงาน</th>
+                        <th class="text-center cut-text" style="max-width: 20% !important;">ประเภทคำร้อง</th>
+                        <th class="text-center cut-text" style="max-width: 10% !important;">สถานะ</th>
+                        <th class="cut-text" style="width: 20% !important;">เหตุผล</th>
+                        <th class="cut-text" style="max-width: 10% !important;">การดำเนินการ</th>
                     </tr>
                 </thead>
 
@@ -103,7 +103,7 @@
                                 {{objleave.rta_status_name}}
                             </div>
                         </td>
-                        <td>
+                        <td class="cut-text" style="width: 30px !important;">
                             {{objleave.rta_detail}}
                         </td>
 

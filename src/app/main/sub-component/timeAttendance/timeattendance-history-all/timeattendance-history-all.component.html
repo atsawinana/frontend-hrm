@@ -1,17 +1,93 @@
 
 
 <div class="container-fluid" *ngIf="true">
-    <div class="row mb-4 d-flex align-items-center">
-        <button
-            class="back-button d-flex justify-content-center "
-            (click)="backClicked()">
-            <i class="fa-solid fa-angle-left back-icon"></i>
-        </button>
+    <!-- <div class="row mb-4 d-flex align-items-center justify-content-between">
+        <div class="col d-flex align-items-center">
+            <button class="back-button d-flex justify-content-center"
+                (click)="backClicked()">
+                <i class="fa-solid fa-angle-left back-icon"></i>
+            </button>
 
-        <div class="font-header mx-2 col">
-            <div>ประวัติการเข้างานทั้งหมด</div>
+            <div class="font-header mx-2 col">
+                <div>ประวัติการเข้างานทั้งหมด</div>
 
-            <div class="col-2 mx-4 d-flex align-items-center border-input">
+                <div class="col-4 mx-4 d-flex align-items-center border-input">
+                    <div class="container">
+                        <div class="row">
+                            <input type="text" placeholder="เลือกเดือนและปี"
+                                class="col-9 w-75 dateIcon icon-bg"
+                                style="height: 40px;"
+                                #dp="bsDatepicker"
+                                bsDatepicker (keypress)="false"
+                                (onShown)="onOpenCalendar($event)"
+                                (onHidden)="sortdate()" [(ngModel)]="date"
+                                (bsValueChange)="sortdate()"
+                                [bsConfig]="{ isAnimated: true,
+                                dateInputFormat:
+                                'MM/YYYY', containerClass:
+                                'theme-dark-blue',
+                                showWeekNumbers: false,
+                                clearPosition: 'right'}">
+
+                            <div class="col-3 d-flex align-items-center
+                                justify-content-center px-0"
+                                (click)="dp.toggle()"
+                                [attr.aria-expanded]="dp.isOpen" style="cursor:
+                                pointer;">
+                                <i class="fa-solid fa-calendar-days icon-color"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col d-flex align-items-center justify-content-end">
+
+            <div class="col-3 ">
+                <div class="ms-2 row border-input">
+                    <div class="col-2">
+                        <img class="py-2 px-2"
+                            src="assets/img/department/search-bar.png"
+                            alt="" />
+                    </div>
+
+                    <div class="col-7 col-sm-7 col-md-7 col-lg-7
+                        col-xl-7
+                        col-xxl-7
+                        p-0 d-flex align-items-center ms-3">
+                        <input [(ngModel)]="searchInput" class="w-100"
+                            id="search-bar" type="text"
+                            pattern="[a-zA-Z]*" placeholder="ค้นหา" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-3 d-flex justify-content-center">
+
+                <button type="button" class="col btn btn-primary
+                    btn-export-excel d-flex justify-content-center
+                    align-items-center" (click)="exportAsExcelFile()">
+                    <i class="fa-regular fa-file-excel" style="font-size:
+                        26px;"></i>
+                    <div class="px-2">Export Excel</div>
+                </button>
+
+            </div>
+
+        </div>
+
+    </div> -->
+    <!-- <div class="row">
+        <div class="col d-flex flex-row align-items-center">
+
+            <button class="back-button d-flex justify-content-center mx-3" (click)="backClicked()">
+                <i class="fa-solid fa-angle-left back-icon"></i>
+            </button>
+
+            <div class="font-header">ประวัติการเข้างานทั้งหมด</div>
+            
+            <div class="mx-4 d-flex align-items-center border-input">
                 <div class="container">
                     <div class="row">
                         <input type="text" placeholder="เลือกเดือนและปี"
@@ -30,27 +106,108 @@
                             clearPosition: 'right'}">
 
                         <div class="col-3 d-flex align-items-center
-                            justify-content-center px-0" (click)="dp.toggle()"
+                            justify-content-center px-0"
+                            (click)="dp.toggle()"
                             [attr.aria-expanded]="dp.isOpen" style="cursor:
                             pointer;">
-                            <i class="fa-solid fa-calendar-days icon-color"></i>
+                            <i class="fa-solid fa-calendar-days icon-color" style="font-size: 24px !important;"></i>
                         </div>
                     </div>
                 </div>
             </div>
 
+        </div>
+        <div class="col">
+            <div class="container">
+                asdasd
+            </div>
+        </div>
+    </div> -->
+    <div class="row list-header d-flex p-2 d-flex
+        justify-content-between">
+
+        <div class="col-6 d-flex justify-content-start  ">
+            <div class="row d-flex align-items-center">
+                <button type="button" class="btn btn-primary
+                    back-button d-flex
+                    align-items-center justify-content-center"
+                    (click)="backClicked()">
+                    <i class="fa-solid fa-chevron-left icon d-flex
+                        justify-content-center"></i>
+                </button>
+
+                <div class="font-header w-auto">ประวัติการเข้างานทั้งหมด</div>
+
+                <div class="col-4 px-0 mx-4 d-flex align-items-center border-input">
+                    <div class="container">
+                        <div class="row">
+                            <input type="text" placeholder="เลือกเดือนและปี"
+                                class="col-9 w-75 dateIcon icon-bg"
+                                style="height: 40px;"
+                                #dp="bsDatepicker"
+                                bsDatepicker (keypress)="false"
+                                (onShown)="onOpenCalendar($event)"
+                                (onHidden)="sortdate()" [(ngModel)]="date"
+                                (bsValueChange)="sortdate()"
+                                [bsConfig]="{ isAnimated: true,
+                                dateInputFormat:
+                                'MM/YYYY', containerClass:
+                                'theme-dark-blue',
+                                showWeekNumbers: false,
+                                clearPosition: 'right'}">
+
+                            <div class="col-3 d-flex align-items-center
+                                justify-content-center px-0"
+                                (click)="dp.toggle()"
+                                [attr.aria-expanded]="dp.isOpen" style="cursor:
+                                pointer;">
+                                <i class="fa-solid fa-calendar-days icon-color" style="font-size: 24px;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-3 ">
+            <div class="ms-2 row border-input">
+                <div class="col-2">
+                    <img class="py-2 px-2"
+                        src="assets/img/department/search-bar.png"
+                        alt="" />
+                </div>
+
+                <div class="col-7 col-sm-7 col-md-7 col-lg-7
+                    col-xl-7
+                    col-xxl-7
+                    p-0 d-flex align-items-center ms-3">
+                    <input [(ngModel)]="searchInput" class="w-100"
+                        id="search-bar" type="text"
+                        pattern="[a-zA-Z]*" placeholder="ค้นหา" />
+                </div>
+            </div>
+        </div>
+
+        <div class="col-3 d-flex justify-content-center">
+
+            <button type="button" class="col btn btn-primary btn-export-excel
+                d-flex justify-content-center align-items-center"
+                (click)="exportAsExcelFile()">
+                <i class="fa-regular fa-file-excel" style="font-size: 26px;"></i>
+                <div class="px-2">Export Excel</div>
+            </button>
 
         </div>
 
+
     </div>
 
-
     <h1 class="row mt-5 d-flex justify-content-center"
-        *ngIf="true" style="font-family: 'Kanit';">
+        *ngIf="objTableHistory.length == 0" style="font-family: 'Kanit';">
         ไม่พบประวัติการเข้างานทั้งหมด
     </h1>
 
-    <div class="row" *ngIf="true">
+    <div class="row" *ngIf="objTableHistory.length != 0">
         <div class="table-responsive" style="overflow-x: scroll">
             <table
                 class="table table-striped align-middle text-center mt-3
@@ -66,50 +223,34 @@
                         <th class="text-center cut-text" style="width: 20%
                             !important">รายชื่อ</th>
                         <th class="text-center cut-text" style="width: 10%
-                            !important">ประเภทการลา</th>
+                            !important">วันที่ทำงาน</th>
                         <th class="text-center cut-text" style="width: 20%
-                            !important">วันที่ต้องการลา</th>
-                        <th class="cut-text" style="width: 20% !important">รวมวันที่ลา/ชั่วโมง</th>
-                        <th class="cut-text" style="width: 10% !important">การดำเนินการ</th>
+                            !important">จำนวนชั่วโมงที่ทำงาน</th>
+                        <th class="cut-text" style="width: 30% !important">หมายเหตุ</th>
                     </tr>
                 </thead>
 
                 <tbody class="list-content">
-                    <tr id="row-list" *ngFor="let objleave of ary">
+                    <tr id="row-list" *ngFor="let objleave of objTableHistory |
+                        filter : searchInput">
                         <td>
-                            11
+                            {{objleave.ta_number}}
                         </td>
-                        <td>
-                            22
+                        <td class="text-center">
+                            {{objleave.user_card_number}}
                         </td>
                         <td class="text-start">
-                            33
+                            {{objleave.ud_fullname_th}}
                         </td>
                         <td>
-                            44
+                            {{objleave.ta_date}}
                         </td>
                         <td>
-                            55
-                        </td>
-                        <td>
-                            66
+                            {{objleave.ta_amount}}
                         </td>
                         <!-- routerLink="../view-request-detail/{{objleave.rvac_id}}" -->
                         <td>
-                            <div class="row ">
-                                <div class="dropdown">
-                                    <button type="button " class="btn
-                                        btn-primary btn-dropdown"
-                                        id="dropdownMenuButton1"
-                                        routerLink="../time-view-request">
-                                        <div class="col icon-dropdown d-flex
-                                            justify-content-center">
-                                            <i class="fa-solid fa-list-ul
-                                                icon-dropdown"></i>
-                                        </div>
-                                    </button>
-                                </div>
-                            </div>
+                            {{objleave.ta_detail}}
                         </td>
 
                     </tr>

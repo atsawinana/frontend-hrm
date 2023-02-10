@@ -70,10 +70,10 @@
             </div>
 
             <div class="row" *ngIf="role">
-                <div class="col-4 d-flex align-items-center font-table">
+                <div class="col-3 d-flex align-items-center font-table">
                     ประวัติการเข้างาน
                 </div>
-                <div class="col-8 d-flex justify-content-end flex-row"
+                <div class="col-9 d-flex justify-content-end flex-row"
                     style="height: 48px !important;">
                     <button class="btn-histroyall p-2 col-3 mx-1 d-flex align-items-center justify-content-center " routerLink="../time-history-all">
                         <i class="fa-solid fa-user-clock icon me-1" style="font-size: 24px !important;"></i> ประวัติเข้างานทั้งหมด </button>
@@ -103,12 +103,12 @@
                         <tbody class="list-content">
                             <tr align="center" *ngFor="let item of objTable | paginate: config">
                                 
-                                <td class="text-center">ลำดับ</td>
+                                <td class="text-center">{{item.ta_number}}</td>
                                 <td class="text-center">{{item.ta_date}}</td>
                                 <td class="text-center">{{item.ta_time_in}}</td>
                                 <td class="text-center">{{item.ta_time_out}}</td>
                                 <td class="text-center">{{item.ta_amount}}</td>
-                                <td class="text-center">{{item.ta_details}}</td>
+                                <td class="text-center">{{item.ta_detail}}</td>
                             </tr>
                         </tbody>
                     </table>
