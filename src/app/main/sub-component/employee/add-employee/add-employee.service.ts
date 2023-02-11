@@ -13,7 +13,7 @@ export class AddEmployeeService {
       Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
     });
 
-    return this.httpClient.get(`${environment.apiURL}/employee/getLeave`, {
+    return this.httpClient.get(`${environment.apiURL}/employee/leave`, {
       headers,
       params: {
         ud_prefix_id: perFix,
@@ -28,7 +28,7 @@ export class AddEmployeeService {
     });
 
     return this.httpClient.get(
-      `${environment.apiURL}/employee/getPositionByDeptId`,
+      `${environment.apiURL}/department/position`,
       {
         headers,
         params: {
@@ -44,7 +44,7 @@ export class AddEmployeeService {
     });
 
     return this.httpClient.get(
-      `${environment.apiURL}/department/getAllDepartment`,
+      `${environment.apiURL}/department`,
       {
         headers,
       }
@@ -83,7 +83,7 @@ export class AddEmployeeService {
     });
 
     return this.httpClient.post(
-      `${environment.apiURL}/employee/addEmployee`,
+      `${environment.apiURL}/employee`,
       {
         ud_prefix_id: prefix,
         ud_fullname_th: nameth,
@@ -121,7 +121,7 @@ export class AddEmployeeService {
     });
 
     return this.httpClient.post(
-      `${environment.apiURL}/employee/uploadPicture`,
+      `${environment.apiURL}/employee/picture`,
       file,
       { headers }
     );
@@ -132,8 +132,8 @@ export class AddEmployeeService {
       Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
     });
 
-    return this.httpClient.post(
-      `${environment.apiURL}/employee/saveEditPicture`,
+    return this.httpClient.patch(
+      `${environment.apiURL}/employee/picture`,
       {
         path: path,
       },
@@ -148,12 +148,11 @@ export class AddEmployeeService {
       Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
     });
 
-    return this.httpClient.post(
-      `${environment.apiURL}/employee/findDataByIdCard`,
+    return this.httpClient.get(
+      `${environment.apiURL}/employee/data`,
       {
-        ud_id_card: idcard,
-      },
-      { headers }
+        headers,
+      }
     );
   }
 

@@ -19,7 +19,7 @@ export class AdddepartmentService {
     });
 
     return this.httpClient.post(
-      `${environment.apiURL}/department/addDepartment`,
+      `${environment.apiURL}/department`,
       
       {
         dept_name_en: namedepartment_en,

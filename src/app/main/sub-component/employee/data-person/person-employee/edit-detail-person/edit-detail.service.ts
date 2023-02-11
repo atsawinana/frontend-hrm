@@ -40,7 +40,7 @@ export class EditDetailService {
     });
 
     return this.httpClient.put(
-      `${environment.apiURL}/employee/editEmployeeProfile`,
+      `${environment.apiURL}/employee`,
       {
         user_id: user_idp,
         user_contract_type: user_contract_typep,
@@ -79,7 +79,7 @@ export class EditDetailService {
     });
 
     return this.httpClient.get(
-      `${environment.apiURL}/employee/getEditEmployeeProfile`,
+      `${environment.apiURL}/employee/detail`,
       {
         headers,
         params: {
@@ -95,7 +95,7 @@ export class EditDetailService {
       'Authorization': 'Bearer' + localStorage.getItem('tokenLocal'),
     });
 
-    return this.httpClient.get(`${environment.apiURL}/department/getAllDepartment`, {
+    return this.httpClient.get(`${environment.apiURL}/department`, {
       headers
     });
   }

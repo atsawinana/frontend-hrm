@@ -14,7 +14,7 @@ export class EmpDepartmentService {
     });
 
     return this.httpClient.get(
-      `${environment.apiURL}/department/getEmployeeByDeptId`,
+      `${environment.apiURL}/department/employeePresent`,
       {
         headers,
         params: {
@@ -30,7 +30,7 @@ export class EmpDepartmentService {
     });
 
     return this.httpClient.get(
-      `${environment.apiURL}/department/getEmployeeResignByDeptId`,
+      `${environment.apiURL}/department/employeeResign`,
       {
         headers,
         params: {

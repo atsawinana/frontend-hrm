@@ -14,7 +14,7 @@ export class EditComponentService {
     });
 
     return this.httpClient.get(
-      `${environment.apiURL}/department/getEditDepartment`,
+      `${environment.apiURL}/department/create`,
       { headers, params: { dept_id: deptID } }
     );
   }
@@ -33,7 +33,7 @@ export class EditComponentService {
     });
 
     return this.httpClient.put(
-      `${environment.apiURL}/department/editDepartment`,
+      `${environment.apiURL}/department`,
       {
         dept_id: deptID,
         dept_name_en: deptnameen,
