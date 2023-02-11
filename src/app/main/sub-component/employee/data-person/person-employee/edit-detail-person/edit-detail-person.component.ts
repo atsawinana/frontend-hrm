@@ -59,7 +59,7 @@ export class EditDetailPersonComponent implements OnInit {
         user_company: new FormControl({ value: 'Exvention Co., Ltd.', disabled: true }, [Validators.required, this.noWhitespaceValidator]),
         dept_name_en: new FormControl(null, [Validators.required]),
         user_contract_name: new FormControl(null, [Validators.required, this.noWhitespaceValidator]),
-        user_created_at: new FormControl('', [Validators.required]),
+        user_start_date: new FormControl('', [Validators.required]),
 
         user_sick_day: new FormControl('', [Validators.required]),
         user_leave_day: new FormControl('', [Validators.required]),
@@ -72,7 +72,7 @@ export class EditDetailPersonComponent implements OnInit {
         user_resign_day: new FormControl('', [Validators.required]),
     });
 
-    user_deleted_at = new FormControl(null, [Validators.required])
+    user_resign_at = new FormControl(null, [Validators.required])
 
 
     public noWhitespaceValidator(control: FormControl) {
@@ -163,7 +163,7 @@ export class EditDetailPersonComponent implements OnInit {
 
 
                 if (this.dateInputStart) {
-                    startdate = this.datepipe.transform(this.emp.controls.user_created_at.value, 'YYYY-MM-dd')!;
+                    startdate = this.datepipe.transform(this.emp.controls.user_start_date.value, 'YYYY-MM-dd')!;
 
                     let arydate1 = startdate.split("-")
                     // console.log(arydate1)
@@ -181,7 +181,7 @@ export class EditDetailPersonComponent implements OnInit {
                     // console.log(startdate)
 
                 } else {
-                    let arydate2 = this.emp.controls.user_created_at.value?.split("/")
+                    let arydate2 = this.emp.controls.user_start_date.value?.split("/")
                     for (let i = arydate2?.length! - 1; i > -1; i--) {
                         if (i != 0)
                             startdate += arydate2![i] + "-"
@@ -196,8 +196,8 @@ export class EditDetailPersonComponent implements OnInit {
                 let year2 = getFullYear(year) + 543
                 // year.setFullYear(year2+543)
                 let replaceDate = null
-                if (this.user_deleted_at.value != null) {
-                    enddate = this.datepipe.transform(this.user_deleted_at.value, 'YYYY-MM-dd')
+                if (this.user_resign_at.value != null) {
+                    enddate = this.datepipe.transform(this.user_resign_at.value, 'YYYY-MM-dd')
                     replaceDate = String(enddate).replace(String(year3), String(year2))
                 }
 
@@ -366,13 +366,13 @@ export class EditDetailPersonComponent implements OnInit {
                 }
 
                 {
-                    let datestart = this.objData.user_created_at
+                    let datestart = this.objData.user_start_date
                     let posit1 = String(datestart).lastIndexOf('/')
                     let tempdate1 = String(datestart).substring(0, posit1 + 1)
 
                     let tempyear1 = Number(String(datestart).substring(posit1 + 1, datestart.length))
                     tempyear1 += 543
-                    this.objData.user_created_at = tempdate1 + String(tempyear1)
+                    this.objData.user_start_date = tempdate1 + String(tempyear1)
                 }
 
 
@@ -390,7 +390,7 @@ export class EditDetailPersonComponent implements OnInit {
                 this.emp.controls.user_company.setValue('Exvention Co., Ltd.')
                 this.emp.controls.dept_name_en.setValue(this.objData.dept_id)
                 this.emp.controls.user_contract_name.setValue(this.objData.user_contract_type, { onlySelf: true })
-                this.emp.controls.user_created_at.setValue(this.objData.user_created_at)
+                this.emp.controls.user_start_date.setValue(this.objData.user_start_date)
                 // this.emp.controls.enddate.setValue(this.objData.enddate)
 
                 this.emp.controls.user_sick_day.setValue(this.objData.user_sick_day)
