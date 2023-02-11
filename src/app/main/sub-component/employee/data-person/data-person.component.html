@@ -3,10 +3,10 @@
 <div class="container-fluid h-100" *ngIf="APISuccess">
     <div class="row">
         <div class="row mb-4 d-flex justify-content-center align-items-center">
-            <button class="back-button d-flex justify-content-center" *ngIf="objDataemp.user_deleted_at == null" routerLink="../../">
+            <button class="back-button d-flex justify-content-center" *ngIf="objDataemp.user_deleted_at == null" (click)="backClicked()">
         <i class="fa-solid fa-angle-left back-icon"></i>
       </button>
-            <button class="back-button d-flex justify-content-center" *ngIf="objDataemp.user_deleted_at != null" routerLink="../../end-contract-employee">
+            <button class="back-button d-flex justify-content-center" *ngIf="objDataemp.user_deleted_at != null" (click)="backClicked()">
         <i class="fa-solid fa-angle-left back-icon"></i>
       </button>
             <div class="font-header ms-2 col">ข้อมูลพนักงาน</div>
