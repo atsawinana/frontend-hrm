@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PaginationInstance } from 'ngx-pagination';
 import { EmpDepartmentService } from '../emp-department/emp-department.service';
 
@@ -11,13 +11,15 @@ import { EmpDepartmentService } from '../emp-department/emp-department.service';
 export class EmpEndDepartmentComponent implements OnInit {
   constructor(
     private router: ActivatedRoute,
-    private service: EmpDepartmentService
+    private service: EmpDepartmentService,
+    private route:Router
   ) {}
   dept_id: any;
   objemployee: any;
   objemptable: any;
   listPerPage: number = 10;
   searchInput: string = '';
+
 
   ngOnInit() {
     this.dept_id = this.router.snapshot.params['dept_id'];
@@ -36,6 +38,10 @@ export class EmpEndDepartmentComponent implements OnInit {
       },
       error: (err: any) => {},
     });
+  }
+
+  navigateEmp(id:any){
+    this.route.navigate([`/main/employee/data-person/${id}`]);
   }
 
   listPerpage() {
