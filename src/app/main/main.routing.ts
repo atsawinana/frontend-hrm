@@ -1,7 +1,4 @@
 import { Routes, RouterModule } from '@angular/router';
-import { OtComponent } from './sub-component/ot/ot.component';
-import { TravelExpensesComponent } from './sub-component/travelExpenses/travelExpenses.component';
-import { ActivityComponent } from './sub-component/activity/activity.component';
 import { RoleGuard } from '../auth/role.guard';
 import { AuthGuardGuard } from '../auth/auth-guard.guard';
 

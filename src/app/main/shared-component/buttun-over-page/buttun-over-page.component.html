@@ -1,0 +1,5 @@
+<div *ngIf="role" class="position-outframe" style="width:400px">
+    <button [ngClass]="{active: route1 == 'true'}" class="btn btn-primary  w-50 button-height inactive-button inactive-text" (click)="clickFirstPath()">{{leftLabel}} {{route1}}</button>
+    <button [ngClass]="{active: route1 == 'false'}" class="btn btn-primary  w-50 button-height inactive-button inactive-text" (click)="clickSecondPath()">{{rightLabel}} {{route1}}</button>
+</div>
+  

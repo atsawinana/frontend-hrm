@@ -8,15 +8,16 @@ import { ChartOtComponent } from './chart-ot/chart-ot.component';
 import { ChartLeaveComponent } from './chart-leave/chart-leave.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChartPersonalComponent } from './chartPersonal/chartPersonal.component';
+import { SharedComponentModule } from '../../shared-component/buttun-over-page/shared-component.module';
 
 @NgModule({
-  imports: [CommonModule, ProfileRoutes, NgChartsModule, ReactiveFormsModule, FormsModule],
-  declarations: [
-    ProfileComponent,
-    ResetPasswordComponent,
-    ChartOtComponent,
-    ChartLeaveComponent,
-    ChartPersonalComponent
-  ],
+        imports: [CommonModule, ProfileRoutes, NgChartsModule, ReactiveFormsModule, FormsModule, SharedComponentModule],
+    declarations: [
+        ProfileComponent,
+        ResetPasswordComponent,
+        ChartOtComponent,
+        ChartLeaveComponent,
+        ChartPersonalComponent
+    ],
 })
 export class ProfileModule { }

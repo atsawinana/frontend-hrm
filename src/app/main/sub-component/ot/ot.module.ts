@@ -15,6 +15,8 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { ButtunOverPageComponent } from '../../shared-component/buttun-over-page/buttun-over-page.component';
+import { SharedComponentModule } from '../../shared-component/buttun-over-page/shared-component.module';
 
 @NgModule({
     imports: [
@@ -27,6 +29,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
         NgSelectModule,
         NgxPaginationModule,
         Ng2SearchPipeModule,
+        SharedComponentModule
     ],
     declarations: [
         OtComponent,
