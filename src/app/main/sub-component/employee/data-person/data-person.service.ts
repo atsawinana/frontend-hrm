@@ -14,7 +14,7 @@ export class DataPersonService {
     });
 
     return this.httpClient.get(
-      `${environment.apiURL}/employee/getProfileByUserId`,
+      `${environment.apiURL}/employee/detail`,
       {
         headers,
         params: {
@@ -49,7 +49,7 @@ export class DataPersonService {
       Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
     });
 
-    return this.httpClient.delete(`${environment.apiURL}/employee/deleteDataEmployee`, {
+    return this.httpClient.delete(`${environment.apiURL}/employee/data`, {
       headers,
       params: {
         'user_id': user_username
@@ -68,7 +68,7 @@ export class DataPersonService {
     });
 
     return this.httpClient.get(
-        `${environment.apiURL}/leaveOnline/getLeaveHistoryByUserId`,
+        `${environment.apiURL}/requestLeave/history/user`,
         {
             headers,
             params: {

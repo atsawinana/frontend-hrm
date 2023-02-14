@@ -16,7 +16,7 @@ export class MainService {
 
 
     profileRequest(input: { token: string }) {
-        return this.httpClient.post(`${environment.apiURL}/auth/getHeaderProfile`, {
+        return this.httpClient.post(`${environment.apiURL}/auth/headerProfile`, {
             token: input.token
         })
     }

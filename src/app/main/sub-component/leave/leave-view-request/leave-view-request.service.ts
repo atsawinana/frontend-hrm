@@ -15,7 +15,7 @@ export class LeaveViewRequestService {
             'Authorization': 'Bearer' + localStorage.getItem('tokenLocal'),
         });
 
-        return this.httpClient.get(`${environment.apiURL}/leaveOnline/getUnapprovedRequestLeave`, { headers });
+        return this.httpClient.get(`${environment.apiURL}/requestLeave/unapproved`, { headers });
     }
 
 

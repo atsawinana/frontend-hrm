@@ -15,7 +15,7 @@ export class DetailViewRequestService {
         });
 
         return this.httpClient.get(
-            `${environment.apiURL}/employee/GetProfileByUserId`,
+            `${environment.apiURL}/employee/detail`,
             {
                 headers,
                 params: {
@@ -31,7 +31,7 @@ export class DetailViewRequestService {
         });
 
         return this.httpClient.get(
-            `${environment.apiURL}/leaveOnline/getDetailRequestLeave`,
+            `${environment.apiURL}/requestLeave/detail`,
             {
                 headers,
                 params: {
@@ -47,7 +47,7 @@ export class DetailViewRequestService {
         });
 
         return this.httpClient.post(
-            `${environment.apiURL}/leaveOnline/approveRequest`,
+            `${environment.apiURL}/requestLeave/approve`,
             {
                 rvac_id: id,
             },
@@ -61,7 +61,7 @@ export class DetailViewRequestService {
         });
 
         return this.httpClient.post(
-            `${environment.apiURL}/leaveOnline/disapproveRequest`,
+            `${environment.apiURL}/requestLeave/disapprove`,
             {
                 rvac_id: id,
                 rvac_reason: reason
@@ -76,7 +76,7 @@ export class DetailViewRequestService {
         });
 
         return this.httpClient.patch(
-            `${environment.apiURL}/leaveOnline/cancelRequestLeave`,
+            `${environment.apiURL}/requestLeave/cancel`,
             {
                 rvac_id: id,
                 rvac_reason: reason
@@ -91,7 +91,7 @@ export class DetailViewRequestService {
         });
 
         return this.httpClient.patch(
-            `${environment.apiURL}/leaveOnline/cancelVacation2`,
+            `${environment.apiURL}/requestLeave/cancel`,
             {
                 rvac_id: id,
                 rvac_reason: reason

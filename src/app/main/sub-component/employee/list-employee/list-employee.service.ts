@@ -14,7 +14,7 @@ export class ListEmployeeService {
             'Authorization': 'Bearer' + localStorage.getItem('tokenLocal'),
         });
 
-        return this.httpClient.get(`${environment.apiURL}/employee/getEmployeeByDeptId`, { headers });
+        return this.httpClient.get(`${environment.apiURL}/employee`, { headers });
     }
 
     getAllDepartment() {
@@ -23,7 +23,7 @@ export class ListEmployeeService {
             'Authorization': 'Bearer' + localStorage.getItem('tokenLocal'),
         });
 
-        return this.httpClient.get(`${environment.apiURL}/department/getAllDepartment`, {
+        return this.httpClient.get(`${environment.apiURL}/department`, {
             headers
         });
     }
@@ -35,7 +35,7 @@ export class ListEmployeeService {
           'Authorization': 'Bearer' + localStorage.getItem('tokenLocal'),
         });
     
-        return this.httpClient.get(`${environment.apiURL}/employee/getEmployeeByDeptId`, {headers,
+        return this.httpClient.get(`${environment.apiURL}/employee`, {headers,
           params: {
             sort_by: dept_id
           }

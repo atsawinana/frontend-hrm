@@ -16,7 +16,7 @@ export class LeaveEditRequestService {
         });
 
         return this.httpClient.get(
-            `${environment.apiURL}/leaveOnline/getReverseVacation`,
+            `${environment.apiURL}/requestLeave/edit`,
             {
                 headers,
                 params: {
@@ -33,7 +33,7 @@ export class LeaveEditRequestService {
         });
 
         return this.httpClient.get(
-            `${environment.apiURL}/leaveOnline/getVacationType`,
+            `${environment.apiURL}/leaveOnline/type'`,
             {
                 headers,
             }
@@ -52,8 +52,8 @@ export class LeaveEditRequestService {
             Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
         });
 
-        return this.httpClient.patch(
-            `${environment.apiURL}/leaveOnline/reverseRequestLeave`,
+        return this.httpClient.put(
+            `${environment.apiURL}/requestLeave`,
             {
                 'rvac_id': id,
                 'rvac_type': type,

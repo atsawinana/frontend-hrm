@@ -16,7 +16,7 @@ export class ListDepartmentService {
       'Authorization': 'Bearer' + localStorage.getItem('tokenLocal'),
     });
 
-    return this.httpClient.get(`${environment.apiURL}/department/getAllDepartment`, {
+    return this.httpClient.get(`${environment.apiURL}/department`, {
       headers
     });
   }
@@ -28,7 +28,7 @@ export class ListDepartmentService {
       'Authorization': 'Bearer' + localStorage.getItem('tokenLocal'),
     });
 
-    return this.httpClient.delete(`${environment.apiURL}/department/deleteDepartment`, {headers,
+    return this.httpClient.delete(`${environment.apiURL}/department`, {headers,
       params: {
         dept_id: deptID
       }
@@ -41,7 +41,7 @@ export class ListDepartmentService {
       'Authorization': 'Bearer' + localStorage.getItem('tokenLocal'),
     });
 
-    return this.httpClient.get(`${environment.apiURL}/department/getDetailDepartmentByDeptId`, {
+    return this.httpClient.get(`${environment.apiURL}/department/detail`, {
       headers,
       params: {
         'dept_id': deptID

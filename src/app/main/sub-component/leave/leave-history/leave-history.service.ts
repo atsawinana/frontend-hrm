@@ -14,7 +14,7 @@ export class LeaveHistoryService {
             'Authorization': 'Bearer' + localStorage.getItem('tokenLocal'),
         });
 
-        return this.httpClient.get(`${environment.apiURL}/leaveOnline/getLeaveHistory`, {
+        return this.httpClient.get(`${environment.apiURL}/requestLeave/history`, {
             headers,
             params: {
                 sort_date: sortDate
@@ -31,7 +31,7 @@ export class LeaveHistoryService {
             'Authorization': 'Bearer' + localStorage.getItem('tokenLocal'),
         });
 
-        return this.httpClient.get(`${environment.apiURL}/leaveOnline/getAllLeaveHistory`, {
+        return this.httpClient.get(`${environment.apiURL}/requestLeave`, {
             headers,
             params: {
                 sort_date: sortDate

@@ -22,7 +22,7 @@ export class TimeAttendanceService {
             'Authorization': 'Bearer' + localStorage.getItem('tokenLocal'),
         });
 
-        return this.httpClient.get(`${environment.apiURL}/timeAttendance/checkAttendance`, { headers });
+        return this.httpClient.get(`${environment.apiURL}/timeAttendance/checkStatus`, { headers });
     }
 
     checkin() {
@@ -57,7 +57,7 @@ export class TimeAttendanceService {
         });
 
         return this.httpClient.get(
-            `${environment.apiURL}/timeAttendance/checkCompleted`,
+            `${environment.apiURL}/timeAttendance/total`,
             { headers }
         );
     }
@@ -68,7 +68,7 @@ export class TimeAttendanceService {
         });
 
         return this.httpClient.get(
-            `${environment.apiURL}/timeAttendance/attendanceHistory`,
+            `${environment.apiURL}/timeAttendance`,
             { headers }
         );
     }
@@ -83,7 +83,7 @@ export class TimeAttendanceService {
         });
 
         return this.httpClient.get(
-            `${environment.apiURL}/timeAttendance/unapprovedRequestAttendances`,
+            `${environment.apiURL}/requestAttendance/unapproved`,
             { headers }
         );
     }
@@ -98,7 +98,7 @@ export class TimeAttendanceService {
         });
 
         return this.httpClient.get(
-            `${environment.apiURL}/timeAttendance/requestAttendance`,
+            `${environment.apiURL}/requestAttendance/detail`,
             {
                 params: {
                     rta_id: rta_id,
@@ -118,7 +118,7 @@ export class TimeAttendanceService {
         });
 
         return this.httpClient.post(
-            `${environment.apiURL}/timeAttendance/requestAttendance`,
+            `${environment.apiURL}/requestAttendance`,
             {
                 rta_type: rta_type,
                 rta_date: rta_date,
@@ -139,7 +139,7 @@ export class TimeAttendanceService {
         });
 
         return this.httpClient.get(
-            `${environment.apiURL}/timeAttendance/allAttendanceHistory`,
+            `${environment.apiURL}/timeAttendance`,
             {
                 headers,
                 params: {
@@ -155,7 +155,7 @@ export class TimeAttendanceService {
         });
 
         return this.httpClient.get(
-            `${environment.apiURL}/timeAttendance/requestAttendanceHistory`,
+            `${environment.apiURL}/requestAttendance/history`,
             {
                 headers,
                 params: {
@@ -175,7 +175,7 @@ export class TimeAttendanceService {
         });
 
         return this.httpClient.post(
-            `${environment.apiURL}/timeAttendance/disapproveRequestAttendance`,
+            `${environment.apiURL}/requestAttendance/disapprove`,
             {
                 rta_id: rta_id,
                 rta_reason: rta_reason,
@@ -196,7 +196,7 @@ export class TimeAttendanceService {
         });
 
         return this.httpClient.post(
-            `${environment.apiURL}/timeAttendance/approveRequestAttendance`,
+            `${environment.apiURL}/requestAttendance/approve`,
             {
                 rta_id: rta_id,
             },
@@ -215,7 +215,7 @@ export class TimeAttendanceService {
         });
 
         return this.httpClient.patch(
-            `${environment.apiURL}/timeAttendance/cancelRequestAttendance`,
+            `${environment.apiURL}/requestAttendance/cancel`,
             {
                 rta_id: id,
                 rta_reason: reason
@@ -233,7 +233,7 @@ export class TimeAttendanceService {
         });
 
         return this.httpClient.get(
-            `${environment.apiURL}/timeAttendance/checkRequestAttendance`,
+            `${environment.apiURL}/requestAttendance/check`,
             {
                 params: {
                     rta_date: rta_date,
@@ -251,7 +251,7 @@ export class TimeAttendanceService {
         });
 
         return this.httpClient.get(
-            `${environment.apiURL}/timeAttendance/reverseAttendance`,
+            `${environment.apiURL}/requestAttendance/edit`,
             {
                 params: {
                     rta_id: rta_id,
@@ -269,8 +269,8 @@ export class TimeAttendanceService {
             Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
         });
 
-        return this.httpClient.patch(
-            `${environment.apiURL}/timeAttendance/reverseAttendance`,
+        return this.httpClient.put(
+            `${environment.apiURL}/requestAttendance`,
             {
                 rta_id: rta_id,
                 rta_type: rta_type,

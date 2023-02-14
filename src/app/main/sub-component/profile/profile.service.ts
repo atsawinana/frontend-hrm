@@ -13,7 +13,7 @@ export class ProfileService {
       Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
     });
 
-    return this.httpClient.get(`${environment.apiURL}/employee/getProfile`, {
+    return this.httpClient.get(`${environment.apiURL}/employee/profile`, {
       headers,
     });
   }
@@ -24,7 +24,7 @@ export class ProfileService {
     });
 
     return this.httpClient.patch(
-      `${environment.apiURL}/employee/editPhoneNumber`,
+      `${environment.apiURL}/employee/phone`,
       {
         ud_phone: number,
         user_id: localStorage.getItem('user_id')
@@ -44,7 +44,7 @@ export class ProfileService {
     });
 
     return this.httpClient.post(
-      `${environment.apiURL}/employee/uploadPicture`,
+      `${environment.apiURL}/employee/picture`,
       file,
       { headers }
     );
@@ -55,7 +55,7 @@ export class ProfileService {
       Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
     });
 
-    return this.httpClient.post(`${environment.apiURL}/employee/saveEditPicture`, {
+    return this.httpClient.patch(`${environment.apiURL}/employee/picture`, {
       path: path
     }, { headers });
   }
