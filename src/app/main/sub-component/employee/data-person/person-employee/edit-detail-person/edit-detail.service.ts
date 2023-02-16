@@ -79,7 +79,7 @@ export class EditDetailService {
     });
 
     return this.httpClient.get(
-      `${environment.apiURL}/employee/create`,
+      `${environment.apiURL}/employee/edit`,
       {
         headers,
         params: {
