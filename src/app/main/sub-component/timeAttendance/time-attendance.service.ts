@@ -68,7 +68,7 @@ export class TimeAttendanceService {
         });
 
         return this.httpClient.get(
-            `${environment.apiURL}/timeAttendance`,
+            `${environment.apiURL}/timeAttendance/show`,
             { headers }
         );
     }
