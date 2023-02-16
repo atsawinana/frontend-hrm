@@ -23,22 +23,14 @@
                                 <div class="row" id="font-content">
                                     <div class="col-lg-11 col-md-11 col-sm-11
                                         col-10 ">
-                                        <ng-select
-                                            [ngClass]="{
+                                        <ng-select [ngClass]="{
                                             customnull:
                                             leaveRequest.controls.leaveType.errors
                                             && summited
-                                            }"
-                                            [searchable]="false"
-                                            placeholder="เลือกประเภทการลา"
-                                            [clearable]="false"
-                                            class="custom"
-                                            formControlName="leaveType"
-                                            (change)="verifydate()">
-                                            <ng-option
-                                                *ngFor="let leaves of
-                                                LeavesDays"
-                                                [value]="leaves.vt_id">
+                                            }" [searchable]="false" placeholder="เลือกประเภทการลา" [clearable]="false"
+                                            class="custom" formControlName="leaveType" (change)="verifydate()">
+                                            <ng-option *ngFor="let leaves of
+                                                LeavesDays" [value]="leaves.vt_id">
                                                 {{ leaves.vt_name }}</ng-option>
                                         </ng-select>
                                     </div>
@@ -46,12 +38,10 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div
-                                class="col-lg-7 col-md-8 col-sm-7 col-5 d-flex
+                            <div class="col-lg-7 col-md-8 col-sm-7 col-5 d-flex
                                 justify-content-left"></div>
                             <div class="col-sm-3 col-4 space-data">
-                                <div
-                                    *ngIf="leaveRequest.controls.leaveType.errors
+                                <div *ngIf="leaveRequest.controls.leaveType.errors
                                     && summited" class="alerttext">
                                     กรุณากรอกข้อมูล
                                 </div>
@@ -61,83 +51,61 @@
 
                     <div class="col-12 justify-content-center">
                         <br />
-                        <div class="row font-content mb-2
-                            justify-content-center">
+                        <div class="row font-content p-2 mb-2
+                          justify-content-center">
                             <div class="col-lg-2 col-md-12 col-sm-12 col-12
                                 d-inline-flex mb-2 p-2" id="font-content">
                                 วัน/เดือน/ปี ที่ต้องการลา*
                             </div>
                             <div class="col-lg-6 col-md-12 col-sm-12 col-12">
-                                <div class="row ">
-                                    <div class="col-lg-11 col-md-11 col-sm-11
-                                        col-10">
-                                        <div class="row d-flex
-                                            justify-content-between ">
-                                            <div class="col-5">
-                                                <input
-                                                    [ngClass]="{
+                                <div class="row " id="font-content">
+                                    <div class="col-lg-5 col-md-5 col-sm-5
+                                    col-5">
+
+                                        <input [ngClass]="{
                                                     isinvalid:
                                                     leaveRequest.controls.startDate.errors
                                                     && summited
-                                                    }"
-                                                    type="text"
-                                                    placeholder="เลือกวันที่"
-                                                    class="form-control"
-                                                    bsDatepicker
-                                                    [bsConfig]="{
+                                                    }" type="text" placeholder="เลือกวันที่" class="form-control"
+                                            bsDatepicker [bsConfig]="{
                                                     isAnimated: true,
                                                     dateInputFormat:
                                                     'DD/MM/YYYY',
                                                     containerClass:
                                                     'theme-dark-blue',
                                                     showWeekNumbers: false
-                                                    }"
-                                                    (keypress)="false"
-                                                    [daysDisabled]="[6,0]"
-                                                    formControlName="startDate"
-                                                    (ngModelChange)="countDays()"
-                                                    (ngModelChange)="onValueChangeDateStart()"
-                                                    (ngModelChange)="verifydate()">
-                                            </div>
-                                            <div class="col text-center ">_</div>
-                                            <div class="col-5">
-                                                <input
-                                                    [ngClass]="{
+                                                    }" (keypress)="false" [daysDisabled]="[6,0]"
+                                            formControlName="startDate" (ngModelChange)="countDays()"
+                                            (ngModelChange)="onValueChangeDateStart()" (ngModelChange)="verifydate()">
+                                    </div>
+                                    <div class="col-1 text-center ">_</div>
+                                    <div class="col-lg-5 col-md-5 col-sm-5
+                                            col-5">
+                                        <input [ngClass]="{
                                                     isinvalid:
                                                     leaveRequest.controls.endDate.errors
-                                                    && summited}"
-                                                    type="text"
-                                                    placeholder="เลือกวันที่"
-                                                    class="form-control"
-                                                    bsDatepicker
-                                                    [minDate]="minDate"
-                                                    [isDisabled]="isDisabled"
-                                                    [bsConfig]="{
+                                                    && summited}" type="text" placeholder="เลือกวันที่"
+                                            class="form-control" bsDatepicker [minDate]="minDate"
+                                            [isDisabled]="isDisabled" [bsConfig]="{
                                                     isAnimated: true,
                                                     dateInputFormat:
                                                     'DD/MM/YYYY',
                                                     containerClass:
                                                     'theme-dark-blue',
                                                     showWeekNumbers: false
-                                                    }"
-                                                    [daysDisabled]="[6,0]"
-                                                    (keypress)="false"
-                                                    formControlName="endDate"
-                                                    (ngModelChange)="countDays()"
-                                                    (ngModelChange)="onValueChangeDateEnd()"
-                                                    (ngModelChange)="verifydate()">
-                                            </div>
-                                        </div>
+                                                    }" [daysDisabled]="[6,0]" (keypress)="false"
+                                            formControlName="endDate" (ngModelChange)="countDays()"
+                                            (ngModelChange)="onValueChangeDateEnd()" (ngModelChange)="verifydate()">
                                     </div>
+
+
                                 </div>
                             </div>
                             <div class="row px-0">
-                                <div
-                                    class="col-lg-7 col-md-8 col-sm-7 col-5
+                                <div class="col-lg-7 col-md-8 col-sm-7 col-5
                                     d-flex justify-content-left"></div>
                                 <div class="col-sm-3 col-4 space-data">
-                                    <div
-                                        *ngIf="leaveRequest.controls.startDate.errors
+                                    <div *ngIf="leaveRequest.controls.startDate.errors
                                         && summited" class="alerttext">
                                         กรุณากรอกข้อมูล
                                     </div>
@@ -155,24 +123,16 @@
                             <div class="row" id="font-content">
                                 <div class="col-lg-11 col-md-11 col-sm-11
                                     col-10">
-                                    <ng-select
-                                        [ngClass]="{
+                                    <ng-select [ngClass]="{
                                         customnull:
                                         leaveRequest.controls.duration.errors &&
                                         summited
-                                        }"
-                                        [searchable]="false"
-                                        placeholder="เลือกช่วงเวลาในการลา"
-                                        [clearable]="false"
-                                        class="custom"
-                                        formControlName="duration"
-                                        (change)="countDaysAndDuration()"
+                                        }" [searchable]="false" placeholder="เลือกช่วงเวลาในการลา" [clearable]="false"
+                                        class="custom" formControlName="duration" (change)="countDaysAndDuration()"
                                         (change)="verifydate()">
-                                        <ng-option
-                                            value="1"*ngIf="date.dateStart ==
+                                        <ng-option value="1" *ngIf="date.dateStart ==
                                             date.dateEnd">ลาช่วงเช้า</ng-option>
-                                        <ng-option value="2"
-                                            *ngIf="date.dateStart ==
+                                        <ng-option value="2" *ngIf="date.dateStart ==
                                             date.dateEnd">ลาช่วงบ่าย</ng-option>
                                         <ng-option value="3">ลาทั้งวัน</ng-option>
                                     </ng-select>
@@ -182,12 +142,10 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div
-                                class="col-lg-7 col-md-8 col-sm-7 col-5 d-flex
+                            <div class="col-lg-7 col-md-8 col-sm-7 col-5 d-flex
                                 justify-content-left"></div>
                             <div class="col-sm-3 col-4 space-data">
-                                <div
-                                    *ngIf="leaveRequest.controls.duration.errors
+                                <div *ngIf="leaveRequest.controls.duration.errors
                                     && summited" class="alerttext">
                                     กรุณากรอกข้อมูล
                                 </div>
@@ -228,20 +186,14 @@
                                         isinvalid:
                                         leaveRequest.controls.detail.errors &&
                                         summited
-                                        }"
-                                        type="textarea"
-                                        class="form-control"
-                                        placeholder="กรุณากรอกรายละเอียดการลา"
-                                        id="exampleFormControlTextarea1"
-                                        rows="3"
-                                        formControlName="detail">
+                                        }" type="textarea" class="form-control" placeholder="กรุณากรอกรายละเอียดการลา"
+                                        id="exampleFormControlTextarea1" rows="3" formControlName="detail">
                                     </textarea>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div
-                                class="col-lg-7 col-md-8 col-sm-7 col-5 d-flex
+                            <div class="col-lg-7 col-md-8 col-sm-7 col-5 d-flex
                                 justify-content-left"></div>
                             <div class="col-sm-3 col-4 space-data">
                                 <div *ngIf="leaveRequest.controls.detail.errors
@@ -255,15 +207,13 @@
             </div>
             <div class="row mb-4 mt-5 d-flex justify-content-center">
                 <div (click)="checkCancel()" class="col-6 col-sm-3 col-md-3
-                    col-lg-3"><button
-                        class="cancel-button d-flex justify-content-center
+                    col-lg-3"><button class="cancel-button d-flex justify-content-center
                         w-100" type="" href="#Modal-cancel">
                         <div class="cancel-text">ยกเลิก</div>
                     </button>
                 </div>
                 <div (click)="checkNull()" class="col-6 col-sm-3 col-md-3
-                    col-lg-3"><button
-                        class="submit-button d-flex justify-content-center
+                    col-lg-3"><button class="submit-button d-flex justify-content-center
                         w-100" type="submit" href="#Modal-submit">
                         <div class="submit-text">ตกลง</div>
                     </button>
