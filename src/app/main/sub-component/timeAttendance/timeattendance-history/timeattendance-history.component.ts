@@ -12,7 +12,7 @@ import { TimeAttendanceService } from '../time-attendance.service';
 })
 export class TimeattendanceHistoryComponent implements OnInit {
 
-    constructor(private _location: Location, private localeService: BsLocaleService, private serviceTimeatd: TimeAttendanceService,public datepipe: DatePipe) { }
+    constructor(private _location: Location, private localeService: BsLocaleService, private serviceTimeatd: TimeAttendanceService, public datepipe: DatePipe) { }
 
     ary: any = [1, 2, 3]
     listPerPage: any = 10
@@ -46,26 +46,18 @@ export class TimeattendanceHistoryComponent implements OnInit {
         this._location.back();
     }
 
-    onOpenCalendar(container: any) {
-        container.monthSelectHandler = (event: any): void => {
-            container._store.dispatch(container._actions.select(event.date));
-        };
-        container.setViewMode('month');
-    }
+    sortDate() {
+        let startDate = new Date(this.date[0])
+        let endDate = new Date(this.date[1])
 
-
-    sortdate() {
-        if (this.date == "" || this.date == null)
+        if (isNaN(Number(startDate)) || isNaN(Number(endDate)))
             return
-        console.log(this.date)
-        let startDate = this.datepipe.transform(this.date, 'yyyy-MM-dd')
+        let startDateFormat = startDate.getFullYear() + "-" + startDate.getMonth() + 1 + "-" + startDate.getDate()
+        // console.log(startDateFormat)
 
-        let arydate1 = startDate!.toString().split("-")
-        // console.log("test1", arydate1)
-        arydate1[0] = (Number(arydate1[0]) + 543).toString()
-
-
-        let date = arydate1[0] + "-" + arydate1[1]
+        let endDateFormat = endDate.getFullYear() + "-" + endDate.getMonth() + 1 + "-" + endDate.getDate()
+        // console.log(endDateFormat)
+        let date = startDateFormat + "," + endDateFormat
 
         this.serviceTimeatd.requestAttendanceHistory(date).subscribe({
             next: (res: any) => {

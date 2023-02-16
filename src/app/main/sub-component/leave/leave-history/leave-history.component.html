@@ -19,14 +19,14 @@
                         <div class="row">
                             <input type="text" placeholder="เลือกเดือนและปี"
                                 class="col-9 w-75 dateIcon icon-bg"
-                                #dp="bsDatepicker"
-                                bsDatepicker (keypress)="false"
-                                (onShown)="onOpenCalendar($event)"
-                                (onHidden)="sortdate()" [(ngModel)]="date"
-                                (bsValueChange)="sortdate()"
+                                #dp="bsDaterangepicker"
+                                bsDaterangepicker 
+                                (keypress)="false"
+                                (onHidden)="sortDate()" [(ngModel)]="date"
                                 [bsConfig]="{ isAnimated: true,
+                                rangeInputFormat : 'DD/MM/YYYY',
                                 dateInputFormat:
-                                'MM/YYYY', containerClass:
+                                'DD/MM/YYYY', containerClass:
                                 'theme-dark-blue',
                                 showWeekNumbers: false,
                                 clearPosition: 'right'}">
@@ -36,6 +36,7 @@
                                 <i class="fa-solid fa-calendar-days icon-color"></i>
                             </div>
                         </div>
+                        
                     </div>
                 </div>
             </div>
