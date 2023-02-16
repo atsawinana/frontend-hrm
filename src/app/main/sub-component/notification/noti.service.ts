@@ -15,7 +15,7 @@ export class NotiService {
         });
 
         return this.httpClient.get(
-            `${environment.apiURL}/leaveOnline/getNotification`,
+            `${environment.apiURL}/notification`,
             {
                 headers,
             }
@@ -27,14 +27,9 @@ export class NotiService {
             Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
         });
 
-        return this.httpClient.patch(
-            `${environment.apiURL}/leaveOnline/clearNotification`,
-            {
-            },
-            {
-                headers,
-            }
-        );
+        return this.httpClient.delete(`${environment.apiURL}/notification`, {
+            headers,
+          });
     }
 
     clearLeaveNoti() {
@@ -42,14 +37,10 @@ export class NotiService {
             Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
         });
 
-        return this.httpClient.patch(
-            `${environment.apiURL}/leaveOnline/clearNotificationRequestLeave`,
-            {
-            },
-            {
-                headers,
-            }
-        );
+        return this.httpClient.delete(`${environment.apiURL}/notification/leave`, {
+            headers,
+          });
+
     }
 
     getLeaveNoti() {
@@ -58,7 +49,7 @@ export class NotiService {
         });
 
         return this.httpClient.get(
-            `${environment.apiURL}/leaveOnline/getNotificationRequestLeave`,
+            `${environment.apiURL}/notification/leave`,
             {
                 headers,
             }
@@ -71,7 +62,7 @@ export class NotiService {
         });
 
         return this.httpClient.get(
-            `${environment.apiURL}/leaveOnline/getCountNotification`,
+            `${environment.apiURL}/notification/count`,
             {
                 headers,
             }
@@ -84,7 +75,7 @@ export class NotiService {
         });
 
         return this.httpClient.patch(
-            `${environment.apiURL}/leaveOnline/updateSeenNotification`,
+            `${environment.apiURL}/notification`,
             {
                 'noti_id': id
             },
@@ -105,7 +96,7 @@ export class NotiService {
         });
 
         return this.httpClient.get(
-            `${environment.apiURL}/timeAttendance/notificationRequestAttendance`,
+            `${environment.apiURL}/notification/attendance`,
             {
                 headers,
             }

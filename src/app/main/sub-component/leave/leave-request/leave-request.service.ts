@@ -21,7 +21,7 @@ import { environment } from 'src/environments/environment';
         });
     
         return this.httpClient.post(
-          `${environment.apiURL}/leaveOnline/addRequestLeave`,
+          `${environment.apiURL}/requestLeave`,
           {
             rvac_type: String(leaveType),
             rvac_date_start: startDate,
@@ -38,7 +38,7 @@ import { environment } from 'src/environments/environment';
         });
     
         return this.httpClient.get(
-          `${environment.apiURL}/leaveOnline/getVacationType`,
+          `${environment.apiURL}/leaveOnline/type`,
           {
             headers,
           }

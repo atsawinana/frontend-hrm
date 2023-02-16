@@ -16,7 +16,7 @@ export class LeaveEditDateleaveService {
         });
 
         return this.httpClient.get(
-            `${environment.apiURL}/leaveOnline/getPresetVacation`,
+            `${environment.apiURL}/leaveOnline/edit`,
             {
                 headers,
             }
@@ -39,8 +39,8 @@ export class LeaveEditDateleaveService {
             Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
         });
 
-        return this.httpClient.patch(
-            `${environment.apiURL}/leaveOnline/editPresetVacation`,
+        return this.httpClient.put(
+            `${environment.apiURL}/leaveOnline`,
             {
                 'av_leave': leave,
                 'av_sick': sick,

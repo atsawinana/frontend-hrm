@@ -15,7 +15,7 @@ export class LeaveHistoryPersonService {
     });
 
     return this.httpClient.get(
-      `${environment.apiURL}/leaveOnline/viewAllLeaveHistoryEmployee`,
+      `${environment.apiURL}/requestLeave/history/user`,
       {
         headers,
         params: {
