@@ -7,7 +7,7 @@ import * as XLSX from 'xlsx';
 import * as fileSaver from 'file-saver';
 import { PaginationInstance } from 'ngx-pagination';
 const EXCEL_TYPE =
-  'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
+    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
 const EXCEL_EXTENSION = '.xlsx';
 
 @Component({
@@ -23,15 +23,15 @@ export class HistoryComponent implements OnInit {
     today!: Date;
     objdataTable: any
     role: boolean = false
-    objdata:any
+    objdata: any
 
     date: any
 
-    searchInput:any
+    searchInput: any
 
     listPerPage: number = 10
 
-    ApiSuccess:boolean = false
+    ApiSuccess: boolean = false
 
     public config: PaginationInstance = {
         id: 'custom',
@@ -64,34 +64,27 @@ export class HistoryComponent implements OnInit {
         })
     }
 
-    UpdateListPerpage(){
+    UpdateListPerpage() {
         this.config.itemsPerPage = this.listPerPage
     }
 
-    onOpenCalendar(container: any) {
-        container.monthSelectHandler = (event: any): void => {
-            container._store.dispatch(container._actions.select(event.date));
-        };
-        container.setViewMode('month');
-    }
+    sortDate() {
+        let startDate = new Date(this.date[0])
+        let endDate = new Date(this.date[1])
 
-    sortdate() {
-        if(this.date == "" || this.date == null)
+        if (isNaN(Number(startDate)) || isNaN(Number(endDate)))
             return
-        // console.log(this.date)
-        let startDate = this.datepipe.transform(this.date, 'yyyy-MM-dd')
+        let startDateFormat = startDate.getFullYear() + "-" + startDate.getMonth() + 1 + "-" + startDate.getDate()
+        // console.log(startDateFormat)
 
-        let arydate1 = startDate!.toString().split("-")
-        // console.log("test1", arydate1)
-        arydate1[0] = (Number(arydate1[0]) + 543).toString()
-
-
-        let date = arydate1[0] + "-" + arydate1[1]
+        let endDateFormat = endDate.getFullYear() + "-" + endDate.getMonth() + 1 + "-" + endDate.getDate()
+        // console.log(endDateFormat)
+        let date = startDateFormat + "," + endDateFormat
 
         this.leavehistoryservice.getAllUserHistory(date).subscribe({
             next: (res: any) => {
                 // console.log(res.data)
-                this.objdata =  res.data.leave_online
+                this.objdata = res.data.leave_online
                 this.objdataTable = JSON.parse(JSON.stringify(this.objdata));
                 delete this.objdataTable.rvac_id;
                 delete this.objdataTable.rvac_user_id;
@@ -122,65 +115,65 @@ export class HistoryComponent implements OnInit {
         let ExptExcel = JSON.parse(JSON.stringify(this.objdataTable));
         // console.log(this.objdataTable);
         for (let i = 0; i < ExptExcel.length; i++) {
-          ExptExcel[i].ลำดับ = ExptExcel[i]['number'];
-          ExptExcel[i].รหัสพนักงาน	 = ExptExcel[i]['user_card_number'];
-          ExptExcel[i].รายชื่อ = ExptExcel[i]['ud_fullname_th'];
-          ExptExcel[i].ประเภทการลา	 = ExptExcel[i]['rvac_type_name'];
-          ExptExcel[i].วันที่ยื่นลา = ExptExcel[i]['rvac_created_at'];
-          ExptExcel[i].วันที่ต้องการลา = ExptExcel[i]['rvac_date'];
-          ExptExcel[i].ช่วงเวลาในการลา = ExptExcel[i]['rvac_duration_time'];
-          ExptExcel[i]['รวมวันที่ลา/ชั่วโมง'] = ExptExcel[i]['rvac_sum_duration'];
-          ExptExcel[i]['สถานะ'] = ExptExcel[i]['rvac_status_name'];
-          
-          delete ExptExcel[i].number;
-          delete ExptExcel[i].user_card_number;
-          delete ExptExcel[i].ud_fullname_th;
-          delete ExptExcel[i].rvac_type_name;
-          delete ExptExcel[i].rvac_created_at;
-          delete ExptExcel[i].rvac_date;
-          delete ExptExcel[i].rvac_duration_time;
-          delete ExptExcel[i].rvac_sum_duration;
-          delete ExptExcel[i].rvac_status_name;
+            ExptExcel[i].ลำดับ = ExptExcel[i]['number'];
+            ExptExcel[i].รหัสพนักงาน = ExptExcel[i]['user_card_number'];
+            ExptExcel[i].รายชื่อ = ExptExcel[i]['ud_fullname_th'];
+            ExptExcel[i].ประเภทการลา = ExptExcel[i]['rvac_type_name'];
+            ExptExcel[i].วันที่ยื่นลา = ExptExcel[i]['rvac_created_at'];
+            ExptExcel[i].วันที่ต้องการลา = ExptExcel[i]['rvac_date'];
+            ExptExcel[i].ช่วงเวลาในการลา = ExptExcel[i]['rvac_duration_time'];
+            ExptExcel[i]['รวมวันที่ลา/ชั่วโมง'] = ExptExcel[i]['rvac_sum_duration'];
+            ExptExcel[i]['สถานะ'] = ExptExcel[i]['rvac_status_name'];
 
-          delete ExptExcel[i].rvac_id;
-          delete ExptExcel[i].rvac_user_id;
-          delete ExptExcel[i].rvac_type;
-          delete ExptExcel[i].rvac_date_start;
-          delete ExptExcel[i].rvac_date_end;
-          delete ExptExcel[i].rvac_duration;
-          delete ExptExcel[i].rvac_amount;
-          delete ExptExcel[i].rvac_status;
-          delete ExptExcel[i].rvac_detail;
-          delete ExptExcel[i].rvac_reason;
-          delete ExptExcel[i].rvac_special_case;
-          delete ExptExcel[i].rvac_is_canceled;
-          delete ExptExcel[i].rvac_update_at;
-          delete ExptExcel[i].ud_user_id;
-          delete ExptExcel[i].ud_fullname_en;
-          delete ExptExcel[i].rvac_approve_status;
-          delete ExptExcel[i].page;
+            delete ExptExcel[i].number;
+            delete ExptExcel[i].user_card_number;
+            delete ExptExcel[i].ud_fullname_th;
+            delete ExptExcel[i].rvac_type_name;
+            delete ExptExcel[i].rvac_created_at;
+            delete ExptExcel[i].rvac_date;
+            delete ExptExcel[i].rvac_duration_time;
+            delete ExptExcel[i].rvac_sum_duration;
+            delete ExptExcel[i].rvac_status_name;
+
+            delete ExptExcel[i].rvac_id;
+            delete ExptExcel[i].rvac_user_id;
+            delete ExptExcel[i].rvac_type;
+            delete ExptExcel[i].rvac_date_start;
+            delete ExptExcel[i].rvac_date_end;
+            delete ExptExcel[i].rvac_duration;
+            delete ExptExcel[i].rvac_amount;
+            delete ExptExcel[i].rvac_status;
+            delete ExptExcel[i].rvac_detail;
+            delete ExptExcel[i].rvac_reason;
+            delete ExptExcel[i].rvac_special_case;
+            delete ExptExcel[i].rvac_is_canceled;
+            delete ExptExcel[i].rvac_update_at;
+            delete ExptExcel[i].ud_user_id;
+            delete ExptExcel[i].ud_fullname_en;
+            delete ExptExcel[i].rvac_approve_status;
+            delete ExptExcel[i].page;
 
         }
         // console.log(ExptExcel);
-    
+
         const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(ExptExcel);
         const workbook: XLSX.WorkBook = {
-          Sheets: { data: worksheet },
-          SheetNames: ['data'],
+            Sheets: { data: worksheet },
+            SheetNames: ['data'],
         };
         const excelBuffer: any = XLSX.write(workbook, {
-          bookType: 'xlsx',
-          type: 'array',
+            bookType: 'xlsx',
+            type: 'array',
         });
         this.saveAsExcelFile(excelBuffer, 'data');
-      }
-      private saveAsExcelFile(buffer: any, fileName: string): void {
+    }
+    private saveAsExcelFile(buffer: any, fileName: string): void {
         const data: Blob = new Blob([buffer], { type: EXCEL_TYPE });
         fileSaver.saveAs(
-          data,
-          fileName + '_export_' + new Date().getTime() + EXCEL_EXTENSION
+            data,
+            fileName + '_export_' + new Date().getTime() + EXCEL_EXTENSION
         );
-      }
+    }
 
 }
 

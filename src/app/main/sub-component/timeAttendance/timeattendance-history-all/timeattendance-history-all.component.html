@@ -126,7 +126,7 @@
     <div class="row list-header d-flex p-2 d-flex
         justify-content-between">
 
-        <div class="col-6 d-flex justify-content-start  ">
+        <div class="col-6 d-flex justify-content-start ">
             <div class="row d-flex align-items-center">
                 <button type="button" class="btn btn-primary
                     back-button d-flex
@@ -137,21 +137,20 @@
                 </button>
 
                 <div class="font-header w-auto">ประวัติการเข้างานทั้งหมด</div>
-
-                <div class="col-4 px-0 mx-4 d-flex align-items-center border-input">
+                <div class="col-4 px-0 mx-4 d-flex align-items-center
+                    border-input">
                     <div class="container">
                         <div class="row">
                             <input type="text" placeholder="เลือกเดือนและปี"
                                 class="col-9 w-75 dateIcon icon-bg"
                                 style="height: 40px;"
-                                #dp="bsDatepicker"
-                                bsDatepicker (keypress)="false"
-                                (onShown)="onOpenCalendar($event)"
-                                (onHidden)="sortdate()" [(ngModel)]="date"
-                                (bsValueChange)="sortdate()"
+                                #dp="bsDaterangepicker"
+                                bsDaterangepicker (keypress)="false"
+                                (onHidden)="sortDate()" [(ngModel)]="date"
                                 [bsConfig]="{ isAnimated: true,
+                                rangeInputFormat : 'DD/MM/YYYY',
                                 dateInputFormat:
-                                'MM/YYYY', containerClass:
+                                'DD/MM/YYYY', containerClass:
                                 'theme-dark-blue',
                                 showWeekNumbers: false,
                                 clearPosition: 'right'}">
@@ -161,7 +160,8 @@
                                 (click)="dp.toggle()"
                                 [attr.aria-expanded]="dp.isOpen" style="cursor:
                                 pointer;">
-                                <i class="fa-solid fa-calendar-days icon-color" style="font-size: 24px;"></i>
+                                <i class="fa-solid fa-calendar-days icon-color"
+                                    style="font-size: 24px;"></i>
                             </div>
                         </div>
                     </div>
