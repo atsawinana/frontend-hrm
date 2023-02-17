@@ -11,38 +11,41 @@
           <div class="col-12 justify-content-center">
             <br />
             <div class="row font-content p-2
-                          justify-content-center">
+              justify-content-center">
               <div class="col-lg-2 col-md-12 col-sm-12 col-12
-                              d-inline-flex p-2" id="font-content">
+                d-inline-flex p-2" id="font-content">
                 วันเเละเวลาที่เริ่มทำโอที*
               </div>
               <div class="col-lg-6 col-md-12 col-sm-12 col-12">
                 <div class="row" id="font-content">
                   <div class="col-lg-5 col-md-5 col-sm-5
-                                      col-5">
+                    col-5">
                     <input [ngClass]="{
-                                          isinvalid:
-                                          Request.controls.Date.errors &&
-                                          summited
-                                          }" type="text" placeholder="เลือกวันที่" class="form-control" bsDatepicker
-                      (keypress)="false" formControlName="Date" [bsConfig]="{
-                                          isAnimated: true,
-                                          dateInputFormat:
-                                          'DD/MM/YYYY',
-                                          containerClass:
-                                          'theme-dark-blue',
-                                          showWeekNumbers: false
-                                          }">
+                      isinvalid:
+                      Request.controls.startDate.errors &&
+                      summited
+                      }" type="text" placeholder="เลือกวันที่"
+                      class="form-control" bsDatepicker
+                      (keypress)="false" formControlName="startDate" [bsConfig]="{
+                      isAnimated: true,
+                      dateInputFormat:
+                      'DD/MM/YYYY',
+                      containerClass:
+                      'theme-dark-blue',
+                      showWeekNumbers: false
+                      }">
                   </div>
                   <div class="col-1 text-center ">_</div>
                   <div class="col-lg-5 col-md-5 col-sm-5
-                                            col-5">
+                    col-5">
                     <input [ngClass]="{
-                                                isinvalid:
-                                                Request.controls.startTime.errors &&
-                                                summited
-                                                }" type="text" placeholder="เลือกเวลา" class="form-control"
-                      (keypress)="false" (click)="showStartTimeBox()" formControlName="startTime">
+                      isinvalid:
+                      Request.controls.startTime.errors &&
+                      summited
+                      }" type="text" placeholder="เลือกเวลา"
+                      class="form-control"
+                      (keypress)="false" (click)="showStartTimeBox()"
+                      formControlName="startTime">
                   </div>
 
                 </div>
@@ -54,14 +57,15 @@
               <div class="time-box">
                 <div class="container">
                   <div class="row d-flex
-                          justify-content-between time-text">
+                    justify-content-between time-text">
                     <div class="col mt-3">เลือกเวลา</div>
                     <div class="col d-flex
-                              justify-content-end mt-3">
-                      <button (click)="showStartTimeBox()" class="back-button d-flex
-                                  justify-content-center">
+                      justify-content-end mt-3">
+                      <button (click)="showStartTimeBox()" class="back-button
+                        d-flex
+                        justify-content-center">
                         <i class="fa-solid fa-xmark
-                                      back-icon"></i>
+                          back-icon"></i>
                       </button>
                     </div>
                   </div>
@@ -69,35 +73,39 @@
                   <hr class="my-2" />
                   <div class="row d-flex mb-3">
                     <div class="col d-flex
-                              justify-content-center">
+                      justify-content-center">
                       <div class="container">
                         <div class="row">
                           <div class="col-12 d-flex
-                                          justify-content-center
-                                          my-3
-                                          font-time-picker-head">โมง</div>
+                            justify-content-center
+                            my-3
+                            font-time-picker-head">นาฬิกา</div>
                           <div class="col-6 d-flex
-                                          justify-content-end
-                                          align-items-center
-                                          font-time-picker"><input type="number" [ngClass]="{
-                                              'alert-time-picker':
-                                              time.alerthours }" class="form-control" max="60" min="0"
-                              [(ngModel)]="time.hours" [ngModelOptions]="{standalone:
-                                              true}"></div>
+                            justify-content-end
+                            align-items-center
+                            font-time-picker"><input type="number" [ngClass]="{
+                              'alert-time-picker':
+                              timeStart.alerthours }" class="form-control" max="60"
+                              min="0"
+                              [(ngModel)]="timeStart.hours"
+                              [ngModelOptions]="{standalone:
+                              true}"></div>
                           <div class="col-6 d-flex
-                                          justify-content-start
-                                          font-time-picker">
+                            justify-content-start
+                            font-time-picker">
                             <div class="row">
                               <div class="col
-                                                  d-flex
-                                                  justify-content-center
-                                                  icon-picker" (click)="upHours()"><i class="fa-solid
-                                                      fa-chevron-up"></i></div>
+                                d-flex
+                                justify-content-center
+                                icon-picker" (click)="upHours(timeStart)"><i
+                                  class="fa-solid
+                                  fa-chevron-up"></i></div>
                               <div class="col
-                                                  d-flex
-                                                  justify-content-center
-                                                  icon-picker" (click)="downHours()"><i class="fa-solid
-                                                      fa-chevron-down"></i></div>
+                                d-flex
+                                justify-content-center
+                                icon-picker" (click)="downHours(timeStart)"><i
+                                  class="fa-solid
+                                  fa-chevron-down"></i></div>
                             </div>
                           </div>
                         </div>
@@ -105,37 +113,41 @@
                     </div>
 
                     <div class="col d-flex
-                              justify-content-center">
+                      justify-content-center">
                       <div class="container">
                         <div class="row">
                           <div class="col-12 d-flex
-                                          justify-content-center
-                                          my-3
-                                          font-time-picker-head">นาที</div>
+                            justify-content-center
+                            my-3
+                            font-time-picker-head">นาที</div>
                           <div class="col-6 d-flex
-                                          justify-content-end
-                                          align-items-center
-                                          font-time-picker">
+                            justify-content-end
+                            align-items-center
+                            font-time-picker">
                             <input type="number" [ngClass]="{
-                                              'alert-time-picker':
-                                              time.alertmins }" class="form-control" max="60" min="0"
-                              [(ngModel)]="time.mins" [ngModelOptions]="{standalone:
-                                              true}">
+                              'alert-time-picker':
+                              timeStart.alertmins }" class="form-control" max="60"
+                              min="0"
+                              [(ngModel)]="timeStart.mins"
+                              [ngModelOptions]="{standalone:
+                              true}">
                           </div>
                           <div class="col-6 d-flex
-                                          justify-content-start
-                                          font-time-picker">
+                            justify-content-start
+                            font-time-picker">
                             <div class="row">
                               <div class="col
-                                                  d-flex
-                                                  justify-content-center
-                                                  icon-picker" (click)="upMins()"><i class="fa-solid
-                                                      fa-chevron-up"></i></div>
+                                d-flex
+                                justify-content-center
+                                icon-picker" (click)="upMins(timeStart)"><i
+                                  class="fa-solid
+                                  fa-chevron-up"></i></div>
                               <div class="col
-                                                  d-flex
-                                                  justify-content-center
-                                                  icon-picker" (click)="downMins()"><i class="fa-solid
-                                                      fa-chevron-down"></i></div>
+                                d-flex
+                                justify-content-center
+                                icon-picker" (click)="downMins(timeStart)"><i
+                                  class="fa-solid
+                                  fa-chevron-down"></i></div>
                             </div>
                           </div>
                         </div>
@@ -151,7 +163,7 @@
 
             <div class="row">
               <div class="col-lg-7 col-md-8 col-sm-7 col-5 d-flex
-                              justify-content-left"></div>
+                justify-content-left"></div>
               <div class="col-sm-3 col-4 space-data">
                 <div class="alerttext">
                   กรุณากรอกข้อมูล
@@ -163,38 +175,41 @@
           <div class="col-12 justify-content-center">
             <br />
             <div class="row font-content p-2
-                          justify-content-center">
+              justify-content-center">
               <div class="col-lg-2 col-md-12 col-sm-12 col-12
-                              d-inline-flex p-2" id="font-content">
+                d-inline-flex p-2" id="font-content">
                 วันเเละเวลาที่สิ้นสุดทำโอที*
               </div>
               <div class="col-lg-6 col-md-12 col-sm-12 col-12">
                 <div class="row" id="font-content">
                   <div class="col-lg-5 col-md-5 col-sm-5
-                                      col-5">
+                    col-5">
                     <input [ngClass]="{
-                                          isinvalid:
-                                          Request.controls.Date.errors &&
-                                          summited
-                                          }" type="text" placeholder="เลือกวันที่" class="form-control" bsDatepicker
-                      (keypress)="false" formControlName="Date" [bsConfig]="{
-                                          isAnimated: true,
-                                          dateInputFormat:
-                                          'DD/MM/YYYY',
-                                          containerClass:
-                                          'theme-dark-blue',
-                                          showWeekNumbers: false
-                                          }">
+                      isinvalid:
+                      Request.controls.endDate.errors &&
+                      summited
+                      }" type="text" placeholder="เลือกวันที่"
+                      class="form-control" bsDatepicker
+                      (keypress)="false" formControlName="endDate" [bsConfig]="{
+                      isAnimated: true,
+                      dateInputFormat:
+                      'DD/MM/YYYY',
+                      containerClass:
+                      'theme-dark-blue',
+                      showWeekNumbers: false
+                      }">
                   </div>
                   <div class="col-1 text-center ">_</div>
                   <div class="col-lg-5 col-md-5 col-sm-5
-                                            col-5">
+                    col-5">
                     <input [ngClass]="{
-                                                isinvalid:
-                                                Request.controls.EndTime.errors &&
-                                                summited
-                                                }" type="text" placeholder="เลือกเวลา" class="form-control"
-                      (keypress)="false" (click)="showEndTimeBox()" formControlName="EndTime">
+                      isinvalid:
+                      Request.controls.EndTime.errors &&
+                      summited
+                      }" type="text" placeholder="เลือกเวลา"
+                      class="form-control"
+                      (keypress)="false" (click)="showEndTimeBox()"
+                      formControlName="EndTime">
                   </div>
 
                 </div>
@@ -206,14 +221,15 @@
               <div class="time-box">
                 <div class="container">
                   <div class="row d-flex
-                                      justify-content-between time-text">
+                    justify-content-between time-text">
                     <div class="col mt-3">เลือกเวลา</div>
                     <div class="col d-flex
-                                          justify-content-end mt-3">
-                      <button (click)="showEndTimeBox()" class="back-button d-flex
-                                              justify-content-center">
+                      justify-content-end mt-3">
+                      <button (click)="showEndTimeBox()" class="back-button
+                        d-flex
+                        justify-content-center">
                         <i class="fa-solid fa-xmark
-                                                  back-icon"></i>
+                          back-icon"></i>
                       </button>
                     </div>
                   </div>
@@ -221,35 +237,39 @@
                   <hr class="my-2" />
                   <div class="row d-flex mb-3">
                     <div class="col d-flex
-                                          justify-content-center">
+                      justify-content-center">
                       <div class="container">
                         <div class="row">
                           <div class="col-12 d-flex
-                                                      justify-content-center
-                                                      my-3
-                                                      font-time-picker-head">โมง</div>
+                            justify-content-center
+                            my-3
+                            font-time-picker-head">นาฬิกา</div>
                           <div class="col-6 d-flex
-                                                      justify-content-end
-                                                      align-items-center
-                                                      font-time-picker"><input type="number" [ngClass]="{
-                                                          'alert-time-picker':
-                                                          time.alerthours }" class="form-control" max="60" min="0"
-                              [(ngModel)]="time.hours" [ngModelOptions]="{standalone:
-                                                          true}"></div>
+                            justify-content-end
+                            align-items-center
+                            font-time-picker"><input type="number" [ngClass]="{
+                              'alert-time-picker':
+                              timeEnd.alerthours }" class="form-control" max="60"
+                              min="0"
+                              [(ngModel)]="timeEnd.hours"
+                              [ngModelOptions]="{standalone:
+                              true}"></div>
                           <div class="col-6 d-flex
-                                                      justify-content-start
-                                                      font-time-picker">
+                            justify-content-start
+                            font-time-picker">
                             <div class="row">
                               <div class="col
-                                                              d-flex
-                                                              justify-content-center
-                                                              icon-picker" (click)="upHours()"><i class="fa-solid
-                                                                  fa-chevron-up"></i></div>
+                                d-flex
+                                justify-content-center
+                                icon-picker" (click)="upHours(timeEnd)"><i
+                                  class="fa-solid
+                                  fa-chevron-up"></i></div>
                               <div class="col
-                                                              d-flex
-                                                              justify-content-center
-                                                              icon-picker" (click)="downHours()"><i class="fa-solid
-                                                                  fa-chevron-down"></i></div>
+                                d-flex
+                                justify-content-center
+                                icon-picker" (click)="downHours(timeEnd)"><i
+                                  class="fa-solid
+                                  fa-chevron-down"></i></div>
                             </div>
                           </div>
                         </div>
@@ -257,37 +277,41 @@
                     </div>
 
                     <div class="col d-flex
-                                          justify-content-center">
+                      justify-content-center">
                       <div class="container">
                         <div class="row">
                           <div class="col-12 d-flex
-                                                      justify-content-center
-                                                      my-3
-                                                      font-time-picker-head">นาที</div>
+                            justify-content-center
+                            my-3
+                            font-time-picker-head">นาที</div>
                           <div class="col-6 d-flex
-                                                      justify-content-end
-                                                      align-items-center
-                                                      font-time-picker">
+                            justify-content-end
+                            align-items-center
+                            font-time-picker">
                             <input type="number" [ngClass]="{
-                                                          'alert-time-picker':
-                                                          time.alertmins }" class="form-control" max="60" min="0"
-                              [(ngModel)]="time.mins" [ngModelOptions]="{standalone:
-                                                          true}">
+                              'alert-time-picker':
+                              timeEnd.alertmins }" class="form-control" max="60"
+                              min="0"
+                              [(ngModel)]="timeEnd.mins"
+                              [ngModelOptions]="{standalone:
+                              true}">
                           </div>
                           <div class="col-6 d-flex
-                                                      justify-content-start
-                                                      font-time-picker">
+                            justify-content-start
+                            font-time-picker">
                             <div class="row">
                               <div class="col
-                                                              d-flex
-                                                              justify-content-center
-                                                              icon-picker" (click)="upMins()"><i class="fa-solid
-                                                                  fa-chevron-up"></i></div>
+                                d-flex
+                                justify-content-center
+                                icon-picker" (click)="upMins(timeEnd)"><i
+                                  class="fa-solid
+                                  fa-chevron-up"></i></div>
                               <div class="col
-                                                              d-flex
-                                                              justify-content-center
-                                                              icon-picker" (click)="downMins()"><i class="fa-solid
-                                                                  fa-chevron-down"></i></div>
+                                d-flex
+                                justify-content-center
+                                icon-picker" (click)="downMins(timeEnd)"><i
+                                  class="fa-solid
+                                  fa-chevron-down"></i></div>
                             </div>
                           </div>
                         </div>
@@ -303,7 +327,7 @@
 
             <div class="row">
               <div class="col-lg-7 col-md-8 col-sm-7 col-5 d-flex
-                              justify-content-left"></div>
+                justify-content-left"></div>
               <div class="col-sm-3 col-4 space-data">
                 <div class="alerttext">
                   กรุณากรอกข้อมูล
@@ -316,19 +340,20 @@
             <br />
 
             <div class="row font-content p-2
-                justify-content-center">
+              justify-content-center">
               <div class="col-lg-2 col-md-12 col-sm-12 col-12
-                    d-inline-flex p-2" id="font-content">
+                d-inline-flex p-2" id="font-content">
                 ชื่องาน*
               </div>
               <div class="col-lg-6 col-md-12 col-sm-12 col-12">
                 <div class="row" id="font-content">
                   <div class="col-lg-11 col-md-11 col-sm-11
-                            col-10 ">
-                    <ng-select [searchable]="false" placeholder="เลือกชื่องาน" [clearable]="false" class="custom"
-                      formControlName="leaveType">
-                      <ng-option>CRM - Beyond</ng-option>
-                      <ng-option>HRM - System</ng-option>
+                    col-10 ">
+                    <ng-select [searchable]="false" placeholder="เลือกชื่องาน"
+                      [clearable]="false" class="custom"
+                      formControlName="Type">
+                      <ng-option [value]=1>CRM - Beyond</ng-option>
+                      <ng-option [value]=2>HRM - System</ng-option>
                     </ng-select>
                   </div>
                 </div>
@@ -336,7 +361,7 @@
             </div>
             <div class="row">
               <div class="col-lg-7 col-md-8 col-sm-7 col-5 d-flex
-                    justify-content-left"></div>
+                justify-content-left"></div>
               <div class="col-sm-3 col-4 space-data">
                 <div class="alerttext">
                   กรุณากรอกข้อมูล
@@ -348,29 +373,31 @@
           <div class="col-12 justify-content-center">
             <br />
             <div class="row font-content p-2
-                          justify-content-center">
+              justify-content-center">
               <div class="col-lg-2 col-md-12 col-sm-12 col-12
-                              d-inline-flex p-2" id="font-content">
+                d-inline-flex p-2" id="font-content">
                 รายละเอียดการทำงาน*
               </div>
               <div class="col-lg-6 col-md-12 col-sm-12 col-12">
                 <div class="row" id="font-content">
                   <div class="col-lg-11 col-md-11 col-sm-11
-                                      col-10">
+                    col-10">
                     <textarea [ngClass]="{
-                                          isinvalid:
-                                          Request.controls.detail.errors &&
-                                          summited
-                                          }" type="textarea" class="form-control" placeholder="กรอกรายละเอียดการทำงาน"
-                      id="exampleFormControlTextarea1" rows="3" formControlName="detail">
-                                      </textarea>
+                      isinvalid:
+                      Request.controls.detail.errors &&
+                      summited
+                      }" type="textarea" class="form-control"
+                      placeholder="กรอกรายละเอียดการทำงาน"
+                      id="exampleFormControlTextarea1" rows="3"
+                      formControlName="detail">
+                    </textarea>
                   </div>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-lg-7 col-md-8 col-sm-7 col-5 d-flex
-                              justify-content-left"></div>
+                justify-content-left"></div>
               <div class="col-sm-3 col-4 space-data">
                 <div class="alerttext">
                   กรุณากรอกข้อมูล
@@ -386,16 +413,16 @@
 
     <div class="row mb-4 mt-5 d-flex justify-content-center">
       <div (click)="checkCancel()" class="col-6 col-sm-3 col-md-3
-              col-lg-3"><button class="cancel-button d-flex
-                  justify-content-center
-                  w-100" type="">
+        col-lg-3"><button class="cancel-button d-flex
+          justify-content-center
+          w-100" type="">
           <div class="cancel-text">ยกเลิก</div>
         </button>
       </div>
       <div class="col-6 col-sm-3 col-md-3
-              col-lg-3"><button class="submit-button d-flex
-                  justify-content-center
-                  w-100" type="submit">
+        col-lg-3" (click)="submitButton()"><button class="submit-button d-flex
+          justify-content-center
+          w-100" type="submit">
           <div class="submit-text">ตกลง</div>
         </button>
       </div>

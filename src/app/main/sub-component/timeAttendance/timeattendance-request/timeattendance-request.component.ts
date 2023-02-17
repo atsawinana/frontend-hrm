@@ -122,7 +122,7 @@ export class TimeattendanceRequestComponent implements OnInit {
     upMins() {
         this.time.mins++
 
-        if (this.time.mins > 60) {
+        if (this.time.mins > 59) {
             this.time.mins = 0
         }
     }
@@ -131,7 +131,7 @@ export class TimeattendanceRequestComponent implements OnInit {
         this.time.mins--
 
         if (this.time.mins < 0) {
-            this.time.mins = 60
+            this.time.mins = 59
         }
     }
 
@@ -141,7 +141,7 @@ export class TimeattendanceRequestComponent implements OnInit {
             x.style.display = 'block';
         } else {
 
-            if ((this.time.hours > 24 || this.time.hours < 0 || this.time.mins > 60 || this.time.mins < 0) || (this.time.hours == null || this.time.mins == null)) {
+            if ((this.time.hours > 24 || this.time.hours < 0 || this.time.mins > 59 || this.time.mins < 0) || (this.time.hours == null || this.time.mins == null)) {
 
                 this.time.alerthours = true
                 this.time.alertmins = true
