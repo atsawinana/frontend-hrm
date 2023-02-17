@@ -18,7 +18,7 @@ export class TimeattendanceHistoryComponent implements OnInit {
     listPerPage: any = 10
     date: any
     objTableHistory: any
-
+    checkState:boolean = true
     ngOnInit() {
         defineLocale('th', thBeLocale);
         this.localeService.use('th');
@@ -26,6 +26,7 @@ export class TimeattendanceHistoryComponent implements OnInit {
         this.serviceTimeatd.requestAttendanceHistory("").subscribe({
             next: (res: any) => {
                 this.objTableHistory = res.data.req_time_attendances
+                this.checkState = false;
             },
             error: (err: any) => { }
         })

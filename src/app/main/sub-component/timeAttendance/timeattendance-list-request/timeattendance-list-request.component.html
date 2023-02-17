@@ -1,6 +1,6 @@
 
-
-<div class="container-fluid" *ngIf="true">
+<app-loading *ngIf="checkState"></app-loading>
+<div class="container-fluid" *ngIf="!checkState">
     <div class="row mb-4">
         <button
             class="back-button d-flex justify-content-center"

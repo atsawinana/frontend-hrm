@@ -1,4 +1,5 @@
-<div class="container-fluid" *ngIf="true">
+<app-loading *ngIf="checkState"></app-loading>
+<div class="container-fluid" *ngIf="!checkState">
     <div class="row mb-4">
 
         <button
@@ -85,8 +86,14 @@
                             </div>
 
                             <div>
-                                <button *ngIf="owner && objDetailReq.rta_can_cancel == 1" class="col-2 btn-cancel" (click)="cancelRequestAttendance()">ยกเลิก</button>
-                                <button class="col-2 btn-edit" *ngIf="objDetailReq.rta_can_cancel == null && owner" routerLink="../../time-edit-request/{{objDetailReq.rta_id}}">แก้ไข</button>
+                                <button *ngIf="owner &&
+                                    objDetailReq.rta_can_cancel == 1"
+                                    class="col-2 btn-cancel"
+                                    (click)="cancelRequestAttendance()">ยกเลิก</button>
+                                <button class="col-2 btn-edit"
+                                    *ngIf="objDetailReq.rta_can_cancel == null
+                                    && owner"
+                                    routerLink="../../time-edit-request/{{objDetailReq.rta_id}}">แก้ไข</button>
                             </div>
                         </div>
                     </div>
@@ -155,9 +162,12 @@
                             </div>
 
 
-                            <div class="row" *ngIf="reqs.ar_can_approve == 1 && !owner">
-                                <button class="cancel-btn me-3" (click)="disapproveRequest()">ไม่อนุมัติ</button>
-                                <button class="submit-btn" (click)="approveRequest()">อนุมัติ</button>
+                            <div class="row" *ngIf="reqs.ar_can_approve == 1 &&
+                                !owner">
+                                <button class="cancel-btn me-3"
+                                    (click)="disapproveRequest()">ไม่อนุมัติ</button>
+                                <button class="submit-btn"
+                                    (click)="approveRequest()">อนุมัติ</button>
                             </div>
 
                         </div>

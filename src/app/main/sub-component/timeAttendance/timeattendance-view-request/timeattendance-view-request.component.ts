@@ -20,6 +20,7 @@ export class TimeattendanceViewRequestComponent implements OnInit {
     objDetailReq: any
     owner: boolean = false;
     aryApprove: any
+    checkState:boolean = true
     ngOnInit() {
         this.id = this.route.snapshot.params['id'];
         this.serviceTimeatd.getDetailsRequestAttendances(this.id).subscribe({
@@ -27,6 +28,7 @@ export class TimeattendanceViewRequestComponent implements OnInit {
                 this.objDetailReq = res.data.req_attendances
                 this.aryApprove = res.data.approve_reqs
                 this.owner = res.data.owner
+                this.checkState = false
             },
             error: (err: any) => { }
         })

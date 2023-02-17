@@ -14,8 +14,8 @@ import { TimeattendanceListRequestComponent } from './timeattendance-list-reques
 import { TimeattendanceHistoryAllComponent } from './timeattendance-history-all/timeattendance-history-all.component';
 import { TimeattendanceHistoryComponent } from './timeattendance-history/timeattendance-history.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
-import { LoadingOverscreenComponent } from './timeattendance-loading-screen/loading-overscreen/loading-overscreen.component';
 import { TimeattendanceEditRequestComponent } from './timeattendance-edit-request/timeattendance-edit-request.component';
+import { SharedComponentModule } from '../../shared-component/shared-component.module';
 
 @NgModule({
     imports: [
@@ -29,6 +29,7 @@ import { TimeattendanceEditRequestComponent } from './timeattendance-edit-reques
         Ng2SearchPipeModule,
         BsDatepickerModule.forRoot(),
         DatePipe,
+        SharedComponentModule
     ],
     declarations: [
         TimeAttendanceComponent,
@@ -39,7 +40,6 @@ import { TimeattendanceEditRequestComponent } from './timeattendance-edit-reques
         TimeattendanceHistoryAllComponent,
         TimeattendanceHistoryComponent,
         TimeattendanceEditRequestComponent,
-        LoadingOverscreenComponent,
     ],
     providers: [
         DatePipe,

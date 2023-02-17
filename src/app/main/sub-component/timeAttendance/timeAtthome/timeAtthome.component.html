@@ -1,7 +1,8 @@
 <app-loading-overscreen *ngIf="checkState"></app-loading-overscreen>
 <div class="container-fluid p-0 mb-3">
     <div class="main-content h-100 p-5">
-        <div class="container-fluid">
+        <app-loading *ngIf="checkstateCondition" ></app-loading>
+        <div *ngIf="!checkstateCondition" class="container-fluid">
             <div class="row font-header">
                 บันทึก เข้า-ออก งาน
             </div>
@@ -31,14 +32,22 @@
                         <div class="row h-100">
                             <div class="col-6 h-100 d-flex
                                 justify-content-center align-items-center">
-                                <button [disabled]="!btnControl.checkinbtn" [ngClass]="{ 'btn-activate' : btnControl.checkinbtn }" class="btn-inactivate font-inout py-3 mx-1" (click)="clickCheckin()">
+                                <button [disabled]="!btnControl.checkinbtn"
+                                    [ngClass]="{ 'btn-activate' :
+                                    btnControl.checkinbtn }"
+                                    class="btn-inactivate font-inout py-3 mx-1"
+                                    (click)="clickCheckin()">
                                     <i class="fa-solid fa-right-to-bracket flip"
                                         style="font-size:56px;"></i><br><br>เข้างาน
                                 </button>
                             </div>
                             <div class="col-6 h-100 d-flex
                                 justify-content-center align-items-center">
-                                <button [disabled]="!btnControl.checkoutbtn" [ngClass]="{ 'btn-activate' : btnControl.checkoutbtn }" class="btn-inactivate font-inout py-3 mx-1" (click)="clickCheckout()">
+                                <button [disabled]="!btnControl.checkoutbtn"
+                                    [ngClass]="{ 'btn-activate' :
+                                    btnControl.checkoutbtn }"
+                                    class="btn-inactivate font-inout py-3 mx-1"
+                                    (click)="clickCheckout()">
                                     <i class="fa-solid fa-right-from-bracket"
                                         style="font-size:56px;"></i><br><br>ออกงาน
                                 </button>
@@ -54,7 +63,8 @@
 
 <div class="container-fluid p-0 mb-5">
     <div class="main-content h-100 p-5">
-        <div class="container-fluid">
+        <app-loading *ngIf="checkstateTable"></app-loading>
+        <div *ngIf="!checkstateTable" class="container-fluid">
 
             <div class="row" *ngIf="!role">
                 <div class="col d-flex align-items-center font-table">
@@ -62,10 +72,16 @@
                 </div>
                 <div class="col d-flex justify-content-end flex-row"
                     style="height: 48px !important;">
-                    <button class="btn-histroy p-2 col-4 mx-1 d-flex align-items-center justify-content-center" routerLink="../time-history"><i
-                            class="fa-solid fa-clock-rotate-left icon me-1" style="font-size: 24px !important;"></i>ประวัติคำร้อง</button>
-                    <button class="btn-request p-2 col-4 mx-1 d-flex align-items-center justify-content-center" routerLink="../time-request"><i
-                            class="fa-solid fa-circle-plus icon me-1" style="font-size: 24px !important;"></i>สร้างฟอร์มคำร้องเข้างาน</button>
+                    <button class="btn-histroy p-2 col-4 mx-1 d-flex
+                        align-items-center justify-content-center"
+                        routerLink="../time-history"><i
+                            class="fa-solid fa-clock-rotate-left icon me-1"
+                            style="font-size: 24px !important;"></i>ประวัติคำร้อง</button>
+                    <button class="btn-request p-2 col-4 mx-1 d-flex
+                        align-items-center justify-content-center"
+                        routerLink="../time-request"><i
+                            class="fa-solid fa-circle-plus icon me-1"
+                            style="font-size: 24px !important;"></i>สร้างฟอร์มคำร้องเข้างาน</button>
                 </div>
             </div>
 
@@ -75,14 +91,29 @@
                 </div>
                 <div class="col-9 d-flex justify-content-end flex-row"
                     style="height: 48px !important;">
-                    <button class="btn-histroyall p-2 col-3 mx-1 d-flex align-items-center justify-content-center " routerLink="../time-history-all">
-                        <i class="fa-solid fa-user-clock icon me-1" style="font-size: 24px !important;"></i> ประวัติเข้างานทั้งหมด </button>
-                    <button class="btn-histroy p-2 col-3 mx-1 d-flex align-items-center justify-content-center" routerLink="../time-history">
-                        <i class="fa-solid fa-clock-rotate-left icon me-1" style="font-size: 24px !important;"></i>ประวัติคำร้อง</button>
-                    <button class="btn btn-viewrequest p-2 col-3 mx-1 d-flex align-items-center justify-content-center" routerLink="../time-list-request">
-                        <i class="fa-solid fa-image-portrait icon me-1" style="font-size: 24px !important;"></i> <div>คำร้องเข้างาน</div>  </button>
-                    <button class="btn btn-request p-2 col-3 mx-1 d-flex align-items-center justify-content-center" routerLink="../time-request">
-                        <i class="fa-solid fa-circle-plus icon " style="font-size: 24px !important;"></i> <div class="px-2">สร้างฟอร์มคำร้องเข้างาน</div> </button>
+                    <button class="btn-histroyall p-2 col-3 mx-1 d-flex
+                        align-items-center justify-content-center "
+                        routerLink="../time-history-all">
+                        <i class="fa-solid fa-user-clock icon me-1"
+                            style="font-size: 24px !important;"></i>
+                        ประวัติเข้างานทั้งหมด </button>
+                    <button class="btn-histroy p-2 col-3 mx-1 d-flex
+                        align-items-center justify-content-center"
+                        routerLink="../time-history">
+                        <i class="fa-solid fa-clock-rotate-left icon me-1"
+                            style="font-size: 24px !important;"></i>ประวัติคำร้อง</button>
+                    <button class="btn btn-viewrequest p-2 col-3 mx-1 d-flex
+                        align-items-center justify-content-center"
+                        routerLink="../time-list-request">
+                        <i class="fa-solid fa-image-portrait icon me-1"
+                            style="font-size: 24px !important;"></i> <div>คำร้องเข้างาน</div>
+                    </button>
+                    <button class="btn btn-request p-2 col-3 mx-1 d-flex
+                        align-items-center justify-content-center"
+                        routerLink="../time-request">
+                        <i class="fa-solid fa-circle-plus icon "
+                            style="font-size: 24px !important;"></i> <div
+                            class="px-2">สร้างฟอร์มคำร้องเข้างาน</div> </button>
                 </div>
             </div>
 
@@ -101,8 +132,9 @@
                         </thead>
 
                         <tbody class="list-content">
-                            <tr align="center" *ngFor="let item of objTable | paginate: config">
-                                
+                            <tr align="center" *ngFor="let item of objTable |
+                                paginate: config">
+
                                 <td class="text-center">{{item.ta_number}}</td>
                                 <td class="text-center">{{item.ta_date}}</td>
                                 <td class="text-center">{{item.ta_time_in}}</td>

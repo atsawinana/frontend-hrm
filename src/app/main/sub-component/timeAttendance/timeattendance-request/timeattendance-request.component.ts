@@ -179,7 +179,7 @@ export class TimeattendanceRequestComponent implements OnInit {
             return
 
         Swal.fire({
-            title: '<strong style = "font-family:Kanit"> คุณต้องการส่งแบบฟอร์มการลา ใช่หรือไม่ </strong>',
+            title: '<strong style = "font-family:Kanit"> คุณต้องการส่งแบบฟอร์มคำขอเข้าทำงาน ใช่หรือไม่ </strong>',
             icon: 'warning',
             showCancelButton: true,
             cancelButtonColor: '#d33',

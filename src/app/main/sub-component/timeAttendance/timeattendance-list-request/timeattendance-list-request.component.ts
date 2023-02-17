@@ -18,11 +18,12 @@ export class TimeattendanceListRequestComponent implements OnInit {
     ary: any = ["หิว", "ข้าว", "มันไก่"]
     listPerPage: any = 10
     objListTable:any
-
+    checkState:boolean = true
     ngOnInit() {
         this.serviceTimeatd.getUnapprovedRequestAttendances().subscribe({
             next: (res: any) => {
                 this.objListTable = res.data.request_time_attendances
+                this.checkState = false
              },
             error: (err: any) => { }
         })

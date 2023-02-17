@@ -35,6 +35,8 @@ export class TimeAtthomeComponent implements OnInit {
     }
 
     checkState:boolean = false
+    checkstateTable:boolean = true
+    checkstateCondition:boolean = true
 
     constructor(private serviceTimeatd: TimeAttendanceService) {
 
@@ -69,8 +71,8 @@ export class TimeAtthomeComponent implements OnInit {
 
         this.serviceTimeatd.getTable().subscribe({
             next: (res: any) => {
-                console.log(res.data)
                 this.objTable = res.data.time_attendance
+                this.checkstateTable = false
             },
             error: (err: any) => { }
         })
@@ -100,7 +102,6 @@ export class TimeAtthomeComponent implements OnInit {
     checkCondition() {
         this.serviceTimeatd.getCondition().subscribe({
             next: (res: any) => {
-                console.log(res.data)
                 if (res.data.status == 1) {
                     this.btnControl.checkinbtn = false
                     this.btnControl.checkoutbtn = false
@@ -112,6 +113,7 @@ export class TimeAtthomeComponent implements OnInit {
                     this.btnControl.checkoutbtn = true
                 }
                 this.checkState = false
+                this.checkstateCondition = false
             },
             error: (err: any) => {
 
