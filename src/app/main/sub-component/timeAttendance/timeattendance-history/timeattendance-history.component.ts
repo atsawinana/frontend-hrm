@@ -52,10 +52,11 @@ export class TimeattendanceHistoryComponent implements OnInit {
 
         if (isNaN(Number(startDate)) || isNaN(Number(endDate)))
             return
-        let startDateFormat = startDate.getFullYear() + "-" + startDate.getMonth() + 1 + "-" + startDate.getDate()
+
+        let startDateFormat = startDate.getFullYear() + "-" + Number(startDate.getMonth() + 1) + "-" + startDate.getDate()
         // console.log(startDateFormat)
 
-        let endDateFormat = endDate.getFullYear() + "-" + endDate.getMonth() + 1 + "-" + endDate.getDate()
+        let endDateFormat = endDate.getFullYear() + "-" + Number(endDate.getMonth() + 1) + "-" + endDate.getDate()
         // console.log(endDateFormat)
         let date = startDateFormat + "," + endDateFormat
 
