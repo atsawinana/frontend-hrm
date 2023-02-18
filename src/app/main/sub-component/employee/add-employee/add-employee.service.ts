@@ -145,16 +145,14 @@ export class AddEmployeeService {
   // body: ud_id_card
   genDatafromIDCard(idcard: any) {
     const headers = new HttpHeaders({
-      Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+      'Authorization': 'Bearer' + localStorage.getItem('tokenLocal'),
     });
 
-    return this.httpClient.post(
-      `${environment.apiURL}/employee/findDataByIdCard`,
-      {
-        ud_id_card: idcard,
-      },
-      { headers }
-    );
+    return this.httpClient.get(`${environment.apiURL}/employee/data`, {headers,
+      params: {
+        ud_id_card: idcard
+      }
+    });
   }
 
 }
