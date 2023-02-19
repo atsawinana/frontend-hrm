@@ -63,4 +63,33 @@ export class OtService {
     );
   }
 
+  getNameWork() {
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+    });
+
+    return this.httpClient.get(
+      `${environment.apiURL}/overTime/name`,
+      {
+        headers,
+      }
+    );
+  }
+
+  getRequestOvertimeHistory(id:any) {
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+    });
+
+    return this.httpClient.get(
+      `${environment.apiURL}/requestOvertime/history`,
+      {
+        headers,
+        params: {
+          rot_id : id
+        }
+      }
+    );
+  }
+
 }

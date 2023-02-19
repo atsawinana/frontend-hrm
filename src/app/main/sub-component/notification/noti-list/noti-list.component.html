@@ -13,7 +13,6 @@
                 class="col-2 text-center noti-type"
                 (click)="routerLinkNoti()">
                 <span class="badge" *ngIf="noti.all_notification != 0">{{noti.all_notification}}</span>
-
                 แจ้งเตือนของฉัน</div>
 
             <div (click)="URLcheck($event)" [ngClass]="{'active-box' :
@@ -28,11 +27,11 @@
                 routerLink="leave-notification">
                 <span class="badge" *ngIf="noti.leave_notification != 0">{{noti.leave_notification}}</span>
                 อนุมัติลา</div>
-            <!-- <div (click)="URLcheck($event)" [ngClass]="{'active-box' : otnoti}"
+            <div (click)="URLcheck($event)" [ngClass]="{'active-box' : otnoti}"
                 *ngIf="role != 1" class="col-2 text-center noti-type"
                 routerLink="ot-notification">
                 <span class="badge" *ngIf="noti.overtime_notification != 0">{{noti.overtime_notification}}</span>
-                อนุมัติโอที</div> -->
+                อนุมัติโอที</div>
         </div>
 
         <router-outlet></router-outlet>

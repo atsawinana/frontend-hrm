@@ -4,7 +4,6 @@ import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { defineLocale, thBeLocale } from 'ngx-bootstrap/chronos';
 import { ActivatedRoute, Route, Router, RouterLink } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-
 import { DatePipe } from '@angular/common';
 import { Location } from '@angular/common';
 import { OtService } from '../ot.service';
@@ -42,6 +41,8 @@ export class OtRequestComponent implements OnInit {
     alertmins: false,
   }
 
+  nameWork:any
+
   Request = new FormGroup({
     Type: new FormControl(null, [Validators.required]),
     startDate: new FormControl('', [Validators.required]),
@@ -58,6 +59,14 @@ export class OtRequestComponent implements OnInit {
     this.today = new Date();
     defineLocale('th', thBeLocale);
     this.localeService.use(this.locale);
+
+    this.otService.getNameWork().subscribe({
+      next: (res:any) => {
+        console.log(res)
+        this.nameWork = res.data
+      },
+      error: (err:any) => {}
+    })
   }
 
   noWhitespaceValidator(control: FormControl) {
@@ -192,8 +201,24 @@ export class OtRequestComponent implements OnInit {
   }
 
   submitButton() {
+
     this.summited = true;
     console.log(this.Request.value)
+
+    let d1 = new Date(this.Request.controls.startDate.value!)
+    let d2 = new Date(this.Request.controls.endDate.value!)
+
+    console.log(d1.getTime() < d2.getTime())
+
+    if (d1.getTime() > d2.getTime()) {
+      Swal.fire({
+        title: '<strong style = "font-family:Kanit"> ข้อมูลวันที่ผิดพลาด กรุณาลองอีกครั้ง </strong>',
+        icon: 'warning',
+        showConfirmButton: false,
+        timer: 2500
+      })
+      return
+    }
 
     let dateStart = this.datepipe.transform(this.Request.controls.startDate.value, 'yyyy-MM-dd');
     console.log(dateStart)
@@ -201,7 +226,7 @@ export class OtRequestComponent implements OnInit {
     if (this.Request.invalid)
       return;
 
-     
+
 
     Swal.fire({
       title: '<strong style = "font-family:Kanit"> คุณต้องการส่งแบบฟอร์มการทำโอที ใช่หรือไม่ </strong>',
