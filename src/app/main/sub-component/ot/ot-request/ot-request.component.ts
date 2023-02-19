@@ -248,7 +248,7 @@ export class OtRequestComponent implements OnInit {
           this.Request.controls.detail.value!
         ).subscribe({
           next: (res: any) => {
-            this.route.navigate(['../main/leave']);
+            this.route.navigate(['../main/ot']);
           },
         });
       }

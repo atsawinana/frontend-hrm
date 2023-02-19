@@ -19,8 +19,12 @@ export class OtViewRequestComponent implements OnInit {
     storageURL = environment.apiURL
     ngOnInit() {
         this.id = this.route.snapshot.params['id'];
-        this.otService.getRequestOvertimeHistory("1").subscribe({
-            next: (res: any) => { },
+        this.otService.getDetailRequestOvertime(this.id).subscribe({
+            next: (res: any) => {
+                this.objDetailReq = res.data.req_overtimes
+                this.aryApprove = res.data.approve_reqs
+                this.owner = res.data.owner
+             },
             error: (err: any) => { }
         })
     }

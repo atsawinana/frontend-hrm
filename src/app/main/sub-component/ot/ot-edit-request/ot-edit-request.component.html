@@ -1,0 +1,445 @@
+<div class="container justify-content-center">
+    <form [formGroup]="Request">
+      <div class="row">
+        <div class="col-12 justify-content-center">
+          <div class="row d-flex justify-content-center">
+  
+            <div class="col-12 justify-content-center">
+              <p class="font-header">แบบฟอร์มการทำโอที</p>
+            </div>
+  
+            <div class="col-12 justify-content-center">
+              <br />
+              <div class="row font-content p-2
+                justify-content-center">
+                <div class="col-lg-2 col-md-12 col-sm-12 col-12
+                  d-inline-flex p-2" id="font-content">
+                  วันเเละเวลาที่เริ่มทำโอที*
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+                  <div class="row" id="font-content">
+                    <div class="col-lg-5 col-md-5 col-sm-5
+                      col-5">
+                      <input [ngClass]="{
+                        isinvalid:
+                        Request.controls.startDate.errors &&
+                        summited
+                        }" type="text" placeholder="เลือกวันที่"
+                        class="form-control" bsDatepicker
+                        (keypress)="false" formControlName="startDate"
+                        [bsConfig]="{
+                        isAnimated: true,
+                        dateInputFormat:
+                        'DD/MM/YYYY',
+                        containerClass:
+                        'theme-dark-blue',
+                        showWeekNumbers: false
+                        }">
+                    </div>
+                    <div class="col-1 text-center ">_</div>
+                    <div class="col-lg-5 col-md-5 col-sm-5
+                      col-5">
+                      <input [ngClass]="{
+                        isinvalid:
+                        Request.controls.startTime.errors &&
+                        summited
+                        }" type="text" placeholder="เลือกเวลา"
+                        class="form-control"
+                        (keypress)="false" (click)="showStartTimeBox()"
+                        formControlName="startTime">
+                    </div>
+  
+                  </div>
+                </div>
+              </div>
+  
+              <!-- time box -->
+              <div id="StartTimeBox" style="display: none" class="time-outframe">
+                <div class="time-box">
+                  <div class="container">
+                    <div class="row d-flex
+                      justify-content-between time-text">
+                      <div class="col mt-3">เลือกเวลา</div>
+                      <div class="col d-flex
+                        justify-content-end mt-3">
+                        <button (click)="showStartTimeBox()" class="back-button
+                          d-flex
+                          justify-content-center">
+                          <i class="fa-solid fa-xmark
+                            back-icon"></i>
+                        </button>
+                      </div>
+                    </div>
+  
+                    <hr class="my-2" />
+                    <div class="row d-flex mb-3">
+                      <div class="col d-flex
+                        justify-content-center">
+                        <div class="container">
+                          <div class="row">
+                            <div class="col-12 d-flex
+                              justify-content-center
+                              my-3
+                              font-time-picker-head">นาฬิกา</div>
+                            <div class="col-6 d-flex
+                              justify-content-end
+                              align-items-center
+                              font-time-picker"><input type="number" [ngClass]="{
+                                'alert-time-picker':
+                                timeStart.alerthours }" class="form-control"
+                                max="60"
+                                min="0"
+                                [(ngModel)]="timeStart.hours"
+                                [ngModelOptions]="{standalone:
+                                true}"></div>
+                            <div class="col-6 d-flex
+                              justify-content-start
+                              font-time-picker">
+                              <div class="row">
+                                <div class="col
+                                  d-flex
+                                  justify-content-center
+                                  icon-picker" (click)="upHours(timeStart)"><i
+                                    class="fa-solid
+                                    fa-chevron-up"></i></div>
+                                <div class="col
+                                  d-flex
+                                  justify-content-center
+                                  icon-picker" (click)="downHours(timeStart)"><i
+                                    class="fa-solid
+                                    fa-chevron-down"></i></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+  
+                      <div class="col d-flex
+                        justify-content-center">
+                        <div class="container">
+                          <div class="row">
+                            <div class="col-12 d-flex
+                              justify-content-center
+                              my-3
+                              font-time-picker-head">นาที</div>
+                            <div class="col-6 d-flex
+                              justify-content-end
+                              align-items-center
+                              font-time-picker">
+                              <input type="number" [ngClass]="{
+                                'alert-time-picker':
+                                timeStart.alertmins }" class="form-control"
+                                max="60"
+                                min="0"
+                                [(ngModel)]="timeStart.mins"
+                                [ngModelOptions]="{standalone:
+                                true}">
+                            </div>
+                            <div class="col-6 d-flex
+                              justify-content-start
+                              font-time-picker">
+                              <div class="row">
+                                <div class="col
+                                  d-flex
+                                  justify-content-center
+                                  icon-picker" (click)="upMins(timeStart)"><i
+                                    class="fa-solid
+                                    fa-chevron-up"></i></div>
+                                <div class="col
+                                  d-flex
+                                  justify-content-center
+                                  icon-picker" (click)="downMins(timeStart)"><i
+                                    class="fa-solid
+                                    fa-chevron-down"></i></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+  
+  
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- time box end -->
+  
+              <div class="row" *ngIf="((Request.controls.startDate.errors) ||
+                (Request.controls.startTime.errors)) && summited">
+                <div class="col-lg-7 col-md-8 col-sm-7 col-5 d-flex
+                  justify-content-left"></div>
+                <div class="col-sm-3 col-4 space-data">
+                  <div class="alerttext">
+                    กรุณากรอกข้อมูล
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <div class="col-12 justify-content-center">
+              <br />
+              <div class="row font-content p-2
+                justify-content-center">
+                <div class="col-lg-2 col-md-12 col-sm-12 col-12
+                  d-inline-flex p-2" id="font-content">
+                  วันเเละเวลาที่สิ้นสุดทำโอที*
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+                  <div class="row" id="font-content">
+                    <div class="col-lg-5 col-md-5 col-sm-5
+                      col-5">
+                      <input [ngClass]="{
+                        isinvalid:
+                        Request.controls.endDate.errors &&
+                        summited
+                        }" type="text" placeholder="เลือกวันที่"
+                        class="form-control" bsDatepicker
+                        (keypress)="false" formControlName="endDate" [bsConfig]="{
+                        isAnimated: true,
+                        dateInputFormat:
+                        'DD/MM/YYYY',
+                        containerClass:
+                        'theme-dark-blue',
+                        showWeekNumbers: false
+                        }">
+                    </div>
+                    <div class="col-1 text-center ">_</div>
+                    <div class="col-lg-5 col-md-5 col-sm-5
+                      col-5">
+                      <input [ngClass]="{
+                        isinvalid:
+                        Request.controls.EndTime.errors &&
+                        summited
+                        }" type="text" placeholder="เลือกเวลา"
+                        class="form-control"
+                        (keypress)="false" (click)="showEndTimeBox()"
+                        formControlName="EndTime">
+                    </div>
+  
+                  </div>
+                </div>
+              </div>
+  
+              <!-- time box -->
+              <div id="EndTimeBox" style="display: none" class="time-outframe">
+                <div class="time-box">
+                  <div class="container">
+                    <div class="row d-flex
+                      justify-content-between time-text">
+                      <div class="col mt-3">เลือกเวลา</div>
+                      <div class="col d-flex
+                        justify-content-end mt-3">
+                        <button (click)="showEndTimeBox()" class="back-button
+                          d-flex
+                          justify-content-center">
+                          <i class="fa-solid fa-xmark
+                            back-icon"></i>
+                        </button>
+                      </div>
+                    </div>
+  
+                    <hr class="my-2" />
+                    <div class="row d-flex mb-3">
+                      <div class="col d-flex
+                        justify-content-center">
+                        <div class="container">
+                          <div class="row">
+                            <div class="col-12 d-flex
+                              justify-content-center
+                              my-3
+                              font-time-picker-head">นาฬิกา</div>
+                            <div class="col-6 d-flex
+                              justify-content-end
+                              align-items-center
+                              font-time-picker"><input type="number" [ngClass]="{
+                                'alert-time-picker':
+                                timeEnd.alerthours }" class="form-control"
+                                max="60"
+                                min="0"
+                                [(ngModel)]="timeEnd.hours"
+                                [ngModelOptions]="{standalone:
+                                true}"></div>
+                            <div class="col-6 d-flex
+                              justify-content-start
+                              font-time-picker">
+                              <div class="row">
+                                <div class="col
+                                  d-flex
+                                  justify-content-center
+                                  icon-picker" (click)="upHours(timeEnd)"><i
+                                    class="fa-solid
+                                    fa-chevron-up"></i></div>
+                                <div class="col
+                                  d-flex
+                                  justify-content-center
+                                  icon-picker" (click)="downHours(timeEnd)"><i
+                                    class="fa-solid
+                                    fa-chevron-down"></i></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+  
+                      <div class="col d-flex
+                        justify-content-center">
+                        <div class="container">
+                          <div class="row">
+                            <div class="col-12 d-flex
+                              justify-content-center
+                              my-3
+                              font-time-picker-head">นาที</div>
+                            <div class="col-6 d-flex
+                              justify-content-end
+                              align-items-center
+                              font-time-picker">
+                              <input type="number" [ngClass]="{
+                                'alert-time-picker':
+                                timeEnd.alertmins }" class="form-control" max="60"
+                                min="0"
+                                [(ngModel)]="timeEnd.mins"
+                                [ngModelOptions]="{standalone:
+                                true}">
+                            </div>
+                            <div class="col-6 d-flex
+                              justify-content-start
+                              font-time-picker">
+                              <div class="row">
+                                <div class="col
+                                  d-flex
+                                  justify-content-center
+                                  icon-picker" (click)="upMins(timeEnd)"><i
+                                    class="fa-solid
+                                    fa-chevron-up"></i></div>
+                                <div class="col
+                                  d-flex
+                                  justify-content-center
+                                  icon-picker" (click)="downMins(timeEnd)"><i
+                                    class="fa-solid
+                                    fa-chevron-down"></i></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+  
+  
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- time box end -->
+  
+              <div class="row" *ngIf="((Request.controls.endDate.errors) ||
+                (Request.controls.EndTime.errors)) && summited">
+                <div class="col-lg-7 col-md-8 col-sm-7 col-5 d-flex
+                  justify-content-left"></div>
+                <div class="col-sm-3 col-4 space-data">
+                  <div class="alerttext">
+                    กรุณากรอกข้อมูล
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <div class="col-12 justify-content-center">
+              <br />
+  
+              <div class="row font-content p-2
+                justify-content-center">
+                <div class="col-lg-2 col-md-12 col-sm-12 col-12
+                  d-inline-flex p-2" id="font-content">
+                  ชื่องาน*
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+                  <div class="row" id="font-content">
+                    <div class="col-lg-11 col-md-11 col-sm-11
+                      col-10 ">
+                      <ng-select [ngClass]="{
+                        customnull:
+                        Request.controls.Type.errors &&
+                        summited
+                        }" [searchable]="false" placeholder="เลือกชื่องาน"
+                        [clearable]="false" class="custom"
+                        formControlName="Type">
+                        <ng-option *ngFor="let items of nameWork" [value]=items.ot_id>{{items.ot_name}}</ng-option>
+                      </ng-select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row" *ngIf="Request.controls.Type.errors &&
+                summited">
+                <div class="col-lg-7 col-md-8 col-sm-7 col-5 d-flex
+                  justify-content-left"></div>
+                <div class="col-sm-3 col-4 space-data">
+                  <div class="alerttext">
+                    กรุณากรอกข้อมูล
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <div class="col-12 justify-content-center">
+              <br />
+              <div class="row font-content p-2
+                justify-content-center">
+                <div class="col-lg-2 col-md-12 col-sm-12 col-12
+                  d-inline-flex p-2" id="font-content">
+                  รายละเอียดการทำงาน*
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+                  <div class="row" id="font-content">
+                    <div class="col-lg-11 col-md-11 col-sm-11
+                      col-10">
+                      <textarea [ngClass]="{
+                        isinvalid:
+                        Request.controls.detail.errors &&
+                        summited
+                        }" type="textarea" class="form-control"
+                        placeholder="กรอกรายละเอียดการทำงาน"
+                        id="exampleFormControlTextarea1" rows="3"
+                        formControlName="detail">
+                      </textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row" *ngIf="Request.controls.detail.errors &&
+              summited">
+                <div class="col-lg-7 col-md-8 col-sm-7 col-5 d-flex
+                  justify-content-left"></div>
+                <div class="col-sm-3 col-4 space-data">
+                  <div class="alerttext">
+                    กรุณากรอกข้อมูล
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+          </div>
+        </div>
+  
+      </div>
+  
+      <div class="row mb-4 mt-5 d-flex justify-content-center">
+        <div (click)="checkCancel()" class="col-6 col-sm-3 col-md-3
+          col-lg-3"><button class="cancel-button d-flex
+            justify-content-center
+            w-100" type="">
+            <div class="cancel-text">ยกเลิก</div>
+          </button>
+        </div>
+        <div class="col-6 col-sm-3 col-md-3
+          col-lg-3" (click)="submitButton()"><button class="submit-button d-flex
+            justify-content-center
+            w-100" type="submit">
+            <div class="submit-text">ตกลง</div>
+          </button>
+        </div>
+      </div>
+  
+    </form>
+  
+  
+  </div>

@@ -4,13 +4,13 @@
 </h1>
 <div *ngIf="objDataNoti.length != 0" class="row d-flex justify-content-end
     mt-2 mb-2">
-    <div class="col-2 clean-history d-flex justify-content-center">ล้างประวัติการแจ้งเตือน</div>
+    <div class="col-2 clean-history d-flex justify-content-center" (click)="cleartimeatdNoti()">ล้างประวัติการแจ้งเตือน</div>
 </div>
 
 <div class="container-fluid" style="overflow-y: scroll; max-height: 850px;">
     <div class="noti-box mb-4" *ngFor="let item of objDataNoti">
         <div class="row mb-1">
-            <div class="col-6 d-flex justify-content-left type-text">การลา</div>
+            <div class="col-6 d-flex justify-content-left type-text">{{item.topic}}</div>
             <div class="col-6 d-flex justify-content-end time-text">{{item.amount_time}}</div>
         </div>
         <div class="row noti-rectangle">

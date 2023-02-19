@@ -14,18 +14,18 @@ export class OtHistoryComponent implements OnInit {
 
     constructor(private _location: Location, public datepipe: DatePipe, private localeService: BsLocaleService, private otService: OtService) { }
 
+    listPerPage: any = 10
+    objTableHistory: any = [];
+    date: any = ""
+
     ngOnInit() {
         defineLocale('th', thBeLocale);
         this.localeService.use('th');
         this.otService.requestOvertimeHistory().subscribe({
-            next: (res: any) => { },
+            next: (res: any) => { this.objTableHistory = res.data.req_overtimes },
             error: (err: any) => { }
         })
     }
-
-    listPerPage: any = 10
-    objTableHistory: any = [1, 2, 3, 4, 5, 15, 11, 12, 13, 14, 16, 17, 18, 19, 21, 22, 23, 34,];
-    date: any = ""
 
 
     public config: PaginationInstance = {

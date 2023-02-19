@@ -14,7 +14,7 @@
     <div class="container-fluid" style="overflow-y: scroll; max-height: 850px;">
         <div class="noti-box mb-4" *ngFor="let item of objDataNoti">
             <div class="row mb-1">
-                <div class="col-6 d-flex justify-content-left type-text">การลา</div>
+                <div class="col-6 d-flex justify-content-left type-text">{{item.topic}}</div>
                 <div class="col-6 d-flex justify-content-end time-text">{{item.amount_time}}</div>
             </div>
             <div class="row noti-rectangle">
