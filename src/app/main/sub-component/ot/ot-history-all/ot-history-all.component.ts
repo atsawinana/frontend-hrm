@@ -36,7 +36,7 @@ export class OtHistoryAllComponent implements OnInit {
     }
 
     backClicked() {
-        this._location.back();
+        history.back()
     }
 
     onOpenCalendar(container: any) {

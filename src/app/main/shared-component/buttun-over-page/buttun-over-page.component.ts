@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ComponentRef, Input, OnInit,HostListener } from '@angular/core';
 import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 
 @Component({
@@ -13,42 +13,90 @@ export class ButtunOverPageComponent implements OnInit {
     @Input() firstPath = ""
     @Input() secondPath = ""
     @Input() identifyStorage = ""
+    @Input() pathOnShow = ""
 
     role: boolean = false
     route1 = localStorage.getItem(this.identifyStorage)
+    setShow: boolean = false
+    path: any
 
-    constructor(private router: Router) { }
+    constructor(private router: Router) {
+
+    }
 
     ngOnInit() {
+
+        this.route1 = localStorage.getItem(this.identifyStorage)
+
+
+
+        this.router.events.subscribe(event => {
+            if (event instanceof NavigationEnd) {
+                this.path = (this.pathOnShow.split(","))
+                console.log("current url " + this.router.url)
+                console.log(this.path[0])
+                console.log(this.path[1])
+                if (this.router.url == this.path[1] || this.router.url == this.path[0])
+                    this.setShow = true
+                else
+                    this.setShow = false
+
+                if (!this.setShow) {
+                    localStorage.setItem(this.identifyStorage, "true")
+                }
+                this.route1 = localStorage.getItem(this.identifyStorage)
+            }
+        });
+
+        this.path = this.pathOnShow.split(",")
+        console.log("current url " + this.router.url)
+        console.log(this.path[0])
+        console.log(this.path[1])
+        if (this.router.url == this.path[1] || this.router.url == this.path[0])
+            this.setShow = true
+        else
+            this.setShow = false
 
         if (localStorage.getItem('roleUser') == "3" || localStorage.getItem('roleUser') == "2")
             this.role = true
 
 
-        this.router.events.subscribe(event => {
-            if (event instanceof NavigationEnd) {
-                this.route1 = localStorage.getItem(this.identifyStorage)
-                console.log(this.route1)
-            }
-        });
     }
 
     clickFirstPath() {
         this.route1 = "true"
-        localStorage.setItem(this.identifyStorage, String(this.route1))
+        localStorage.setItem(this.identifyStorage, "true")
         this.router.navigate([this.firstPath]);
     }
 
     clickSecondPath() {
         this.route1 = "false"
-        localStorage.setItem(this.identifyStorage, String(this.route1))
+        localStorage.setItem(this.identifyStorage, "false")
         this.router.navigate([this.secondPath]);
     }
 
-
-
-
     ngOnDestroy() {
-        localStorage.setItem(this.identifyStorage, String(this.route1))
+
+        console.log("Destroy !")
+
+        localStorage.setItem(this.identifyStorage, "true")
+    }
+
+    @HostListener('window:popstate', ['$event'])
+    onPopState() {
+
+        this.router.events.subscribe(event => {
+            if (event instanceof NavigationEnd) {
+                if (this.router.url == this.path[0])
+                    localStorage.setItem(this.identifyStorage, "true")
+                else
+                    localStorage.setItem(this.identifyStorage, "false")
+
+                this.route1 = localStorage.getItem(this.identifyStorage)
+                console.log(this.route1)
+            }
+        });
+
+
     }
 }
