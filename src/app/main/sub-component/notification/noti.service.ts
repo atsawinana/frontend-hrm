@@ -29,7 +29,7 @@ export class NotiService {
 
         return this.httpClient.delete(`${environment.apiURL}/notification`, {
             headers,
-          });
+        });
     }
 
     clearLeaveNoti() {
@@ -39,7 +39,7 @@ export class NotiService {
 
         return this.httpClient.delete(`${environment.apiURL}/notification/leave`, {
             headers,
-          });
+        });
 
     }
 
@@ -86,6 +86,7 @@ export class NotiService {
     }
 
 
+
     //     /timeAttendance/notificationRequestAttendance[GET]
     // noti ที่ยังไม่ได้อนุมัติคำร้อง
 
@@ -103,9 +104,54 @@ export class NotiService {
         );
     }
 
+    //   /notification/overTime [GET]
+    // เเจ้งเตือนโอทีที่ยังไม่ได้อนุมัติ
 
-//     /timeAttendance/updateSeenNotification [PATCH]
-// body noti_id: 1
+    getnotificationOverTime() {
+        const headers = new HttpHeaders({
+            Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+        });
+
+        return this.httpClient.get(
+            `${environment.apiURL}/notification/overTime`,
+            {
+                headers,
+            }
+        );
+    }
+
+    clearOTNoti() {
+        const headers = new HttpHeaders({
+            Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+        });
+
+        return this.httpClient.delete(`${environment.apiURL}/notification/overTime`, {
+            headers,
+        });
+
+    }
+
+    cleartimeatdNoti() {
+        const headers = new HttpHeaders({
+            Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+        });
+
+        return this.httpClient.delete(`${environment.apiURL}/notification/attendance`, {
+            headers,
+        });
+
+
+    }
+
+    // /timeAttendance/clearNotificationRequest [PATCH]
+
+
+//     /notification/overTime [DELETE]
+// clear noti ที่ยังไม่ได้อนุมัติคำร้องโอที
+
+
+    //     /timeAttendance/updateSeenNotification [PATCH]
+    // body noti_id: 1
 
 
     // /leaveOnline/updateHasSeen[PATCH]

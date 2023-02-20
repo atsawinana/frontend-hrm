@@ -3,6 +3,7 @@ import { DatePipe, Location } from '@angular/common';
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { defineLocale, thBeLocale } from 'ngx-bootstrap/chronos';
 import { PaginationInstance } from 'ngx-pagination';
+import { OtService } from '../ot.service';
 
 
 @Component({
@@ -12,11 +13,15 @@ import { PaginationInstance } from 'ngx-pagination';
 })
 export class OtListRequestComponent implements OnInit {
 
-    constructor(private _location: Location, public datepipe: DatePipe, private localeService: BsLocaleService,) { }
+    constructor(private _location: Location, public datepipe: DatePipe, private localeService: BsLocaleService,private otService: OtService) { }
 
     ngOnInit() {
         defineLocale('th', thBeLocale);
         this.localeService.use('th');
+        this.otService.getUnapproved().subscribe({
+            next: (res:any) => {},
+            error: (err:any) => {}
+        })
     }
 
     listPerPage:any = 10

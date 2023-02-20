@@ -56,7 +56,9 @@ export class LeaveNotiComponent implements OnInit {
         }).then((e) => {
             if (e.isConfirmed) {
                 this.notiservice.clearLeaveNoti().subscribe({
-                    next: (res: any) => { },
+                    next: (res: any) => {
+                        location.reload()
+                     },
                     error: (err: any) => { }
                 })
             } else {

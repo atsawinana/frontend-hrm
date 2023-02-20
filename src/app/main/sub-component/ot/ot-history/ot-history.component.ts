@@ -3,6 +3,7 @@ import { DatePipe, Location } from '@angular/common';
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { defineLocale, thBeLocale } from 'ngx-bootstrap/chronos';
 import { PaginationInstance } from 'ngx-pagination';
+import { OtService } from '../ot.service';
 
 @Component({
     selector: 'app-ot-history',
@@ -11,16 +12,20 @@ import { PaginationInstance } from 'ngx-pagination';
 })
 export class OtHistoryComponent implements OnInit {
 
-    constructor(private _location: Location, public datepipe: DatePipe, private localeService: BsLocaleService,) { }
+    constructor(private _location: Location, public datepipe: DatePipe, private localeService: BsLocaleService, private otService: OtService) { }
+
+    listPerPage: any = 10
+    objTableHistory: any = [];
+    date: any = ""
 
     ngOnInit() {
         defineLocale('th', thBeLocale);
         this.localeService.use('th');
+        this.otService.requestOvertimeHistory().subscribe({
+            next: (res: any) => { this.objTableHistory = res.data.req_overtimes },
+            error: (err: any) => { }
+        })
     }
-
-    listPerPage:any = 10
-    objTableHistory:any = [1,2,3,4,5,15,11,12,13,14,16,17,18,19,21,22,23,34,];
-    date: any = ""
 
 
     public config: PaginationInstance = {

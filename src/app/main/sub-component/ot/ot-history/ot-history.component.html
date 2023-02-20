@@ -74,44 +74,44 @@
                         <tbody class="list-content">
                             <tr id="row-list" *ngFor="let objleave of objTableHistory | paginate : config ">
                                 <td>
-                                    {{objleave}}
+                                    {{objleave.number}}
                                 </td>
                                 <td>
-                                    {{objleave}}
+                                    {{objleave.rot_start_date}}
                                 </td>
                                 <td>
-                                    {{objleave}}
+                                    {{objleave.rot_start_time}}
                                 </td>
                                 <td>
-                                    {{objleave}}
+                                    {{objleave.rot_ot_id}}
                                 </td>
                                 <td>
-                                    <!-- <div class="mt-1 status-cancel text-center"
-                                        *ngIf="objleave.rta_approve_status ==
+                                    <div class="mt-1 status-cancel text-center"
+                                        *ngIf="objleave.rot_approve_status ==
                                         2">
-                                        {{objleave.rta_status_name}}
+                                        {{objleave.rot_status_name}}
                                     </div>
                                     <div class="mt-1 status-disapproved
                                         text-center"
-                                        *ngIf="objleave.rta_approve_status ==
+                                        *ngIf="objleave.rot_approve_status ==
                                         0">
-                                        {{objleave.rta_status_name}}
+                                        {{objleave.rot_status_name}}
                                     </div>
                                     <div class="mt-1 status-accept text-center"
-                                        *ngIf="objleave.rta_approve_status ==
+                                        *ngIf="objleave.rot_approve_status ==
                                         1">
-                                        {{objleave.rta_status_name}}
+                                        {{objleave.rot_status_name}}
                                     </div>
                                     <div class="mt-1 status-pending text-center"
-                                        *ngIf="objleave.rta_approve_status ==
+                                        *ngIf="objleave.rot_approve_status ==
                                         null">
-                                        {{objleave.rta_status_name}}
-                                    </div> -->
-                                    {{objleave}}
+                                        {{objleave.rot_status_name}}
+                                    </div>
                                 </td>
                                 <td class="cut-text" style="width: 30px
                                     !important;">
-                                    {{objleave}}
+                                    {{objleave.rot_detail
+                                    }}
                                 </td>
 
                                 <!-- routerLink="../view-request-detail/{{objleave.rta_id}}" -->
@@ -121,7 +121,7 @@
                                             <button type="button " class="btn
                                                 btn-primary btn-dropdown"
                                                 id="dropdownMenuButton1"
-                                                routerLink="../view-request/{{objleave}}">
+                                                routerLink="../view-request/{{objleave.rot_id}}">
                                                 <div class="col icon-dropdown
                                                     d-flex
                                                     justify-content-center">

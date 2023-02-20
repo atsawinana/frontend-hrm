@@ -1,4 +1,5 @@
 import { Routes, RouterModule } from '@angular/router';
+import { OtEditRequestComponent } from './ot-edit-request/ot-edit-request.component';
 import { OtHistoryAllComponent } from './ot-history-all/ot-history-all.component';
 import { OtHistoryComponent } from './ot-history/ot-history.component';
 import { OtHomeComponent } from './ot-home/ot-home.component';
@@ -35,6 +36,10 @@ const routes: Routes = [
             {
                 path: "all-history",
                 component: OtHistoryAllComponent
+            },
+            {
+                path: "edit-request/:id",
+                component: OtEditRequestComponent
             },
         ]
     },

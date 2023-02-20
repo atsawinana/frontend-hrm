@@ -1,1 +1,56 @@
-<h1>noti ot work !</h1>
+<app-notification-loading *ngIf="!ApiSuccess" class="d-flex
+    justify-content-center h-100 align-items-center"></app-notification-loading>
+<div *ngIf="ApiSuccess">
+    <h1 class="row mt-5 d-flex justify-content-center" *ngIf="objDataNoti.length
+        == 0" style="font-family: 'Kanit';">
+        ไม่พบการแจ้งเตือน
+    </h1>
+    <div *ngIf="objDataNoti.length != 0" class="row d-flex justify-content-end
+        mt-2 mb-2">
+        <div class="col-2 clean-history d-flex justify-content-center"
+            (click)="clearOTNoti()">ล้างประวัติการแจ้งเตือน</div>
+    </div>
+
+    <div class="container-fluid" style="overflow-y: scroll; max-height: 850px;">
+        <div class="noti-box mb-4" *ngFor="let item of objDataNoti">
+            <div class="row mb-1">
+                <div class="col-6 d-flex justify-content-left type-text">{{item.topic}}</div>
+                <div class="col-6 d-flex justify-content-end time-text">{{item.amount_time}}</div>
+            </div>
+            <div class="row noti-rectangle">
+                <div class="col-1 my-auto" style="max-width:65px;">
+                    <img class="image" src="{{storageURL}}{{item.ud_picture}}">
+                </div>
+                <div class="col my-auto">
+                    <div class="row d-flex justify-content-between">
+                        <div class="col d-flex flex-row ">
+                            <div class="content-text">จาก </div>
+                            <div class="content-text-bold">{{item.ud_fullname_th}}</div>
+                            <div class="content-text mx-2">ตำเเหน่ง :</div>
+                            <div class="content-text-bold ">{{item.ud_position}}</div></div>
+                        <div class="col d-flex justify-content-end"
+                            *ngIf="item.noti_has_seen == 0">
+                            <div class="content-text circle"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="content-text">วันที่ :</div>
+                        <div class="content-text-bold">{{item.rot_start_date}}</div>
+                        <div class="content-text">เวลาเริ่มเเละสิ้นสุด : </div>
+                        <div class="content-text-bold">{{item.rot_time}}</div>
+                        <div class="content-text">จำนวนชั่วโมง :</div>
+                        <div class="content-text-bold">{{item.rot_amount}}</div>
+                        <div class="content-text">ชื่องาน :</div>
+                        <div class="content-text-bold">{{item.topic}}</div>
+                        <div class="col d-flex justify-content-end">
+                            <div class="text-end more"
+                                (click)="NavigateToOT(item.rot_id,item.noti_id)">ดูเพิ่มเติม</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

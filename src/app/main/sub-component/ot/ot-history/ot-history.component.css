@@ -119,3 +119,31 @@ table {
   font-size: 16px;
   line-height: 24px;
 }
+
+.status-cancel {
+  font-family: 'Kanit';
+  font-style: normal;
+  color: #636366 !important;
+  font-size: 16px;
+}
+
+.status-pending {
+  font-family: 'Kanit';
+  font-style: normal;
+  color: #EB760B;
+  font-size: 16px;
+}
+
+.status-accept {
+  font-family: 'Kanit';
+  font-style: normal;
+  color: #239411;
+  font-size: 16px;
+}
+
+.status-disapproved {
+  font-family: 'Kanit';
+  font-style: normal;
+  color: #EF0303;
+  font-size: 16px;
+}

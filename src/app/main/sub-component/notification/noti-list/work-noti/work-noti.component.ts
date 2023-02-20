@@ -1,43 +1,70 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import Swal from 'sweetalert2';
 import { NotiService } from '../../noti.service';
 
 @Component({
-  selector: 'app-work-noti',
-  templateUrl: './work-noti.component.html',
-  styleUrls: ['./work-noti.component.css']
+    selector: 'app-work-noti',
+    templateUrl: './work-noti.component.html',
+    styleUrls: ['./work-noti.component.css']
 })
 export class WorkNotiComponent implements OnInit {
 
-  constructor(private notiservice: NotiService, private router: Router) { }
+    constructor(private notiservice: NotiService, private router: Router) { }
 
-  objDataNoti: any
-  baseURL = environment.apiURL;
+    objDataNoti: any
+    baseURL = environment.apiURL;
 
-  ApiSuccess: boolean = false
-  storageURL: any = environment.storageURL;
+    ApiSuccess: boolean = false
+    storageURL: any = environment.storageURL;
 
-  ngOnInit() {
-    this.notiservice.notificationRequestAttendance().subscribe({
-      next: (res: any) => {
-        this.objDataNoti = res.data
-        this.ApiSuccess = true
-      },
-      error: (error: any) => { },
-    })
+    ngOnInit() {
+        this.notiservice.notificationRequestAttendance().subscribe({
+            next: (res: any) => {
+                this.objDataNoti = res.data
+                this.ApiSuccess = true
+            },
+            error: (error: any) => { },
+        })
 
-  }
+    }
 
-  NavigateTotimeattendance(id: any, noti_id: any) {
+    NavigateTotimeattendance(id: any, noti_id: any) {
 
-    this.notiservice.updateHasSeen(noti_id).subscribe({
-        next: (res: any) => {
-        },
-        error: (error: any) => { },
-    })
+        this.notiservice.updateHasSeen(noti_id).subscribe({
+            next: (res: any) => {
+            },
+            error: (error: any) => { },
+        })
 
-    this.router.navigate([`/main/timeattendance/time-view-request/${id}`]);
-}
+        this.router.navigate([`/main/timeattendance/time-view-request/${id}`]);
+    }
+
+    cleartimeatdNoti() {
+
+        Swal.fire({
+            title: `<strong style = "font-family:Kanit"> คุณต้องการล้างการแจ้งเตือนหรือไม่ </strong>`,
+            icon: 'question',
+            showCancelButton: true,
+            cancelButtonColor: '#d33',
+            cancelButtonText: '<div style = "font-family:Kanit"> ยกเลิก </div>',
+            confirmButtonText: '<div style = "font-family:Kanit"> ตกลง </div>',
+            confirmButtonColor: '#005FBC',
+            reverseButtons: true,
+        }).then((e) => {
+            if (e.isConfirmed) {
+                this.notiservice.cleartimeatdNoti().subscribe({
+                    next: (res: any) => {
+                        location.reload()
+                    },
+                    error: (err: any) => { }
+                })
+            } else {
+
+            }
+        })
+
+    }
 
 }

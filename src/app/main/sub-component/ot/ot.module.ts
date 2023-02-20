@@ -16,7 +16,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ButtunOverPageComponent } from '../../shared-component/buttun-over-page/buttun-over-page.component';
-import { SharedComponentModule } from '../../shared-component/shared-component.module';
+import { SharedComponentModule } from '../../shared-component/buttun-over-page/shared-component.module';
+import { OtEditRequestComponent } from './ot-edit-request/ot-edit-request.component';
 
 @NgModule({
     imports: [
@@ -40,6 +41,7 @@ import { SharedComponentModule } from '../../shared-component/shared-component.m
         OtHistoryComponent,
         OtBtnOverComponent,
         OtHistoryAllComponent,
+        OtEditRequestComponent
     ], 
     providers: [
         DatePipe,
