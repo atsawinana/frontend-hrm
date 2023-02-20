@@ -114,6 +114,21 @@ export class OtService {
     }
 
 
+    //     /requestOvertime/unapproved[GET]
+    // แสดงคำร้องโอทีที่ยังไม่ได้อนุมัติ
+
+    getUnapproved() {
+        const headers = new HttpHeaders({
+            Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+        });
+
+        return this.httpClient.get(
+            `${environment.apiURL}/requestOvertime/unapproved`,
+            {
+                headers,
+            }
+        );
+    }
 
 
     // /notification/overTime [DELETE]
