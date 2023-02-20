@@ -130,8 +130,72 @@ export class OtService {
         );
     }
 
+    // /requestOvertime[DELETE]
+    // ยกเลิกคำร้องOT
+    // body: "rot_id" : 7,"rot_reason" : "ลองยกเลิกอีกที"
 
-    // /notification/overTime [DELETE]
-    // clear noti ที่ยังไม่ได้อนุมัติคำร้องโอที
+    cancelRequestOvertime(id: any, reason: any) {
+        const headers = new HttpHeaders({
+            Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+        });
 
+        const httpOptions = {
+            headers,
+            body: JSON.stringify({
+                rot_id: id,
+                rot_reason: reason
+            }),
+        };
+
+        return this.httpClient.delete(
+            `${environment.apiURL}/requestOvertime`, httpOptions
+        );
+    }
+
+    //     /requestOvertime [PUT]
+    // แก้ไขคำร้องโอที 
+    // body : "rot_id" : 1,
+    //     "rot_start_date" : "2023-02-09", 
+    //     "rot_detail" : "ทดลองotอีกทีนึง1",
+    //     "rot_start_time" : "20:00",
+    //     "rot_end_date" : "2023-02-09" ,
+    //     "rot_ot_id" : "1",
+    //     "rot_end_time" : "22:00"
+
+    // /requestOvertime/disapproved [POST]
+    // body : "rot_id" : 1, "rot_reason" : "'เลือกงานโอทีผิด"
+    // ไม่อนุมัติคำร้องโอที
+
+    disapprovedRequestOvertime(id: any, reason: any) {
+        const headers = new HttpHeaders({
+            Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+        });
+
+        return this.httpClient.post(
+            `${environment.apiURL}/requestOvertime/disapproved`,
+            {
+                "rot_id": id,
+                "rot_reason": reason,
+            },
+            { headers }
+        );
+    }
+
+    // /requestOvertime/approved [POST]
+    // body : "rot_id" : 1
+    // อนุมัติคำร้องโอที
+
+    approvedRequestOvertime(id: any) {
+        const headers = new HttpHeaders({
+            Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+        });
+
+        return this.httpClient.post(
+            `${environment.apiURL}/requestOvertime/approved`,
+            {
+                "rot_id": id,
+            },
+            { headers }
+        );
+    }
 }

@@ -83,7 +83,7 @@
                             </div>
 
                             <div>
-                                <button *ngIf="owner && objDetailReq.rot_can_cancel == 1  && owner" class="col-2 btn-cancel" >ยกเลิก</button>
+                                <button *ngIf="owner && objDetailReq.rot_can_cancel == 1  && owner" class="col-2 btn-cancel" (click)="cancelRequestOvertime()" >ยกเลิก</button>
                                 <button class="col-2 btn-edit" *ngIf="objDetailReq.rot_can_cancel == null && owner " routerLink="../../time-edit-request/{{objDetailReq.rot_id}}">แก้ไข</button>
                             </div>
                         </div>
@@ -154,8 +154,8 @@
 
 
                             <div class="row" *ngIf="reqs.ar_can_approve == 1 && !owner ">
-                                <button class="cancel-btn me-3" >ไม่อนุมัติ</button>
-                                <button class="submit-btn" >อนุมัติ</button>
+                                <button class="cancel-btn me-3" (click)="disapproveRequest()" >ไม่อนุมัติ</button>
+                                <button class="submit-btn" (click)="approveRequest()" >อนุมัติ</button>
                             </div>
 
                         </div>

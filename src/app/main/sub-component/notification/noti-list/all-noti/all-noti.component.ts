@@ -51,6 +51,18 @@ export class AllNotiComponent implements OnInit {
         this.router.navigate([`/main/timeattendance/time-view-request/${id}`]);
     }
 
+    NavigateToOT(id: any,noti_id:any) {
+
+        this.notiservice.updateHasSeen(noti_id).subscribe({
+            next: (res: any) => {
+            },
+            error: (error: any) => { },
+        })
+
+        this.router.navigate([`/main/ot/view-request/${id}`]);
+    }
+
+
 
     clearNoti() {
         Swal.fire({
