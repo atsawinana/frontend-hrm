@@ -21,7 +21,7 @@ export class OtHistoryComponent implements OnInit {
     ngOnInit() {
         defineLocale('th', thBeLocale);
         this.localeService.use('th');
-        this.otService.requestOvertimeHistory().subscribe({
+        this.otService.requestOvertimeHistory("").subscribe({
             next: (res: any) => { this.objTableHistory = res.data.req_overtimes },
             error: (err: any) => { }
         })
@@ -49,25 +49,30 @@ export class OtHistoryComponent implements OnInit {
         container.setViewMode('month');
     }
 
-    sortdate() {
-        // if (this.date == "" || this.date == null)
-        //     return
-        // console.log(this.date)
-        // let startDate = this.datepipe.transform(this.date, 'yyyy-MM-dd')
+    sortDate() {
+        // console.log((this.date))
 
-        // let arydate1 = startDate!.toString().split("-")
-        // // console.log("test1", arydate1)
-        // arydate1[0] = (Number(arydate1[0]) + 543).toString()
+        let startDate = new Date(this.date[0])
+        let endDate = new Date(this.date[1])
 
+        if (isNaN(Number(startDate)) || isNaN(Number(endDate)))
+            return
 
-        // let date = arydate1[0] + "-" + arydate1[1]
+        let startDateFormat = startDate.getFullYear() + "-" + Number(startDate.getMonth() + 1) + "-" + startDate.getDate()
+        // console.log(startDateFormat)
 
-        // this.serviceTimeatd.requestAttendanceHistory(date).subscribe({
-        //     next: (res: any) => {
-        //         this.objTableHistory = res.data.req_time_attendances
-        //     },
-        //     error: (err: any) => { }
-        // })
+        let endDateFormat = endDate.getFullYear() + "-" + Number(endDate.getMonth() + 1) + "-" + endDate.getDate()
+        // console.log(endDateFormat)
+        let date = startDateFormat + "," + endDateFormat
+        this.otService.requestOvertimeHistory(date).subscribe({
+            next: (res: any) => {
+                // console.log(res.data)
+                this.objTableHistory = res.data.req_overtimes
+            },
+            error: (err: any) => {
+
+            }
+        })
     }
 
 }

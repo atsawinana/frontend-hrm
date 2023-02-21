@@ -17,14 +17,14 @@
                         <input type="text" placeholder="เลือกเดือนและปี"
                             class="col-9 w-75 dateIcon icon-bg"
                             style="height: 40px;"
-                            #dp="bsDatepicker"
-                            bsDatepicker (keypress)="false"
-                            (onShown)="onOpenCalendar($event)"
-                            (onHidden)="sortdate()" [(ngModel)]="date"
-                            (bsValueChange)="sortdate()"
+                            #dp="bsDaterangepicker"
+                            bsDaterangepicker 
+                            (keypress)="false"
+                            (onHidden)="sortDate()" [(ngModel)]="date"
                             [bsConfig]="{ isAnimated: true,
+                            rangeInputFormat : 'DD/MM/YYYY',
                             dateInputFormat:
-                            'MM/YYYY', containerClass:
+                            'DD/MM/YYYY', containerClass:
                             'theme-dark-blue',
                             showWeekNumbers: false,
                             clearPosition: 'right'}"/>

@@ -50,7 +50,7 @@ export class OtService {
         );
     }
 
-    requestOvertimeHistory() {
+    requestOvertimeHistory(date: any) {
         const headers = new HttpHeaders({
             Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
         });
@@ -59,6 +59,9 @@ export class OtService {
             `${environment.apiURL}/requestOvertime/history`,
             {
                 headers,
+                params: {
+                    sort_date: date
+                }
             }
         );
     }
@@ -117,7 +120,7 @@ export class OtService {
     //     /requestOvertime/unapproved[GET]
     // แสดงคำร้องโอทีที่ยังไม่ได้อนุมัติ
 
-    getUnapproved() {
+    getUnapproved(date: any) {
         const headers = new HttpHeaders({
             Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
         });
@@ -126,6 +129,9 @@ export class OtService {
             `${environment.apiURL}/requestOvertime/unapproved`,
             {
                 headers,
+                params: {
+                    sort_date: date
+                }
             }
         );
     }
@@ -162,9 +168,9 @@ export class OtService {
     //     "rot_ot_id" : "1",
     //     "rot_end_time" : "22:00"
 
-    
+
     EditrequestOvertime(
-        id:string,
+        id: string,
         rot_ot_id: string,
         rot_start_date: string,
         rot_end_date: string,
@@ -180,7 +186,7 @@ export class OtService {
         return this.httpClient.put(
             `${environment.apiURL}/requestOvertime`,
             {
-                "rot_id" : id,
+                "rot_id": id,
                 "rot_start_date": rot_start_date,
                 "rot_detail": rot_detail,
                 "rot_start_time": rot_start_time,

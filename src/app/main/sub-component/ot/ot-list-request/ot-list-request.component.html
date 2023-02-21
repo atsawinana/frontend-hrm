@@ -10,34 +10,6 @@
                 ดูคำขอทำโอที
             </div>
 
-            <div class="col-2 mx-4 d-flex align-items-center border-input">
-                <div class="container">
-                    <div class="row">
-                        <input type="text" placeholder="เลือกเดือนและปี"
-                            class="col-9 w-75 dateIcon icon-bg"
-                            style="height: 40px;"
-                            #dp="bsDatepicker"
-                            bsDatepicker (keypress)="false"
-                            (onShown)="onOpenCalendar($event)"
-                            (onHidden)="sortdate()" [(ngModel)]="date"
-                            (bsValueChange)="sortdate()"
-                            [bsConfig]="{ isAnimated: true,
-                            dateInputFormat:
-                            'MM/YYYY', containerClass:
-                            'theme-dark-blue',
-                            showWeekNumbers: false,
-                            clearPosition: 'right'}"/>
-
-                        <div class="col-3 d-flex align-items-center
-                            justify-content-center px-0" (click)="dp.toggle()"
-                            [attr.aria-expanded]="dp.isOpen" style="cursor:
-                            pointer;">
-                            <i class="fa-solid fa-calendar-days icon-color"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </div>
 
@@ -83,7 +55,7 @@
                                     {{objottable.ud_fullname_th}}
                                 </td>
                                 <td>
-                                    {{objottable.rot_created_at}}
+                                    {{objottable.rot_date}}
                                 </td>
                                 <td>
                                     <!-- <div class="mt-1 status-cancel text-center"
@@ -107,11 +79,11 @@
                                         null">
                                         {{objottable.rta_status_name}}
                                     </div> -->
-                                    {{objottable.user_card_number}}
+                                    {{objottable.rot_time}}
                                 </td>
                                 <td class="cut-text" style="width: 30px
                                     !important;">
-                                    {{objottable.user_card_number}}
+                                    {{objottable.rot_ot_id}}
                                 </td>
 
                                 <!-- routerLink="../view-request-detail/{{objottable.rta_id}}" -->
@@ -121,7 +93,7 @@
                                             <button type="button " class="btn
                                                 btn-primary btn-dropdown"
                                                 id="dropdownMenuButton1"
-                                                routerLink="../view-request/{{objottable}}">
+                                                routerLink="../view-request/{{objottable.rot_id}}">
                                                 <div class="col icon-dropdown
                                                     d-flex
                                                     justify-content-center">

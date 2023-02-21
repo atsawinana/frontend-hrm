@@ -22,7 +22,7 @@ export class OtListRequestComponent implements OnInit {
     ngOnInit() {
         defineLocale('th', thBeLocale);
         this.localeService.use('th');
-        this.otService.getUnapproved().subscribe({
+        this.otService.getUnapproved("").subscribe({
             next: (res: any) => {
                 this.objTableHistory = res.data.request_overtimes
             },
@@ -51,25 +51,6 @@ export class OtListRequestComponent implements OnInit {
         container.setViewMode('month');
     }
 
-    sortdate() {
-        // if (this.date == "" || this.date == null)
-        //     return
-        // console.log(this.date)
-        // let startDate = this.datepipe.transform(this.date, 'yyyy-MM-dd')
-
-        // let arydate1 = startDate!.toString().split("-")
-        // // console.log("test1", arydate1)
-        // arydate1[0] = (Number(arydate1[0]) + 543).toString()
-
-
-        // let date = arydate1[0] + "-" + arydate1[1]
-
-        // this.serviceTimeatd.requestAttendanceHistory(date).subscribe({
-        //     next: (res: any) => {
-        //         this.objTableHistory = res.data.req_time_attendances
-        //     },
-        //     error: (err: any) => { }
-        // })
-    }
+   
 
 }
