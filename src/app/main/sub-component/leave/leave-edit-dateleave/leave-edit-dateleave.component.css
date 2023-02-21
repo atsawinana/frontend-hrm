@@ -7,6 +7,7 @@
     text-align: center;
     color: #000000;
 }
+
 #font-content {
     font-family: 'Kanit';
     font-style: normal;
@@ -14,6 +15,7 @@
     font-size: 16px;
     line-height: 24px;
 }
+
 .cancel-text {
     font-family: 'Kanit';
     font-style: normal;
@@ -22,6 +24,7 @@
     line-height: 24px;
     color: #005FBC;
 }
+
 .submit-text {
     font-family: 'Kanit';
     font-style: normal;
@@ -31,6 +34,7 @@
     color: #FFFFFF;
 
 }
+
 .cancel-button {
     display: flex;
     flex-direction: row;
@@ -40,6 +44,7 @@
     border: 1px solid #005FBC;
     border-radius: 8px;
 }
+
 .submit-button {
     display: flex;
     flex-direction: row;
@@ -49,6 +54,7 @@
     border-radius: 8px;
     border: 1px solid #005FBC;
 }
+
 .alerttext {
     font-family: 'Kanit';
     font-style: normal;
@@ -56,10 +62,49 @@
     font-size: 14px;
     color: red;
 }
+
 .space-data {
     margin-left: 90px;
     margin-top: 5px;
 }
+
 .isinvalid {
     border: 1px solid #EF0303 !important;
+}
+
+table {
+    border-collapse: collapse;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.list-table {
+    background-color: #005FBC;
+    font-family: 'Kanit';
+    font-style: normal;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+.list-header {
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 47px;
+    color: #000000;
+    border-radius: 8px;
+}
+
+.list-content {
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+td {
+    text-align: center;
+    vertical-align: middle;
 }
