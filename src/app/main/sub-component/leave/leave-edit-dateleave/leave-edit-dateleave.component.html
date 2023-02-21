@@ -4,401 +4,302 @@
       <div class="col-12 justify-content-center">
         <div class="row d-flex justify-content-center">
           <div class="col-12 justify-content-center">
-            <p class="font-header">แก้ไขวันลา</p>  
-        </div>
+            <p class="font-header">แก้ไขวันลา</p>
+          </div>
 
-        <div class="col-7 justify-content-center">
-          <br />
-        <div class="row justify-content-center">
-          <div class="col-4 d-inline-flex p-2" id="font-content">
-            ลากิจ 
-          </div>
-          <div class="col-3">
-            <div class="row">
-              <div class="col-12" id="font-content">
-                <input 
-                  [ngClass]="{
-                  isinvalid:  leaveDays.controls.leave.errors && summited
-                    }" 
-                  type="text"
-                  placeholder="กรอกจำนวนวัน"
-                  class="form-control text-center" 
-                  (keypress)="inputNumberOnly($event)"
-                  formControlName="leave"
-                  rows="3"
-                  >
-              </div>
-            </div>
-          </div>
-          <div class="col-2 d-flex align-items-center" id="font-content">
-            วัน
-          </div>
-        </div>
-        <div class="row">
-          <div
-              class="col-5 d-flex
-              justify-content-left"></div>
-          <div class="col-4 space-data">
-              <div
-                  *ngIf="leaveDays.controls.leave.errors
-                  && summited" class="alerttext">
-                  กรุณากรอกข้อมูล
-              </div>
-          </div>
-      </div>
-      </div>
-        <!-- ลากิจ -->
+          <div class="table-responsive">
+            <table class="table-responsive table table-striped mt-3">
 
-        <div class="col-7 justify-content-center">
-          <br />
-        <div class="row justify-content-center">
-          <div class="col-4 d-inline-flex p-2" id="font-content">
-            ลาป่วย
-          </div>
-          <div class="col-3">
-            <div class="row">
-              <div class="col-12" id="font-content">
-                <input 
-                  [ngClass]="{
+              <!--table header-->
+              <thead class="ps-5 list-table">
+                <tr scope="row">
+                  <th [width]="650" scope="col" style="text-align: center">ประเภทการลา</th>
+                  <th [width]="650" scope="col" style="text-align: center">สิทธิการลา (วัน)</th>
+                </tr>
+              </thead>
+              <!---->
+
+              <tbody class="list-content">
+                <!--row ลากิจ-->
+                <tr>
+                  <td>
+                    ลากิจ
+                  </td>
+
+                  <td class="d-flex justify-content-center">
+                    <div class="d-flex justify-content-center w-25">
+                      <input [ngClass]="{
+                      isinvalid:  leaveDays.controls.leave.errors && summited
+                        }" type="text" placeholder="กรอกจำนวนวัน" class="form-control text-center"
+                        (keypress)="inputNumberOnly($event)" formControlName="leave" rows="3">
+                    </div>
+                  </td>
+                </tr>
+
+                <!--row ลาป่วย-->
+                <tr>
+                  <td>
+                    ลาป่วย
+                  </td>
+
+                  <td class="d-flex justify-content-center">
+                    <div class="d-flex justify-content-center w-25">
+                      <input [ngClass]="{
                   isinvalid:  leaveDays.controls.sick.errors && summited
-                    }" 
-                  type="text"
-                  placeholder="กรอกจำนวนวัน"
-                  class="form-control text-center" 
-                  (keypress)="inputNumberOnly($event)"
-                  formControlName="sick"
-                  rows="3"
-                  >
-              </div>
-            </div>
-          </div>
-          <div class="col-2 d-flex align-items-center" id="font-content">
-            วัน
-          </div>
-        </div>
-        <div class="row">
-          <div
-              class="col-5 d-flex
-              justify-content-left"></div>
-          <div class="col-4 space-data">
-              <div
-                  *ngIf="leaveDays.controls.sick.errors
-                  && summited" class="alerttext">
-                  กรุณากรอกข้อมูล
-              </div>
-          </div>
-      </div>
-      </div>
-        <!-- ลาป่วย -->
+                    }" type="text" placeholder="กรอกจำนวนวัน" class="form-control text-center"
+                        (keypress)="inputNumberOnly($event)" formControlName="sick" rows="3">
+                    </div>
+                  </td>
+                </tr>
 
-        <div class="col-7 justify-content-center">
-          <br />
-        <div class="row justify-content-center">
-          <div class="col-4 d-inline-flex p-2" id="font-content">
-            ลาพักร้อน อายุงาน 1 ปี
-          </div>
-          <div class="col-3">
-            <div class="row">
-              <div class="col-12" id="font-content">
-                <input 
-                  [ngClass]="{
-                  isinvalid:  leaveDays.controls.takeAnnual1.errors && summited
-                    }" 
-                  type="text"
-                  placeholder="กรอกจำนวนวัน"
-                  class="form-control text-center"
-                  (keypress)="inputNumberOnly($event)" 
-                  formControlName="takeAnnual1"
-                  rows="3"
-                  >
-              </div>
-            </div>
-          </div>
-          <div class="col-2 d-flex align-items-center" id="font-content">
-            วัน
-          </div>
-        </div>
-        <div class="row">
-          <div
-              class="col-5 d-flex
-              justify-content-left"></div>
-          <div class="col-4 space-data">
-              <div
-                  *ngIf="leaveDays.controls.takeAnnual1.errors
-                  && summited" class="alerttext">
-                  กรุณากรอกข้อมูล
-              </div>
-          </div>
-      </div>
-      </div>
-        <!-- ลาพักร้อน อายุงาน 1 ปี -->
+                <!--row ลาบวช-->
+                <tr>
+                  <td>
+                    ลาบวช
+                  </td>
 
-        <div class="col-7 justify-content-center">
-          <br />
-        <div class="row justify-content-center">
-          <div class="col-4 d-inline-flex p-2" id="font-content">
-            ลาพักร้อน อายุงาน 2 ปี
-          </div>
-          <div class="col-3">
-            <div class="row">
-              <div class="col-12" id="font-content">
-                <input 
-                  [ngClass]="{
-                  isinvalid:  leaveDays.controls.takeAnnual2.errors && summited
-                    }" 
-                  type="text"
-                  placeholder="กรอกจำนวนวัน"
-                  class="form-control text-center"
-                  (keypress)="inputNumberOnly($event)" 
-                  formControlName="takeAnnual2"
-                  rows="3"
-                  >
-              </div>
-            </div>
-          </div>
-          <div class="col-2 d-flex align-items-center" id="font-content">
-            วัน
-          </div>
-        </div>
-        <div class="row">
-          <div
-              class="col-5 d-flex
-              justify-content-left"></div>
-          <div class="col-4 space-data">
-              <div
-                  *ngIf="leaveDays.controls.takeAnnual2.errors
-                  && summited" class="alerttext">
-                  กรุณากรอกข้อมูล
-              </div>
-          </div>
-      </div>
-      </div>
-        <!-- ลาพักร้อน อายุงาน 2 ปี -->
-
-        <div class="col-7 justify-content-center">
-          <br />
-        <div class="row justify-content-center">
-          <div class="col-4 d-inline-flex p-2" id="font-content">
-            ลาพักร้อน อายุงาน 3 ปี
-          </div>
-          <div class="col-3">
-            <div class="row">
-              <div class="col-12" id="font-content">
-                <input 
-                  [ngClass]="{
-                  isinvalid:  leaveDays.controls.takeAnnual3.errors && summited
-                    }" 
-                  type="text"
-                  placeholder="กรอกจำนวนวัน"
-                  class="form-control text-center" 
-                  (keypress)="inputNumberOnly($event)"
-                  formControlName="takeAnnual3"
-                  rows="3"
-                  >
-              </div>
-            </div>
-          </div>
-          <div class="col-2 d-flex align-items-center" id="font-content">
-            วัน
-          </div>
-        </div>
-        <div class="row">
-          <div
-              class="col-5 d-flex
-              justify-content-left"></div>
-          <div class="col-4 space-data">
-              <div
-                  *ngIf="leaveDays.controls.takeAnnual3.errors
-                  && summited" class="alerttext">
-                  กรุณากรอกข้อมูล
-              </div>
-          </div>
-      </div>
-      </div>
-        <!-- ลาพักร้อน อายุงาน 3 ปี -->
-
-        <div class="col-7 justify-content-center">
-          <br />
-        <div class="row justify-content-center">
-          <div class="col-4 d-inline-flex p-2" id="font-content">
-            ลาพักร้อน อายุงาน 4 ปี
-          </div>
-          <div class="col-3">
-            <div class="row">
-              <div class="col-12" id="font-content">
-                <input 
-                  [ngClass]="{
-                  isinvalid:  leaveDays.controls.takeAnnual4.errors && summited
-                    }" 
-                  type="text"
-                  placeholder="กรอกจำนวนวัน" 
-                  class="form-control text-center" 
-                  (keypress)="inputNumberOnly($event)"
-                  formControlName="takeAnnual4"
-                  rows="3">
-              </div>
-            </div>
-          </div>
-          <div class="col-2 d-flex align-items-center" id="font-content">
-            วัน
-          </div>
-        </div>
-        <div class="row">
-          <div
-              class="col-5 d-flex
-              justify-content-left"></div>
-          <div class="col-4 space-data">
-              <div
-                  *ngIf="leaveDays.controls.takeAnnual4.errors
-                  && summited" class="alerttext">
-                  กรุณากรอกข้อมูล
-              </div>
-          </div>
-      </div>
-      </div>
-        <!-- ลาพักร้อน อายุงาน 4 ปี -->
-
-        <div class="col-7 justify-content-center">
-          <br />
-        <div class="row justify-content-center">
-          <div class="col-4 d-inline-flex p-2" id="font-content">
-            ลาบวช
-          </div>
-          <div class="col-3">
-            <div class="row">
-              <div class="col-12" id="font-content">
-                <input 
-                  [ngClass]="{
+                  <td class="d-flex justify-content-center">
+                    <div class="d-flex justify-content-center w-25">
+                      <input [ngClass]="{
                   isinvalid:  leaveDays.controls.ordination.errors && summited
-                    }" 
-                  type="text"
-                  placeholder="กรอกจำนวนวัน"
-                  class="form-control text-center" 
-                  (keypress)="inputNumberOnly($event)"
-                  formControlName="ordination"
-                  rows="3"
-                  >
-              </div>
-            </div>
-          </div>
-          <div class="col-2 d-flex align-items-center" id="font-content">
-            วัน
-          </div>
-        </div>
-        <div class="row">
-          <div
-              class="col-5 d-flex
-              justify-content-left"></div>
-          <div class="col-4 space-data">
-              <div
-                  *ngIf="leaveDays.controls.ordination.errors
-                  && summited" class="alerttext">
-                  กรุณากรอกข้อมูล
-              </div>
-          </div>
-      </div>
-      </div>
-        <!-- ลาบวช -->
+                    }" type="text" placeholder="กรอกจำนวนวัน" class="form-control text-center"
+                        (keypress)="inputNumberOnly($event)" formControlName="ordination" rows="3">
+                    </div>
+                  </td>
+                </tr>
 
-        <div class="col-7 justify-content-center">
-          <br />
-        <div class="row justify-content-center">
-          <div class="col-4 d-inline-flex p-2" id="font-content">
-            ลาคลอด
-          </div>
-          <div class="col-3">
-            <div class="row">
-              <div class="col-12" id="font-content">
-                <input 
-                  [ngClass]="{
+                <!--row ลาคลอด-->
+                <tr>
+                  <td>
+                    ลาคลอด
+                  </td>
+
+                  <td class="d-flex justify-content-center">
+                    <div class="d-flex justify-content-center w-25">
+                      <input [ngClass]="{
                   isinvalid:  leaveDays.controls.maternity.errors && summited
-                    }" 
-                  type="text"
-                  placeholder="กรอกจำนวนวัน"
-                  class="form-control text-center" 
-                  (keypress)="inputNumberOnly($event)"
-                  formControlName="maternity"
-                  rows="3"
-                  >
-              </div>
-            </div>
-          </div>
-          <div class="col-2 d-flex align-items-center" id="font-content">
-            วัน
-          </div>
-        </div>
-        <div class="row">
-          <div
-              class="col-5 d-flex
-              justify-content-left"></div>
-          <div class="col-4 space-data">
-              <div
-                  *ngIf="leaveDays.controls.maternity.errors
-                  && summited" class="alerttext">
-                  กรุณากรอกข้อมูล
-              </div>
-          </div>
-      </div>
-      </div>
-        <!-- ลาคลอด -->
+                    }" type="text" placeholder="กรอกจำนวนวัน" class="form-control text-center"
+                        (keypress)="inputNumberOnly($event)" formControlName="maternity" rows="3">
+                    </div>
+                  </td>
+                </tr>
 
-        <div class="col-7 justify-content-center">
-          <br />
-        <div class="row justify-content-center">
-          <div class="col-4 d-inline-flex p-2" id="font-content">
-            ลาเพื่อรับราชการทหาร
-          </div>
-          <div class="col-3">
-            <div class="row">
-              <div class="col-12" id="font-content">
-                <input 
-                  [ngClass]="{
+                <!--row ลาเพื่อรับราชการทหาร-->
+                <tr>
+                  <td>
+                    ลาเพื่อรับราชการทหาร
+                  </td>
+
+                  <td class="d-flex justify-content-center">
+                    <div class="d-flex justify-content-center w-25">
+                      <input [ngClass]="{
                   isinvalid:  leaveDays.controls.militaryService.errors && summited
-                    }" 
-                  type="text"
-                  placeholder="กรอกจำนวนวัน"
-                  class="form-control text-center" 
-                  (keypress)="inputNumberOnly($event)"
-                  formControlName="militaryService"
-                  rows="3"
-                  >
-              </div>
-            </div>
+                    }" type="text" placeholder="กรอกจำนวนวัน" class="form-control text-center"
+                        (keypress)="inputNumberOnly($event)" formControlName="militaryService" rows="3">
+                    </div>
+                  </td>
+                </tr>
+
+                <!--row ลาพักร้อน อายุงาน 0 - 12 เดือน-->
+                <tr>
+                  <td>
+                    ลาพักร้อน อายุงาน 0 - 12 เดือน
+                  </td>
+
+                  <td class="d-flex justify-content-center">
+                    <div class="d-flex justify-content-center w-25">
+                      <input [ngClass]="" type="text" placeholder="กรอกจำนวนวัน" class="form-control text-center"
+                        (keypress)="inputNumberOnly($event)" formControlName="" rows="3">
+                    </div>
+                  </td>
+                </tr>
+
+                <!--row ลาพักร้อน อายุงาน 13 - 15 เดือน-->
+                <tr>
+                  <td>
+                    ลาพักร้อน อายุงาน 13 - 15 เดือน
+                  </td>
+
+                  <td class="d-flex justify-content-center">
+                    <div class="d-flex justify-content-center w-25">
+                      <input [ngClass]="" type="text" placeholder="กรอกจำนวนวัน" class="form-control text-center"
+                        (keypress)="inputNumberOnly($event)" formControlName="" rows="3">
+                    </div>
+                  </td>
+                </tr>
+
+                <!--row ลาพักร้อน อายุงาน 16 - 18 เดือน-->
+                <tr>
+                  <td>
+                    ลาพักร้อน อายุงาน 16 - 18 เดือน
+                  </td>
+
+                  <td class="d-flex justify-content-center">
+                    <div class="d-flex justify-content-center w-25">
+                      <input [ngClass]="" type="text" placeholder="กรอกจำนวนวัน" class="form-control text-center"
+                        (keypress)="inputNumberOnly($event)" formControlName="" rows="3">
+                    </div>
+                  </td>
+                </tr>
+
+                <!--row ลาพักร้อน อายุงาน 19 - 21 เดือน-->
+                <tr>
+                  <td>
+                    ลาพักร้อน อายุงาน 19 - 21 เดือน
+                  </td>
+
+                  <td class="d-flex justify-content-center">
+                    <div class="d-flex justify-content-center w-25">
+                      <input [ngClass]="" type="text" placeholder="กรอกจำนวนวัน" class="form-control text-center"
+                        (keypress)="inputNumberOnly($event)" formControlName="" rows="3">
+                    </div>
+                  </td>
+                </tr>
+
+                <!--row ลาพักร้อน อายุงาน 22 - 24 เดือน-->
+                <tr>
+                  <td>
+                    ลาพักร้อน อายุงาน 22 - 24 เดือน
+                  </td>
+
+                  <td class="d-flex justify-content-center">
+                    <div class="d-flex justify-content-center w-25">
+                      <input [ngClass]="" type="text" placeholder="กรอกจำนวนวัน" class="form-control text-center"
+                        (keypress)="inputNumberOnly($event)" formControlName="" rows="3">
+                    </div>
+                  </td>
+                </tr>
+
+                <!--row ลาพักร้อน อายุงาน 25 - 27 เดือน-->
+                <tr>
+                  <td>
+                    ลาพักร้อน อายุงาน 25 - 27 เดือน
+                  </td>
+
+                  <td class="d-flex justify-content-center">
+                    <div class="d-flex justify-content-center w-25">
+                      <input [ngClass]="" type="text" placeholder="กรอกจำนวนวัน" class="form-control text-center"
+                        (keypress)="inputNumberOnly($event)" formControlName="" rows="3">
+                    </div>
+                  </td>
+                </tr>
+
+                <!--row ลาพักร้อน อายุงาน 28 - 30 เดือน-->
+                <tr>
+                  <td>
+                    ลาพักร้อน อายุงาน 28 - 30 เดือน
+                  </td>
+
+                  <td class="d-flex justify-content-center">
+                    <div class="d-flex justify-content-center w-25">
+                      <input [ngClass]="" type="text" placeholder="กรอกจำนวนวัน" class="form-control text-center"
+                        (keypress)="inputNumberOnly($event)" formControlName="" rows="3">
+                    </div>
+                  </td>
+                </tr>
+
+                <!--row ลาพักร้อน อายุงาน 31 - 33 เดือน-->
+                <tr>
+                  <td>
+                    ลาพักร้อน อายุงาน 31 - 33 เดือน
+                  </td>
+
+                  <td class="d-flex justify-content-center">
+                    <div class="d-flex justify-content-center w-25">
+                      <input [ngClass]="" type="text" placeholder="กรอกจำนวนวัน" class="form-control text-center"
+                        (keypress)="inputNumberOnly($event)" formControlName="" rows="3">
+                    </div>
+                  </td>
+                </tr>
+
+                <!--row ลาพักร้อน อายุงาน 34 - 36 เดือน-->
+                <tr>
+                  <td>
+                    ลาพักร้อน อายุงาน 34 - 36 เดือน
+                  </td>
+
+                  <td class="d-flex justify-content-center">
+                    <div class="d-flex justify-content-center w-25">
+                      <input [ngClass]="" type="text" placeholder="กรอกจำนวนวัน" class="form-control text-center"
+                        (keypress)="inputNumberOnly($event)" formControlName="" rows="3">
+                    </div>
+                  </td>
+                </tr>
+
+                <!--row ลาพักร้อน อายุงาน 37 - 39 เดือน-->
+                <tr>
+                  <td>
+                    ลาพักร้อน อายุงาน 37 - 39 เดือน
+                  </td>
+
+                  <td class="d-flex justify-content-center">
+                    <div class="d-flex justify-content-center w-25">
+                      <input [ngClass]="" type="text" placeholder="กรอกจำนวนวัน" class="form-control text-center"
+                        (keypress)="inputNumberOnly($event)" formControlName="" rows="3">
+                    </div>
+                  </td>
+                </tr>
+
+                <!--row ลาพักร้อน อายุงาน 40 - 42 เดือน-->
+                <tr>
+                  <td>
+                    ลาพักร้อน อายุงาน 40 - 42 เดือน
+                  </td>
+
+                  <td class="d-flex justify-content-center">
+                    <div class="d-flex justify-content-center w-25">
+                      <input [ngClass]="" type="text" placeholder="กรอกจำนวนวัน" class="form-control text-center"
+                        (keypress)="inputNumberOnly($event)" formControlName="" rows="3">
+                    </div>
+                  </td>
+                </tr>
+
+                <!--row ลาพักร้อน อายุงาน 43 - 45 เดือน-->
+                <tr>
+                  <td>
+                    ลาพักร้อน อายุงาน 43 - 45 เดือน
+                  </td>
+
+                  <td class="d-flex justify-content-center">
+                    <div class="d-flex justify-content-center w-25">
+                      <input [ngClass]="" type="text" placeholder="กรอกจำนวนวัน" class="form-control text-center"
+                        (keypress)="inputNumberOnly($event)" formControlName="" rows="3">
+                    </div>
+                  </td>
+                </tr>
+
+                <!--row ลาพักร้อน อายุงาน 46 เดือนขึ้นไป-->
+                <tr>
+                  <td>
+                    ลาพักร้อน อายุงาน 46 เดือนขึ้นไป
+                  </td>
+
+                  <td class="d-flex justify-content-center">
+                    <div class="d-flex justify-content-center w-25">
+                      <input [ngClass]="" type="text" placeholder="กรอกจำนวนวัน" class="form-control text-center"
+                        (keypress)="inputNumberOnly($event)" formControlName="" rows="3">
+                    </div>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
           </div>
-          <div class="col-2 d-flex align-items-center" id="font-content">
-            วัน
-          </div>
-        </div>
-        <div class="row">
-          <div
-              class="col-5 d-flex
-              justify-content-left"></div>
-          <div class="col-4 space-data">
-              <div
-                  *ngIf="leaveDays.controls.militaryService.errors
-                  && summited" class="alerttext">
-                  กรุณากรอกข้อมูล
-              </div>
-          </div>
-      </div>
-      </div>
-      
-        <!-- ลาเพื่อรับราชการทหาร -->
 
         </div>
       </div>
       <div class="row mb-4 mt-5 d-flex justify-content-center">
         <div class="col-6 col-sm-3 col-md-3 col-lg-3"><button (click)="checkCancel()"
-                class="cancel-button d-flex justify-content-center w-100" type="" href="#Modal-cancel">
-                <div class="cancel-text">ยกเลิก</div>
-            </button>
+            class="cancel-button d-flex justify-content-center w-100" type="" href="#Modal-cancel">
+            <div class="cancel-text">ยกเลิก</div>
+          </button>
         </div>
-        <div  class="col-6 col-sm-3 col-md-3 col-lg-3"><button (click)="checkSummit()"
-                class="submit-button d-flex justify-content-center w-100" type="submit" href="#Modal-submit">
-                <div  class="submit-text">ตกลง</div>
-            </button>
+        <div class="col-6 col-sm-3 col-md-3 col-lg-3"><button (click)="checkSummit()"
+            class="submit-button d-flex justify-content-center w-100" type="submit" href="#Modal-submit">
+            <div class="submit-text">ตกลง</div>
+          </button>
         </div>
+      </div>
     </div>
-    </div>
-</form>
+  </form>
 </div>
