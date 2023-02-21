@@ -33,6 +33,7 @@ export class LeaveRequestComponent implements OnInit {
             this.noWhitespaceValidator,
         ]),
     });
+    loadingapi:boolean = false
     locale = 'th';
     today!: Date;
     amount: string = "0 วัน 0 ชั่วโมง";
@@ -110,6 +111,7 @@ export class LeaveRequestComponent implements OnInit {
     }
 
     checkNull() {
+        this.loadingapi = true
         this.summited = true;
 
         if (this.leaveRequest.invalid)
@@ -146,8 +148,11 @@ export class LeaveRequestComponent implements OnInit {
                         this.leaveRequest.controls.detail.value!
                     ).subscribe({
                         next: (res: any) => {
+                            this.loadingapi = false
                             this.route.navigate(['../main/leave']);
-                        },
+                        }, error: (err:any) => {
+                            this.loadingapi = false
+                          }
                     });
             }
         });

@@ -26,6 +26,7 @@ export class OtRequestComponent implements OnInit {
   today!: Date;
   summited: boolean = false;
   requestStatus = 1
+  loadingapi:boolean = false
 
   timeStart = {
     hours: 0,
@@ -201,7 +202,7 @@ export class OtRequestComponent implements OnInit {
   }
 
   submitButton() {
-
+    this.loadingapi = true
     this.summited = true;
     console.log(this.Request.value)
 
@@ -249,7 +250,11 @@ export class OtRequestComponent implements OnInit {
         ).subscribe({
           next: (res: any) => {
             this.route.navigate(['../main/ot']);
+            this.loadingapi = false
           },
+          error: (err:any) => {
+            this.loadingapi = false
+          }
         });
       }
     });

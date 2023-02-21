@@ -21,6 +21,7 @@ import { LeaveEditRequestComponent } from './leave-edit-request/leave-edit-reque
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { LeaveEditDateleaveComponent } from './leave-edit-dateleave/leave-edit-dateleave.component';
+import { SharedComponentModule } from '../../shared-component/shared-component.module';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { LeaveEditDateleaveComponent } from './leave-edit-dateleave/leave-edit-d
         Ng2SearchPipeModule,
         NgxPaginationModule,
         DatePipe,
+        SharedComponentModule
     ],
     declarations: [
         LeaveComponent,

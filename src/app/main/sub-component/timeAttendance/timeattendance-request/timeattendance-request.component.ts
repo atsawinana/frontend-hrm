@@ -27,6 +27,7 @@ export class TimeattendanceRequestComponent implements OnInit {
     today!: Date;
     summited: boolean = false;
     requestStatus = 1
+    loadingapi: boolean = false;
 
     time = {
         hours: 0,
@@ -162,7 +163,7 @@ export class TimeattendanceRequestComponent implements OnInit {
     }
 
     submitButton() {
-
+        this.loadingapi = true
         this.summited = true
 
         if (this.requestStatus == 0) {
@@ -215,10 +216,14 @@ export class TimeattendanceRequestComponent implements OnInit {
                     this.Request.controls.detail.value,
                 ).subscribe({
                     next: (res: any) => {
+                        this.loadingapi = false
+                        this.backClicked()
                     },
-                    error: (err: any) => { }
+                    error: (err: any) => {
+                        this.loadingapi = false
+                        this.backClicked()
+                     }
                 })
-                this.backClicked()
             }
         });
 

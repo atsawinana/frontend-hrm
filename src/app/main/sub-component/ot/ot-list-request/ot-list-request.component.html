@@ -73,17 +73,17 @@
                             <tr id="row-list" *ngFor="let objottable of
                                 objTableHistory | paginate : config ">
                                 <td>
-                                    {{objottable.number}}asdf
+                                    {{objottable.number}}
                                 </td>
                                 
                                 <td>
-                                    {{objottable}}
+                                    {{objottable.user_card_number}}
                                 </td>
                                 <td>
-                                    {{objottable}}
+                                    {{objottable.ud_fullname_th}}
                                 </td>
                                 <td>
-                                    {{objottable}}
+                                    {{objottable.rot_created_at}}
                                 </td>
                                 <td>
                                     <!-- <div class="mt-1 status-cancel text-center"
@@ -107,11 +107,11 @@
                                         null">
                                         {{objottable.rta_status_name}}
                                     </div> -->
-                                    {{objottable}}
+                                    {{objottable.user_card_number}}
                                 </td>
                                 <td class="cut-text" style="width: 30px
                                     !important;">
-                                    {{objottable}}
+                                    {{objottable.user_card_number}}
                                 </td>
 
                                 <!-- routerLink="../view-request-detail/{{objottable.rta_id}}" -->
