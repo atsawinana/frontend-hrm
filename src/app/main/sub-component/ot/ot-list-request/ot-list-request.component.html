@@ -55,72 +55,73 @@
                                 <th class="text-center cut-text"
                                     style="max-width: 10% !important;">ลำดับ</th>
                                 <th class="text-center cut-text"
-                                    style="max-width: 10% !important;">วันที่ทำงาน</th>
+                                    style="max-width: 10% !important;">รหัสพนักงาน</th>
                                 <th class="text-center cut-text"
-                                    style="max-width: 20% !important;">เวลาเข้าทำงาน</th>
+                                    style="max-width: 30% !important;">รายชื่อ</th>
                                 <th class="text-center cut-text"
-                                    style="max-width: 20% !important;">ประเภทคำร้อง</th>
+                                    style="max-width: 20% !important;">วันที่</th>
                                 <th class="text-center cut-text"
-                                    style="max-width: 10% !important;">สถานะ</th>
-                                <th class="cut-text" style="width: 20%
-                                    !important;">เหตุผล</th>
+                                    style="max-width: 10% !important;">ระยะเวลาเริ่มต้น - สิ้นสุด</th>
+                                <th class="cut-text" style="width: 10%
+                                    !important;">ชื่องาน</th>
                                 <th class="cut-text" style="max-width: 10%
                                     !important;">การดำเนินการ</th>
                             </tr>
                         </thead>
 
                         <tbody class="list-content">
-                            <tr id="row-list" *ngFor="let objleave of
+                            <tr id="row-list" *ngFor="let objottable of
                                 objTableHistory | paginate : config ">
                                 <td>
-                                    {{objleave}}
+                                    {{objottable.number}}asdf
+                                </td>
+                                
+                                <td>
+                                    {{objottable}}
                                 </td>
                                 <td>
-                                    {{objleave}}
+                                    {{objottable}}
                                 </td>
                                 <td>
-                                    {{objleave}}
-                                </td>
-                                <td>
-                                    {{objleave}}
+                                    {{objottable}}
                                 </td>
                                 <td>
                                     <!-- <div class="mt-1 status-cancel text-center"
-                                        *ngIf="objleave.rta_approve_status ==
+                                        *ngIf="objottable.rta_approve_status ==
                                         2">
-                                        {{objleave.rta_status_name}}
+                                        {{objottable.rta_status_name}}
                                     </div>
                                     <div class="mt-1 status-disapproved
                                         text-center"
-                                        *ngIf="objleave.rta_approve_status ==
+                                        *ngIf="objottable.rta_approve_status ==
                                         0">
-                                        {{objleave.rta_status_name}}
+                                        {{objottable.rta_status_name}}
                                     </div>
                                     <div class="mt-1 status-accept text-center"
-                                        *ngIf="objleave.rta_approve_status ==
+                                        *ngIf="objottable.rta_approve_status ==
                                         1">
-                                        {{objleave.rta_status_name}}
+                                        {{objottable.rta_status_name}}
                                     </div>
                                     <div class="mt-1 status-pending text-center"
-                                        *ngIf="objleave.rta_approve_status ==
+                                        *ngIf="objottable.rta_approve_status ==
                                         null">
-                                        {{objleave.rta_status_name}}
+                                        {{objottable.rta_status_name}}
                                     </div> -->
-                                    {{objleave}}
+                                    {{objottable}}
                                 </td>
                                 <td class="cut-text" style="width: 30px
                                     !important;">
-                                    {{objleave}}
+                                    {{objottable}}
                                 </td>
 
-                                <!-- routerLink="../view-request-detail/{{objleave.rta_id}}" -->
+                                <!-- routerLink="../view-request-detail/{{objottable.rta_id}}" -->
                                 <td>
                                     <div class="row ">
                                         <div class="dropdown">
                                             <button type="button " class="btn
                                                 btn-primary btn-dropdown"
                                                 id="dropdownMenuButton1"
-                                                routerLink="../view-request/{{objleave}}">
+                                                routerLink="../view-request/{{objottable}}">
                                                 <div class="col icon-dropdown
                                                     d-flex
                                                     justify-content-center">

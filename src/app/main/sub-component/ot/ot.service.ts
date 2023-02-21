@@ -162,6 +162,36 @@ export class OtService {
     //     "rot_ot_id" : "1",
     //     "rot_end_time" : "22:00"
 
+    
+    EditrequestOvertime(
+        id:string,
+        rot_ot_id: string,
+        rot_start_date: string,
+        rot_end_date: string,
+        rot_start_time: string | null,
+        rot_end_time: string,
+        rot_detail: string,
+
+    ) {
+        const headers = new HttpHeaders({
+            Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+        });
+
+        return this.httpClient.put(
+            `${environment.apiURL}/requestOvertime`,
+            {
+                "rot_id" : id,
+                "rot_start_date": rot_start_date,
+                "rot_detail": rot_detail,
+                "rot_start_time": rot_start_time,
+                "rot_end_date": rot_end_date,
+                "rot_ot_id": String(rot_ot_id),
+                "rot_end_time": rot_end_time
+            },
+            { headers }
+        );
+    }
+
     // /requestOvertime/disapproved [POST]
     // body : "rot_id" : 1, "rot_reason" : "'เลือกงานโอทีผิด"
     // ไม่อนุมัติคำร้องโอที

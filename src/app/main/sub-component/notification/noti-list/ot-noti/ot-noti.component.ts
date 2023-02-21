@@ -40,7 +40,7 @@ export class OtNotiComponent implements OnInit {
             error: (error: any) => { },
         })
 
-        this.router.navigate([`/main/leave/view-request-detail/${id}`]);
+        this.router.navigate([`/main/ot/view-request/${id}`]);
     }
 
     clearOTNoti() {

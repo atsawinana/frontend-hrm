@@ -30,6 +30,7 @@ import { SharedComponentModule } from '../../shared-component/shared-component.m
         NgSelectModule,
         NgxPaginationModule,
         Ng2SearchPipeModule,
+        SharedComponentModule,
         SharedComponentModule
     ],
     declarations: [
