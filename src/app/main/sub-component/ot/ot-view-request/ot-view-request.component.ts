@@ -18,10 +18,12 @@ export class OtViewRequestComponent implements OnInit {
     owner: any
     aryApprove: any = ['1',]
     storageURL = environment.apiURL
+    checkState:boolean = true
     ngOnInit() {
         this.id = this.route.snapshot.params['id'];
         this.otService.getDetailRequestOvertime(this.id).subscribe({
             next: (res: any) => {
+                this.checkState = false
                 this.objDetailReq = res.data.req_overtimes
                 this.aryApprove = res.data.approve_reqs
                 this.owner = res.data.owner

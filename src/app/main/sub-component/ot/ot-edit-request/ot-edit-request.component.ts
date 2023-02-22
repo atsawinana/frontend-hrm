@@ -29,7 +29,7 @@ export class OtEditRequestComponent implements OnInit {
     summited: boolean = false;
     requestStatus = 1
     id: any
-
+    checkState: boolean = true
     timeStart = {
         hours: 0,
         alerthours: false,
@@ -78,6 +78,7 @@ export class OtEditRequestComponent implements OnInit {
                 this.timeStart.mins = Number(startTime[1])
                 this.Request.controls.startTime.setValue(this.timeStart.hours.toString() + " นาฬิกา " + this.timeStart.mins.toString() + " นาที")
                 this.Request.controls.EndTime.setValue(this.timeEnd.hours.toString() + " นาฬิกา " + this.timeEnd.mins.toString() + " นาที")
+                this.checkState = false
             },
             error: (err: any) => { }
         })

@@ -16,7 +16,7 @@ export class ButtunOverPageComponent implements OnInit {
     @Input() pathOnShow = ""
 
     role: boolean = false
-    route1 = localStorage.getItem(this.identifyStorage)
+    route1 = sessionStorage.getItem(this.identifyStorage)
     setShow: boolean = false
     path: any
 
@@ -26,9 +26,9 @@ export class ButtunOverPageComponent implements OnInit {
 
     ngOnInit() {
 
-        this.route1 = localStorage.getItem(this.identifyStorage)
+        this.route1 = sessionStorage.getItem(this.identifyStorage)
         if(this.route1 == null)
-            localStorage.setItem(this.identifyStorage, "true")
+            sessionStorage.setItem(this.identifyStorage, "true")
 
 
 
@@ -41,9 +41,9 @@ export class ButtunOverPageComponent implements OnInit {
                     this.setShow = false
 
                 if (!this.setShow) {
-                    localStorage.setItem(this.identifyStorage, "true")
+                    sessionStorage.setItem(this.identifyStorage, "true")
                 }
-                this.route1 = localStorage.getItem(this.identifyStorage)
+                this.route1 = sessionStorage.getItem(this.identifyStorage)
             }
         });
 
@@ -61,20 +61,20 @@ export class ButtunOverPageComponent implements OnInit {
 
     clickFirstPath() {
         this.route1 = "true"
-        localStorage.setItem(this.identifyStorage, "true")
+        sessionStorage.setItem(this.identifyStorage, "true")
         this.router.navigate([this.firstPath]);
     }
 
     clickSecondPath() {
         this.route1 = "false"
-        localStorage.setItem(this.identifyStorage, "false")
+        sessionStorage.setItem(this.identifyStorage, "false")
         this.router.navigate([this.secondPath]);
     }
 
     ngOnDestroy() {
 
 
-        localStorage.setItem(this.identifyStorage, "true")
+        sessionStorage.setItem(this.identifyStorage, "true")
     }
 
     @HostListener('window:popstate', ['$event'])
@@ -83,11 +83,11 @@ export class ButtunOverPageComponent implements OnInit {
         this.router.events.subscribe(event => {
             if (event instanceof NavigationEnd) {
                 if (this.router.url == this.path[0])
-                    localStorage.setItem(this.identifyStorage, "true")
+                    sessionStorage.setItem(this.identifyStorage, "true")
                 else
-                    localStorage.setItem(this.identifyStorage, "false")
+                    sessionStorage.setItem(this.identifyStorage, "false")
 
-                this.route1 = localStorage.getItem(this.identifyStorage)
+                this.route1 = sessionStorage.getItem(this.identifyStorage)
             }
         });
 

@@ -27,7 +27,7 @@ export class OtRequestComponent implements OnInit {
   summited: boolean = false;
   requestStatus = 1
   loadingapi:boolean = false
-
+  checkState:boolean = true
   timeStart = {
     hours: 0,
     alerthours: false,
@@ -65,6 +65,7 @@ export class OtRequestComponent implements OnInit {
       next: (res:any) => {
         console.log(res)
         this.nameWork = res.data
+        this.checkState = false
       },
       error: (err:any) => {}
     })

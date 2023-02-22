@@ -1,4 +1,5 @@
-<div class="container justify-content-center">
+<app-loading *ngIf="checkState"></app-loading>
+<div class="container justify-content-center" *ngIf="!checkState">
     <form [formGroup]="Request">
       <div class="row">
         <div class="col-12 justify-content-center">

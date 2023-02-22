@@ -9,7 +9,6 @@ import { OtRequestComponent } from './ot-request/ot-request.component';
 import { OtViewRequestComponent } from './ot-view-request/ot-view-request.component';
 import { OtListRequestComponent } from './ot-list-request/ot-list-request.component';
 import { OtHistoryComponent } from './ot-history/ot-history.component';
-import { OtBtnOverComponent } from './ot-btn-over/ot-btn-over.component';
 import { OtHistoryAllComponent } from './ot-history-all/ot-history-all.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { NgSelectModule } from '@ng-select/ng-select';
@@ -40,7 +39,6 @@ import { SharedComponentModule } from '../../shared-component/shared-component.m
         OtViewRequestComponent,
         OtListRequestComponent,
         OtHistoryComponent,
-        OtBtnOverComponent,
         OtHistoryAllComponent,
         OtEditRequestComponent
     ], 

@@ -1,4 +1,5 @@
-<div class="container-fluid">
+<app-loading *ngIf="checkState"></app-loading>
+<div class="container-fluid" *ngIf="!checkState">
     <div class="row">
         <div class="col d-flex flex-row align-items-center">
             <button

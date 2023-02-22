@@ -18,13 +18,14 @@ export class OtListRequestComponent implements OnInit {
     listPerPage: any = 10
     objTableHistory: any ;
     date: any = ""
-
+    checkState:boolean = true
     ngOnInit() {
         defineLocale('th', thBeLocale);
         this.localeService.use('th');
         this.otService.getUnapproved("").subscribe({
             next: (res: any) => {
                 this.objTableHistory = res.data.request_overtimes
+                this.checkState = false
             },
             error: (err: any) => { }
         })

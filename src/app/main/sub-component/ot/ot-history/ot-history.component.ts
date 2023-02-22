@@ -17,12 +17,15 @@ export class OtHistoryComponent implements OnInit {
     listPerPage: any = 10
     objTableHistory: any = [];
     date: any = ""
-
+    checkState: boolean = true
     ngOnInit() {
         defineLocale('th', thBeLocale);
         this.localeService.use('th');
         this.otService.requestOvertimeHistory("").subscribe({
-            next: (res: any) => { this.objTableHistory = res.data.req_overtimes },
+            next: (res: any) => {
+                this.objTableHistory = res.data.req_overtimes
+                this.checkState = false
+            },
             error: (err: any) => { }
         })
     }
