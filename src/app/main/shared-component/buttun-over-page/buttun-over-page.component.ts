@@ -27,15 +27,14 @@ export class ButtunOverPageComponent implements OnInit {
     ngOnInit() {
 
         this.route1 = localStorage.getItem(this.identifyStorage)
+        if(this.route1 == null)
+            localStorage.setItem(this.identifyStorage, "true")
 
 
 
         this.router.events.subscribe(event => {
             if (event instanceof NavigationEnd) {
                 this.path = (this.pathOnShow.split(","))
-                console.log("current url " + this.router.url)
-                console.log(this.path[0])
-                console.log(this.path[1])
                 if (this.router.url == this.path[1] || this.router.url == this.path[0])
                     this.setShow = true
                 else
@@ -49,9 +48,6 @@ export class ButtunOverPageComponent implements OnInit {
         });
 
         this.path = this.pathOnShow.split(",")
-        console.log("current url " + this.router.url)
-        console.log(this.path[0])
-        console.log(this.path[1])
         if (this.router.url == this.path[1] || this.router.url == this.path[0])
             this.setShow = true
         else
@@ -77,7 +73,6 @@ export class ButtunOverPageComponent implements OnInit {
 
     ngOnDestroy() {
 
-        console.log("Destroy !")
 
         localStorage.setItem(this.identifyStorage, "true")
     }
@@ -93,7 +88,6 @@ export class ButtunOverPageComponent implements OnInit {
                     localStorage.setItem(this.identifyStorage, "false")
 
                 this.route1 = localStorage.getItem(this.identifyStorage)
-                console.log(this.route1)
             }
         });
 

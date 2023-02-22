@@ -18,7 +18,7 @@
                             class="col-9 w-75 dateIcon icon-bg"
                             style="height: 40px;"
                             #dp="bsDaterangepicker"
-                            bsDaterangepicker 
+                            bsDaterangepicker
                             (keypress)="false"
                             (onHidden)="sortDate()" [(ngModel)]="date"
                             [bsConfig]="{ isAnimated: true,
@@ -42,9 +42,14 @@
         </div>
     </div>
 
-    <div class="row">
+    <h1 class="row mt-5 d-flex justify-content-center"
+        *ngIf="objTableHistory.length == 0" style="font-family: 'Kanit';">
+        ไม่พบประวัติการทำโอที
+    </h1>
+
+    <div class="row" *ngIf="!(objTableHistory.length == 0)">
         <div class="col">
-            <div class="row" >
+            <div class="row">
                 <div class="table-responsive" style="overflow-x: scroll">
                     <table
                         class="table table-striped align-middle text-center mt-3
@@ -71,7 +76,8 @@
                         </thead>
 
                         <tbody class="list-content">
-                            <tr id="row-list" *ngFor="let objleave of objTableHistory | paginate : config ">
+                            <tr id="row-list" *ngFor="let objleave of
+                                objTableHistory | paginate : config ">
                                 <td>
                                     {{objleave.number}}
                                 </td>

@@ -13,7 +13,12 @@
         </div>
     </div>
 
-    <div class="row">
+    <h1 class="row mt-5 d-flex justify-content-center"
+        *ngIf="objTableHistory.length == 0" style="font-family: 'Kanit';">
+        ไม่พบคำขอโอที
+    </h1>
+
+    <div class="row" *ngIf="!(objTableHistory.length == 0)">
         <div class="col">
             <div class="row">
                 <div class="table-responsive" style="overflow-x: scroll">
@@ -33,7 +38,8 @@
                                 <th class="text-center cut-text"
                                     style="max-width: 20% !important;">วันที่</th>
                                 <th class="text-center cut-text"
-                                    style="max-width: 10% !important;">ระยะเวลาเริ่มต้น - สิ้นสุด</th>
+                                    style="max-width: 10% !important;">ระยะเวลาเริ่มต้น
+                                    - สิ้นสุด</th>
                                 <th class="cut-text" style="width: 10%
                                     !important;">ชื่องาน</th>
                                 <th class="cut-text" style="max-width: 10%
@@ -47,7 +53,7 @@
                                 <td>
                                     {{objottable.number}}
                                 </td>
-                                
+
                                 <td>
                                     {{objottable.user_card_number}}
                                 </td>

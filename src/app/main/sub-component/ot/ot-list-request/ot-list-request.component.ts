@@ -16,7 +16,7 @@ export class OtListRequestComponent implements OnInit {
     constructor(private _location: Location, public datepipe: DatePipe, private localeService: BsLocaleService, private otService: OtService) { }
 
     listPerPage: any = 10
-    objTableHistory: any = [1, 2, 3, 4, 5, 15, 11, 12, 13, 14, 16, 17, 18, 19, 21, 22, 23, 34,];
+    objTableHistory: any ;
     date: any = ""
 
     ngOnInit() {
