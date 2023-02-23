@@ -147,3 +147,8 @@ table {
   color: #EF0303;
   font-size: 16px;
 }
+
+.dateIcon {
+  border: 0px !important;
+  border-right: 1px solid #005FBC !important;
+}
