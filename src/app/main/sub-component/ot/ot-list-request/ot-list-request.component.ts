@@ -22,7 +22,7 @@ export class OtListRequestComponent implements OnInit {
     ngOnInit() {
         defineLocale('th', thBeLocale);
         this.localeService.use('th');
-        this.otService.getUnapproved("").subscribe({
+        this.otService.getUnapproved().subscribe({
             next: (res: any) => {
                 this.objTableHistory = res.data.request_overtimes
                 this.checkState = false

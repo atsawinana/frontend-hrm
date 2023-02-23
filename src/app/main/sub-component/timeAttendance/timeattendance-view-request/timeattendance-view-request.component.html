@@ -8,7 +8,7 @@
             <i class="fa-solid fa-angle-left back-icon"></i>
         </button>
 
-        <div class="font-header ms-2 col d-flex align-items-center">รายละเอียดการลา</div>
+        <div class="font-header ms-2 col d-flex align-items-center">ราละเอียดคำร้องเข้างาน</div>
     </div>
     <div class="row" *ngIf="true">
         <div class="container-fluid shadow-bg">
@@ -91,7 +91,7 @@
                                     class="col-2 btn-cancel"
                                     (click)="cancelRequestAttendance()">ยกเลิก</button>
                                 <button class="col-2 btn-edit"
-                                    *ngIf="objDetailReq.rta_can_cancel == null
+                                    *ngIf="objDetailReq.rta_can_cancel == 2
                                     && owner"
                                     routerLink="../../time-edit-request/{{objDetailReq.rta_id}}">แก้ไข</button>
                             </div>

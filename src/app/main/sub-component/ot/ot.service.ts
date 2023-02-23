@@ -136,7 +136,7 @@ export class OtService {
     //     /requestOvertime/unapproved[GET]
     // แสดงคำร้องโอทีที่ยังไม่ได้อนุมัติ
 
-    getUnapproved(date: any) {
+    getUnapproved() {
         const headers = new HttpHeaders({
             Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
         });
@@ -145,9 +145,6 @@ export class OtService {
             `${environment.apiURL}/requestOvertime/unapproved`,
             {
                 headers,
-                params: {
-                    sort_date: date
-                }
             }
         );
     }

@@ -41,7 +41,7 @@ export class TimeattendanceViewRequestComponent implements OnInit {
     disapproveRequest() {
 
         Swal.fire({
-            title: `<strong style = "font-family:Kanit"> คุณต้องการไม่อนุมัติการลา <br> จาก ${this.objDetailReq.ud_fullname_th} <br> แผนก ${this.objDetailReq.department} </strong>`,
+            title: `<strong style = "font-family:Kanit"> คุณต้องการไม่อนุมัติคำขอโอที <br> จาก ${this.objDetailReq.ud_fullname_th} <br> แผนก ${this.objDetailReq.department} </strong>`,
             icon: 'question',
             showCancelButton: true,
             cancelButtonColor: '#d33',
@@ -52,9 +52,9 @@ export class TimeattendanceViewRequestComponent implements OnInit {
         }).then(async (e) => {
             if (e.isConfirmed) {
                 let { value: reason } = await Swal.fire({
-                    title: '<strong style = "font-family:Kanit"> กรุณากรอกเหตุผลไม่อนุมัติการลา </strong>',
+                    title: '<strong style = "font-family:Kanit"> กรุณากรอกเหตุผลไม่อนุมัติคำขอโอที </strong>',
                     input: 'textarea',
-                    html: '<strong style = "font-family:Kanit; font-size:16px"> เหตุผลไม่อนุมัติการลา* </strong>',
+                    html: '<strong style = "font-family:Kanit; font-size:16px"> เหตุผลไม่อนุมัติคำขอโอที* </strong>',
                     inputPlaceholder: 'กรอกข้อมูล',
                     inputAttributes: {
                         'aria-label': 'Type your message here'
@@ -94,7 +94,7 @@ export class TimeattendanceViewRequestComponent implements OnInit {
     approveRequest() {
 
         Swal.fire({
-            title: `<strong style = "font-family:Kanit"> คุณต้องการอนุมัติการลา <br> จาก ${this.objDetailReq.ud_fullname_th} <br> แผนก ${this.objDetailReq.department} </strong>`,
+            title: `<strong style = "font-family:Kanit"> คุณต้องการอนุมัติคำขอโอที <br> จาก ${this.objDetailReq.ud_fullname_th} <br> แผนก ${this.objDetailReq.department} </strong>`,
             icon: 'question',
             showCancelButton: true,
             cancelButtonColor: '#d33',
@@ -126,7 +126,7 @@ export class TimeattendanceViewRequestComponent implements OnInit {
                 "ไม่ต้องการยื่นคำร้องเข้างาน": 'ไม่ต้องการยื่นคำร้องเข้างาน',
                 "อื่น ๆ (กดตกลงเพื่อกรอกเหตุผล)": 'อื่น ๆ (กดตกลงเพื่อกรอกเหตุผล)',
             },
-            inputPlaceholder: 'เลือกเหตุผลการยกเลิกลา',
+            inputPlaceholder: 'เลือกเหตุผลการยกเลิกคำขอโอที',
             showCancelButton: true,
             cancelButtonColor: '#d33',
             cancelButtonText: '<div style = "font-family:Kanit"> ยกเลิก </div>',
@@ -150,9 +150,9 @@ export class TimeattendanceViewRequestComponent implements OnInit {
         let elsereason = reason
         if (reason == "อื่น ๆ (กดตกลงเพื่อกรอกเหตุผล)") {
             let { value: reason } = await Swal.fire({
-                title: '<strong style = "font-family:Kanit"> กรุณากรอกเหตุผลยกเลิกการลา </strong>',
+                title: '<strong style = "font-family:Kanit"> กรุณากรอกเหตุผลยกเลิกคำขอโอที </strong>',
                 input: 'textarea',
-                html: '<strong style = "font-family:Kanit; font-size:16px"> เหตุผลยกเลิกการลา* </strong>',
+                html: '<strong style = "font-family:Kanit; font-size:16px"> เหตุผลยกเลิกคำขอโอที* </strong>',
                 inputPlaceholder: 'กรอกข้อมูล',
                 inputAttributes: {
                     'aria-label': 'Type your message here'
