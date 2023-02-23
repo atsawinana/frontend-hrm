@@ -157,7 +157,7 @@ export class TimeattendanceRequestComponent implements OnInit {
                 x!.style.display = 'none';
                 return
             }
-            this.Request.controls.time.setValue(this.time.hours.toString() + " โมง " + this.time.mins.toString() + " นาที")
+            this.Request.controls.time.setValue(this.time.hours.toString() + " นาฬิกา " + this.time.mins.toString() + " นาที")
             x!.style.display = 'none';
         }
     }
