@@ -1,12 +1,21 @@
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.font-custom-select{
-    font-family: 'Kanit';
-    outline: 0px !important;
-    border-radius: 10px
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+@font-face {
+  font-family: "Kanit";
+  src: local("Kanit"),
+    url(./assets/fonts/Kanit/Kanit-Regular.ttf) format("truetype");
+}
+.font-custom-select {
+  font-family: "Kanit";
+  outline: 0px !important;
+  border-radius: 10px;
 }
 
 /* Importing Bootstrap SCSS file. */
-@import 'bootstrap/scss/bootstrap';
+@import "bootstrap/scss/bootstrap";

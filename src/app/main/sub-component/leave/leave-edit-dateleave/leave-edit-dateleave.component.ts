@@ -71,9 +71,9 @@ export class LeaveEditDateleaveComponent implements OnInit {
                 this.leaveDays.controls.v_take_annual43_45.setValue(this.objData.vacation.v_take_annual43_45)
                 this.leaveDays.controls.v_take_annual46.setValue(this.objData.vacation.v_take_annual46)
                 this.leaveDays.controls.v_without_pay.setValue(this.objData.vacation.v_without_pay),
-                this.leaveDays.controls.v_resign.setValue(this.objData.vacation.v_resign)
+                    this.leaveDays.controls.v_resign.setValue(this.objData.vacation.v_resign)
 
-                
+
                 // console.log(res.data)
                 // console.log(this.leaveDays)
                 this.APISuccess = true
@@ -118,37 +118,37 @@ export class LeaveEditDateleaveComponent implements OnInit {
             confirmButtonColor: '#005FBC',
             reverseButtons: true,
         }).then((e) => {
-              if (e.isConfirmed) {
-                  this.leaveService.leaveOnline(
-                    this.leaveDays.controls.leave.value, 
-                    this.leaveDays.controls.sick.value, 
+            if (e.isConfirmed) {
+                this.leaveService.leaveOnline(
+                    this.leaveDays.controls.leave.value,
+                    this.leaveDays.controls.sick.value,
                     this.leaveDays.controls.ordination.value,
                     this.leaveDays.controls.maternity.value,
-                    this.leaveDays.controls.militaryService.value, 
-                    this.leaveDays.controls.v_without_pay.value, 
-                    this.leaveDays.controls.v_resign.value, 
-                    this.leaveDays.controls.v_take_annual0_12.value, 
+                    this.leaveDays.controls.militaryService.value,
+                    this.leaveDays.controls.v_without_pay.value,
+                    this.leaveDays.controls.v_resign.value,
+                    this.leaveDays.controls.v_take_annual0_12.value,
                     this.leaveDays.controls.v_take_annual13_15.value,
                     this.leaveDays.controls.v_take_annual16_18.value,
-                    this.leaveDays.controls.v_take_annual19_21.value, 
-                    this.leaveDays.controls.v_take_annual22_24.value, 
+                    this.leaveDays.controls.v_take_annual19_21.value,
+                    this.leaveDays.controls.v_take_annual22_24.value,
                     this.leaveDays.controls.v_take_annual25_27.value,
                     this.leaveDays.controls.v_take_annual28_30.value,
-                    this.leaveDays.controls.v_take_annual31_33.value, 
-                    this.leaveDays.controls.v_take_annual34_36.value, 
+                    this.leaveDays.controls.v_take_annual31_33.value,
+                    this.leaveDays.controls.v_take_annual34_36.value,
                     this.leaveDays.controls.v_take_annual37_39.value,
                     this.leaveDays.controls.v_take_annual40_42.value,
-                    this.leaveDays.controls.v_take_annual43_45.value, 
-                    this.leaveDays.controls.v_take_annual46.value, 
+                    this.leaveDays.controls.v_take_annual43_45.value,
+                    this.leaveDays.controls.v_take_annual46.value,
                     this.leaveDays.controls.v_without_pay.value,
-                  ).subscribe({
-                      next: (res: any) => {
+                ).subscribe({
+                    next: (res: any) => {
                         this.route.navigate(['../main/leave']);
-                      },
-                      error: (res: any) => {
-                      }
-                  });
-              }
+                    },
+                    error: (res: any) => {
+                    }
+                });
+            }
         })
 
     }
@@ -156,6 +156,11 @@ export class LeaveEditDateleaveComponent implements OnInit {
 
     inputNumberOnly(event: any): boolean {
         const charCode = event.which ? event.which : event.keyCode;
+
+        if(charCode == 46){
+            return true
+        }
+
         if (charCode > 31 && (charCode < 48 || charCode > 57)) {
             return false;
         }

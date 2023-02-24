@@ -69,7 +69,7 @@ export class LeaveService {
         });
 
         return this.httpClient.put(
-            `${environment.apiURL}/leaveOnline/edit`,
+            `${environment.apiURL}/leaveOnline`,
             {
                 "v_leave": v_leave,
                 "v_sick": v_sick,

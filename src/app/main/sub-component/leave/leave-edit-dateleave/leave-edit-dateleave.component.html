@@ -30,7 +30,7 @@
                     <div class="d-flex justify-content-center w-25">
                       <input [ngClass]="{
                       isinvalid:  leaveDays.controls.leave.errors && summited
-                        }" type="text" placeholder="กรอกจำนวนวัน" class="form-control text-center"
+                        }" type="number" min=0 placeholder="กรอกจำนวนวัน" class="form-control text-center"
                         (keypress)="inputNumberOnly($event)" formControlName="leave" rows="3">
                     </div>
                   </td>
@@ -46,7 +46,7 @@
                     <div class="d-flex justify-content-center w-25">
                       <input [ngClass]="{
                   isinvalid:  leaveDays.controls.sick.errors && summited
-                    }" type="text" placeholder="กรอกจำนวนวัน" class="form-control text-center"
+                    }" type="number" min=0 placeholder="กรอกจำนวนวัน" class="form-control text-center"
                         (keypress)="inputNumberOnly($event)" formControlName="sick" rows="3">
                     </div>
                   </td>
@@ -62,7 +62,7 @@
                     <div class="d-flex justify-content-center w-25">
                       <input [ngClass]="{
                   isinvalid:  leaveDays.controls.ordination.errors && summited
-                    }" type="text" placeholder="กรอกจำนวนวัน" class="form-control text-center"
+                    }" type="number" min=0 placeholder="กรอกจำนวนวัน" class="form-control text-center"
                         (keypress)="inputNumberOnly($event)" formControlName="ordination" rows="3">
                     </div>
                   </td>
@@ -76,7 +76,7 @@
 
                   <td class="d-flex justify-content-center">
                     <div class="d-flex justify-content-center w-25">
-                      <input [ngClass]="{isinvalid:  leaveDays.controls.maternity.errors && summited}" type="text" placeholder="กรอกจำนวนวัน" class="form-control text-center"
+                      <input [ngClass]="{isinvalid:  leaveDays.controls.maternity.errors && summited}" type="number" min=0 placeholder="กรอกจำนวนวัน" class="form-control text-center"
                         (keypress)="inputNumberOnly($event)" formControlName="maternity" rows="3">
                     </div>
                   </td>
@@ -92,7 +92,7 @@
                     <div class="d-flex justify-content-center w-25">
                       <input [ngClass]="{
                   isinvalid:  leaveDays.controls.militaryService.errors && summited
-                    }" type="text" placeholder="กรอกจำนวนวัน" class="form-control text-center"
+                    }" type="number" min=0 placeholder="กรอกจำนวนวัน" class="form-control text-center"
                         (keypress)="inputNumberOnly($event)" formControlName="militaryService" rows="3">
                     </div>
                   </td>
@@ -106,7 +106,7 @@
 
                   <td class="d-flex justify-content-center">
                     <div class="d-flex justify-content-center w-25">
-                      <input [ngClass]="{isinvalid:  leaveDays.controls.v_take_annual0_12.errors && summited}" type="text" placeholder="กรอกจำนวนวัน" class="form-control text-center"
+                      <input [ngClass]="{isinvalid:  leaveDays.controls.v_take_annual0_12.errors && summited}" type="number" min=0 placeholder="กรอกจำนวนวัน" class="form-control text-center"
                         (keypress)="inputNumberOnly($event)" formControlName="v_take_annual0_12" rows="3">
                     </div>
                   </td>
@@ -120,7 +120,7 @@
 
                   <td class="d-flex justify-content-center">
                     <div class="d-flex justify-content-center w-25">
-                      <input [ngClass]="{isinvalid:  leaveDays.controls.v_take_annual13_15.errors && summited}" type="text" placeholder="กรอกจำนวนวัน" class="form-control text-center"
+                      <input [ngClass]="{isinvalid:  leaveDays.controls.v_take_annual13_15.errors && summited}" type="number" min=0 placeholder="กรอกจำนวนวัน" class="form-control text-center"
                         (keypress)="inputNumberOnly($event)" formControlName="v_take_annual13_15" rows="3">
                     </div>
                   </td>
@@ -134,7 +134,7 @@
 
                   <td class="d-flex justify-content-center">
                     <div class="d-flex justify-content-center w-25">
-                      <input [ngClass]="{isinvalid:  leaveDays.controls.v_take_annual16_18.errors && summited}" type="text" placeholder="กรอกจำนวนวัน" class="form-control text-center"
+                      <input [ngClass]="{isinvalid:  leaveDays.controls.v_take_annual16_18.errors && summited}" type="number" min=0 placeholder="กรอกจำนวนวัน" class="form-control text-center"
                         (keypress)="inputNumberOnly($event)" formControlName="v_take_annual16_18" rows="3">
                     </div>
                   </td>
@@ -148,7 +148,7 @@
 
                   <td class="d-flex justify-content-center">
                     <div class="d-flex justify-content-center w-25">
-                      <input [ngClass]="{isinvalid:  leaveDays.controls.v_take_annual19_21.errors && summited}" type="text" placeholder="กรอกจำนวนวัน" class="form-control text-center"
+                      <input [ngClass]="{isinvalid:  leaveDays.controls.v_take_annual19_21.errors && summited}" type="number" min=0 placeholder="กรอกจำนวนวัน" class="form-control text-center"
                         (keypress)="inputNumberOnly($event)" formControlName="v_take_annual19_21" rows="3">
                     </div>
                   </td>
@@ -162,7 +162,7 @@
 
                   <td class="d-flex justify-content-center">
                     <div class="d-flex justify-content-center w-25">
-                      <input [ngClass]="{isinvalid:  leaveDays.controls.v_take_annual22_24.errors && summited}" type="text" placeholder="กรอกจำนวนวัน" class="form-control text-center"
+                      <input [ngClass]="{isinvalid:  leaveDays.controls.v_take_annual22_24.errors && summited}" type="number" min=0 placeholder="กรอกจำนวนวัน" class="form-control text-center"
                         (keypress)="inputNumberOnly($event)" formControlName="v_take_annual22_24" rows="3">
                     </div>
                   </td>
@@ -176,7 +176,7 @@
 
                   <td class="d-flex justify-content-center">
                     <div class="d-flex justify-content-center w-25">
-                      <input [ngClass]="{isinvalid:  leaveDays.controls.v_take_annual25_27.errors && summited}" type="text" placeholder="กรอกจำนวนวัน" class="form-control text-center"
+                      <input [ngClass]="{isinvalid:  leaveDays.controls.v_take_annual25_27.errors && summited}" type="number" min=0 placeholder="กรอกจำนวนวัน" class="form-control text-center"
                         (keypress)="inputNumberOnly($event)" formControlName="v_take_annual25_27" rows="3">
                     </div>
                   </td>
@@ -190,7 +190,7 @@
 
                   <td class="d-flex justify-content-center">
                     <div class="d-flex justify-content-center w-25">
-                      <input [ngClass]="{isinvalid:  leaveDays.controls.v_take_annual28_30.errors && summited}" type="text" placeholder="กรอกจำนวนวัน" class="form-control text-center"
+                      <input [ngClass]="{isinvalid:  leaveDays.controls.v_take_annual28_30.errors && summited}" type="number" min=0 placeholder="กรอกจำนวนวัน" class="form-control text-center"
                         (keypress)="inputNumberOnly($event)" formControlName="v_take_annual28_30" rows="3">
                     </div>
                   </td>
@@ -204,7 +204,7 @@
 
                   <td class="d-flex justify-content-center">
                     <div class="d-flex justify-content-center w-25">
-                      <input [ngClass]="{isinvalid:  leaveDays.controls.v_take_annual31_33.errors && summited}" type="text" placeholder="กรอกจำนวนวัน" class="form-control text-center"
+                      <input [ngClass]="{isinvalid:  leaveDays.controls.v_take_annual31_33.errors && summited}" type="number" min=0 placeholder="กรอกจำนวนวัน" class="form-control text-center"
                         (keypress)="inputNumberOnly($event)" formControlName="v_take_annual31_33" rows="3">
                     </div>
                   </td>
@@ -218,7 +218,7 @@
 
                   <td class="d-flex justify-content-center">
                     <div class="d-flex justify-content-center w-25">
-                      <input [ngClass]="{isinvalid:  leaveDays.controls.v_take_annual34_36.errors && summited}" type="text" placeholder="กรอกจำนวนวัน" class="form-control text-center"
+                      <input [ngClass]="{isinvalid:  leaveDays.controls.v_take_annual34_36.errors && summited}" type="number" min=0 placeholder="กรอกจำนวนวัน" class="form-control text-center"
                         (keypress)="inputNumberOnly($event)" formControlName="v_take_annual34_36" rows="3">
                     </div>
                   </td>
@@ -232,7 +232,7 @@
 
                   <td class="d-flex justify-content-center">
                     <div class="d-flex justify-content-center w-25">
-                      <input [ngClass]="{isinvalid:  leaveDays.controls.v_take_annual37_39.errors && summited}" type="text" placeholder="กรอกจำนวนวัน" class="form-control text-center"
+                      <input [ngClass]="{isinvalid:  leaveDays.controls.v_take_annual37_39.errors && summited}" type="number" min=0 placeholder="กรอกจำนวนวัน" class="form-control text-center"
                         (keypress)="inputNumberOnly($event)" formControlName="v_take_annual37_39" rows="3">
                     </div>
                   </td>
@@ -246,7 +246,7 @@
 
                   <td class="d-flex justify-content-center">
                     <div class="d-flex justify-content-center w-25">
-                      <input [ngClass]="{isinvalid:  leaveDays.controls.v_take_annual40_42.errors && summited}" type="text" placeholder="กรอกจำนวนวัน" class="form-control text-center"
+                      <input [ngClass]="{isinvalid:  leaveDays.controls.v_take_annual40_42.errors && summited}" type="number" min=0 placeholder="กรอกจำนวนวัน" class="form-control text-center"
                         (keypress)="inputNumberOnly($event)" formControlName="v_take_annual40_42" rows="3">
                     </div>
                   </td>
@@ -260,7 +260,7 @@
 
                   <td class="d-flex justify-content-center">
                     <div class="d-flex justify-content-center w-25">
-                      <input [ngClass]="{isinvalid:  leaveDays.controls.v_take_annual43_45.errors && summited}" type="text" placeholder="กรอกจำนวนวัน" class="form-control text-center"
+                      <input [ngClass]="{isinvalid:  leaveDays.controls.v_take_annual43_45.errors && summited}" type="number" min=0 placeholder="กรอกจำนวนวัน" class="form-control text-center"
                         (keypress)="inputNumberOnly($event)" formControlName="v_take_annual43_45" rows="3">
                     </div>
                   </td>
@@ -274,7 +274,7 @@
 
                   <td class="d-flex justify-content-center">
                     <div class="d-flex justify-content-center w-25">
-                      <input [ngClass]="{isinvalid:  leaveDays.controls.v_take_annual46.errors && summited}" type="text" placeholder="กรอกจำนวนวัน" class="form-control text-center"
+                      <input [ngClass]="{isinvalid:  leaveDays.controls.v_take_annual46.errors && summited}" type="number" min=0 placeholder="กรอกจำนวนวัน" class="form-control text-center"
                         (keypress)="inputNumberOnly($event)" formControlName="v_take_annual46" rows="3">
                     </div>
                   </td>
