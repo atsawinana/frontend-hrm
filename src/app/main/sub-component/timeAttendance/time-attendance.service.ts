@@ -243,6 +243,22 @@ export class TimeAttendanceService {
         );
     }
 
+    checkEditRequestAttendance(rta_date: any) {
+        const headers = new HttpHeaders({
+            Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+        });
+
+        return this.httpClient.get(
+            `${environment.apiURL}/requestAttendance/checkEdit`,
+            {
+                params: {
+                    rta_date: rta_date,
+                },
+                headers
+            },
+        );
+    }
+
     //Route::get('/timeAttendance/reverseAttendance/{$rta_id}','TimeAttendance@get_reverse_attendance');
 
     getReverseAttendance(rta_id: any) {

@@ -97,7 +97,7 @@ export class TimeattendanceEditRequestComponent implements OnInit {
 
     onValueChange(event: any) {
         let date = this.datepipe.transform(this.Request.controls.Date.value, 'yyyy-MM-dd');
-        this.serviceTimeatd.checkRequestAttendance(date).subscribe({
+        this.serviceTimeatd.checkEditRequestAttendance(date).subscribe({
             next: (res: any) => {
                 this.requestStatus = res.data.status
                 console.log(res.data.status)
