@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PaginationInstance } from 'ngx-pagination';
+import { ListDepartmentService } from '../../department/list-department/list-department.service';
 import { ListEmployeeService } from './list-employee.service';
 import * as XLSX from 'xlsx';
 import * as fileSaver from 'file-saver';

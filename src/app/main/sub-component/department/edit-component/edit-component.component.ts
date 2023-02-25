@@ -1,9 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {  FormGroup,   } from '@angular/forms';
-import { ActivatedRoute,  Router,  } from '@angular/router';
+import { DepartmentModule } from '../department.module';
+import { Form, FormBuilder, FormGroup, FormArray, Validators, FormControl } from '@angular/forms';
+import { ActivatedRoute, Route, Router, RouterLink } from '@angular/router';
+import { EditComponentService } from './edit-component.service';
 import { DepartmentService } from '../department.service';
+import { AuthService } from 'src/app/auth/auth.service';
 import { NgSelectComponent } from '@ng-select/ng-select';
 import Swal from 'sweetalert2';
+import { MainService } from 'src/app/main/main.service';
 
 @Component({
     selector: 'app-edit-component',
@@ -16,9 +20,11 @@ export class EditComponentComponent implements OnInit {
     @ViewChild(NgSelectComponent) ngSelect!: NgSelectComponent;
 
     constructor(
-        private active_router: ActivatedRoute,
-        private department_service: DepartmentService,
-        private router: Router,
+        private router: ActivatedRoute,
+        private editService: EditComponentService,
+        private Maindept: DepartmentService,
+        private route: Router,
+        private main: MainService
     ) { }
     form!: FormGroup;
     dept_id!: string;
@@ -45,12 +51,12 @@ export class EditComponentComponent implements OnInit {
     valueStateBefore: any
 
     ngOnInit(): void {
-        this.dept_id = this.active_router.snapshot.params['dept_id'];
+        this.dept_id = this.router.snapshot.params['dept_id'];
         this.WaitApiData();
     }
 
     async WaitApiData() {
-        this.department_service.editGetData(this.dept_id).subscribe({
+        this.editService.editGetData(this.dept_id).subscribe({
             next: (res: any) => {
                 this.ObjDept = res.data.departments;
                 this.ObjDeptPosit = res.data.dept_positions;
@@ -62,7 +68,7 @@ export class EditComponentComponent implements OnInit {
                     this.countDeptPosit[i] = i + 1;
                 }
 
-                this.department_service.getAllUser().subscribe({
+                this.Maindept.getAllUser().subscribe({
                     next: (res: any) => {
                         this.DeptUserID = res.data.users;
                         this.UserSelected = JSON.parse(JSON.stringify(this.DeptUserID))
@@ -85,7 +91,17 @@ export class EditComponentComponent implements OnInit {
 
             },
             error: (err: any) => {
-               
+                if (err.status === 419) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'เซสชั่นหมดอายุ',
+                        text: 'กรุณา Login ใหม่ เพื่อใช้งาน',
+                    }).then((e) => {
+                        this.route.navigate(['']);
+                    })
+                } else {
+                    this.main.Error()
+                }
             },
         });
     }
@@ -210,7 +226,7 @@ export class EditComponentComponent implements OnInit {
                                 aryUserManager[i] = this.ObjDeptMana[i].dmm_username;
                             }
 
-                            this.department_service
+                            this.editService
                                 .editData(
                                     this.dept_id,
                                     nameDeptEN,
@@ -229,11 +245,22 @@ export class EditComponentComponent implements OnInit {
                                             confirmButtonText: '<div style = "font-family:Kanit"> ตกลง </div>'
 
                                         }).then((e) => {
-                                            this.router.navigate(["../main/department"])
+                                            this.route.navigate(["../main/department"])
                                         })
                                     },
                                     error: (err: any) => {
-                                      
+                                        // console.log(err.status)
+                                        if (err.status === 419) {
+                                            Swal.fire({
+                                                icon: 'warning',
+                                                title: 'เซสชั่นหมดอายุ',
+                                                text: 'กรุณา Login ใหม่ เพื่อใช้งาน',
+                                            }).then((e) => {
+                                                this.route.navigate(['']);
+                                            })
+                                        } else {
+                                            this.main.Error()
+                                        }
                                     },
                                 });
                         }
@@ -343,7 +370,7 @@ export class EditComponentComponent implements OnInit {
             reverseButtons: true
         }).then((result) => {
             if (result.isConfirmed) {
-                this.router.navigate(['../main/department']);
+                this.route.navigate(['../main/department']);
             }
         })
     }
