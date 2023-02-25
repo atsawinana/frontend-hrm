@@ -68,17 +68,17 @@
                                 <div class="col-4 fw-bolder">
                                     <div class="mb-2"
                                         *ngIf="objDetailReq.rot_is_canceled == 0">เหตุผลการยกเลิก :</div>
-                                    <div class="mb-2">ประเภทคำร้อง : </div>
-                                    <div class="mb-2">วันที่เข้าทำงาน : </div>
-                                    <div class="mb-2">ระบุเวลาเข้าทำงาน : </div>
-                                    <div class="mb-2">เหตุผล : </div>
+                                    <div class="mb-2">วันที่เริ่ม-สิ้นสุดทำโอที : </div>
+                                    <div class="mb-2">ระยะเวลาเริ่มต้น - สิ้นสุด : </div>
+                                    <div class="mb-2">ชื่องาน : </div>
+                                    <div class="mb-2">รายละเอียดการทำงาน : </div>
                                 </div>
                                 <div class="col">
                                     <div class="mb-2"
                                         *ngIf="objDetailReq.rot_is_canceled == 1 ">111</div>
-                                    <div class="mb-2">{{objDetailReq.rot_type}}</div>
-                                    <div class="mb-2">{{objDetailReq.rot_created_at}}</div>
-                                    <div class="mb-2">{{objDetailReq.rot_start_time}}</div>
+                                    <div class="mb-2">{{objDetailReq.rot_start_date}} - {{objDetailReq.rot_end_date}}</div>
+                                    <div class="mb-2">{{objDetailReq.rot_time}}</div>
+                                    <div class="mb-2">{{objDetailReq.rot_ot_id}}</div>
                                     <div class="mb-2"><p>{{objDetailReq.rot_detail}}</p></div>
                                 </div>
                             </div>

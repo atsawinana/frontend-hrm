@@ -26,8 +26,8 @@ export class OtRequestComponent implements OnInit {
   today!: Date;
   summited: boolean = false;
   requestStatus = 1
-  loadingapi:boolean = false
-  checkState:boolean = true
+  loadingapi: boolean = false
+  checkState: boolean = true
   timeStart = {
     hours: 0,
     alerthours: false,
@@ -42,7 +42,7 @@ export class OtRequestComponent implements OnInit {
     alertmins: false,
   }
 
-  nameWork:any
+  nameWork: any
 
   Request = new FormGroup({
     Type: new FormControl(null, [Validators.required]),
@@ -62,12 +62,12 @@ export class OtRequestComponent implements OnInit {
     this.localeService.use(this.locale);
 
     this.otService.getNameWork().subscribe({
-      next: (res:any) => {
+      next: (res: any) => {
         console.log(res)
         this.nameWork = res.data
         this.checkState = false
       },
-      error: (err:any) => {}
+      error: (err: any) => { }
     })
   }
 
@@ -203,7 +203,6 @@ export class OtRequestComponent implements OnInit {
   }
 
   submitButton() {
-    this.loadingapi = true
     this.summited = true;
     console.log(this.Request.value)
 
@@ -241,6 +240,7 @@ export class OtRequestComponent implements OnInit {
       reverseButtons: true,
     }).then((result) => {
       if (result.isConfirmed) {
+        this.loadingapi = true
         this.otService.requestOvertime(
           this.Request.controls.Type.value!,
           dateStart!,
@@ -253,7 +253,7 @@ export class OtRequestComponent implements OnInit {
             this.route.navigate(['../main/ot']);
             this.loadingapi = false
           },
-          error: (err:any) => {
+          error: (err: any) => {
             this.loadingapi = false
           }
         });

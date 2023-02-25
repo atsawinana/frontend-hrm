@@ -111,7 +111,6 @@ export class LeaveRequestComponent implements OnInit {
     }
 
     checkNull() {
-        this.loadingapi = true
         this.summited = true;
 
         if (this.leaveRequest.invalid)
@@ -138,6 +137,7 @@ export class LeaveRequestComponent implements OnInit {
         }).then((result) => {
             if (result.isConfirmed) {
 
+                this.loadingapi = true
 
                 this.LeaveReqService
                     .addLeaveRequest(

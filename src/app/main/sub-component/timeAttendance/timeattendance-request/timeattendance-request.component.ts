@@ -163,7 +163,6 @@ export class TimeattendanceRequestComponent implements OnInit {
     }
 
     submitButton() {
-        this.loadingapi = true
         this.summited = true
 
         if (this.requestStatus == 0) {
@@ -192,6 +191,7 @@ export class TimeattendanceRequestComponent implements OnInit {
             if (result.isConfirmed) {
 
                 let min, hour
+                this.loadingapi = true
 
                 if (String(this.time.mins).length == 1) {
                     min = "0" + this.time.mins
