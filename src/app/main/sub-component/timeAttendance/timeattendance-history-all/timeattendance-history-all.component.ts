@@ -48,6 +48,7 @@ export class TimeattendanceHistoryAllComponent implements OnInit {
 
     UpdateListPerpage() {
         this.config.itemsPerPage = this.listPerPage
+        this.config.currentPage = 1
     }
 
 

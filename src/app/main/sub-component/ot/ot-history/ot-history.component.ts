@@ -39,6 +39,7 @@ export class OtHistoryComponent implements OnInit {
 
     UpdateListPerpage() {
         this.config.itemsPerPage = this.listPerPage
+        this.config.currentPage = 1
     }
 
     backClicked() {

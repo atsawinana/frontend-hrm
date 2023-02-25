@@ -75,7 +75,7 @@
                 </thead>
 
                 <tbody class="list-content">
-                    <tr id="row-list" *ngFor="let objleave of objTableHistory">
+                    <tr id="row-list" *ngFor="let objleave of objTableHistory  | paginate : config ">
                         <td>
                             {{objleave.number}}
                         </td>
@@ -143,7 +143,7 @@
                 <div class="my-auto ms-1 select-perPage">
                     <ng-select style="width: 60px" [(ngModel)]="listPerPage"
                         [clearable]="false"
-                        class="custom maxWidth add-boss"
+                        class="custom maxWidth add-boss" style="font-family: Kanit;"
                         (change)="UpdateListPerpage()" required>
                         <ng-option [value]="3">3</ng-option>
                         <ng-option [value]="5">5</ng-option>

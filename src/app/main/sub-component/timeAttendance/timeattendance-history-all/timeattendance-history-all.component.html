@@ -109,8 +109,7 @@
                 </thead>
 
                 <tbody class="list-content">
-                    <tr id="row-list" *ngFor="let objleave of objTableHistory |
-                        filter : searchInput">
+                    <tr id="row-list" *ngFor="let objleave of objTableHistory | filter : searchInput | paginate : config ">
                         <td>
                             {{objleave.ta_number}}
                         </td>

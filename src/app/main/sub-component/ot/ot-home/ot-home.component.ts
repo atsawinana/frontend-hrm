@@ -8,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
 export class OtHomeComponent implements OnInit {
 
   constructor() { }
-
+  role: any = false
   ngOnInit() {
     localStorage.setItem("overbtnOt", "true")
-
+    let check = localStorage.getItem("roleUser")
+    if (check == "3" || check == "2") {
+      this.role = true
+    }
   }
 
 }
