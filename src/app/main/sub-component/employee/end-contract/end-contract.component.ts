@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PaginationInstance } from 'ngx-pagination';
-import { ListDepartmentService } from '../../department/list-department/list-department.service';
 import { EndContractService } from './end-contract.service';
-import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-end-contract',

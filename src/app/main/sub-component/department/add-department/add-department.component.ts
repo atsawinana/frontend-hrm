@@ -1,11 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
-import { AuthService } from 'src/app/auth/auth.service';
+import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { DepartmentService } from '../department.service';
-import { AdddepartmentService } from './adddepartment.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
-import { MainService } from 'src/app/main/main.service';
 
 @Component({
     selector: 'app-add-department',
@@ -41,11 +38,9 @@ export class AddDepartmentComponent implements OnInit {
     valueStateBefore: any
 
     constructor(
-        private Add_dp: AdddepartmentService,
+        private department_service: DepartmentService,
         private Maindept: DepartmentService,
-        private coreToken: AuthService,
-        private route: Router,
-        private main: MainService
+        private router: Router,
     ) { }
 
     ngOnInit() {
@@ -57,8 +52,6 @@ export class AddDepartmentComponent implements OnInit {
     }
 
     MapUsernameWithID() {
-        // console.log('check mana', this.countDeptMana.length);
-        // console.log('check len', this.DeptUserID.length);
 
         for (let i = 0; i < this.countDeptMana.length; i++) {
             for (let j = 0; j < this.UserSelected.length; j++) {
@@ -68,12 +61,7 @@ export class AddDepartmentComponent implements OnInit {
                 } else if (this.DeptMana[i] == '') {
                     this.DeptUsername.pop();
                 }
-                // console.log('mana i',this.DeptMana[i]);
-                // console.log('uid j',this.DeptUserID[j].ud_fullname_th,'id',this.DeptUserID[j].ud_id);
             }
-            // if (this.DeptMana[i] == this.DeptUserID[i].ud_fullname_th) {
-            //   console.log(this.DeptUserID[i].ud_id);
-            // }
         }
     }
 
@@ -86,24 +74,11 @@ export class AddDepartmentComponent implements OnInit {
                 this.UserSelected = JSON.parse(JSON.stringify(this.DeptUserID));
             },
             error: (err) => {
-                // console.log('Failed, input is null');
-                if (err.status === 419) {
-                    Swal.fire({
-                        icon: 'warning',
-                        title: 'เซสชั่นหมดอายุ',
-                        text: 'กรุณา Login ใหม่ เพื่อใช้งาน',
-                    }).then((e) => {
-                        this.route.navigate(['']);
-                    })
-                } else {
-                    this.main.Error()
-                }
             },
         });
     }
 
     userSelected() {
-        // console.log(this.DeptMana);
         for (let i = 0; i < Object.keys(this.DeptMana).length; i++) {
             for (let j = 0; j < this.DeptUserID.length; j++) {
                 if (this.DeptMana[i] === this.DeptUserID[j].ud_fullname_th) {
@@ -128,7 +103,6 @@ export class AddDepartmentComponent implements OnInit {
     }
 
     addInputDept() {
-        // console.log(this.DeptMana);
         if (this.DeptMana[this.countDeptMana.length - 1] == null) {
             Swal.fire({
                 icon: 'warning',
@@ -144,12 +118,10 @@ export class AddDepartmentComponent implements OnInit {
             })
         } else {
             this.countDeptMana?.push(this.countDeptMana.length + 1);
-            // console.log(this.countDeptMana);
         }
     }
 
     addInputDeptPosit() {
-        // console.log(this.DeptPosit[this.countDeptPosit.length - 1]);
         if (this.DeptPosit[this.countDeptPosit.length - 1] == null) {
             Swal.fire({
                 icon: 'warning',
@@ -191,7 +163,7 @@ export class AddDepartmentComponent implements OnInit {
             reverseButtons: true
         }).then((result) => {
             if (result.isConfirmed) {
-                this.route.navigate(['../main/department']);
+                this.router.navigate(['../main/department']);
             }
         })
     }
@@ -262,12 +234,7 @@ export class AddDepartmentComponent implements OnInit {
                             this.cancelModal();
                             this.MapUsernameWithID();
 
-                            // console.log(this.namedepartment_en.value);
-                            // console.log(this.namedepartment_th.value);
-                            // console.log(this.DeptPosit);
-                            // console.log(this.DeptUsername);
-
-                            this.Add_dp.adddepartment(
+                            this.department_service.adddepartment(
                                 this.namedepartment_en.value!,
                                 this.namedepartment_th.value!,
                                 this.DeptPosit!,
@@ -281,23 +248,10 @@ export class AddDepartmentComponent implements OnInit {
                                         confirmButtonColor: '#005FBC',
                                         confirmButtonText: '<div style = "font-family:Kanit"> ตกลง </div>'
                                     }).then((e) => {
-                                        this.route.navigate(['../main/department']);
+                                        this.router.navigate(['../main/department']);
                                     });
                                 },
                                 error: (err) => {
-                                    // console.log('Failed, input is null');
-                                    this.isSuccess = false;
-                                    if (err.status === 419) {
-                                        Swal.fire({
-                                            icon: 'warning',
-                                            title: 'เซสชั่นหมดอายุ',
-                                            text: 'กรุณา Login ใหม่ เพื่อใช้งาน',
-                                        }).then((e) => {
-                                            this.route.navigate(['']);
-                                        })
-                                    } else {
-                                        this.main.Error()
-                                    }
                                 },
                             });
                         }
@@ -306,18 +260,10 @@ export class AddDepartmentComponent implements OnInit {
             }
         }
 
-        // console.log('nullen', this.CheckNullDeptNameEN);
-        // console.log('nullth', this.CheckNullDeptNameTH);
-        // console.log('nullposit', this.CheckNullPosit);
-        // console.log('nulklmana', this.CheckNullMana);
-        // console.log('check deptPosit ', this.DeptPosit);
     }
 
     cancelModal() {
         this.ModalCheck = false;
     }
 
-    checkAlertmana(event: boolean) {
-        // console.log(event);
-    }
 }

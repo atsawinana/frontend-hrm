@@ -2,7 +2,7 @@ import { Routes, RouterModule, ActivatedRoute } from '@angular/router';
 import { AuthGuardGuard } from 'src/app/auth/auth-guard.guard';
 import { RoleGuard } from 'src/app/auth/role.guard';
 import { AddDepartmentComponent } from './add-department/add-department.component';
-import { DepartmentMainComponent } from './department-main/department-main.component';
+import { DepartmentMainComponent } from './department-main.component';
 import { EditComponentComponent } from './edit-component/edit-component.component';
 import { EmpDepartmentComponent } from './emp-department/emp-department.component';
 import { EmpEndDepartmentComponent } from './emp-end-department/emp-end-department.component';
