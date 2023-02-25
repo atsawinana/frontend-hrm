@@ -1,12 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/auth/auth.service';
-import { ListDepartmentService } from './list-department.service';
 import Swal from 'sweetalert2';
-import { style } from '@angular/animations';
 import { PaginationInstance } from 'ngx-pagination';
-import { Router } from '@angular/router';
 import { DepartmentService } from '../department.service';
-import { MainService } from 'src/app/main/main.service';
 
 @Component({
     selector: 'app-list-department',
@@ -37,7 +32,7 @@ export class ListDepartmentComponent implements OnInit {
     deptID_Detail: string = ""
     maxPage!: any
 
-    constructor(private main: MainService,private DepService: ListDepartmentService, private coreToken: AuthService, private router: Router) { }
+    constructor(private department_service: DepartmentService) { }
     ngOnInit() {
         this.getAllDepartment()
     }
@@ -48,12 +43,12 @@ export class ListDepartmentComponent implements OnInit {
         currentPage: 1
     }
 
-    setLocal(dept_id:any){
-        localStorage.setItem('dept_id_emp',dept_id)
+    setLocal(dept_id: any) {
+        localStorage.setItem('dept_id_emp', dept_id)
     }
 
     getAllDepartment() {
-        this.DepService.getAllDepartment().subscribe({
+        this.department_service.getAllDepartment().subscribe({
             next: (res: any) => {
 
                 this.deprtmentsData = res.data.deprtments;
@@ -74,15 +69,7 @@ export class ListDepartmentComponent implements OnInit {
                 this.checkLoadAPI = true;
             },
             error: (err: any) => {
-                if (err.status === 419) {
-                    Swal.fire({
-                        icon: 'warning',
-                        title: 'เซสชั่นหมดอายุ',
-                        text: 'กรุณา Login ใหม่ เพื่อใช้งาน',
-                    }).then((e) => {
-                        this.router.navigate(['']);
-                    })
-                }
+               
             },
         });
     }
@@ -178,7 +165,7 @@ export class ListDepartmentComponent implements OnInit {
                 reverseButtons: true
             }).then((result) => {
                 if (result.isConfirmed) {
-                    this.DepService.DeleletDepartment(this.deptIDDelete).subscribe({
+                    this.department_service.DeleletDepartment(this.deptIDDelete).subscribe({
                         next: (res: any) => {
                             Swal.fire({
                                 title: '<strong style = "font-family:Kanit"> ลบแผนกสำเร็จ </strong>',
@@ -191,15 +178,7 @@ export class ListDepartmentComponent implements OnInit {
                             })
                         },
                         error: (err: any) => {
-                            if (err.status === 404) {
-                                Swal.fire({
-                                    icon: 'warning',
-                                    title: 'เซสชั่นหมดอายุ',
-                                    text: 'กรุณา Login ใหม่ เพื่อใช้งาน',
-                                }).then((e) => {
-                                    this.router.navigate(['']);
-                                })
-                            }
+                            
                         },
                     });
 
@@ -213,7 +192,7 @@ export class ListDepartmentComponent implements OnInit {
 
     DetailDept(event: any) {
         this.deptID_Detail = event
-        this.DepService.DetailDepartment(this.deptID_Detail).subscribe({
+        this.department_service.DetailDepartment(this.deptID_Detail).subscribe({
             next: (res: any) => {
                 this.dept_nameEN = res.data.departments.dept_name_en;
                 this.dept_name = res.data.departments.dept_name_th;
@@ -223,19 +202,6 @@ export class ListDepartmentComponent implements OnInit {
 
             },
             error: (err: any) => {
-                if (err.status === 404) {
-                    Swal.fire({
-                        icon: 'warning',
-                        title: 'เซสชั่นหมดอายุ',
-                        text: 'กรุณา Login ใหม่ เพื่อใช้งาน',
-                    }).then((e) => {
-                        this.router.navigate(['']);
-                    })
-                }
-                else{
-                    this.main.Error()
-                }
-
 
             },
         });

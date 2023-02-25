@@ -4,6 +4,7 @@ import { PaginationInstance } from 'ngx-pagination';
 import { EmpDepartmentService } from './emp-department.service';
 import * as XLSX from 'xlsx';
 import * as fileSaver from 'file-saver';
+import { DepartmentService } from '../department.service';
 const EXCEL_TYPE =
   'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
 const EXCEL_EXTENSION = '.xlsx';
@@ -15,9 +16,9 @@ const EXCEL_EXTENSION = '.xlsx';
 })
 export class EmpDepartmentComponent implements OnInit {
   constructor(
-    private router: ActivatedRoute,
-    private service: EmpDepartmentService,
-    private route:Router
+    private active_route: ActivatedRoute,
+    private department_service: DepartmentService,
+    private router:Router
   ) {}
   dept_id: any;
   objemployee: any;
@@ -26,9 +27,9 @@ export class EmpDepartmentComponent implements OnInit {
   searchInput: string = '';
 
   ngOnInit() {
-    this.dept_id = this.router.snapshot.params['dept_id'];
+    this.dept_id = this.active_route.snapshot.params['dept_id'];
 
-    this.service.showEmployeeInDepartment(this.dept_id).subscribe({
+    this.department_service.showEmployeeInDepartment(this.dept_id).subscribe({
       next: (res: any) => {
           this.objemployee = res.data.employee;
           this.objemptable = JSON.parse(JSON.stringify(this.objemployee));
@@ -102,6 +103,6 @@ export class EmpDepartmentComponent implements OnInit {
   }
 
   navigateEmp(id:any){
-    this.route.navigate([`/main/employee/data-person/${id}`]);
+    this.router.navigate([`/main/employee/data-person/${id}`]);
   }
 }

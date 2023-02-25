@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PaginationInstance } from 'ngx-pagination';
+import { DepartmentService } from '../department.service';
 import { EmpDepartmentService } from '../emp-department/emp-department.service';
 
 @Component({
@@ -10,9 +11,9 @@ import { EmpDepartmentService } from '../emp-department/emp-department.service';
 })
 export class EmpEndDepartmentComponent implements OnInit {
   constructor(
-    private router: ActivatedRoute,
-    private service: EmpDepartmentService,
-    private route:Router
+    private active_route: ActivatedRoute,
+    private department_service: DepartmentService,
+    private router:Router
   ) {}
   dept_id: any;
   objemployee: any;
@@ -22,9 +23,9 @@ export class EmpEndDepartmentComponent implements OnInit {
 
 
   ngOnInit() {
-    this.dept_id = this.router.snapshot.params['dept_id'];
+    this.dept_id = this.active_route.snapshot.params['dept_id'];
 
-    this.service.showResignInDepartment(this.dept_id).subscribe({
+    this.department_service.showResignInDepartment(this.dept_id).subscribe({
       next: (res: any) => {
         this.objemployee = res.data.employee;
         this.objemptable = JSON.parse(JSON.stringify(this.objemployee));
@@ -41,7 +42,7 @@ export class EmpEndDepartmentComponent implements OnInit {
   }
 
   navigateEmp(id:any){
-    this.route.navigate([`/main/employee/data-person/${id}`]);
+    this.router.navigate([`/main/employee/data-person/${id}`]);
   }
 
   listPerpage() {
