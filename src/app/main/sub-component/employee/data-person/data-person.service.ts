@@ -58,25 +58,60 @@ export class DataPersonService {
   }
 
 
-//   /leaveOnline/viewAllLeaveHistoryEmployee[GET]
-// ดูการลาของพนักงาน
-// params: user id=2, sort_date=2565-1
+  //   /leaveOnline/viewAllLeaveHistoryEmployee[GET]
+  // ดูการลาของพนักงาน
+  // params: user id=2, sort_date=2565-1
 
-  getHistory(id: any,date: any) {
+  getHistory(id: any, date: any) {
     const headers = new HttpHeaders({
-        Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+      Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
     });
 
     return this.httpClient.get(
-        `${environment.apiURL}/requestLeave/history/user`,
-        {
-            headers,
-            params: {
-                user_id: id,
-                sort_date: date
-            },
-        }
+      `${environment.apiURL}/requestLeave/history/user`,
+      {
+        headers,
+        params: {
+          user_id: id,
+          sort_date: date
+        },
+      }
     );
-}
+  }
 
+  // /requestAttendance/history/user
+
+  getHistoryRequestAttendance(id: any, date: any) {
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+    });
+
+    return this.httpClient.get(
+      `${environment.apiURL}/timeAttendance/history/user`,
+      {
+        headers,
+        params: {
+          user_id: id,
+          sort_date: date
+        },
+      }
+    );
+  }
+
+  getHistoryRequestOvertime(id: any, date: any) {
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+    });
+
+    return this.httpClient.get(
+      `${environment.apiURL}/requestOvertime/history/user`,
+      {
+        headers,
+        params: {
+          user_id: id,
+          sort_date: date
+        },
+      }
+    );
+  }
 }

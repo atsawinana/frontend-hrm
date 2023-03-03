@@ -33,7 +33,7 @@ export class LeaveEditRequestService {
         });
 
         return this.httpClient.get(
-            `${environment.apiURL}/leaveOnline/type'`,
+            `${environment.apiURL}/leaveOnline/type`,
             {
                 headers,
             }

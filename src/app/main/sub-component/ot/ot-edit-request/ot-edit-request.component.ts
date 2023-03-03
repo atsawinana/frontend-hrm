@@ -76,6 +76,8 @@ export class OtEditRequestComponent implements OnInit {
                 startTime = String(startTime).split(":")
                 this.timeStart.hours = Number(startTime[0])
                 this.timeStart.mins = Number(startTime[1])
+                this.timeEnd.hours = Number(endtime[0])
+                this.timeEnd.mins = Number(endtime[1])
                 this.Request.controls.startTime.setValue(this.timeStart.hours.toString() + " นาฬิกา " + this.timeStart.mins.toString() + " นาที")
                 this.Request.controls.EndTime.setValue(this.timeEnd.hours.toString() + " นาฬิกา " + this.timeEnd.mins.toString() + " นาที")
                 this.checkState = false

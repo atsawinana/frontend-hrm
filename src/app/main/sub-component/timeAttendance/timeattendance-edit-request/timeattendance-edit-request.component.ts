@@ -58,7 +58,14 @@ export class TimeattendanceEditRequestComponent implements OnInit {
                     this.Request.controls.Type.setValue(res.data.rta_type)
                     this.Request.controls.Date.setValue(date)
                     console.log(this.Request.controls.Date.value)
-                    this.Request.controls.time.setValue(res.data.rta_start_time)
+
+
+                    let startTime
+                    startTime = res.data.rta_start_time
+                    startTime = String(startTime).split(":")
+                    this.time.hours = Number(startTime[0])
+                    this.time.mins = Number(startTime[1])
+                    this.Request.controls.time.setValue(this.time.hours.toString() + " นาฬิกา " + this.time.mins.toString() + " นาที")
                     this.Request.controls.detail.setValue(res.data.rta_detail)
                 },
                 error: (err: any) => { }
@@ -193,7 +200,7 @@ export class TimeattendanceEditRequestComponent implements OnInit {
         }
 
         Swal.fire({
-            title: '<strong style = "font-family:Kanit"> คุณต้องการส่งแบบฟอร์มการลา ใช่หรือไม่ </strong>',
+            title: '<strong style = "font-family:Kanit"> คุณต้องการส่งแบบฟอร์มเข้าทำงาน ใช่หรือไม่ </strong>',
             icon: 'warning',
             showCancelButton: true,
             cancelButtonColor: '#d33',

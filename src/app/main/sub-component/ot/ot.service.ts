@@ -161,13 +161,17 @@ export class OtService {
         const httpOptions = {
             headers,
             body: JSON.stringify({
-                rot_id: id,
-                rot_reason: reason
+               
             }),
         };
 
-        return this.httpClient.delete(
-            `${environment.apiURL}/requestOvertime`, httpOptions
+        return this.httpClient.patch(
+            `${environment.apiURL}/requestOvertime/cancel`, {
+                rot_id: id,
+                rot_reason: reason
+            },{
+                headers
+            }
         );
     }
 

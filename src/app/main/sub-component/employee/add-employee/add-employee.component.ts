@@ -288,7 +288,7 @@ export class AddEmployeeComponent implements OnInit {
       this.checknullPosit = true;
     }
 
-
+    console.log(this.emp)
     if (this.emp.invalid || this.checknullPosit) {
       return;
     }
