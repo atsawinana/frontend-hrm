@@ -1,56 +1,51 @@
-<div class="row">
+<app-loading *ngIf="checkState"></app-loading>
+<div class="row" *ngIf="!checkState">
     <div class="col-12">
         <div class="row">
             <div class="col font-content">
                 ประวัติการลาทั้งหมด
             </div>
 
-            <div class="col-2 mx-2 d-flex align-items-center border-input" style="height: 40px; width: 155px;">
+            <div class="col-4 mx-2 d-flex align-items-center border-input"
+                style="height: 40px; width: 155px;">
                 <div class="container px-0">
                     <div class="row">
-                        <input type="text" placeholder="เลือกเดือนและปี"
-                            class="col-9 w-75 dateIcon icon-bg"
-                            #dp="bsDatepicker"
-                            bsDatepicker (keypress)="false"
-                            (onShown)="onOpenCalendar($event)"
-                            (onHidden)="sortdate()" [(ngModel)]="date"
-                            (bsValueChange)="sortdate()"
+                        <input type="text" placeholder="เลือกช่วงวันที่"
+                            class="col-9 dateIcon icon-bg"
+                            #dp="bsDaterangepicker"
+                            bsDaterangepicker (keypress)="false"
+                            (onHidden)="sortDate()" [(ngModel)]="date"
+                            (bsValueChange)="sortDate()"
                             [bsConfig]="{ isAnimated: true,
+                            rangeInputFormat : 'DD/MM/YYYY',
                             dateInputFormat:
-                            'MM/YYYY', containerClass:
+                            'DD/MM/YYYY', containerClass:
                             'theme-dark-blue',
                             showWeekNumbers: false,
-                            clearPosition: 'right'}">
+                            clearPosition: 'right',
+                            adaptivePosition: true}">
 
                         <div class="col-3 d-flex align-items-center
-                            justify-content-center px-0" (click)="dp.toggle()" [attr.aria-expanded]="dp.isOpen" style="cursor: pointer;">
-                            <i class="fa-solid fa-calendar-days icon-color" style="font-size: 24px;"></i>
+                            justify-content-center px-0" (click)="dp.toggle()"
+                            [attr.aria-expanded]="dp.isOpen" style="cursor:
+                            pointer;">
+                            <i class="fa-solid fa-calendar-days icon-color"
+                                style="font-size: 24px;"></i>
                         </div>
                     </div>
-                    <!-- <div class="row">
-                        <input type="text" placeholder="เลือกเดือนปี"
-                            class="col-9 w-75 dateIcon icon-bg"
-                            bsDatepicker (keypress)="false"
-                            (onShown)="onOpenCalendar($event)"
-                            (onHidden)="sortdate()" [(ngModel)]="date"
-                            [bsConfig]="{ isAnimated: true,
-                            dateInputFormat:
-                            'MM/YYYY', containerClass:
-                            'theme-dark-blue',
-                            showWeekNumbers: false}">
-
-                        <div class="col-3 d-flex align-items-center
-                            justify-content-center px-0">
-                            <i class="fa-solid fa-calendar-days icon-color"></i>
-                        </div>
-                    </div> -->
                 </div>
             </div>
         </div>
 
 
-        <div class="table-responsive">
-            <table class="table-responsive table align-middle table-striped mt-3">
+        <h1 class="row mt-5 d-flex justify-content-center"
+            *ngIf="objTable.length == 0" style="font-family: 'Kanit';">
+            ไม่พบประวัติการลาทั้งหมด
+        </h1>
+
+        <div *ngIf="!(objTable.length == 0)" class="table-responsive">
+            <table class="table-responsive table align-middle table-striped
+                mt-3">
 
                 <!--table header-->
                 <thead class="ps-5 list-table">

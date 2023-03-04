@@ -26,3 +26,26 @@ table {
     line-height: 35px;
   }
   
+  
+.border-input {
+  background: transparent;
+  border: 1px solid #005FBC;
+  border-radius: 10px;
+  position: relative;
+}
+
+
+input {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-size: 18px;
+  border: none;
+  background-color: transparent;
+  resize: none;
+  outline: none;
+}
+
+
+.icon-color {
+  color: #005FBC !important;
+}

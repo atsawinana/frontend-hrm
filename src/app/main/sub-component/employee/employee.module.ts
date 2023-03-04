@@ -23,6 +23,7 @@ import { EditDetailPersonComponent } from './data-person/person-employee/edit-de
 import { DataPersonBtnComponent } from './data-person/data-person-btn/data-person-btn.component';
 import { ClipboardModule } from '@angular/cdk/clipboard'
 import { EmployeeMainComponent } from './employee-main/employee-main.component';
+import { SharedComponentModule } from '../../shared-component/shared-component.module';
 
 @NgModule({
   imports: [
@@ -37,6 +38,7 @@ import { EmployeeMainComponent } from './employee-main/employee-main.component';
     BsDatepickerModule.forRoot(),
     DatePipe,
     ClipboardModule,
+    SharedComponentModule
   ],
   declarations: [
     ListEmployeeComponent,

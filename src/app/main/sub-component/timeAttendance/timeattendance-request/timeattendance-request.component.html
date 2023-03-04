@@ -71,6 +71,7 @@
                                             (keypress)="false"
                                             formControlName="Date"
                                             (ngModelChange)="onValueChange($event)"
+                                            [daysDisabled]="[6,0]"
                                             [bsConfig]="{
                                             isAnimated: true,
                                             dateInputFormat:

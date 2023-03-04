@@ -15,8 +15,8 @@ export class LeaveHistoryPersonComponent implements OnInit {
     locale = 'th';
     date: any
     objTable: any
-    empid:any = localStorage.getItem("empPerson")
-    
+    empid: any = localStorage.getItem("empPerson")
+    checkState:boolean = true
     ngOnInit() {
 
         defineLocale('th', thBeLocale);
@@ -26,8 +26,7 @@ export class LeaveHistoryPersonComponent implements OnInit {
             next: (res: any) => {
                 // console.log(res.data)
                 this.objTable = res.data.leave_online
-                let startDate = new Date()
-                this.date = startDate
+                this.checkState = false
 
             },
             error: (err: any) => {
@@ -35,36 +34,32 @@ export class LeaveHistoryPersonComponent implements OnInit {
         })
     }
 
+    sortDate() {
+        // console.log((this.date))
 
-    onOpenCalendar(container: any) {
-        container.monthSelectHandler = (event: any): void => {
-            container._store.dispatch(container._actions.select(event.date));
-        };
-        container.setViewMode('month');
-    }
+        let startDate = new Date(this.date[0])
+        let endDate = new Date(this.date[1])
 
-
-    sortdate() {
-        if (this.date == "" || this.date == null)
+        if (isNaN(Number(startDate)) || isNaN(Number(endDate)))
             return
-        // console.log(this.date)
-        let startDate = this.datepipe.transform(this.date, 'yyyy-MM-dd')
 
-        let arydate1 = startDate!.toString().split("-")
-        // console.log("test1", arydate1)
-        arydate1[0] = (Number(arydate1[0]) + 543).toString()
+        let startDateFormat = startDate.getFullYear() + "-" + Number(startDate.getMonth() + 1) + "-" + startDate.getDate()
+        // console.log(startDateFormat)
 
-
-        let date = arydate1[0] + "-" + arydate1[1]
-
+        let endDateFormat = endDate.getFullYear() + "-" + Number(endDate.getMonth() + 1) + "-" + endDate.getDate()
+        // console.log(endDateFormat)
+        let date = startDateFormat + "," + endDateFormat
         this.service.getHistory(this.empid, date).subscribe({
             next: (res: any) => {
                 // console.log(res.data)
                 this.objTable = res.data.leave_online
+            
+
             },
             error: (err: any) => {
             },
         })
     }
+
 
 }
