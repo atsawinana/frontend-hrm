@@ -67,7 +67,7 @@ export class OtEditRequestComponent implements OnInit {
             next: (res: any) => {
                 this.Request.controls.startDate.setValue(new Date(res.data.rot_start_date))
                 this.Request.controls.endDate.setValue(new Date(res.data.rot_end_date))
-                this.Request.controls.Type.setValue(res.data.rot_id)
+                this.Request.controls.Type.setValue(res.data.rot_ot_id)
                 this.Request.controls.detail.setValue(res.data.rot_detail)
                 let endtime, startTime
                 endtime = res.data.rot_end_time

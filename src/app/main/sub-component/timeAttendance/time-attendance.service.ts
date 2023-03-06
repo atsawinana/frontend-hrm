@@ -9,14 +9,6 @@ export class TimeAttendanceService {
 
     constructor(private httpClient: HttpClient) { }
 
-    createTable() {
-        const headers = new HttpHeaders({
-            'Authorization': 'Bearer' + localStorage.getItem('tokenLocal'),
-        });
-
-        return this.httpClient.get(`${environment.apiURL}/TimeAttendance/pseudo-crontab`, { headers });
-    }
-
     getCondition() {
         const headers = new HttpHeaders({
             'Authorization': 'Bearer' + localStorage.getItem('tokenLocal'),
