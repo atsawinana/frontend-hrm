@@ -6,8 +6,6 @@ import { LeaveHistoryComponent } from './leave-history/leave-history.component';
 import { LeaveRequestComponent } from './leave-request/leave-request.component';
 import { LeaveInfoComponent } from './leave-info/leave-info.component';
 import { HistoryComponent } from './leave-history/history/history.component';
-import { DetailComponent } from './leave-history/detail/detail.component';
-import { EditDetailComponent } from './leave-history/detail/edit-detail/edit-detail.component';
 import { OverbuttonComponent } from './overbutton/overbutton.component';
 import { LoadingLeaveInfoComponent } from './loading-leave-info/loading-leave-info.component';
 import { RouterModule } from '@angular/router';
@@ -44,8 +42,6 @@ import { SharedComponentModule } from '../../shared-component/shared-component.m
         LeaveRequestComponent,
         LeaveInfoComponent,
         HistoryComponent,
-        DetailComponent,
-        EditDetailComponent,
         OverbuttonComponent,
         LoadingLeaveInfoComponent,
         LeaveViewRequestComponent,

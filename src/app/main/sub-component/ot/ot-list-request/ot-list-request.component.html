@@ -37,7 +37,7 @@
                                 <th class="text-center cut-text"
                                     style="max-width: 30% !important;">รายชื่อ</th>
                                 <th class="text-center cut-text"
-                                    style="max-width: 20% !important;">วันที่</th>
+                                    style="max-width: 20% !important;">วันที่ทำโอที</th>
                                 <th class="text-center cut-text"
                                     style="max-width: 10% !important;">ระยะเวลาเริ่มต้น
                                     - สิ้นสุด</th>
@@ -130,9 +130,12 @@
                                 [clearable]="false"
                                 class="custom maxWidth add-boss"
                                 (change)="UpdateListPerpage()" required>
-                                <ng-option [value]="3">3</ng-option>
-                                <ng-option [value]="5">5</ng-option>
                                 <ng-option [value]="10">10</ng-option>
+                                <ng-option [value]="15">15</ng-option>
+                                <ng-option [value]="20">20</ng-option>
+                                <ng-option [value]="25">25</ng-option>
+                                <ng-option [value]="50">50</ng-option>
+                                <ng-option [value]="100">100</ng-option>
                             </ng-select>
                         </div>
                     </div>

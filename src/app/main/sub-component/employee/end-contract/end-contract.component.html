@@ -167,9 +167,12 @@
                     <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2 ms-2 p-0
             select-perPage d-flex align-items-center my-auto">
                         <ng-select style="width: 60px" [(ngModel)]="listPerPage" [clearable]="false" class="custom maxWidth add-boss" (change)="listPerpage()" required>
-                            <ng-option [value]="3">3</ng-option>
-                            <ng-option [value]="5">5</ng-option>
                             <ng-option [value]="10">10</ng-option>
+                            <ng-option [value]="15">15</ng-option>
+                            <ng-option [value]="20">20</ng-option>
+                            <ng-option [value]="25">25</ng-option>
+                            <ng-option [value]="50">50</ng-option>
+                            <ng-option [value]="100">100</ng-option>
                         </ng-select>
                     </div>
                 </div>
