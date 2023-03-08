@@ -69,9 +69,6 @@
                                 align-items-center" style="height: 50px;">ยื่นคำร้อง</div>
                             <div class="row font-detail">
                                 <div class="col-4 fw-bolder">
-                                    <div class="mb-2"
-                                        *ngIf="objProfile.rvac_reason !=
-                                        '-'">เหตุผลการยกเลิก :</div>
                                     <div class="mb-2">ประเภทการลา :</div>
                                     <div class="mb-2">วันที่ยื่นลา :</div>
                                     <div class="mb-2">วันที่ต้องการลา :</div>
@@ -80,9 +77,6 @@
                                     <div class="mb-2">เหตุผลการลา :</div>
                                 </div>
                                 <div class="col">
-                                    <div class="mb-2"
-                                        *ngIf="objProfile.rvac_reason !=
-                                        '-'">{{objProfile.rvac_reason}}</div>
                                     <div class="mb-2">{{objProfile.rvac_type}}</div>
                                     <div class="mb-2">{{objProfile.rvac_created_at}}</div>
                                     <div class="mb-2">{{objProfile.rvac_date_start}}

@@ -103,7 +103,6 @@ export class ChartPersonalComponent implements OnInit {
 
 
     ngOnInit() {
-        console.log(JSON.parse(localStorage.getItem('objdataUser')!))
         this.objdataUser = JSON.parse(localStorage.getItem('objdataUser')!)
         localStorage.setItem('user_id', this.objdataUser.user_id)
         this.phonenumber = this.objdataUser.ud_phone

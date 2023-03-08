@@ -60,4 +60,16 @@ export class ProfileService {
     }, { headers });
   }
 
+  // /requestOvertime/showOvertimes [GET]
+
+  showOvertimes() {
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+    });
+
+    return this.httpClient.get(`${environment.apiURL}/requestOvertime/showOvertimes`, {
+      headers,
+    });
+  }
+
 }

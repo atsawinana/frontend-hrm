@@ -24,7 +24,6 @@ export class OtNotiComponent implements OnInit {
         this.notiservice.getnotificationOverTime().subscribe({
             next: (res: any) => {
                 this.objDataNoti = res.data
-                console.log(this.objDataNoti)
                 this.ApiSuccess = true
             },
             error: (error: any) => { },

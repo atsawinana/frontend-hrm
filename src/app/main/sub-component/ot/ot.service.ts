@@ -161,17 +161,17 @@ export class OtService {
         const httpOptions = {
             headers,
             body: JSON.stringify({
-               
+
             }),
         };
 
         return this.httpClient.patch(
             `${environment.apiURL}/requestOvertime/cancel`, {
-                rot_id: id,
-                rot_reason: reason
-            },{
-                headers
-            }
+            rot_id: id,
+            rot_reason: reason
+        }, {
+            headers
+        }
         );
     }
 
@@ -251,4 +251,36 @@ export class OtService {
             { headers }
         );
     }
+
+    //     /requestOvertime/CheckTime [GET]
+    // params :
+    // "rot_start_time":"02:10",
+    //     "rot_end_time" : "02:11",
+    //     "rot_start_date" : "2023-02-08",
+    //     "rot_end_date" : "2023-02-08"
+
+    checkTimevalid(
+        rot_start_date: string | null,
+        rot_end_date: string | null,
+        rot_start_time: string | null,
+        rot_end_time: string | null) {
+        const headers = new HttpHeaders({
+            Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+        });
+
+        return this.httpClient.get(
+            `${environment.apiURL}/requestOvertime/CheckTime`,
+            {
+                headers,
+                params: {
+                    "rot_start_time": String(rot_start_time!),
+                    "rot_end_time": String(rot_end_time!),
+                    "rot_start_date": String(rot_start_date!),
+                    "rot_end_date": String(rot_end_date!)
+                }
+            },
+
+        );
+    }
+
 }

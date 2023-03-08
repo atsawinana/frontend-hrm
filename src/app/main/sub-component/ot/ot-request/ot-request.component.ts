@@ -63,7 +63,6 @@ export class OtRequestComponent implements OnInit {
 
     this.otService.getNameWork().subscribe({
       next: (res: any) => {
-        console.log(res)
         this.nameWork = res.data
         this.checkState = false
       },
@@ -204,16 +203,18 @@ export class OtRequestComponent implements OnInit {
 
   submitButton() {
     this.summited = true;
-    console.log(this.Request.value)
 
     let d1 = new Date(this.Request.controls.startDate.value!)
     let d2 = new Date(this.Request.controls.endDate.value!)
 
-    console.log(d1.getTime() < d2.getTime())
+    let dateStart = this.datepipe.transform(this.Request.controls.startDate.value, 'yyyy-MM-dd');
+    let dateEnd = this.datepipe.transform(this.Request.controls.endDate.value, 'yyyy-MM-dd');
+    if (this.Request.invalid)
+      return;
 
     if (d1.getTime() > d2.getTime()) {
       Swal.fire({
-        title: '<strong style = "font-family:Kanit"> ข้อมูลวันที่ผิดพลาด กรุณาลองอีกครั้ง </strong>',
+        title: '<strong style = "font-family:Kanit"> ข้อมูลวันที่หรือเวลาผิดพลาด กรุณาลองอีกครั้ง </strong>',
         icon: 'warning',
         showConfirmButton: false,
         timer: 2500
@@ -221,44 +222,56 @@ export class OtRequestComponent implements OnInit {
       return
     }
 
-    let dateStart = this.datepipe.transform(this.Request.controls.startDate.value, 'yyyy-MM-dd');
-    console.log(dateStart)
-    let dateEnd = this.datepipe.transform(this.Request.controls.endDate.value, 'yyyy-MM-dd');
-    if (this.Request.invalid)
-      return;
-
-
-
-    Swal.fire({
-      title: '<strong style = "font-family:Kanit"> คุณต้องการส่งแบบฟอร์มการทำโอที ใช่หรือไม่ </strong>',
-      icon: 'warning',
-      showCancelButton: true,
-      cancelButtonColor: '#d33',
-      cancelButtonText: '<div style = "font-family:Kanit"> ยกเลิก </div>',
-      confirmButtonText: '<div style = "font-family:Kanit"> ตกลง </div>',
-      confirmButtonColor: '#005FBC',
-      reverseButtons: true,
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.loadingapi = true
-        this.otService.requestOvertime(
-          this.Request.controls.Type.value!,
-          dateStart!,
-          dateEnd!,
-          this.setTimeFormat(this.timeStart),
-          this.setTimeFormat(this.timeEnd),
-          this.Request.controls.detail.value!
-        ).subscribe({
-          next: (res: any) => {
-            this.route.navigate(['../main/ot']);
-            this.loadingapi = false
-          },
-          error: (err: any) => {
-            this.loadingapi = false
-          }
-        });
-      }
-    });
+    this.otService.checkTimevalid(
+      dateStart!,
+      dateEnd!,
+      this.setTimeFormat(this.timeStart),
+      this.setTimeFormat(this.timeEnd),
+    ).subscribe({
+      next: (res: any) => {
+        if (res.data.checker == 1) {
+          Swal.fire({
+            title: '<strong style = "font-family:Kanit"> ข้อมูลวันที่หรือเวลาผิดพลาด กรุณาลองอีกครั้ง </strong>',
+            icon: 'warning',
+            showConfirmButton: false,
+            timer: 2500
+          })
+          return
+        }
+        else {
+          Swal.fire({
+            title: '<strong style = "font-family:Kanit"> คุณต้องการส่งแบบฟอร์มการทำโอที ใช่หรือไม่ </strong>',
+            icon: 'warning',
+            showCancelButton: true,
+            cancelButtonColor: '#d33',
+            cancelButtonText: '<div style = "font-family:Kanit"> ยกเลิก </div>',
+            confirmButtonText: '<div style = "font-family:Kanit"> ตกลง </div>',
+            confirmButtonColor: '#005FBC',
+            reverseButtons: true,
+          }).then((result) => {
+            if (result.isConfirmed) {
+              this.loadingapi = true
+              this.otService.requestOvertime(
+                this.Request.controls.Type.value!,
+                dateStart!,
+                dateEnd!,
+                this.setTimeFormat(this.timeStart),
+                this.setTimeFormat(this.timeEnd),
+                this.Request.controls.detail.value!
+              ).subscribe({
+                next: (res: any) => {
+                  this.route.navigate(['../main/ot']);
+                  this.loadingapi = false
+                },
+                error: (err: any) => {
+                  this.loadingapi = false
+                }
+              });
+            }
+          });
+        }
+      },
+      error: (err: any) => { }
+    })
   }
-
 }

@@ -72,9 +72,9 @@ export class OtViewRequestComponent implements OnInit {
         let elsereason = reason
         if (reason == "อื่น ๆ (กดตกลงเพื่อกรอกเหตุผล)") {
             let { value: reason } = await Swal.fire({
-                title: '<strong style = "font-family:Kanit"> กรุณากรอกเหตุผลยกเลิกการลา </strong>',
+                title: '<strong style = "font-family:Kanit"> กรุณากรอกเหตุผลยกเลิกการทำโอี </strong>',
                 input: 'textarea',
-                html: '<strong style = "font-family:Kanit; font-size:16px"> เหตุผลยกเลิกการลา* </strong>',
+                html: '<strong style = "font-family:Kanit; font-size:16px"> เหตุผลยกเลิกการทำโอที* </strong>',
                 inputPlaceholder: 'กรอกข้อมูล',
                 inputAttributes: {
                     'aria-label': 'Type your message here'
@@ -123,7 +123,7 @@ export class OtViewRequestComponent implements OnInit {
     approveRequest() {
 
         Swal.fire({
-            title: `<strong style = "font-family:Kanit"> คุณต้องการอนุมัติการลา <br> จาก ${this.objDetailReq.ud_fullname_th} <br> แผนก ${this.objDetailReq.department} </strong>`,
+            title: `<strong style = "font-family:Kanit"> คุณต้องการอนุมัติการทำโอที <br> จาก ${this.objDetailReq.ud_fullname_th} <br> แผนก ${this.objDetailReq.department} </strong>`,
             icon: 'question',
             showCancelButton: true,
             cancelButtonColor: '#d33',
@@ -145,7 +145,7 @@ export class OtViewRequestComponent implements OnInit {
 
     disapproveRequest() {
         Swal.fire({
-            title: `<strong style = "font-family:Kanit"> คุณต้องการไม่อนุมัติการลา <br> จาก ${this.objDetailReq.ud_fullname_th} <br> แผนก ${this.objDetailReq.department} </strong>`,
+            title: `<strong style = "font-family:Kanit"> คุณต้องการไม่อนุมัติการทำโอที <br> จาก ${this.objDetailReq.ud_fullname_th} <br> แผนก ${this.objDetailReq.department} </strong>`,
             icon: 'question',
             showCancelButton: true,
             cancelButtonColor: '#d33',
@@ -156,9 +156,9 @@ export class OtViewRequestComponent implements OnInit {
         }).then(async (e) => {
             if (e.isConfirmed) {
                 let { value: reason } = await Swal.fire({
-                    title: '<strong style = "font-family:Kanit"> กรุณากรอกเหตุผลไม่อนุมัติการลา </strong>',
+                    title: '<strong style = "font-family:Kanit"> กรุณากรอกเหตุผลไม่อนุมัติการทำโอที </strong>',
                     input: 'textarea',
-                    html: '<strong style = "font-family:Kanit; font-size:16px"> เหตุผลไม่อนุมัติการลา* </strong>',
+                    html: '<strong style = "font-family:Kanit; font-size:16px"> เหตุผลไม่อนุมัติการทำโอที* </strong>',
                     inputPlaceholder: 'กรอกข้อมูล',
                     inputAttributes: {
                         'aria-label': 'Type your message here'

@@ -65,7 +65,6 @@ export class TimeattendanceHistoryAllComponent implements OnInit {
 
     public exportAsExcelFile(): void {
         let ExptExcel = JSON.parse(JSON.stringify(this.objTableHistory));
-        console.log(this.objTableHistory);
         for (let i = 0; i < ExptExcel.length; i++) {
             ExptExcel[i].ลำดับ = ExptExcel[i]['ta_number'];
             ExptExcel[i].รหัสพนักงาน = ExptExcel[i]['user_card_number'];
@@ -102,6 +101,7 @@ export class TimeattendanceHistoryAllComponent implements OnInit {
     }
 
     sortDate() {
+
         let startDate = new Date(this.date[0])
         let endDate = new Date(this.date[1])
 

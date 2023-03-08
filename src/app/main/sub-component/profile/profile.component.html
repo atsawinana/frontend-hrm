@@ -2,8 +2,7 @@
   <div class="row d-flex justify-content-between">
     <div
       class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-8 col-xxl-8 h-100"
-      id="main-element"
-    >
+      id="main-element">
       <div class="container-fluid">
         <div class="row profileBG">
           <div class="col-12 px-0">
@@ -12,9 +11,7 @@
                 <div class="col-2 d-flex justify-content-center fontIcon">
                   <i
                     class="fa-solid fa-image-portrait me-2 my-auto"
-                    style="font-size: 25px; color: #005fbc"
-                  ></i
-                  >โปรไฟล์
+                    style="font-size: 25px; color: #005fbc"></i>โปรไฟล์
                 </div>
                 <div class="col-2 d-flex justify-content-center editprofile">
                   <p style="cursor: pointer" (click)="editData()">
@@ -22,40 +19,42 @@
                   </p>
                 </div>
               </div>
-              <div class="col-4 d-flex justify-content-center px-0">
-                <img
-                  [ngClass]="{ positionEdit: whenEdit }"
-                  class="img-fluid img-profile mx-auto d-block d-flex justify-content-end img-thumbnail"
-                  src="{{ storageURL }}{{ objdataUser.ud_picture }}"
-                />
-                <label
-                  *ngIf="whenEdit"
-                  for="getFile1"
-                  class="file_upload text-center col-0"
-                  ><i
-                    class="fa-solid fa-camera upload-icon "
-                  ></i
-                ></label>
+
+
+              <!-- <div class="parent">
+                <img class="image1" src="{{ storageURL }}{{ objdataUser.ud_picture }}" />
+                <img class="image2" src="{{ storageURL }}{{ objdataUser.ud_picture }}" style="opacity: 0.5;"/>
+              </div> -->
+              <div class="col-4 px-0 parent">
+
+                <img [ngClass]="{ positionEdit: whenEdit }" class="image1
+                  img-profile" src="{{ storageURL }}{{ objdataUser.ud_picture
+                  }}" />
+                <label *ngIf="whenEdit" for="getFile1" class="image2 img-profile
+                  py-auto d-flex align-items-center justify-content-center"
+                  style=" z-index: 2; font-family: Kanit; font-size: 26px;
+                  cursor: pointer; ">คลิกเพื่อเปลี่ยนรูป</label>
+
                 <input
                   (change)="editPicture($event)"
                   type="file"
                   id="getFile1"
                   class="hide"
                   accept="image/*"
-                />
+                  />
               </div>
+
               <div class="col-8 d-flex align-items-center px-5">
                 <div
                   class="d-flex flex-column fontStyle"
-                  style="width: 100% !important"
-                >
+                  style="width: 100% !important">
                   <div class="row d-flex mb-4">
                     <div class="col ps-4 fontprofileMan">
                       ชื่อ : {{ objdataUser.ud_prefix_name }}
                       {{ objdataUser.ud_firstname_th }}
                       <p
-                        class="d-flex align-items-center ms-3 my-0 fontcontract"
-                      >
+                        class="d-flex align-items-center ms-3 my-0
+                        fontcontract">
                         ({{ objdataUser.user_contract_name }})
                       </p>
                     </div>
@@ -74,8 +73,9 @@
                         (keypress)="iputNumberOnly($event)"
                         maxlength="10"
                         type="text"
-                        class="ms-2 col-6 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5 editPhonenumber"
-                      />
+                        class="ms-2 col-6 col-sm-5 col-md-5 col-lg-5 col-xl-5
+                        col-xxl-5 editPhonenumber"
+                        />
                     </div>
                   </div>
                 </div>
@@ -107,8 +107,7 @@
           <div
             *ngIf="whenEdit"
             class="row d-flex justify-content-center"
-            style="height: 40px"
-          >
+            style="height: 40px">
             <button class="col-1 btn-cancel me-2" (click)="editModalCancel()">
               ยกเลิก
             </button>
@@ -121,9 +120,7 @@
           <div class="div-test fontIcon">
             <i
               class="fa-solid fa-calendar-minus me-2 mb-5"
-              style="font-size: 20px; color: #005fbc"
-            ></i
-            >วันลาคงเหลือ
+              style="font-size: 20px; color: #005fbc"></i>วันลาคงเหลือ
           </div>
 
           <app-chartPersonal></app-chartPersonal>
@@ -138,28 +135,22 @@
             <div class="div-test fontIcon mb-4">
               <i class="fa-regular fa-clock me-2 my-auto"></i>การทำโอที
             </div>
-            <div class="row px-3 mb-2">
-              <div class="col fontOT">ชื่องาน OT</div>
-              <div class="col-5">
-                <div
+            <div class="row px-3 mb-2" *ngFor="let rot of objrot">
+              <div class="col fontOT">{{rot.rot_ot_id}}</div>
+              <div class="col-4">
+                <div *ngIf="rot.rot_approve_status == 1"
                   class="OtfontApproved text-end"
-                  style="color: #239411; font-size: 20px"
-                >
-                  อนุมัติ
+                  style="color: #239411; font-size: 20px">
+                  {{rot.rot_status_name}}
+                </div>
+                <div *ngIf="rot.rot_approve_status == 2"
+                  class="OtfontApproved text-end"
+                  style="color: #ef0303; font-size: 20px">
+                  {{rot.rot_status_name}}
                 </div>
               </div>
             </div>
-            <div class="row px-3 mb-2">
-              <div class="col fontOT">ชื่องาน OT</div>
-              <div class="col-5">
-                <div
-                  class="OtfontApproved text-end"
-                  style="color: #ef0303; font-size: 20px"
-                >
-                  ไม่อนุมัติ
-                </div>
-              </div>
-            </div>
+
           </div>
         </div>
         <!-- <div class="row chart-res-row">

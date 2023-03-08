@@ -66,18 +66,13 @@
                                 align-items-center" style="height: 50px;">ยื่นคำร้อง</div>
                             <div class="row font-detail">
                                 <div class="col-4 fw-bolder">
-                                    <div class="mb-2"
-                                        *ngIf="objDetailReq.rta_is_canceled ==
-                                        1">เหตุผลการยกเลิก :</div>
+
                                     <div class="mb-2">ประเภทคำร้อง : </div>
                                     <div class="mb-2">วันที่เข้าทำงาน : </div>
                                     <div class="mb-2">ระบุเวลาเข้าทำงาน : </div>
                                     <div class="mb-2">เหตุผล : </div>
                                 </div>
                                 <div class="col">
-                                    <div class="mb-2"
-                                        *ngIf="objDetailReq.rta_is_canceled ==
-                                        1">111</div>
                                     <div class="mb-2">{{objDetailReq.rta_type}}</div>
                                     <div class="mb-2">{{objDetailReq.rta_date}}</div>
                                     <div class="mb-2">{{objDetailReq.rta_start_time}}</div>

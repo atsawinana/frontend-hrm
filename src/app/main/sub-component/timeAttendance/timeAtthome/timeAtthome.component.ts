@@ -34,9 +34,9 @@ export class TimeAtthomeComponent implements OnInit {
         checkoutbtn: false
     }
 
-    checkState:boolean = false
-    checkstateTable:boolean = true
-    checkstateCondition:boolean = true
+    checkState: boolean = false
+    checkstateTable: boolean = true
+    checkstateCondition: boolean = true
 
     constructor(private serviceTimeatd: TimeAttendanceService) {
 
@@ -142,29 +142,40 @@ export class TimeAtthomeComponent implements OnInit {
             next: (res: any) => {
 
 
+                if (res.data.alert) {
+                    Swal.fire({
+                        title: `<strong style = "font-family:Kanit"> ขณะนี้คุณทำงาน <br> ${res.data.time} <br> จะออกจากงานก่อนเวลาหรือไม่ </strong>`,
+                        icon: 'question',
+                        showCancelButton: true,
+                        cancelButtonColor: '#d33',
+                        cancelButtonText: '<div style = "font-family:Kanit"> ยกเลิก </div>',
+                        confirmButtonText: '<div style = "font-family:Kanit"> ตกลง </div>',
+                        confirmButtonColor: '#005FBC',
+                        reverseButtons: true,
+                    }).then((e) => {
+                        if (e.isConfirmed) {
+                            this.serviceTimeatd.checkout().subscribe({
+                                next: (res: any) => {
+                                    this.checkCondition();
+                                    location.reload()
+                                },
+                                error: (err: any) => {
 
-                Swal.fire({
-                    title: `<strong style = "font-family:Kanit"> ขณะนี้คุณทำงาน <br> ${res.data.time} <br> จะออกจากงานก่อนเวลาหรือไม่ </strong>`,
-                    icon: 'question',
-                    showCancelButton: true,
-                    cancelButtonColor: '#d33',
-                    cancelButtonText: '<div style = "font-family:Kanit"> ยกเลิก </div>',
-                    confirmButtonText: '<div style = "font-family:Kanit"> ตกลง </div>',
-                    confirmButtonColor: '#005FBC',
-                    reverseButtons: true,
-                }).then((e) => {
-                    if (e.isConfirmed) {
-                        this.serviceTimeatd.checkout().subscribe({
-                            next: (res: any) => {
-                                this.checkCondition();
-                                location.reload()
-                            },
-                            error: (err: any) => {
+                                },
+                            })
+                        }
+                    })
+                } else {
+                    this.serviceTimeatd.checkout().subscribe({
+                        next: (res: any) => {
+                            this.checkCondition();
+                            location.reload()
+                        },
+                        error: (err: any) => {
 
-                            },
-                        })
-                    }
-                })
+                        },
+                    })
+                }
 
                 this.checkCondition();
             },

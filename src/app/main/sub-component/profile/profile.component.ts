@@ -28,6 +28,7 @@ export class ProfileComponent implements OnInit {
     whenEdit: boolean = false;
     phonenumber: any;
     confirmPath: string = '';
+    objrot:any
 
     // events
     public chartClicked({
@@ -63,10 +64,17 @@ export class ProfileComponent implements OnInit {
                 localStorage.setItem('ud_gender_id', this.objdataUser.ud_gender_id);
                 this.phonenumber = this.objdataUser.ud_phone;
                 this.testleaveday = this.objdataUser.user_maternity_day;
-                this.ApiSuccess = true;
+                this.profileService.showOvertimes().subscribe({
+                    next: (res: any) => {
+                        this.objrot = res.data.obj_req_overtime
+                        this.ApiSuccess = true;
+                    },
+                    error: (err: any) => { },
+                });
             },
             error: (err: any) => { },
         });
+
     }
 
     iputNumberOnly(event: any): boolean {

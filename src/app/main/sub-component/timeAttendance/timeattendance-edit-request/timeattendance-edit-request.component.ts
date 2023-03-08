@@ -53,11 +53,9 @@ export class TimeattendanceEditRequestComponent implements OnInit {
         this.rta_id = this.route.snapshot.params['id'];
             this.serviceTimeatd.getReverseAttendance(this.rta_id).subscribe({
                 next: (res: any) => {
-                    console.log(res.data.rta_date)
                     let date = new Date(res.data.rta_date)
                     this.Request.controls.Type.setValue(res.data.rta_type)
                     this.Request.controls.Date.setValue(date)
-                    console.log(this.Request.controls.Date.value)
 
 
                     let startTime
@@ -107,7 +105,6 @@ export class TimeattendanceEditRequestComponent implements OnInit {
         this.serviceTimeatd.checkEditRequestAttendance(date).subscribe({
             next: (res: any) => {
                 this.requestStatus = res.data.status
-                console.log(res.data.status)
                 if (this.requestStatus == 0) {
                     Swal.fire({
                         title: '<strong style = "font-family:Kanit"> วันนี้คุณส่งคำขอเข้างานไปแล้ว </strong>',
@@ -182,7 +179,6 @@ export class TimeattendanceEditRequestComponent implements OnInit {
 
     submitButton() {
 
-        console.log(this.Request.controls.Date.value)
 
         this.summited = true
 
