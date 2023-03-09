@@ -143,7 +143,7 @@ export class ResetPasswordComponent implements OnInit {
           Swal.fire({
             title: '<strong style = "font-family:Kanit"> รหัสผ่านเดิมไม่ถูกต้อง </strong>',
             html: '<div style = "font-family:Kanit"> กรุณาลองใหม่อีกครั้ง </div>',
-            icon: 'success',
+            icon: 'warning',
             confirmButtonColor: '#005FBC',
             confirmButtonText: '<div style = "font-family:Kanit"> ตกลง </div>'
           }).then((e) => { location.reload(); })

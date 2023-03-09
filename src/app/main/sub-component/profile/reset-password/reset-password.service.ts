@@ -19,7 +19,7 @@ export class ResetPasswordService {
         });
 
         return this.httpClient.patch(
-            `${environment.apiURL}/employee/changePassword`,
+            `${environment.apiURL}/employee/password`,
             {
                 user_password: old_password,
                 user_password_new: new_password,
