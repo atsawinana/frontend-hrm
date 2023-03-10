@@ -126,6 +126,7 @@ export class TimeAtthomeComponent implements OnInit {
         this.serviceTimeatd.checkin().subscribe({
             next: (res: any) => {
                 this.checkCondition();
+                location.reload()
             },
             error: (err: any) => { }
         })

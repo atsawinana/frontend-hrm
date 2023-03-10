@@ -85,7 +85,9 @@
                             <div class="col-6 d-flex
                               justify-content-end
                               align-items-center
-                              font-time-picker"><input type="number" [ngClass]="{
+                              font-time-picker"><input type="text"
+                              pattern="\d*"
+                              maxlength="2" [ngClass]="{
                                 'alert-time-picker':
                                 timeStart.alerthours }" class="form-control"
                                 max="60"
@@ -127,7 +129,9 @@
                               justify-content-end
                               align-items-center
                               font-time-picker">
-                              <input type="number" [ngClass]="{
+                              <input type="text"
+                              pattern="\d*"
+                              maxlength="2" [ngClass]="{
                                 'alert-time-picker':
                                 timeStart.alertmins }" class="form-control"
                                 max="60"
@@ -252,7 +256,9 @@
                             <div class="col-6 d-flex
                               justify-content-end
                               align-items-center
-                              font-time-picker"><input type="number" [ngClass]="{
+                              font-time-picker"><input type="text"
+                              pattern="\d*"
+                              maxlength="2" [ngClass]="{
                                 'alert-time-picker':
                                 timeEnd.alerthours }" class="form-control"
                                 max="60"
@@ -294,7 +300,9 @@
                               justify-content-end
                               align-items-center
                               font-time-picker">
-                              <input type="number" [ngClass]="{
+                              <input type="text"
+                              pattern="\d*"
+                              maxlength="2" [ngClass]="{
                                 'alert-time-picker':
                                 timeEnd.alertmins }" class="form-control" max="60"
                                 min="0"

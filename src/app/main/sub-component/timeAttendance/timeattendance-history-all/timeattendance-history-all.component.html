@@ -109,9 +109,9 @@
                 </thead>
 
                 <tbody class="list-content">
-                    <tr id="row-list" *ngFor="let objleave of objTableHistory | filter : searchInput | paginate : config ">
+                    <tr id="row-list" *ngFor="let objleave of objTableHistory | filter : searchInput | paginate : config; let number = index">
                         <td>
-                            {{objleave.ta_number}}
+                            {{number+1}}
                         </td>
                         <td class="text-center">
                             {{objleave.user_card_number}}

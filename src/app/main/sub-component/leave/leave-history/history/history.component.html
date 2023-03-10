@@ -120,11 +120,11 @@
                         <tbody class="list-content">
                             <!--row 1 colum ประเภทการลา-->
                             <tr *ngFor="let item of objdataTable | filter
-                                :searchInput | paginate:config">
+                                :searchInput | paginate:config ; let number = index">
                                 <td>
                                     <div class="col d-flex
                                         justify-content-center mt-1">
-                                        {{item.number}}
+                                        {{number+1}}
                                     </div>
                                 </td>
                                 <td>

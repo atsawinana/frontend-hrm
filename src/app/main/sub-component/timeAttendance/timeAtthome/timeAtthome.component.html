@@ -1,7 +1,7 @@
 <app-loading-overscreen *ngIf="checkState"></app-loading-overscreen>
 <div class="container-fluid p-0 mb-3">
     <div class="main-content h-100 p-5">
-        <app-loading *ngIf="checkstateCondition" ></app-loading>
+        <app-loading *ngIf="checkstateCondition"></app-loading>
         <div *ngIf="!checkstateCondition" class="container-fluid">
             <div class="row font-header">
                 บันทึก เข้า-ออก งาน
@@ -117,96 +117,116 @@
                 </div>
             </div>
 
-            <div class="row">
-                <div class="table-responsive">
-                    <table class="table-responsive table table-striped mt-3">
-                        <thead class="ps-5 list-table">
-                            <tr align="center">
-                                <th class="text-center">ลำดับ</th>
-                                <th class="text-center">วันที่ทำงาน </th>
-                                <th class="text-center">เวลาเข้าทำงาน(24ชม.)</th>
-                                <th class="text-center">เวลาออกงาน(24ชม.)</th>
-                                <th class="text-center">จำนวนชั่วโมงที่ทำงาน</th>
-                                <th class="text-center">หมายเหตุ</th>
-                            </tr>
-                        </thead>
+            <h1 class="row mt-5 d-flex justify-content-center"
+                *ngIf="objTable.length == 0" style="font-family:
+                'Kanit';">
+                ไม่พบประวัติการเข้างาน
+            </h1>
 
-                        <tbody class="list-content">
-                            <tr align="center" *ngFor="let item of objTable |
-                                paginate: config">
 
-                                <td class="text-center">{{item.ta_number}}</td>
-                                <td class="text-center">{{item.ta_date}}</td>
-                                <td class="text-center">{{item.ta_time_in}}</td>
-                                <td class="text-center">{{item.ta_time_out}}</td>
-                                <td class="text-center">{{item.ta_amount}}</td>
-                                <td class="text-center">{{item.ta_detail}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+            <div *ngIf="objTable.length != 0">
+                <div class="row">
+                    <div class="table-responsive">
+                        <table class="table-responsive table table-striped
+                            mt-3">
+                            <thead class="ps-5 list-table">
+                                <tr align="center">
+                                    <th class="text-center">ลำดับ</th>
+                                    <th class="text-center">วันที่ทำงาน </th>
+                                    <th class="text-center">เวลาเข้าทำงาน(24ชม.)</th>
+                                    <th class="text-center">เวลาออกงาน(24ชม.)</th>
+                                    <th class="text-center">จำนวนชั่วโมงที่ทำงาน</th>
+                                    <th class="text-center">หมายเหตุ</th>
+                                </tr>
+                            </thead>
 
-            <div class="row">
+                            <tbody class="list-content">
+                                <tr align="center" *ngFor="let item of objTable
+                                    |
+                                    paginate: config">
 
-                <div class="col d-flex flex-row">
-                    <div class="list-perPage d-flex align-items-center
-                        listperpage-font">รายการต่อหน้า</div>
-                    <div class="my-auto ms-1 select-perPage">
-                        <ng-select style="width: 60px" [(ngModel)]="listPerPage"
-                            [clearable]="false"
-                            class="custom maxWidth add-boss"
-                            (change)="listPerpage()" required>
-                            <ng-option [value]="10">10</ng-option>
-                            <ng-option [value]="15">15</ng-option>
-                            <ng-option [value]="20">20</ng-option>
-                            <ng-option [value]="25">25</ng-option>
-                            <ng-option [value]="50">50</ng-option>
-                            <ng-option [value]="100">100</ng-option>
-                        </ng-select>
+                                    <td class="text-center">{{item.ta_number}}</td>
+                                    <td class="text-center">{{item.ta_date}}</td>
+                                    <td class="text-center">{{item.ta_time_in}}</td>
+                                    <td class="text-center">{{item.ta_time_out}}</td>
+                                    <td class="text-center">{{item.ta_amount}}</td>
+                                    <td class="text-center">{{item.ta_detail}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
 
-                <div class="col d-flex justify-content-end">
-                    <pagination-template #p="paginationApi" id="{{ config.id }}"
-                        (pageChange)="config.currentPage= $event">
-                        <div class="custom-pagination d-flex flex-row
-                            justify-content-end">
-                            <button [disabled]="p.isFirstPage()" style="width:
-                                38px" class="buttonPage text-end d-flex
-                                align-items-center
-                                justify-content-center nextPage me-3"
-                                [class.disabled]="p.isFirstPage()"
-                                (click)="p.previous()">
-                                <i class="fa-solid fa-chevron-left"></i>
-                            </button>
-                            <div *ngFor="let page of p.pages"
-                                [class.current]="p.getCurrent() === page.value">
-                                <div id="PageButton" class="buttonPage text-end
-                                    d-flex
-                                    align-items-center justify-content-center
-                                    nextPage me-1"
-                                    (click)="p.setCurrent(page.value)"
-                                    *ngIf="p.getCurrent() !== page.value">
-                                    <span>{{ page.label }}</span>
-                                </div>
-                                <div class="on-page text-end d-flex
-                                    align-items-center justify-content-center
-                                    onPage
-                                    me-1" *ngIf="p.getCurrent() === page.value">
-                                    <span>{{ page.label }}</span>
-                                </div>
-                            </div>
+                <div class="row">
 
-                            <button style="width: 38px" class="buttonPage
-                                text-end d-flex align-items-center
-                                justify-content-center nextPage ms-3 me-3"
-                                [disabled]="p.isLastPage()" (click)="p.next()">
-                                <i class="fa-solid fa-chevron-right"></i>
-                            </button>
+                    <div class="col d-flex flex-row">
+                        <div class="list-perPage d-flex align-items-center
+                            listperpage-font">รายการต่อหน้า</div>
+                        <div class="my-auto ms-1 select-perPage">
+                            <ng-select style="width: 60px"
+                                [(ngModel)]="listPerPage"
+                                [clearable]="false"
+                                class="custom maxWidth add-boss"
+                                (change)="listPerpage()" required>
+                                <ng-option [value]="10">10</ng-option>
+                                <ng-option [value]="15">15</ng-option>
+                                <ng-option [value]="20">20</ng-option>
+                                <ng-option [value]="25">25</ng-option>
+                                <ng-option [value]="50">50</ng-option>
+                                <ng-option [value]="100">100</ng-option>
+                            </ng-select>
                         </div>
-                    </pagination-template>
+                    </div>
 
+                    <div class="col d-flex justify-content-end">
+                        <pagination-template #p="paginationApi" id="{{ config.id
+                            }}"
+                            (pageChange)="config.currentPage= $event">
+                            <div class="custom-pagination d-flex flex-row
+                                justify-content-end">
+                                <button [disabled]="p.isFirstPage()"
+                                    style="width:
+                                    38px" class="buttonPage text-end d-flex
+                                    align-items-center
+                                    justify-content-center nextPage me-3"
+                                    [class.disabled]="p.isFirstPage()"
+                                    (click)="p.previous()">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </button>
+                                <div *ngFor="let page of p.pages"
+                                    [class.current]="p.getCurrent() ===
+                                    page.value">
+                                    <div id="PageButton" class="buttonPage
+                                        text-end
+                                        d-flex
+                                        align-items-center
+                                        justify-content-center
+                                        nextPage me-1"
+                                        (click)="p.setCurrent(page.value)"
+                                        *ngIf="p.getCurrent() !== page.value">
+                                        <span>{{ page.label }}</span>
+                                    </div>
+                                    <div class="on-page text-end d-flex
+                                        align-items-center
+                                        justify-content-center
+                                        onPage
+                                        me-1" *ngIf="p.getCurrent() ===
+                                        page.value">
+                                        <span>{{ page.label }}</span>
+                                    </div>
+                                </div>
+
+                                <button style="width: 38px" class="buttonPage
+                                    text-end d-flex align-items-center
+                                    justify-content-center nextPage ms-3 me-3"
+                                    [disabled]="p.isLastPage()"
+                                    (click)="p.next()">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </pagination-template>
+
+                    </div>
                 </div>
             </div>
         </div>

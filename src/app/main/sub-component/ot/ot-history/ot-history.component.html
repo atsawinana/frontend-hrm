@@ -78,9 +78,9 @@
 
                         <tbody class="list-content">
                             <tr id="row-list" *ngFor="let objleave of
-                                objTableHistory | paginate : config ">
+                                objTableHistory | paginate : config ; let number = index ">
                                 <td>
-                                    {{objleave.number}}
+                                    {{number+1}}
                                 </td>
                                 <td>
                                     {{objleave.rot_start_date}}

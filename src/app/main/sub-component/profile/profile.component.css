@@ -112,6 +112,15 @@
   color: #005FBC;
 }
 
+.fontot {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 35px;
+  color: #000000;
+}
+
 .fontOT {
   font-family: 'Kanit';
   font-style: normal;

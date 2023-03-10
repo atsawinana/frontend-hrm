@@ -150,12 +150,14 @@
                                                     <div class="col-12 d-flex
                                                         justify-content-center
                                                         my-3
-                                                        font-time-picker-head">ชั่วโมง</div>
+                                                        font-time-picker-head">นาฬิกา</div>
                                                     <div class="col-6 d-flex
                                                         justify-content-end
                                                         align-items-center
                                                         font-time-picker"><input
-                                                            type="number"
+                                                        type="text"
+                                                        pattern="\d*"
+                                                        maxlength="2"
                                                             [ngClass]="{
                                                             'alert-time-picker':
                                                             time.alerthours }"
@@ -200,7 +202,9 @@
                                                         justify-content-end
                                                         align-items-center
                                                         font-time-picker">
-                                                        <input type="number"
+                                                        <input type="text"
+                                                        pattern="\d*"
+                                                        maxlength="2"
                                                             [ngClass]="{
                                                             'alert-time-picker':
                                                             time.alertmins }"

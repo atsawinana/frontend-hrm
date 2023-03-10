@@ -156,7 +156,9 @@
                                                         justify-content-end
                                                         align-items-center
                                                         font-time-picker"><input
-                                                            type="number"
+                                                            type="text"
+                                                            pattern="\d*"
+                                                            maxlength="2"
                                                             [ngClass]="{
                                                             'alert-time-picker':
                                                             time.alerthours }"
@@ -201,7 +203,10 @@
                                                         justify-content-end
                                                         align-items-center
                                                         font-time-picker">
-                                                        <input type="number"
+                                                        <input
+                                                            type="text"
+                                                            pattern="\d*"
+                                                            maxlength="2"
                                                             [ngClass]="{
                                                             'alert-time-picker':
                                                             time.alertmins }"
@@ -242,7 +247,8 @@
                         </div>
                         <!-- time box end -->
 
-                        <div class="row" *ngIf="Request.controls.time.errors && summited">
+                        <div class="row" *ngIf="Request.controls.time.errors &&
+                            summited">
                             <div class="col-lg-7 col-md-8 col-sm-7 col-5 d-flex
                                 justify-content-left"></div>
                             <div class="col-sm-3 col-4 space-data">
@@ -280,7 +286,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row" *ngIf="Request.controls.detail.errors && summited">
+                        <div class="row" *ngIf="Request.controls.detail.errors
+                            && summited">
                             <div class="col-lg-7 col-md-8 col-sm-7 col-5 d-flex
                                 justify-content-left"></div>
                             <div class="col-sm-3 col-4 space-data">
