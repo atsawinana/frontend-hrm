@@ -1,80 +1,82 @@
 <app-loading *ngIf="checkState"></app-loading>
 <div class="row" *ngIf="!checkState">
-  <div class="col-12">
-    <div class="row">
-      <div class="col font-content">
-        ประวัติการเข้างานทั้งหมด
-      </div>
-
-      <div class="col-4 mx-2 d-flex align-items-center border-input"
-        style="height: 40px; width: 155px;">
-        <div class="container px-0">
-          <div class="row">
-            <input type="text" placeholder="เลือกช่วงวันที่"
-              class="col-9 dateIcon icon-bg"
-              #dp="bsDaterangepicker"
-              bsDaterangepicker (keypress)="false"
-              (onHidden)="sortDate()" [(ngModel)]="date"
-              (bsValueChange)="sortDate()"
-              [bsConfig]="{ isAnimated: true,
-              rangeInputFormat : 'DD/MM/YYYY',
-              dateInputFormat:
-              'DD/MM/YYYY', containerClass:
-              'theme-dark-blue',
-              showWeekNumbers: false,
-              clearPosition: 'right',
-              adaptivePosition: true}">
-
-            <div class="col-3 d-flex align-items-center
-              justify-content-center px-0" (click)="dp.toggle()"
-              [attr.aria-expanded]="dp.isOpen" style="cursor:
-              pointer;">
-              <i class="fa-solid fa-calendar-days icon-color"
-                style="font-size: 24px;"></i>
+    <div class="col-12">
+        <div class="row">
+            <div class="col font-content">
+                ประวัติการเข้างานทั้งหมด
             </div>
-          </div>
+
+            <div class="col-4 mx-2 d-flex align-items-center border-input"
+                style="height: 40px; width: 155px;">
+                <div class="container px-0">
+                    <div class="row">
+                        <input type="text" placeholder="เลือกช่วงวันที่"
+                            class="col-9 dateIcon icon-bg"
+                            #dp="bsDaterangepicker"
+                            bsDaterangepicker (keypress)="false"
+                            (onHidden)="sortDate()" [(ngModel)]="date"
+                            (bsValueChange)="sortDate()"
+                            [bsConfig]="{ isAnimated: true,
+                            rangeInputFormat : 'DD/MM/YYYY',
+                            dateInputFormat:
+                            'DD/MM/YYYY', containerClass:
+                            'theme-dark-blue',
+                            showWeekNumbers: false,
+                            clearPosition: 'right',
+                            adaptivePosition: true}">
+
+                        <div class="col-3 d-flex align-items-center
+                            justify-content-center px-0" (click)="dp.toggle()"
+                            [attr.aria-expanded]="dp.isOpen" style="cursor:
+                            pointer;">
+                            <i class="fa-solid fa-calendar-days icon-color"
+                                style="font-size: 24px;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
 
-    <h1 class="row mt-5 d-flex justify-content-center"
-      *ngIf="objTable.length == 0" style="font-family: 'Kanit';">
-      ไม่พบประวัติการเข้างาน-ออกงาน
-    </h1>
+        <h1 class="row mt-5 d-flex justify-content-center"
+            *ngIf="objTable.length == 0" style="font-family: 'Kanit';">
+            ไม่พบประวัติการเข้างาน-ออกงาน
+        </h1>
 
 
-    <div *ngIf="!(objTable.length == 0)" class="table-responsive">
-      <table class="table-responsive table table-striped mt-3">
+        <div *ngIf="!(objTable.length == 0)" class="table-responsive">
+            <table class="table-responsive table table-striped mt-3">
 
-        <!--table header-->
-        <thead class="ps-5 list-table">
-          <tr align="center">
-            <th scope="col">ลำดับ</th>
-            <th scope="col">วันที่ทำงาน</th>
-            <th scope="col">เวลาเข้าทำงาน(24ชม.)</th>
-            <th scope="col">เวลาออกงาน(24ชม.)</th>
-            <th scope="col">จำนวนชั่วโมงที่ทำงาน</th>
-            <th scope="col">หมายเหตุ</th>
-          </tr>
-        </thead>
-        <!---->
+                <!--table header-->
+                <thead class="ps-5 list-table">
+                    <tr align="center">
+                        <th scope="col">ลำดับ</th>
+                        <th scope="col">วันที่ทำงาน</th>
+                        <th scope="col">เวลาเข้าทำงาน(24ชม.)</th>
+                        <th scope="col">เวลาออกงาน(24ชม.)</th>
+                        <th scope="col">จำนวนชั่วโมงที่ทำงาน</th>
+                        <th scope="col">หมายเหตุ</th>
+                    </tr>
+                </thead>
+                <!---->
 
-       <!-- ta_number  => ลำดับ
+                <!-- ta_number  => ลำดับ
 ta_date => วันที่ทำงาน
 ta_time_in => เวลาเข้าทำงาน
 ta_time_out => เวลาที่ออกงาน
 ta_amount => ชั่วโมงที่ทำงานทั้งหมด
 ta_detail => หมายเหตุ -->
+                <tbody  align="center"  class="list-content" >
+                    <tr *ngFor="let item of objTable">
+                        <td class="">{{item.ta_number}}</td>
+                        <td class="">{{item.ta_date}}</td>
+                        <td class=""> {{item.ta_time_in}}</td>
+                        <td class=""> {{item.ta_time_out}}</td>
+                        <td class="">{{item.ta_amount}}</td>
+                        <td class="">{{item.ta_detail}}</td>
+                    </tr>
 
-        <tbody class="list-content" *ngFor="let item of objTable">
-          <td class="space-table">{{item.number}}</td>
-          <td class="space-table">{{item.ta_date}}</td>
-          <td class="space-table"> {{item.ta_time_in}}</td>
-          <td class="space-table"> {{item.ta_time_out}}</td>
-          <td class="space-table">{{item.ta_amount}}</td>
-          <td class="space-table">{{item.ta_detail}}</td>
-        </tbody>
-      </table>
+                </tbody>
+            </table>
+        </div>
     </div>
-  </div>
 </div>
