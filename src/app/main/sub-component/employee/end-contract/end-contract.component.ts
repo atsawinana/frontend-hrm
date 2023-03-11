@@ -21,6 +21,8 @@ export class EndContractComponent implements OnInit {
   TestModel: any[] = [];
   aryModel: any[] = [];
   DeptIDemp: string = '';
+  tableemp:any = "id"
+
 
   listPerpage() {
     this.config.itemsPerPage = this.listPerPage;

@@ -1,55 +1,82 @@
 <app-loading *ngIf="checkState"></app-loading>
 <div class="container-fluid" *ngIf="!checkState">
-    <div class="row">
-        <div class="col d-flex flex-row align-items-center">
-            <button
-                class="back-button d-flex justify-content-center"
-                (click)="backClicked()">
-                <i class="fa-solid fa-angle-left back-icon"></i>
-            </button>
-            <div class="font-header mx-2">
-                ประวัติการทำโอทีทั้งหมด
-            </div>
+    <div class="row list-header d-flex p-2 d-flex
+        justify-content-between">
 
-            <div class="col-2 mx-4 d-flex align-items-center border-input">
-                <div class="container">
-                    <div class="row">
-                        <input type="text" placeholder="เลือกเดือนและปี"
-                            class="col-9 w-75 dateIcon icon-bg"
-                            style="height: 40px;"
-                            #dp="bsDaterangepicker"
-                            bsDaterangepicker
-                            (keypress)="false"
-                            (onHidden)="sortDate()" [(ngModel)]="date"
-                            [bsConfig]="{ isAnimated: true,
-                            rangeInputFormat : 'DD/MM/YYYY',
-                            dateInputFormat:
-                            'DD/MM/YYYY', containerClass:
-                            'theme-dark-blue',
-                            showWeekNumbers: false,
-                            clearPosition: 'right'}"/>
+        <div class="col-6 d-flex justify-content-start ">
+            <div class="row d-flex align-items-center">
+                <button type="button" class="btn btn-primary
+                    back-button d-flex
+                    align-items-center justify-content-center"
+                    (click)="backClicked()">
+                    <i class="fa-solid fa-chevron-left icon d-flex
+                        justify-content-center"></i>
+                </button>
 
-                        <div class="col-3 d-flex align-items-center
-                            justify-content-center px-0" (click)="dp.toggle()"
-                            [attr.aria-expanded]="dp.isOpen" style="cursor:
-                            pointer;">
-                            <i class="fa-solid fa-calendar-days icon-color"
-                                style="font-size: 24px;"></i>
+                <div class="font-header w-auto">ประวัติการทำโอทีทั้งหมด</div>
+                <div class="col-4 px-0 mx-4 d-flex align-items-center
+                    border-input">
+                    <div class="container">
+                        <div class="row">
+                            <input type="text" placeholder="เลือกเดือนและปี"
+                                class="col-9 w-75 dateIcon icon-bg"
+                                style="height: 40px;"
+                                #dp="bsDaterangepicker"
+                                bsDaterangepicker (keypress)="false"
+                                (onHidden)="sortDate()" [(ngModel)]="date"
+                                [bsConfig]="{ isAnimated: true,
+                                rangeInputFormat : 'DD/MM/YYYY',
+                                dateInputFormat:
+                                'DD/MM/YYYY', containerClass:
+                                'theme-dark-blue',
+                                showWeekNumbers: false,
+                                clearPosition: 'right'}">
+
+                            <div class="col-3 d-flex align-items-center
+                                justify-content-center px-0"
+                                (click)="dp.toggle()"
+                                [attr.aria-expanded]="dp.isOpen" style="cursor:
+                                pointer;">
+                                <i class="fa-solid fa-calendar-days icon-color"
+                                    style="font-size: 24px;"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <button type="button" class="col-3 ms-auto btn btn-primary
-                btn-export-excel d-flex justify-content-center
-                align-items-center" (click)="exportAsExcelFile()">
-                <i class="fa-regular fa-file-excel" style="font-size:
-                    26px;"></i>
+        <div class="col-3 ">
+            <div class="ms-2 row border-input">
+                <div class="col-2">
+                    <img class="py-2 px-2"
+                        src="assets/img/department/search-bar.png"
+                        alt="" />
+                </div>
+
+                <div class="col-7 col-sm-7 col-md-7 col-lg-7
+                    col-xl-7
+                    col-xxl-7
+                    p-0 d-flex align-items-center ms-3">
+                    <input [(ngModel)]="searchInput" class="w-100"
+                        id="search-bar" type="text"
+                        pattern="[a-zA-Z]*" placeholder="ค้นหา" />
+                </div>
+            </div>
+        </div>
+
+        <div class="col-3 d-flex justify-content-center">
+
+            <button type="button" class="col btn btn-primary btn-export-excel
+                d-flex justify-content-center align-items-center"
+                (click)="exportAsExcelFile()">
+                <i class="fa-regular fa-file-excel" style="font-size: 26px;"></i>
                 <div class="px-2">Export Excel</div>
             </button>
 
-
         </div>
+
+
     </div>
 
     <h1 class="row mt-5 d-flex justify-content-center"
@@ -82,14 +109,15 @@
                                     !important;">ชื่องาน</th>
                                 <th class="cut-text" style="max-width: 10%
                                     !important;">สถานะ</th>
-                                <th class="cut-text" style="max-width: 10% 
+                                <th class="cut-text" style="max-width: 10%
                                     !important;">การดำเนินการ</th>
                             </tr>
                         </thead>
 
                         <tbody class="list-content">
                             <tr id="row-list" *ngFor="let objleave of
-                                objTableHistory | paginate : config ; let number=
+                                objTableHistory | filter : searchInput | paginate : config ; let
+                                number=
                                 index">
                                 <td>
                                     {{number+1}}

@@ -31,7 +31,9 @@ export class HistoryComponent implements OnInit {
 
     listPerPage: number = 10
 
-    ApiSuccess: boolean = false
+    checkState: boolean = true
+
+    tableemp:any = "id"
 
     public config: PaginationInstance = {
         id: 'custom',
@@ -56,7 +58,7 @@ export class HistoryComponent implements OnInit {
                 let startDate = new Date()
                 this.date = startDate
 
-                this.ApiSuccess = true
+                this.checkState = false
             },
             error: (err: any) => {
 
@@ -113,52 +115,14 @@ export class HistoryComponent implements OnInit {
         })
     }
 
+    backClicked() {
+        history.back()
+    }
+
     public exportAsExcelFile(): void {
-        let ExptExcel = JSON.parse(JSON.stringify(this.objdataTable));
-        // console.log(this.objdataTable);
-        for (let i = 0; i < ExptExcel.length; i++) {
-            ExptExcel[i].ลำดับ = ExptExcel[i]['number'];
-            ExptExcel[i].รหัสพนักงาน = ExptExcel[i]['user_card_number'];
-            ExptExcel[i].รายชื่อ = ExptExcel[i]['ud_fullname_th'];
-            ExptExcel[i].ประเภทการลา = ExptExcel[i]['rvac_type_name'];
-            ExptExcel[i].วันที่ยื่นลา = ExptExcel[i]['rvac_created_at'];
-            ExptExcel[i].วันที่ต้องการลา = ExptExcel[i]['rvac_date'];
-            ExptExcel[i].ช่วงเวลาในการลา = ExptExcel[i]['rvac_duration_time'];
-            ExptExcel[i]['รวมวันที่ลา/ชั่วโมง'] = ExptExcel[i]['rvac_sum_duration'];
-            ExptExcel[i]['สถานะ'] = ExptExcel[i]['rvac_status_name'];
-
-            delete ExptExcel[i].number;
-            delete ExptExcel[i].user_card_number;
-            delete ExptExcel[i].ud_fullname_th;
-            delete ExptExcel[i].rvac_type_name;
-            delete ExptExcel[i].rvac_created_at;
-            delete ExptExcel[i].rvac_date;
-            delete ExptExcel[i].rvac_duration_time;
-            delete ExptExcel[i].rvac_sum_duration;
-            delete ExptExcel[i].rvac_status_name;
-
-            delete ExptExcel[i].rvac_id;
-            delete ExptExcel[i].rvac_user_id;
-            delete ExptExcel[i].rvac_type;
-            delete ExptExcel[i].rvac_date_start;
-            delete ExptExcel[i].rvac_date_end;
-            delete ExptExcel[i].rvac_duration;
-            delete ExptExcel[i].rvac_amount;
-            delete ExptExcel[i].rvac_status;
-            delete ExptExcel[i].rvac_detail;
-            delete ExptExcel[i].rvac_reason;
-            delete ExptExcel[i].rvac_special_case;
-            delete ExptExcel[i].rvac_is_canceled;
-            delete ExptExcel[i].rvac_update_at;
-            delete ExptExcel[i].ud_user_id;
-            delete ExptExcel[i].ud_fullname_en;
-            delete ExptExcel[i].rvac_approve_status;
-            delete ExptExcel[i].page;
-
-        }
-        // console.log(ExptExcel);
-
-        const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(ExptExcel);
+        let element = document.getElementById(this.tableemp);
+        const worksheet: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element, { raw: true } );
+        delete worksheet['H1']
         const workbook: XLSX.WorkBook = {
             Sheets: { data: worksheet },
             SheetNames: ['data'],

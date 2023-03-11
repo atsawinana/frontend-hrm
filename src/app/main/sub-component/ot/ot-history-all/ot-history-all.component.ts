@@ -25,6 +25,7 @@ export class OtHistoryAllComponent implements OnInit {
     objTableHistory: any;
     date: any = ""
     tableemp: any = "idTable"
+    searchInput:any = ""
 
     ngOnInit() {
         defineLocale('th', thBeLocale);
@@ -88,7 +89,7 @@ export class OtHistoryAllComponent implements OnInit {
     public exportAsExcelFile(): void {
   
         let element = document.getElementById(this.tableemp);
-        const worksheet: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
+        const worksheet: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element, { raw: true });
         delete worksheet['H1']
         const workbook: XLSX.WorkBook = {
             Sheets: { data: worksheet },

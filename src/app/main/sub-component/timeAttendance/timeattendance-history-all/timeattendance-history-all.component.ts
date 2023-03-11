@@ -26,6 +26,7 @@ export class TimeattendanceHistoryAllComponent implements OnInit {
     objTableHistory: any
     searchInput:any
     checkState:boolean = true
+    tableemp:any = "id"
     ngOnInit() {
         defineLocale('th', thBeLocale);
         this.localeService.use('th');
@@ -64,24 +65,9 @@ export class TimeattendanceHistoryAllComponent implements OnInit {
     // }
 
     public exportAsExcelFile(): void {
-        let ExptExcel = JSON.parse(JSON.stringify(this.objTableHistory));
-        for (let i = 0; i < ExptExcel.length; i++) {
-            ExptExcel[i].ลำดับ = ExptExcel[i]['ta_number'];
-            ExptExcel[i].รหัสพนักงาน = ExptExcel[i]['user_card_number'];
-            ExptExcel[i].รายชื่อ = ExptExcel[i]['ud_fullname_th'];
-            ExptExcel[i].วันที่ทำงาน = ExptExcel[i]['ta_date'];
-            ExptExcel[i].จำนวนชั่วโมงที่ทำงาน = ExptExcel[i]['ta_amount'];
-            ExptExcel[i].หมายเหตุ = ExptExcel[i]['ta_detail'];
-
-            delete ExptExcel[i].ta_number;
-            delete ExptExcel[i].user_card_number;
-            delete ExptExcel[i].ud_fullname_th;
-            delete ExptExcel[i].ta_date;
-            delete ExptExcel[i].ta_amount;
-            delete ExptExcel[i].ta_detail;
-        }
-
-        const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(ExptExcel);
+        let element = document.getElementById(this.tableemp);
+        const worksheet: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element, { raw: true });
+        console.log(worksheet)
         const workbook: XLSX.WorkBook = {
             Sheets: { data: worksheet },
             SheetNames: ['data'],
