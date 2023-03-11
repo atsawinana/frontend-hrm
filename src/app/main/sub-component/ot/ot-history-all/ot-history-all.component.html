@@ -33,18 +33,28 @@
                             justify-content-center px-0" (click)="dp.toggle()"
                             [attr.aria-expanded]="dp.isOpen" style="cursor:
                             pointer;">
-                            <i class="fa-solid fa-calendar-days icon-color"  style="font-size: 24px;"></i>
+                            <i class="fa-solid fa-calendar-days icon-color"
+                                style="font-size: 24px;"></i>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <button type="button" class="col-3 ms-auto btn btn-primary
+                btn-export-excel d-flex justify-content-center
+                align-items-center" (click)="exportAsExcelFile()">
+                <i class="fa-regular fa-file-excel" style="font-size:
+                    26px;"></i>
+                <div class="px-2">Export Excel</div>
+            </button>
+
 
         </div>
     </div>
 
     <h1 class="row mt-5 d-flex justify-content-center"
         *ngIf="objTableHistory.length == 0" style="font-family: 'Kanit';">
-        ไม่พบประวัติการทำโอที
+        ไม่พบประวัติการทำโอทีทั้งหมด
     </h1>
 
     <div class="row" *ngIf="!(objTableHistory.length == 0)">
@@ -54,7 +64,7 @@
                     <table
                         class="table table-striped align-middle text-center mt-3
                         list-table"
-                        id="tableemp"
+                        [id]="tableemp"
                         style="min-width: 1140px">
                         <thead>
                             <tr>
@@ -72,21 +82,22 @@
                                     !important;">ชื่องาน</th>
                                 <th class="cut-text" style="max-width: 10%
                                     !important;">สถานะ</th>
-                                <th class="cut-text" style="max-width: 10%
+                                <th class="cut-text" style="max-width: 10% 
                                     !important;">การดำเนินการ</th>
                             </tr>
                         </thead>
 
                         <tbody class="list-content">
                             <tr id="row-list" *ngFor="let objleave of
-                                objTableHistory | paginate : config ; let number = index">
+                                objTableHistory | paginate : config ; let number=
+                                index">
                                 <td>
                                     {{number+1}}
                                 </td>
                                 <td>
                                     {{objleave.user_card_number}}
                                 </td>
-                                <td>
+                                <td class="text-start">
                                     {{objleave.ud_fullname_th}}
                                 </td>
                                 <td>
@@ -130,7 +141,7 @@
                                             <button type="button " class="btn
                                                 btn-primary btn-dropdown"
                                                 id="dropdownMenuButton1"
-                                                routerLink="../view-request/{{objleave}}">
+                                                routerLink="../view-request/{{objleave.rot_id}}">
                                                 <div class="col icon-dropdown
                                                     d-flex
                                                     justify-content-center">

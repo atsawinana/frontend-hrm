@@ -171,3 +171,11 @@ table {
   border: 0px !important;
   border-right: 1px solid #005FBC !important;
 }
+
+.btn-export-excel {
+  background: #239411;
+  border-radius: 8px;
+  font-family: 'Kanit';
+  font-style: normal;
+  border: none;
+}

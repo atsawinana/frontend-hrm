@@ -4,7 +4,11 @@ import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { defineLocale, thBeLocale } from 'ngx-bootstrap/chronos';
 import { PaginationInstance } from 'ngx-pagination';
 import { OtService } from '../ot.service';
-
+import * as XLSX from 'xlsx';
+import * as fileSaver from 'file-saver';
+const EXCEL_TYPE =
+    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
+const EXCEL_EXTENSION = '.xlsx';
 
 @Component({
     selector: 'app-ot-history-all',
@@ -20,6 +24,7 @@ export class OtHistoryAllComponent implements OnInit {
     listPerPage: any = 10
     objTableHistory: any;
     date: any = ""
+    tableemp: any = "idTable"
 
     ngOnInit() {
         defineLocale('th', thBeLocale);
@@ -78,6 +83,29 @@ export class OtHistoryAllComponent implements OnInit {
             next: (res: any) => { this.objTableHistory = res.data.req_overtimes },
             error: (err: any) => { }
         })
+    }
+
+    public exportAsExcelFile(): void {
+  
+        let element = document.getElementById(this.tableemp);
+        const worksheet: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
+        delete worksheet['H1']
+        const workbook: XLSX.WorkBook = {
+            Sheets: { data: worksheet },
+            SheetNames: ['data'],
+        };
+        const excelBuffer: any = XLSX.write(workbook, {
+            bookType: 'xlsx',
+            type: 'array',
+        });
+        this.saveAsExcelFile(excelBuffer, 'data');
+    }
+    private saveAsExcelFile(buffer: any, fileName: string): void {
+        const data: Blob = new Blob([buffer], { type: EXCEL_TYPE });
+        fileSaver.saveAs(
+            data,
+            fileName + '_export_' + new Date().getTime() + EXCEL_EXTENSION
+        );
     }
 
 }

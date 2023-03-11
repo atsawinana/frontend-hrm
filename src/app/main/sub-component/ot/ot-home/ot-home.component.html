@@ -1,8 +1,12 @@
 <!-- <app-loading *ngIf="checkState"></app-loading> -->
 <div class="container-fluid" >
     <div class="row">
-        <div class="col font-header d-flex align-items-center">อัตราค่าล่วงเวลาการทำงาน</div>
+        <div class="col mb-3 font-header d-flex align-items-center">อัตราค่าล่วงเวลาการทำงาน</div>
         <div class="col d-flex justify-content-end">
+            <button *ngIf="role" class="mx-2 btn-history-all d-flex align-items-center justify-content-center" routerLink="all-history">
+                <i class="fa-solid fa-clock-rotate-left mx-2" style="font-size: 24px !important;"></i>
+                <div>ประวัติการทำโอทีทั้งหมด</div> 
+            </button>
             <button class="mx-2 btn-history d-flex align-items-center justify-content-center" routerLink="history">
                 <i class="fa-solid fa-image-portrait mx-2" style="font-size: 24px !important;"></i>
                 <div>ประวัติการทำโอที</div> 

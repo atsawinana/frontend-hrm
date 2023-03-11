@@ -7,8 +7,9 @@
 
 .btn-request,
 .btn-list-request,
+.btn-history-all,
 .btn-history {
-  width: 203px !important;
+  width: 250px !important;
   height: 48px !important;
   font-family: 'Kanit';
   font-style: normal;
@@ -28,6 +29,11 @@
 }
 
 .btn-history {
+    background: linear-gradient(90deg, #E69755 0.1%, #FF5444 100.01%);
+  border-radius: 8px;
+}
+
+.btn-history-all {
   background: linear-gradient(90deg, #E69755 0.1%, #FF5444 100.01%);
   border-radius: 8px;
 }
