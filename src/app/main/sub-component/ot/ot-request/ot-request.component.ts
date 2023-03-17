@@ -80,6 +80,10 @@ export class OtRequestComponent implements OnInit {
     this._location.back();
   }
 
+  setValueDate(){
+    this.Request.controls.endDate.setValue(this.Request.controls.startDate.value)
+  }
+
   checkCancel() {
     Swal.fire({
       title:

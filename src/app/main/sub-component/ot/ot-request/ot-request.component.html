@@ -27,7 +27,7 @@
                       Request.controls.startDate.errors &&
                       summited
                       }" type="text" placeholder="เลือกวันที่"
-                      class="form-control" bsDatepicker
+                      class="form-control" bsDatepicker (ngModelChange)="setValueDate()"
                       (keypress)="false" formControlName="startDate"
                       [bsConfig]="{
                       isAnimated: true,
@@ -46,7 +46,7 @@
                       Request.controls.startTime.errors &&
                       summited
                       }" type="text" placeholder="เลือกเวลา"
-                      class="form-control"
+                      class="form-control" 
                       (keypress)="false" (click)="showStartTimeBox()"
                       formControlName="startTime">
                   </div>

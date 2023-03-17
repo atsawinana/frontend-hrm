@@ -178,10 +178,9 @@ input {
   outline: none;
 }
 
-tr:hover{
-    background-color: #000000 !important;
+tr:hover {
+  background-color: #000000 !important;
 }
-
 
 td {
   background: rgb(255, 255, 255);
@@ -205,9 +204,9 @@ table {
   overflow: hidden;
 }
 
+
 .list-table {
   border: 1px solid #E5E5EA;
-  border-radius: 8px;
   font-family: 'Kanit';
   font-style: normal;
   font-size: 18px;

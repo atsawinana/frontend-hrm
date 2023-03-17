@@ -191,30 +191,30 @@ input {
 
 
 td {
-  background: rgb(255, 255, 255);
-  border-bottom: 2px solid white;
-  font-family: 'Kanit';
-  font-style: normal;
-  font-size: 16px;
-}
-
-th {
-  background: #005FBC;
-  color: #ffffff;
-  font-family: 'Kanit';
-  font-style: normal;
-  font-size: 18px;
-}
-
-table {
-  border-collapse: collapse;
-  border-radius: 1em;
-  overflow: hidden;
-}
+    background: rgb(255, 255, 255);
+    border-bottom: 2px solid white;
+    font-family: 'Kanit';
+    font-style: normal;
+    font-size: 16px;
+  }
+  
+  th {
+    background: #005FBC;
+    color: #ffffff;
+    font-family: 'Kanit';
+    font-style: normal;
+    font-size: 18px;
+  }
+  
+  table {
+    border-collapse: collapse;
+    border-radius: 1em;
+    overflow: hidden;
+  }
+  
 
 .list-table {
   border: 1px solid #E5E5EA;
-  border-radius: 8px;
   font-family: 'Kanit';
   font-style: normal;
   font-size: 18px;
