@@ -41,4 +41,32 @@ export class ListEmployeeService {
           }
         });
       }
+
+      getSearch(name: any, sort_by: any) {
+        const headers = new HttpHeaders({
+            Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+        });
+        if (sort_by == null || sort_by == "") {
+            return this.httpClient.get(
+                `${environment.apiURL}/employee/search`,
+                {
+                    headers,
+                    params: {
+                        name: name
+                    }
+                }
+            );
+        } else {
+            return this.httpClient.get(
+                `${environment.apiURL}/employee/search`,
+                {
+                    headers,
+                    params: {
+                        name: name,
+                        sort_by: sort_by
+                    }
+                }
+            );
+        }
+    }
 }

@@ -12,21 +12,21 @@ const EXCEL_EXTENSION = '.xlsx';
 
 
 @Component({
-  selector: 'app-timeattendance-history-all',
-  templateUrl: './timeattendance-history-all.component.html',
-  styleUrls: ['./timeattendance-history-all.component.css']
+    selector: 'app-timeattendance-history-all',
+    templateUrl: './timeattendance-history-all.component.html',
+    styleUrls: ['./timeattendance-history-all.component.css']
 })
 export class TimeattendanceHistoryAllComponent implements OnInit {
 
-    constructor(private _location: Location,private localeService: BsLocaleService, private serviceTimeatd: TimeAttendanceService,public datepipe: DatePipe,) { }
+    constructor(private _location: Location, private localeService: BsLocaleService, private serviceTimeatd: TimeAttendanceService, public datepipe: DatePipe,) { }
 
     ary: any = [1, 2, 3]
     listPerPage: any = 10
-    date:any
+    date: any
     objTableHistory: any
-    searchInput:any
-    checkState:boolean = true
-    tableemp:any = "id"
+    searchInput: any
+    checkState: boolean = true
+    tableemp: any = "id"
     ngOnInit() {
         defineLocale('th', thBeLocale);
         this.localeService.use('th');
@@ -37,7 +37,32 @@ export class TimeattendanceHistoryAllComponent implements OnInit {
                 this.objTableHistory = res.data.time_attendance
                 this.checkState = false;
             },
-            error: (err: any) => {}
+            error: (err: any) => { }
+        })
+    }
+
+    searchObject() {
+
+        let startDate = new Date(this.date[0])
+        let endDate = new Date(this.date[1])
+        let date
+        if (isNaN(Number(startDate)) || isNaN(Number(endDate))) {
+            date = ""
+        }
+        else {
+            let startDateFormat = startDate.getFullYear() + "-" + Number(startDate.getMonth() + 1) + "-" + startDate.getDate()
+            // console.log(startDateFormat)
+
+            let endDateFormat = endDate.getFullYear() + "-" + Number(endDate.getMonth() + 1) + "-" + endDate.getDate()
+            // console.log(endDateFormat)
+            date = startDateFormat + "," + endDateFormat
+        }
+
+        this.serviceTimeatd.getSearch(this.searchInput, date).subscribe({
+            next: (res: any) => {
+                this.objTableHistory = res.data.time_attendance
+            },
+            error: (res: any) => { }
         })
     }
 
@@ -65,9 +90,9 @@ export class TimeattendanceHistoryAllComponent implements OnInit {
     // }
 
     public exportAsExcelFile(): void {
-        let element = document.getElementById(this.tableemp);
-        const worksheet: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element, { raw: true });
-        console.log(worksheet)
+        // let element = document.getElementById(this.tableemp);
+        const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(JSON.parse(JSON.stringify(this.objTableHistory)));
+        // console.log(worksheet)
         const workbook: XLSX.WorkBook = {
             Sheets: { data: worksheet },
             SheetNames: ['data'],

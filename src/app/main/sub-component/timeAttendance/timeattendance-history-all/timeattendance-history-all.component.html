@@ -59,7 +59,7 @@
                     col-xl-7
                     col-xxl-7
                     p-0 d-flex align-items-center ms-3">
-                    <input [(ngModel)]="searchInput" class="w-100"
+                    <input [(ngModel)]="searchInput" (keyup)="searchObject()" class="w-100"
                         id="search-bar" type="text"
                         pattern="[a-zA-Z]*" placeholder="ค้นหา" />
                 </div>
@@ -110,7 +110,7 @@
                 </thead>
 
                 <tbody class="list-content">
-                    <tr id="row-list" *ngFor="let objleave of objTableHistory | filter : searchInput | paginate : config; let number = index">
+                    <tr id="row-list" *ngFor="let objleave of objTableHistory | paginate : config; let number = index">
                         <td>
                             {{number+1}}
                         </td>

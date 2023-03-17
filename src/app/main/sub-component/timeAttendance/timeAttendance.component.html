@@ -1,4 +1,9 @@
 <div class="container-fluid p-0 mb-5">
+    <app-buttun-over-page leftLabel="ประวัติคำร้อง"
+    rightLabel="ประวัติเข้างานทั้งหมด" leftPath="/main/timeattendance/time-history"
+    rightPath="/main/timeattendance/time-history-all"
+    pathOnShow="/main/timeattendance/time-history,/main/timeattendance/time-history-all"
+    identifyStorage="timeatdbtn"></app-buttun-over-page>
   <div class="main-content h-100 p-5">
     <router-outlet></router-outlet>
   </div>

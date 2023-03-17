@@ -60,7 +60,7 @@
                     col-xxl-7
                     p-0 d-flex align-items-center ms-3">
                     <input [(ngModel)]="searchInput" class="w-100"
-                        id="search-bar" type="text"
+                        id="search-bar" type="text" (keyup)="searchObject()"
                         pattern="[a-zA-Z]*" placeholder="ค้นหา" />
                 </div>
             </div>
@@ -117,8 +117,7 @@
 
                 <tbody class="list-content">
                     <!--row 1 colum ประเภทการลา-->
-                    <tr *ngFor="let item of objdataTable | filter
-                        :searchInput | paginate:config ; let number= index">
+                    <tr *ngFor="let item of objdataTable | paginate:config ; let number= index">
                         <td>
                             <div class="col d-flex
                                 justify-content-center mt-1">

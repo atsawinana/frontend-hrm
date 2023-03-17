@@ -10,8 +10,8 @@ export class ButtunOverPageComponent implements OnInit {
 
     @Input() leftLabel = ""
     @Input() rightLabel = ""
-    @Input() firstPath = ""
-    @Input() secondPath = ""
+    @Input() leftPath = ""
+    @Input() rightPath = ""
     @Input() identifyStorage = ""
     @Input() pathOnShow = ""
 
@@ -62,13 +62,13 @@ export class ButtunOverPageComponent implements OnInit {
     clickFirstPath() {
         this.route1 = "true"
         sessionStorage.setItem(this.identifyStorage, "true")
-        this.router.navigate([this.firstPath]);
+        this.router.navigate([this.leftPath]);
     }
 
     clickSecondPath() {
         this.route1 = "false"
         sessionStorage.setItem(this.identifyStorage, "false")
-        this.router.navigate([this.secondPath]);
+        this.router.navigate([this.rightPath]);
     }
 
     ngOnDestroy() {

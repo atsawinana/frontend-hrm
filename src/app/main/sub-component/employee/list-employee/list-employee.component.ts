@@ -124,9 +124,51 @@ export class ListEmployeeComponent implements OnInit {
         });
     }
 
+    searchObject() {
+
+        let dept_id = '';
+        // console.log('dept', this.objDepartment);
+        for (let i = 0; i < this.aryModel.length; i++) {
+            if (this.aryModel[i]) {
+                dept_id += String(this.objDepartment[i].dept_id) + ',';
+            }
+        }
+
+        this.empService.getSearch(this.searchInput, dept_id).subscribe({
+            next: (res: any) => {
+                this.objemployee = res.data.employee;
+                this.objemptable = JSON.parse(JSON.stringify(this.objemployee));
+                for (let i = 0; i < this.objemptable.length; i++) {
+                    delete this.objemptable[i].user_username;
+                    delete this.objemptable[i].ud_fullname_en;
+                    delete this.objemptable[i].page;
+                    delete this.objemptable[i].user_created_at;
+                }
+            },
+            error: (res: any) => { }
+        })
+    }
+
     public exportAsExcelFile(): void {
-        let element = document.getElementById(this.tableemp);
-        const worksheet: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
+        // let element = document.getElementById(this.tableemp);
+        let ExptExcel = JSON.parse(JSON.stringify(this.objemptable));
+        // console.log(this.objemptable);
+        for (let i = 0; i < ExptExcel.length; i++) {
+            ExptExcel[i].ไอดีพนักงาน = ExptExcel[i]['id'];
+            ExptExcel[i].รหัสพนักงาน = ExptExcel[i]['user_card_number'];
+            ExptExcel[i].แผนก = ExptExcel[i]['dept_name_en'];
+            ExptExcel[i].ตำแหน่ง = ExptExcel[i]['position'];
+            ExptExcel[i]['ชื่อ-สกุล'] = ExptExcel[i]['ud_fullname_th'];
+            ExptExcel[i].วันที่เข้างาน = this.objemployee[i]['user_created_at'];
+            delete ExptExcel[i].id;
+            delete ExptExcel[i].position;
+            delete ExptExcel[i].ud_fullname_th;
+            delete ExptExcel[i].user_card_number;
+            delete ExptExcel[i].user_created_at;
+            delete ExptExcel[i].dept_name_en;
+            delete ExptExcel[i].number;
+        }
+        const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(ExptExcel);
         delete worksheet['F1']
         const workbook: XLSX.WorkBook = {
             Sheets: { data: worksheet },

@@ -25,7 +25,7 @@ export class OtHistoryAllComponent implements OnInit {
     objTableHistory: any;
     date: any = ""
     tableemp: any = "idTable"
-    searchInput:any = ""
+    searchInput: any = ""
 
     ngOnInit() {
         defineLocale('th', thBeLocale);
@@ -40,7 +40,30 @@ export class OtHistoryAllComponent implements OnInit {
         })
     }
 
+    searchObject() {
 
+        let startDate = new Date(this.date[0])
+        let endDate = new Date(this.date[1])
+        let date
+        if (isNaN(Number(startDate)) || isNaN(Number(endDate))) {
+             date = "" 
+            }
+        else {
+            let startDateFormat = startDate.getFullYear() + "-" + Number(startDate.getMonth() + 1) + "-" + startDate.getDate()
+            // console.log(startDateFormat)
+
+            let endDateFormat = endDate.getFullYear() + "-" + Number(endDate.getMonth() + 1) + "-" + endDate.getDate()
+            // console.log(endDateFormat)
+            date = startDateFormat + "," + endDateFormat
+        }
+
+        this.otService.getSearch(this.searchInput, date).subscribe({
+            next: (res: any) => {
+                this.objTableHistory = res.data.req_overtimes
+            },
+            error: (res: any) => { }
+        })
+    }
 
 
     public config: PaginationInstance = {
@@ -87,9 +110,9 @@ export class OtHistoryAllComponent implements OnInit {
     }
 
     public exportAsExcelFile(): void {
-  
+
         let element = document.getElementById(this.tableemp);
-        const worksheet: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element, { raw: true });
+        const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(JSON.parse(JSON.stringify(this.objTableHistory)));
         delete worksheet['H1']
         const workbook: XLSX.WorkBook = {
             Sheets: { data: worksheet },

@@ -290,5 +290,33 @@ export class TimeAttendanceService {
         );
     }
 
+    getSearch(name: any, sort_date: any) {
+        const headers = new HttpHeaders({
+            Authorization: 'Bearer' + localStorage.getItem('tokenLocal'),
+        });
+        if (sort_date == null || sort_date == "") {
+            return this.httpClient.get(
+                `${environment.apiURL}/timeAttendance/search`,
+                {
+                    headers,
+                    params: {
+                        name: name
+                    }
+                }
+            );
+        } else {
+            return this.httpClient.get(
+                `${environment.apiURL}/timeAttendance/search`,
+                {
+                    headers,
+                    params: {
+                        name: name,
+                        sort_date: sort_date
+                    }
+                }
+            );
+        }
+    }
+
 }
 

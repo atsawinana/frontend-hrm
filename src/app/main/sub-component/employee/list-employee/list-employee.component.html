@@ -34,6 +34,7 @@
                             col-xxl-6 p-0">
                             <input
                                 [(ngModel)]="searchInput"
+                                (keyup)="searchObject()"
                                 class="h-100 w-100"
                                 id="search-bar"
                                 type="text"
@@ -175,7 +176,7 @@
                 <tr 
                     id="row-list"
                     *ngFor="
-                    let emp of objemptable | filter: searchInput | paginate:
+                    let emp of objemptable | paginate:
                     config ; let number = index
                     ">
                     <td class="text-center">{{ number+1 }}</td>
