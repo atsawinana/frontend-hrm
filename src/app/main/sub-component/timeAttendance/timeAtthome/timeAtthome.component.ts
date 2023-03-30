@@ -43,7 +43,7 @@ export class TimeAtthomeComponent implements OnInit {
     }
 
     ngOnInit() {
-
+        sessionStorage.setItem('timeatdbtn','true')
         let role = localStorage.getItem('roleUser')
         if (role == '2' || role == '3') {
             this.role = true
