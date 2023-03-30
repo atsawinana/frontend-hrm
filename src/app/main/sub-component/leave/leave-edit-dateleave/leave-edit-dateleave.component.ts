@@ -140,7 +140,6 @@ export class LeaveEditDateleaveComponent implements OnInit {
                     this.leaveDays.controls.v_take_annual40_42.value,
                     this.leaveDays.controls.v_take_annual43_45.value,
                     this.leaveDays.controls.v_take_annual46.value,
-                    this.leaveDays.controls.v_without_pay.value,
                 ).subscribe({
                     next: (res: any) => {
                         this.route.navigate(['../main/leave']);
